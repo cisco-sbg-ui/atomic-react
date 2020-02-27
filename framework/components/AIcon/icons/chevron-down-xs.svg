@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="10px" height="6px" viewBox="0 0 10 6" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 49.3 (51167) - http://www.bohemiancoding.com/sketch -->
+    <title>icon-chevron-down-10px</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="SBG-Icon-Library" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Actions" transform="translate(-336.000000, -1212.000000)">
+            <g id="Collapse-/-Expand-Carets" transform="translate(0.000000, 1094.000000)"></g>
+            <path d="M345.790543,1213.2174 C346.069819,1212.93859 346.069819,1212.48792 345.790543,1212.20911 C345.511267,1211.9303 345.059855,1211.9303 344.780579,1212.20911 L341,1215.98342 L337.219421,1212.20911 C336.940145,1211.9303 336.488733,1211.9303 336.209457,1212.20911 C335.930181,1212.48792 335.930181,1212.93859 336.209457,1213.2174 L341,1218 L345.790543,1213.2174 Z" id="Mask" fill="#58585B"></path>
+        </g>
+    </g>
+</svg>

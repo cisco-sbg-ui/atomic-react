@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="8px" height="9px" viewBox="0 0 8 9" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 49.3 (51167) - http://www.bohemiancoding.com/sketch -->
+    <title>icon-sort-descending</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="SBG-Icon-Library" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Actions" transform="translate(-296.000000, -3733.000000)" fill="#58585B">
+            <g id="Sort-descending" transform="translate(0.000000, 3701.000000)">
+                <g id="sort_descending_icn" transform="translate(296.000000, 32.000000)">
+                    <g>
+                        <path d="M4,3 L7.69934988,7.93246651 C7.86539436,8.15385914 7.76920319,8.33333333 7.49956417,8.33333333 L0.500435829,8.33333333 C0.224052752,8.33333333 0.133087158,8.15588379 0.30065012,7.93246651 L4,3 Z" id="Triangle-38-Copy-3" transform="translate(3.998897, 5.666667) scale(1, -1) translate(-3.998897, -5.666667) "></path>
+                        <path d="M3,0.998956561 C3,0.447248087 3.44386482,0 4,0 L4,0 C4.55228475,0 5,0.442660332 5,0.998956561 L5,3 L3,3 L3,0.998956561 Z" id="Rectangle-9"></path>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

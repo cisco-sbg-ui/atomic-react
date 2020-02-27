@@ -1,0 +1,102 @@
+@import "../../styles/utilities/";
+
+.accordion {
+  margin: $accordion-margin;
+  &__card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-width: $accordion-min-width;
+    width: $accordion-width;
+    word-wrap: break-word;
+    background-color: transparent;
+    &:not(:last-of-type) {
+      margin: 0 0 2px 0;
+    }
+    &--state-collapsed {
+      .accordion__header {
+        background-color: $accordion-header-collapsed-bg-color;
+      }
+      .accordion__body {
+        display: none;
+      }
+    }
+  }
+  &__header {
+    height: 30px;
+    display: inline-flex;
+    background-color: $accordion-header-bg-color;
+    border: $base-border-width solid transparent;
+    padding: $accordion-header-padding;
+    font-size: $accordion-header-font-size;
+    line-height: $accordion-header-line-height;
+    vertical-align: middle;
+    &:focus {
+      border: $base-border-width solid $base-brand-color;
+    }
+  }
+  &__link {
+    text-decoration: none;
+    color: $base-color;
+    @include flex-fluid;
+    &:visited,
+    &:hover,
+    &:focus,
+    &:active {
+      color: $base-color;
+      text-decoration: none;
+    }
+  }
+  &__toggle {
+    font-size: $accordion-toggle-font-size;
+    width: $accordion-toggle-font-size;
+    font-weight: $font-weight-xbold;
+    margin: $accordion-toggle-margin;
+    vertical-align: middle;
+  }
+  &__icon {
+    &:visited,
+    &:hover,
+    &:focus,
+    &:active {
+      text-decoration: none;
+    }
+  }
+  &__body {
+    padding: $accordion-body-padding;
+    background-color: $accordion-body-bg;
+  }
+  &__message {
+    font-size: $accordion-message-font-size;
+    flex: 1 1 auto;
+  }
+  &--style-bordered {
+    border: $base-border-width solid $control-stroke-color;
+  }
+}
+
+// Will be refactored later
+.atomic-ui-root--animated .accordion {
+  .accordion__card {
+    .accordion__body {
+      display: block;
+      padding: 0 10px;
+      max-height: $accordion-body-max-height;
+      visibility: visible;
+      overflow: hidden;
+      opacity: 1;
+      @include transition($accordion-transition);
+      .accordion__message {
+        margin: 15px 0;
+      }
+    }
+    &--state-collapsed {
+      .accordion__body {
+        max-height: 0;
+        visibility: hidden;
+        opacity: 0;
+        @include transition($accordion--state-collapsed-transition);
+      }
+    }
+  }
+}
