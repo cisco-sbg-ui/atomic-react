@@ -1,0 +1,45 @@
+a {
+    text-decoration: none;
+    &:hover,
+    &:focus,
+    &:active,
+    &:visited {
+        text-decoration: none;
+    }
+}
+.link {
+    color: $base-brand-color;
+    font-size: $base-font-size;
+    text-decoration: none;
+    cursor: pointer;
+    &:hover,
+    &:focus {
+        color: $base-brand-color;
+        text-decoration: underline;
+    }
+    &:active {
+        color: $base-color--active;
+    }
+    &.disabled {
+        color: $color-gray--light1;
+    }
+    &--color-alt {
+        color: $base-color;
+        font-size: $link-color-alt-font-size;
+    }
+    &--icon {
+        color: $base-color;
+        line-height: normal;
+
+        &:hover {
+            .icon {
+                color: $base-brand-color;
+                text-decoration: none;
+            }
+        }
+
+        .icon {
+            margin: 0 5px 0 0;
+        }
+    }
+}

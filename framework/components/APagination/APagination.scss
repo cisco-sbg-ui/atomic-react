@@ -1,0 +1,148 @@
+.pagination {
+    display: flex;
+    margin: $pagination-margin;
+    padding: $pagination-padding;
+    list-style: none;
+    &__item {
+        &:first-child {
+            margin: $pagination-item-first-margin;
+        }
+        &:last-child {
+            margin: $pagination-item-last-margin;
+        }
+        &.active {
+            .pagination__link {
+                background-color: $base-color--selected;
+                color: $base-inverse-color;
+                &--type-bordered {
+                    z-index: 1;
+                    border-color: $base-color--selected;
+                    &:focus,
+                    &:hover {
+                        background-color: $pagination-link-bg-color-focus;
+                        border: $border-width solid
+                            $pagination-link-border-color-focus;
+                    }
+                }
+            }
+        }
+        &.current-page {
+            & span:first-child {
+                margin: $pagination-current-page-first-child-margin;
+            }
+            & span:last-child {
+                margin: $pagination-current-page-last-child-margin;
+            }
+        }
+        &.first-page {
+            margin: $pagination-first-page-margin;
+        }
+        &.previous-page {
+            margin: $pagination-previous-page-margin;
+        }
+        &.next-page {
+            margin: $pagination-next-page-margin;
+        }
+        &.last-page {
+            margin: $pagination-last-page-margin;
+        }
+    }
+    &__btn {
+        height: $pagination-btn-height;
+        margin: $pagination-btn-margin;
+        padding: $pagination-btn-padding;
+        line-height: $pagination-btn-line-height;
+        border-radius: $pagination-item-border-radius;
+        cursor: pointer;
+        text-overflow: unset;
+        & .pagination__icon {
+            color: $base-inverse-color;
+        }
+    }
+    &__link {
+        position: relative;
+        display: block;
+        text-align: center;
+        height: $pagination-link-height;
+        line-height: $pagination-link-line-height;
+        background-color: transparent;
+        @include pagination-link($pagination-link-color, none);
+        &:visited,
+        &:focus,
+        &:active {
+            @include pagination-link($pagination-link-color, none);
+            & .pagination__icon {
+                color: $pagination-link-color;
+            }
+        }
+        &:hover {
+            @include pagination-link($base-color--hover, none);
+            & .pagination__icon {
+                color: $base-color--hover;
+            }
+        }
+        &:focus {
+            box-shadow: $base-box-shadow;
+        }
+        &--type-bordered {
+            width: $pagination-link-width;
+            border: $border-width solid $base-stroke-color;
+            border-radius: $pagination-link-border-radius;
+            margin-left: -1px;
+            &:focus,
+            &:hover {
+                z-index: 2;
+                background-color: $base-color--hover;
+                color: $base-inverse-color;
+                border-color: $base-color--hover;
+                box-shadow: none;
+            }
+        }
+        &--type-text {
+            @include pagination-link($pagination-link-type-text-color, none);
+            &:visited,
+            &:focus,
+            &:active,
+            &:hover {
+                @include pagination-link(
+                    $pagination-link-type-text-color,
+                    none
+                );
+            }
+            &:focus {
+                box-shadow: $base-box-shadow;
+            }
+            & .pagination__icon {
+                color: $pagination-link-type-text-icon-color;
+            }
+        }
+        &--type-ellipsis {
+            padding: $pagination-link-type-ellipsis-padding;
+            &:focus {
+                box-shadow: none;
+            }
+        }
+        & span {
+            vertical-align: bottom;
+        }
+    }
+    &__input {
+        width: $pagination-input-width;
+        padding: $pagination-input-padding;
+        text-align: center;
+    }
+    &__text {
+        margin: $pagination-text-margin;
+    }
+    &--type-continuous {
+        & .pagination__icon {
+            vertical-align: initial;
+        }
+    }
+    &--type-interactive {
+        line-height: $pagination-type-interactive-line-height;
+        & .pagination__icon {
+            vertical-align: initial;
+        }
+    }
+}
