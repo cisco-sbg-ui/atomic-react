@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
 import React, {forwardRef} from "react";
 
-import AIcon from "../AIcon/AIcon";
+import AIcon from "../AIcon";
 
 const AccordionHeader = forwardRef(
   (

@@ -1,3 +1,15 @@
 .a-icon {
-  display: inline-block;
+  width: 24px;
+
+  &--size-large {
+    width: 32px;
+  }
+
+  &--size-medium {
+    width: 24px;
+  }
+
+  &--size-small {
+    width: 16px;
+  }
 }

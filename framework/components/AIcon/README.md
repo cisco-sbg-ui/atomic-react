@@ -6,4 +6,6 @@ To add a new icon, it needs to be standardized before adding the single SVG path
 
 2. Import the source code into an SVG optimizer, such as [SVGOMG](https://jakearchibald.github.io/svgomg/). The icons here are rounded to precision 3.
 
-3. In some cases the designer may have used a shape element and not converted it to a path. In this case, an image editing client such as [GIMP](https://www.gimp.org/downloads/) would need to be used to import the image and export the path. The path would then need to replace the shape in the source image manually.
+3. In some cases the designer may have used a shape element and not converted it to a path. In this case, an image editing client such as Inkscape or [GIMP](https://www.gimp.org/downloads/) would need to be used to import the image and convert the object to a path. The path would then need to replace the shape in the source image manually.
+
+4. In some cases, the scale is too large, Inkscape or GIMP have the ability to lock the aspect ratio and scale accordingly.
