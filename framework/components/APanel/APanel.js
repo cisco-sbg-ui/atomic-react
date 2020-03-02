@@ -1,18 +1,20 @@
 import PropTypes from "prop-types";
 import React, {forwardRef} from "react";
 
-const Panel = forwardRef(
+import "./APanel.scss";
+
+const APanel = forwardRef(
   ({children, className: propsClassName, type, ...rest}, ref) => {
-    let className = "panel";
+    let className = "a-panel";
 
     if (propsClassName) {
       className += ` ${propsClassName}`;
     }
 
     if (type === "grey") {
-      className += " panel--color-gray";
+      className += " a-panel--color-gray";
     } else if (type === "white") {
-      className += " panel--color-white";
+      className += " a-panel--color-white";
     }
 
     return (
@@ -23,8 +25,8 @@ const Panel = forwardRef(
   }
 );
 
-Panel.propTypes = {
+APanel.propTypes = {
   type: PropTypes.oneOf(["default", "grey", "white"])
 };
 
-export default Panel;
+export default APanel;

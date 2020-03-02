@@ -1,0 +1,5 @@
+// Convert a rem to pixel equivalent since we cannot assume the
+// root size is the Atomic UI base font size
+@function rem($rem) {
+  @return $rem * $font-size;
+}

@@ -1,0 +1,30 @@
+import PropTypes from "prop-types";
+import React, {forwardRef} from "react";
+
+import "./APanel.scss";
+
+const APanelTitle = forwardRef(
+  ({children, className: propsClassName, small, ...rest}, ref) => {
+    let className = "a-panel__title";
+
+    if (small) {
+      className += " a-panel__title--size-small";
+    }
+
+    if (propsClassName) {
+      className += ` ${propsClassName}`;
+    }
+
+    return (
+      <div {...rest} ref={ref} className={className}>
+        {children}
+      </div>
+    );
+  }
+);
+
+APanelTitle.propTypes = {
+  small: PropTypes.bool
+};
+
+export default APanelTitle;

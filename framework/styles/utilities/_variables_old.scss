@@ -1,12 +1,12 @@
 // Convert a rem to pixel equivalent since we cannot assume the
 // root size is the Atomic UI base font size
 @function rem($rem) {
-    @return $rem * $font-size;
+  @return $rem * $font-size;
 }
 
 $font-family: CiscoSans, Arial, sans-serif !default;
 $font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas,
-    'Liberation Mono', 'Courier New', monospace !default;
+  "Liberation Mono", "Courier New", monospace !default;
 // -----------------------------------------------------------------------------
 // Font-size: xxs, xs, sm, base, lg, xl
 // -----------------------------------------------------------------------------
@@ -76,21 +76,21 @@ $mark-bg: $color-status--yellow--wash3 !default;
 $page-width--min: 320px !default;
 $page-width--max: 1440px !default;
 $breakpoints: (
-    'xs': (
-        min-width: 479px
-    ),
-    'sm': (
-        min-width: 767px
-    ),
-    'md': (
-        min-width: 992px
-    ),
-    'lg': (
-        min-width: 1200px
-    ),
-    'xl': (
-        min-width: 1440px
-    ),
+  "xs": (
+    min-width: 479px
+  ),
+  "sm": (
+    min-width: 767px
+  ),
+  "md": (
+    min-width: 992px
+  ),
+  "lg": (
+    min-width: 1200px
+  ),
+  "xl": (
+    min-width: 1440px
+  )
 );
 $grid-columns: 12 !default;
 $grid-gutter-width: 30px !default;
@@ -209,9 +209,9 @@ $transition-base: all $transition-duration--fast ease-in-out;
 $transition-fade: opacity 0.15s linear;
 $transition-collapse: height 0.35s ease;
 $transition-item: color $transition-duration--extra-fast
-        $transition-timing-function--standard,
-    background-color $transition-duration--fast
-        $transition-timing-function--standard;
+    $transition-timing-function--standard,
+  background-color $transition-duration--fast
+    $transition-timing-function--standard;
 // -----------------------------------------------------------------------------
 // Accordion
 // -----------------------------------------------------------------------------
@@ -230,10 +230,9 @@ $accordion-message-font-size: 13px;
 $accordion-toggle-font-size: $font-size--xxs;
 $accordion-toggle-margin: 0 8px 0 0;
 $accordion-transition: visibility 0s ease, max-height $transition-duration ease,
-    opacity $transition-duration--fast ease;
+  opacity $transition-duration--fast ease;
 $accordion--state-collapsed-transition: visibility $transition-duration ease,
-    max-height $transition-duration--fast ease,
-    opacity $transition-duration ease;
+  max-height $transition-duration--fast ease, opacity $transition-duration ease;
 // -----------------------------------------------------------------------------
 // Alerts / Page Level Notifications
 // -----------------------------------------------------------------------------
@@ -306,7 +305,7 @@ $badge-icon-small-height: 16px;
 $breadcrumb-font-size: $font-size--xs;
 $breadcrumb-margin: 8px 0 12px;
 $breadcrumb-padding: 0;
-$breadcrumb-divider: '/';
+$breadcrumb-divider: "/";
 $breadcrumb__divider-padding: 0 5px 0 5px;
 // -----------------------------------------------------------------------------
 // Buttons
@@ -352,13 +351,13 @@ $btn-tertiary-alt-color--active: $base-color--active;
 $btn-tertiary-alt-icon-margin: 0 $base-padding-xsmall 0 0;
 $btn-tertiary-icon-padding: 0 $base-padding-small;
 $btn-transition: color $transition-duration--extra-fast
-        $transition-timing-function--standard,
-    background-color $transition-duration--extra-fast
-        $transition-timing-function--standard,
-    border-color $transition-duration--extra-fast
-        $transition-timing-function--standard,
-    box-shadow $transition-duration--extra-fast
-        $transition-timing-function--standard !default;
+    $transition-timing-function--standard,
+  background-color $transition-duration--extra-fast
+    $transition-timing-function--standard,
+  border-color $transition-duration--extra-fast
+    $transition-timing-function--standard,
+  box-shadow $transition-duration--extra-fast
+    $transition-timing-function--standard !default;
 // -----------------------------------------------------------------------------
 // Button Group
 // -----------------------------------------------------------------------------
@@ -407,11 +406,11 @@ $checkbox-icon-font-size: $font-size--xxs; // 10px
 $checkbox-icon-padding-left: $base-padding-xsmall;
 $checkbox-label-padding-left: $base-padding-small;
 $checkbox-transition: border-color $transition-duration--extra-fast
-        $transition-timing-function--standard,
-    background-color $transition-duration--extra-fast
-        $transition-timing-function--standard,
-    box-shadow $transition-duration--extra-fast
-        $transition-timing-function--standard;
+    $transition-timing-function--standard,
+  background-color $transition-duration--extra-fast
+    $transition-timing-function--standard,
+  box-shadow $transition-duration--extra-fast
+    $transition-timing-function--standard;
 // -----------------------------------------------------------------------------
 // Combobox
 // -----------------------------------------------------------------------------
@@ -500,11 +499,9 @@ $dropdown-item-z-index: 1033;
 $dropdown-item-padding: rem(0.5) rem(1.5);
 $dropdown-item-width: 100%;
 $dropdown-transition: visibility $transition-duration ease,
-    max-height $transition-duration--fast ease,
-    opacity $transition-duration ease;
+  max-height $transition-duration--fast ease, opacity $transition-duration ease;
 $dropdown--state-active-transition: visibility 0s ease,
-    max-height $transition-duration ease,
-    opacity $transition-duration--fast ease;
+  max-height $transition-duration ease, opacity $transition-duration--fast ease;
 // -----------------------------------------------------------------------------
 // Footer
 // -----------------------------------------------------------------------------
@@ -708,16 +705,6 @@ $pagination-link-type-text-icon-color: $color-blue1;
 $pagination-link-type-ellipsis-padding: 3px 5px 0 5px;
 $pagination-text-margin: 0 5px;
 // -----------------------------------------------------------------------------
-// Panels
-// -----------------------------------------------------------------------------
-$panel-bg: $base-bg;
-$panel-bg-gray: $color-gray--light4;
-$panel-color-white: $color-gray--dark1;
-$panel-padding: 20px;
-$panel-margin: 15px;
-$panel-title-font-size: rem(1.125); // 18px
-$panel-body-margin: 15px 0;
-// -----------------------------------------------------------------------------
 // Popover
 // -----------------------------------------------------------------------------
 $popover-zindex: 1060;
@@ -798,9 +785,9 @@ $radio-border--disabled: $control-fill-color--disabled;
 $radio-fill--disabled: $control-fill-color--disabled;
 $radio-opacity-disabled: 1;
 $radio-transition: border-color $transition-duration--extra-fast
-        $transition-timing-function--standard,
-    box-shadow $transition-duration--extra-fast
-        $transition-timing-function--standard;
+    $transition-timing-function--standard,
+  box-shadow $transition-duration--extra-fast
+    $transition-timing-function--standard;
 // -----------------------------------------------------------------------------
 // Scrollbar
 // -----------------------------------------------------------------------------
@@ -998,7 +985,7 @@ $switch__circle--inner-box-shadow-checked-active-hover: $base-color--selected;
 $switch-opacity-disabled: 1;
 $switch-transition: background-color $transition-duration--slow ease-out;
 $switch-after-transition: transform $transition-duration--fast
-    cubic-bezier(0.2, 0.8, 0.2, 1.2);
+  cubic-bezier(0.2, 0.8, 0.2, 1.2);
 // -----------------------------------------------------------------------------
 // Tables
 // -----------------------------------------------------------------------------
@@ -1018,8 +1005,8 @@ $table-body-font-size: 13px;
 $table-body-line-height: 16.5px;
 $table-cell-padding-top-bottom: ($table-row-height - $table-body-font-size) / 2;
 $table-cell-tight-padding-top-bottom: (
-        $table-row-height-tight - $table-body-font-size
-    ) / 2;
+    $table-row-height-tight - $table-body-font-size
+  ) / 2;
 $table-row-hover-color: $color-gray--light2;
 $table-row-stripe-color: $color-gray--light5;
 // -----------------------------------------------------------------------------
@@ -1062,12 +1049,12 @@ $tag-color: $base-color;
 $tag-color-alt: $white;
 $tag-icon-font-size: $font-size--xxs;
 $tag-icon-margin: 0 0 0 5px;
-$tag-colors: ('info', $color-information, $tag-color-alt, $info-box-shadow),
-    ('info-alt', $color-information-alt, $tag-color-alt, $info-alt-box-shadow),
-    ('success', $color-good, $tag-color-alt, $success-box-shadow),
-    ('warning', $color-warning, $tag-color-alt, $warning-box-shadow),
-    ('warning-alt', $color-warning-alt, $tag-color, $warning-alt-box-shadow),
-    ('danger', $color-error, $tag-color-alt, $danger-box-shadow);
+$tag-colors: ("info", $color-information, $tag-color-alt, $info-box-shadow),
+  ("info-alt", $color-information-alt, $tag-color-alt, $info-alt-box-shadow),
+  ("success", $color-good, $tag-color-alt, $success-box-shadow),
+  ("warning", $color-warning, $tag-color-alt, $warning-box-shadow),
+  ("warning-alt", $color-warning-alt, $tag-color, $warning-alt-box-shadow),
+  ("danger", $color-error, $tag-color-alt, $danger-box-shadow);
 // -----------------------------------------------------------------------------
 // Text Area
 // -----------------------------------------------------------------------------
@@ -1091,9 +1078,9 @@ $input-border-color--state-danger: $color-status--red;
 $input-padding: 3px 20px 2px 6px;
 $input-margin-bottom: ($spacing * 0.75);
 $input-transition: border-color $transition-duration--extra-fast
-        $transition-timing-function--standard,
-    box-shadow $transition-duration--extra-fast
-        $transition-timing-function--standard;
+    $transition-timing-function--standard,
+  box-shadow $transition-duration--extra-fast
+    $transition-timing-function--standard;
 // -----------------------------------------------------------------------------
 // Timeline
 // -----------------------------------------------------------------------------

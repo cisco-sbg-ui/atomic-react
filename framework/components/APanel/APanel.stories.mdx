@@ -1,0 +1,189 @@
+import { Meta, Preview, Story, Props } from '@storybook/addon-docs/blocks';
+
+import AIcon from '../AIcon';
+import APanel from "./APanel"
+import APanelHeader from "./APanelHeader"
+import APanelTitle from "./APanelTitle"
+import APanelBody from "./APanelBody"
+import APanelFooter from "./APanelFooter"
+
+<Meta title="Components/Panels" component={APanel} />
+
+# Panels
+
+## Install
+
+The component is available on [Cisco's Artifactory package registry](https://devhub.cisco.com/artifactory/webapp/#/home).
+
+```
+  npm i --save @cisco-ats/atomic-react
+```
+
+And in the target component add:
+
+```
+import {
+  APanel,
+  APanelHeader,
+  APanelFooter,
+  APanelBody,
+  APanelTitle
+} from "@cisco-ats/atomic-react/APanel";
+```
+
+## Usage
+
+<Preview>
+  <APanel>
+    <APanelHeader>
+      <APanelTitle>
+        Feature: Panels
+      </APanelTitle>
+      <AIcon>settings</AIcon>
+    </APanelHeader>
+    <APanelBody>
+      Panels create a sense of discreteness in the content.
+    </APanelBody>
+    <APanelFooter>
+      Use panels today!
+    </APanelFooter>
+  </APanel>
+</Preview>
+
+## Panel Props
+
+<Props of={APanel} />
+
+## Panel Title Props
+
+<Props of={APanelTitle} />
+
+## Panel Types
+
+<Preview>
+  <APanel>
+    <APanelHeader>
+      <APanelTitle>
+        Feature: Panels
+      </APanelTitle>
+      <AIcon>settings</AIcon>
+    </APanelHeader>
+    <APanelBody>
+      Panels create a sense of discreteness in the content.
+    </APanelBody>
+    <APanelFooter>
+      Use panels today!
+    </APanelFooter>
+  </APanel>
+  <APanel type="grey">
+    <APanelHeader>
+      <APanelTitle>
+        Feature: Panels
+      </APanelTitle>
+      <AIcon>settings</AIcon>
+    </APanelHeader>
+    <APanelBody>
+      Panels create a sense of discreteness in the content.
+    </APanelBody>
+    <APanelFooter>
+      Use panels today!
+    </APanelFooter>
+  </APanel>
+    <APanel type="white">
+    <APanelHeader>
+      <APanelTitle>
+        Feature: Panels
+      </APanelTitle>
+      <AIcon>settings</AIcon>
+    </APanelHeader>
+    <APanelBody>
+      Panels create a sense of discreteness in the content.
+    </APanelBody>
+    <APanelFooter>
+      Use panels today!
+    </APanelFooter>
+  </APanel>
+</Preview>
+
+
+## Dusk Theme
+
+<Preview className="theme--dusk" style={{backgroundColor: "#000"}}>
+  <APanel>
+    <APanelHeader>
+      <APanelTitle>
+        Feature: Panels
+      </APanelTitle>
+      <AIcon>settings</AIcon>
+    </APanelHeader>
+    <APanelBody>
+      Panels create a sense of discreteness in the content.
+    </APanelBody>
+    <APanelFooter>
+      Use panels today!
+    </APanelFooter>
+  </APanel>
+  <APanel type="grey">
+    <APanelHeader>
+      <APanelTitle>
+        Feature: Panels
+      </APanelTitle>
+      <AIcon>settings</AIcon>
+    </APanelHeader>
+    <APanelBody>
+      Panels create a sense of discreteness in the content.
+    </APanelBody>
+    <APanelFooter>
+      Use panels today!
+    </APanelFooter>
+  </APanel>
+  <APanel type="white">
+    <APanelHeader>
+      <APanelTitle>
+        Feature: Panels
+      </APanelTitle>
+      <AIcon>settings</AIcon>
+    </APanelHeader>
+    <APanelBody>
+      Panels create a sense of discreteness in the content.
+    </APanelBody>
+    <APanelFooter>
+      Use panels today!
+    </APanelFooter>
+  </APanel>
+</Preview>
+
+## Panel Title Sizes
+
+<Preview>
+  <APanel>
+    <APanelHeader>
+      <APanelTitle>
+        Feature: Panels
+      </APanelTitle>
+      <AIcon>settings</AIcon>
+    </APanelHeader>
+    <APanelBody>
+      Panels create a sense of discreteness in the content.
+    </APanelBody>
+    <APanelFooter>
+      Use panels today!
+    </APanelFooter>
+  </APanel>
+  <APanel>
+    <APanelHeader>
+      <APanelTitle small>
+        Feature: Panels
+      </APanelTitle>
+      <AIcon>settings</AIcon>
+    </APanelHeader>
+    <APanelBody>
+      Panels create a sense of discreteness in the content.
+    </APanelBody>
+    <APanelFooter>
+      Use panels today!
+    </APanelFooter>
+  </APanel>
+</Preview>
+
+

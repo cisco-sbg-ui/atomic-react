@@ -1,0 +1,20 @@
+$atomic-dusk: (
+  "base": (
+    "color": $color-gray--light4,
+    "stroke-color": rgba($color-gray--medium3, $alpha-5)
+  ),
+  "panel": (
+    "bg":
+      linear-gradient(
+        125.59deg,
+        rgba($color-blue7, $alpha-6) 0%,
+        rgba($color-blue9, $alpha-6) 100%
+      ),
+    "bg-gray":
+      linear-gradient(
+        125.59deg,
+        rgba($color-blue7, $alpha-6) 0%,
+        rgba($color-blue9, $alpha-6) 100%
+      )
+  )
+);

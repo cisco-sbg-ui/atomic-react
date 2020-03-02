@@ -1,7 +1,7 @@
 **Please check if the PR fulfills these requirements**
-  [ ] The commit message follows semantic commit message guidelines
-  [ ] The changes are represented in storybook
-  [ ] Has been verified locally
+- [ ] The commit message follows semantic commit message guidelines
+- [ ] The changes are represented in storybook
+- [ ] Has been verified locally
 
 
 **What kind of change does this PR introduce?** <!--(Bug fix, feature, docs update, ...)-->
