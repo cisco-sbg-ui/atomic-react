@@ -3,7 +3,7 @@ import resolve from "@rollup/plugin-node-resolve";
 import commonjs from "@rollup/plugin-commonjs";
 import postcss from "rollup-plugin-postcss";
 import filesize from "rollup-plugin-filesize";
-import autoprefixer from "autoprefixer";
+import json from "@rollup/plugin-json";
 import localResolve from "rollup-plugin-local-resolve";
 
 import pkg from "./package.json";
@@ -41,9 +41,12 @@ const config = OUTPUT_DATA.map(({file, format}) => ({
   },
   external: ["react", "react-dom"],
   plugins: [
+    json({
+      compact: true,
+      preferConst: true
+    }),
     postcss({
-      extract: true,
-      plugins: [autoprefixer]
+      extract: false
     }),
     babel({
       exclude: "node_modules/**"

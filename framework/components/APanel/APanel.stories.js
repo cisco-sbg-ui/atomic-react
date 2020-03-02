@@ -4,7 +4,7 @@ import {storiesOf} from "@storybook/react";
 
 import "./APanel.scss";
 
-import AIcon from "../AIcon/AIcon";
+import AIcon from "../AIcon";
 import Panel from "./Panel";
 import PanelBody from "./PanelBody";
 import PanelFooter from "./PanelFooter";
