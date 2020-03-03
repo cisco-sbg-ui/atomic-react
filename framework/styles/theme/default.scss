@@ -3,6 +3,11 @@ $atomic-default: (
     "color": $color-gray--dark1,
     "stroke-color": $color-gray--medium3
   ),
+  "divider": (
+    "color-default": $color-gray--medium4,
+    "color-light": $control-stroke-color,
+    "color-lighter": $color-gray--light4
+  ),
   "panel": (
     "bg": $base-bg,
     "bg-gray": $color-gray--light4

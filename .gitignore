@@ -1,6 +1,4 @@
 node_modules/
-build/
-dist/
 A*.js
 style-inject*
 index.js

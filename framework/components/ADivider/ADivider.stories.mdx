@@ -1,0 +1,55 @@
+import { Meta, Preview, Story, Props } from '@storybook/addon-docs/blocks';
+
+import LoremIpsum from '../../utils/lorem-ipsum'
+import ADivider from "./ADivider"
+
+<Meta title="Components/Dividers" component={ADivider} />
+
+# Dividers
+
+## Install
+
+The component is available on [Cisco's Artifactory package registry](https://devhub.cisco.com/artifactory/webapp/#/home).
+
+```
+  npm i --save @cisco-ats/atomic-react
+```
+
+And in the target component add:
+
+```
+import ADivider from "@cisco-ats/atomic-react/ADivider";
+```
+
+## Usage
+
+<Preview>
+  <>
+    {LoremIpsum}
+    <ADivider />
+    {LoremIpsum}
+    <ADivider light />
+    {LoremIpsum}
+    <ADivider lighter />
+    {LoremIpsum}
+  </>
+</Preview>
+
+## Divider Props
+
+<Props of={ADivider} />
+
+
+## Dusk Theme
+
+<Preview className="theme--dusk" style={{backgroundColor: "#000", color: '#fff'}}>
+  <>
+    {LoremIpsum}
+    <ADivider />
+    {LoremIpsum}
+    <ADivider light />
+    {LoremIpsum}
+    <ADivider lighter />
+    {LoremIpsum}
+  </>
+</Preview>

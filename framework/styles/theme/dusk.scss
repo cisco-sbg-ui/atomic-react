@@ -3,6 +3,11 @@ $atomic-dusk: (
     "color": $color-gray--light4,
     "stroke-color": rgba($color-gray--medium3, $alpha-5)
   ),
+  "divider": (
+    "color-default": rgba($color-gray--light2, $alpha-5),
+    "color-light": rgba($color-gray--light2, $alpha-3),
+    "color-lighter": rgba($color-gray--light2, $alpha-15)
+  ),
   "panel": (
     "bg":
       linear-gradient(
