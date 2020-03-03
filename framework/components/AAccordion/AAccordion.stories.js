@@ -2,7 +2,7 @@ import React from "react";
 
 import {storiesOf} from "@storybook/react";
 
-import "./AAccordion.scss";
+//import "./AAccordion.scss";
 
 import Accordion from "./Accordion";
 import AccordionCard from "./AccordionCard";

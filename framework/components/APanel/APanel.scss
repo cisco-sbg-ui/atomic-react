@@ -1,41 +1,73 @@
-@import "../../styles/utilities/";
+@import "../../styles";
 
-.panel {
-  color: $base-color;
-  border: $base-border-width solid $base-stroke-color;
-  background: $panel-bg;
-  border-radius: $base-border-radius;
+$panel-body-margin: 15px 0;
+$panel-border-radius: $base-border-radius;
+$panel-border-width: $base-border-width;
+$panel-icon-size: $font-size;
+$panel-margin: 15px;
+$panel-padding: 20px;
+$panel-title-font-size: rem(1.125);
+$panel-title-font-size-small: $base-font-size;
+$panel-white-bg: $white;
+$panel-white-color: $color-gray--dark1;
+
+@include theme(a-panel) using ($theme) {
+  background: map-deep-get($theme, "panel", "bg");
+  border-color: map-deep-get($theme, "base", "stroke-color");
+  color: map-deep-get($theme, "base", "color");
+  fill: map-deep-get($theme, "base", "color");
+
+  &--color-gray {
+    background: map-deep-get($theme, "panel", "bg-gray");
+  }
+
+  &--color-white {
+    background: $panel-white-bg;
+    color: $panel-white-color;
+    fill: $panel-white-color;
+  }
+}
+
+.a-panel {
+  border-width: $panel-border-width;
+  border-style: solid;
+  border-radius: $panel-border-radius;
   padding: $panel-padding;
   height: auto;
   display: block;
   position: relative;
   margin: $panel-margin;
+
   &--color-gray {
-    background: $panel-bg-gray;
     border: none;
   }
+
   &--color-white {
-    color: $panel-color-white;
-    background: $white;
     border: none;
   }
+
   &__header {
     display: flex;
   }
+
   &__title {
     font-size: $panel-title-font-size;
+    text-align: left;
     @include flex-fluid;
     &--size-small {
-      font-size: $base-font-size;
+      font-size: $panel-title-font-size-small;
     }
   }
-  &__icon {
-    font-size: $font-size;
-  }
+
   &__body {
     margin: $panel-body-margin;
   }
+
   &__footer {
     text-align: right;
+  }
+
+  & .a-icon {
+    width: $panel-icon-size;
   }
 }

@@ -20,12 +20,12 @@ $control-fill-color: $color-blue10; // Alternative bg (#17202b);
 $control-stroke-color: rgba($color-gray--light2, $alpha-2); // (#dfdfdf, 20%);
 $control-stroke-color--hover: $color-gray--medium4; // Border Hover State (#b6b9bb);
 $control-stroke-color--disabled: rgba(
-    $color-gray--light1,
-    $alpha-3
+  $color-gray--light1,
+  $alpha-3
 ); // Border Disabled (#c6c7ca, 30%);
 $control-fill-color--disabled: rgba(
-    $color-gray--light2,
-    $alpha-3
+  $color-gray--light2,
+  $alpha-3
 ); // Disabled bg (#dfdfdf, 30%);
 // -----------------------------------------------------------------------------
 // Code blocks
@@ -56,14 +56,14 @@ $alert-border-color: rgba($color-status--blue--wash1, $alpha-4);
 // Success
 $alert-success-bg: rgba($color-good, $alpha-4); // (#6cc04a, 40%);
 $alert-success-border-color: rgba(
-    $color-status--green--wash1,
-    $alpha-4
+  $color-status--green--wash1,
+  $alpha-4
 ); // (#93e872, 40%);
 // Warning
 $alert-warning-bg: rgba($color-warning, $alpha-4); // (#FF7300, 40%);
 $alert-warning-border-color: rgba(
-    $color-status--orange--wash1,
-    $alpha-4
+  $color-status--orange--wash1,
+  $alpha-4
 ); // (#ff9d4c, 40%);
 // Danger / Error
 $alert-danger-bg: rgba($color-status--red--burnt1, $alpha-4); // (#b5000f, 40%);
@@ -92,8 +92,8 @@ $btn-primary-bg--focus: $color-category--blue--burnt1; // #0083b3;
 $btn-primary-border--focus: $color-category--blue--burnt1;
 // #0083b3;
 $btn-primary-color--disabled: rgba(
-    $color-gray--light4,
-    $alpha-5
+  $color-gray--light4,
+  $alpha-5
 ); // (#f2f2f2, 50%);
 $btn-primary-bg--disabled: $color-blue4; // #6a7890;
 $btn-primary-border--disabled: $color-blue4; //#6a7890;
@@ -104,20 +104,20 @@ $btn-secondary-color--hover: $color-category--blue--wash1; // #3bcaff;
 $btn-secondary-border--hover: $color-category--blue--wash1;
 // #3bcaff;
 $btn-secondary-bg--hover: rgba(
-    $color-category--blue--burnt3,
-    $alpha-5
+  $color-category--blue--burnt3,
+  $alpha-5
 ); // (#004b66, 50%);
 $btn-secondary-color--active: $color-blue1; // #049fd9;
 $btn-secondary-bg--active: rgba(
-    $color-category--blue--burnt3,
-    $alpha-5
+  $color-category--blue--burnt3,
+  $alpha-5
 ); // (#004b66, 50%);
 $btn-secondary-border--active: $color-category--blue--burnt2;
 // #00678c;
 $btn-secondary-color--focus: $color-category--blue--wash1; // #3bcaff;
 $btn-secondary-bg--focus: rgba(
-    $color-category--blue--burnt3,
-    $alpha-5
+  $color-category--blue--burnt3,
+  $alpha-5
 ); // (#004b66, 50%);
 $btn-secondary-border--focus: $color-category--blue--burnt1; // #0083b3;
 $btn-secondary-color--disabled: $color-blue4; // #6a7890;
@@ -153,15 +153,15 @@ $checkbox-box-color--disabled: rgba($color-blue4, $alpha-3);
 // Contextual Menu
 // -----------------------------------------------------------------------------
 $context-menu-li-color-disabled: rgba(
-    $color-gray--light4,
-    $alpha-3
+  $color-gray--light4,
+  $alpha-3
 ); // (#f2f2f2, 30%);
 // -----------------------------------------------------------------------------
 // Date Picker / Calendar
 // -----------------------------------------------------------------------------
 $date-picker-header-border-color: rgba(
-    $color-gray--medium3,
-    $alpha-3
+  $color-gray--medium3,
+  $alpha-3
 ); // (#9e9ea2, 30%);
 $date-picker-range-bg: rgba($color-gray--light4, $alpha-2); // (#f2f2f2, 20%);
 // -----------------------------------------------------------------------------
@@ -204,19 +204,6 @@ $spinner-icon-bg: $color-gray--dark5; // #18191d;
 // -----------------------------------------------------------------------------
 $pagination-link-color: $color-gray--light4; // #f2f2f2;
 // -----------------------------------------------------------------------------
-// Panels
-// -----------------------------------------------------------------------------
-$panel-bg: linear-gradient(
-    125.59deg,
-    rgba($color-blue7, $alpha-6) 0%,
-    rgba($color-blue9, $alpha-6) 100%
-); // #34455C, #1B2638
-$panel-bg-gray: linear-gradient(
-    125.59deg,
-    rgba($color-blue7, $alpha-6) 0%,
-    rgba($color-blue9, $alpha-6) 100%
-); // #34455C, #1B2638
-// -----------------------------------------------------------------------------
 // Popover
 // -----------------------------------------------------------------------------
 $popover-header-bg: $color-blue11; // #253040;
@@ -227,8 +214,8 @@ $popover-footer-arrow-color: $color-blue11; // #253040;
 // Pivot
 // -----------------------------------------------------------------------------
 $pivot-li-color-disabled: rgba(
-    $color-gray--light4,
-    $alpha-3
+  $color-gray--light4,
+  $alpha-3
 ); // (#f2f2f2, 30%);
 // -----------------------------------------------------------------------------
 // Progress Bar
@@ -269,9 +256,9 @@ $select-border-color--focus: $color-category--blue--burnt1;
 // Sidebar
 // -----------------------------------------------------------------------------
 $sidebar-bg: linear-gradient(
-    125.59deg,
-    $color-blue8 0%,
-    $color-blue10 100%
+  125.59deg,
+  $color-blue8 0%,
+  $color-blue10 100%
 ); // #29384b, #17202b
 $sidebar-bg-gray: $sidebar-bg;
 $sidebar__list-menu-icon-color: $color-gray--dark2; // #58585b;
@@ -297,9 +284,9 @@ $step-line-color: rgba($color-gray--light1, $alpha-3);
 // Tables
 // -----------------------------------------------------------------------------
 $table-bg: linear-gradient(
-    125.59deg,
-    rgba($color-blue7, $alpha-6) 0%,
-    rgba($color-blue9, $alpha-6) 100%
+  125.59deg,
+  rgba($color-blue7, $alpha-6) 0%,
+  rgba($color-blue9, $alpha-6) 100%
 ); // #34455C, #1B2638
 $table-header-color: $color-gray--medium4; // #b6b9bb;
 $table-row-hover-color: $color-blue10; // #17202b;
@@ -309,8 +296,8 @@ $table-row-stripe-color: transparent;
 // -----------------------------------------------------------------------------
 $switch-bg: rgba($color-gray--dark3, $alpha-8); // (#626469, 80%);
 $switch__circle-border-color: rgba(
-    $color-gray--dark3,
-    $alpha-8
+  $color-gray--dark3,
+  $alpha-8
 ); // (#626469, 80%);
 $switch__circle--inner-box-shadow-hover: $color-category--blue--burnt1; // #0083b3;
 $switch__circle--inner-border-active: rgba($color-gray--dark3, $alpha-8);
@@ -330,8 +317,8 @@ $switch__circle--inner-box-shadow-checked-active-hover: $color-category--blue--b
 $switch-bg--disabled: rgba($color-gray--dark3, $alpha-8);
 // (#626469, 80%);
 $switch__circle-border-color--disabled: rgba(
-    $color-gray--dark3,
-    $alpha-8
+  $color-gray--dark3,
+  $alpha-8
 ); // (#626469, 80%);
 $switch-bg--disabled--checked: $color-blue1; // #049fd9;
 $switch__circle-border-color--disabled--checked: $color-blue1; // #049fd9;

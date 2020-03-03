@@ -2,8 +2,8 @@
   "name": "@cisco-ats/atomic-react",
   "version": "0.0.1",
   "description": "",
-  "main": "dist/index.js",
-  "module": "dist/index.es.js",
+  "main": "index.js",
+  "module": "index.js",
   "scripts": {
     "build": "rollup -c && build-storybook -c .storybook -o build",
     "start": "start-storybook"

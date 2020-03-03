@@ -1,0 +1,10 @@
+// prettier-ignore
+
+@mixin theme($component) {
+  .#{$component} {
+    @content($atomic-default);
+  }
+  .theme--dusk .#{$component} {
+    @content($atomic-dusk);
+  }
+}

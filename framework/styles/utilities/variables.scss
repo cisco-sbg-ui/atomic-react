@@ -1,0 +1,108 @@
+$font-family: CiscoSans, Arial, sans-serif !default;
+$font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas,
+  "Liberation Mono", "Courier New", monospace !default;
+// -----------------------------------------------------------------------------
+// Font-size: xxs, xs, sm, base, lg, xl
+// -----------------------------------------------------------------------------
+$font-size: 16px !default; // Base
+$font-size--xl: rem(1.5) !default; // 24px
+$font-size--lg: rem(1.25) !default; // 20px
+$font-size--sm: rem(0.875) !default; // 14px
+$font-size--xs: rem(0.75) !default; // 12px
+$font-size--xxs: rem(0.625) !default; // 10px
+// -----------------------------------------------------------------------------
+// Font-size: h1-h4
+// -----------------------------------------------------------------------------
+$h1-font-size: rem(1.5); // 24px
+$h2-font-size: rem(1.25) !default; // 20px
+$h3-font-size: rem(1.125) !default; // 18px
+$h4-font-size: rem(1) !default; // 16px
+$h5-font-size: rem(0.875) !default; // 14px
+// -----------------------------------------------------------------------------
+// Font-weight, line-height
+// -----------------------------------------------------------------------------
+$font-weight-light: 300 !default;
+$font-weight-normal: 400 !default;
+$font-weight-bold: 700 !default;
+$font-weight-xbold: 800 !default;
+$font-weight: $font-weight-normal !default;
+
+$font-weight--bold: bold !default;
+$line-height: 1.5 !default;
+$line-height--lg: rem(1.5) !default; // 24px
+// -----------------------------------------------------------------------------
+// Spacing, padding, border radius
+// -----------------------------------------------------------------------------
+$border-radius: rem(0.25) !default; // 4px
+$border-radius--lg: rem(0.375) !default; // 6px
+$border-radius--sm: rem(0.1875) !default; // 3px
+$border-radius--xs: rem(0.125) !default; // 2px
+$border-width: rem(0.0625) !default; // 1px
+$spacer: rem(1.25) !default;
+$spacing: rem(1.25) !default; // 20px
+$z-index: 0 !default;
+// -----------------------------------------------------------------------------
+// Heading
+// -----------------------------------------------------------------------------
+$headings-font-family: inherit !default;
+$headings-font-weight: 300 !default;
+$headings-line-height: 1.1 !default;
+$headings-margin: ($spacer / 2) !default;
+$headings-color: inherit !default;
+// -----------------------------------------------------------------------------
+// Display Heading
+// -----------------------------------------------------------------------------
+$display1-size: rem(3.75) !default; // 60px
+$display2-size: rem(2) !default; // 32px
+
+$display1-weight: 300 !default;
+$display2-weight: 300 !default;
+$display-line-height: $headings-line-height !default;
+// -----------------------------------------------------------------------------
+// Subheadings, Emphasis
+// -----------------------------------------------------------------------------
+$small-font-size: 80% !default;
+$mark-padding: rem(0.1875) !default;
+$mark-bg: $color-status--yellow--wash3 !default;
+// -----------------------------------------------------------------------------
+// Grid breakpoints
+// -----------------------------------------------------------------------------
+$page-width--min: 320px !default;
+$page-width--max: 1440px !default;
+$breakpoints: (
+  "xs": (
+    min-width: 479px
+  ),
+  "sm": (
+    min-width: 767px
+  ),
+  "md": (
+    min-width: 992px
+  ),
+  "lg": (
+    min-width: 1200px
+  ),
+  "xl": (
+    min-width: 1440px
+  )
+);
+$grid-columns: 12 !default;
+$grid-gutter-width: 30px !default;
+// -----------------------------------------------------------------------------
+// Alpha channel
+// -----------------------------------------------------------------------------
+$alpha-1: 0.1;
+$alpha-15: 0.15;
+$alpha-2: 0.2;
+$alpha-3: 0.3;
+$alpha-4: 0.4;
+$alpha-5: 0.5;
+$alpha-6: 0.6;
+$alpha-7: 0.7;
+$alpha-8: 0.8;
+$alpha-9: 0.9;
+
+$base-bg: $white;
+$base-border-radius: $border-radius--sm;
+$base-border-width: $border-width;
+$base-font-size: $font-size--sm;

@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
 import React from "react";
 
-import "./ADivider.scss";
+//import "./ADivider.scss";
 
 const Divider = ({className: propsClassName, light, lighter, style}) => {
   let className = "divider";

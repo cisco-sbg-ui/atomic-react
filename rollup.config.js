@@ -8,36 +8,37 @@ import localResolve from "rollup-plugin-local-resolve";
 
 import pkg from "./package.json";
 
-const INPUT_FILE_PATH = "framework/index.js";
-const OUTPUT_NAME = "index";
-
 const GLOBALS = {
   react: "React",
   "react-dom": "ReactDOM"
 };
 
-const OUTPUT_DATA = [
-  {
-    file: pkg.browser,
-    format: "umd"
+const config = {
+  input: {
+    /**
+     * Eventually, use something like:
+     * const { readdirSync } = require('fs')
+     *
+     * const directories = readdirSync(
+     *     require('path').resolve(__dirname, "framework"),
+     *     { withFileTypes: true }
+     *   )
+     *   .filter(dirent => dirent.isDirectory())
+     *   .map(dirent => dirent.name)
+     *
+     * ...directories.reduce(packages, x => {
+     *  packages[x] = "framework/components/" + x
+     * }, {})
+     */
+    index: "framework",
+    AIcon: "framework/components/AIcon",
+    APanel: "framework/components/APanel"
   },
-  {
-    file: pkg.main,
-    format: "cjs"
-  },
-  {
-    file: pkg.module,
-    format: "es"
-  }
-];
-
-const config = OUTPUT_DATA.map(({file, format}) => ({
-  input: INPUT_FILE_PATH,
   output: {
-    file,
-    format,
-    name: OUTPUT_NAME,
-    globals: GLOBALS
+    format: "es",
+    globals: GLOBALS,
+    dir: "./",
+    entryFileNames: "[name].js"
   },
   external: ["react", "react-dom"],
   plugins: [
@@ -58,6 +59,6 @@ const config = OUTPUT_DATA.map(({file, format}) => ({
     commonjs(),
     filesize()
   ]
-}));
+};
 
 export default config;
