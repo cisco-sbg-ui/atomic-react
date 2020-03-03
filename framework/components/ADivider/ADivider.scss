@@ -1,13 +1,23 @@
-@import "../../styles/utilities/";
+@import "../../styles";
 
-.divider {
-  position: relative;
-  border-top: $base-border-width solid $divider--color-default;
-  margin: $divider-margin;
+$divider-width: $base-border-width;
+$divider-margin: 20px 0;
+
+@include theme(a-divider) using ($theme) {
+  border-top-color: map-deep-get($theme, "divider", "color-default");
+
   &--color-light {
-    border-color: $divider--color-light;
+    border-top-color: map-deep-get($theme, "divider", "color-light");
   }
+
   &--color-lighter {
-    border-color: $divider--color-lighter;
+    border-top-color: map-deep-get($theme, "divider", "color-lighter");
   }
+}
+
+.a-divider {
+  position: relative;
+  border-top-width: $divider-width;
+  border-top-style: solid;
+  margin: $divider-margin;
 }

@@ -5,7 +5,7 @@
   "main": "index.js",
   "module": "index.js",
   "scripts": {
-    "build": "rollup -c && build-storybook -c .storybook -o build",
+    "build": "rollup -c && build-storybook -c .storybook -o docs",
     "start": "start-storybook"
   },
   "peerDependencies": {

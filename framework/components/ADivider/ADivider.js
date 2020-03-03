@@ -1,27 +1,27 @@
 import PropTypes from "prop-types";
 import React from "react";
 
-//import "./ADivider.scss";
+import "./ADivider.scss";
 
-const Divider = ({className: propsClassName, light, lighter, style}) => {
-  let className = "divider";
+const ADivider = ({className: propsClassName, light, lighter, ...rest}) => {
+  let className = "a-divider";
 
   if (lighter) {
-    className += " divider--color-ligher"; // this typo is in the atomic source CSS.
+    className += " a-divider--color-lighter";
   } else if (light) {
-    className += " divider--color-light";
+    className += " a-divider--color-light";
   }
 
   if (propsClassName) {
     className += ` ${propsClassName}`;
   }
 
-  return <div className={className} style={style} />;
+  return <div {...rest} className={className} />;
 };
 
-Divider.propTypes = {
+ADivider.propTypes = {
   light: PropTypes.bool,
   lighter: PropTypes.bool
 };
 
-export default Divider;
+export default ADivider;
