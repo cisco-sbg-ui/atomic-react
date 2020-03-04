@@ -20,7 +20,13 @@ const ADivider = ({className: propsClassName, light, lighter, ...rest}) => {
 };
 
 ADivider.propTypes = {
+  /**
+   * Toggles the light variant.
+   */
   light: PropTypes.bool,
+  /**
+   * Toggles the lighter variant.
+   */
   lighter: PropTypes.bool
 };
 

@@ -26,6 +26,9 @@ const APanel = forwardRef(
 );
 
 APanel.propTypes = {
+  /**
+   * Display a style variant.
+   */
   type: PropTypes.oneOf(["default", "grey", "white"])
 };
 

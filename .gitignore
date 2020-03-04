@@ -1,4 +1,5 @@
 node_modules/
-A*.js
-style-inject*
-index.js
+/A*.js
+/style-inject*
+/index.js
+/_rollupPluginBabelHelpers*

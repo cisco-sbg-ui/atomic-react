@@ -1,0 +1,110 @@
+import { Meta, Preview, Story, Props } from '@storybook/addon-docs/blocks';
+import {useState} from 'react'
+
+import LoremIpsum from '../../utils/lorem-ipsum'
+import YourComponent from '../../utils/storybook-function'
+import ACheckbox from "./ACheckbox"
+import ADivider from "../ADivider"
+
+<Meta title="Components/Checkboxes" component={ACheckbox} />
+
+# Checkboxes
+
+## Install
+
+The component is available on [Cisco's Artifactory package registry](https://devhub.cisco.com/artifactory/webapp/#/home).
+
+```
+  npm i --save @cisco-ats/atomic-react
+```
+
+And in the target component add:
+
+```
+import ACheckbox from "@cisco-ats/atomic-react/ACheckbox";
+```
+
+## Usage
+
+<Preview>
+  <YourComponent>
+{() => {
+  const [checked, setChecked] = useState(false);
+  const [indeterminate, setIndeterminate] = useState(false);
+  const [disabled, setDisabled] = useState(false);
+  const [wrap, setWrap] = useState(false);
+  return (
+    <div className="atomic-ui-root--animated">
+      <h3>Example</h3>
+      <ACheckbox checked={checked} disabled={disabled} indeterminate={indeterminate} wrap={wrap}>
+        {LoremIpsum}
+      </ACheckbox>
+      <ADivider />
+      <h3>Options</h3>
+      <div style={{display: 'flex',marginTop: 20, flexFlow: 'column'}}>
+        <ACheckbox checked={checked} label="Checked State" onClick={() => setChecked(!checked)} />
+        <ACheckbox checked={indeterminate} label="Indeterminate State" onClick={() => setIndeterminate(!indeterminate)} />
+        <ACheckbox checked={disabled} label="Disabled State" onClick={() => setDisabled(!disabled)} />
+        <ACheckbox checked={wrap} label="Wrap Label" onClick={() => setWrap(!wrap)} />
+      </div>
+    </div>
+  );
+}}
+  </YourComponent>
+</Preview>
+
+## Checkbox Props
+
+<Props of={ACheckbox} />
+
+
+## Dusk Theme
+
+<Preview className="theme--dusk" style={{backgroundColor: "#000", color: '#fff'}}>
+<div style={{display: 'flex', flexFlow: 'column'}}>
+  <ACheckbox>
+    Default
+  </ACheckbox>
+  <ACheckbox checked>
+    Checked
+  </ACheckbox>
+  <ACheckbox indeterminate>
+    Indeterminate
+  </ACheckbox>
+  <ACheckbox disabled>
+    Disabled
+  </ACheckbox>
+  <ACheckbox disabled checked>
+    Disabled and Checked
+  </ACheckbox>
+  <ACheckbox disabled indeterminate>
+    Disabled and Indeterminate
+  </ACheckbox>
+  <ACheckbox>
+    Very long truncated text. {LoremIpsum}
+  </ACheckbox>
+  <ACheckbox wrap>
+    Very long wrapping text. {LoremIpsum}
+  </ACheckbox>
+</div>
+</Preview>
+
+## Animations
+
+Animations are enabled when a parent element has the `atomic-ui-root--animated` CSS class.
+
+<Preview>
+  <YourComponent>
+{() => {
+  const [checked, setChecked] = useState(false);
+  return (
+    <div className="atomic-ui-root--animated">
+      <ACheckbox checked={checked} onClick={() => setChecked(!checked)}>
+        Default
+      </ACheckbox>
+    </div>
+  );
+}}
+  </YourComponent>
+</Preview>
+

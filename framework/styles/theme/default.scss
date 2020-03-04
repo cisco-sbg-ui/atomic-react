@@ -3,6 +3,11 @@ $atomic-default: (
     "color": $color-gray--dark1,
     "stroke-color": $color-gray--medium3
   ),
+  "checkbox": (
+    "box-color-active": $base-color--active,
+    "box-color-disabled": transparent,
+    "box-color-selected": $base-color--selected
+  ),
   "divider": (
     "color-default": $color-gray--medium4,
     "color-light": $control-stroke-color,
