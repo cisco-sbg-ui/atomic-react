@@ -206,3 +206,10 @@ $transition-item: color $transition-duration--extra-fast
     $transition-timing-function--standard,
   background-color $transition-duration--fast
     $transition-timing-function--standard;
+// -----------------------------------------------------------------------------
+// Checkmark
+// -----------------------------------------------------------------------------
+$checkmark-height: rem(0.75);
+$checkmark-width: rem(0.3125);
+$checkmark-border: 0 rem(0.125) rem(0.125) 0;
+$checkmark-rotation: 45deg;

@@ -3,6 +3,11 @@ $atomic-dusk: (
     "color": $color-gray--light4,
     "stroke-color": rgba($color-gray--medium3, $alpha-5)
   ),
+  "checkbox": (
+    "box-color-active": $color-blue1,
+    "box-color-disabled": rgba($color-blue4, $alpha-3),
+    "box-color-selected": $color-category--blue--burnt1
+  ),
   "divider": (
     "color-default": rgba($color-gray--light2, $alpha-5),
     "color-light": rgba($color-gray--light2, $alpha-3),

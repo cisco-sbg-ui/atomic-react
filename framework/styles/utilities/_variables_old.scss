@@ -378,40 +378,6 @@ $carousel-dot-color: $color-gray--light1;
 $carousel-dot-color-hover: $color-blue1;
 $carousel-dot-color-selected: $base-color--selected;
 // -----------------------------------------------------------------------------
-// Checkboxes
-// -----------------------------------------------------------------------------
-$checkbox-height: rem(0.9375); // 15px
-$checkbox-width: rem(0.9375);
-$checkbox-padding: $base-padding-xsmall 0;
-$checkbox-active-height: rem(0.4375);
-$checkbox-active-width: rem(0.4375);
-$checkbox-box-color--selected: $base-color--selected;
-$checkbox-box-color--active: $base-color--active;
-$checkbox-box-color--focus: $base-brand-color;
-$checkbox-box-color--disabled: transparent;
-$checkbox-checkmark-height: rem(0.75); // 12px
-$checkbox-checkmark-width: rem(0.3125); // 5px
-$checkbox-checkmark-border: 0 rem(0.125) rem(0.125) 0; // 0 2px 2px 0;
-$checkbox-checkmark-rotation: 45deg;
-$checkbox-checkmark-left-active: rem(0.1875); // 3px
-$checkbox-checkmark-top-active: rem(0.1875);
-$checkbox-checkmark-left-checked: rem(0.25); // 4px
-$checkbox-checkmark-top-checked: rem(0.0625); // 1px
-$checkbox-checkmark-width-indeterminate: rem(0.5625); // 9px
-$checkbox-checkmark-height-indeterminate: 0;
-$checkbox-checkmark-left-indeterminate: rem(0.125); // 2px
-$checkbox-checkmark-top-indeterminate: rem(0.3125); // 5px
-$checkbox-checkmark-border-width-indeterminate: 0 0 rem(0.1875) 0; // 0 0 3px 0
-$checkbox-icon-font-size: $font-size--xxs; // 10px
-$checkbox-icon-padding-left: $base-padding-xsmall;
-$checkbox-label-padding-left: $base-padding-small;
-$checkbox-transition: border-color $transition-duration--extra-fast
-    $transition-timing-function--standard,
-  background-color $transition-duration--extra-fast
-    $transition-timing-function--standard,
-  box-shadow $transition-duration--extra-fast
-    $transition-timing-function--standard;
-// -----------------------------------------------------------------------------
 // Combobox
 // -----------------------------------------------------------------------------
 $combobox-height: 28px;

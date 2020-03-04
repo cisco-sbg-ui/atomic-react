@@ -1,8 +1,54 @@
 // -----------------------------------------------------------------------------
+// Text Ellipsis
+// -----------------------------------------------------------------------------
+@mixin text-truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+// Checkmark
+@mixin checkmark {
+  display: block;
+  width: $checkmark-width;
+  height: $checkmark-height;
+  border-width: $checkmark-border;
+  transform: rotate($checkmark-rotation);
+}
+// Hide the default input field. Used by Checkboxes, Radios Buttons.
+@mixin hidden-input {
+  display: block;
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  border: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+}
+// -----------------------------------------------------------------------------
 // Flex
 // -----------------------------------------------------------------------------
 @mixin flex-fluid {
   flex: 1;
   flex-shrink: 1;
   flex-wrap: wrap;
+}
+// -----------------------------------------------------------------------------
+// Motion
+// -----------------------------------------------------------------------------
+@mixin transition($transition...) {
+  @if $enable-transitions {
+    @if length($transition) == 0 {
+      transition: $transition-base;
+    } @else {
+      transition: $transition;
+    }
+  }
+
+  @if $enable-prefers-reduced-motion-media-query {
+    @media (prefers-reduced-motion: disable) {
+      transition: none;
+    }
+  }
 }

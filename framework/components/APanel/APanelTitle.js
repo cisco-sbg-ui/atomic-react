@@ -24,6 +24,9 @@ const APanelTitle = forwardRef(
 );
 
 APanelTitle.propTypes = {
+  /**
+   * Toggles reduced text size.
+   */
   small: PropTypes.bool
 };
 
