@@ -23,32 +23,30 @@ const ACheckbox = forwardRef(
     ref
   ) => {
     return (
-      <span ref={ref} className={className}>
-        <label className="a-checkbox" id={id}>
-          <input
-            type="checkbox"
-            className="a-checkbox__input"
-            name={name}
-            value={value || checked}
-            aria-checked={checked}
-            checked={checked}
-            disabled={disabled}
-            onChange={() => {}}
-            onClick={onClick}
-            role="checkbox"
-            ref={el => el && (el.indeterminate = indeterminate)}
-          />
-          <div
-            aria-hidden="true"
-            className={`a-checkbox__box ${checkboxClassName}`}
-          />
-          <div
-            className={`a-checkbox__label ${wrap && "a-checkbox__label--wrap"}`}
-            title={tooltip}>
-            {label || children}
-          </div>
-        </label>
-      </span>
+      <label ref={ref} className={`a-checkbox ${className}`} id={id}>
+        <input
+          type="checkbox"
+          className="a-checkbox__input"
+          name={name}
+          value={value || checked}
+          aria-checked={checked}
+          checked={checked}
+          disabled={disabled}
+          onChange={() => {}}
+          onClick={onClick}
+          role="checkbox"
+          ref={el => el && (el.indeterminate = indeterminate)}
+        />
+        <span
+          aria-hidden="true"
+          className={`a-checkbox__box ${checkboxClassName}`}
+        />
+        <span
+          className={`a-checkbox__label ${wrap && "a-checkbox__label--wrap"}`}
+          title={tooltip}>
+          {label || children}
+        </span>
+      </label>
     );
   }
 );
@@ -72,7 +70,7 @@ ACheckbox.propTypes = {
    */
   checked: PropTypes.bool,
   /**
-   * A class name to append to the wrapper.
+   * A class name to append to the label.
    */
   className: PropTypes.string,
   /**
@@ -80,7 +78,7 @@ ACheckbox.propTypes = {
    */
   disabled: PropTypes.bool,
   /**
-   * A unique identifier for the wrapper.
+   * A unique identifier for the label.
    */
   id: PropTypes.string,
   /**
