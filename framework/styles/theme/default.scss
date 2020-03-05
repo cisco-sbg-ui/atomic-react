@@ -3,6 +3,43 @@ $atomic-default: (
     "color": $color-gray--dark1,
     "stroke-color": $color-gray--medium3
   ),
+  "button": (
+    "primary": (
+      "bg": $base-brand-color,
+      "bg--hover": $color-category--blue--burnt1,
+      "bg--focus": $color-category--blue--burnt1,
+      "bg--disabled": $base-brand-color,
+      "border": $base-brand-color,
+      "border--hover": $color-category--blue--burnt1,
+      "border--focus": $color-category--blue--burnt1,
+      "border--disabled": $base-brand-color,
+      "color--disabled": $base-inverse-color
+    ),
+    "secondary": (
+      "bg--hover": $color-category--blue--wash3,
+      "bg--active": $color-category--blue--wash3,
+      "bg--focus": $base-bg,
+      "border": $base-brand-color,
+      "border--hover": $color-category--blue--burnt1,
+      "border--active": $base-color--active,
+      "border--focus": $color-category--blue--burnt1,
+      "border--disabled": $base-brand-color,
+      "color--hover": $color-category--blue--burnt1,
+      "color--active": $base-color--active,
+      "color--focus": $color-category--blue--burnt1,
+      "color--disabled": $base-brand-color
+    ),
+    "tertiary": (
+      "alt-color": $base-color,
+      "bg--hover": $color-category--blue--wash3,
+      "bg--active": $color-category--blue--wash3,
+      "color--hover": $color-category--blue--burnt1,
+      "color--active": $base-color--active,
+      "color--focus": $color-category--blue--burnt1,
+      "color--disabled": $base-brand-color,
+      "opacity--disabled": $alpha-5
+    )
+  ),
   "checkbox": (
     "box-color-active": $base-color--active,
     "box-color-disabled": transparent,

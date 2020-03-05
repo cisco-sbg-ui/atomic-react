@@ -6,8 +6,6 @@ import filesize from "rollup-plugin-filesize";
 import json from "@rollup/plugin-json";
 import localResolve from "rollup-plugin-local-resolve";
 
-import pkg from "./package.json";
-
 const GLOBALS = {
   react: "React",
   "react-dom": "ReactDOM"
@@ -31,6 +29,7 @@ const config = {
      * }, {})
      */
     index: "framework",
+    AButton: "framework/components/AButton",
     ACheckbox: "framework/components/ACheckbox",
     ADivider: "framework/components/ADivider",
     AIcon: "framework/components/AIcon",

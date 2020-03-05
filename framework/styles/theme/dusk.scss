@@ -3,6 +3,43 @@ $atomic-dusk: (
     "color": $color-gray--light4,
     "stroke-color": rgba($color-gray--medium3, $alpha-5)
   ),
+  "button": (
+    "primary": (
+      "bg": $color-category--blue--burnt1,
+      "bg--hover": $color-blue1,
+      "bg--focus": $color-category--blue--burnt1,
+      "bg--disabled": $color-blue4,
+      "border": $color-category--blue--burnt1,
+      "border--hover": $color-blue1,
+      "border--focus": $color-category--blue--burnt1,
+      "border--disabled": $color-blue4,
+      "color--disabled": rgba($color-gray--light4, $alpha-5)
+    ),
+    "secondary": (
+      "bg--hover": rgba($color-category--blue--burnt3, $alpha-5),
+      "bg--active": rgba($color-category--blue--burnt3, $alpha-5),
+      "bg--focus": rgba($color-category--blue--burnt3, $alpha-5),
+      "border": $color-category--blue--burnt1,
+      "border--hover": $color-category--blue--wash1,
+      "border--active": $color-category--blue--burnt2,
+      "border--focus": $color-category--blue--burnt1,
+      "border--disabled": lighten(rgba($color-blue4, $alpha-5), 30%),
+      "color--hover": $color-category--blue--wash1,
+      "color--active": $color-blue1,
+      "color--focus": $color-category--blue--wash1,
+      "color--disabled": lighten($color-blue4, 30%)
+    ),
+    "tertiary": (
+      "alt-color": $base-inverse-color,
+      "bg--hover": rgba($color-category--blue--burnt3, $alpha-5),
+      "bg--active": rgba($color-category--blue--burnt3, $alpha-5),
+      "color--hover": $color-category--blue--wash1,
+      "color--active": $color-blue1,
+      "color--focus": $color-category--blue--wash1,
+      "color--disabled": lighten($color-blue4, 30%),
+      "opacity--disabled": $alpha-5
+    )
+  ),
   "checkbox": (
     "box-color-active": $color-blue1,
     "box-color-disabled": rgba($color-blue4, $alpha-3),

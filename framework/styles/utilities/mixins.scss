@@ -52,3 +52,57 @@
     }
   }
 }
+
+// -----------------------------------------------------------------------------
+// Button styles
+// -----------------------------------------------------------------------------
+@mixin btn-color(
+  $color,
+  $background,
+  $border,
+  $color-hover,
+  $background-hover,
+  $border-hover,
+  $color-focus,
+  $background-focus,
+  $border-focus,
+  $color-active,
+  $background-active,
+  $border-active,
+  $color-disabled,
+  $background-disabled,
+  $border-disabled
+) {
+  color: $color;
+  fill: $color;
+  background-color: $background;
+  border-color: $border;
+  &:hover {
+    color: $color-hover;
+    fill: $color-hover;
+    background-color: $background-hover;
+    border-color: $border-hover;
+  }
+  &:focus {
+    color: $color-focus;
+    fill: $color-focus;
+    background-color: $background-focus;
+    border-color: $border-focus;
+    box-shadow: $base-box-shadow;
+  }
+  &:active {
+    color: $color-active;
+    fill: $color-active;
+    background-color: $background-active;
+    border-color: $border-active;
+  }
+  &.disabled,
+  &:disabled {
+    box-shadow: none;
+    color: $color-disabled;
+    fill: $color-disabled;
+    background-color: $background-disabled;
+    border-color: $border-disabled;
+    opacity: 0.5;
+  }
+}

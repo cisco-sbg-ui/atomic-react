@@ -1,0 +1,172 @@
+@import "../../styles";
+
+$btn-font-weight: $font-weight;
+$btn-line-height: $line-height;
+$btn-padding: rem(0.1875) $base-padding;
+$btn-margin: 0;
+$btn-min-width: rem(4.6875); // 75px
+$btn-tertiary-alt-color--active: $base-color--active;
+$btn-tertiary-alt-icon-margin: 0 $base-padding-xsmall 0 0;
+$btn-tertiary-icon-padding: rem(0.1875) $base-padding-small;
+$btn-transition: color $transition-duration--extra-fast
+    $transition-timing-function--standard,
+  background-color $transition-duration--extra-fast
+    $transition-timing-function--standard,
+  border-color $transition-duration--extra-fast
+    $transition-timing-function--standard,
+  box-shadow $transition-duration--extra-fast
+    $transition-timing-function--standard !default;
+
+@include theme(a-button) using ($theme) {
+  &--primary {
+    @include btn-color(
+      $base-inverse-color,
+      map-deep-get($theme, "button", "primary", "bg"),
+      map-deep-get($theme, "button", "primary", "border"),
+      $base-inverse-color,
+      map-deep-get($theme, "button", "primary", "bg--hover"),
+      map-deep-get($theme, "button", "primary", "border--hover"),
+      $base-inverse-color,
+      map-deep-get($theme, "button", "primary", "bg--focus"),
+      map-deep-get($theme, "button", "primary", "border--focus"),
+      $base-inverse-color,
+      $base-color--active,
+      $base-color--active,
+      map-deep-get($theme, "button", "primary", "color--disabled"),
+      map-deep-get($theme, "button", "primary", "bg--disabled"),
+      map-deep-get($theme, "button", "primary", "border--disabled")
+    );
+  }
+
+  &--secondary {
+    @include btn-color(
+      $base-brand-color,
+      transparent,
+      map-deep-get($theme, "button", "secondary", "border"),
+      map-deep-get($theme, "button", "secondary", "color--hover"),
+      map-deep-get($theme, "button", "secondary", "bg--hover"),
+      map-deep-get($theme, "button", "secondary", "border--hover"),
+      map-deep-get($theme, "button", "secondary", "color--focus"),
+      map-deep-get($theme, "button", "secondary", "bg--focus"),
+      map-deep-get($theme, "button", "secondary", "border--focus"),
+      map-deep-get($theme, "button", "secondary", "color--active"),
+      map-deep-get($theme, "button", "secondary", "bg--active"),
+      map-deep-get($theme, "button", "secondary", "border--active"),
+      map-deep-get($theme, "button", "secondary", "color--disabled"),
+      transparent,
+      map-deep-get($theme, "button", "secondary", "border--disabled")
+    );
+  }
+
+  &--tertiary,
+  &--tertiary-alt,
+  &--tertiary-icon {
+    &:hover {
+      color: map-deep-get($theme, "button", "tertiary", "color--hover");
+      fill: map-deep-get($theme, "button", "tertiary", "color--hover");
+      background-color: map-deep-get($theme, "button", "tertiary", "bg--hover");
+    }
+
+    &:active {
+      background-color: map-deep-get(
+        $theme,
+        "button",
+        "tertiary",
+        "bg--active"
+      );
+    }
+
+    &.disabled,
+    &:disabled {
+      opacity: map-deep-get($theme, "button", "tertiary", "opacity--disabled");
+      background-color: transparent;
+    }
+  }
+
+  &--tertiary {
+    &:focus {
+      color: map-deep-get($theme, "button", "tertiary", "color--focus");
+    }
+
+    &:active {
+      color: map-deep-get($theme, "button", "tertiary", "color--active");
+    }
+
+    &.disabled,
+    &:disabled {
+      color: map-deep-get($theme, "button", "tertiary", "color--disabled");
+      fill: map-deep-get($theme, "button", "tertiary", "color--disabled");
+    }
+  }
+
+  &--tertiary-alt,
+  &--tertiary-icon {
+    color: map-deep-get($theme, "button", "tertiary", "alt-color");
+    fill: map-deep-get($theme, "button", "tertiary", "alt-color");
+
+    &.disabled,
+    &:disabled {
+      color: map-deep-get($theme, "button", "tertiary", "alt-color");
+      fill: map-deep-get($theme, "button", "tertiary", "alt-color");
+    }
+  }
+}
+
+.a-button {
+  display: inline-block;
+  text-align: center;
+  text-decoration: none;
+  vertical-align: middle;
+  user-select: none;
+  border: $base-border-width solid;
+  border-radius: $base-border-radius;
+  cursor: pointer;
+  @include text-truncate;
+  font-weight: $btn-font-weight;
+  line-height: $btn-line-height;
+  padding: $btn-padding;
+  margin: $btn-margin;
+  min-width: $btn-min-width;
+  font-size: $font-size--sm;
+
+  &--tertiary,
+  &--tertiary-alt,
+  &--tertiary-icon {
+    line-height: normal;
+    background-color: transparent;
+    appearance: none;
+    border-width: 0;
+    cursor: pointer;
+    -webkit-font-smoothing: inherit;
+    &:focus {
+      box-shadow: $base-box-shadow;
+    }
+    &.disabled,
+    &:disabled {
+      box-shadow: none;
+    }
+  }
+  &--tertiary {
+    color: $base-brand-color;
+    fill: $base-brand-color;
+  }
+  &--tertiary-alt,
+  &--tertiary-icon {
+    .a-icon {
+      margin: $btn-tertiary-alt-icon-margin;
+      width: 16px;
+      vertical-align: text-bottom;
+    }
+    &:active {
+      color: $btn-tertiary-alt-color--active;
+      fill: $btn-tertiary-alt-color--active;
+    }
+  }
+  &--tertiary-icon {
+    padding: $btn-tertiary-icon-padding;
+  }
+}
+
+.atomic-ui-root--animated .a-button {
+  @include transition($btn-transition);
+}
