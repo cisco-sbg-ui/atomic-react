@@ -1,49 +1,58 @@
 $atomic-default: (
   "base": (
+    "brand-color": $color-blue1,
     "color": $color-gray--dark1,
-    "stroke-color": $color-gray--medium3
+    "color--active": $color-category--blue--burnt2,
+    "color--hover": $color-blue1,
+    "color--selected": $color-category--blue--burnt1,
+    "inverse-color": $white,
+    "stroke-color": $color-gray--medium3,
+    "box-shadow": 0 0 2px 2px rgba(4, 159, 217, 0.4)
   ),
   "button": (
     "primary": (
-      "bg": $base-brand-color,
+      "bg": $color-blue1,
       "bg--hover": $color-category--blue--burnt1,
       "bg--focus": $color-category--blue--burnt1,
-      "bg--disabled": $base-brand-color,
-      "border": $base-brand-color,
+      "bg--disabled": $color-blue1,
+      "border": $color-blue1,
       "border--hover": $color-category--blue--burnt1,
       "border--focus": $color-category--blue--burnt1,
-      "border--disabled": $base-brand-color,
-      "color--disabled": $base-inverse-color
+      "border--disabled": $color-blue1,
+      "color--disabled": $white
     ),
     "secondary": (
       "bg--hover": $color-category--blue--wash3,
       "bg--active": $color-category--blue--wash3,
       "bg--focus": $base-bg,
-      "border": $base-brand-color,
+      "border": $color-blue1,
       "border--hover": $color-category--blue--burnt1,
-      "border--active": $base-color--active,
+      "border--active": $color-category--blue--burnt2,
       "border--focus": $color-category--blue--burnt1,
-      "border--disabled": $base-brand-color,
+      "border--disabled": $color-blue1,
       "color--hover": $color-category--blue--burnt1,
-      "color--active": $base-color--active,
+      "color--active": $color-category--blue--burnt2,
       "color--focus": $color-category--blue--burnt1,
-      "color--disabled": $base-brand-color
+      "color--disabled": $color-blue1
     ),
     "tertiary": (
-      "alt-color": $base-color,
       "bg--hover": $color-category--blue--wash3,
       "bg--active": $color-category--blue--wash3,
       "color--hover": $color-category--blue--burnt1,
-      "color--active": $base-color--active,
+      "color--active": $color-category--blue--burnt2,
       "color--focus": $color-category--blue--burnt1,
-      "color--disabled": $base-brand-color,
+      "color--disabled": $color-blue1,
       "opacity--disabled": $alpha-5
     )
   ),
   "checkbox": (
-    "box-color-active": $base-color--active,
+    "box-color-active": $color-category--blue--burnt2,
     "box-color-disabled": transparent,
-    "box-color-selected": $base-color--selected
+    "box-color-selected": $color-category--blue--burnt1
+  ),
+  "control": (
+    "stroke-color--hover": $color-gray--dark3,
+    "stroke-color--disabled": $color-gray--light1
   ),
   "divider": (
     "color-default": $color-gray--medium4,
@@ -53,5 +62,13 @@ $atomic-default: (
   "panel": (
     "bg": $base-bg,
     "bg-gray": $color-gray--light4
+  ),
+  "text-input": (
+    "bg": $white,
+    "color--disabled": $color-gray--medium3,
+    "bg--disabled": $color-gray--light4,
+    "border-color--disabled": $color-gray--light4,
+    "border-color--readonly": $color-gray--light1,
+    "bg--readonly": $color-gray--light5
   )
 );

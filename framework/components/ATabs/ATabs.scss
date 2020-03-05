@@ -1,93 +1,94 @@
 .tab-group {
-    margin: $tabs-margin;
-    padding: $tabs-padding;
-    list-style: none;
+  margin: $tabs-margin;
+  padding: $tabs-padding;
+  list-style: none;
+  background-color: transparent;
+  &__tab {
+    display: inline-block;
+    margin: $tab-margin;
+    padding-top: $tab-padding-top;
+    padding-right: $tab-padding-right;
+    padding-bottom: $tab-padding-bottom;
+    padding-left: $tab-padding-left;
+    min-width: $tab-min-width;
+    border: none;
+    text-align: center;
+    vertical-align: middle;
+    user-select: none;
+    color: $base-color;
+    font-size: $tab-font-size;
     background-color: transparent;
-    &__tab {
-        display: inline-block;
-        margin: $tab-margin;
-        padding-top: $tab-padding-top;
-        padding-right: $tab-padding-right;
-        padding-bottom: $tab-padding-bottom;
-        padding-left: $tab-padding-left;
-        min-width: $tab-min-width;
-        border: none;
-        text-align: center;
-        vertical-align: middle;
-        user-select: none;
-        color: $base-color;
-        font-size: $tab-font-size;
-        background-color: transparent;
-        cursor: pointer;
-        &--selected {
-            @include tab-bar($tab-bottom-bar-height, $base-color--selected);
-        }
-        &:hover {
-            @include tab-bar($tab-bottom-bar-height, $base-color--hover);
-        }
-        &:focus {
-            outline: $base-outline;
-            @include tab-bar($tab-bottom-bar-height, $base-color--hover);
-        }
-        &:active {
-            outline: none;
-        }
+    cursor: pointer;
+    &--selected {
+      @include tab-bar($tab-bottom-bar-height, $base-color--selected);
     }
-    &__link {
-        text-decoration: none;
-        color: $base-color;
-        &:active,
-        &:focus,
-        &:hover {
-            text-decoration: none;
-            color: $base-color;
-        }
+    &:hover {
+      @include tab-bar($tab-bottom-bar-height, $base-color--hover);
     }
-    &--size-tall {
-        .tab-group__tab {
-            padding: $tab-tall-padding;
-            margin: $tab-tall-margin;
-        }
+    &:focus {
+      outline: $base-outline;
+      outline-color: $base-brand-color;
+      @include tab-bar($tab-bottom-bar-height, $base-color--hover);
     }
-    &--size-oversized {
-        display: flex;
-        .tab-group__tab {
-            text-align: left;
-            height: $tab-oversized-height;
-            margin: $tab-oversized-margin;
-            padding: $tab-oversized-padding;
-            border-top: $base-border-width solid $control-stroke-color;
-            border-bottom: $base-border-width solid $control-stroke-color;
-            border-left: $base-border-width solid $control-stroke-color;
-            background-color: $tab-oversized-background-color;
-            &:last-of-type {
-                border-right: $base-border-width solid $control-stroke-color;
-            }
-            &--selected {
-                @include tab-bar($tab-top-bar-height, $base-color--selected);
-                border-top: $base-border-width solid transparent;
-                border-bottom: $base-border-width solid transparent;
-                background-color: $tab-oversized--selected-background-color;
-            }
-            &:focus,
-            &:hover {
-                @include tab-bar($tab-top-bar-height, $base-color--hover);
-                border-top: $base-border-width solid transparent;
-                background-color: $tab-oversized--hover-background-color;
-            }
-        }
+    &:active {
+      outline: none;
     }
-    &__tab-heading {
-        color: $base-color;
-        text-decoration: none;
-        margin: $tab-heading-margin;
-        font-size: $tab-heading-font-size;
-        display: block;
-        &:active,
-        &:focus,
-        &:hover {
-            text-decoration: none;
-            color: $base-color;
-        }
+  }
+  &__link {
+    text-decoration: none;
+    color: $base-color;
+    &:active,
+    &:focus,
+    &:hover {
+      text-decoration: none;
+      color: $base-color;
     }
+  }
+  &--size-tall {
+    .tab-group__tab {
+      padding: $tab-tall-padding;
+      margin: $tab-tall-margin;
+    }
+  }
+  &--size-oversized {
+    display: flex;
+    .tab-group__tab {
+      text-align: left;
+      height: $tab-oversized-height;
+      margin: $tab-oversized-margin;
+      padding: $tab-oversized-padding;
+      border-top: $base-border-width solid $control-stroke-color;
+      border-bottom: $base-border-width solid $control-stroke-color;
+      border-left: $base-border-width solid $control-stroke-color;
+      background-color: $tab-oversized-background-color;
+      &:last-of-type {
+        border-right: $base-border-width solid $control-stroke-color;
+      }
+      &--selected {
+        @include tab-bar($tab-top-bar-height, $base-color--selected);
+        border-top: $base-border-width solid transparent;
+        border-bottom: $base-border-width solid transparent;
+        background-color: $tab-oversized--selected-background-color;
+      }
+      &:focus,
+      &:hover {
+        @include tab-bar($tab-top-bar-height, $base-color--hover);
+        border-top: $base-border-width solid transparent;
+        background-color: $tab-oversized--hover-background-color;
+      }
+    }
+  }
+  &__tab-heading {
+    color: $base-color;
+    text-decoration: none;
+    margin: $tab-heading-margin;
+    font-size: $tab-heading-font-size;
+    display: block;
+    &:active,
+    &:focus,
+    &:hover {
+      text-decoration: none;
+      color: $base-color;
+    }
+  }
 }

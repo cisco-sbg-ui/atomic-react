@@ -1,0 +1,90 @@
+@import "../../styles";
+
+$input-height: 28px;
+$input-width: 250px;
+$input-box-shadow-width: -3px;
+$input-box-shadow--focus: -2px;
+$input-border-color--active: $color-category--blue--burnt1;
+$input-border-color--state-danger: $color-status--red;
+$input-padding: 3px 20px 2px 6px;
+$input-margin-bottom: ($spacing * 0.75);
+$input-transition: border-color $transition-duration--extra-fast
+    $transition-timing-function--standard,
+  box-shadow $transition-duration--extra-fast
+    $transition-timing-function--standard;
+
+@include theme(a-text-input) using ($theme) {
+  background: map-deep-get($theme, "text-input", "bg");
+  border-color: map-deep-get($theme, "base", "stroke-color");
+  color: map-deep-get($theme, "base", "color");
+
+  &:hover {
+    border-color: map-deep-get($theme, "control", "stroke-color--hover");
+  }
+
+  &:focus {
+    border-color: map-deep-get($theme, "base", "color--hover");
+    box-shadow: map-deep-get($theme, "base", "box-shadow");
+  }
+
+  &.disabled,
+  &[disabled] {
+    color: map-deep-get($theme, "text-input", "color--disabled");
+    border-color: map-deep-get($theme, "text-input", "border-color--disabled");
+    background: map-deep-get($theme, "text-input", "bg--disabled");
+  }
+
+  &[readonly],
+  &[readonly]:focus {
+    border-color: map-deep-get($theme, "text-input", "border-color--readonly");
+    background: map-deep-get($theme, "text-input", "bg--readonly");
+  }
+}
+
+.a-text-input {
+  box-sizing: border-box;
+  height: $input-height;
+  width: $input-width;
+  position: relative;
+  padding: $input-padding;
+  border: $base-border-width solid;
+  border-radius: $base-border-radius;
+  appearance: none;
+  &:focus {
+    outline: none;
+  }
+
+  &:active {
+    border-color: $input-border-color--active;
+  }
+
+  &.disabled,
+  &[disabled] {
+    @include disabled;
+  }
+
+  &[readonly],
+  &[readonly]:focus {
+    box-shadow: none;
+  }
+
+  &--state-warning {
+    @include input-state(
+      $color-warning,
+      $warning-box-shadow,
+      $color-warning--state-hover
+    );
+  }
+
+  &--state-danger {
+    @include input-state(
+      $color-error,
+      $danger-box-shadow,
+      $color-error--state-hover
+    );
+  }
+}
+
+.atomic-ui-root--animated .a-text-input {
+  @include transition($input-transition);
+}

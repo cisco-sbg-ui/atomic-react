@@ -1,4 +1,4 @@
-node_modules/
+/node_modules/
 /A*.js
 /style-inject*
 /index.js

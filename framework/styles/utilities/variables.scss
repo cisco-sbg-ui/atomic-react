@@ -106,9 +106,7 @@ $color-error--state-hover: $color-status--red--burnt2;
 // Alert box shadow
 // -----------------------------------------------------------------------------
 $default-box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.2);
-$base-box-shadow: 0 0 2px 2px rgba(4, 159, 217, 0.4);
 $info-box-shadow: 0 0 2px 2px rgba(100, 187, 227, 0.4);
-$info-alt-box-shadow: $base-box-shadow;
 $success-box-shadow: 0 0 2px 2px rgba(108, 192, 74, 0.4);
 $warning-box-shadow: 0 0 2px 2px rgba(255, 115, 0, 0.4);
 $warning-alt-box-shadow: 0 0 2px 2px rgba(255, 204, 0, 0.4);
@@ -143,24 +141,15 @@ $alpha-9: 0.9;
 // -----------------------------------------------------------------------------
 // Base Colors
 // -----------------------------------------------------------------------------
-$base-color: $color-gray--dark1; // Text (#39393b);
-$base-inverse-color: $white; // Inverse Text (#fff);
-$base-brand-color: $color-blue1; // Brand, Logo (#049fd9);
 $base-bg: $white; // Component bg (#fff);
 $base-pg-bg: $color-gray--light4; // Page bg(#f2f2f2);
-$base-stroke-color: $color-gray--medium3; // Borders, strokes (#9e9ea2);
 $base-icon-color: $color-gray--dark2; // Icons (#58585b);
-$base-color--hover: $base-brand-color; // Status Hover (#049fd9);
-$base-color--active: $color-category--blue--burnt2; // Status Active/Pressed (#00678c);
-$base-color--selected: $color-category--blue--burnt1; // Status On/Selected/Checked (#0083b3);
 // -----------------------------------------------------------------------------
 // General Colors
 // -----------------------------------------------------------------------------
 $control-text-color: $color-gray--dark2; // Alternative Text (#58585b);
 $control-fill-color: $white; // Alternative bg (#ffffff);
 $control-stroke-color: $color-gray--light2; // Table Border (#dfdfdf);
-$control-stroke-color--hover: $color-gray--dark3; // Border Hover State (#626469);
-$control-stroke-color--disabled: $color-gray--light1; // Border Disabled State (#c6c7ca);
 $control-fill-color--disabled: $color-gray--light2; // Disabled bg (#dfdfdf);
 // -----------------------------------------------------------------------------
 // Base Properties
@@ -170,7 +159,7 @@ $base-font-weight: $font-weight; // 400
 $base-line-height: $line-height; // 21px
 $base-border-width: $border-width; // 1px;
 $base-border-radius: $border-radius--sm; // 3px
-$base-outline: 1px solid $base-brand-color;
+$base-outline: 1px solid;
 // -----------------------------------------------------------------------------
 // Blockquote
 // -----------------------------------------------------------------------------

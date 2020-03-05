@@ -5,7 +5,6 @@ $btn-line-height: $line-height;
 $btn-padding: rem(0.1875) $base-padding;
 $btn-margin: 0;
 $btn-min-width: rem(4.6875); // 75px
-$btn-tertiary-alt-color--active: $base-color--active;
 $btn-tertiary-alt-icon-margin: 0 $base-padding-xsmall 0 0;
 $btn-tertiary-icon-padding: rem(0.1875) $base-padding-small;
 $btn-transition: color $transition-duration--extra-fast
@@ -20,27 +19,28 @@ $btn-transition: color $transition-duration--extra-fast
 @include theme(a-button) using ($theme) {
   &--primary {
     @include btn-color(
-      $base-inverse-color,
+      map-deep-get($theme, "base", "inverse-color"),
       map-deep-get($theme, "button", "primary", "bg"),
       map-deep-get($theme, "button", "primary", "border"),
-      $base-inverse-color,
+      map-deep-get($theme, "base", "inverse-color"),
       map-deep-get($theme, "button", "primary", "bg--hover"),
       map-deep-get($theme, "button", "primary", "border--hover"),
-      $base-inverse-color,
+      map-deep-get($theme, "base", "inverse-color"),
       map-deep-get($theme, "button", "primary", "bg--focus"),
       map-deep-get($theme, "button", "primary", "border--focus"),
-      $base-inverse-color,
-      $base-color--active,
-      $base-color--active,
+      map-deep-get($theme, "base", "inverse-color"),
+      map-deep-get($theme, "base", "color--active"),
+      map-deep-get($theme, "base", "color--active"),
       map-deep-get($theme, "button", "primary", "color--disabled"),
       map-deep-get($theme, "button", "primary", "bg--disabled"),
-      map-deep-get($theme, "button", "primary", "border--disabled")
+      map-deep-get($theme, "button", "primary", "border--disabled"),
+      map-deep-get($theme, "base", "box-shadow")
     );
   }
 
   &--secondary {
     @include btn-color(
-      $base-brand-color,
+      map-deep-get($theme, "base", "brand-color"),
       transparent,
       map-deep-get($theme, "button", "secondary", "border"),
       map-deep-get($theme, "button", "secondary", "color--hover"),
@@ -54,13 +54,18 @@ $btn-transition: color $transition-duration--extra-fast
       map-deep-get($theme, "button", "secondary", "border--active"),
       map-deep-get($theme, "button", "secondary", "color--disabled"),
       transparent,
-      map-deep-get($theme, "button", "secondary", "border--disabled")
+      map-deep-get($theme, "button", "secondary", "border--disabled"),
+      map-deep-get($theme, "base", "box-shadow")
     );
   }
 
   &--tertiary,
   &--tertiary-alt,
   &--tertiary-icon {
+    &:focus {
+      box-shadow: map-deep-get($theme, "base", "box-shadow");
+    }
+
     &:hover {
       color: map-deep-get($theme, "button", "tertiary", "color--hover");
       fill: map-deep-get($theme, "button", "tertiary", "color--hover");
@@ -84,6 +89,9 @@ $btn-transition: color $transition-duration--extra-fast
   }
 
   &--tertiary {
+    color: map-deep-get($theme, "base", "brand-color");
+    fill: map-deep-get($theme, "base", "brand-color");
+
     &:focus {
       color: map-deep-get($theme, "button", "tertiary", "color--focus");
     }
@@ -101,13 +109,18 @@ $btn-transition: color $transition-duration--extra-fast
 
   &--tertiary-alt,
   &--tertiary-icon {
-    color: map-deep-get($theme, "button", "tertiary", "alt-color");
-    fill: map-deep-get($theme, "button", "tertiary", "alt-color");
+    color: map-deep-get($theme, "base", "color");
+    fill: map-deep-get($theme, "base", "color");
+
+    &:active {
+      color: map-deep-get($theme, "base", "color--active");
+      fill: map-deep-get($theme, "base", "color--active");
+    }
 
     &.disabled,
     &:disabled {
-      color: map-deep-get($theme, "button", "tertiary", "alt-color");
-      fill: map-deep-get($theme, "button", "tertiary", "alt-color");
+      color: map-deep-get($theme, "base", "color");
+      fill: map-deep-get($theme, "base", "color");
     }
   }
 }
@@ -138,17 +151,10 @@ $btn-transition: color $transition-duration--extra-fast
     border-width: 0;
     cursor: pointer;
     -webkit-font-smoothing: inherit;
-    &:focus {
-      box-shadow: $base-box-shadow;
-    }
     &.disabled,
     &:disabled {
       box-shadow: none;
     }
-  }
-  &--tertiary {
-    color: $base-brand-color;
-    fill: $base-brand-color;
   }
   &--tertiary-alt,
   &--tertiary-icon {
@@ -156,10 +162,6 @@ $btn-transition: color $transition-duration--extra-fast
       margin: $btn-tertiary-alt-icon-margin;
       width: 16px;
       vertical-align: text-bottom;
-    }
-    &:active {
-      color: $btn-tertiary-alt-color--active;
-      fill: $btn-tertiary-alt-color--active;
     }
   }
   &--tertiary-icon {
