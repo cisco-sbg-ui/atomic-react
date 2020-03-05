@@ -31,6 +31,7 @@ const config = {
      * }, {})
      */
     index: "framework",
+    AButton: "framework/components/AButton",
     ACheckbox: "framework/components/ACheckbox",
     ADivider: "framework/components/ADivider",
     AIcon: "framework/components/AIcon",

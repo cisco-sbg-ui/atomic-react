@@ -308,57 +308,6 @@ $breadcrumb-padding: 0;
 $breadcrumb-divider: "/";
 $breadcrumb__divider-padding: 0 5px 0 5px;
 // -----------------------------------------------------------------------------
-// Buttons
-// -----------------------------------------------------------------------------
-$btn-font-weight: $font-weight;
-$btn-line-height: $line-height;
-$btn-height: rem(1.75);
-$btn-padding: 0 $base-padding;
-$btn-margin: 0;
-$btn-min-width: rem(4.6875); // 75px
-$btn-primary-bg: $base-brand-color;
-$btn-primary-border: $base-brand-color;
-$btn-primary-bg--hover: $color-category--blue--burnt1;
-$btn-primary-border--hover: $color-category--blue--burnt1;
-$btn-primary-bg--focus: $color-category--blue--burnt1;
-$btn-primary-border--focus: $color-category--blue--burnt1;
-$btn-primary-color--disabled: $base-inverse-color;
-$btn-primary-bg--disabled: $base-brand-color;
-$btn-primary-border--disabled: $base-brand-color;
-$btn-secondary-color: $base-brand-color;
-$btn-secondary-border: $base-brand-color;
-$btn-secondary-color--hover: $color-category--blue--burnt1;
-$btn-secondary-bg--hover: $color-category--blue--wash3;
-$btn-secondary-border--hover: $color-category--blue--burnt1;
-$btn-secondary-color--focus: $color-category--blue--burnt1;
-$btn-secondary-bg--focus: $base-bg;
-$btn-secondary-border--focus: $color-category--blue--burnt1;
-$btn-secondary-color--active: $base-color--active;
-$btn-secondary-bg--active: $color-category--blue--wash3;
-$btn-secondary-border--active: $base-color--active;
-$btn-secondary-color--disabled: $base-brand-color;
-$btn-secondary-bg--disabled: $base-bg;
-$btn-secondary-border--disabled: $base-brand-color;
-$btn-tertiary-color--hover: $color-category--blue--burnt1;
-$btn-tertiary-bg--hover: $color-category--blue--wash3;
-$btn-tertiary-color--focus: $color-category--blue--burnt1;
-$btn-tertiary-color--active: $base-color--active;
-$btn-tertiary-bg--active: $color-category--blue--wash3;
-$btn-tertiary-color--disabled: $base-brand-color;
-$btn-tertiary-opacity--disabled: $alpha-5;
-$btn-tertiary-alt-opacity--disabled: $alpha-5;
-$btn-tertiary-alt-color--active: $base-color--active;
-$btn-tertiary-alt-icon-margin: 0 $base-padding-xsmall 0 0;
-$btn-tertiary-icon-padding: 0 $base-padding-small;
-$btn-transition: color $transition-duration--extra-fast
-    $transition-timing-function--standard,
-  background-color $transition-duration--extra-fast
-    $transition-timing-function--standard,
-  border-color $transition-duration--extra-fast
-    $transition-timing-function--standard,
-  box-shadow $transition-duration--extra-fast
-    $transition-timing-function--standard !default;
-// -----------------------------------------------------------------------------
 // Button Group
 // -----------------------------------------------------------------------------
 $btn-group-color: $color-gray--dark2;

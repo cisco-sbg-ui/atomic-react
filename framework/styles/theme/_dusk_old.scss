@@ -81,59 +81,6 @@ $accordion-body-bg: transparent;
 // -----------------------------------------------------------------------------
 $badge-border-color: transparent;
 // -----------------------------------------------------------------------------
-// Buttons
-// -----------------------------------------------------------------------------
-// Primary Button
-$btn-primary-bg: $color-category--blue--burnt1; // #0083b3;
-$btn-primary-border: $color-category--blue--burnt1; // #0083b3;
-$btn-primary-bg--hover: $color-blue1; // #049fd9;
-$btn-primary-border--hover: $color-blue1; // #049fd9;
-$btn-primary-bg--focus: $color-category--blue--burnt1; // #0083b3;
-$btn-primary-border--focus: $color-category--blue--burnt1;
-// #0083b3;
-$btn-primary-color--disabled: rgba(
-  $color-gray--light4,
-  $alpha-5
-); // (#f2f2f2, 50%);
-$btn-primary-bg--disabled: $color-blue4; // #6a7890;
-$btn-primary-border--disabled: $color-blue4; //#6a7890;
-// Secondary Button
-$btn-secondary-border: $color-category--blue--burnt1;
-// #0083b3;
-$btn-secondary-color--hover: $color-category--blue--wash1; // #3bcaff;
-$btn-secondary-border--hover: $color-category--blue--wash1;
-// #3bcaff;
-$btn-secondary-bg--hover: rgba(
-  $color-category--blue--burnt3,
-  $alpha-5
-); // (#004b66, 50%);
-$btn-secondary-color--active: $color-blue1; // #049fd9;
-$btn-secondary-bg--active: rgba(
-  $color-category--blue--burnt3,
-  $alpha-5
-); // (#004b66, 50%);
-$btn-secondary-border--active: $color-category--blue--burnt2;
-// #00678c;
-$btn-secondary-color--focus: $color-category--blue--wash1; // #3bcaff;
-$btn-secondary-bg--focus: rgba(
-  $color-category--blue--burnt3,
-  $alpha-5
-); // (#004b66, 50%);
-$btn-secondary-border--focus: $color-category--blue--burnt1; // #0083b3;
-$btn-secondary-color--disabled: $color-blue4; // #6a7890;
-$btn-secondary-border--disabled: rgba($color-blue4, $alpha-5);
-// (#6a7890, 50%);
-// Tertiary Button
-$btn-tertiary-color--hover: $color-category--blue--wash1; // #3bcaff;
-$btn-tertiary-bg--hover: rgba($color-category--blue--burnt3, $alpha-5);
-// (#004b66, 50%);
-$btn-tertiary-color--active: $color-blue1; // #049fd9;
-$btn-tertiary-bg--active: rgba($color-category--blue--burnt3, $alpha-5);
-// (#004b66, 50%);
-$btn-tertiary-color--focus: $color-category--blue--wash1; // #3bcaff;
-$btn-tertiary-color--disabled: $color-blue4; // #6a7890;
-$btn-tertiary-opacity--disabled: $alpha-5;
-// -----------------------------------------------------------------------------
 // Buttons Group
 // -----------------------------------------------------------------------------
 $btn-group-color: $color-gray--light4; // #f2f2f2;
