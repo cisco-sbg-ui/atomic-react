@@ -1,7 +1,13 @@
 $atomic-dusk: (
   "base": (
+    "brand-color": $color-category--blue--wash1,
     "color": $color-gray--light4,
-    "stroke-color": rgba($color-gray--medium3, $alpha-5)
+    "color--active": $color-blue1,
+    "color--hover": $color-category--blue--burnt1,
+    "color--selected": $color-blue1,
+    "inverse-color": $color-gray--light4,
+    "stroke-color": rgba($color-gray--medium3, $alpha-5),
+    "box-shadow": 0 0 2px 2px rgba(59, 202, 255, 0.4)
   ),
   "button": (
     "primary": (
@@ -30,7 +36,6 @@ $atomic-dusk: (
       "color--disabled": lighten($color-blue4, 30%)
     ),
     "tertiary": (
-      "alt-color": $base-inverse-color,
       "bg--hover": rgba($color-category--blue--burnt3, $alpha-5),
       "bg--active": rgba($color-category--blue--burnt3, $alpha-5),
       "color--hover": $color-category--blue--wash1,
@@ -44,6 +49,10 @@ $atomic-dusk: (
     "box-color-active": $color-blue1,
     "box-color-disabled": rgba($color-blue4, $alpha-3),
     "box-color-selected": $color-category--blue--burnt1
+  ),
+  "control": (
+    "stroke-color--hover": $color-gray--medium4,
+    "stroke-color--disabled": rgba($color-gray--light1, $alpha-3)
   ),
   "divider": (
     "color-default": rgba($color-gray--light2, $alpha-5),
@@ -63,5 +72,13 @@ $atomic-dusk: (
         rgba($color-blue7, $alpha-6) 0%,
         rgba($color-blue9, $alpha-6) 100%
       )
+  ),
+  "text-input": (
+    "bg": transparent,
+    "color--disabled": rgba($color-gray--medium3, $alpha-5),
+    "bg--disabled": rgba($color-blue4, $alpha-3),
+    "border-color--disabled": transparent,
+    "border-color--readonly": rgba($color-gray--light1, $alpha-3),
+    "bg--readonly": rgba($color-gray--light5, $alpha-1)
   )
 );

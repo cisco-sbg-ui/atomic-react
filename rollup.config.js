@@ -33,7 +33,8 @@ const config = {
     ACheckbox: "framework/components/ACheckbox",
     ADivider: "framework/components/ADivider",
     AIcon: "framework/components/AIcon",
-    APanel: "framework/components/APanel"
+    APanel: "framework/components/APanel",
+    ATextInput: "framework/components/ATextInput"
   },
   output: {
     format: "es",
