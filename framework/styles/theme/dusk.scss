@@ -7,7 +7,8 @@ $atomic-dusk: (
     "color--selected": $color-blue1,
     "inverse-color": $color-gray--light4,
     "stroke-color": rgba($color-gray--medium3, $alpha-5),
-    "box-shadow": 0 0 2px 2px rgba(59, 202, 255, 0.4)
+    "box-shadow": 0 0 2px 2px rgba(59, 202, 255, 0.4),
+    "outline": 1px solid $color-category--blue--wash1
   ),
   "button": (
     "primary": (
@@ -72,6 +73,10 @@ $atomic-dusk: (
         rgba($color-blue7, $alpha-6) 0%,
         rgba($color-blue9, $alpha-6) 100%
       )
+  ),
+  "tabs": (
+    "oversized-background-color": transparent,
+    "oversized--hover-background-color": transparent
   ),
   "text-input": (
     "bg": transparent,

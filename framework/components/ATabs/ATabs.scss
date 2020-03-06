@@ -1,4 +1,107 @@
-.tab-group {
+@import "../../styles";
+
+$tabs-padding: 0;
+$tabs-margin: 10px 0;
+$tab-font-size: $font-size--sm;
+$tab-bottom-bar-height: -5px;
+$tab-top-bar-height: 5px;
+$tab-min-width: 75px;
+$tab-padding-top: 0;
+$tab-padding-right: 15px;
+$tab-padding-bottom: 12px;
+$tab-padding-left: 15px;
+$tab-margin: 0 0 1px 0;
+$tab-heading-margin: 0;
+$tab-heading-font-size: $font-size--xl;
+$tab-tall-padding: 0 15px 19px 15px;
+$tab-tall-margin: 0;
+$tab-oversized-height: 110px;
+$tab-oversized--selected-background-color: transparent;
+$tab-oversized-padding: 11px 15px 50px 15px;
+$tab-oversized-margin: 0;
+
+@include theme(a-tab-group) using ($theme) {
+  &__tab {
+    color: map-deep-get($theme, "base", "color");
+    &--selected {
+      @include tab-bar(
+        $tab-bottom-bar-height,
+        map-deep-get($theme, "base", "color--selected")
+      );
+    }
+    &:hover {
+      @include tab-bar(
+        $tab-bottom-bar-height,
+        map-deep-get($theme, "base", "color--hover")
+      );
+    }
+    &:focus {
+      outline: map-deep-get($theme, "base", "outline");
+      @include tab-bar(
+        $tab-bottom-bar-height,
+        map-deep-get($theme, "base", "color--hover")
+      );
+    }
+  }
+  &__link {
+    color: map-deep-get($theme, "base", "color");
+    &:active,
+    &:focus,
+    &:hover {
+      color: map-deep-get($theme, "base", "color");
+    }
+  }
+  &--size-oversized {
+    .a-tab-group__tab {
+      border-top: $base-border-width solid
+        map-deep-get($theme, "control", "stroke-color");
+      border-bottom: $base-border-width solid
+        map-deep-get($theme, "control", "stroke-color");
+      border-left: $base-border-width solid
+        map-deep-get($theme, "control", "stroke-color");
+      background-color: map-deep-get(
+        $theme,
+        "tabs",
+        "oversized-background-color"
+      );
+      &:last-of-type {
+        border-right: $base-border-width solid
+          map-deep-get($theme, "control", "stroke-color");
+      }
+      &--selected {
+        border-top: $base-border-width solid transparent;
+        border-bottom: $base-border-width solid transparent;
+        @include tab-bar(
+          $tab-top-bar-height,
+          map-deep-get($theme, "base", "color--selected")
+        );
+      }
+      &:focus,
+      &:hover {
+        border-top: $base-border-width solid transparent;
+        @include tab-bar(
+          $tab-top-bar-height,
+          map-deep-get($theme, "base", "color--hover")
+        );
+        background-color: map-deep-get(
+          $theme,
+          "tabs",
+          "oversized--hover-background-color"
+        );
+      }
+    }
+  }
+  &__tab-heading {
+    color: map-deep-get($theme, "base", "color");
+    &:active,
+    &:focus,
+    &:hover {
+      color: map-deep-get($theme, "base", "color");
+    }
+  }
+}
+
+.a-tab-group {
   margin: $tabs-margin;
   padding: $tabs-padding;
   list-style: none;
@@ -15,71 +118,37 @@
     text-align: center;
     vertical-align: middle;
     user-select: none;
-    color: $base-color;
     font-size: $tab-font-size;
     background-color: transparent;
     cursor: pointer;
-    &--selected {
-      @include tab-bar($tab-bottom-bar-height, $base-color--selected);
-    }
-    &:hover {
-      @include tab-bar($tab-bottom-bar-height, $base-color--hover);
-    }
-    &:focus {
-      outline: $base-outline;
-      outline-color: $base-brand-color;
-      @include tab-bar($tab-bottom-bar-height, $base-color--hover);
-    }
     &:active {
       outline: none;
     }
   }
   &__link {
     text-decoration: none;
-    color: $base-color;
     &:active,
     &:focus,
     &:hover {
       text-decoration: none;
-      color: $base-color;
     }
   }
   &--size-tall {
-    .tab-group__tab {
+    .a-tab-group__tab {
       padding: $tab-tall-padding;
       margin: $tab-tall-margin;
     }
   }
   &--size-oversized {
     display: flex;
-    .tab-group__tab {
+    .a-tab-group__tab {
       text-align: left;
       height: $tab-oversized-height;
       margin: $tab-oversized-margin;
       padding: $tab-oversized-padding;
-      border-top: $base-border-width solid $control-stroke-color;
-      border-bottom: $base-border-width solid $control-stroke-color;
-      border-left: $base-border-width solid $control-stroke-color;
-      background-color: $tab-oversized-background-color;
-      &:last-of-type {
-        border-right: $base-border-width solid $control-stroke-color;
-      }
-      &--selected {
-        @include tab-bar($tab-top-bar-height, $base-color--selected);
-        border-top: $base-border-width solid transparent;
-        border-bottom: $base-border-width solid transparent;
-        background-color: $tab-oversized--selected-background-color;
-      }
-      &:focus,
-      &:hover {
-        @include tab-bar($tab-top-bar-height, $base-color--hover);
-        border-top: $base-border-width solid transparent;
-        background-color: $tab-oversized--hover-background-color;
-      }
     }
   }
   &__tab-heading {
-    color: $base-color;
     text-decoration: none;
     margin: $tab-heading-margin;
     font-size: $tab-heading-font-size;
@@ -88,7 +157,6 @@
     &:focus,
     &:hover {
       text-decoration: none;
-      color: $base-color;
     }
   }
 }
