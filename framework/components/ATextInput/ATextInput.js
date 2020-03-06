@@ -35,11 +35,11 @@ ATextInput.propTypes = {
   /**
    * Change the input type to take advantage of native behavior.
    */
-  type: PropTypes.oneOf("text", "password", "email"),
+  type: PropTypes.oneOf(["text", "password", "email"]),
   /**
    * Applies a validation state.
    */
-  validationState: PropTypes.oneOf("default", "warning", "danger")
+  validationState: PropTypes.oneOf(["default", "warning", "danger"])
 };
 
 export default ATextInput;

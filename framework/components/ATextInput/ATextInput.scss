@@ -39,6 +39,22 @@ $input-transition: border-color $transition-duration--extra-fast
     border-color: map-deep-get($theme, "text-input", "border-color--readonly");
     background: map-deep-get($theme, "text-input", "bg--readonly");
   }
+
+  &--state-warning {
+    @include input-state(
+      $color-warning,
+      $warning-box-shadow,
+      $color-warning--state-hover
+    );
+  }
+
+  &--state-danger {
+    @include input-state(
+      $color-error,
+      $danger-box-shadow,
+      $color-error--state-hover
+    );
+  }
 }
 
 .a-text-input {
@@ -66,22 +82,6 @@ $input-transition: border-color $transition-duration--extra-fast
   &[readonly],
   &[readonly]:focus {
     box-shadow: none;
-  }
-
-  &--state-warning {
-    @include input-state(
-      $color-warning,
-      $warning-box-shadow,
-      $color-warning--state-hover
-    );
-  }
-
-  &--state-danger {
-    @include input-state(
-      $color-error,
-      $danger-box-shadow,
-      $color-error--state-hover
-    );
   }
 }
 

@@ -34,6 +34,7 @@ const config = {
     ADivider: "framework/components/ADivider",
     AIcon: "framework/components/AIcon",
     APanel: "framework/components/APanel",
+    ATabs: "framework/components/ATabs",
     ATextInput: "framework/components/ATextInput"
   },
   output: {

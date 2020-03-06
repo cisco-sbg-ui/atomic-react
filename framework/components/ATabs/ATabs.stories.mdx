@@ -1,0 +1,109 @@
+import { Meta, Preview, Story, Props } from '@storybook/addon-docs/blocks';
+import {useState} from 'react'
+
+import YourComponent from '../../utils/storybook-function'
+import {ATabGroup, ATab, ATabHeading} from './'
+
+<Meta title="Components/Tabs" component={ATabGroup} />
+
+# Tabs
+
+## Install
+
+The component is available on [Cisco's Artifactory package registry](https://devhub.cisco.com/artifactory/webapp/#/home).
+
+```
+  npm i --save @cisco-ats/atomic-react
+```
+
+And in the target component add:
+
+```
+import {ATabGroup, ATab, ATabHeading} from "@cisco-ats/atomic-react/ATabs";
+```
+
+## Usage
+
+<Preview>
+  <ATabGroup>
+    <ATab>One</ATab>
+    <ATab>Two</ATab>
+    <ATab selected>Three</ATab>
+  </ATabGroup>
+</Preview>
+
+## Tab Group Props
+
+The `ATabGroup` component inherits passed props.
+
+<Props of={ATabGroup} />
+
+## Tab Props
+
+The `ATab` component inherits passed props.
+
+<Props of={ATab} />
+
+
+## Display Variants
+
+### Tall
+
+<Preview>
+  <ATabGroup tall>
+    <ATab>One</ATab>
+    <ATab selected>Two</ATab>
+    <ATab>Three</ATab>
+  </ATabGroup>
+</Preview>
+
+### Oversized
+
+<Preview>
+  <ATabGroup oversized>
+    <ATab>
+      <ATabHeading>Heading One</ATabHeading>
+      Subtext One
+    </ATab>
+    <ATab>
+      <ATabHeading>Heading Two</ATabHeading>
+      Subtext Two
+    </ATab>
+    <ATab selected>
+      <ATabHeading>Heading Three</ATabHeading>
+      Subtext Three
+    </ATab>
+  </ATabGroup>
+</Preview>
+
+
+## Dusk Theme
+
+<Preview className="theme--dusk" style={{backgroundColor: "#000", color: '#fff'}}>
+  <>
+    <ATabGroup>
+      <ATab>One</ATab>
+      <ATab selected>Two</ATab>
+      <ATab>Three</ATab>
+    </ATabGroup>
+    <ATabGroup tall>
+      <ATab>One</ATab>
+      <ATab selected>Two</ATab>
+      <ATab>Three</ATab>
+    </ATabGroup>
+    <ATabGroup oversized>
+      <ATab>
+        <ATabHeading>Heading One</ATabHeading>
+        Subtext One
+      </ATab>
+      <ATab>
+        <ATabHeading>Heading Two</ATabHeading>
+        Subtext Two
+      </ATab>
+      <ATab selected>
+        <ATabHeading>Heading Three</ATabHeading>
+        Subtext Three
+      </ATab>
+    </ATabGroup>
+  </>
+</Preview>
