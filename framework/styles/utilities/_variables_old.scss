@@ -210,21 +210,6 @@ $footer-border-color: $color-gray--light4;
 $form-group-margin-bottom: ($spacing * 0.75);
 $form-text-margin-bottom: 15px;
 // -----------------------------------------------------------------------------
-// Header
-// -----------------------------------------------------------------------------
-$header__logo-color: $base-brand-color;
-$header-bg-color: $base-bg;
-$header-height: 65px;
-$header-min-width: 1280px;
-$header-padding: 0 30px 0 20px;
-$header-triangle-icon-font-size: $font-size--xxs;
-$header-triangle-icon-margin: 0 0 0 5px;
-$header__logo-font-size: rem(3.75); // 60px
-$header__logo-margin: 0 20px 0 0;
-$header__toolbar-font-size: rem(1);
-$header__icon-size: 36px;
-$header-dropdown-left: -$base-padding-left;
-// -----------------------------------------------------------------------------
 // Hint Text
 // -----------------------------------------------------------------------------
 $help-block-font-size: $font-size--xs;
@@ -233,18 +218,6 @@ $help-block-margin-top: 2px;
 $help-block-color: $color-gray--medium3;
 $help-block-color-warning: $color-status--orange--burnt1;
 $help-block-color-error: $color-error;
-// -----------------------------------------------------------------------------
-// Icons
-// -----------------------------------------------------------------------------
-$icon-large-font-size: rem(3);
-$icon-medium-font-size: $font-size--xl; // 24px
-$icon-small-font-size: $font-size; // 16px
-$icon-color-hover: $base-color--hover;
-$icon-color-state-selected: $color-category--blue--burnt1;
-$btn--icon-width: 30px;
-$btn--icon-height: 30px;
-$btn--icon-bg: transparent;
-$btn--icon-border-radius: 30px;
 // -----------------------------------------------------------------------------
 // Form Label
 // -----------------------------------------------------------------------------

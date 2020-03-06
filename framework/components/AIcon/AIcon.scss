@@ -1,15 +1,22 @@
+@import "../../styles";
+
+$icon-size-large: rem(3);
+$icon-size-medium: $font-size--xl;
+$icon-size-small: $font-size;
+
 .a-icon {
+  overflow: visible;
   width: 24px;
 
   &--size-large {
-    width: 32px;
+    width: $icon-size-large;
   }
 
   &--size-medium {
-    width: 24px;
+    width: $icon-size-medium;
   }
 
   &--size-small {
-    width: 16px;
+    width: $icon-size-small;
   }
 }

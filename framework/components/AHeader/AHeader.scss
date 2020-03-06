@@ -1,42 +1,91 @@
-.header {
+@import "../../styles";
+
+$header-height: 65px;
+$header-min-width: 1280px;
+$header-padding: 0 30px 0 20px;
+$header-triangle-icon-font-size: $font-size--xxs;
+$header-triangle-icon-margin: 0 0 0 5px;
+$header__logo-font-size: rem(3.75); // 60px
+$header__logo-margin: 0 20px 0 0;
+$header__toolbar-font-size: rem(1);
+$header__icon-size: 16px;
+$header-dropdown-left: -$base-padding-left;
+
+@include theme(a-header) using ($theme) {
+  background: map-deep-get($theme, "header", "bg-color");
+  &__logo {
+    &:focus {
+      box-shadow: map-deep-get($theme, "base", "box-shadow");
+    }
+
+    .a-icon {
+      fill: map-deep-get($theme, "base", "brand-color");
+    }
+  }
+
+  &__title {
+    &:focus {
+      outline: map-deep-get($theme, "base", "outline");
+    }
+
+    :visited,
+    :hover,
+    :focus,
+    :active {
+      color: map-deep-get($theme, "base", "color");
+    }
+  }
+
+  &__toolbar .a-icon {
+    fill: map-deep-get($theme, "header", "icon-color");
+    &:focus {
+      box-shadow: map-deep-get($theme, "base", "box-shadow");
+    }
+
+    &:hover {
+      fill: $color-blue1;
+    }
+  }
+}
+
+.a-header {
   display: flex;
   height: $header-height;
   padding: $header-padding;
   width: 100%;
   min-width: $header-min-width;
   align-items: center;
-  background: $header-bg-color;
   box-shadow: $default-box-shadow;
   z-index: 1030;
   overflow: visible;
   &__logo {
     display: block;
     margin: $header__logo-margin;
+
     &:hover {
       text-decoration: none;
     }
+
     &:focus {
-      box-shadow: $base-box-shadow;
       text-decoration: none;
     }
-    .icon-cisco {
+
+    .a-icon {
       display: block;
-      font-size: $header__logo-font-size;
+      width: $header__logo-font-size;
       line-height: 1;
-      &:before {
-        color: $header__logo-color;
-      }
     }
   }
+
   &__navigation {
     display: flex;
     align-self: flex-end;
     flex: 1;
-    .tab-group {
+    .a-tab-group {
       margin: 0;
       &__tab {
         padding-bottom: ($header-height - $h2-font-size) / 2 - 1;
-        .icon {
+        .a-icon {
           font-size: $header-triangle-icon-font-size;
           font-weight: $font-weight-xbold;
           margin: $header-triangle-icon-margin;
@@ -45,40 +94,43 @@
       }
     }
   }
+
   &__title {
+    font-size: $h1-font-size;
     max-width: 400px;
     margin: 0 50px 0 0;
-    &:focus {
-      outline: $base-outline;
-    }
-    a,
-    a:visited,
-    a:hover,
-    a:focus,
-    a:active {
-      color: $base-color;
+
+    :visited,
+    :hover,
+    :focus,
+    :active {
       text-decoration: none;
     }
-    h1,
-    h2 {
+
+    * {
       margin: 0;
       font-weight: 200;
     }
   }
+
   &__toolbar {
     font-size: $header__toolbar-font-size;
     display: inline-flex;
-  }
-  &__icon {
-    @include btn-icon();
-    height: $header__icon-size;
-    width: $header__icon-size;
-    &:focus {
-      box-shadow: $base-box-shadow;
-      text-decoration: none;
+
+    .a-icon {
+      @include btn-icon();
+      vertical-align: bottom;
+      padding: 10px;
+      height: $header__icon-size;
+      width: $header__icon-size;
+
+      &:focus {
+        text-decoration: none;
+      }
     }
   }
-  .dropdown {
+
+  .a-dropdown {
     &__menu {
       $top: ($header-height - $h2-font-size) / 2;
       top: calc(100% + #{$top});

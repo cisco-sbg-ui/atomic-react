@@ -60,6 +60,10 @@ $atomic-default: (
     "color-light": $control-stroke-color,
     "color-lighter": $color-gray--light4
   ),
+  "header": (
+    "bg-color": $base-bg,
+    "icon-color": $color-gray--dark2
+  ),
   "panel": (
     "bg": $base-bg,
     "bg-gray": $color-gray--light4

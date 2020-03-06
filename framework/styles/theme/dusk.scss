@@ -60,6 +60,10 @@ $atomic-dusk: (
     "color-light": rgba($color-gray--light2, $alpha-3),
     "color-lighter": rgba($color-gray--light2, $alpha-15)
   ),
+  "header": (
+    "bg-color": $color-blue11,
+    "icon-color": $color-gray--light2
+  ),
   "panel": (
     "bg":
       linear-gradient(
