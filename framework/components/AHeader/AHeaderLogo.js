@@ -25,7 +25,7 @@ AHeaderLogo.defaultProps = {
 
 AHeaderLogo.propTypes = {
   /**
-   * The URL the logo link.
+   * The logo link URL.
    */
   href: PropTypes.string
 };

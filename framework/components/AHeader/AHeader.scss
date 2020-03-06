@@ -119,6 +119,7 @@ $header-dropdown-left: -$base-padding-left;
 
     .a-icon {
       @include btn-icon();
+      vertical-align: bottom;
       padding: 10px;
       height: $header__icon-size;
       width: $header__icon-size;
