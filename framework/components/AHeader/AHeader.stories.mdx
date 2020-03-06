@@ -1,0 +1,125 @@
+import { Meta, Preview, Story, Props } from '@storybook/addon-docs/blocks';
+import {useState} from 'react'
+
+import LoremIpsum from '../../utils/lorem-ipsum'
+import YourComponent from '../../utils/storybook-function'
+import {AHeader, AHeaderLogo, AHeaderTitle, AHeaderNavigation, AHeaderToolbar} from "./"
+import AIcon from '../AIcon'
+import {ATabGroup, ATab} from '../ATabs'
+
+<Meta title="Components/Headers" component={AHeader} />
+
+# Headers
+
+## Install
+
+The component is available on [Cisco's Artifactory package registry](https://devhub.cisco.com/artifactory/webapp/#/home).
+
+```
+  npm i --save @cisco-ats/atomic-react
+```
+
+And in the target component add:
+
+```
+import {
+  AHeader,
+  AHeaderLogo,
+  AHeaderTitle,
+  AHeaderNavigation,
+  AHeaderToolbar
+} from "@cisco-ats/atomic-react/AHeader";
+```
+
+## Usage
+
+<Preview>
+  <AHeader>
+    <AHeaderLogo href="#cisco">
+      <AIcon>cisco</AIcon>
+    </AHeaderLogo>
+    <AHeaderTitle>
+      Product Name
+    </AHeaderTitle>
+    <AHeaderNavigation>
+      <ATabGroup tall>
+        <ATab>
+          Demo
+        </ATab>
+        <ATab>
+          Contact Us
+        </ATab>
+      </ATabGroup>
+    </AHeaderNavigation>
+    <AHeaderToolbar>
+      <a href="#search">
+        <AIcon tabIndex="0">search</AIcon>
+      </a>
+      <a href="#user">
+        <AIcon tabIndex="0">user</AIcon>
+      </a>
+    </AHeaderToolbar>
+  </AHeader>
+</Preview>
+
+## Header Props
+
+The `AHeader` component inherits passed props.
+
+<Props of={AHeader} />
+
+## Header Logo Props
+
+The `AHeaderLogo` component inherits passed props.
+
+<Props of={AHeaderLogo} />
+
+## Header Title Props
+
+The `AHeaderTitle` component inherits passed props.
+
+<Props of={AHeaderTitle} />
+
+## Header Navigation Props
+
+The `AHeaderNavigation` component inherits passed props.
+
+<Props of={AHeaderNavigation} />
+
+## Header Toolbar Props
+
+The `AHeaderToolbar` component inherits passed props.
+
+<Props of={AHeaderToolbar} />
+
+
+## Dusk Theme
+
+<Preview className="theme--dusk" style={{backgroundColor: "#000", color: '#fff'}}>
+  <AHeader>
+    <AHeaderLogo href="#cisco">
+      <AIcon>cisco</AIcon>
+    </AHeaderLogo>
+    <AHeaderTitle>
+      Product Name
+    </AHeaderTitle>
+    <AHeaderNavigation>
+      <ATabGroup tall>
+        <ATab>
+          Demo
+        </ATab>
+        <ATab>
+          Contact Us
+        </ATab>
+      </ATabGroup>
+    </AHeaderNavigation>
+    <AHeaderToolbar>
+      <a href="#search">
+        <AIcon tabIndex="0">search</AIcon>
+      </a>
+      <a href="#user">
+        <AIcon tabIndex="0">user</AIcon>
+      </a>
+    </AHeaderToolbar>
+  </AHeader>
+</Preview>
