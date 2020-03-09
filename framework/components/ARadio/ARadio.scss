@@ -1,90 +1,118 @@
+@import "../../styles";
+
+$radio-height: 15px;
+$radio-width: 15px;
+$radio-fill-height: 7px;
+$radio-fill-width: 7px;
+$radio-fill-height--active: 5px;
+$radio-fill-width--active: 5px;
+$radio-fill-border-width: ($base-border-width * 0.75);
+$radio-padding: 10px;
+$radio-border--enabled: $color-gray--light1;
+$radio-border--enabled--active: $color-gray--light1;
+$radio-box-border--enabled: $base-stroke-color;
+$radio-box-border--enabled--hover: $control-stroke-color--hover;
+$radio-fill--enabled: $color-gray--light1;
+$radio-border--active--hover: $base-color--hover;
+$radio-fill--active--hover: $base-color--hover;
+$radio-border--checked: $base-color;
+$radio-bg--disabled: $white;
+$radio-box-bg--disabled: $white;
+$radio-border--disabled: $control-fill-color--disabled;
+$radio-fill--disabled: $control-fill-color--disabled;
+$radio-opacity-disabled: 1;
+$radio-transition: border-color $transition-duration--extra-fast
+    $transition-timing-function--standard,
+  box-shadow $transition-duration--extra-fast
+    $transition-timing-function--standard;
+
 .radio {
-    display: flex;
-    padding: ($radio-padding / 2) $radio-padding;
+  display: flex;
+  padding: ($radio-padding / 2) $radio-padding;
+  position: relative;
+  cursor: pointer;
+  &__input {
+    @include hidden-input;
+    & ~ .radio__box {
+      width: $radio-width;
+      height: $radio-height;
+      top: 2px;
+      position: relative;
+      display: inline-block;
+      margin: 0 10px 0 0;
+      border: $border-width solid $radio-border--disabled;
+      border-radius: 50%;
+      &:hover {
+        border: $border-width solid $radio-border--disabled;
+      }
+      &:after {
+        content: "";
+        position: absolute;
+        height: $radio-fill-height;
+        width: $radio-fill-width;
+        left: 3px;
+        top: 3px;
+        border-radius: 50%;
+        border: $radio-fill-border-width solid $radio-border--enabled;
+      }
+    }
+    &:enabled ~ .radio__box {
+      border: $border-width solid $base-stroke-color;
+      &:hover {
+        border: $border-width solid $radio-box-border--enabled--hover;
+      }
+    }
+    &:focus ~ .radio__box {
+      border: $border-width solid $base-brand-color;
+      box-shadow: $base-box-shadow;
+    }
+    &:enabled:active ~ .radio__box {
+      &:after {
+        height: $radio-fill-height--active;
+        width: $radio-fill-width--active;
+        left: 4px;
+        top: 4px;
+        border: $border-width solid $radio-border--enabled--active;
+        background-color: $radio-fill--enabled;
+      }
+      &:hover:after {
+        border: $border-width solid $radio-border--active--hover;
+        background-color: $radio-fill--active--hover;
+      }
+    }
+    &:checked ~ .radio__box:after {
+      background-color: $radio-border--checked;
+      border-color: $radio-border--checked;
+    }
+    &:disabled ~ .radio__box {
+      background-color: $radio-box-bg--disabled;
+      opacity: $radio-opacity-disabled;
+    }
+    &:disabled ~ .radio__box:after {
+      background-color: $radio-bg--disabled;
+      border-color: $radio-border--disabled;
+      pointer-events: none;
+    }
+    &:disabled:checked ~ .radio__box:after {
+      background-color: $radio-fill--disabled;
+    }
+  }
+  &__label {
+    display: inline-block;
+    flex: 1 1 0%;
     position: relative;
-    cursor: pointer;
-    &__input {
-        @include hidden-input;
-        & ~ .radio__box {
-            width: $radio-width;
-            height: $radio-height;
-            top: 2px;
-            position: relative;
-            display: inline-block;
-            margin: 0 10px 0 0;
-            border: $border-width solid $radio-border--disabled;
-            border-radius: 50%;
-            &:hover {
-                border: $border-width solid $radio-border--disabled;
-            }
-            &:after {
-                content: '';
-                position: absolute;
-                height: $radio-fill-height;
-                width: $radio-fill-width;
-                left: 3px;
-                top: 3px;
-                border-radius: 50%;
-                border: $radio-fill-border-width solid $radio-border--enabled;
-            }
-        }
-        &:enabled ~ .radio__box {
-            border: $border-width solid $base-stroke-color;
-            &:hover {
-                border: $border-width solid $radio-box-border--enabled--hover;
-            }
-        }
-        &:focus ~ .radio__box {
-            border: $border-width solid $base-brand-color;
-            box-shadow: $base-box-shadow;
-        }
-        &:enabled:active ~ .radio__box {
-            &:after {
-                height: $radio-fill-height--active;
-                width: $radio-fill-width--active;
-                left: 4px;
-                top: 4px;
-                border: $border-width solid $radio-border--enabled--active;
-                background-color: $radio-fill--enabled;
-            }
-            &:hover:after {
-                border: $border-width solid $radio-border--active--hover;
-                background-color: $radio-fill--active--hover;
-            }
-        }
-        &:checked ~ .radio__box:after {
-            background-color: $radio-border--checked;
-            border-color: $radio-border--checked;
-        }
-        &:disabled ~ .radio__box {
-            background-color: $radio-box-bg--disabled;
-            opacity: $radio-opacity-disabled;
-        }
-        &:disabled ~ .radio__box:after {
-            background-color: $radio-bg--disabled;
-            border-color: $radio-border--disabled;
-            pointer-events: none;
-        }
-        &:disabled:checked ~ .radio__box:after {
-            background-color: $radio-fill--disabled;
-        }
-    }
-    &__label {
-        display: inline-block;
-        flex: 1 1 0%;
-        position: relative;
-        @include text-truncate;
-    }
-    &__label--wrap {
-        white-space: normal;
-        overflow: visible;
-    }
+    @include text-truncate;
+  }
+  &__label--wrap {
+    white-space: normal;
+    overflow: visible;
+  }
 }
 
-&.atomic-ui-root--animated .radio {
-    &__input {
-        & ~ .radio__box {
-            @include transition($radio-transition);
-        }
+.a-app--animated .radio {
+  &__input {
+    & ~ .radio__box {
+      @include transition($radio-transition);
     }
+  }
 }

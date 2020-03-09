@@ -1,5 +1,13 @@
 $atomic-dusk: (
+  "app": (
+    "scrollbar": (
+      "track-bg": rgba($color-gray--light5, $alpha-1),
+      "track-border-color": rgba($color-gray--light4, $alpha-1),
+      "thumb-bg": $color-gray--dark5
+    )
+  ),
   "base": (
+    "bg": $color-gray--dark5,
     "brand-color": $color-category--blue--wash1,
     "color": $color-gray--light4,
     "color--active": $color-blue1,

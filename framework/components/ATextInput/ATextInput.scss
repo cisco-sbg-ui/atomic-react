@@ -63,7 +63,8 @@ $input-transition: border-color $transition-duration--extra-fast
   width: $input-width;
   position: relative;
   padding: $input-padding;
-  border: $base-border-width solid;
+  border-style: solid;
+  border-width: $base-border-width;
   border-radius: $base-border-radius;
   appearance: none;
   &:focus {
@@ -85,6 +86,6 @@ $input-transition: border-color $transition-duration--extra-fast
   }
 }
 
-.atomic-ui-root--animated .a-text-input {
+.a-app--animated .a-text-input {
   @include transition($input-transition);
 }

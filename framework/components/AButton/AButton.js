@@ -37,6 +37,8 @@ const AButton = forwardRef(
       className += "tertiary-alt";
     } else if (tertiaryAltIcon) {
       className += "tertiary-icon";
+    } else {
+      className += "primary";
     }
 
     if (disabled) {
@@ -101,7 +103,7 @@ AButton.propTypes = {
    */
   onClick: PropTypes.func,
   /**
-   * Toggles the `primary` style variant.
+   * Toggles the `primary` style variant. If no style variant is chosen, `primary` is applied.
    */
   primary: PropTypes.bool,
   /**

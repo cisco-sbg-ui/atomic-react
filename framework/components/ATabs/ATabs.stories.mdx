@@ -1,6 +1,7 @@
 import { Meta, Preview, Story, Props } from '@storybook/addon-docs/blocks';
 import {useState} from 'react'
 
+import AApp from '../AApp'
 import YourComponent from '../../utils/storybook-function'
 import {ATabGroup, ATab, ATabHeading} from './'
 
@@ -25,11 +26,15 @@ import {ATabGroup, ATab, ATabHeading} from "@cisco-ats/atomic-react/ATabs";
 ## Usage
 
 <Preview>
-  <ATabGroup>
-    <ATab>One</ATab>
-    <ATab>Two</ATab>
-    <ATab selected>Three</ATab>
-  </ATabGroup>
+  <Story name="usage-1">
+    <AApp>
+      <ATabGroup>
+        <ATab>One</ATab>
+        <ATab>Two</ATab>
+        <ATab selected>Three</ATab>
+      </ATabGroup>
+    </AApp>
+  </Story>
 </Preview>
 
 ## Tab Group Props
@@ -50,60 +55,72 @@ The `ATab` component inherits passed props.
 ### Tall
 
 <Preview>
-  <ATabGroup tall>
-    <ATab>One</ATab>
-    <ATab selected>Two</ATab>
-    <ATab>Three</ATab>
-  </ATabGroup>
+  <Story name="variants-1">
+    <AApp>
+      <ATabGroup tall>
+        <ATab>One</ATab>
+        <ATab selected>Two</ATab>
+        <ATab>Three</ATab>
+      </ATabGroup>
+    </AApp>
+  </Story>
 </Preview>
 
 ### Oversized
 
 <Preview>
-  <ATabGroup oversized>
-    <ATab>
-      <ATabHeading>Heading One</ATabHeading>
-      Subtext One
-    </ATab>
-    <ATab>
-      <ATabHeading>Heading Two</ATabHeading>
-      Subtext Two
-    </ATab>
-    <ATab selected>
-      <ATabHeading>Heading Three</ATabHeading>
-      Subtext Three
-    </ATab>
-  </ATabGroup>
+  <Story name="variants-2">
+    <AApp>
+      <ATabGroup oversized>
+        <ATab>
+          <ATabHeading>Heading One</ATabHeading>
+          Subtext One
+        </ATab>
+        <ATab>
+          <ATabHeading>Heading Two</ATabHeading>
+          Subtext Two
+        </ATab>
+        <ATab selected>
+          <ATabHeading>Heading Three</ATabHeading>
+          Subtext Three
+        </ATab>
+      </ATabGroup>
+    </AApp>
+  </Story>
 </Preview>
 
 
 ## Dusk Theme
 
-<Preview className="theme--dusk" style={{backgroundColor: "#000", color: '#fff'}}>
-  <>
-    <ATabGroup>
-      <ATab>One</ATab>
-      <ATab selected>Two</ATab>
-      <ATab>Three</ATab>
-    </ATabGroup>
-    <ATabGroup tall>
-      <ATab>One</ATab>
-      <ATab selected>Two</ATab>
-      <ATab>Three</ATab>
-    </ATabGroup>
-    <ATabGroup oversized>
-      <ATab>
-        <ATabHeading>Heading One</ATabHeading>
-        Subtext One
-      </ATab>
-      <ATab>
-        <ATabHeading>Heading Two</ATabHeading>
-        Subtext Two
-      </ATab>
-      <ATab selected>
-        <ATabHeading>Heading Three</ATabHeading>
-        Subtext Three
-      </ATab>
-    </ATabGroup>
-  </>
+<Preview style={{backgroundColor: '#18191d'}}>
+  <Story name="dusk-1">
+    <AApp theme="dusk">
+      <ATabGroup>
+        <ATab>One</ATab>
+        <ATab selected>Two</ATab>
+        <ATab>Three</ATab>
+      </ATabGroup>
+      <br />
+      <ATabGroup tall>
+        <ATab>One</ATab>
+        <ATab selected>Two</ATab>
+        <ATab>Three</ATab>
+      </ATabGroup>
+      <br />
+      <ATabGroup oversized>
+        <ATab>
+          <ATabHeading>Heading One</ATabHeading>
+          Subtext One
+        </ATab>
+        <ATab>
+          <ATabHeading>Heading Two</ATabHeading>
+          Subtext Two
+        </ATab>
+        <ATab selected>
+          <ATabHeading>Heading Three</ATabHeading>
+          Subtext Three
+        </ATab>
+      </ATabGroup>
+    </AApp>
+  </Story>
 </Preview>

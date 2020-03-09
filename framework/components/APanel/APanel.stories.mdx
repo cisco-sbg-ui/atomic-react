@@ -1,5 +1,6 @@
 import { Meta, Preview, Story, Props } from '@storybook/addon-docs/blocks';
 
+import AApp from '../AApp'
 import AIcon from '../AIcon';
 import APanel from "./APanel"
 import APanelHeader from "./APanelHeader"
@@ -34,20 +35,22 @@ import {
 ## Usage
 
 <Preview>
-  <APanel>
-    <APanelHeader>
-      <APanelTitle>
-        Feature: Panels
-      </APanelTitle>
-      <AIcon>settings</AIcon>
-    </APanelHeader>
-    <APanelBody>
-      Panels create a sense of discreteness in the content.
-    </APanelBody>
-    <APanelFooter>
-      Use panels today!
-    </APanelFooter>
-  </APanel>
+  <AApp>
+    <APanel>
+      <APanelHeader>
+        <APanelTitle>
+          Feature: Panels
+        </APanelTitle>
+        <AIcon>settings</AIcon>
+      </APanelHeader>
+      <APanelBody>
+        Panels create a sense of discreteness in the content.
+      </APanelBody>
+      <APanelFooter>
+        Use panels today!
+      </APanelFooter>
+    </APanel>
+  </AApp>
 </Preview>
 
 ## Props
@@ -62,132 +65,162 @@ All Panel components (`APanel`, `APanelHeader`, `APanelTitle`, `APanelBody`, `AP
 
 <Props of={APanelTitle} />
 
-## Panel Types
+## Panel Style Variants
 
 <Preview>
-  <APanel>
-    <APanelHeader>
-      <APanelTitle>
-        Feature: Panels
-      </APanelTitle>
-      <AIcon>settings</AIcon>
-    </APanelHeader>
-    <APanelBody>
-      Panels create a sense of discreteness in the content.
-    </APanelBody>
-    <APanelFooter>
-      Use panels today!
-    </APanelFooter>
-  </APanel>
-  <APanel type="grey">
-    <APanelHeader>
-      <APanelTitle>
-        Feature: Panels
-      </APanelTitle>
-      <AIcon>settings</AIcon>
-    </APanelHeader>
-    <APanelBody>
-      Panels create a sense of discreteness in the content.
-    </APanelBody>
-    <APanelFooter>
-      Use panels today!
-    </APanelFooter>
-  </APanel>
-    <APanel type="white">
-    <APanelHeader>
-      <APanelTitle>
-        Feature: Panels
-      </APanelTitle>
-      <AIcon>settings</AIcon>
-    </APanelHeader>
-    <APanelBody>
-      Panels create a sense of discreteness in the content.
-    </APanelBody>
-    <APanelFooter>
-      Use panels today!
-    </APanelFooter>
-  </APanel>
+  <Story name="variants-1">
+    <AApp>
+      <APanel>
+        <APanelHeader>
+          <APanelTitle>
+            Feature: Panels
+          </APanelTitle>
+          <AIcon>settings</AIcon>
+        </APanelHeader>
+        <APanelBody>
+          Panels create a sense of discreteness in the content.
+        </APanelBody>
+        <APanelFooter>
+          Use panels today!
+        </APanelFooter>
+      </APanel>
+    </AApp>
+  </Story>
+  <Story name="variants-2">
+    <AApp>
+      <APanel type="grey">
+        <APanelHeader>
+          <APanelTitle>
+            Feature: Panels
+          </APanelTitle>
+          <AIcon>settings</AIcon>
+        </APanelHeader>
+        <APanelBody>
+          Panels create a sense of discreteness in the content.
+        </APanelBody>
+        <APanelFooter>
+          Use panels today!
+        </APanelFooter>
+      </APanel>
+    </AApp>
+  </Story>
+  <Story name="variants-3">
+    <AApp>
+      <APanel type="white">
+        <APanelHeader>
+          <APanelTitle>
+            Feature: Panels
+          </APanelTitle>
+          <AIcon>settings</AIcon>
+        </APanelHeader>
+        <APanelBody>
+          Panels create a sense of discreteness in the content.
+        </APanelBody>
+        <APanelFooter>
+          Use panels today!
+        </APanelFooter>
+      </APanel>
+    </AApp>
+  </Story>
 </Preview>
 
 
 ## Dusk Theme
 
-<Preview className="theme--dusk" style={{backgroundColor: "#000"}}>
-  <APanel>
-    <APanelHeader>
-      <APanelTitle>
-        Feature: Panels
-      </APanelTitle>
-      <AIcon>settings</AIcon>
-    </APanelHeader>
-    <APanelBody>
-      Panels create a sense of discreteness in the content.
-    </APanelBody>
-    <APanelFooter>
-      Use panels today!
-    </APanelFooter>
-  </APanel>
-  <APanel type="grey">
-    <APanelHeader>
-      <APanelTitle>
-        Feature: Panels
-      </APanelTitle>
-      <AIcon>settings</AIcon>
-    </APanelHeader>
-    <APanelBody>
-      Panels create a sense of discreteness in the content.
-    </APanelBody>
-    <APanelFooter>
-      Use panels today!
-    </APanelFooter>
-  </APanel>
-  <APanel type="white">
-    <APanelHeader>
-      <APanelTitle>
-        Feature: Panels
-      </APanelTitle>
-      <AIcon>settings</AIcon>
-    </APanelHeader>
-    <APanelBody>
-      Panels create a sense of discreteness in the content.
-    </APanelBody>
-    <APanelFooter>
-      Use panels today!
-    </APanelFooter>
-  </APanel>
+<Preview style={{backgroundColor: '#18191d'}}>
+  <Story name="dusk-1">
+    <AApp theme="dusk">
+      <APanel>
+        <APanelHeader>
+          <APanelTitle>
+            Feature: Panels
+          </APanelTitle>
+          <AIcon>settings</AIcon>
+        </APanelHeader>
+        <APanelBody>
+          Panels create a sense of discreteness in the content.
+        </APanelBody>
+        <APanelFooter>
+          Use panels today!
+        </APanelFooter>
+      </APanel>
+    </AApp>
+  </Story>
+  <Story name="dusk-2">
+    <AApp theme="dusk">
+      <APanel type="grey">
+        <APanelHeader>
+          <APanelTitle>
+            Feature: Panels
+          </APanelTitle>
+          <AIcon>settings</AIcon>
+        </APanelHeader>
+        <APanelBody>
+          Panels create a sense of discreteness in the content.
+        </APanelBody>
+        <APanelFooter>
+          Use panels today!
+        </APanelFooter>
+      </APanel>
+    </AApp>
+  </Story>
+  <Story name="dusk-3">
+    <AApp theme="dusk">
+      <APanel type="white">
+        <APanelHeader>
+          <APanelTitle>
+            Feature: Panels
+          </APanelTitle>
+          <AIcon>settings</AIcon>
+        </APanelHeader>
+        <APanelBody>
+          Panels create a sense of discreteness in the content.
+        </APanelBody>
+        <APanelFooter>
+          Use panels today!
+        </APanelFooter>
+      </APanel>
+    </AApp>
+  </Story>
 </Preview>
 
 ## Panel Title Sizes
 
 <Preview>
-  <APanel>
-    <APanelHeader>
-      <APanelTitle>
-        Feature: Panels
-      </APanelTitle>
-      <AIcon>settings</AIcon>
-    </APanelHeader>
-    <APanelBody>
-      Panels create a sense of discreteness in the content.
-    </APanelBody>
-    <APanelFooter>
-      Use panels today!
-    </APanelFooter>
-  </APanel>
-  <APanel>
-    <APanelHeader>
-      <APanelTitle small>
-        Feature: Panels
-      </APanelTitle>
-      <AIcon>settings</AIcon>
-    </APanelHeader>
-    <APanelBody>
-      Panels create a sense of discreteness in the content.
-    </APanelBody>
-    <APanelFooter>
-      Use panels today!
-    </APanelFooter>
-  </APanel>
+  <Story name="title-1">
+    <AApp>
+      <APanel>
+        <APanelHeader>
+          <APanelTitle>
+            Feature: Panels
+          </APanelTitle>
+          <AIcon>settings</AIcon>
+        </APanelHeader>
+        <APanelBody>
+          Panels create a sense of discreteness in the content.
+        </APanelBody>
+        <APanelFooter>
+          Use panels today!
+        </APanelFooter>
+      </APanel>
+    </AApp>
+  </Story>
+  <Story name="title-2">
+    <AApp>
+      <APanel>
+        <APanelHeader>
+          <APanelTitle small>
+            Feature: Panels
+          </APanelTitle>
+          <AIcon>settings</AIcon>
+        </APanelHeader>
+        <APanelBody>
+          Panels create a sense of discreteness in the content.
+        </APanelBody>
+        <APanelFooter>
+          Use panels today!
+        </APanelFooter>
+      </APanel>
+    </AApp>
+  </Story>
 </Preview>
-
-

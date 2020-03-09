@@ -1,7 +1,6 @@
 // -----------------------------------------------------------------------------
 // Base Colors
 // -----------------------------------------------------------------------------
-$base-bg: $color-gray--dark5; // Component bg (#18191d);
 $base-pg-bg: $color-gray--dark5; // Page bg (#18191d);
 $base-icon-color: $color-gray--light2; // Icons (#dfdfdf);
 // -----------------------------------------------------------------------------
@@ -150,14 +149,6 @@ $radio-border--disabled: $color-gray--light1; // #c6c7ca;
 $radio-bg--disabled: transparent;
 $radio-box-bg--disabled: $color-blue4; // #6a7890;
 $radio-opacity-disabled: $alpha-3;
-// -----------------------------------------------------------------------------
-// Scrollbar
-// -----------------------------------------------------------------------------
-$scrollbar-track-bg: rgba($color-gray--light5, $alpha-1);
-// (#fbfbfb, 10%);
-$scrollbar-track-border-color: rgba($color-gray--light4, $alpha-1);
-// (#f2f2f2, 10%);
-$scrollbar-thumb-bg: $color-gray--dark5; // #18191d;
 // -----------------------------------------------------------------------------
 // Search
 // -----------------------------------------------------------------------------

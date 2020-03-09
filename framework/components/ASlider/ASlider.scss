@@ -1,93 +1,124 @@
+@import "../../styles";
+
+$slider-width: 210px;
+$slider-height: 20px;
+$slider-track-height: 6px;
+$slider-track-width: 100%;
+$slider-track-margin-top: -5px;
+$slider-track-top: 50%;
+$slider-track-left: 0;
+$slider-track-border-radius: 4px;
+$slider-track-low-height: 100%;
+$slider-track-low-top: 0;
+$slider-track-low-bottom: 0;
+$slider-selection-bg: $color-blue1;
+$slider-selection-height: 100%;
+$slider-selection-top: 0;
+$slider-selection-bottom: 0;
+$slider-handle-margin-left: -10px;
+$slider-handle-border-radius: 50%;
+$slider-handle-width: 17px;
+$slider-handle-height: 17px;
+$slider-handle-border-color: $color-blue1;
+$slider-handle-border-color-hover: $color-gray--dark3;
+$slider-handle-border-color-active: $color-gray--dark3;
+$slider-opacity-disabled: 1;
+$slider-selection-bg-disabled: $color-gray--light1;
+$slider-handle-border-disabled: $color-gray--light1;
+$slider-tick-margin-top: 20px;
+$slider-tick-label-padding-top: 4px;
+$slider-tick-label-width: 42px;
+
 .slider {
+  display: inline-block;
+  vertical-align: middle;
+  position: relative;
+  width: $slider-width;
+  height: $slider-height;
+  &__track {
+    height: $slider-track-height;
+    width: $slider-track-width;
+    margin-top: $slider-track-margin-top;
+    top: $slider-track-top;
+    left: $slider-track-left;
+    position: absolute;
+    cursor: pointer;
+    border-radius: $slider-track-border-radius;
+    &--low,
+    &--high {
+      height: $slider-track-low-height;
+      top: $slider-track-low-top;
+      bottom: $slider-track-low-bottom;
+      position: absolute;
+      background-color: $control-stroke-color;
+      box-sizing: border-box;
+      border-radius: $slider-track-border-radius;
+    }
+  }
+  &__selection {
+    background: $slider-selection-bg;
+    height: $slider-selection-height;
+    top: $slider-selection-top;
+    bottom: $slider-selection-bottom;
+    position: absolute;
+    box-sizing: border-box;
+    border-radius: $slider-track-border-radius;
+  }
+  &__handle {
+    margin-left: $slider-handle-margin-left;
+    border-radius: $slider-handle-border-radius;
+    position: absolute;
+    top: 0;
+    width: $slider-handle-width;
+    height: $slider-handle-height;
+    background-color: $base-inverse-color;
+    border: $base-border-width solid $slider-handle-border-color;
+    &:hover {
+      border: $base-border-width solid $slider-handle-border-color-hover;
+      box-shadow: inset 0 0 0 2px $base-inverse-color,
+        inset 0 0 0 2.5px $slider-handle-border-color-hover;
+    }
+    &:focus {
+      box-shadow: $base-box-shadow;
+    }
+    &:active {
+      border: $base-border-width solid $slider-handle-border-color-active;
+      box-shadow: inset 0 0 0 4px $base-inverse-color,
+        inset 0 0 0 8px $slider-handle-border-color-active;
+    }
+  }
+  &__tick {
+    white-space: nowrap;
+    margin-top: $slider-tick-margin-top;
+  }
+  &__tick-label {
+    padding-top: $slider-tick-label-padding-top;
     display: inline-block;
-    vertical-align: middle;
-    position: relative;
-    width: $slider-width;
-    height: $slider-height;
-    &__track {
-        height: $slider-track-height;
-        width: $slider-track-width;
-        margin-top: $slider-track-margin-top;
-        top: $slider-track-top;
-        left: $slider-track-left;
-        position: absolute;
-        cursor: pointer;
-        border-radius: $slider-track-border-radius;
-        &--low,
-        &--high {
-            height: $slider-track-low-height;
-            top: $slider-track-low-top;
-            bottom: $slider-track-low-bottom;
-            position: absolute;
-            background-color: $control-stroke-color;
-            box-sizing: border-box;
-            border-radius: $slider-track-border-radius;
-        }
+    text-align: left;
+    width: $slider-tick-label-width;
+  }
+  & .hide {
+    display: none;
+  }
+  &--disabled {
+    opacity: $slider-opacity-disabled;
+    & .slider__track {
+      cursor: not-allowed;
     }
-    &__selection {
-        background: $slider-selection-bg;
-        height: $slider-selection-height;
-        top: $slider-selection-top;
-        bottom: $slider-selection-bottom;
-        position: absolute;
-        box-sizing: border-box;
-        border-radius: $slider-track-border-radius;
+    & .slider__selection {
+      background-color: $slider-selection-bg-disabled;
     }
-    &__handle {
-        margin-left: $slider-handle-margin-left;
-        border-radius: $slider-handle-border-radius;
-        position: absolute;
-        top: 0;
-        width: $slider-handle-width;
-        height: $slider-handle-height;
-        background-color: $base-inverse-color;
-        border: $base-border-width solid $slider-handle-border-color;
-        &:hover {
-            border: $base-border-width solid $slider-handle-border-color-hover;
-            box-shadow: inset 0 0 0 2px $base-inverse-color,
-                inset 0 0 0 2.5px $slider-handle-border-color-hover;
-        }
-        &:focus {
-            box-shadow: $base-box-shadow;
-        }
-        &:active {
-            border: $base-border-width solid $slider-handle-border-color-active;
-            box-shadow: inset 0 0 0 4px $base-inverse-color,
-                inset 0 0 0 8px $slider-handle-border-color-active;
-        }
+    & .slider__handle {
+      border: $base-border-width solid $slider-handle-border-disabled;
+      &:hover,
+      &:active {
+        border: $base-border-width solid $slider-handle-border-disabled;
+        box-shadow: none;
+      }
     }
-    &__tick {
-        white-space: nowrap;
-        margin-top: $slider-tick-margin-top;
-    }
-    &__tick-label {
-        padding-top: $slider-tick-label-padding-top;
-        display: inline-block;
-        text-align: left;
-        width: $slider-tick-label-width;
-    }
-    & .hide {
-        display: none;
-    }
-    &--disabled {
-        opacity: $slider-opacity-disabled;
-        & .slider__track {
-            cursor: not-allowed;
-        }
-        & .slider__selection {
-            background-color: $slider-selection-bg-disabled;
-        }
-        & .slider__handle {
-            border: $base-border-width solid $slider-handle-border-disabled;
-            &:hover,
-            &:active {
-                border: $base-border-width solid $slider-handle-border-disabled;
-                box-shadow: none;
-            }
-        }
-    }
+  }
 }
 
 .slider-container {
-    height: 60px;
+  height: 60px;
 }

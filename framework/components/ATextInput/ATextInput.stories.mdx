@@ -1,5 +1,6 @@
 import { Meta, Preview, Story, Props } from '@storybook/addon-docs/blocks';
 
+import AApp from '../AApp'
 import ATextInput from "./ATextInput"
 
 <Meta title="Components/Text Inputs" component={ATextInput} />
@@ -23,23 +24,25 @@ import ATextInput from "@cisco-ats/atomic-react/ATextInput";
 ## Usage
 
 <Preview>
-  <div className="atomic-ui-root--animated" style={{display:'flex',flexFlow:'column'}}>
-    <p>
-      <ATextInput placeholder="Normal" />
-    </p>
-    <p>
-      <ATextInput placeholder="Disabled" disabled />
-    </p>
-    <p>
-      <ATextInput placeholder="Read Only State" readOnly />
-    </p>
-    <p>
-      <ATextInput validationState="warning" placeholder="Warning State" />
-    </p>
-    <p>
-      <ATextInput validationState="danger" placeholder="Error State" />
-    </p>
-  </div>
+  <Story name="usage-1">
+    <AApp>
+      <p>
+        <ATextInput placeholder="Normal" />
+      </p>
+      <p>
+        <ATextInput placeholder="Disabled" disabled />
+      </p>
+      <p>
+        <ATextInput placeholder="Read Only State" readOnly />
+      </p>
+      <p>
+        <ATextInput validationState="warning" placeholder="Warning State" />
+      </p>
+      <p>
+        <ATextInput validationState="danger" placeholder="Error State" />
+      </p>
+    </AApp>
+  </Story>
 </Preview>
 
 ## Text Input Props
@@ -48,35 +51,43 @@ The `ATextInput` component inherits passed props.
 
 <Props of={ATextInput} />
 
-
 ## Dusk Theme
 
-<Preview className="theme--dusk" style={{backgroundColor: "#000", color: '#fff'}}>
-  <div className="atomic-ui-root--animated" style={{display:'flex',flexFlow:'column'}}>
-    <p>
-      <ATextInput placeholder="Normal" />
-    </p>
-    <p>
-      <ATextInput placeholder="Disabled" disabled />
-    </p>
-    <p>
-      <ATextInput placeholder="Read Only State" readOnly />
-    </p>
-    <p>
-      <ATextInput validationState="warning" placeholder="Warning State" />
-    </p>
-    <p>
-      <ATextInput validationState="danger" placeholder="Error State" />
-    </p>
-  </div>
+<Preview style={{backgroundColor: '#18191d'}}>
+  <Story name="dusk-1">
+    <AApp theme="dusk">
+      <p>
+        <ATextInput placeholder="Normal" />
+      </p>
+      <p>
+        <ATextInput placeholder="Disabled" disabled />
+      </p>
+      <p>
+        <ATextInput placeholder="Read Only State" readOnly />
+      </p>
+      <p>
+        <ATextInput validationState="warning" placeholder="Warning State" />
+      </p>
+      <p>
+        <ATextInput validationState="danger" placeholder="Error State" />
+      </p>
+    </AApp>
+  </Story>
 </Preview>
 
 ## Animations
 
-Animations are enabled when a parent element has the `atomic-ui-root--animated` CSS class.
+Animations are enabled by default on the `AApp` component and can be disabled.
 
 <Preview>
-  <div className="atomic-ui-root--animated">
-    <ATextInput placeholder="Animated" />
-  </div>
+  <Story name="animations-1">
+    <AApp>
+      <ATextInput placeholder="Animated" />
+    </AApp>
+  </Story>
+  <Story name="animations-2">
+    <AApp animations={false}>
+      <ATextInput placeholder="Not Animated" />
+    </AApp>
+  </Story>
 </Preview>

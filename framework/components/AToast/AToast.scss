@@ -1,43 +1,54 @@
+@import "../../styles";
+
+$toast-min-height: 80px;
+$toast-min-width: 260px;
+$toast-max-width: 300px;
+$toast-padding: 10px 15px;
+$toast-margin: 0 0 0 10px;
+$toast-border-width: 5px;
+$toast-title-font-weight: $font-weight-bold;
+$toast-icon-font-size: $font-size;
+
 .toast {
-    display: flex;
-    position: relative;
-    $color: $base-color;
-    background: $control-fill-color;
-    border: $toast-border-width solid $control-stroke-color;
-    border-radius: $base-border-radius;
-    min-height: $toast-min-height;
-    min-width: $toast-min-width;
-    max-width: $toast-max-width;
-    padding: $toast-padding;
-    &__icon {
-        font-size: $toast-icon-font-size;
-    }
-    &__body {
-        margin: $toast-margin;
-        font-size: $base-font-size;
-    }
-    &__title {
-        font-weight: $toast-title-font-weight;
-        font-size: $base-font-size;
-    }
+  display: flex;
+  position: relative;
+  $color: $base-color;
+  background: $control-fill-color;
+  border: $toast-border-width solid $control-stroke-color;
+  border-radius: $base-border-radius;
+  min-height: $toast-min-height;
+  min-width: $toast-min-width;
+  max-width: $toast-max-width;
+  padding: $toast-padding;
+  &__icon {
+    font-size: $toast-icon-font-size;
+  }
+  &__body {
+    margin: $toast-margin;
+    font-size: $base-font-size;
+  }
+  &__title {
+    font-weight: $toast-title-font-weight;
+    font-size: $base-font-size;
+  }
 }
 
 .icon {
-    &-information {
-        @include alert-icon-color($color-information);
-    }
-    &-good {
-        @include alert-icon-color($color-good);
-    }
-    &-warning {
-        @include alert-icon-color($color-warning);
-    }
-    &-critical-stop {
-        @include alert-icon-color($color-error);
-    }
+  &-information {
+    @include alert-icon-color($color-information);
+  }
+  &-good {
+    @include alert-icon-color($color-good);
+  }
+  &-warning {
+    @include alert-icon-color($color-warning);
+  }
+  &-critical-stop {
+    @include alert-icon-color($color-error);
+  }
 }
 
-&.atomic-ui-root--animated .toast {
-    animation-name: fade-in;
-    animation-duration: $transition-duration--fast;
+.a-app--animated .toast {
+  animation-name: fade-in;
+  animation-duration: $transition-duration--fast;
 }

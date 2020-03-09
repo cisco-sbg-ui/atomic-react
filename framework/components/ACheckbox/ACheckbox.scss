@@ -206,7 +206,7 @@ $checkbox-transition: border-color $transition-duration--extra-fast
   }
 }
 
-.atomic-ui-root--animated .a-checkbox {
+.a-app--animated .a-checkbox {
   &__input {
     & ~ .a-checkbox__box {
       @include transition($checkbox-transition);

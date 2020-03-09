@@ -69,6 +69,7 @@ $tab-oversized-margin: 0;
           map-deep-get($theme, "control", "stroke-color");
       }
       &--selected {
+        background-color: $tab-oversized--selected-background-color;
         border-top: $base-border-width solid transparent;
         border-bottom: $base-border-width solid transparent;
         @include tab-bar(

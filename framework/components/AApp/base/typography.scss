@@ -1,0 +1,153 @@
+@include theme(a-app--wrap) using ($theme) {
+  background-color: map-deep-get($theme, "base", "bg");
+  color: map-deep-get($theme, "base", "color");
+}
+
+.a-app--wrap {
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-size: $base-font-size;
+  font-family: $font-family;
+  font-weight: $base-font-weight;
+  line-height: $line-height;
+  height: 100%;
+  margin: 0;
+  text-transform: none;
+  box-sizing: border-box;
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  .h1,
+  .h2,
+  .h3,
+  .h4,
+  .h5 {
+    font-family: $headings-font-family;
+    font-weight: $headings-font-weight;
+    line-height: $headings-line-height;
+    margin: $headings-margin 0;
+    color: $headings-color;
+  }
+
+  h1,
+  .h1 {
+    font-size: $h1-font-size;
+  }
+
+  h2,
+  .h2 {
+    font-size: $h2-font-size;
+  }
+
+  h3,
+  .h3 {
+    font-size: $h3-font-size;
+  }
+
+  h4,
+  .h4 {
+    font-size: $h4-font-size;
+  }
+
+  h5,
+  .h5 {
+    font-size: $h5-font-size;
+  }
+
+  .display-1 {
+    font-size: $display1-size;
+    font-weight: $display1-weight;
+    line-height: $display-line-height;
+  }
+
+  .display-2 {
+    font-size: $display2-size;
+    font-weight: $display2-weight;
+    line-height: $display-line-height;
+  }
+
+  small,
+  .small {
+    font-size: 80%;
+    font-weight: $font-weight;
+  }
+
+  mark,
+  .mark {
+    padding: $mark-padding;
+    background-color: $mark-bg;
+  }
+
+  abbr[title] {
+    text-transform: uppercase;
+    text-decoration: underline;
+    text-decoration: underline dotted;
+    cursor: help;
+    border-bottom: 0;
+  }
+
+  blockquote {
+    margin: 0;
+    padding: $blockquote-spacing;
+
+    & cite {
+      display: block;
+      color: $blockquote-cite-color;
+      font-style: italic;
+
+      &:before {
+        content: "\2014 \00A0";
+      }
+    }
+  }
+
+  code,
+  kbd,
+  pre,
+  samp {
+    font-family: $font-family-monospace;
+  }
+
+  code,
+  pre {
+    font-size: $code-font-size;
+    color: $code-color;
+    background-color: $code-bg;
+    border-radius: $base-border-radius;
+  }
+
+  code {
+    word-break: break-word;
+    padding: $code-padding;
+  }
+
+  pre {
+    display: block;
+    margin: 0;
+    padding: $pre-padding;
+    border: 0;
+
+    code {
+      font-size: inherit;
+      color: inherit;
+      word-break: normal;
+    }
+  }
+
+  p {
+    margin: ($spacing * 0.5) 0;
+  }
+
+  input,
+  select,
+  textarea,
+  button {
+    font-size: $font-size--sm;
+    font-family: $font-family;
+  }
+}

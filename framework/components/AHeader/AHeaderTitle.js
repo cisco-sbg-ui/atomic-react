@@ -4,7 +4,7 @@ import "./AHeader.scss";
 
 const AHeaderTitle = forwardRef(
   ({children, className: propsClassName, ...rest}, ref) => {
-    const className = "a-header__title";
+    const className = "a-header__title h1";
 
     if (propsClassName) {
       className += ` ${propsClassName}`;

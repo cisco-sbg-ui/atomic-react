@@ -15,7 +15,7 @@ const loremIpsum =
 
 storiesOf("Accordion", module)
   .add("with default", () => (
-    <div className="atomic-ui-root">
+    <div className="a-app">
       <Accordion>
         <AccordionCard>
           <AccordionHeader>Accordion Item 1</AccordionHeader>
@@ -39,7 +39,7 @@ storiesOf("Accordion", module)
     </div>
   ))
   .add("with additional features", () => (
-    <div className="atomic-ui-root theme-dusk">
+    <div className="a-app theme-dusk">
       <Accordion>
         <AccordionCard>
           <AccordionHeader style={{textAlign: "left"}}>
@@ -124,7 +124,7 @@ storiesOf("Accordion", module)
     ));
 
     return (
-      <div className="atomic-ui-root theme-dusk">
+      <div className="a-app theme-dusk">
         <Accordion className="platform-accordion">{cards}</Accordion>
       </div>
     );

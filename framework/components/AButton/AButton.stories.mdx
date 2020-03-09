@@ -1,6 +1,7 @@
 import { Meta, Preview, Story, Props } from '@storybook/addon-docs/blocks';
 import {useState} from 'react'
 
+import AApp from '../AApp'
 import AButton from "./AButton"
 import ADivider from "../ADivider"
 import AIcon from "../AIcon"
@@ -27,24 +28,25 @@ import AButton from "@cisco-ats/atomic-react/AButton";
 ## Usage
 
 <Preview>
-  <YourComponent>
-{() => {
-  const [count, setCount] = useState(0);
-  return (
-    <div className="atomic-ui-root--animated">
-      <AButton primary onClick={() => setCount(count + 1)}>
-        Click Me
-      </AButton>
-      <div>
-        Button has been clicked {count} times.
-      </div>
-    </div>
-  );
-}}
-  </YourComponent>
-  <div>
-    <AButton secondary to="https://www.cisco.com" target="_blank">Launch Cisco.com</AButton>
-  </div>
+  <Story name="1">
+    <AApp>
+      <YourComponent>
+    {() => {
+      const [count, setCount] = useState(0);
+      return (
+        <div>
+          <AButton onClick={() => setCount(count + 1)}>
+            Click Me
+          </AButton>
+          <div>
+            Button has been clicked {count} times.
+          </div>
+        </div>
+      );
+    }}
+      </YourComponent>
+    </AApp>
+  </Story>
 </Preview>
 
 
@@ -57,97 +59,193 @@ import AButton from "@cisco-ats/atomic-react/AButton";
   ### Primary
 
 <Preview>
-  <AButton primary>Primary</AButton>
-  <AButton primary disabled>Primary Disabled</AButton>
+  <Story name="primary">
+    <AApp>
+      <p>
+        <AButton>Primary</AButton>
+      </p>
+      <p>
+        <AButton disabled>Primary Disabled</AButton>
+      </p>
+    </AApp>
+  </Story>
 </Preview>
 
   ### Secondary
 
 <Preview>
-  <AButton secondary>Secondary</AButton>
-  <AButton secondary disabled>Secondary Disabled</AButton>
+  <Story name="secondary">
+    <AApp>
+      <p>
+        <AButton secondary>Secondary</AButton>
+      </p>
+      <p>
+        <AButton secondary disabled>Secondary Disabled</AButton>
+      </p>
+    </AApp>
+  </Story>
 </Preview>
 
   ### Tertiary
 
 <Preview>
-  <AButton tertiary>Tertiary</AButton>
-  <AButton tertiary disabled>Tertiary Disabled</AButton>
+  <Story name="tertiary">
+    <AApp>
+      <p>
+        <AButton tertiary>Tertiary</AButton>
+      </p>
+      <p>
+        <AButton tertiary disabled>Tertiary Disabled</AButton>
+      </p>
+    </AApp>
+  </Story>
 </Preview>
 
   ### Tertiary Alt
 
 <Preview>
-  <AButton tertiaryAlt>Tertiary Alt</AButton>
-  <AButton tertiaryAlt disabled>Tertiary Alt Disabled</AButton>
+  <Story name="tertiary-alt">
+    <AApp>
+      <p>
+        <AButton tertiaryAlt>Tertiary Alt</AButton>
+      </p>
+      <p>
+        <AButton tertiaryAlt disabled>Tertiary Alt Disabled</AButton>
+      </p>
+    </AApp>
+  </Story>
 </Preview>
 
   ### Tertiary Alt Icon
 
 <Preview>
-  <AButton tertiaryAltIcon>
-    <AIcon>settings</AIcon>
-    Tertiary Alt Icon
-  </AButton>
-  <AButton tertiaryAltIcon disabled>
-    <AIcon>settings</AIcon>
-    Tertiary Alt Icon Disabled
-  </AButton>
+  <Story name="tertiary-alt-icon">
+    <AApp>
+      <p>
+        <AButton tertiaryAltIcon>
+          <AIcon>settings</AIcon>
+          Tertiary Alt Icon
+        </AButton>
+      </p>
+      <p>
+        <AButton tertiaryAltIcon disabled>
+          <AIcon>settings</AIcon>
+          Tertiary Alt Icon Disabled
+        </AButton>
+      </p>
+    </AApp>
+  </Story>
 </Preview>
 
 ## Dusk Theme
 
   ### Primary
 
-<Preview className="theme--dusk" style={{backgroundColor: "#000", color: '#fff'}}>
-  <AButton primary>Primary</AButton>
-  <AButton primary disabled>Primary Disabled</AButton>
+<Preview style={{backgroundColor: '#18191d'}}>
+  <Story name="dusk-primary">
+    <AApp theme="dusk">
+      <p>
+        <AButton>Primary</AButton>
+      </p>
+      <p>
+        <AButton disabled>Primary Disabled</AButton>
+      </p>
+    </AApp>
+  </Story>
 </Preview>
 
   ### Secondary
 
-<Preview className="theme--dusk" style={{backgroundColor: "#000", color: '#fff'}}>
-  <AButton secondary>Secondary</AButton>
-  <AButton secondary disabled>Secondary Disabled</AButton>
+<Preview style={{backgroundColor: '#18191d'}}>
+  <Story name="dusk-secondary">
+    <AApp theme="dusk">
+      <p>
+        <AButton secondary>Secondary</AButton>
+      </p>
+      <p>
+        <AButton secondary disabled>Secondary Disabled</AButton>
+      </p>
+    </AApp>
+  </Story>
 </Preview>
 
   ### Tertiary
 
-<Preview className="theme--dusk" style={{backgroundColor: "#000", color: '#fff'}}>
-  <AButton tertiary>Tertiary</AButton>
-  <AButton tertiary disabled>Tertiary Disabled</AButton>
+<Preview style={{backgroundColor: '#18191d'}}>
+  <Story name="dusk-tertiary">
+    <AApp theme="dusk">
+      <p>
+        <AButton tertiary>Tertiary</AButton>
+      </p>
+      <p>
+        <AButton tertiary disabled>Tertiary Disabled</AButton>
+      </p>
+    </AApp>
+  </Story>
 </Preview>
 
   ### Tertiary Alt
 
-<Preview className="theme--dusk" style={{backgroundColor: "#000", color: '#fff'}}>
-  <AButton tertiaryAlt>Tertiary Alt</AButton>
-  <AButton tertiaryAlt disabled>Tertiary Alt Disabled</AButton>
+<Preview style={{backgroundColor: '#18191d'}}>
+  <Story name="dusk-tertiary-alt">
+    <AApp theme="dusk">
+      <p>
+        <AButton tertiaryAlt>Tertiary Alt</AButton>
+      </p>
+      <p>
+        <AButton tertiaryAlt disabled>Tertiary Alt Disabled</AButton>
+      </p>
+    </AApp>
+  </Story>
 </Preview>
 
   ### Tertiary Alt Icon
 
-<Preview className="theme--dusk" style={{backgroundColor: "#000", color: '#fff'}}>
-  <AButton tertiaryAltIcon>
-    <AIcon>settings</AIcon>
-    Tertiary Alt Icon
-  </AButton>
-  <AButton tertiaryAltIcon disabled>
-    <AIcon>settings</AIcon>
-    Tertiary Alt Icon Disabled
-  </AButton>
+<Preview style={{backgroundColor: '#18191d'}}>
+  <Story name="dusk-tertiary-alt-icon">
+    <AApp theme="dusk">
+      <p>
+        <AButton tertiaryAltIcon>
+          <AIcon>settings</AIcon>
+          Tertiary Alt Icon
+        </AButton>
+      </p>
+      <p>
+        <AButton tertiaryAltIcon disabled>
+          <AIcon>settings</AIcon>
+          Tertiary Alt Icon Disabled
+        </AButton>
+      </p>
+    </AApp>
+  </Story>
+</Preview>
+
+## Link Buttons
+
+As a convenience, if the `to` property is used, the component will render as an HTML anchor.
+
+<Preview>
+  <AApp>
+    <AButton secondary to="https://www.cisco.com">
+      Launch Cisco.com
+    </AButton>
+  </AApp>
 </Preview>
 
 
 ## Animations
 
-Animations are enabled when a parent element has the `atomic-ui-root--animated` CSS class.
+Animations are enabled by default on the `AApp` component and can be disabled.
 
 <Preview>
-  <div className="atomic-ui-root--animated">
-    <AButton primary>
-      Default
+  <AApp>
+    <AButton>
+      Animated
     </AButton>
-  </div>
+  </AApp>
+  <AApp animations={false}>
+    <AButton>
+      Not Animated
+    </AButton>
+  </AApp>
 </Preview>
-
