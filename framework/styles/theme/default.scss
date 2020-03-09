@@ -1,5 +1,13 @@
 $atomic-default: (
+  "app": (
+    "scrollbar": (
+      "track-bg": $color-gray--light5,
+      "track-border-color": $color-gray--light4,
+      "thumb-bg": $color-gray--medium4
+    )
+  ),
   "base": (
+    "bg": $white,
     "brand-color": $color-blue1,
     "color": $color-gray--dark1,
     "color--active": $color-category--blue--burnt2,
@@ -25,7 +33,7 @@ $atomic-default: (
     "secondary": (
       "bg--hover": $color-category--blue--wash3,
       "bg--active": $color-category--blue--wash3,
-      "bg--focus": $base-bg,
+      "bg--focus": $white,
       "border": $color-blue1,
       "border--hover": $color-category--blue--burnt1,
       "border--active": $color-category--blue--burnt2,
@@ -61,16 +69,16 @@ $atomic-default: (
     "color-lighter": $color-gray--light4
   ),
   "header": (
-    "bg-color": $base-bg,
+    "bg-color": $white,
     "icon-color": $color-gray--dark2
   ),
   "panel": (
-    "bg": $base-bg,
+    "bg": $white,
     "bg-gray": $color-gray--light4
   ),
   "tabs": (
     "oversized-background-color": $color-gray--light5,
-    "oversized--hover-background-color": $base-bg
+    "oversized--hover-background-color": $white
   ),
   "text-input": (
     "bg": $white,

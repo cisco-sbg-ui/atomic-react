@@ -1,5 +1,6 @@
 import { Meta, IconGallery, IconItem, Preview, Props } from '@storybook/addon-docs/blocks';
 
+import AApp from '../AApp'
 import AIcon from './AIcon';
 import Icons from "./icons.json";
 
@@ -24,9 +25,11 @@ And in the target component add:
 ## Usage
 
 <Preview>
-  <AIcon size="large">add</AIcon>
-  <AIcon color="#dd2">warning</AIcon>
-  <AIcon size="32" color="red">block</AIcon>
+  <AApp>
+    <AIcon color="#dd2">warning</AIcon>
+    <AIcon size="32" color="red">block</AIcon>
+    <AIcon size="large">add</AIcon>
+  </AApp>
 </Preview>
 
 ## Props

@@ -1,6 +1,7 @@
 import { Meta, Preview, Story, Props } from '@storybook/addon-docs/blocks';
 import {useState} from 'react'
 
+import AApp from '../AApp'
 import LoremIpsum from '../../utils/lorem-ipsum'
 import YourComponent from '../../utils/storybook-function'
 import {AHeader, AHeaderLogo, AHeaderTitle, AHeaderNavigation, AHeaderToolbar} from "./"
@@ -34,32 +35,36 @@ import {
 ## Usage
 
 <Preview>
-  <AHeader>
-    <AHeaderLogo href="#cisco">
-      <AIcon>cisco</AIcon>
-    </AHeaderLogo>
-    <AHeaderTitle>
-      Product Name
-    </AHeaderTitle>
-    <AHeaderNavigation>
-      <ATabGroup tall>
-        <ATab>
-          Demo
-        </ATab>
-        <ATab>
-          Contact Us
-        </ATab>
-      </ATabGroup>
-    </AHeaderNavigation>
-    <AHeaderToolbar>
-      <a href="#search">
-        <AIcon tabIndex="0">search</AIcon>
-      </a>
-      <a href="#user">
-        <AIcon tabIndex="0">user</AIcon>
-      </a>
-    </AHeaderToolbar>
-  </AHeader>
+  <Story name="usage-1">
+    <AApp>
+      <AHeader>
+        <AHeaderLogo href="#cisco">
+          <AIcon>cisco</AIcon>
+        </AHeaderLogo>
+        <AHeaderTitle>
+          Product Name
+        </AHeaderTitle>
+        <AHeaderNavigation>
+          <ATabGroup tall>
+            <ATab>
+              Demo
+            </ATab>
+            <ATab>
+              Contact Us
+            </ATab>
+          </ATabGroup>
+        </AHeaderNavigation>
+        <AHeaderToolbar>
+          <a href="#search">
+            <AIcon tabIndex="0">search</AIcon>
+          </a>
+          <a href="#user">
+            <AIcon tabIndex="0">user</AIcon>
+          </a>
+        </AHeaderToolbar>
+      </AHeader>
+    </AApp>
+  </Story>
 </Preview>
 
 ## Header Props
@@ -95,31 +100,35 @@ The `AHeaderToolbar` component inherits passed props.
 
 ## Dusk Theme
 
-<Preview className="theme--dusk" style={{backgroundColor: "#000", color: '#fff'}}>
-  <AHeader>
-    <AHeaderLogo href="#cisco">
-      <AIcon>cisco</AIcon>
-    </AHeaderLogo>
-    <AHeaderTitle>
-      Product Name
-    </AHeaderTitle>
-    <AHeaderNavigation>
-      <ATabGroup tall>
-        <ATab>
-          Demo
-        </ATab>
-        <ATab>
-          Contact Us
-        </ATab>
-      </ATabGroup>
-    </AHeaderNavigation>
-    <AHeaderToolbar>
-      <a href="#search">
-        <AIcon tabIndex="0">search</AIcon>
-      </a>
-      <a href="#user">
-        <AIcon tabIndex="0">user</AIcon>
-      </a>
-    </AHeaderToolbar>
-  </AHeader>
+<Preview style={{backgroundColor: '#18191d'}}>
+  <Story name="dusk-1">
+    <AApp theme="dusk">
+      <AHeader>
+        <AHeaderLogo href="#cisco">
+          <AIcon>cisco</AIcon>
+        </AHeaderLogo>
+        <AHeaderTitle>
+          Product Name
+        </AHeaderTitle>
+        <AHeaderNavigation>
+          <ATabGroup tall>
+            <ATab>
+              Demo
+            </ATab>
+            <ATab>
+              Contact Us
+            </ATab>
+          </ATabGroup>
+        </AHeaderNavigation>
+        <AHeaderToolbar>
+          <a href="#search">
+            <AIcon tabIndex="0">search</AIcon>
+          </a>
+          <a href="#user">
+            <AIcon tabIndex="0">user</AIcon>
+          </a>
+        </AHeaderToolbar>
+      </AHeader>
+    </AApp>
+  </Story>
 </Preview>

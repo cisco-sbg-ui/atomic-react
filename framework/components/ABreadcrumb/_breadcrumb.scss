@@ -1,26 +1,34 @@
+@import "../../styles";
+
+$breadcrumb-font-size: $font-size--xs;
+$breadcrumb-margin: 8px 0 12px;
+$breadcrumb-padding: 0;
+$breadcrumb-divider: "/";
+$breadcrumb__divider-padding: 0 5px 0 5px;
+
 .breadcrumb {
-    @include clearfix;
-    @include list--unstyled;
-    background-color: transparent;
-    margin: $breadcrumb-margin;
-    padding: $breadcrumb-padding;
-    &__item {
-        float: left;
-        font-size: $breadcrumb-font-size;
-        color: $base-brand-color;
-        & + .breadcrumb__item::before {
-            color: $base-color;
-            display: inline-block;
-            padding: $breadcrumb__divider-padding;
-            content: '#{$breadcrumb-divider}';
-        }
-        &:hover,
-        &:focus {
-            color: $base-brand-color;
-            text-decoration: underline;
-        }
-        &:active {
-            color: $base-color--active;
-        }
+  @include clearfix;
+  @include list--unstyled;
+  background-color: transparent;
+  margin: $breadcrumb-margin;
+  padding: $breadcrumb-padding;
+  &__item {
+    float: left;
+    font-size: $breadcrumb-font-size;
+    color: $base-brand-color;
+    & + .breadcrumb__item::before {
+      color: $base-color;
+      display: inline-block;
+      padding: $breadcrumb__divider-padding;
+      content: "#{$breadcrumb-divider}";
     }
+    &:hover,
+    &:focus {
+      color: $base-brand-color;
+      text-decoration: underline;
+    }
+    &:active {
+      color: $base-color--active;
+    }
+  }
 }

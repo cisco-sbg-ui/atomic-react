@@ -1,94 +1,124 @@
+@import "../../styles";
+
+$alert-min-height: 50px;
+$alert-icon-font-size: $font-size;
+$alert-icon-margin: 0 16px;
+$alert-margin: 0;
+$alert-padding: 15px 0;
+$alert-body-font-size: $font-size--sm;
+$alert-message-max-width: 700px;
+// Information
+$alert-bg: $color-status--blue--wash3;
+$alert-border-color: $color-status--blue--wash2;
+$alert-close-icon: $color-status--blue--wash1;
+$alert-close-icon--hover: $color-status--blue--burnt1;
+// Success
+$alert-success-bg: $color-status--green--wash3;
+$alert-success-border-color: $color-status--green--wash1;
+$alert-success-close-icon: $color-status--green--wash1;
+$alert-success-close-icon--hover: $color-status--green--burnt1;
+// Warning
+$alert-warning-bg: $color-status--orange--wash3;
+$alert-warning-border-color: $color-status--orange--wash2;
+$alert-warning-close-icon: $color-status--orange--wash1;
+$alert-warning-close-icon--hover: $color-status--orange--burnt1;
+// Danger / Error
+$alert-danger-bg: $color-status--red--wash3;
+$alert-danger-border-color: $color-status--red--wash2;
+$alert-danger-close-icon: $color-status--red--wash1;
+$alert-danger-close-icon--hover: $color-status--red--burnt1;
+
 .alert {
-    display: inline-flex;
-    align-items: flex-start;
-    position: relative;
-    width: 100%;
-    min-height: $alert-min-height;
-    border: $base-border-width solid;
-    border-radius: $base-border-radius;
-    margin: $alert-margin;
-    padding: $alert-padding;
-    @include alert-state($alert-bg, $alert-border-color, $base-color);
-    &__icon {
-        font-size: $alert-icon-font-size;
-        margin: $alert-icon-margin;
-        &.icon-close {
-            cursor: pointer;
-            @include alert-icon-color($alert-close-icon);
-            &:hover {
-                @include alert-icon-color($alert-close-icon--hover);
-            }
-            &:focus {
-                box-shadow: $base-box-shadow;
-            }
-        }
+  display: inline-flex;
+  align-items: flex-start;
+  position: relative;
+  width: 100%;
+  min-height: $alert-min-height;
+  border: $base-border-width solid;
+  border-radius: $base-border-radius;
+  margin: $alert-margin;
+  padding: $alert-padding;
+  @include alert-state($alert-bg, $alert-border-color, $base-color);
+  &__icon {
+    font-size: $alert-icon-font-size;
+    margin: $alert-icon-margin;
+    &.icon-close {
+      cursor: pointer;
+      @include alert-icon-color($alert-close-icon);
+      &:hover {
+        @include alert-icon-color($alert-close-icon--hover);
+      }
+      &:focus {
+        box-shadow: $base-box-shadow;
+      }
     }
-    &__message {
-        font-size: $alert-body-font-size;
-        max-width: $alert-message-max-width;
-        margin-right: auto;
-        align-self: center;
-        @include flex-fluid;
-        @include text-break-word;
+  }
+  &__message {
+    font-size: $alert-body-font-size;
+    max-width: $alert-message-max-width;
+    margin-right: auto;
+    align-self: center;
+    @include flex-fluid;
+    @include text-break-word;
+  }
+  &:focus {
+    box-shadow: $base-box-shadow;
+  }
+  &--state-success {
+    @include alert-state(
+      $alert-success-bg,
+      $alert-success-border-color,
+      $base-color
+    );
+    .icon-close {
+      @include alert-icon-color($alert-success-close-icon);
+      &:hover {
+        @include alert-icon-color($alert-success-close-icon--hover);
+      }
+      &:focus {
+        box-shadow: $success-box-shadow;
+      }
     }
     &:focus {
-        box-shadow: $base-box-shadow;
+      box-shadow: $success-box-shadow;
     }
-    &--state-success {
-        @include alert-state(
-            $alert-success-bg,
-            $alert-success-border-color,
-            $base-color
-        );
-        .icon-close {
-            @include alert-icon-color($alert-success-close-icon);
-            &:hover {
-                @include alert-icon-color($alert-success-close-icon--hover);
-            }
-            &:focus {
-                box-shadow: $success-box-shadow;
-            }
-        }
-        &:focus {
-            box-shadow: $success-box-shadow;
-        }
+  }
+  &--state-warning {
+    @include alert-state(
+      $alert-warning-bg,
+      $alert-warning-border-color,
+      $base-color
+    );
+    .icon-close {
+      @include alert-icon-color($alert-warning-close-icon);
+      &:hover {
+        @include alert-icon-color($alert-warning-close-icon--hover);
+      }
+      &:focus {
+        box-shadow: $warning-box-shadow;
+      }
     }
-    &--state-warning {
-        @include alert-state(
-            $alert-warning-bg,
-            $alert-warning-border-color,
-            $base-color
-        );
-        .icon-close {
-            @include alert-icon-color($alert-warning-close-icon);
-            &:hover {
-                @include alert-icon-color($alert-warning-close-icon--hover);
-            }
-            &:focus {
-                box-shadow: $warning-box-shadow;
-            }
-        }
-        &:focus {
-            box-shadow: $warning-box-shadow;
-        }
+    &:focus {
+      box-shadow: $warning-box-shadow;
     }
-    &--state-danger {
-        @include alert-state(
-            $alert-danger-bg,
-            $alert-danger-border-color,
-            $base-color
-        );
-        .icon-close {
-            @include alert-icon-color($alert-danger-close-icon);
-            &:hover {
-                @include alert-icon-color($alert-danger-close-icon--hover);
-            }
-            &:focus {
-                box-shadow: $danger-box-shadow;
-            }
-        }
-        &:focus {
-            box-shadow: $danger-box-shadow;
-        }
+  }
+  &--state-danger {
+    @include alert-state(
+      $alert-danger-bg,
+      $alert-danger-border-color,
+      $base-color
+    );
+    .icon-close {
+      @include alert-icon-color($alert-danger-close-icon);
+      &:hover {
+        @include alert-icon-color($alert-danger-close-icon--hover);
+      }
+      &:focus {
+        box-shadow: $danger-box-shadow;
+      }
     }
+    &:focus {
+      box-shadow: $danger-box-shadow;
+    }
+  }
 }

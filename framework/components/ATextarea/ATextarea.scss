@@ -1,3 +1,7 @@
+@import "../../styles";
+
+$textarea-width: 250px;
+
 .textarea {
-    width: $textarea-width;
+  width: $textarea-width;
 }

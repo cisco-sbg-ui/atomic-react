@@ -5,6 +5,8 @@ import postcss from "rollup-plugin-postcss";
 import filesize from "rollup-plugin-filesize";
 import json from "@rollup/plugin-json";
 import localResolve from "rollup-plugin-local-resolve";
+import copy from "rollup-plugin-copy";
+import url from "@rollup/plugin-url";
 
 const GLOBALS = {
   react: "React",
@@ -29,6 +31,7 @@ const config = {
      * }, {})
      */
     index: "framework",
+    AApp: "framework/components/AApp",
     AButton: "framework/components/AButton",
     ACheckbox: "framework/components/ACheckbox",
     ADivider: "framework/components/ADivider",
@@ -46,6 +49,16 @@ const config = {
   },
   external: ["react", "react-dom"],
   plugins: [
+    url({
+      include: [
+        "framework/components/AApp/base/fonts/*.ttf",
+        "framework/components/AApp/base/fonts/*.woff",
+        "framework/components/AApp/base/fonts/*.woff2"
+      ]
+    }),
+    copy({
+      targets: [{src: "./framework/components/AApp/base/fonts", dest: "./dist"}]
+    }),
     json({
       compact: true,
       preferConst: true

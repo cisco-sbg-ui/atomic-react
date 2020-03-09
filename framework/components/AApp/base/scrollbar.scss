@@ -1,0 +1,28 @@
+$scrollbar-track-height: 15px;
+$scrollbar-track-width: 15px;
+$scrollbar-thumb-border-radius: 8px;
+
+@include theme(a-app--scrollbars) using ($theme) {
+  ::-webkit-scrollbar-track {
+    background: map-deep-get($theme, "app", "scrollbar", "track-bg");
+    border: $base-border-width solid
+      map-deep-get($theme, "app", "scrollbar", "track-border-color");
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background-color: map-deep-get($theme, "app", "scrollbar", "thumb-bg");
+  }
+}
+
+.a-app--scrollbars {
+  ::-webkit-scrollbar-thumb {
+    border: 4px solid transparent;
+    border-radius: $scrollbar-thumb-border-radius;
+    background-clip: content-box;
+  }
+
+  ::-webkit-scrollbar {
+    height: $scrollbar-track-height;
+    width: $scrollbar-track-width;
+  }
+}

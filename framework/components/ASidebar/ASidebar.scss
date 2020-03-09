@@ -1,185 +1,222 @@
+@import "../../styles";
+
+// $sidebar-font-size: $base-font-size;
+$sidebar-z-index: 1031;
+$sidebar-width: 250px;
+$sidebar--state-collapsed-width: 70px;
+$sidebar-height: 100%;
+$sidebar-padding: 0 0 20px 0;
+$sidebar-bg: $base-brand-color;
+$sidebar-bg-gray: $base-color;
+$sidebar-color-gray: $color-gray--light2;
+$sidebar__title-font-size: 18px;
+$sidebar__title-line-height: 24px;
+$sidebar__header-padding: 20px 20px 10px 30px;
+$sidebar__header-line-height: 24px;
+$sidebar__list-menu-color: $base-brand-color;
+$sidebar__list-menu-bg: $white;
+$sidebar__list-menu-icon-color: $base-brand-color;
+$sidebar__list-menu-icon-color-gray: $base-icon-color;
+$sidebar__item--selected-bg: $base-color--selected;
+$sidebar__item--selected-bg-gray: $color-gray--dark2;
+$sidebar__item--selected-shadow-width: 5px;
+$sidebar__item--selected-shadow-color-gray: $base-color--selected;
+$sidebar__item--active-bg-gray: $color-gray--dark5;
+$sidebar__link-height: 30px;
+$sidebar__link-line-height: 30px;
+$sidebar__link-padding: 0 20px 0 30px;
+$sidebar__link-secondary-padding: 0 0 0 47px;
+$sidebar__link-tertiary-padding: 0 0 0 64px;
+$sidebar__link-drawer-padding: 0 20px 0 10px;
+$sidebar__link-drawer-secondary-padding: 0 0 0 27px;
+$sidebar__shevron-size: $font-size--xxs;
+$sidebar__shevron-margin: 0 10px 0 0;
+// There varieable will be used in next release in _sidebar.scss
+$sidebar__chevron-size: $font-size--xxs;
+$sidebar__chevron-margin: 0 10px 0 0;
+
 .sidebar {
-    display: block;
-    // Change the position to "absolute" when you need the Sidebar to be positioned on the left side of the page.
-    position: relative;
-    font-size: $base-font-size;
-    top: 0;
-    left: 0;
-    padding: $sidebar-padding;
-    width: $sidebar-width;
-    height: $sidebar-height;
-    background: $sidebar-bg;
+  display: block;
+  // Change the position to "absolute" when you need the Sidebar to be positioned on the left side of the page.
+  position: relative;
+  font-size: $base-font-size;
+  top: 0;
+  left: 0;
+  padding: $sidebar-padding;
+  width: $sidebar-width;
+  height: $sidebar-height;
+  background: $sidebar-bg;
+  color: $base-inverse-color;
+  overflow-y: auto;
+  overflow-x: hidden;
+  z-index: $sidebar-z-index;
+  &__header {
+    @include clearfix;
+    padding: $sidebar__header-padding;
+    line-height: $sidebar__header-line-height;
+    display: flex;
+    align-items: center;
+  }
+  &__title {
+    display: inline-block;
+    font-size: $sidebar__title-font-size;
+    line-height: $sidebar__title-line-height;
+    vertical-align: middle;
+  }
+  &__list-menu {
+    @include btn-icon();
+    color: $sidebar__list-menu-color;
+    background-color: $sidebar__list-menu-bg;
+    border-radius: $btn--icon-border-radius;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    & .icon {
+      color: $sidebar__list-menu-icon-color;
+    }
+  }
+  &__link {
+    display: flex;
     color: $base-inverse-color;
-    overflow-y: auto;
-    overflow-x: hidden;
-    z-index: $sidebar-z-index;
-    &__header {
-        @include clearfix;
-        padding: $sidebar__header-padding;
-        line-height: $sidebar__header-line-height;
-        display: flex;
-        align-items: center;
+    align-items: center;
+    height: $sidebar__link-height;
+    line-height: $sidebar__link-line-height;
+    padding: $sidebar__link-padding;
+    user-select: none;
+    &:hover,
+    &:active,
+    &:focus {
+      text-decoration: none;
+      color: $base-inverse-color;
     }
-    &__title {
-        display: inline-block;
-        font-size: $sidebar__title-font-size;
-        line-height: $sidebar__title-line-height;
-        vertical-align: middle;
+  }
+  & ul {
+    width: $sidebar-width;
+    opacity: 1;
+    list-style: none;
+    padding: 0;
+    // Second menu level
+    & > li > ul > li {
+      .sidebar__link {
+        padding: $sidebar__link-secondary-padding;
+      }
     }
-    &__list-menu {
-        @include btn-icon();
-        color: $sidebar__list-menu-color;
-        background-color: $sidebar__list-menu-bg;
-        border-radius: $btn--icon-border-radius;
-        position: absolute;
-        top: 20px;
-        right: 20px;
-        & .icon {
-            color: $sidebar__list-menu-icon-color;
-        }
+    // Third (max) menu level
+    & > li > ul > li > ul > li {
+      .sidebar__link {
+        padding: $sidebar__link-tertiary-padding;
+      }
     }
-    &__link {
-        display: flex;
-        color: $base-inverse-color;
-        align-items: center;
-        height: $sidebar__link-height;
-        line-height: $sidebar__link-line-height;
-        padding: $sidebar__link-padding;
-        user-select: none;
-        &:hover,
-        &:active,
-        &:focus {
-            text-decoration: none;
-            color: $base-inverse-color;
-        }
+  }
+  &__drawer {
+    & .icon {
+      // These variables will be switched to "$sidebar__chevron-size", "$sidebar__chevron-margin" next release;
+      font-size: $sidebar__shevron-size;
+      width: $sidebar__shevron-size;
+      margin: $sidebar__shevron-margin;
+      color: $base-inverse-color;
+    }
+    & > a.sidebar__link {
+      padding: $sidebar__link-drawer-padding;
+      &:hover {
+        background-color: $sidebar__item--selected-bg;
+        box-shadow: $sidebar__item--selected-shadow-width 0 0
+          $base-inverse-color inset;
+      }
+      &:active,
+      &:focus {
+        background-color: $base-color--active;
+      }
+    }
+    & ul > li.sidebar__drawer {
+      & > .sidebar__link {
+        padding: $sidebar__link-drawer-secondary-padding;
+      }
+    }
+    & > ul {
+      display: none;
+    }
+    &--opened {
+      & > ul {
+        display: block;
+      }
+    }
+  }
+  &__item {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    position: relative;
+    &--selected {
+      background-color: $sidebar__item--selected-bg;
+      box-shadow: $sidebar__item--selected-shadow-width 0 0 $base-inverse-color
+        inset;
+    }
+    &:hover {
+      background-color: $sidebar__item--selected-bg;
+      box-shadow: $sidebar__item--selected-shadow-width 0 0 $base-inverse-color
+        inset;
+    }
+    &:active,
+    &:focus {
+      background-color: $base-color--active;
+    }
+  }
+  &--bg-gray {
+    background: $sidebar-bg-gray;
+    color: $sidebar-color-gray;
+    & .sidebar__list-menu {
+      background-color: $sidebar-color-gray;
+      & .icon {
+        color: $sidebar__list-menu-icon-color-gray;
+      }
+    }
+    & .sidebar__drawer {
+      & > a.sidebar__link:hover {
+        background-color: $sidebar__item--selected-bg-gray;
+        box-shadow: $sidebar__item--selected-shadow-width 0 0
+          $sidebar__item--selected-shadow-color-gray inset;
+      }
+      & > a.sidebar__link:active,
+      & > a.sidebar__link:focus {
+        background-color: $sidebar__item--active-bg-gray;
+      }
+      & .icon {
+        color: $sidebar-color-gray;
+      }
+    }
+    & .sidebar__link {
+      color: $sidebar-color-gray;
+    }
+    & .sidebar__item {
+      &--selected {
+        background-color: $sidebar__item--selected-bg-gray;
+        box-shadow: $sidebar__item--selected-shadow-width 0 0
+          $sidebar__item--selected-shadow-color-gray inset;
+      }
+      &:hover {
+        background-color: $sidebar__item--selected-bg-gray;
+        box-shadow: $sidebar__item--selected-shadow-width 0 0
+          $sidebar__item--selected-shadow-color-gray inset;
+      }
+      &:active,
+      &:focus {
+        background-color: $sidebar__item--active-bg-gray;
+      }
+    }
+  }
+  &--state-collapsed {
+    width: $sidebar--state-collapsed-width;
+    .sidebar__title {
+      display: none;
     }
     & ul {
-        width: $sidebar-width;
-        opacity: 1;
-        list-style: none;
-        padding: 0;
-        // Second menu level
-        & > li > ul > li {
-            .sidebar__link {
-                padding: $sidebar__link-secondary-padding;
-            }
-        }
-        // Third (max) menu level
-        & > li > ul > li > ul > li {
-            .sidebar__link {
-                padding: $sidebar__link-tertiary-padding;
-            }
-        }
+      display: none;
+      opacity: 0;
     }
-    &__drawer {
-        & .icon {
-            // These variables will be switched to "$sidebar__chevron-size", "$sidebar__chevron-margin" next release;
-            font-size: $sidebar__shevron-size;
-            width: $sidebar__shevron-size;
-            margin: $sidebar__shevron-margin;
-            color: $base-inverse-color;
-        }
-        & > a.sidebar__link {
-            padding: $sidebar__link-drawer-padding;
-            &:hover {
-                background-color: $sidebar__item--selected-bg;
-                box-shadow: $sidebar__item--selected-shadow-width 0 0
-                    $base-inverse-color inset;
-            }
-            &:active,
-            &:focus {
-                background-color: $base-color--active;
-            }
-        }
-        & ul > li.sidebar__drawer {
-            & > .sidebar__link {
-                padding: $sidebar__link-drawer-secondary-padding;
-            }
-        }
-        & > ul {
-            display: none;
-        }
-        &--opened {
-            & > ul {
-                display: block;
-            }
-        }
-    }
-    &__item {
-        overflow: hidden;
-        text-overflow: ellipsis;
-        white-space: nowrap;
-        position: relative;
-        &--selected {
-            background-color: $sidebar__item--selected-bg;
-            box-shadow: $sidebar__item--selected-shadow-width 0 0
-                $base-inverse-color inset;
-        }
-        &:hover {
-            background-color: $sidebar__item--selected-bg;
-            box-shadow: $sidebar__item--selected-shadow-width 0 0
-                $base-inverse-color inset;
-        }
-        &:active,
-        &:focus {
-            background-color: $base-color--active;
-        }
-    }
-    &--bg-gray {
-        background: $sidebar-bg-gray;
-        color: $sidebar-color-gray;
-        & .sidebar__list-menu {
-            background-color: $sidebar-color-gray;
-            & .icon {
-                color: $sidebar__list-menu-icon-color-gray;
-            }
-        }
-        & .sidebar__drawer {
-            & > a.sidebar__link:hover {
-                background-color: $sidebar__item--selected-bg-gray;
-                box-shadow: $sidebar__item--selected-shadow-width 0 0
-                    $sidebar__item--selected-shadow-color-gray inset;
-            }
-            & > a.sidebar__link:active,
-            & > a.sidebar__link:focus {
-                background-color: $sidebar__item--active-bg-gray;
-            }
-            & .icon {
-                color: $sidebar-color-gray;
-            }
-        }
-        & .sidebar__link {
-            color: $sidebar-color-gray;
-        }
-        & .sidebar__item {
-            &--selected {
-                background-color: $sidebar__item--selected-bg-gray;
-                box-shadow: $sidebar__item--selected-shadow-width 0 0
-                    $sidebar__item--selected-shadow-color-gray inset;
-            }
-            &:hover {
-                background-color: $sidebar__item--selected-bg-gray;
-                box-shadow: $sidebar__item--selected-shadow-width 0 0
-                    $sidebar__item--selected-shadow-color-gray inset;
-            }
-            &:active,
-            &:focus {
-                background-color: $sidebar__item--active-bg-gray;
-            }
-        }
-    }
-    &--state-collapsed {
-        width: $sidebar--state-collapsed-width;
-        .sidebar__title {
-            display: none;
-        }
-        & ul {
-            display: none;
-            opacity: 0;
-        }
-    }
+  }
 }
 
-&.atomic-ui-root--animated .sidebar {
-    transition: $transition-duration--fast;
+.a-app--animated .sidebar {
+  transition: $transition-duration--fast;
 }

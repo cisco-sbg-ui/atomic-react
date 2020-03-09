@@ -1,63 +1,78 @@
+@import "../../styles";
+
+$tree-padding: 0;
+$tree-ul-margin: 0 0 0 20px;
+$tree-icon-critical-stop-font-size: $icon-small-font-size;
+$tree-icon-font-size: $font-size--xxs;
+$tree-icon-critical-stop-width: 20px; // 20px
+$tree-type-label-li-margin: 0 0 0 20px;
+$tree-type-label-icon-margin: 0 10px 0 -20px;
+$tree-type-iconic-li-margin: 0 0 0 50px;
+$tree-type-iconic-icon-margin: 0 30px 0 -50px;
+$tree-type-iconic-critical-stop-margin: 0 10px 0 -20px;
+$tree-type-checkbox-li-margin: 0 0 0 20px;
+$tree-type-checkbox-icon-margin: 0 10px 0 -20px;
+
 .tree {
-    @include list--unstyled;
-    color: $base-color;
-    padding: $tree-padding;
-    &--type-label {
-        > li {
-            margin: $tree-type-label-li-margin;
-            .tree__icon {
-                margin: $tree-type-label-icon-margin;
-            }
-        }
+  @include list--unstyled;
+  color: $base-color;
+  padding: $tree-padding;
+  &--type-label {
+    > li {
+      margin: $tree-type-label-li-margin;
+      .tree__icon {
+        margin: $tree-type-label-icon-margin;
+      }
     }
-    &--type-iconic {
-        > li {
-            margin: $tree-type-iconic-li-margin;
-            .icon-chevron-down,
-            .icon-chevron-right {
-                margin: $tree-type-iconic-icon-margin;
-            }
-            .icon-critical-stop {
-                margin: $tree-type-iconic-critical-stop-margin;
-            }
-        }
+  }
+  &--type-iconic {
+    > li {
+      margin: $tree-type-iconic-li-margin;
+      .icon-chevron-down,
+      .icon-chevron-right {
+        margin: $tree-type-iconic-icon-margin;
+      }
+      .icon-critical-stop {
+        margin: $tree-type-iconic-critical-stop-margin;
+      }
     }
-    &--type-checkbox {
-        > li {
-            margin: $tree-type-checkbox-li-margin;
-            .tree__icon {
-                margin: $tree-type-checkbox-icon-margin;
-            }
-        }
+  }
+  &--type-checkbox {
+    > li {
+      margin: $tree-type-checkbox-li-margin;
+      .tree__icon {
+        margin: $tree-type-checkbox-icon-margin;
+      }
     }
-    &__icon {
-        font-size: $tree-icon-font-size;
-        font-weight: $font-weight-xbold;
-        vertical-align: middle;
-        color: $base-icon-color;
-        &.icon-critical-stop {
-            width: $tree-icon-critical-stop-width;
-            color: $color-error;
-            font-size: $tree-icon-critical-stop-font-size;
-            line-height: $base-line-height;
-        }
-        &:focus {
-            &:before {
-                box-shadow: $base-box-shadow;
-            }
-        }
+  }
+  &__icon {
+    font-size: $tree-icon-font-size;
+    font-weight: $font-weight-xbold;
+    vertical-align: middle;
+    color: $base-icon-color;
+    &.icon-critical-stop {
+      width: $tree-icon-critical-stop-width;
+      color: $color-error;
+      font-size: $tree-icon-critical-stop-font-size;
+      line-height: $base-line-height;
     }
-    ul {
-        list-style: none;
-        padding: 0;
+    &:focus {
+      &:before {
+        box-shadow: $base-box-shadow;
+      }
     }
-    > li > ul,
-    > li > ul > li > ul {
-        margin: $tree-ul-margin;
-    }
-    .checkbox {
-        display: inline-flex;
-        vertical-align: middle;
-        padding: 0;
-    }
+  }
+  ul {
+    list-style: none;
+    padding: 0;
+  }
+  > li > ul,
+  > li > ul > li > ul {
+    margin: $tree-ul-margin;
+  }
+  .checkbox {
+    display: inline-flex;
+    vertical-align: middle;
+    padding: 0;
+  }
 }

@@ -1,6 +1,7 @@
 import { Meta, Preview, Story, Props } from '@storybook/addon-docs/blocks';
 import {useState} from 'react'
 
+import AApp from '../AApp'
 import LoremIpsum from '../../utils/lorem-ipsum'
 import YourComponent from '../../utils/storybook-function'
 import ACheckbox from "./ACheckbox"
@@ -27,83 +28,94 @@ import ACheckbox from "@cisco-ats/atomic-react/ACheckbox";
 ## Usage
 
 <Preview>
-  <YourComponent>
-{() => {
-  const [checked, setChecked] = useState(false);
-  const [indeterminate, setIndeterminate] = useState(false);
-  const [disabled, setDisabled] = useState(false);
-  const [wrap, setWrap] = useState(false);
-  return (
-    <div className="atomic-ui-root--animated">
-      <h3>Example</h3>
-      <ACheckbox checked={checked} disabled={disabled} indeterminate={indeterminate} wrap={wrap}>
-        {LoremIpsum}
-      </ACheckbox>
-      <ADivider />
-      <h3>Options</h3>
-      <div style={{display: 'flex',marginTop: 20, flexFlow: 'column'}}>
-        <ACheckbox checked={checked} label="Checked State" onClick={() => setChecked(!checked)} />
-        <ACheckbox checked={indeterminate} label="Indeterminate State" onClick={() => setIndeterminate(!indeterminate)} />
-        <ACheckbox checked={disabled} label="Disabled State" onClick={() => setDisabled(!disabled)} />
-        <ACheckbox checked={wrap} label="Wrap Label" onClick={() => setWrap(!wrap)} />
-      </div>
-    </div>
-  );
-}}
-  </YourComponent>
+  <Story name="usage-1">
+    <AApp>
+      <YourComponent>
+    {() => {
+      const [checked, setChecked] = useState(false);
+      const [indeterminate, setIndeterminate] = useState(false);
+      const [disabled, setDisabled] = useState(false);
+      const [wrap, setWrap] = useState(false);
+      return (
+        <div className="a-app--animated">
+          <h3>Example</h3>
+          <ACheckbox checked={checked} disabled={disabled} indeterminate={indeterminate} wrap={wrap}>
+            {LoremIpsum}
+          </ACheckbox>
+          <ADivider />
+          <h3>Options</h3>
+          <div style={{display: 'flex',marginTop: 20, flexFlow: 'column'}}>
+            <ACheckbox checked={checked} label="Checked State" onClick={() => setChecked(!checked)} />
+            <ACheckbox checked={indeterminate} label="Indeterminate State" onClick={() => setIndeterminate(!indeterminate)} />
+            <ACheckbox checked={disabled} label="Disabled State" onClick={() => setDisabled(!disabled)} />
+            <ACheckbox checked={wrap} label="Wrap Label" onClick={() => setWrap(!wrap)} />
+          </div>
+        </div>
+      );
+    }}
+      </YourComponent>
+    </AApp>
+  </Story>
 </Preview>
 
 ## Checkbox Props
 
 <Props of={ACheckbox} />
 
-
 ## Dusk Theme
 
-<Preview className="theme--dusk" style={{backgroundColor: "#000", color: '#fff'}}>
-<div style={{display: 'flex', flexFlow: 'column'}}>
-  <ACheckbox>
-    Default
-  </ACheckbox>
-  <ACheckbox checked>
-    Checked
-  </ACheckbox>
-  <ACheckbox indeterminate>
-    Indeterminate
-  </ACheckbox>
-  <ACheckbox disabled>
-    Disabled
-  </ACheckbox>
-  <ACheckbox disabled checked>
-    Disabled and Checked
-  </ACheckbox>
-  <ACheckbox disabled indeterminate>
-    Disabled and Indeterminate
-  </ACheckbox>
-  <ACheckbox>
-    Very long truncated text. {LoremIpsum}
-  </ACheckbox>
-  <ACheckbox wrap>
-    Very long wrapping text. {LoremIpsum}
-  </ACheckbox>
-</div>
+<Preview style={{backgroundColor: '#18191d'}}>
+  <Story name="dusk-1">
+    <AApp theme="dusk">
+      <div style={{display: 'flex', flexFlow: 'column'}}>
+        <ACheckbox>
+          Default
+        </ACheckbox>
+        <ACheckbox checked>
+          Checked
+        </ACheckbox>
+        <ACheckbox indeterminate>
+          Indeterminate
+        </ACheckbox>
+        <ACheckbox disabled>
+          Disabled
+        </ACheckbox>
+        <ACheckbox disabled checked>
+          Disabled and Checked
+        </ACheckbox>
+        <ACheckbox disabled indeterminate>
+          Disabled and Indeterminate
+        </ACheckbox>
+        <ACheckbox>
+          Very long truncated text. {LoremIpsum}
+        </ACheckbox>
+        <ACheckbox wrap>
+          Very long wrapping text. {LoremIpsum}
+        </ACheckbox>
+      </div>
+    </AApp>
+  </Story>
 </Preview>
 
 ## Animations
 
-Animations are enabled when a parent element has the `atomic-ui-root--animated` CSS class.
+Animations are enabled by default on the `AApp` component and can be disabled.
 
 <Preview>
-  <YourComponent>
-{() => {
-  const [checked, setChecked] = useState(false);
-  return (
-    <div className="atomic-ui-root--animated">
-      <ACheckbox checked={checked} onClick={() => setChecked(!checked)}>
-        Default
-      </ACheckbox>
-    </div>
-  );
-}}
-  </YourComponent>
+  <Story name="animations-1">
+    <AApp>
+      <YourComponent>
+    {() => {
+      const [checked, setChecked] = useState(false);
+      return (
+        <div className="a-app--animated">
+          <ACheckbox checked={checked} onClick={() => setChecked(!checked)}>
+            Default
+          </ACheckbox>
+        </div>
+      );
+    }}
+      </YourComponent>
+    </AApp>
+  </Story>
 </Preview>

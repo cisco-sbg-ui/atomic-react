@@ -1,167 +1,187 @@
+@import "../../styles";
+
+$context-menu-zindex: 1060;
+$context-menu-width: 100%;
+$context-menu-max-width: 100px;
+$context-menu-font-size: $font-size--sm;
+$context-menu-box-shadow: 1px 1px 3px 0 rgba(0, 0, 0, 0.2);
+$context-menu-arrow-width: rem(1);
+$context-menu-arrow-height: rem(0.5);
+$context-menu-arrow-margin: rem(0.3);
+$context-menu-arrow-top: 10%;
+$context-menu-arrow-left: 10%;
+$context-menu-header-line-height: 25px;
+$context-menu-header-font-size: 18px;
+$context-menu-header-margin: 15px 15px 5px 15px;
+$context-menu-body-padding: 0 0 15px 0;
+$context-menu-li-line-height: 30px;
+$context-menu-li-padding: 0 15px;
+$context-menu-li-color-disabled: $control-stroke-color--disabled;
+$context-menu-footer-padding: 15px;
+
 .context-menu {
-    position: relative;
-    top: 0;
-    left: 0;
-    z-index: $context-menu-zindex;
+  position: relative;
+  top: 0;
+  left: 0;
+  z-index: $context-menu-zindex;
+  display: block;
+  width: $context-menu-width;
+  max-width: $context-menu-max-width;
+  font-size: $context-menu-font-size;
+  word-wrap: break-word;
+  background-color: $control-fill-color;
+  background-clip: padding-box;
+  border: $base-border-width solid $base-stroke-color;
+  border-radius: $base-border-radius;
+  box-shadow: $context-menu-box-shadow;
+  ul {
+    list-style: none;
+    padding: 0;
+  }
+  &__arrow {
+    position: absolute;
     display: block;
-    width: $context-menu-width;
-    max-width: $context-menu-max-width;
-    font-size: $context-menu-font-size;
-    word-wrap: break-word;
-    background-color: $control-fill-color;
-    background-clip: padding-box;
-    border: $base-border-width solid $base-stroke-color;
-    border-radius: $base-border-radius;
-    box-shadow: $context-menu-box-shadow;
-    ul {
-        list-style: none;
-        padding: 0;
+    width: $context-menu-arrow-width;
+    height: $context-menu-arrow-height;
+    margin: 0 $context-menu-arrow-margin;
+    &::before,
+    &::after {
+      position: absolute;
+      display: block;
+      content: "";
+      border-color: transparent;
+      border-style: solid;
     }
-    &__arrow {
-        position: absolute;
-        display: block;
-        width: $context-menu-arrow-width;
-        height: $context-menu-arrow-height;
-        margin: 0 $context-menu-arrow-margin;
-        &::before,
-        &::after {
-            position: absolute;
-            display: block;
-            content: '';
-            border-color: transparent;
-            border-style: solid;
-        }
+  }
+  &--top {
+    margin-bottom: $context-menu-arrow-height;
+    .context-menu__arrow {
+      left: $context-menu-arrow-left;
+      bottom: calc(#{$context-menu-arrow-height} * -1);
     }
-    &--top {
-        margin-bottom: $context-menu-arrow-height;
-        .context-menu__arrow {
-            left: $context-menu-arrow-left;
-            bottom: calc(#{$context-menu-arrow-height} * -1);
-        }
-        .context-menu__arrow::before,
-        .context-menu__arrow::after {
-            border-width: $context-menu-arrow-height
-                ($context-menu-arrow-width / 2) 0;
-        }
-        .context-menu__arrow::before {
-            bottom: -1px;
-            border-top-color: $base-stroke-color;
-        }
-        .context-menu__arrow::after {
-            bottom: $base-border-width;
-            border-top-color: $control-fill-color;
-        }
+    .context-menu__arrow::before,
+    .context-menu__arrow::after {
+      border-width: $context-menu-arrow-height ($context-menu-arrow-width / 2) 0;
     }
-    &--right {
-        margin-left: $context-menu-arrow-height;
-        .context-menu__arrow {
-            top: $context-menu-arrow-top;
-            left: calc(#{$context-menu-arrow-height} * -1);
-            width: $context-menu-arrow-height;
-            height: $context-menu-arrow-width;
-            margin: 0;
-        }
-        .context-menu__arrow::before,
-        .context-menu__arrow::after {
-            border-width: ($context-menu-arrow-width / 2)
-                $context-menu-arrow-height ($context-menu-arrow-width / 2) 0;
-        }
-        .context-menu__arrow::before {
-            left: -1px;
-            border-right-color: $base-stroke-color;
-        }
-        .context-menu__arrow::after {
-            left: $base-border-width;
-            border-right-color: $control-fill-color;
-        }
+    .context-menu__arrow::before {
+      bottom: -1px;
+      border-top-color: $base-stroke-color;
     }
-    &--bottom {
-        margin-top: $context-menu-arrow-height;
-        .context-menu__arrow {
-            left: $context-menu-arrow-left;
-            top: calc(#{$context-menu-arrow-height} * -1);
-        }
-        .context-menu__arrow::before,
-        .context-menu__arrow::after {
-            border-width: 0 ($context-menu-arrow-width / 2)
-                $context-menu-arrow-height ($context-menu-arrow-width / 2);
-        }
-        .context-menu__arrow::before {
-            top: -1px;
-            border-bottom-color: $base-stroke-color;
-        }
-        .context-menu__arrow::after {
-            top: $base-border-width;
-            border-bottom-color: $control-fill-color;
-        }
+    .context-menu__arrow::after {
+      bottom: $base-border-width;
+      border-top-color: $control-fill-color;
     }
-    &--left {
-        margin-right: $context-menu-arrow-height;
-        .context-menu__arrow {
-            top: $context-menu-arrow-top;
-            right: calc(#{$context-menu-arrow-height} * -1);
-            width: $context-menu-arrow-height;
-            height: $context-menu-arrow-width;
-            margin: $context-menu-arrow-margin 0;
-        }
-        .context-menu__arrow::before,
-        .context-menu__arrow::after {
-            border-width: ($context-menu-arrow-width / 2) 0
-                ($context-menu-arrow-width / 2) $context-menu-arrow-height;
-        }
-        .context-menu__arrow::before {
-            right: -1px;
-            border-left-color: $base-stroke-color;
-        }
-        .context-menu__arrow::after {
-            right: $base-border-width;
-            border-left-color: $control-fill-color;
-        }
+  }
+  &--right {
+    margin-left: $context-menu-arrow-height;
+    .context-menu__arrow {
+      top: $context-menu-arrow-top;
+      left: calc(#{$context-menu-arrow-height} * -1);
+      width: $context-menu-arrow-height;
+      height: $context-menu-arrow-width;
+      margin: 0;
     }
-    &__header {
-        line-height: $context-menu-header-line-height;
-        font-size: $context-menu-header-font-size;
-        margin: $context-menu-header-margin;
-        color: $base-color;
+    .context-menu__arrow::before,
+    .context-menu__arrow::after {
+      border-width: ($context-menu-arrow-width / 2) $context-menu-arrow-height
+        ($context-menu-arrow-width / 2) 0;
     }
-    &__body {
-        color: $base-color;
-        padding: $context-menu-body-padding;
+    .context-menu__arrow::before {
+      left: -1px;
+      border-right-color: $base-stroke-color;
     }
-    & li {
-        line-height: $context-menu-li-line-height;
-        padding: $context-menu-li-padding;
-        &:hover {
-            color: $base-inverse-color;
-            background-color: $base-color--hover;
-        }
-        &.selected,
-        &:active {
-            color: $base-inverse-color;
-            background-color: $base-color--selected;
-        }
-        &:focus {
-            color: $base-inverse-color;
-            background-color: $base-color--active;
-        }
-        &.disabled {
-            color: $context-menu-li-color-disabled;
-        }
+    .context-menu__arrow::after {
+      left: $base-border-width;
+      border-right-color: $control-fill-color;
     }
-    &__footer {
-        text-align: left;
-        padding: $context-menu-footer-padding;
-        border-top: $base-border-width solid $base-stroke-color;
-        & a:focus {
-            text-decoration: underline;
-        }
+  }
+  &--bottom {
+    margin-top: $context-menu-arrow-height;
+    .context-menu__arrow {
+      left: $context-menu-arrow-left;
+      top: calc(#{$context-menu-arrow-height} * -1);
     }
+    .context-menu__arrow::before,
+    .context-menu__arrow::after {
+      border-width: 0 ($context-menu-arrow-width / 2) $context-menu-arrow-height
+        ($context-menu-arrow-width / 2);
+    }
+    .context-menu__arrow::before {
+      top: -1px;
+      border-bottom-color: $base-stroke-color;
+    }
+    .context-menu__arrow::after {
+      top: $base-border-width;
+      border-bottom-color: $control-fill-color;
+    }
+  }
+  &--left {
+    margin-right: $context-menu-arrow-height;
+    .context-menu__arrow {
+      top: $context-menu-arrow-top;
+      right: calc(#{$context-menu-arrow-height} * -1);
+      width: $context-menu-arrow-height;
+      height: $context-menu-arrow-width;
+      margin: $context-menu-arrow-margin 0;
+    }
+    .context-menu__arrow::before,
+    .context-menu__arrow::after {
+      border-width: ($context-menu-arrow-width / 2) 0
+        ($context-menu-arrow-width / 2) $context-menu-arrow-height;
+    }
+    .context-menu__arrow::before {
+      right: -1px;
+      border-left-color: $base-stroke-color;
+    }
+    .context-menu__arrow::after {
+      right: $base-border-width;
+      border-left-color: $control-fill-color;
+    }
+  }
+  &__header {
+    line-height: $context-menu-header-line-height;
+    font-size: $context-menu-header-font-size;
+    margin: $context-menu-header-margin;
+    color: $base-color;
+  }
+  &__body {
+    color: $base-color;
+    padding: $context-menu-body-padding;
+  }
+  & li {
+    line-height: $context-menu-li-line-height;
+    padding: $context-menu-li-padding;
+    &:hover {
+      color: $base-inverse-color;
+      background-color: $base-color--hover;
+    }
+    &.selected,
+    &:active {
+      color: $base-inverse-color;
+      background-color: $base-color--selected;
+    }
+    &:focus {
+      color: $base-inverse-color;
+      background-color: $base-color--active;
+    }
+    &.disabled {
+      color: $context-menu-li-color-disabled;
+    }
+  }
+  &__footer {
+    text-align: left;
+    padding: $context-menu-footer-padding;
+    border-top: $base-border-width solid $base-stroke-color;
+    & a:focus {
+      text-decoration: underline;
+    }
+  }
 }
 
-&.atomic-ui-root--animated .context-menu {
-    animation-name: fade-in;
-    animation-duration: $transition-duration--fast;
-    & li {
-        @include transition($transition-item);
-    }
+.a-app--animated .context-menu {
+  animation-name: fade-in;
+  animation-duration: $transition-duration--fast;
+  & li {
+    @include transition($transition-item);
+  }
 }

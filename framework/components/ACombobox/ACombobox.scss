@@ -1,31 +1,37 @@
+@import "../../styles";
+
+$combobox-height: 28px;
+$combobox-width: 250px;
+$combobox-padding: 3px 5px 2px 6px;
+
 .combobox {
-    position: relative;
-    height: $combobox-height;
-    width: $combobox-width;
-    padding: $combobox-padding;
-    color: $base-color;
-    background: transparent;
-    border: $base-border-width solid $base-stroke-color;
-    border-radius: $base-border-radius;
-    appearance: none;
-    &::-webkit-calendar-picker-indicator {
-        opacity: 100;
-        color: $control-text-color;
-        &:hover {
-            background-color: transparent;
-        }
-    }
+  position: relative;
+  height: $combobox-height;
+  width: $combobox-width;
+  padding: $combobox-padding;
+  color: $base-color;
+  background: transparent;
+  border: $base-border-width solid $base-stroke-color;
+  border-radius: $base-border-radius;
+  appearance: none;
+  &::-webkit-calendar-picker-indicator {
+    opacity: 100;
+    color: $control-text-color;
     &:hover {
-        border-color: $control-stroke-color--hover;
+      background-color: transparent;
     }
-    &:focus {
-        border-color: $base-color--hover;
-        box-shadow: $base-box-shadow;
-    }
-    &:active {
-        border-color: $input-border-color--active;
-    }
+  }
+  &:hover {
+    border-color: $control-stroke-color--hover;
+  }
+  &:focus {
+    border-color: $base-color--hover;
+    box-shadow: $base-box-shadow;
+  }
+  &:active {
+    border-color: $input-border-color--active;
+  }
 }
-&.atomic-ui-root--animated .combobox {
-    @include transition($input-transition);
+.a-app--animated .combobox {
+  @include transition($input-transition);
 }

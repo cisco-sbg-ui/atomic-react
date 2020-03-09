@@ -5,6 +5,7 @@ $icon-size-medium: $font-size--xl;
 $icon-size-small: $font-size;
 
 .a-icon {
+  box-sizing: content-box;
   overflow: visible;
   width: 24px;
 

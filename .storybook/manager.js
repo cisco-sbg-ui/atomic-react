@@ -1,5 +1,49 @@
+import React from "react";
+import ReactDOM from "react-dom";
 import {addons} from "@storybook/addons";
 import {create} from "@storybook/theming/create";
+
+import AApp from "../AApp";
+import {
+  AHeader,
+  AHeaderLogo,
+  AHeaderTitle,
+  AHeaderNavigation,
+  AHeaderToolbar
+} from "../AHeader";
+import AIcon from "../AIcon";
+
+const StorybookHeader = () => {
+  return (
+    <AApp>
+      <AHeader>
+        <AHeaderLogo href="/">
+          <AIcon>cisco</AIcon>
+        </AHeaderLogo>
+        <AHeaderTitle>Atomic Components for React</AHeaderTitle>
+        <AHeaderNavigation />
+        <AHeaderToolbar>
+          <a
+            href="https://www.github.com/threatgrid/atomic-react"
+            target="_blank">
+            <AIcon tabIndex="0">github</AIcon>
+          </a>
+        </AHeaderToolbar>
+      </AHeader>
+    </AApp>
+  );
+};
+
+addons.register("atomic-react/header", api => {
+  var rootHeader = document.createElement("div");
+  rootHeader.id = "root-header";
+  var body = document.querySelector("body");
+  body.insertBefore(rootHeader, body.childNodes[0]);
+  ReactDOM.render(<StorybookHeader />, document.querySelector("#root-header"));
+
+  document.querySelector("#root").className =
+    "a-app a-app--wrap a-app--scrollbars";
+});
 
 const convertSvgToBase64ImgString = SVG =>
   `data:image/svg+xml;base64,${Buffer.from(SVG).toString("base64")}`;

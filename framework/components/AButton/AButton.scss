@@ -169,6 +169,6 @@ $btn-transition: color $transition-duration--extra-fast
   }
 }
 
-.atomic-ui-root--animated .a-button {
+.a-app--animated .a-button {
   @include transition($btn-transition);
 }
