@@ -2,7 +2,11 @@ import AApp from "./components/AApp";
 import AButton from "./components/AButton";
 import ACheckbox from "./components/ACheckbox";
 import ADivider from "./components/ADivider";
-import ADropdown from "./components/ADropdown";
+import {
+  ADropdown,
+  ADropdownMenu,
+  ADropdownMenuItem
+} from "./components/ADropdown";
 import {
   AHeader,
   AHeaderLogo,
@@ -27,6 +31,8 @@ export {
   ACheckbox,
   ADivider,
   ADropdown,
+  ADropdownMenu,
+  ADropdownMenuItem,
   AHeader,
   AHeaderLogo,
   AHeaderTitle,
