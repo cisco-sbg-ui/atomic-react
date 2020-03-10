@@ -7,8 +7,6 @@ $base-icon-color: $color-gray--light2; // Icons (#dfdfdf);
 // General Colors
 // -----------------------------------------------------------------------------
 $control-text-color: $color-gray--light2; // Alternative Text (#dfdfdf);
-$control-fill-color: $color-blue10; // Alternative bg (#17202b);
-$control-stroke-color: rgba($color-gray--light2, $alpha-2); // (#dfdfdf, 20%);
 $control-fill-color--disabled: rgba(
   $color-gray--light2,
   $alpha-3
@@ -86,10 +84,6 @@ $date-picker-header-border-color: rgba(
 ); // (#9e9ea2, 30%);
 $date-picker-range-bg: rgba($color-gray--light4, $alpha-2); // (#f2f2f2, 20%);
 // (#dfdfdf, 15%);
-// -----------------------------------------------------------------------------
-// Dropdown
-// -----------------------------------------------------------------------------
-$dropdown-box-shadow: 2px 2px 4px 0 rgba($black, $alpha-5); // #000000, 50%
 // -----------------------------------------------------------------------------
 // Form Label
 // -----------------------------------------------------------------------------
