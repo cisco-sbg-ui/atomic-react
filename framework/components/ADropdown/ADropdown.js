@@ -1,25 +1,27 @@
 import PropTypes from "prop-types";
-import React from "react";
+import React, {forwardRef} from "react";
 
 import "./ADropdown.scss";
 
-const ADropdown = ({active, children, className: propsClassName, ...rest}) => {
-  let className = "a-dropdown";
+const ADropdown = forwardRef(
+  ({active, children, className: propsClassName, ...rest}, ref) => {
+    let className = "a-dropdown";
 
-  if (active) {
-    className += " a-dropdown--state-active";
+    if (active) {
+      className += " a-dropdown--state-active";
+    }
+
+    if (propsClassName) {
+      className += ` ${propsClassName}`;
+    }
+
+    return (
+      <div {...rest} ref={ref} className={className}>
+        {children}
+      </div>
+    );
   }
-
-  if (propsClassName) {
-    className += ` ${propsClassName}`;
-  }
-
-  return (
-    <div {...rest} className={className}>
-      {children}
-    </div>
-  );
-};
+);
 
 ADropdown.propTypes = {
   /**

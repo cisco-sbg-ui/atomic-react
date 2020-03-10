@@ -7,10 +7,10 @@ import "./AApp.scss";
 const AApp = forwardRef(
   (
     {
-      animations,
+      animations = true,
       children,
       className: propsClassName,
-      scrollbars,
+      scrollbars = true,
       theme,
       ...rest
     },

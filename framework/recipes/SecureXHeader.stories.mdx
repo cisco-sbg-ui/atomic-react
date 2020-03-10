@@ -4,7 +4,7 @@ import {useState} from 'react'
 import YourComponent from '../utils/storybook-function'
 import AApp from '../components/AApp'
 import {ADropdown, ADropdownMenu, ADropdownMenuItem} from '../components/ADropdown'
-import {AHeader, AHeaderLogo, AHeaderTitle, AHeaderNavigation, AHeaderToolbar} from "../components/AHeader"
+import {AHeader, AHeaderLogo, AHeaderTitle, AHeaderNavigation, AHeaderToolbar, AHeaderToolbarItem} from "../components/AHeader"
 import AIcon from '../components/AIcon'
 import {ATabGroup, ATab} from '../components/ATabs'
 
@@ -25,7 +25,7 @@ And in the target component add:
 ```
 import AApp from "@cisco-ats/atomic-react/AApp";
 import {ADropdown, ADropdownMenu, ADropdownItem} from "@cisco-ats/atomic-react/ADropdown";
-import {AHeader, AHeaderLogo, AHeaderTitle, AHeaderNavigation, AHeaderToolbar} from "@cisco-ats/atomic-react/AHeader";
+import {AHeader, AHeaderLogo, AHeaderTitle, AHeaderNavigation, AHeaderToolbar, AHeaderToolbarItem} from "@cisco-ats/atomic-react/AHeader";
 import AIcon from "@cisco-ats/atomic-react/AIcon";
 import {ATabGroup, ATab} from "@cisco-ats/atomic-react/ATabs";
 ```
@@ -34,33 +34,63 @@ import {ATabGroup, ATab} from "@cisco-ats/atomic-react/ATabs";
 
 <Preview>
   <Story name="usage-1">
-    <AApp>
-      <AHeader>
-        <AHeaderLogo href="#cisco">
-          <AIcon>cisco</AIcon>
-        </AHeaderLogo>
-        <AHeaderTitle>
-          SecureX
-        </AHeaderTitle>
-        <AHeaderNavigation>
-          <ATabGroup tall>
-            <ATab>
-              Dashboard
-            </ATab>
-            <ATab>
-              Contact Us
-            </ATab>
-          </ATabGroup>
-        </AHeaderNavigation>
-        <AHeaderToolbar>
-          <a href="#search">
-            <AIcon tabIndex="0">search</AIcon>
-          </a>
-          <a href="#user">
-            <AIcon tabIndex="0">user</AIcon>
-          </a>
-        </AHeaderToolbar>
-      </AHeader>
-    </AApp>
+  <YourComponent>
+  {() => {
+    const [isActive, setIsActive] = useState(false);
+    return (
+      <AApp style={{minHeight: 200}}>
+        <AHeader>
+          <AHeaderLogo href="#cisco">
+            <AIcon>cisco</AIcon>
+          </AHeaderLogo>
+          <AHeaderTitle style={{display:'inline-flex', alignItems: 'baseline'}}>
+            <h1 style={{color: '#6cbf50'}}>Secure</h1>
+            <svg style={{width: 21, marginLeft: 2, WebkitTransform: 'translateY(.05em)', transform: 'translateY(.05em)'}} viewBox="0 0 85 85" xmlns="http://www.w3.org/2000/svg">
+              <path d="M77.37 2.15l6 6c.95.95.95 2.49 0 3.44L53.91 41.04l-9.44-9.44L73.93 2.15c.95-.95 2.49-.95 3.44 0z" fill="#00bbea"/>
+              <path d="M79.06 81.79a6.67 6.67 0 01-9.44 0L44.7 56.61l9.23-9.12 25.12 24.86a6.66 6.66 0 01.01 9.44z" fill="#6dbe4f"/>
+              <path d="M46.11 48.84l4.72-4.72-4.72-4.72-4.72-4.72L12.88 6.17a6.67 6.67 0 00-9.44 0 6.67 6.67 0 000 9.44l24.97 24.97a5.022 5.022 0 010 7.1L3.44 72.64a6.67 6.67 0 000 9.44 6.67 6.67 0 009.44 0l33.23-33.24z" fill="#12284c"/>
+            </svg>
+          </AHeaderTitle>
+          <AHeaderNavigation>
+            <ATabGroup tall>
+              <ATab href="https://platform.int.iroh.site/orchestration">
+                Dashboard
+              </ATab>
+              <ATab href="https://platform.int.iroh.site/settings/modules">
+                Integrations
+              </ATab>
+              <ATab href="https://platform.int.iroh.site/orchestration" selected>
+                Orchestration
+              </ATab>
+              <ATab href="https://platform.int.iroh.site/administration">
+                Administration
+              </ATab>
+            </ATabGroup>
+          </AHeaderNavigation>
+          <AHeaderToolbar>
+            <AHeaderToolbarItem>
+              <AIcon>alert</AIcon>
+            </AHeaderToolbarItem>
+            <AHeaderToolbarItem>
+              <AIcon>help</AIcon>
+            </AHeaderToolbarItem>
+            <AHeaderToolbarItem href="https://platform.int.iroh.site/settings">
+              <AIcon>settings</AIcon>
+            </AHeaderToolbarItem>
+            <AHeaderToolbarItem onClick={e => { e.preventDefault(); setIsActive(!isActive); }}>
+              <ADropdown active={isActive}>
+                <AIcon>user</AIcon>
+                <AIcon style={{width: 10}}>triangle-down</AIcon>
+                <ADropdownMenu style={{left: 'auto', right: 0}}>
+                  <ADropdownMenuItem href="https://platform.int.iroh.site/logout">Logout</ADropdownMenuItem>
+                </ADropdownMenu>
+              </ADropdown>
+            </AHeaderToolbarItem>
+          </AHeaderToolbar>
+        </AHeader>
+      </AApp>
+    );
+  }}
+  </YourComponent>
   </Story>
 </Preview>

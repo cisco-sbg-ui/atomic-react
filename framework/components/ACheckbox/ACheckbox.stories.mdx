@@ -45,10 +45,10 @@ import ACheckbox from "@cisco-ats/atomic-react/ACheckbox";
           <ADivider />
           <h3>Options</h3>
           <div style={{display: 'flex',marginTop: 20, flexFlow: 'column'}}>
-            <ACheckbox checked={checked} label="Checked State" onClick={() => setChecked(!checked)} />
-            <ACheckbox checked={indeterminate} label="Indeterminate State" onClick={() => setIndeterminate(!indeterminate)} />
-            <ACheckbox checked={disabled} label="Disabled State" onClick={() => setDisabled(!disabled)} />
-            <ACheckbox checked={wrap} label="Wrap Label" onClick={() => setWrap(!wrap)} />
+            <ACheckbox checked={checked} onClick={() => setChecked(!checked)}>Checked State</ACheckbox>
+            <ACheckbox checked={indeterminate} onClick={() => setIndeterminate(!indeterminate)}>Indeterminate State</ACheckbox>
+            <ACheckbox checked={disabled} onClick={() => setDisabled(!disabled)}>Disabled State</ACheckbox>
+            <ACheckbox checked={wrap} onClick={() => setWrap(!wrap)}>Wrap Label</ACheckbox>
           </div>
         </div>
       );
@@ -59,6 +59,8 @@ import ACheckbox from "@cisco-ats/atomic-react/ACheckbox";
 </Preview>
 
 ## Checkbox Props
+
+The `ACheckbox` component inherits passed props.
 
 <Props of={ACheckbox} />
 
@@ -108,11 +110,23 @@ Animations are enabled by default on the `AApp` component and can be disabled.
     {() => {
       const [checked, setChecked] = useState(false);
       return (
-        <div className="a-app--animated">
-          <ACheckbox checked={checked} onClick={() => setChecked(!checked)}>
-            Default
-          </ACheckbox>
-        </div>
+        <ACheckbox checked={checked} onClick={() => setChecked(!checked)}>
+          Animated
+        </ACheckbox>
+      );
+    }}
+      </YourComponent>
+    </AApp>
+  </Story>
+  <Story name="animations-2">
+    <AApp animations={false}>
+      <YourComponent>
+    {() => {
+      const [checked, setChecked] = useState(false);
+      return (
+        <ACheckbox checked={checked} onClick={() => setChecked(!checked)}>
+          Not Animated
+        </ACheckbox>
       );
     }}
       </YourComponent>

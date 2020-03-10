@@ -36,7 +36,7 @@ $header-dropdown-left: -$base-padding-left;
     }
   }
 
-  &__toolbar .a-icon {
+  &__toolbar-item {
     fill: map-deep-get($theme, "header", "icon-color");
     &:focus {
       box-shadow: map-deep-get($theme, "base", "box-shadow");
@@ -117,16 +117,20 @@ $header-dropdown-left: -$base-padding-left;
     font-size: $header__toolbar-font-size;
     display: inline-flex;
 
-    .a-icon {
-      @include btn-icon();
-      vertical-align: bottom;
+    &-item {
       padding: 10px;
-      height: $header__icon-size;
-      width: $header__icon-size;
 
       &:focus {
         text-decoration: none;
       }
+    }
+
+    .a-icon {
+      @include btn-icon();
+      vertical-align: bottom;
+      height: $header__icon-size;
+      width: $header__icon-size;
+      fill: inherit;
     }
   }
 

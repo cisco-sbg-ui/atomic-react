@@ -49,6 +49,21 @@ The `ATab` component inherits passed props.
 
 <Props of={ATab} />
 
+## Links
+
+Tabs will render in the DOM as anchor tags if the `href` property is defined.
+
+<Preview>
+  <Story name="links-1">
+    <AApp>
+      <ATabGroup tall>
+        <ATab selected>One</ATab>
+        <ATab href="https://www.github.com">GitHub</ATab>
+        <ATab href="https://www.cisco.com" target="_blank">Cisco.com</ATab>
+      </ATabGroup>
+    </AApp>
+  </Story>
+</Preview>
 
 ## Display Variants
 

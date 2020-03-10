@@ -12,7 +12,8 @@ import {
   AHeaderLogo,
   AHeaderTitle,
   AHeaderNavigation,
-  AHeaderToolbar
+  AHeaderToolbar,
+  AHeaderToolbarItem
 } from "./components/AHeader";
 import AIcon from "./components/AIcon";
 import {
@@ -38,6 +39,7 @@ export {
   AHeaderTitle,
   AHeaderNavigation,
   AHeaderToolbar,
+  AHeaderToolbarItem,
   AIcon,
   APanel,
   APanelHeader,

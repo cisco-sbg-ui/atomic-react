@@ -4,7 +4,7 @@ import {useState} from 'react'
 import AApp from '../AApp'
 import LoremIpsum from '../../utils/lorem-ipsum'
 import YourComponent from '../../utils/storybook-function'
-import {AHeader, AHeaderLogo, AHeaderTitle, AHeaderNavigation, AHeaderToolbar} from "./"
+import {AHeader, AHeaderLogo, AHeaderTitle, AHeaderNavigation, AHeaderToolbar, AHeaderToolbarItem} from "./"
 import AIcon from '../AIcon'
 import {ATabGroup, ATab} from '../ATabs'
 
@@ -46,21 +46,21 @@ import {
         </AHeaderTitle>
         <AHeaderNavigation>
           <ATabGroup tall>
-            <ATab>
-              Demo
+            <ATab selected>
+              Demo Tab
             </ATab>
-            <ATab>
-              Contact Us
+            <ATab href="https://www.cisco.com" target="_blank">
+              Cisco.com
             </ATab>
           </ATabGroup>
         </AHeaderNavigation>
         <AHeaderToolbar>
-          <a href="#search">
-            <AIcon tabIndex="0">search</AIcon>
-          </a>
-          <a href="#user">
-            <AIcon tabIndex="0">user</AIcon>
-          </a>
+          <AHeaderToolbarItem href="https://www.cisco.com" target="_blank">
+            <AIcon>search</AIcon>
+          </AHeaderToolbarItem>
+          <AHeaderToolbarItem href="https://www.github.com" target="_blank">
+            <AIcon>github</AIcon>
+          </AHeaderToolbarItem>
         </AHeaderToolbar>
       </AHeader>
     </AApp>
@@ -97,6 +97,11 @@ The `AHeaderToolbar` component inherits passed props.
 
 <Props of={AHeaderToolbar} />
 
+## Header Toolbar Item Props
+
+The `AHeaderToolbarItem` component inherits passed props.
+
+<Props of={AHeaderToolbarItem} />
 
 ## Dusk Theme
 
@@ -112,21 +117,21 @@ The `AHeaderToolbar` component inherits passed props.
         </AHeaderTitle>
         <AHeaderNavigation>
           <ATabGroup tall>
-            <ATab>
-              Demo
+            <ATab selected>
+              Demo Tab
             </ATab>
-            <ATab>
-              Contact Us
+            <ATab href="https://www.cisco.com" target="_blank">
+              Cisco.com
             </ATab>
           </ATabGroup>
         </AHeaderNavigation>
         <AHeaderToolbar>
-          <a href="#search">
-            <AIcon tabIndex="0">search</AIcon>
-          </a>
-          <a href="#user">
-            <AIcon tabIndex="0">user</AIcon>
-          </a>
+          <AHeaderToolbarItem href="https://www.cisco.com" target="_blank">
+            <AIcon>search</AIcon>
+          </AHeaderToolbarItem>
+          <AHeaderToolbarItem href="https://www.github.com" target="_blank">
+            <AIcon>github</AIcon>
+          </AHeaderToolbarItem>
         </AHeaderToolbar>
       </AHeader>
     </AApp>

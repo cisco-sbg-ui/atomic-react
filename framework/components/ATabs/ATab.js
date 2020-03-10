@@ -37,23 +37,27 @@ const ATab = forwardRef(
       className += ` ${propsClassName}`;
     }
 
-    return (
-      <a
-        {...rest}
-        ref={ref}
-        role="tab"
-        tabIndex="0"
-        className={className}
-        href={href}
-        target={target}
-        aria-selected={isSelected}
-        onClick={e => {
-          setTabChanged(tabId);
-          onClick && onClick(e);
-        }}>
-        {children}
-      </a>
-    );
+    let TagName = "div";
+    const props = {
+      ...rest,
+      "aria-selected": isSelected,
+      ref,
+      className,
+      onClick: e => {
+        setTabChanged(tabId);
+        onClick && onClick(e);
+      },
+      role: "tab",
+      tabIndex: 0
+    };
+
+    if (href) {
+      TagName = "a";
+      props.href = href;
+      props.target = target;
+    }
+
+    return <TagName {...props}>{children}</TagName>;
   }
 );
 
@@ -61,9 +65,17 @@ ATab.contextType = ATabContext;
 
 ATab.propTypes = {
   /**
-   * Toggles the selected state.
+   * If specified, the component will render as an HTML link.
    */
-  selected: PropTypes.bool
+  href: PropTypes.string,
+  /**
+   * Toggles the `selected` state.
+   */
+  selected: PropTypes.bool,
+  /**
+   * If the `href` property is defined, the target can be set (ex: `_blank`, `_self`, `_parent`, `_top`)
+   */
+  target: PropTypes.string
 };
 
 export default ATab;
