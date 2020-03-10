@@ -1,14 +1,15 @@
 import PropTypes from "prop-types";
 import React, {forwardRef, useState} from "react";
 
-import ATab from "./ATab";
+import ATabContext from "./ATabContext";
 import "./ATabs.scss";
+
+let tabCounter = 0;
 
 const ATabGroup = forwardRef(
   ({className: propsClassName, children, oversized, tall, ...rest}, ref) => {
-    const [selectedIndex, setSelectedIndex] = useState(
-      children.findIndex(x => x.props.selected) || 0
-    );
+    const [tabChanged, setTabChanged] = useState(false);
+
     let className = "a-tab-group";
 
     if (oversized) {
@@ -21,20 +22,22 @@ const ATabGroup = forwardRef(
       className += ` ${propsClassName}`;
     }
 
+    const tabContext = {
+      tabChanged,
+      setTabChanged,
+      register: selected => {
+        const index = tabCounter++;
+        if (selected) setTabChanged(index);
+        return index;
+      }
+    };
+
     return (
-      <ul {...rest} ref={ref} className={className}>
-        {children.map((x, index) =>
-          React.cloneElement(x, {
-            key: `tab_${index}`,
-            oversized: oversized,
-            selected: selectedIndex === index,
-            onClick: e => {
-              setSelectedIndex(index);
-              if (x.onClick) x.onClick(e);
-            }
-          })
-        )}
-      </ul>
+      <div {...rest} ref={ref} className={className}>
+        <ATabContext.Provider value={tabContext}>
+          {children}
+        </ATabContext.Provider>
+      </div>
     );
   }
 );

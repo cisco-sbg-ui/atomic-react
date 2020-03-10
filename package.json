@@ -9,7 +9,7 @@
     "start": "rollup -c && start-storybook -s ./dist --docs"
   },
   "peerDependencies": {
-    "react": "16.x",
+    "react": "^16.8.0",
     "react-dom": "16.x",
     "prop-types": "15.x"
   },

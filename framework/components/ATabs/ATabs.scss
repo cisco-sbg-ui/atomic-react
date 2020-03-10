@@ -29,12 +29,20 @@ $tab-oversized-margin: 0;
         map-deep-get($theme, "base", "color--selected")
       );
     }
+
+    &:active,
+    &:focus,
+    &:hover {
+      color: map-deep-get($theme, "base", "color");
+    }
+
     &:hover {
       @include tab-bar(
         $tab-bottom-bar-height,
         map-deep-get($theme, "base", "color--hover")
       );
     }
+
     &:focus {
       outline: map-deep-get($theme, "base", "outline");
       @include tab-bar(
@@ -43,14 +51,7 @@ $tab-oversized-margin: 0;
       );
     }
   }
-  &__link {
-    color: map-deep-get($theme, "base", "color");
-    &:active,
-    &:focus,
-    &:hover {
-      color: map-deep-get($theme, "base", "color");
-    }
-  }
+
   &--size-oversized {
     .a-tab-group__tab {
       border-top: $base-border-width solid
@@ -64,10 +65,12 @@ $tab-oversized-margin: 0;
         "tabs",
         "oversized-background-color"
       );
+
       &:last-of-type {
         border-right: $base-border-width solid
           map-deep-get($theme, "control", "stroke-color");
       }
+
       &--selected {
         background-color: $tab-oversized--selected-background-color;
         border-top: $base-border-width solid transparent;
@@ -77,6 +80,7 @@ $tab-oversized-margin: 0;
           map-deep-get($theme, "base", "color--selected")
         );
       }
+
       &:focus,
       &:hover {
         border-top: $base-border-width solid transparent;
@@ -92,14 +96,6 @@ $tab-oversized-margin: 0;
       }
     }
   }
-  &__tab-heading {
-    color: map-deep-get($theme, "base", "color");
-    &:active,
-    &:focus,
-    &:hover {
-      color: map-deep-get($theme, "base", "color");
-    }
-  }
 }
 
 .a-tab-group {
@@ -107,6 +103,7 @@ $tab-oversized-margin: 0;
   padding: $tabs-padding;
   list-style: none;
   background-color: transparent;
+
   &__tab {
     display: inline-block;
     margin: $tab-margin;
@@ -122,26 +119,29 @@ $tab-oversized-margin: 0;
     font-size: $tab-font-size;
     background-color: transparent;
     cursor: pointer;
+    text-decoration: none;
+
     &:active {
       outline: none;
     }
-  }
-  &__link {
-    text-decoration: none;
+
     &:active,
     &:focus,
     &:hover {
       text-decoration: none;
     }
   }
+
   &--size-tall {
     .a-tab-group__tab {
       padding: $tab-tall-padding;
       margin: $tab-tall-margin;
     }
   }
+
   &--size-oversized {
     display: flex;
+
     .a-tab-group__tab {
       text-align: left;
       height: $tab-oversized-height;
@@ -149,15 +149,10 @@ $tab-oversized-margin: 0;
       padding: $tab-oversized-padding;
     }
   }
+
   &__tab-heading {
-    text-decoration: none;
     margin: $tab-heading-margin;
     font-size: $tab-heading-font-size;
     display: block;
-    &:active,
-    &:focus,
-    &:hover {
-      text-decoration: none;
-    }
   }
 }
