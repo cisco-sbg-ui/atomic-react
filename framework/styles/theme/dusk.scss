@@ -60,6 +60,8 @@ $atomic-dusk: (
     "box-color-selected": $color-category--blue--burnt1
   ),
   "control": (
+    "fill-color": $color-blue10,
+    "stroke-color": rgba($color-gray--light2, $alpha-2),
     "stroke-color--hover": $color-gray--medium4,
     "stroke-color--disabled": rgba($color-gray--light1, $alpha-3)
   ),
@@ -67,6 +69,9 @@ $atomic-dusk: (
     "color-default": rgba($color-gray--light2, $alpha-5),
     "color-light": rgba($color-gray--light2, $alpha-3),
     "color-lighter": rgba($color-gray--light2, $alpha-15)
+  ),
+  "dropdown": (
+    "box-shadow": 2px 2px 4px 0 rgba($black, $alpha-5)
   ),
   "header": (
     "bg-color": $color-blue11,

@@ -1,0 +1,91 @@
+import { Meta, Preview, Story, Props } from '@storybook/addon-docs/blocks';
+import {useState} from 'react'
+
+import AApp from '../AApp'
+import AButton from '../AButton'
+import YourComponent from '../../utils/storybook-function'
+import {ADropdown, ADropdownMenu, ADropdownMenuItem} from "./"
+
+<Meta title="Components/Dropdowns" component={ADropdown} />
+
+# Dropdowns
+
+## Install
+
+The component is available on [Cisco's Artifactory package registry](https://devhub.cisco.com/artifactory/webapp/#/home).
+
+```
+  npm i --save @cisco-ats/atomic-react
+```
+
+And in the target component add:
+
+```
+import {ADropdown, ADropdownMenu, ADropdownMenuItem} from "@cisco-ats/atomic-react/ADropdown";
+```
+
+## Usage
+
+<Preview>
+  <Story name="usage-1">
+    <AApp style={{minHeight: 150}}>
+      <YourComponent>
+    {() => {
+      const [isActive, setIsActive] = useState(false);
+      return (
+        <ADropdown active={isActive}>
+          <AButton aria-haspopup="true" onClick={() => setIsActive(!isActive)}>Open Menu</AButton>
+          <ADropdownMenu>
+            <ADropdownMenuItem>One</ADropdownMenuItem>
+            <ADropdownMenuItem selected>Two</ADropdownMenuItem>
+            <ADropdownMenuItem>Three</ADropdownMenuItem>
+          </ADropdownMenu>
+        </ADropdown>
+      );
+    }}
+      </YourComponent>
+    </AApp>
+  </Story>
+</Preview>
+
+## Dropdown Props
+
+The `ADropdown` component inherits passed props.
+
+<Props of={ADropdown} />
+
+## Dropdown Menu Props
+
+The `ADropdownMenu` component inherits passed props.
+
+<Props of={ADropdownMenu} />
+
+## Dropdown Menu Item Props
+
+The `ADropdownMenuItem` component inherits passed props.
+
+<Props of={ADropdownMenuItem} />
+
+## Dusk Theme
+
+<Preview style={{backgroundColor: '#18191d'}}>
+  <Story name="dusk-1">
+    <AApp theme="dusk" style={{minHeight: 150}}>
+      <YourComponent>
+    {() => {
+      const [isActive, setIsActive] = useState(false);
+      return (
+        <ADropdown active={isActive}>
+          <AButton aria-haspopup="true" onClick={() => setIsActive(!isActive)}>Open Menu</AButton>
+          <ADropdownMenu>
+            <ADropdownMenuItem>One</ADropdownMenuItem>
+            <ADropdownMenuItem selected>Two</ADropdownMenuItem>
+            <ADropdownMenuItem>Three</ADropdownMenuItem>
+          </ADropdownMenu>
+        </ADropdown>
+      );
+    }}
+      </YourComponent>
+    </AApp>
+  </Story>
+</Preview>

@@ -60,13 +60,18 @@ $atomic-default: (
     "box-color-selected": $color-category--blue--burnt1
   ),
   "control": (
+    "fill-color": $white,
+    "stroke-color": $color-gray--light2,
     "stroke-color--hover": $color-gray--dark3,
     "stroke-color--disabled": $color-gray--light1
   ),
   "divider": (
     "color-default": $color-gray--medium4,
-    "color-light": $control-stroke-color,
+    "color-light": $color-gray--light2,
     "color-lighter": $color-gray--light4
+  ),
+  "dropdown": (
+    "box-shadow": 2px 2px 4px 0 rgba(223, 223, 223, 0.5)
   ),
   "header": (
     "bg-color": $white,

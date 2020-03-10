@@ -1,7 +1,6 @@
 @import "../../styles";
 
 $dropdown-padding: 0;
-$dropdown-box-shadow: 2px 2px 4px 0 rgba(223, 223, 223, 0.5);
 $dropdown-min-width: 150px;
 $dropdown-active-z-index: 1032;
 $dropdown-item-z-index: 1033;
@@ -12,7 +11,30 @@ $dropdown-transition: visibility $transition-duration ease,
 $dropdown--state-active-transition: visibility 0s ease,
   max-height $transition-duration ease, opacity $transition-duration--fast ease;
 
-.dropdown {
+@include theme(a-dropdown) using ($theme) {
+  &__menu {
+    background: map-deep-get($theme, "control", "fill-color");
+    border-color: map-deep-get($theme, "control", "stroke-color");
+    box-shadow: map-deep-get($theme, "dropdown", "box-shadow");
+  }
+  &__item {
+    color: map-deep-get($theme, "base", "color");
+    &--state-selected {
+      color: map-deep-get($theme, "base", "inverse-color");
+      background-color: map-deep-get($theme, "base", "color--selected");
+    }
+    &:hover {
+      color: map-deep-get($theme, "base", "inverse-color");
+      background-color: map-deep-get($theme, "base", "color--hover");
+    }
+    &:focus {
+      color: map-deep-get($theme, "base", "inverse-color");
+      background-color: map-deep-get($theme, "base", "color--active");
+    }
+  }
+}
+
+.a-dropdown {
   display: inline-block;
   position: relative;
   cursor: pointer;
@@ -23,9 +45,8 @@ $dropdown--state-active-transition: visibility 0s ease,
     opacity: 0;
     visibility: hidden;
     display: none;
-    background: $control-fill-color;
-    border: $border-width solid $control-stroke-color;
-    box-shadow: $dropdown-box-shadow;
+    border-width: $border-width;
+    border-style: solid;
     position: absolute;
     pointer-events: auto;
     top: calc(100% + 10px);
@@ -38,29 +59,20 @@ $dropdown--state-active-transition: visibility 0s ease,
     font-size: $base-font-size;
     z-index: $dropdown-item-z-index;
     display: inline-flex;
-    color: $base-color;
     padding: $dropdown-item-padding;
     width: $dropdown-item-width;
     position: relative;
     text-overflow: ellipsis;
     white-space: nowrap;
-    &--state-selected {
-      color: $base-inverse-color;
-      background-color: $base-color--selected;
-    }
     &:hover {
-      color: $base-inverse-color;
-      background-color: $base-color--hover;
       text-decoration: none;
     }
     &:focus {
-      color: $base-inverse-color;
-      background-color: $base-color--active;
       text-decoration: none;
     }
   }
   &--state-active {
-    .dropdown__menu {
+    .a-dropdown__menu {
       transition: opacity 0.3s;
       opacity: 1;
       visibility: visible;
@@ -71,12 +83,12 @@ $dropdown--state-active-transition: visibility 0s ease,
   }
 }
 
-.a-app--animated .dropdown {
-  .dropdown__menu {
+.a-app--animated .a-dropdown {
+  .a-dropdown__menu {
     animation-name: fade-in;
     animation-duration: $transition-duration;
   }
-  .dropdown__item {
+  .a-dropdown__item {
     @include transition($transition-item);
   }
 }
