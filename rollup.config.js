@@ -5,7 +5,6 @@ import postcss from "rollup-plugin-postcss";
 import filesize from "rollup-plugin-filesize";
 import json from "@rollup/plugin-json";
 import localResolve from "rollup-plugin-local-resolve";
-import copy from "rollup-plugin-copy";
 import url from "@rollup/plugin-url";
 
 const GLOBALS = {
@@ -56,9 +55,6 @@ const config = {
         "framework/components/AApp/base/fonts/*.woff",
         "framework/components/AApp/base/fonts/*.woff2"
       ]
-    }),
-    copy({
-      targets: [{src: "./framework/components/AApp/base/fonts", dest: "./dist"}]
     }),
     json({
       compact: true,

@@ -4,7 +4,6 @@
 /style-inject*
 /index.js
 /_rollupPluginBabelHelpers*
-/dist/
 /*.ttf
 /*.woff
 /*.woff2

@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
-import React, {forwardRef} from "react";
+import React, {forwardRef, useEffect} from "react";
 
-import "./fonts.js";
+import Fonts from "./fonts.js";
 import "./AApp.scss";
 
 const AApp = forwardRef(
@@ -16,6 +16,12 @@ const AApp = forwardRef(
     },
     ref
   ) => {
+    useEffect(() => {
+      if (!document.querySelector("#atomic-fonts-styles")) {
+        document.head.innerHTML += `<style id="atomic-fonts-styles" type="text/css">${Fonts}</style>`;
+      }
+    });
+
     let className = "a-app";
 
     if (animations) {
