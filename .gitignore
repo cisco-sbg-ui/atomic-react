@@ -1,4 +1,6 @@
-/dist/
+/dist/*.ttf
+/dist/*.woff
+/dist/*.woff2
 /docs/
 /node_modules/
 /A*.js
