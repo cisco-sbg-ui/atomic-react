@@ -1,6 +1,6 @@
 {
   "name": "@cisco-ats/atomic-react",
-  "version": "0.1.6",
+  "version": "0.1.7",
   "description": "",
   "main": "index.js",
   "module": "index.js",
@@ -52,5 +52,9 @@
   "bugs": {
     "url": "https://github.com/threatgrid/atomic-react/issues"
   },
-  "homepage": "https://github.com/threatgrid/atomic-react#readme"
+  "homepage": "https://github.com/threatgrid/atomic-react#readme",
+  "files": [
+    "dist",
+    "framework"
+  ]
 }
