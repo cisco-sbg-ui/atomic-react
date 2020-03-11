@@ -63,7 +63,7 @@ $display-line-height: $headings-line-height !default;
 // -----------------------------------------------------------------------------
 $small-font-size: 80% !default;
 $mark-padding: rem(0.1875) !default;
-$mark-bg: $color-status--yellow--wash3 !default;
+$mark-bg: map-get($status-yellow, "wash-3") !default;
 // -----------------------------------------------------------------------------
 // Grid breakpoints
 // -----------------------------------------------------------------------------
@@ -91,17 +91,17 @@ $grid-gutter-width: 30px !default;
 // -----------------------------------------------------------------------------
 // Alert colors
 // -----------------------------------------------------------------------------
-$color-information: $color-blue3;
-$color-information-alt: $color-blue1;
-$color-good: $color-status--green;
-$color-warning: $color-status--orange;
-$color-warning-alt: $color-status--yellow;
-$color-error: $color-status--red;
+$color-information: map-get($status-blue, "base");
+$color-information-alt: map-get($cisco-blue, "base");
+$color-good: map-get($status-green, "base");
+$color-warning: map-get($status-orange, "base");
+$color-warning-alt: map-get($status-yellow, "base");
+$color-error: map-get($status-red, "base");
 // -----------------------------------------------------------------------------
 // Alert Hover colors
 // -----------------------------------------------------------------------------
-$color-warning--state-hover: $color-status--orange--burnt2;
-$color-error--state-hover: $color-status--red--burnt2;
+$color-warning--state-hover: map-get($status-orange, "burnt-2");
+$color-error--state-hover: map-get($status-red, "burnt-2");
 // -----------------------------------------------------------------------------
 // Alert box shadow
 // -----------------------------------------------------------------------------
@@ -141,13 +141,16 @@ $alpha-9: 0.9;
 // -----------------------------------------------------------------------------
 // Base Colors
 // -----------------------------------------------------------------------------
-$base-pg-bg: $color-gray--light4; // Page bg(#f2f2f2);
-$base-icon-color: $color-gray--dark2; // Icons (#58585b);
+$base-pg-bg: map-get($grey, "lighten-5"); // Page bg(#f2f2f2);
+$base-icon-color: map-get($grey, "darken-5"); // Icons (#58585b);
 // -----------------------------------------------------------------------------
 // General Colors
 // -----------------------------------------------------------------------------
-$control-text-color: $color-gray--dark2; // Alternative Text (#58585b);
-$control-fill-color--disabled: $color-gray--light2; // Disabled bg (#dfdfdf);
+$control-text-color: map-get($grey, "darken-5"); // Alternative Text (#58585b);
+$control-fill-color--disabled: map-get(
+  $grey,
+  "lighten-3"
+); // Disabled bg (#dfdfdf);
 // -----------------------------------------------------------------------------
 // Base Properties
 // -----------------------------------------------------------------------------
@@ -156,19 +159,6 @@ $base-font-weight: $font-weight; // 400
 $base-line-height: $line-height; // 21px
 $base-border-width: $border-width; // 1px;
 $base-border-radius: $border-radius--sm; // 3px
-// -----------------------------------------------------------------------------
-// Blockquote
-// -----------------------------------------------------------------------------
-$blockquote-spacing: $spacing;
-$blockquote-cite-color: $color-gray--medium3;
-// -----------------------------------------------------------------------------
-// Code blocks
-// -----------------------------------------------------------------------------
-$code-font-size: 87.5% !default;
-$code-bg: $color-gray--light4;
-$code-color: $color-status--red--burnt2;
-$code-padding: 2px 4px;
-$pre-padding: 10px;
 // -----------------------------------------------------------------------------
 // Motion
 // -----------------------------------------------------------------------------

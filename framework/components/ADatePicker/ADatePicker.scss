@@ -6,7 +6,7 @@ $date-picker-width: 275px;
 $date-picker-max-width: 275px;
 $date-picker-z-index: 1;
 $date-picker-header-padding: 4px 0;
-$date-picker-header-border-color: $color-gray--light2;
+$date-picker-header-border-color: map-get($grey, "lighten-3");
 $date-picker-nav-top: 2px;
 $date-picker-nav-width: 28px;
 $date-picker-nav-height: 28px;
@@ -27,7 +27,7 @@ $date-picker-day-padding-top: $base-padding-small-top / 2;
 $date-picker-day-padding-bottom: $base-padding-small-bottom / 2;
 $date-picker-day-bg-active: $base-color--active;
 $date-picker-day-border-radius: 2px;
-$date-picker-range-bg: $color-gray--light4;
+$date-picker-range-bg: map-get($grey, "lighten-5");
 
 .date-picker {
   display: block;

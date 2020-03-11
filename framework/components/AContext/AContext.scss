@@ -129,19 +129,19 @@ $context-arrow-left: 10%;
     }
   }
   &--state-warning {
-    border-color: $color-status--orange;
-    @include context-border-color($color-status--orange);
+    border-color: map-get($status-orange, "base");
+    @include context-border-color(map-get($status-orange, "base"));
   }
   &--state-critical-stop {
-    border-color: $color-status--red;
-    @include context-border-color($color-status--red);
+    border-color: map-get($status-red, "base");
+    @include context-border-color(map-get($status-red, "base"));
   }
   &--state-success {
-    border-color: $color-status--green;
-    @include context-border-color($color-status--green);
+    border-color: map-get($status-green, "base");
+    @include context-border-color(map-get($status-green, "base"));
   }
   &--state-info {
-    border-color: $color-blue1;
-    @include context-border-color($color-blue1);
+    border-color: map-get($cisco-blue, "base");
+    @include context-border-color(map-get($cisco-blue, "base"));
   }
 }

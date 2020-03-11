@@ -5,7 +5,7 @@ $accordion-width: 100%;
 $accordion-margin: 20px 0;
 $accordion-header-font-size: $font-size--sm;
 $accordion-header-line-height: $font-size--xxs;
-$accordion-header-bg-color: $color-gray--light2;
+$accordion-header-bg-color: map-get($grey, "lighten-3");
 $accordion-header-collapsed-bg-color: $base-pg-bg;
 $accordion-header-padding: 10px;
 $accordion-body-max-height: 80em;

@@ -1,6 +1,6 @@
 @import "../../styles";
 
-$tooltip-bg: $color-gray--dark3;
+$tooltip-bg: map-get($grey, "darken-4");
 $tooltip-box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.25);
 $tooltip-min-width: 75px;
 $tooltip-padding: rem(0.3125);

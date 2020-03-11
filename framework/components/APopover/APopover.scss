@@ -16,8 +16,8 @@ $popover-header-margin: 0;
 $popover-header-padding: 20px 20px 15px 20px;
 $popover-body-padding: 20px;
 $popover-footer-padding: 20px;
-$popover-footer-bg: $color-gray--light4;
-$popover-footer-arrow-color: $color-gray--light4;
+$popover-footer-bg: map-get($grey, "lighten-5");
+$popover-footer-arrow-color: map-get($grey, "lighten-5");
 
 .popover {
   // Change position to absolute when positioning in your project;

@@ -6,7 +6,7 @@ $tag-line-height: $font-size--xxs;
 $tag-padding: 0 12px;
 $tag-border: 0 none;
 $tag-border-radius: $border-radius--sm;
-$tag-bg-color: $color-gray--light2;
+$tag-bg-color: map-get($grey, "lighten-3");
 $tag-color: $base-color;
 $tag-color-alt: $white;
 $tag-icon-font-size: $font-size--xxs;

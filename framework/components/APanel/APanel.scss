@@ -9,7 +9,7 @@ $panel-padding: 20px;
 $panel-title-font-size: rem(1.125);
 $panel-title-font-size-small: $base-font-size;
 $panel-white-bg: $white;
-$panel-white-color: $color-gray--dark1;
+$panel-white-color: map-get($grey, "darken-6");
 
 @include theme(a-panel) using ($theme) {
   background: map-deep-get($theme, "panel", "bg");

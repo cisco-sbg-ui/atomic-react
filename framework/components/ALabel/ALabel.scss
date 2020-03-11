@@ -1,7 +1,7 @@
 @import "../../styles";
 
 $label-margin: 0;
-$label-color: $color-gray--medium1;
+$label-color: map-get($grey, "darken-3");
 
 .label {
   display: block;

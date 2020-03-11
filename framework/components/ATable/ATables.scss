@@ -10,7 +10,7 @@ $table-row-height-tight: 30px;
 $table-cell-padding-left-right: 15px;
 $table-cell-min-width: 90px;
 $table-header-font-size: 12px;
-$table-header-color: $color-gray--dark4;
+$table-header-color: map-get($grey, "darken-2");
 $table-header-line-height: 15px;
 $table-body-font-size: 13px;
 $table-body-line-height: 16.5px;
@@ -18,8 +18,8 @@ $table-cell-padding-top-bottom: ($table-row-height - $table-body-font-size) / 2;
 $table-cell-tight-padding-top-bottom: (
     $table-row-height-tight - $table-body-font-size
   ) / 2;
-$table-row-hover-color: $color-gray--light2;
-$table-row-stripe-color: $color-gray--light5;
+$table-row-hover-color: map-get($grey, "lighten-3");
+$table-row-stripe-color: map-get($grey, "lighten-6");
 
 th {
   font-weight: normal;

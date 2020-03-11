@@ -10,7 +10,7 @@ $loader-dot-animation-delay: 1.4s;
 $loader-dot-bounce1-delay: -0.32s;
 $loader-dot-bounce2-delay: -0.16s;
 // Page Loading Indicator
-$page-loader-base-background-color: $color-gray--light2;
+$page-loader-base-background-color: map-get($grey, "lighten-3");
 $page-loader-background-color: $base-brand-color;
 $page-loader-small-diameter: 100px;
 $page-loader-medium-diameter: 200px;
@@ -25,7 +25,7 @@ $cisco-loader-width: 152px;
 $cisco-loader-min-width: 140px;
 $cisco-loader-bar-width: 6px;
 $cisco-loader-bar-margin: 20px;
-$cisco-loader-bar-bg: $color-blue1;
+$cisco-loader-bar-bg: map-get($cisco-blue, "base");
 $cisco-loader-bar-border-radius: 64px;
 $cisco-loader-bar-animation-duration: 1s;
 $cisco-loader-bar-height--index1: 33%;

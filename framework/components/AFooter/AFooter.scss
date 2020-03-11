@@ -4,7 +4,7 @@ $footer-min-height: 35px;
 $footer-max-height: 65px;
 $footer-padding: 10px 20px;
 $footer-font-size: $font-size--xs;
-$footer-border-color: $color-gray--light4;
+$footer-border-color: map-get($grey, "lighten-5");
 
 .footer {
   display: block;

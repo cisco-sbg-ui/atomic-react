@@ -43,7 +43,7 @@ $header-dropdown-left: -$base-padding-left;
     }
 
     &:hover {
-      fill: $color-blue1;
+      fill: map-get($cisco-blue, "base");
     }
   }
 }
@@ -119,6 +119,7 @@ $header-dropdown-left: -$base-padding-left;
 
     &-item {
       padding: 10px;
+      line-height: 0;
 
       &:focus {
         text-decoration: none;
