@@ -1,5 +1,7 @@
 .github/
 .storybook/
+dist/
+docs/
 framework/
 .babelrc
 .editorconfig
