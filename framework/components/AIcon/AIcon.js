@@ -17,7 +17,7 @@ const isSize = function(props, propName, componentName) {
 };
 
 const AIcon = forwardRef(
-  ({children, className: propsClassName, size, color, ...rest}, ref) => {
+  ({children, className: propsClassName, size, ...rest}, ref) => {
     let className = `a-icon`;
 
     if (size && isNaN(size)) {
@@ -38,7 +38,7 @@ const AIcon = forwardRef(
         viewBox="0 0 16 16"
         aria-labelledby="title">
         <title id="title">{children} icon</title>
-        <path d={Icons[children]} {...(color && {fill: color})} />
+        <path d={Icons[children]} />
       </svg>
     );
   }
@@ -49,10 +49,6 @@ AIcon.propTypes = {
    * The `AIcon` component requires the icon name as the only child element.
    */
   children: PropTypes.string.isRequired,
-  /**
-   *  Accepts any CSS color value (ex: `#fff`, `rgba(255, 255, 255, 0.5)`, `var(--var-color)`)
-   */
-  color: PropTypes.string,
   /**
    * Size, if provided, is either a number or one of `["small", "medium", "large"]`
    */
