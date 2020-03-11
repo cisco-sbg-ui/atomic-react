@@ -17,8 +17,12 @@ const AApp = forwardRef(
     ref
   ) => {
     useEffect(() => {
-      if (!document.querySelector("#atomic-fonts-styles")) {
-        document.head.innerHTML += `<style id="atomic-fonts-styles" type="text/css">${Fonts}</style>`;
+      if (!document.querySelector("head #atomic-fonts-styles")) {
+        const fontStyle = document.createElement("style");
+        fontStyle.id = "atomic-fonts-styles";
+        fontStyle.type = "text/css";
+        fontStyle.innerHTML = Fonts;
+        document.head.appendChild(fontStyle);
       }
     });
 
