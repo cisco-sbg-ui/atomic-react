@@ -1,6 +1,18 @@
+$blockquote-spacing: $spacing;
+$blockquote-cite-color: map-get($grey, "base");
+$code-font-size: 87.5% !default;
+$code-padding: 2px 4px;
+$pre-padding: 10px;
+
 @include theme(a-app--wrap) using ($theme) {
   background-color: map-deep-get($theme, "base", "bg");
   color: map-deep-get($theme, "base", "color");
+
+  code,
+  pre {
+    background-color: map-deep-get($theme, "app", "code", "bg");
+    color: map-deep-get($theme, "app", "code", "color");
+  }
 }
 
 .a-app--wrap {
@@ -116,8 +128,6 @@
   code,
   pre {
     font-size: $code-font-size;
-    color: $code-color;
-    background-color: $code-bg;
     border-radius: $base-border-radius;
   }
 

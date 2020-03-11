@@ -8,25 +8,25 @@ $alert-padding: 15px 0;
 $alert-body-font-size: $font-size--sm;
 $alert-message-max-width: 700px;
 // Information
-$alert-bg: $color-status--blue--wash3;
-$alert-border-color: $color-status--blue--wash2;
-$alert-close-icon: $color-status--blue--wash1;
-$alert-close-icon--hover: $color-status--blue--burnt1;
+$alert-bg: map-get($status-blue, "wash-3");
+$alert-border-color: map-get($status-blue, "wash-2");
+$alert-close-icon: map-get($status-blue, "wash-1");
+$alert-close-icon--hover: map-get($status-blue, "burnt-1");
 // Success
-$alert-success-bg: $color-status--green--wash3;
-$alert-success-border-color: $color-status--green--wash1;
-$alert-success-close-icon: $color-status--green--wash1;
-$alert-success-close-icon--hover: $color-status--green--burnt1;
+$alert-success-bg: map-get($status-green, "wash-3");
+$alert-success-border-color: map-get($status-green, "wash-1");
+$alert-success-close-icon: map-get($status-green, "wash-1");
+$alert-success-close-icon--hover: map-get($status-green, "burnt-1");
 // Warning
-$alert-warning-bg: $color-status--orange--wash3;
-$alert-warning-border-color: $color-status--orange--wash2;
-$alert-warning-close-icon: $color-status--orange--wash1;
-$alert-warning-close-icon--hover: $color-status--orange--burnt1;
+$alert-warning-bg: map-get($status-orange, "wash-3");
+$alert-warning-border-color: map-get($status-orange, "wash-2");
+$alert-warning-close-icon: map-get($status-orange, "wash-1");
+$alert-warning-close-icon--hover: map-get($status-orange, "burnt-1");
 // Danger / Error
-$alert-danger-bg: $color-status--red--wash3;
-$alert-danger-border-color: $color-status--red--wash2;
-$alert-danger-close-icon: $color-status--red--wash1;
-$alert-danger-close-icon--hover: $color-status--red--burnt1;
+$alert-danger-bg: map-get($status-red, "wash-3");
+$alert-danger-border-color: map-get($status-red, "wash-2");
+$alert-danger-close-icon: map-get($status-red, "wash-1");
+$alert-danger-close-icon--hover: map-get($status-red, "burnt-1");
 
 .alert {
   display: inline-flex;

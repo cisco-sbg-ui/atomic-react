@@ -25,7 +25,7 @@ a {
     color: $base-color--active;
   }
   &.disabled {
-    color: $color-gray--light1;
+    color: map-get($grey, "lighten-2");
   }
   &--color-alt {
     color: $base-color;

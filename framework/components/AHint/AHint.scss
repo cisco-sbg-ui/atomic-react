@@ -3,8 +3,8 @@
 $help-block-font-size: $font-size--xs;
 $help-block-line-height: 16px;
 $help-block-margin-top: 2px;
-$help-block-color: $color-gray--medium3;
-$help-block-color-warning: $color-status--orange--burnt1;
+$help-block-color: map-get($grey, "base");
+$help-block-color-warning: map-get($status-orange, "burnt-1");
 $help-block-color-error: $color-error;
 
 .help-block {

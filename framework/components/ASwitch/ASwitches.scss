@@ -4,27 +4,33 @@ $switch-width: 38px;
 $switch-height: 15px;
 $switch-margin: 10px 10px;
 $switch-border-radius: 11px;
-$switch-bg: $color-gray--dark3;
-$switch-bg--checked: $color-category--blue--burnt1;
+$switch-bg: map-get($grey, "darken-4");
+$switch-bg--checked: map-get($cisco-blue, "burnt-1");
 $switch__label-margin: 0 0 0 10px;
 $switch__circle-width: 21px;
 $switch__circle-height: 21px;
 $switch__circle-border-radius: 30px;
-$switch__circle-border-color: $color-gray--dark3;
-$switch__circle-border-color--checked: $color-category--blue--burnt1;
+$switch__circle-border-color: map-get($grey, "darken-4");
+$switch__circle-border-color--checked: map-get($cisco-blue, "burnt-1");
 $switch__circle-border-color--disabled: $control-stroke-color--disabled;
 $switch__circle-border-color--checked--hover: $control-stroke-color--hover;
-$switch__circle-border-color--hover: $color-category--blue--burnt1;
+$switch__circle-border-color--hover: map-get($cisco-blue, "burnt-1");
 $switch-bg--disabled: $control-stroke-color--disabled;
-$switch-bg--disabled--checked: $color-status--blue--wash2;
-$switch__circle-border-color--disabled--checked: $color-status--blue--wash2;
-$switch__circle--inner-box-shadow-hover: $color-status--blue--wash2;
-$switch__circle--inner-border-active: $color-gray--dark3;
-$switch__circle--inner-box-shadow-active: $color-gray--light1;
+$switch-bg--disabled--checked: map-get($status-blue, "wash-2");
+$switch__circle-border-color--disabled--checked: map-get(
+  $status-blue,
+  "wash-2"
+);
+$switch__circle--inner-box-shadow-hover: map-get($status-blue, "wash-2");
+$switch__circle--inner-border-active: map-get($grey, "darken-4");
+$switch__circle--inner-box-shadow-active: map-get($grey, "lighten-2");
 $switch__circle--inner-border-active-hover: $base-color--selected;
 $switch__circle--inner-box-shadow-active-hover: $base-color--selected;
-$switch__circle--inner-box-shadow-checked-hover: $color-status--blue--wash2;
-$switch__circle--inner-border-checked-active: $color-gray--light1;
+$switch__circle--inner-box-shadow-checked-hover: map-get(
+  $status-blue,
+  "wash-2"
+);
+$switch__circle--inner-border-checked-active: map-get($grey, "lighten-2");
 $switch__circle--inner-box-shadow-checked-active: $base-brand-color;
 $switch__circle--inner-border-checked-active-hover: $control-stroke-color--hover;
 $switch__circle--inner-box-shadow-checked-active-hover: $base-color--selected;

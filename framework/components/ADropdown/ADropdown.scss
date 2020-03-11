@@ -54,8 +54,10 @@ $dropdown--state-active-transition: visibility 0s ease,
     min-width: $dropdown-min-width;
     transform: translateY(-2em);
     text-align: left;
+    line-height: 1.5;
   }
   &__item {
+    text-decoration: none;
     font-size: $base-font-size;
     z-index: $dropdown-item-z-index;
     display: inline-flex;

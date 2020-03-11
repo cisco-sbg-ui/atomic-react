@@ -22,7 +22,7 @@ $modal-close-padding: 20px 20px 20px 10px;
 $modal-close-margin: -20px -20px -15px auto;
 $modal-body-padding: 15px 20px 20px 20px;
 $modal-footer-padding: 20px;
-$modal-footer-bg: $color-gray--light4;
+$modal-footer-bg: map-get($grey, "lighten-5");
 $modal-backdrop-top: 0;
 $modal-backdrop-right: 0;
 $modal-backdrop-bottom: 0;

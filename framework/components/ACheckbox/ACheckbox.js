@@ -6,24 +6,28 @@ import "./ACheckbox.scss";
 const ACheckbox = forwardRef(
   (
     {
-      name,
-      value,
-      checked,
-      disabled,
-      indeterminate,
-      onClick,
-      label,
+      checked = false,
       children,
+      className: propsClassName,
+      disabled = false,
+      indeterminate = false,
+      name,
+      onClick,
       tooltip,
-      checkboxClassName,
-      className,
-      id,
-      wrap
+      value,
+      wrap,
+      ...rest
     },
     ref
   ) => {
+    const className = "a-checkbox";
+
+    if (propsClassName) {
+      className += ` ${propsClassName}`;
+    }
+
     return (
-      <label ref={ref} className={`a-checkbox ${className}`} id={id}>
+      <label {...rest} ref={ref} className={className}>
         <input
           type="checkbox"
           className="a-checkbox__input"
@@ -37,14 +41,11 @@ const ACheckbox = forwardRef(
           role="checkbox"
           ref={el => el && (el.indeterminate = indeterminate)}
         />
-        <span
-          aria-hidden="true"
-          className={`a-checkbox__box ${checkboxClassName}`}
-        />
+        <span aria-hidden="true" className="a-checkbox__box" />
         <span
           className={`a-checkbox__label ${wrap && "a-checkbox__label--wrap"}`}
           title={tooltip}>
-          {label || children}
+          {children}
         </span>
       </label>
     );
@@ -54,33 +55,18 @@ const ACheckbox = forwardRef(
 ACheckbox.defaultProps = {
   checked: false,
   disabled: false,
-  indeterminate: false,
-  checkboxClassName: "",
-  className: "",
-  id: ""
+  indeterminate: false
 };
 
 ACheckbox.propTypes = {
-  /**
-   * A class name to append to the input.
-   */
-  checkboxClassName: PropTypes.string,
   /**
    * Toggles the `checked` state.
    */
   checked: PropTypes.bool,
   /**
-   * A class name to append to the label.
-   */
-  className: PropTypes.string,
-  /**
    * Toggles the `disabled` state.
    */
   disabled: PropTypes.bool,
-  /**
-   * A unique identifier for the label.
-   */
-  id: PropTypes.string,
   /**
    * Toggles the `indeterminate` state.
    */
@@ -93,10 +79,6 @@ ACheckbox.propTypes = {
    * A callback for handling the click event.
    */
   onClick: PropTypes.func,
-  /**
-   * The checkbox label.
-   */
-  label: PropTypes.string,
   /**
    * The label's title.
    */

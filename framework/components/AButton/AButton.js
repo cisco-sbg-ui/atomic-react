@@ -9,19 +9,16 @@ const AButton = forwardRef(
       children,
       className: propsClassName,
       disabled,
-      id,
-      label,
-      onClick,
+      href,
       primary,
       secondary,
       selected,
-      style,
       target,
       tertiary,
       tertiaryAlt,
       tertiaryAltIcon,
-      to,
-      type = "button"
+      type = "button",
+      ...rest
     },
     ref
   ) => {
@@ -55,17 +52,15 @@ const AButton = forwardRef(
 
     let TagName = "button";
     const props = {
+      ...rest,
       ref,
-      className,
-      onClick,
-      id,
-      style
+      className
     };
 
-    if (to) {
+    if (href) {
       TagName = "a";
       if (!disabled) {
-        props.href = to;
+        props.href = href;
         props.target = target;
       }
     } else {
@@ -73,7 +68,7 @@ const AButton = forwardRef(
       props.type = type;
     }
 
-    return <TagName {...props}>{label || children}</TagName>;
+    return <TagName {...props}>{children}</TagName>;
   }
 );
 
@@ -91,17 +86,9 @@ AButton.propTypes = {
    */
   disabled: PropTypes.bool,
   /**
-   * A unique identifier for the label.
+   * If specified, the component will render as an HTML link.
    */
-  id: PropTypes.string,
-  /**
-   * The button label.
-   */
-  label: PropTypes.string,
-  /**
-   * A callback for handling the click event.
-   */
-  onClick: PropTypes.func,
+  href: PropTypes.string,
   /**
    * Toggles the `primary` style variant. If no style variant is chosen, `primary` is applied.
    */
@@ -115,11 +102,7 @@ AButton.propTypes = {
    */
   selected: PropTypes.bool,
   /**
-   * Passes inline styles to the button.
-   */
-  style: PropTypes.string,
-  /**
-   * If the `to` property is defined, the target can be set (ex: `_blank`, `_self`, `_parent`, `_top`)
+   * If the `href` property is defined, the target can be set (ex: `_blank`, `_self`, `_parent`, `_top`)
    */
   target: PropTypes.string,
   /**
@@ -134,10 +117,6 @@ AButton.propTypes = {
    * Toggles the `tertiaryAltIcon` style variant.
    */
   tertiaryAltIcon: PropTypes.bool,
-  /**
-   * If specified, the component will render as an HTML link.
-   */
-  to: PropTypes.string,
   /**
    * The button type.
    */

@@ -22,11 +22,11 @@ $pagination-link-height: 25px;
 $pagination-link-width: 25px;
 $pagination-link-line-height: 1.75;
 $pagination-link-border-radius: $border-radius--xs;
-$pagination-link-color: $color-gray--dark2;
-$pagination-link-bg-color-focus: $color-blue1;
-$pagination-link-border-color-focus: $color-blue1;
-$pagination-link-type-text-color: $color-blue1;
-$pagination-link-type-text-icon-color: $color-blue1;
+$pagination-link-color: map-get($grey, "darken-5");
+$pagination-link-bg-color-focus: map-get($cisco-blue, "base");
+$pagination-link-border-color-focus: map-get($cisco-blue, "base");
+$pagination-link-type-text-color: map-get($cisco-blue, "base");
+$pagination-link-type-text-icon-color: map-get($cisco-blue, "base");
 $pagination-link-type-ellipsis-padding: 3px 5px 0 5px;
 $pagination-text-margin: 0 5px;
 

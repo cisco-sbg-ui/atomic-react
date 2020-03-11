@@ -35,7 +35,9 @@ import AButton from "@cisco-ats/atomic-react/AButton";
       const [count, setCount] = useState(0);
       return (
         <div>
-          <AButton onClick={() => setCount(count + 1)}>
+          <AButton
+            className="fern"
+            onClick={() => setCount(count + 1)}>
             Click Me
           </AButton>
           <div>
@@ -51,6 +53,8 @@ import AButton from "@cisco-ats/atomic-react/AButton";
 
 
 ## Button Props
+
+The `AButton` component inherits passed props.
 
 <Props of={AButton} />
 
@@ -222,11 +226,11 @@ import AButton from "@cisco-ats/atomic-react/AButton";
 
 ## Link Buttons
 
-As a convenience, if the `to` property is used, the component will render as an HTML anchor.
+If the `href` property is used, the component will render as an HTML anchor.
 
 <Preview>
   <AApp>
-    <AButton secondary to="https://www.cisco.com">
+    <AButton secondary href="https://www.cisco.com">
       Launch Cisco.com
     </AButton>
   </AApp>

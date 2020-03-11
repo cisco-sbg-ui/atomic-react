@@ -36,8 +36,8 @@ import {ADropdown, ADropdownMenu, ADropdownMenuItem} from "@cisco-ats/atomic-rea
         <ADropdown active={isActive}>
           <AButton aria-haspopup="true" onClick={() => setIsActive(!isActive)}>Open Menu</AButton>
           <ADropdownMenu>
-            <ADropdownMenuItem>One</ADropdownMenuItem>
-            <ADropdownMenuItem selected>Two</ADropdownMenuItem>
+            <ADropdownMenuItem selected>One - Selected</ADropdownMenuItem>
+            <ADropdownMenuItem href="https://www.cisco.com" target="_blank">Cisco.com</ADropdownMenuItem>
             <ADropdownMenuItem>Three</ADropdownMenuItem>
           </ADropdownMenu>
         </ADropdown>
@@ -78,9 +78,9 @@ The `ADropdownMenuItem` component inherits passed props.
         <ADropdown active={isActive}>
           <AButton aria-haspopup="true" onClick={() => setIsActive(!isActive)}>Open Menu</AButton>
           <ADropdownMenu>
-            <ADropdownMenuItem>One</ADropdownMenuItem>
-            <ADropdownMenuItem selected>Two</ADropdownMenuItem>
-            <ADropdownMenuItem>Three</ADropdownMenuItem>
+            <ADropdownMenuItem>One - Selected</ADropdownMenuItem>
+            <ADropdownMenuItem href="https://www.cisco.com" target="_blank">Cisco.com</ADropdownMenuItem>
+            <ADropdownMenuItem selected>Three - Selected</ADropdownMenuItem>
           </ADropdownMenu>
         </ADropdown>
       );

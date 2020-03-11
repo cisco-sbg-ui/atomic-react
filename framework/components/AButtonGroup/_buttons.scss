@@ -1,6 +1,6 @@
 @import "../../styles";
 
-$btn-group-color: $color-gray--dark2;
+$btn-group-color: map-get($grey, "darken-5");
 $btn-group-button-margin: 0;
 $btn-group-button-padding: $base-padding-small-top;
 $btn-group-button-margin: 0;

@@ -1,94 +1,98 @@
 $atomic-dusk: (
   "app": (
     "scrollbar": (
-      "track-bg": rgba($color-gray--light5, $alpha-1),
-      "track-border-color": rgba($color-gray--light4, $alpha-1),
-      "thumb-bg": $color-gray--dark5
+      "track-bg": rgba(map-get($grey, "lighten-6"), $alpha-1),
+      "track-border-color": rgba(map-get($grey, "lighten-5"), $alpha-1),
+      "thumb-bg": map-get($grey, "darken-7")
+    ),
+    "code": (
+      "bg": map-get($dusk, "6"),
+      "color": map-get($status-green, "burnt-1")
     )
   ),
   "base": (
-    "bg": $color-gray--dark5,
-    "brand-color": $color-category--blue--wash1,
-    "color": $color-gray--light4,
-    "color--active": $color-blue1,
-    "color--hover": $color-category--blue--burnt1,
-    "color--selected": $color-blue1,
-    "inverse-color": $color-gray--light4,
-    "stroke-color": rgba($color-gray--medium3, $alpha-5),
+    "bg": map-get($grey, "darken-7"),
+    "brand-color": map-get($cisco-blue, "wash-1"),
+    "color": map-get($grey, "lighten-5"),
+    "color--active": map-get($cisco-blue, "base"),
+    "color--hover": map-get($cisco-blue, "burnt-1"),
+    "color--selected": map-get($cisco-blue, "base"),
+    "inverse-color": map-get($grey, "lighten-5"),
+    "stroke-color": rgba(map-get($grey, "base"), $alpha-5),
     "box-shadow": 0 0 2px 2px rgba(59, 202, 255, 0.4),
-    "outline": 1px solid $color-category--blue--wash1
+    "outline": 1px solid map-get($cisco-blue, "wash-1")
   ),
   "button": (
     "primary": (
-      "bg": $color-category--blue--burnt1,
-      "bg--hover": $color-blue1,
-      "bg--focus": $color-category--blue--burnt1,
-      "bg--disabled": $color-blue4,
-      "border": $color-category--blue--burnt1,
-      "border--hover": $color-blue1,
-      "border--focus": $color-category--blue--burnt1,
-      "border--disabled": $color-blue4,
-      "color--disabled": rgba($color-gray--light4, $alpha-5)
+      "bg": map-get($cisco-blue, "burnt-1"),
+      "bg--hover": map-get($cisco-blue, "base"),
+      "bg--focus": map-get($cisco-blue, "burnt-1"),
+      "bg--disabled": map-get($dusk, "1"),
+      "border": map-get($cisco-blue, "burnt-1"),
+      "border--hover": map-get($cisco-blue, "base"),
+      "border--focus": map-get($cisco-blue, "burnt-1"),
+      "border--disabled": map-get($dusk, "1"),
+      "color--disabled": rgba(map-get($grey, "lighten-5"), $alpha-5)
     ),
     "secondary": (
-      "bg--hover": rgba($color-category--blue--burnt3, $alpha-5),
-      "bg--active": rgba($color-category--blue--burnt3, $alpha-5),
-      "bg--focus": rgba($color-category--blue--burnt3, $alpha-5),
-      "border": $color-category--blue--burnt1,
-      "border--hover": $color-category--blue--wash1,
-      "border--active": $color-category--blue--burnt2,
-      "border--focus": $color-category--blue--burnt1,
-      "border--disabled": lighten(rgba($color-blue4, $alpha-5), 30%),
-      "color--hover": $color-category--blue--wash1,
-      "color--active": $color-blue1,
-      "color--focus": $color-category--blue--wash1,
-      "color--disabled": lighten($color-blue4, 30%)
+      "bg--hover": rgba(map-get($cisco-blue, "burnt-3"), $alpha-5),
+      "bg--active": rgba(map-get($cisco-blue, "burnt-3"), $alpha-5),
+      "bg--focus": rgba(map-get($cisco-blue, "burnt-3"), $alpha-5),
+      "border": map-get($cisco-blue, "burnt-1"),
+      "border--hover": map-get($cisco-blue, "wash-1"),
+      "border--active": map-get($cisco-blue, "burnt-2"),
+      "border--focus": map-get($cisco-blue, "burnt-1"),
+      "border--disabled": lighten(rgba(map-get($dusk, "1"), $alpha-5), 30%),
+      "color--hover": map-get($cisco-blue, "wash-1"),
+      "color--active": map-get($cisco-blue, "base"),
+      "color--focus": map-get($cisco-blue, "wash-1"),
+      "color--disabled": lighten(map-get($dusk, "1"), 30%)
     ),
     "tertiary": (
-      "bg--hover": rgba($color-category--blue--burnt3, $alpha-5),
-      "bg--active": rgba($color-category--blue--burnt3, $alpha-5),
-      "color--hover": $color-category--blue--wash1,
-      "color--active": $color-blue1,
-      "color--focus": $color-category--blue--wash1,
-      "color--disabled": lighten($color-blue4, 30%),
+      "bg--hover": rgba(map-get($cisco-blue, "burnt-3"), $alpha-5),
+      "bg--active": rgba(map-get($cisco-blue, "burnt-3"), $alpha-5),
+      "color--hover": map-get($cisco-blue, "wash-1"),
+      "color--active": map-get($cisco-blue, "base"),
+      "color--focus": map-get($cisco-blue, "wash-1"),
+      "color--disabled": lighten(map-get($dusk, "1"), 30%),
       "opacity--disabled": $alpha-5
     )
   ),
   "checkbox": (
-    "box-color-active": $color-blue1,
-    "box-color-disabled": rgba($color-blue4, $alpha-3),
-    "box-color-selected": $color-category--blue--burnt1
+    "box-color-active": map-get($cisco-blue, "base"),
+    "box-color-disabled": rgba(map-get($dusk, "1"), $alpha-3),
+    "box-color-selected": map-get($cisco-blue, "burnt-1")
   ),
   "control": (
-    "fill-color": $color-blue10,
-    "stroke-color": rgba($color-gray--light2, $alpha-2),
-    "stroke-color--hover": $color-gray--medium4,
-    "stroke-color--disabled": rgba($color-gray--light1, $alpha-3)
+    "fill-color": map-get($dusk, "6"),
+    "stroke-color": rgba(map-get($grey, "lighten-3"), $alpha-2),
+    "stroke-color--hover": map-get($grey, "lighten-1"),
+    "stroke-color--disabled": rgba(map-get($grey, "lighten-2"), $alpha-3)
   ),
   "divider": (
-    "color-default": rgba($color-gray--light2, $alpha-5),
-    "color-light": rgba($color-gray--light2, $alpha-3),
-    "color-lighter": rgba($color-gray--light2, $alpha-15)
+    "color-default": rgba(map-get($grey, "lighten-3"), $alpha-5),
+    "color-light": rgba(map-get($grey, "lighten-3"), $alpha-3),
+    "color-lighter": rgba(map-get($grey, "lighten-3"), $alpha-15)
   ),
   "dropdown": (
     "box-shadow": 2px 2px 4px 0 rgba($black, $alpha-5)
   ),
   "header": (
-    "bg-color": $color-blue11,
-    "icon-color": $color-gray--light2
+    "bg-color": map-get($dusk, "4"),
+    "icon-color": map-get($grey, "lighten-3")
   ),
   "panel": (
     "bg":
       linear-gradient(
         125.59deg,
-        rgba($color-blue7, $alpha-6) 0%,
-        rgba($color-blue9, $alpha-6) 100%
+        rgba(map-get($dusk, "2"), $alpha-6) 0%,
+        rgba(map-get($dusk, "5"), $alpha-6) 100%
       ),
     "bg-gray":
       linear-gradient(
         125.59deg,
-        rgba($color-blue7, $alpha-6) 0%,
-        rgba($color-blue9, $alpha-6) 100%
+        rgba(map-get($dusk, "2"), $alpha-6) 0%,
+        rgba(map-get($dusk, "5"), $alpha-6) 100%
       )
   ),
   "tabs": (
@@ -97,10 +101,10 @@ $atomic-dusk: (
   ),
   "text-input": (
     "bg": transparent,
-    "color--disabled": rgba($color-gray--medium3, $alpha-5),
-    "bg--disabled": rgba($color-blue4, $alpha-3),
+    "color--disabled": rgba(map-get($grey, "base"), $alpha-5),
+    "bg--disabled": rgba(map-get($dusk, "1"), $alpha-3),
     "border-color--disabled": transparent,
-    "border-color--readonly": rgba($color-gray--light1, $alpha-3),
-    "bg--readonly": rgba($color-gray--light5, $alpha-1)
+    "border-color--readonly": rgba(map-get($grey, "lighten-2"), $alpha-3),
+    "bg--readonly": rgba(map-get($grey, "lighten-6"), $alpha-1)
   )
 );

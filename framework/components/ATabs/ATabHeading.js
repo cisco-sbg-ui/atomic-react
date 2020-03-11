@@ -11,9 +11,9 @@ const ATabHeading = forwardRef(
     }
 
     return (
-      <a {...rest} ref={ref} className={className}>
+      <div {...rest} ref={ref} className={className}>
         {children}
-      </a>
+      </div>
     );
   }
 );
