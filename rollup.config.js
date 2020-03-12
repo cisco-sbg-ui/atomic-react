@@ -5,7 +5,6 @@ import postcss from "rollup-plugin-postcss";
 import filesize from "rollup-plugin-filesize";
 import json from "@rollup/plugin-json";
 import localResolve from "rollup-plugin-local-resolve";
-import copy from "rollup-plugin-copy";
 
 const GLOBALS = {
   react: "React",
@@ -49,14 +48,6 @@ const config = {
   },
   external: ["react", "react-dom"],
   plugins: [
-    copy({
-      targets: [
-        // For package.
-        {src: "./framework/components/AApp/fonts/*.*", dest: "./fonts"},
-        // For storybook header static files.
-        {src: "./framework/components/AApp/fonts/*.*", dest: "./dist/fonts"}
-      ]
-    }),
     json({
       compact: true,
       preferConst: true

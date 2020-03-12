@@ -1,6 +1,4 @@
-/dist/
 /docs/
-/fonts/
 /node_modules/
 /A*.js
 /style-inject*
@@ -9,3 +7,5 @@
 /*.ttf
 /*.woff
 /*.woff2
+
+.now
