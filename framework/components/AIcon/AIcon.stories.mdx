@@ -1,7 +1,13 @@
-import { Meta, IconGallery, IconItem, Preview, Props } from '@storybook/addon-docs/blocks';
+import {
+  Meta,
+  IconGallery,
+  IconItem,
+  Preview,
+  Props
+} from "@storybook/addon-docs/blocks";
 
-import AApp from '../AApp'
-import AIcon from './AIcon';
+import AApp from "../AApp";
+import AIcon from "./AIcon";
 import Icons from "./icons.json";
 
 <Meta title="Components/Icons" component={AIcon} />
@@ -10,13 +16,7 @@ import Icons from "./icons.json";
 
 ## Install
 
-The component is available on [Cisco's Artifactory package registry](https://devhub.cisco.com/artifactory/webapp/#/home).
-
-```
-  npm i --save @cisco-ats/atomic-react
-```
-
-And in the target component add:
+In the target component add:
 
 ```
   import AIcon from "@cisco-ats/atomic-react/AIcon"
@@ -27,7 +27,9 @@ And in the target component add:
 <Preview>
   <AApp>
     <AIcon className="status-yellow--text">warning</AIcon>
-    <AIcon size="32" className="status-red--text">block</AIcon>
+    <AIcon size="32" className="status-red--text">
+      block
+    </AIcon>
     <AIcon size="large">add</AIcon>
   </AApp>
 </Preview>
@@ -42,6 +44,8 @@ The `AIcon` component inherits passed props.
 
 <IconGallery>
   {Object.keys(Icons).map(x => (
-    <IconItem name={x} key={x}><AIcon>{x}</AIcon></IconItem>
+    <IconItem name={x} key={x}>
+      <AIcon>{x}</AIcon>
+    </IconItem>
   ))}
 </IconGallery>

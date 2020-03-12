@@ -1,7 +1,11 @@
 var path = require("path");
 
 module.exports = {
-  stories: ["../framework/**/*.stories.mdx"],
+  stories: [
+    "./getting-started.stories.mdx",
+    "./changelog.stories.mdx",
+    "../framework/**/*.stories.mdx"
+  ],
   webpackFinal: async config => {
     config.module.rules.push({
       test: /\.scss$/,
