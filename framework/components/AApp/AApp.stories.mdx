@@ -1,6 +1,6 @@
-import { Meta, Preview, Story, Props } from '@storybook/addon-docs/blocks';
+import { Meta, Preview, Story, Props } from "@storybook/addon-docs/blocks";
 
-import LoremIpsum from '../../utils/lorem-ipsum'
+import LoremIpsum from "../../utils/lorem-ipsum"
 import AApp from "./AApp"
 
 <Meta title="Components/Application" component={AApp} />
@@ -9,13 +9,7 @@ import AApp from "./AApp"
 
 ## Install
 
-The component is available on [Cisco's Artifactory package registry](https://devhub.cisco.com/artifactory/webapp/#/home).
-
-```
-  npm i --save @cisco-ats/atomic-react
-```
-
-And in the target component add:
+In the target component add:
 
 ```
 import AApp from "@cisco-ats/atomic-react/AApp";
@@ -28,7 +22,7 @@ The `AApp` component provides theming, typography, scrollbar stylings as well as
 <Preview>
   <Story name="1">
     <AApp>
-      <div style={{maxHeight: 300, maxWidth: 500, overflowY: 'scroll', margin: '0 auto'}}>
+      <div style={{maxHeight: 300, maxWidth: 500, overflowY: "scroll", margin: "0 auto"}}>
         <div
           style={{padding: 20}}
           className="magenta--wash-2 dark-cool-grey--burnt-2--text">
@@ -62,10 +56,10 @@ The `AApp` component provides theming, typography, scrollbar stylings as well as
 
 ## Dusk Theme
 
-<Preview style={{backgroundColor: '#18191d'}}>
+<Preview style={{backgroundColor: "#18191d"}}>
   <Story name="dusk1">
     <AApp theme="dusk">
-      <div style={{maxHeight: 300, maxWidth: 500, overflowY: 'scroll', margin: '0 auto', padding: 20}}>
+      <div style={{maxHeight: 300, maxWidth: 500, overflowY: "scroll", margin: "0 auto", padding: 20}}>
         <h1 className="display-1">Display 1</h1>
         <p>
           {LoremIpsum}
@@ -78,7 +72,16 @@ The `AApp` component provides theming, typography, scrollbar stylings as well as
           {LoremIpsum}
         </p>
         <p>
-          {LoremIpsum}
+          <code>var code = "code";</code>
+        </p>
+        <p>
+          <kbd>var kbd = "kbd";</kbd>
+        </p>
+        <pre>
+          var pre = "pre";
+        </pre>
+        <p>
+          <samp>var samp = "samp";</samp>
         </p>
       </div>
     </AApp>
@@ -88,33 +91,33 @@ The `AApp` component provides theming, typography, scrollbar stylings as well as
 ## Typography
 
 <Preview>
-  <Story name="typography1">
+  <Story name="typography-1">
     <AApp>
-      <div style={{display:'flex', flexWrap: 'wrap', alignItems: 'baseline'}}>
-        <div style={{flexBasis: '25%', textAlign: 'right', paddingRight: 20}}>Display 1</div>
-        <div style={{flexBasis: '75%', marginTop: 20}}><span className="display-1">Display 1</span></div>
-        <div style={{flexBasis: '25%', textAlign: 'right', paddingRight: 20}}>Display 2</div>
-        <div style={{flexBasis: '75%', marginTop: 20}}><span className="display-2">Display 2</span></div>
-        <div style={{flexBasis: '25%', textAlign: 'right', paddingRight: 20}}>Heading 1</div>
-        <div style={{flexBasis: '75%', marginTop: 20}}><h1>Heading 1</h1></div>
-        <div style={{flexBasis: '25%', textAlign: 'right', paddingRight: 20}}>Heading 2</div>
-        <div style={{flexBasis: '75%', marginTop: 20}}><h2>Heading 2</h2></div>
-        <div style={{flexBasis: '25%', textAlign: 'right', paddingRight: 20}}>Heading 3</div>
-        <div style={{flexBasis: '75%', marginTop: 20}}><h3>Heading 3</h3></div>
-        <div style={{flexBasis: '25%', textAlign: 'right', paddingRight: 20}}>Heading 4</div>
-        <div style={{flexBasis: '75%', marginTop: 20}}><h4>Heading 4</h4></div>
-        <div style={{flexBasis: '25%', textAlign: 'right', paddingRight: 20}}>Heading 5</div>
-        <div style={{flexBasis: '75%', marginTop: 20}}><h5>Heading 5</h5></div>
-        <div style={{flexBasis: '25%', textAlign: 'right', paddingRight: 20}}>Small</div>
-        <div style={{flexBasis: '75%', marginTop: 20}}><small>Small</small></div>
-        <div style={{flexBasis: '25%', textAlign: 'right', paddingRight: 20}}>Mark</div>
-        <div style={{flexBasis: '75%', marginTop: 20}}>Indicate <mark>marked</mark> information</div>
-        <div style={{flexBasis: '25%', textAlign: 'right', paddingRight: 20}}>Abbreviation</div>
-        <div style={{flexBasis: '75%', marginTop: 20}}>Cisco <abbr title="Security Business Group">sbg</abbr></div>
-        <div style={{flexBasis: '25%', textAlign: 'right', paddingRight: 20}}>Blockquote</div>
-        <div style={{flexBasis: '75%', marginTop: 20}}><blockquote> All that we see or seem is but a dream within a dream.<cite>Edgar Allan Poe</cite></blockquote></div>
-        <div style={{flexBasis: '25%', textAlign: 'right', paddingRight: 20}}>Monospaced</div>
-        <div style={{flexBasis: '75%', marginTop: 20}}>
+      <div style={{display:"flex", flexWrap: "wrap", alignItems: "baseline"}}>
+        <div style={{flexBasis: "25%", textAlign: "right", paddingRight: 20}}>Display 1</div>
+        <div style={{flexBasis: "75%", marginTop: 20}}><span className="display-1">Display 1</span></div>
+        <div style={{flexBasis: "25%", textAlign: "right", paddingRight: 20}}>Display 2</div>
+        <div style={{flexBasis: "75%", marginTop: 20}}><span className="display-2">Display 2</span></div>
+        <div style={{flexBasis: "25%", textAlign: "right", paddingRight: 20}}>Heading 1</div>
+        <div style={{flexBasis: "75%", marginTop: 20}}><h1>Heading 1</h1></div>
+        <div style={{flexBasis: "25%", textAlign: "right", paddingRight: 20}}>Heading 2</div>
+        <div style={{flexBasis: "75%", marginTop: 20}}><h2>Heading 2</h2></div>
+        <div style={{flexBasis: "25%", textAlign: "right", paddingRight: 20}}>Heading 3</div>
+        <div style={{flexBasis: "75%", marginTop: 20}}><h3>Heading 3</h3></div>
+        <div style={{flexBasis: "25%", textAlign: "right", paddingRight: 20}}>Heading 4</div>
+        <div style={{flexBasis: "75%", marginTop: 20}}><h4>Heading 4</h4></div>
+        <div style={{flexBasis: "25%", textAlign: "right", paddingRight: 20}}>Heading 5</div>
+        <div style={{flexBasis: "75%", marginTop: 20}}><h5>Heading 5</h5></div>
+        <div style={{flexBasis: "25%", textAlign: "right", paddingRight: 20}}>Small</div>
+        <div style={{flexBasis: "75%", marginTop: 20}}><small>Small</small></div>
+        <div style={{flexBasis: "25%", textAlign: "right", paddingRight: 20}}>Mark</div>
+        <div style={{flexBasis: "75%", marginTop: 20}}>Indicate <mark>marked</mark> information</div>
+        <div style={{flexBasis: "25%", textAlign: "right", paddingRight: 20}}>Abbreviation</div>
+        <div style={{flexBasis: "75%", marginTop: 20}}>Cisco <abbr title="Security Business Group">sbg</abbr></div>
+        <div style={{flexBasis: "25%", textAlign: "right", paddingRight: 20}}>Blockquote</div>
+        <div style={{flexBasis: "75%", marginTop: 20}}><blockquote> All that we see or seem is but a dream within a dream.<cite>Edgar Allan Poe</cite></blockquote></div>
+        <div style={{flexBasis: "25%", textAlign: "right", paddingRight: 20}}>Monospaced</div>
+        <div style={{flexBasis: "75%", marginTop: 20}}>
           <p>
             <code>var code = "code";</code>
           </p>
