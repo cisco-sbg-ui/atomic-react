@@ -1,6 +1,6 @@
 {
   "name": "@cisco-ats/atomic-react",
-  "version": "0.1.8",
+  "version": "0.1.9",
   "description": "",
   "main": "index.js",
   "module": "index.js",
@@ -21,7 +21,6 @@
     "@rollup/plugin-commonjs": "^11.0.2",
     "@rollup/plugin-json": "^4.0.2",
     "@rollup/plugin-node-resolve": "^7.1.1",
-    "@rollup/plugin-url": "^4.0.2",
     "@storybook/addon-docs": "^5.3.14",
     "@storybook/react": "^5.3.14",
     "babel-loader": "^8.0.6",
