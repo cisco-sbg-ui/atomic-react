@@ -65,6 +65,7 @@ $atomic-dusk: (
   ),
   "control": (
     "fill-color": map-get($dusk, "6"),
+    "fill-color--disabled": rgba(map-get($grey, "lighten-3"), $alpha-3),
     "stroke-color": rgba(map-get($grey, "lighten-3"), $alpha-2),
     "stroke-color--hover": map-get($grey, "lighten-1"),
     "stroke-color--disabled": rgba(map-get($grey, "lighten-2"), $alpha-3)
@@ -94,6 +95,18 @@ $atomic-dusk: (
         rgba(map-get($dusk, "2"), $alpha-6) 0%,
         rgba(map-get($dusk, "5"), $alpha-6) 100%
       )
+  ),
+  "radio": (
+    "bg--disabled": transparent,
+    "border--active--hover": map-get($cisco-blue, "base"),
+    "border--checked": map-get($cisco-blue, "base"),
+    "border--disabled": map-get($grey, "lighten-2"),
+    "border--enabled--active": map-get($cisco-blue, "burnt-1"),
+    "box-bg--disabled": map-get($dusk, "1"),
+    "box-border--enabled--hover": map-get($grey, "base"),
+    "fill--active--hover": map-get($cisco-blue, "base"),
+    "fill--enabled": map-get($cisco-blue, "burnt-1"),
+    "opacity-disabled": $alpha-3
   ),
   "tabs": (
     "oversized-background-color": transparent,
