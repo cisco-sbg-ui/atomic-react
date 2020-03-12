@@ -7,10 +7,6 @@ $base-icon-color: map-get($grey, "lighten-3"); // Icons (#dfdfdf);
 // General Colors
 // -----------------------------------------------------------------------------
 $control-text-color: map-get($grey, "lighten-3"); // Alternative Text (#dfdfdf);
-$control-fill-color--disabled: rgba(
-  map-get($grey, "lighten-3"),
-  $alpha-3
-); // Disabled bg (#dfdfdf, 30%);
 // -----------------------------------------------------------------------------
 // Alert Hover colors
 // -----------------------------------------------------------------------------
@@ -137,19 +133,6 @@ $progressbar-disabled-bg-color: rgba(
   map-get($cisco-blue, "base"),
   $alpha-3
 ); // (#049fd9, 30%);
-// -----------------------------------------------------------------------------
-// Radio
-// -----------------------------------------------------------------------------
-$radio-border--checked: map-get($cisco-blue, "base"); // #049fd9;
-$radio-box-border--enabled--hover: map-get($grey, "base"); // #9e9ea2;
-$radio-fill--enabled: map-get($cisco-blue, "burnt-1"); // #0083b3;
-$radio-border--enabled--active: map-get($cisco-blue, "burnt-1"); // #0083b3;
-$radio-border--active--hover: map-get($cisco-blue, "base"); // #049fd9;
-$radio-fill--active--hover: map-get($cisco-blue, "base"); // #049fd9;
-$radio-border--disabled: map-get($grey, "lighten-2"); // #c6c7ca;
-$radio-bg--disabled: transparent;
-$radio-box-bg--disabled: map-get($dusk, "1"); // #6a7890;
-$radio-opacity-disabled: $alpha-3;
 // -----------------------------------------------------------------------------
 // Search
 // -----------------------------------------------------------------------------

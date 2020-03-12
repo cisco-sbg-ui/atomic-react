@@ -65,6 +65,7 @@ $atomic-default: (
   ),
   "control": (
     "fill-color": $white,
+    "fill-color--disabled": map-get($grey, "lighten-3"),
     "stroke-color": map-get($grey, "lighten-3"),
     "stroke-color--hover": map-get($grey, "darken-4"),
     "stroke-color--disabled": map-get($grey, "lighten-2")
@@ -84,6 +85,18 @@ $atomic-default: (
   "panel": (
     "bg": $white,
     "bg-gray": map-get($grey, "lighten-5")
+  ),
+  "radio": (
+    "bg--disabled": $white,
+    "border--active--hover": map-get($cisco-blue, "base"),
+    "border--checked": map-get($grey, "darken-6"),
+    "border--disabled": map-get($grey, "lighten-3"),
+    "border--enabled--active": map-get($grey, "lighten-2"),
+    "box-bg--disabled": $white,
+    "box-border--enabled--hover": map-get($grey, "darken-4"),
+    "fill--active--hover": map-get($cisco-blue, "base"),
+    "fill--enabled": map-get($grey, "lighten-2"),
+    "opacity-disabled": 1
   ),
   "tabs": (
     "oversized-background-color": map-get($grey, "lighten-6"),

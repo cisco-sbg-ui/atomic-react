@@ -37,6 +37,7 @@ const config = {
     AHeader: "framework/components/AHeader",
     AIcon: "framework/components/AIcon",
     APanel: "framework/components/APanel",
+    ARadio: "framework/components/ARadio",
     ATabs: "framework/components/ATabs",
     ATextInput: "framework/components/ATextInput"
   },

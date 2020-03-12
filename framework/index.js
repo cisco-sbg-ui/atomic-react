@@ -23,6 +23,7 @@ import {
   APanelBody,
   APanelFooter
 } from "./components/APanel";
+import ARadio from "./components/ARadio";
 import {ATabGroup, ATab, ATabHeading} from "./components/ATabs";
 import ATextInput from "./components/ATextInput";
 
@@ -46,6 +47,7 @@ export {
   APanelTitle,
   APanelBody,
   APanelFooter,
+  ARadio,
   ATabGroup,
   ATab,
   ATabHeading,

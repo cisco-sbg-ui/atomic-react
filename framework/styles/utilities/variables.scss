@@ -147,10 +147,6 @@ $base-icon-color: map-get($grey, "darken-5"); // Icons (#58585b);
 // General Colors
 // -----------------------------------------------------------------------------
 $control-text-color: map-get($grey, "darken-5"); // Alternative Text (#58585b);
-$control-fill-color--disabled: map-get(
-  $grey,
-  "lighten-3"
-); // Disabled bg (#dfdfdf);
 // -----------------------------------------------------------------------------
 // Base Properties
 // -----------------------------------------------------------------------------

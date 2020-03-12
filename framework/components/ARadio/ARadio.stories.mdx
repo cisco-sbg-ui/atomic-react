@@ -1,0 +1,160 @@
+import { Meta, Preview, Story, Props } from '@storybook/addon-docs/blocks';
+import {useState} from 'react'
+
+import AApp from '../AApp'
+import LoremIpsum from '../../utils/lorem-ipsum'
+import YourComponent from '../../utils/storybook-function'
+import ACheckbox from "../ACheckbox"
+import ADivider from "../ADivider"
+import ARadio from "./ARadio"
+
+<Meta title="Components/Radio Buttons" component={ARadio} />
+
+# Radio Buttons
+
+## Install
+
+The component is available on [Cisco's Artifactory package registry](https://devhub.cisco.com/artifactory/webapp/#/home).
+
+```
+  npm i --save @cisco-ats/atomic-react
+```
+
+And in the target component add:
+
+```
+import ARadio from "@cisco-ats/atomic-react/ARadio";
+```
+
+## Usage
+
+<Preview>
+  <Story name="usage-1">
+    <AApp>
+      <YourComponent>
+    {() => {
+      const [checked, setChecked] = useState(false);
+      const [disabled, setDisabled] = useState(false);
+      const [wrap, setWrap] = useState(false);
+      return (
+        <div className="a-app--animated">
+          <h3>Example</h3>
+          <ARadio checked={checked} disabled={disabled} wrap={wrap}>
+            {LoremIpsum}
+          </ARadio>
+          <ADivider />
+          <h3>Options</h3>
+          <div style={{display: 'flex',marginTop: 20, flexFlow: 'column'}}>
+            <ACheckbox checked={checked} onClick={() => setChecked(!checked)}>Checked State</ACheckbox>
+            <ACheckbox checked={disabled} onClick={() => setDisabled(!disabled)}>Disabled State</ACheckbox>
+            <ACheckbox checked={wrap} onClick={() => setWrap(!wrap)}>Wrap Label</ACheckbox>
+          </div>
+        </div>
+      );
+    }}
+      </YourComponent>
+    </AApp>
+  </Story>
+</Preview>
+
+## Radio Props
+
+The `ARadio` component inherits passed props.
+
+<Props of={ARadio} />
+
+## Dusk Theme
+
+<Preview style={{backgroundColor: '#18191d'}}>
+  <Story name="dusk-1">
+    <AApp theme="dusk">
+      <div style={{display: 'flex', flexFlow: 'column'}}>
+        <ARadio>
+          Default
+        </ARadio>
+        <ARadio checked>
+          Checked
+        </ARadio>
+        <ARadio disabled>
+          Disabled
+        </ARadio>
+        <ARadio disabled checked>
+          Disabled and Checked
+        </ARadio>
+        <ARadio disabled indeterminate>
+          Disabled and Indeterminate
+        </ARadio>
+        <ARadio>
+          Very long truncated text. {LoremIpsum}
+        </ARadio>
+        <ARadio wrap>
+          Very long wrapping text. {LoremIpsum}
+        </ARadio>
+      </div>
+    </AApp>
+  </Story>
+</Preview>
+
+## Radio Groups
+
+<Preview>
+  <Story name="groups-1">
+    <AApp>
+    <YourComponent>
+  {() => {
+    const options = ["One", "Two", "Three"];
+    const [selectedValue, setSelectedValue] = useState(null);
+    return <div>
+      {options.map((option, index) => (
+          <ARadio
+            name="myRadioGroup"
+            key={`myRadioGroup_${index}`}
+            checked={option === selectedValue}
+            onClick={() => setSelectedValue(option)}>
+            {option}
+          </ARadio>
+        )
+      )}
+      <ADivider />
+      Selected Value: {selectedValue}
+      </div>
+  }}
+    </YourComponent>
+    </AApp>
+  </Story>
+</Preview>
+
+## Animations
+
+Animations are enabled by default on the `AApp` component and can be disabled.
+
+<Preview>
+  <Story name="animations-1">
+    <AApp>
+      <YourComponent>
+    {() => {
+      const [checked, setChecked] = useState(false);
+      return (
+        <ARadio checked={checked} onClick={() => setChecked(!checked)}>
+          Animated
+        </ARadio>
+      );
+    }}
+      </YourComponent>
+    </AApp>
+  </Story>
+  <Story name="animations-2">
+    <AApp animations={false}>
+      <YourComponent>
+    {() => {
+      const [checked, setChecked] = useState(false);
+      return (
+        <ARadio checked={checked} onClick={() => setChecked(!checked)}>
+          Not Animated
+        </ARadio>
+      );
+    }}
+      </YourComponent>
+    </AApp>
+  </Story>
+</Preview>
