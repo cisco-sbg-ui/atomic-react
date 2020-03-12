@@ -1,12 +1,13 @@
 {
   "name": "@cisco-ats/atomic-react",
-  "version": "0.1.9",
+  "version": "0.1.10",
   "description": "",
   "main": "index.js",
   "module": "index.js",
   "scripts": {
-    "build": "rollup -c && build-storybook -s ./dist -c .storybook -o docs --docs",
-    "start": "rollup -c && start-storybook -s ./dist --docs"
+    "build": "rollup -c && build-storybook -c .storybook -o docs --docs",
+    "now-build": "",
+    "start": "rollup -c && start-storybook --docs"
   },
   "peerDependencies": {
     "react": "^16.8.0",
@@ -34,7 +35,6 @@
     "react-is": "^16.13.0",
     "rollup": "^1.31.1",
     "rollup-plugin-babel": "^4.3.3",
-    "rollup-plugin-copy": "^3.3.0",
     "rollup-plugin-filesize": "^6.2.1",
     "rollup-plugin-local-resolve": "^1.0.7",
     "rollup-plugin-peer-deps-external": "^2.2.2",
