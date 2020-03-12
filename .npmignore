@@ -4,6 +4,7 @@ dist/
 docs/
 framework/
 .babelrc
+.buildme
 .editorconfig
 .eslintrc.json
 .gitignore

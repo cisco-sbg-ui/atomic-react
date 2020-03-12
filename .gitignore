@@ -1,7 +1,6 @@
-/dist/*.ttf
-/dist/*.woff
-/dist/*.woff2
+/dist/
 /docs/
+/fonts/
 /node_modules/
 /A*.js
 /style-inject*
