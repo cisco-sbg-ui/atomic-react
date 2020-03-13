@@ -26,6 +26,7 @@ import {
 } from "./components/APanel";
 import ARadio from "./components/ARadio";
 import {ATabGroup, ATab, ATabHeading} from "./components/ATabs";
+import ATextarea from "./components/ATextarea";
 import ATextInput from "./components/ATextInput";
 
 export {
@@ -53,5 +54,6 @@ export {
   ATabGroup,
   ATab,
   ATabHeading,
+  ATextarea,
   ATextInput
 };

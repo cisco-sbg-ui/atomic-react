@@ -6,20 +6,20 @@ import "./ATextInput.scss";
 const ATextInput = forwardRef(
   (
     {
-      className: inputClassName,
+      className: propsClassName,
       type = "text",
-      validationState = "success",
+      validationState = "default",
       ...rest
     },
     ref
   ) => {
     let className = "a-text-input";
-    if (validationState !== "success") {
+    if (validationState !== "default") {
       className += " a-text-input--state-" + validationState;
     }
 
-    if (inputClassName) {
-      className += ` ${inputClassName}`;
+    if (propsClassName) {
+      className += ` ${propsClassName}`;
     }
 
     return <input {...rest} ref={ref} type={type} className={className} />;
