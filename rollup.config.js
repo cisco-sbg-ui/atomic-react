@@ -40,6 +40,7 @@ const config = {
     APanel: "framework/components/APanel",
     ARadio: "framework/components/ARadio",
     ATabs: "framework/components/ATabs",
+    ATextarea: "framework/components/ATextarea",
     ATextInput: "framework/components/ATextInput"
   },
   output: {

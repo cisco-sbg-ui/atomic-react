@@ -2,16 +2,6 @@
 
 $input-height: 28px;
 $input-width: 250px;
-$input-box-shadow-width: -3px;
-$input-box-shadow--focus: -2px;
-$input-border-color--active: map-get($cisco-blue, "burnt-1");
-$input-border-color--state-danger: map-get($status-red, "base");
-$input-padding: 3px 20px 2px 6px;
-$input-margin-bottom: ($spacing * 0.75);
-$input-transition: border-color $transition-duration--extra-fast
-    $transition-timing-function--standard,
-  box-shadow $transition-duration--extra-fast
-    $transition-timing-function--standard;
 
 @include theme(a-text-input) using ($theme) {
   background: map-deep-get($theme, "text-input", "bg");

@@ -1,0 +1,87 @@
+import { Meta, Preview, Story, Props } from '@storybook/addon-docs/blocks';
+
+import AApp from '../AApp'
+import ATextarea from "./ATextarea"
+
+<Meta title="Components/Textareas" component={ATextarea} />
+
+# Textareas
+
+## Install
+
+In the target component add:
+
+```
+import ATextarea from "@cisco-ats/atomic-react/ATextarea";
+```
+
+## Usage
+
+<Preview>
+  <Story name="usage-1">
+    <AApp>
+      <p>
+        <ATextarea placeholder="Normal" />
+      </p>
+      <p>
+        <ATextarea placeholder="Disabled" disabled />
+      </p>
+      <p>
+        <ATextarea placeholder="Read Only State" readOnly />
+      </p>
+      <p>
+        <ATextarea validationState="warning" placeholder="Warning State" />
+      </p>
+      <p>
+        <ATextarea validationState="danger" placeholder="Error State" />
+      </p>
+    </AApp>
+  </Story>
+</Preview>
+
+## Textarea Props
+
+The `ATextarea` component inherits passed props.
+
+<Props of={ATextarea} />
+
+## Dusk Theme
+
+<Preview style={{backgroundColor: '#18191d'}}>
+  <Story name="dusk-1">
+    <AApp theme="dusk">
+      <p>
+        <ATextarea placeholder="Normal" />
+      </p>
+      <p>
+        <ATextarea placeholder="Disabled" disabled />
+      </p>
+      <p>
+        <ATextarea placeholder="Read Only State" readOnly />
+      </p>
+      <p>
+        <ATextarea validationState="warning" placeholder="Warning State" />
+      </p>
+      <p>
+        <ATextarea validationState="danger" placeholder="Error State" />
+      </p>
+    </AApp>
+  </Story>
+</Preview>
+
+## Animations
+
+Animations are enabled by default on the `AApp` component and can be disabled.
+
+<Preview>
+  <Story name="animations-1">
+    <AApp>
+      <ATextarea placeholder="Animated" />
+    </AApp>
+  </Story>
+  <Story name="animations-2">
+    <AApp animations={false}>
+      <ATextarea placeholder="Not Animated" />
+    </AApp>
+  </Story>
+</Preview>
