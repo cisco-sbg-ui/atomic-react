@@ -98,11 +98,6 @@ $color-warning: map-get($status-orange, "base");
 $color-warning-alt: map-get($status-yellow, "base");
 $color-error: map-get($status-red, "base");
 // -----------------------------------------------------------------------------
-// Alert Hover colors
-// -----------------------------------------------------------------------------
-$color-warning--state-hover: map-get($status-orange, "burnt-2");
-$color-error--state-hover: map-get($status-red, "burnt-2");
-// -----------------------------------------------------------------------------
 // Alert box shadow
 // -----------------------------------------------------------------------------
 $default-box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.2);

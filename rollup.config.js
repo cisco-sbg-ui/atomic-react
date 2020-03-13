@@ -29,6 +29,7 @@ const config = {
      * }, {})
      */
     index: "framework",
+    AAlert: "framework/components/AAlert",
     AApp: "framework/components/AApp",
     AButton: "framework/components/AButton",
     ACheckbox: "framework/components/ACheckbox",
