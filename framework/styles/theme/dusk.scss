@@ -1,4 +1,14 @@
 $atomic-dusk: (
+  "alert": (
+    "bg": rgba($color-information, $alpha-4),
+    "border-color": rgba(map-get($status-blue, "wash-1"), $alpha-4),
+    "success-bg": rgba($color-good, $alpha-4),
+    "success-border-color": rgba(map-get($status-green, "wash-1"), $alpha-4),
+    "warning-bg": rgba($color-warning, $alpha-4),
+    "warning-border-color": rgba(map-get($status-orange, "wash-1"), $alpha-4),
+    "danger-bg": rgba(map-get($status-red, "burnt-1"), $alpha-4),
+    "danger-border-color": rgba(map-get($status-red, "wash-1"), $alpha-4)
+  ),
   "app": (
     "scrollbar": (
       "track-bg": rgba(map-get($grey, "lighten-6"), $alpha-1),
@@ -62,6 +72,10 @@ $atomic-dusk: (
     "box-color-active": map-get($cisco-blue, "base"),
     "box-color-disabled": rgba(map-get($dusk, "1"), $alpha-3),
     "box-color-selected": map-get($cisco-blue, "burnt-1")
+  ),
+  "color": (
+    "warning--state-hover": map-get($status-orange, "wash-1"),
+    "error--state-hover": map-get($status-red, "wash-1")
   ),
   "control": (
     "fill-color": map-get($dusk, "6"),

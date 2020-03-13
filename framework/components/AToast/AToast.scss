@@ -35,16 +35,16 @@ $toast-icon-font-size: $font-size;
 
 .icon {
   &-information {
-    @include alert-icon-color($color-information);
+    fill: $color-information;
   }
   &-good {
-    @include alert-icon-color($color-good);
+    fill: $color-good;
   }
   &-warning {
-    @include alert-icon-color($color-warning);
+    fill: $color-warning;
   }
   &-critical-stop {
-    @include alert-icon-color($color-error);
+    fill: $color-error;
   }
 }
 

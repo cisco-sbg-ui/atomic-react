@@ -1,0 +1,86 @@
+import { Meta, Preview, Story, Props } from '@storybook/addon-docs/blocks';
+import {useState} from 'react'
+
+import AApp from '../AApp'
+import LoremIpsum from '../../utils/lorem-ipsum'
+import YourComponent from '../../utils/storybook-function'
+import AAlert from "./AAlert"
+import AButton from "../AButton"
+import ADivider from "../ADivider"
+
+<Meta title="Components/Alerts" component={AAlert} />
+
+# Alerts
+
+## Install
+
+In the target component add:
+
+```
+import AAlert from "@cisco-ats/atomic-react/AAlert";
+```
+
+## Usage
+
+<Preview>
+  <Story name="usage-1">
+    <AApp>
+      <YourComponent>
+    {() => {
+      const [alertsCount, setAlertsCount] = useState(3);
+      const [alerts, setAlerts] = useState(["info", "success", "warning", "danger"]);
+      const closeHandler = key => {
+        var newAlerts = alerts.slice();
+        newAlerts.splice(key, 1);
+        setAlerts(newAlerts);
+      };
+      const addHandler = () => {
+        setAlertsCount(alertsCount + 1);
+        setAlerts([...alerts, ["info", "success", "warning", "danger"][Math.floor(Math.random() * 4)]]);
+      };
+      return (
+        <div>
+          <h3>Examples</h3>
+          {alerts.map((alert, index) =>
+            <p>
+              <AAlert level={alert} dismissable key={index} onClose={() => closeHandler(index)}>{LoremIpsum}</AAlert>
+            </p>
+          )}
+          <ADivider />
+          <p>
+            <AButton onClick={() => addHandler()}>Add Alert</AButton>
+          </p>
+        </div>
+      );
+    }}
+      </YourComponent>
+    </AApp>
+  </Story>
+</Preview>
+
+## Alert Props
+
+The `AAlert` component inherits passed props.
+
+<Props of={AAlert} />
+
+## Dusk Theme
+
+<Preview style={{backgroundColor: '#18191d'}}>
+  <Story name="dusk-1">
+    <AApp theme="dusk">
+      <p>
+        <AAlert level="info" dismissable>{LoremIpsum}</AAlert>
+      </p>
+      <p>
+        <AAlert level="success" dismissable>{LoremIpsum}</AAlert>
+      </p>
+      <p>
+        <AAlert level="warning" dismissable>{LoremIpsum}</AAlert>
+      </p>
+      <p>
+        <AAlert level="danger" dismissable>{LoremIpsum}</AAlert>
+      </p>
+    </AApp>
+  </Story>
+</Preview>

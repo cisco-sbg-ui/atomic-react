@@ -1,3 +1,4 @@
+import AAlert from "./components/AAlert";
 import AApp from "./components/AApp";
 import AButton from "./components/AButton";
 import ACheckbox from "./components/ACheckbox";
@@ -28,6 +29,7 @@ import {ATabGroup, ATab, ATabHeading} from "./components/ATabs";
 import ATextInput from "./components/ATextInput";
 
 export {
+  AAlert,
   AApp,
   AButton,
   ACheckbox,

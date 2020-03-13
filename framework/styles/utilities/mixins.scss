@@ -285,17 +285,6 @@
   box-shadow: inset 0 $tab-bar-height 0 0 $tab-bar-color;
 }
 // -----------------------------------------------------------------------------
-// Alerts, Notifications
-// -----------------------------------------------------------------------------
-@mixin alert-icon-color($alert-color) {
-  color: $alert-color;
-}
-@mixin alert-state($alert-bg, $alert-border, $alert-color) {
-  background-color: $alert-bg;
-  border-color: $alert-border;
-  color: $alert-color;
-}
-// -----------------------------------------------------------------------------
 // Contextual Notifications Color
 // -----------------------------------------------------------------------------
 @mixin context-border-color($context-border-color) {

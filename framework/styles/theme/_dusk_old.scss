@@ -8,43 +8,12 @@ $base-icon-color: map-get($grey, "lighten-3"); // Icons (#dfdfdf);
 // -----------------------------------------------------------------------------
 $control-text-color: map-get($grey, "lighten-3"); // Alternative Text (#dfdfdf);
 // -----------------------------------------------------------------------------
-// Alert Hover colors
-// -----------------------------------------------------------------------------
-$color-warning--state-hover: map-get($status-orange, "wash-1");
-$color-error--state-hover: map-get($status-red, "wash-1");
-// -----------------------------------------------------------------------------
 // Footer
 // -----------------------------------------------------------------------------
 $footer-border-color: rgba(
   map-get($grey, "lighten-5"),
   $alpha-2
 ); // (#f2f2f2, 20%);
-// -----------------------------------------------------------------------------
-// Alerts / Page Level Notifications
-// -----------------------------------------------------------------------------
-// Information
-$alert-bg: rgba($color-information, $alpha-4); // (#64BBE3, 40%);
-$alert-border-color: rgba(map-get($status-blue, "wash-1"), $alpha-4);
-// (#81cdf0, 40%);
-// Success
-$alert-success-bg: rgba($color-good, $alpha-4); // (#6cc04a, 40%);
-$alert-success-border-color: rgba(
-  map-get($status-green, "wash-1"),
-  $alpha-4
-); // (#93e872, 40%);
-// Warning
-$alert-warning-bg: rgba($color-warning, $alpha-4); // (#FF7300, 40%);
-$alert-warning-border-color: rgba(
-  map-get($status-orange, "wash-1"),
-  $alpha-4
-); // (#ff9d4c, 40%);
-// Danger / Error
-$alert-danger-bg: rgba(
-  map-get($status-red, "burnt-1"),
-  $alpha-4
-); // (#b5000f, 40%);
-$alert-danger-border-color: rgba(map-get($status-red, "wash-1"), $alpha-4);
-// (#e6505d, 40%);
 // -----------------------------------------------------------------------------
 // Accordion
 // -----------------------------------------------------------------------------

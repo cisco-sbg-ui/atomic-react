@@ -44,7 +44,7 @@ $input-transition: border-color $transition-duration--extra-fast
     @include input-state(
       $color-warning,
       $warning-box-shadow,
-      $color-warning--state-hover
+      map-deep-get($theme, "color", "warning--state-hover")
     );
   }
 
@@ -52,7 +52,7 @@ $input-transition: border-color $transition-duration--extra-fast
     @include input-state(
       $color-error,
       $danger-box-shadow,
-      $color-error--state-hover
+      map-deep-get($theme, "color", "error--state-hover")
     );
   }
 }

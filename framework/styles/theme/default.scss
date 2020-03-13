@@ -1,4 +1,14 @@
 $atomic-default: (
+  "alert": (
+    "bg": map-get($status-blue, "wash-3"),
+    "border-color": map-get($status-blue, "wash-2"),
+    "success-bg": map-get($status-green, "wash-3"),
+    "success-border-color": map-get($status-green, "wash-1"),
+    "warning-bg": map-get($status-orange, "wash-3"),
+    "warning-border-color": map-get($status-orange, "wash-2"),
+    "danger-bg": map-get($status-red, "wash-3"),
+    "danger-border-color": map-get($status-red, "wash-2")
+  ),
   "app": (
     "scrollbar": (
       "track-bg": map-get($grey, "lighten-6"),
@@ -62,6 +72,10 @@ $atomic-default: (
     "box-color-active": map-get($cisco-blue, "burnt-2"),
     "box-color-disabled": transparent,
     "box-color-selected": map-get($cisco-blue, "burnt-1")
+  ),
+  "color": (
+    "warning--state-hover": map-get($status-orange, "burnt-2"),
+    "error--state-hover": map-get($status-red, "burnt-2")
   ),
   "control": (
     "fill-color": $white,
