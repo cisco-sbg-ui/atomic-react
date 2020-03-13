@@ -1,5 +1,7 @@
 import { Meta, Preview, Story, Props } from '@storybook/addon-docs/blocks';
+import {useState} from 'react'
 
+import YourComponent from '../../utils/storybook-function'
 import AApp from '../AApp'
 import ATextInput from "./ATextInput"
 
@@ -20,21 +22,22 @@ import ATextInput from "@cisco-ats/atomic-react/ATextInput";
 <Preview>
   <Story name="usage-1">
     <AApp>
-      <p>
-        <ATextInput placeholder="Normal" />
-      </p>
-      <p>
-        <ATextInput placeholder="Disabled" disabled />
-      </p>
-      <p>
-        <ATextInput placeholder="Read Only State" readOnly />
-      </p>
-      <p>
-        <ATextInput validationState="warning" placeholder="Warning State" />
-      </p>
-      <p>
-        <ATextInput validationState="danger" placeholder="Error State" />
-      </p>
+      <YourComponent>
+    {() => {
+      const [status, setStatus] = useState("default");
+      const [value, setValue] = useState("Clear Me ->");
+      return (
+        <ATextInput
+          appendIcon="close"
+          onChange={(e) => { setValue(e.target.value); setStatus(e.target.value.length === 0 ? "danger" : e.target.value.length < 3 ? "warning" : "default"); }}
+          onClickAppend={() => { setValue(""); setStatus("default"); }}
+          placeholder="Search"
+          prependIcon="search"
+          validationState={status}
+          value={value} />
+      );
+    }}
+      </YourComponent>
     </AApp>
   </Story>
 </Preview>
@@ -45,26 +48,40 @@ The `ATextInput` component inherits passed props.
 
 <Props of={ATextInput} />
 
+## Validation States
+
+<Preview>
+  <Story name="validation-1">
+    <AApp>
+      <ATextInput placeholder="Normal" />
+      <ATextInput placeholder="Normal" prependIcon="cisco" appendIcon="information" onClickPrepend={() => alert('Cisco Systems!')} />
+      <ATextInput placeholder="Disabled" disabled />
+      <ATextInput placeholder="Disabled" disabled prependIcon="cisco" appendIcon="information" onClickPrepend={() => alert('Cisco Systems!')} />
+      <ATextInput placeholder="Read Only State" readOnly />
+      <ATextInput placeholder="Read Only State" readOnly prependIcon="cisco" appendIcon="information" onClickPrepend={() => alert('Cisco Systems!')} />
+      <ATextInput validationState="warning" placeholder="Warning State" />
+      <ATextInput validationState="warning" placeholder="Warning" prependIcon="cisco" appendIcon="information" onClickPrepend={() => alert('Cisco Systems!')} />
+      <ATextInput validationState="danger" placeholder="Danger State" />
+      <ATextInput validationState="danger" placeholder="Danger State" prependIcon="cisco" appendIcon="information" onClickPrepend={() => alert('Cisco Systems!')} />
+    </AApp>
+  </Story>
+</Preview>
+
 ## Dusk Theme
 
 <Preview style={{backgroundColor: '#18191d'}}>
   <Story name="dusk-1">
     <AApp theme="dusk">
-      <p>
-        <ATextInput placeholder="Normal" />
-      </p>
-      <p>
-        <ATextInput placeholder="Disabled" disabled />
-      </p>
-      <p>
-        <ATextInput placeholder="Read Only State" readOnly />
-      </p>
-      <p>
-        <ATextInput validationState="warning" placeholder="Warning State" />
-      </p>
-      <p>
-        <ATextInput validationState="danger" placeholder="Error State" />
-      </p>
+      <ATextInput placeholder="Normal" />
+      <ATextInput placeholder="Normal" prependIcon="cisco" appendIcon="information" onClickPrepend={() => alert('Cisco Systems!')} />
+      <ATextInput placeholder="Disabled" disabled />
+      <ATextInput placeholder="Disabled" disabled prependIcon="cisco" appendIcon="information" onClickPrepend={() => alert('Cisco Systems!')} />
+      <ATextInput placeholder="Read Only State" readOnly />
+      <ATextInput placeholder="Read Only State" readOnly prependIcon="cisco" appendIcon="information" onClickPrepend={() => alert('Cisco Systems!')} />
+      <ATextInput validationState="warning" placeholder="Warning State" />
+      <ATextInput validationState="warning" placeholder="Warning" prependIcon="cisco" appendIcon="information" onClickPrepend={() => alert('Cisco Systems!')} />
+      <ATextInput validationState="danger" placeholder="Danger State" />
+      <ATextInput validationState="danger" placeholder="Danger State" prependIcon="cisco" appendIcon="information" onClickPrepend={() => alert('Cisco Systems!')} />
     </AApp>
   </Story>
 </Preview>
