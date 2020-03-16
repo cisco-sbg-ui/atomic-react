@@ -32,11 +32,14 @@ const ACheckbox = forwardRef(
           className="a-checkbox__input"
           name={name}
           value={value}
-          aria-checked={intermediate ? "mixed" : checked}
+          aria-checked={indeterminate ? "mixed" : checked}
           disabled={disabled}
           onChange={() => {}}
           onClick={onClick}
           role="checkbox"
+          ref={el =>
+            el && ((el.indeterminate = indeterminate) || (el.checked = checked))
+          }
         />
         <span aria-hidden="true" className="a-checkbox__box" />
         <span

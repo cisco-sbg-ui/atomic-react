@@ -4,8 +4,6 @@ import React, {forwardRef} from "react";
 import "./AIcon.scss";
 import Icons from "./icons.json";
 
-let iconCounter = 0;
-
 const isSize = function(props, propName, componentName) {
   if (
     props[propName] &&
@@ -19,7 +17,7 @@ const isSize = function(props, propName, componentName) {
 };
 
 const AIcon = forwardRef(
-  ({children, className: propsClassName, size, title, ...rest}, ref) => {
+  ({children, className: propsClassName, label, size, ...rest}, ref) => {
     let className = `a-icon`;
 
     if (size && isNaN(size)) {
@@ -30,11 +28,7 @@ const AIcon = forwardRef(
       className += ` ${propsClassName}`;
     }
 
-    if (!title) {
-      title = `${children} icon`;
-    }
-
-    const iconId = `a-icon_${iconCounter++}`;
+    const ariaLabel = label || `${children} icon`;
 
     return (
       <svg
@@ -44,8 +38,7 @@ const AIcon = forwardRef(
         className={className}
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 16 16"
-        aria-labelledby={iconId}>
-        <title id={iconId}>{title}</title>
+        aria-label={ariaLabel}>
         <path d={Icons[children]} />
       </svg>
     );
@@ -58,13 +51,13 @@ AIcon.propTypes = {
    */
   children: PropTypes.string.isRequired,
   /**
+   * Overrides the default `aria-label`, "[icon_name] icon".
+   */
+  label: PropTypes.string,
+  /**
    * Size, if provided, is either a number or one of `["small", "medium", "large"]`
    */
-  size: isSize,
-  /**
-   * Overrides the default title, "[icon_name] icon".
-   */
-  title: PropTypes.string
+  size: isSize
 };
 
 export default AIcon;

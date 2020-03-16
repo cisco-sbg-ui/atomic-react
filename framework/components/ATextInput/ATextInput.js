@@ -77,6 +77,7 @@ const ATextInput = forwardRef(
       prependProps.onClick = onClickPrepend;
       prependProps.onKeyDown = onClickPrependKeyDown;
       prependProps.tabIndex = 0;
+      prependProps.role = "button";
     }
 
     const appendProps = {
@@ -88,6 +89,7 @@ const ATextInput = forwardRef(
       appendProps.onClick = onClickAppend;
       appendProps.onKeyDown = onClickAppendKeyDown;
       appendProps.tabIndex = 0;
+      appendProps.role = "button";
     }
 
     return (
