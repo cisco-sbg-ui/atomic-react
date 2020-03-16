@@ -1,5 +1,21 @@
-import ContainerGenerator from "../../utils/ContainerGenerator";
+import React, {forwardRef} from "react";
 
 import "./APanel.scss";
 
-export default ContainerGenerator("a-panel__body");
+const APanelBody = forwardRef(
+  ({children, className: propsClassName, ...rest}, ref) => {
+    let className = "a-panel__body";
+
+    if (propsClassName) {
+      className += ` ${propsClassName}`;
+    }
+
+    return (
+      <div {...rest} ref={ref} className={className}>
+        {children}
+      </div>
+    );
+  }
+);
+
+export default APanelBody;

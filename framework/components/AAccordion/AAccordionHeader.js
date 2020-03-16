@@ -1,8 +1,10 @@
 import React, {forwardRef} from "react";
 
-export default defaultClassName =>
-  forwardRef(({children, className: propsClassName, ...rest}, ref) => {
-    let className = defaultClassName;
+import "./AAccordion.scss";
+
+const AAccordionHeader = forwardRef(
+  ({children, className: propsClassName, ...rest}, ref) => {
+    let className = "a-accordion__header";
 
     if (propsClassName) {
       className += ` ${propsClassName}`;
@@ -13,4 +15,7 @@ export default defaultClassName =>
         {children}
       </div>
     );
-  });
+  }
+);
+
+export default AAccordionHeader;

@@ -9,7 +9,8 @@ import {
   AHeaderLogo,
   AHeaderTitle,
   AHeaderNavigation,
-  AHeaderToolbar
+  AHeaderToolbar,
+  AHeaderToolbarItem
 } from "../AHeader";
 import AIcon from "../AIcon";
 
@@ -22,10 +23,12 @@ const StorybookHeader = () => {
         </AHeaderLogo>
         <AHeaderTitle>Atomic Components for React</AHeaderTitle>
         <AHeaderNavigation />
-        <AHeaderToolbar
-          href="https://www.github.com/threatgrid/atomic-react"
-          target="_blank">
-          <AIcon tabIndex="0">github</AIcon>
+        <AHeaderToolbar>
+          <AHeaderToolbarItem
+            href="https://www.github.com/threatgrid/atomic-react"
+            target="_blank">
+            <AIcon>github</AIcon>
+          </AHeaderToolbarItem>
         </AHeaderToolbar>
       </AHeader>
     </AApp>

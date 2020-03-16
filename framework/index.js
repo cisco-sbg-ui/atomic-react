@@ -1,3 +1,12 @@
+import {
+  AAccordion,
+  AAccordionBody,
+  AAccordionHeader,
+  AAccordionHeaderTitle,
+  AAccordionHeaderToolbar,
+  AAccordionHeaderToolbarItem,
+  AAccordionPanel
+} from "./components/AAccordion";
 import AAlert from "./components/AAlert";
 import AApp from "./components/AApp";
 import AButton from "./components/AButton";
@@ -31,6 +40,13 @@ import ATextarea from "./components/ATextarea";
 import ATextInput from "./components/ATextInput";
 
 export {
+  AAccordion,
+  AAccordionBody,
+  AAccordionHeader,
+  AAccordionHeaderTitle,
+  AAccordionHeaderToolbar,
+  AAccordionHeaderToolbarItem,
+  AAccordionPanel,
   AAlert,
   AApp,
   AButton,

@@ -1,10 +1,10 @@
 import React, {forwardRef} from "react";
 
-import "./APanel.scss";
+import "./AAccordion.scss";
 
-const APanelFooter = forwardRef(
+const AAccordionHeaderToolbar = forwardRef(
   ({children, className: propsClassName, ...rest}, ref) => {
-    let className = "a-panel__footer";
+    const className = "a-accordion__toolbar";
 
     if (propsClassName) {
       className += ` ${propsClassName}`;
@@ -18,4 +18,4 @@ const APanelFooter = forwardRef(
   }
 );
 
-export default APanelFooter;
+export default AAccordionHeaderToolbar;

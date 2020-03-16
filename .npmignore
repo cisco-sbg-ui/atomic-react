@@ -2,7 +2,6 @@
 .storybook/
 docs/
 fonts/
-framework/
 .babelrc
 .buildme
 .editorconfig
