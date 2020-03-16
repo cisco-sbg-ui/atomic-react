@@ -15,7 +15,6 @@ $panel-white-color: map-get($grey, "darken-6");
   background: map-deep-get($theme, "panel", "bg");
   border-color: map-deep-get($theme, "base", "stroke-color");
   color: map-deep-get($theme, "base", "color");
-  fill: map-deep-get($theme, "base", "color");
 
   &--color-gray {
     background: map-deep-get($theme, "panel", "bg-gray");
@@ -24,7 +23,6 @@ $panel-white-color: map-get($grey, "darken-6");
   &--color-white {
     background: $panel-white-bg;
     color: $panel-white-color;
-    fill: $panel-white-color;
   }
 }
 

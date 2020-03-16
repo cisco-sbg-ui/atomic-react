@@ -1,0 +1,47 @@
+$link-color-alt-font-size: rem(0.8125);
+
+@include theme(a-app--wrap) using ($theme) {
+  a {
+    color: map-deep-get($theme, "base", "brand-color");
+
+    &:hover,
+    &:focus {
+      color: map-deep-get($theme, "base", "brand-color");
+    }
+
+    &:active {
+      color: map-deep-get($theme, "base", "color--active");
+    }
+
+    &.disabled {
+      color: map-get($grey, "lighten-2");
+    }
+  }
+}
+
+.a-app a {
+  text-decoration: none;
+  &:hover,
+  &:focus,
+  &:active,
+  &:visited {
+    text-decoration: none;
+  }
+
+  font-size: $base-font-size;
+  text-decoration: none;
+  cursor: pointer;
+
+  &:hover,
+  &:focus {
+    text-decoration: underline;
+  }
+
+  .a-icon {
+    padding: 0 5px 0 0;
+
+    &:hover {
+      text-decoration: none;
+    }
+  }
+}

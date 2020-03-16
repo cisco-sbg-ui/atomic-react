@@ -19,7 +19,7 @@ $header-dropdown-left: -$base-padding-left;
     }
 
     .a-icon {
-      fill: map-deep-get($theme, "base", "brand-color");
+      color: map-deep-get($theme, "base", "brand-color");
     }
   }
 
@@ -37,13 +37,13 @@ $header-dropdown-left: -$base-padding-left;
   }
 
   &__toolbar-item {
-    fill: map-deep-get($theme, "header", "icon-color");
+    color: map-deep-get($theme, "header", "icon-color");
     &:focus {
       box-shadow: map-deep-get($theme, "base", "box-shadow");
     }
 
     &:hover {
-      fill: map-get($cisco-blue, "base");
+      color: map-get($cisco-blue, "base");
     }
   }
 }
@@ -131,7 +131,6 @@ $header-dropdown-left: -$base-padding-left;
       vertical-align: bottom;
       height: $header__icon-size;
       width: $header__icon-size;
-      fill: inherit;
     }
   }
 

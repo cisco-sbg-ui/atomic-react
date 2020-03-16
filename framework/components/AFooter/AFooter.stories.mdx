@@ -1,0 +1,70 @@
+import { Meta, Preview, Story, Props } from '@storybook/addon-docs/blocks';
+
+import AApp from '../AApp'
+import AFooter from "./AFooter"
+import AFooterLegal from "./AFooterLegal"
+
+<Meta title="Components/Footers" component={AFooter} />
+
+# Footers
+
+## Install
+
+In the target component add:
+
+```
+import {
+  AFooter,
+  AFooterLegal
+} from "@cisco-ats/atomic-react/AFooter";
+```
+
+## Usage
+
+<Preview>
+  <Story name="usage-1">
+    <AApp>
+      <AFooter>
+        <AFooterLegal>
+          &copy; 2017 Cisco Systems, Inc. Cisco, Cisco Systems
+          and <a href="https://www.cisco.com">Cisco Systems</a> logo are registered
+          trademarks of Cisco Systems, Inc. and/or its affiliates in the U.S.
+          and certain other countries.
+        </AFooterLegal>
+      </AFooter>
+    </AApp>
+  </Story>
+</Preview>
+
+## Props
+
+All Footer components (`AFooter`, `AFooterLegal`) inherit passed props.
+
+### Footer Props
+
+<Props of={AFooter} />
+
+### Footer Legal Props
+
+<Props of={AFooterLegal} />
+
+## Dusk Theme
+
+<Preview style={{backgroundColor: '#18191d'}}>
+  <Story name="dusk-1">
+    <AApp theme="dusk">
+      <AFooter>
+        <AFooterLegal>
+          &copy; 2017 Cisco Systems, Inc. Cisco, Cisco Systems
+          and <a href="https://www.cisco.com">Cisco Systems</a> logo are registered
+          trademarks of Cisco Systems, Inc. and/or its affiliates in the U.S.
+          and certain other countries.
+        </AFooterLegal>
+      </AFooter>
+    </AApp>
+  </Story>
+</Preview>
+
+## Accessibility Notes
+
+By default, `AFooter` is assigned the [TR](https://www.w3.org/TR/html51/) tag of [footer](https://www.w3.org/TR/html51/sections.html#elementdef-footer) which denotes that it represents a footer for its nearest ancestor sectioning content or sectioning root element. A footer typically contains information about its section such as who wrote it, links to related documents, copyright data, and the like.

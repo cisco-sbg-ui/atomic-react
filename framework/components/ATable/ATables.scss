@@ -1,5 +1,12 @@
 @import "../../styles";
 
+/**
+    a {
+      color: $base-color;
+      font-size: $link-color-alt-font-size;
+    }
+**/
+
 $table-bg: transparent;
 $table__top-pane--padding-bottom: 8px;
 $table__total--padding-top: 15px;

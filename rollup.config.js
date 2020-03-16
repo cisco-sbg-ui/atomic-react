@@ -35,6 +35,7 @@ const config = {
     ACheckbox: "framework/components/ACheckbox",
     ADivider: "framework/components/ADivider",
     ADropdown: "framework/components/ADropdown",
+    AFooter: "framework/components/AFooter",
     AHeader: "framework/components/AHeader",
     AIcon: "framework/components/AIcon",
     APanel: "framework/components/APanel",

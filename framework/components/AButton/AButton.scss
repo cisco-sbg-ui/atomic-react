@@ -68,7 +68,6 @@ $btn-transition: color $transition-duration--extra-fast
 
     &:hover {
       color: map-deep-get($theme, "button", "tertiary", "color--hover");
-      fill: map-deep-get($theme, "button", "tertiary", "color--hover");
       background-color: map-deep-get($theme, "button", "tertiary", "bg--hover");
     }
 
@@ -90,7 +89,6 @@ $btn-transition: color $transition-duration--extra-fast
 
   &--tertiary {
     color: map-deep-get($theme, "base", "brand-color");
-    fill: map-deep-get($theme, "base", "brand-color");
 
     &:focus {
       color: map-deep-get($theme, "button", "tertiary", "color--focus");
@@ -103,24 +101,20 @@ $btn-transition: color $transition-duration--extra-fast
     &.disabled,
     &:disabled {
       color: map-deep-get($theme, "button", "tertiary", "color--disabled");
-      fill: map-deep-get($theme, "button", "tertiary", "color--disabled");
     }
   }
 
   &--tertiary-alt,
   &--tertiary-icon {
     color: map-deep-get($theme, "base", "color");
-    fill: map-deep-get($theme, "base", "color");
 
     &:active {
       color: map-deep-get($theme, "base", "color--active");
-      fill: map-deep-get($theme, "base", "color--active");
     }
 
     &.disabled,
     &:disabled {
       color: map-deep-get($theme, "base", "color");
-      fill: map-deep-get($theme, "base", "color");
     }
   }
 }

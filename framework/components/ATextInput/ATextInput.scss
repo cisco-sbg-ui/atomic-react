@@ -19,7 +19,7 @@ $search-input-padding-top: 1px;
   &--readonly .a-text-input__append-icon {
     @include disabled;
     box-shadow: none;
-    fill: map-deep-get($theme, "text-input", "color--disabled");
+    color: map-deep-get($theme, "text-input", "color--disabled");
   }
 
   &__prepend-icon,

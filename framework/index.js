@@ -8,6 +8,7 @@ import {
   ADropdownMenu,
   ADropdownMenuItem
 } from "./components/ADropdown";
+import {AFooter, AFooterLegal} from "./components/AFooter";
 import {
   AHeader,
   AHeaderLogo,
@@ -38,6 +39,8 @@ export {
   ADropdown,
   ADropdownMenu,
   ADropdownMenuItem,
+  AFooter,
+  AFooterLegal,
   AHeader,
   AHeaderLogo,
   AHeaderTitle,
