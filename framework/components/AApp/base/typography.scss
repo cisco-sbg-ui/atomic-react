@@ -7,7 +7,6 @@ $pre-padding: 10px;
 @include theme(a-app--wrap) using ($theme) {
   background-color: map-deep-get($theme, "base", "bg");
   color: map-deep-get($theme, "base", "color");
-  fill: map-deep-get($theme, "base", "color");
 
   code,
   pre {

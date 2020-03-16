@@ -21,9 +21,7 @@ const AApp = forwardRef(
       className += " a-app--animated";
     }
 
-    if (theme === "dusk") {
-      className += " theme--dusk";
-    }
+    className += theme === "dusk" ? " theme--dusk" : " theme--default";
 
     if (propsClassName) {
       className += ` ${propsClassName}`;

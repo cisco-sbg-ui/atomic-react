@@ -8,6 +8,7 @@ $icon-size-small: $font-size;
   box-sizing: content-box;
   overflow: visible;
   width: 24px;
+  fill: currentColor;
 
   &--size-large {
     width: $icon-size-large;

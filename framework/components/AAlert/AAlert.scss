@@ -80,12 +80,12 @@ $alert-danger-close-icon--hover: map-get($status-red, "burnt-1");
   &__icon {
     font-size: $alert-icon-font-size;
     margin: $alert-icon-margin;
-    fill: map-get($status-blue, "base");
+    color: map-get($status-blue, "base");
     &--close {
       cursor: pointer;
-      fill: $alert-close-icon;
+      color: $alert-close-icon;
       &:hover {
-        fill: $alert-close-icon--hover;
+        color: $alert-close-icon--hover;
       }
     }
   }
@@ -99,12 +99,12 @@ $alert-danger-close-icon--hover: map-get($status-red, "burnt-1");
   }
   &--state-success {
     .a-alert__icon {
-      fill: map-get($status-green, "base");
+      color: map-get($status-green, "base");
 
       &--close {
-        fill: $alert-success-close-icon;
+        color: $alert-success-close-icon;
         &:hover {
-          fill: $alert-success-close-icon--hover;
+          color: $alert-success-close-icon--hover;
         }
         &:focus {
           box-shadow: $success-box-shadow;
@@ -114,12 +114,12 @@ $alert-danger-close-icon--hover: map-get($status-red, "burnt-1");
   }
   &--state-warning {
     .a-alert__icon {
-      fill: map-get($status-orange, "base");
+      color: map-get($status-orange, "base");
 
       &--close {
-        fill: $alert-warning-close-icon;
+        color: $alert-warning-close-icon;
         &:hover {
-          fill: $alert-warning-close-icon--hover;
+          color: $alert-warning-close-icon--hover;
         }
         &:focus {
           box-shadow: $warning-box-shadow;
@@ -129,12 +129,12 @@ $alert-danger-close-icon--hover: map-get($status-red, "burnt-1");
   }
   &--state-danger {
     .a-alert__icon {
-      fill: map-get($status-red, "base");
+      color: map-get($status-red, "base");
 
       &--close {
-        fill: $alert-danger-close-icon;
+        color: $alert-danger-close-icon;
         &:hover {
-          fill: $alert-danger-close-icon--hover;
+          color: $alert-danger-close-icon--hover;
         }
         &:focus {
           box-shadow: $danger-box-shadow;

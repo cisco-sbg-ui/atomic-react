@@ -3,7 +3,7 @@
 /A*.js
 /helpers*.js
 /style-inject*.js
-/index.js
+/index*.js
 /_rollupPluginBabelHelpers*
 
 .now
