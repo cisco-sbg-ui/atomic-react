@@ -3,6 +3,9 @@ import React, {forwardRef, useContext, useEffect, useState} from "react";
 
 import ATabContext from "./ATabContext";
 import "./ATabs.scss";
+import {keyCodes} from "../../utils/helpers";
+
+let tabCounter = 0;
 
 const ATab = forwardRef(
   (
@@ -19,10 +22,12 @@ const ATab = forwardRef(
   ) => {
     const [tabId, setTabId] = useState(null);
     const [isSelected, setIsSelected] = useState(null);
-    const {register, tabChanged, setTabChanged} = useContext(ATabContext);
+    const {tabChanged, setTabChanged} = useContext(ATabContext);
     useEffect(() => {
       if (!tabId) {
-        setTabId(register(selected));
+        const index = tabCounter++;
+        setTabId(index);
+        if (selected) setTabChanged(index);
       }
 
       setIsSelected(tabChanged === tabId);
@@ -46,6 +51,13 @@ const ATab = forwardRef(
       onClick: e => {
         setTabChanged(tabId);
         onClick && onClick(e);
+      },
+      onKeyDown: e => {
+        if (!href && [keyCodes.enter].includes(e.keyCode)) {
+          e.preventDefault();
+          setTabChanged(tabId);
+          onClick && onClick(e);
+        }
       },
       role: "tab",
       tabIndex: 0

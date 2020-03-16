@@ -4,8 +4,6 @@ import React, {forwardRef, useState} from "react";
 import ATabContext from "./ATabContext";
 import "./ATabs.scss";
 
-let tabCounter = 0;
-
 const ATabGroup = forwardRef(
   ({className: propsClassName, children, oversized, tall, ...rest}, ref) => {
     const [tabChanged, setTabChanged] = useState(false);
@@ -24,16 +22,11 @@ const ATabGroup = forwardRef(
 
     const tabContext = {
       tabChanged,
-      setTabChanged,
-      register: selected => {
-        const index = tabCounter++;
-        if (selected) setTabChanged(index);
-        return index;
-      }
+      setTabChanged
     };
 
     return (
-      <div {...rest} ref={ref} className={className}>
+      <div {...rest} role="tabslist" ref={ref} className={className}>
         <ATabContext.Provider value={tabContext}>
           {children}
         </ATabContext.Provider>

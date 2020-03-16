@@ -53,16 +53,36 @@ The `ATextInput` component inherits passed props.
 <Preview>
   <Story name="validation-1">
     <AApp>
-      <ATextInput placeholder="Normal" />
-      <ATextInput placeholder="Normal" prependIcon="cisco" appendIcon="information" onClickPrepend={() => alert('Cisco Systems!')} />
-      <ATextInput placeholder="Disabled" disabled />
-      <ATextInput placeholder="Disabled" disabled prependIcon="cisco" appendIcon="information" onClickPrepend={() => alert('Cisco Systems!')} />
-      <ATextInput placeholder="Read Only State" readOnly />
-      <ATextInput placeholder="Read Only State" readOnly prependIcon="cisco" appendIcon="information" onClickPrepend={() => alert('Cisco Systems!')} />
-      <ATextInput validationState="warning" placeholder="Warning State" />
-      <ATextInput validationState="warning" placeholder="Warning" prependIcon="cisco" appendIcon="information" onClickPrepend={() => alert('Cisco Systems!')} />
-      <ATextInput validationState="danger" placeholder="Danger State" />
-      <ATextInput validationState="danger" placeholder="Danger State" prependIcon="cisco" appendIcon="information" onClickPrepend={() => alert('Cisco Systems!')} />
+      <div style={{marginBottom: 20}}>
+        <ATextInput placeholder="Normal" />
+      </div>
+      <div style={{marginBottom: 20}}>
+        <ATextInput placeholder="Normal" prependIcon="cisco" appendIcon="information" onClickPrepend={() => alert('Cisco Systems!')} />
+      </div>
+      <div style={{marginBottom: 20}}>
+        <ATextInput placeholder="Disabled" disabled />
+      </div>
+      <div style={{marginBottom: 20}}>
+        <ATextInput placeholder="Disabled" disabled prependIcon="cisco" appendIcon="information" onClickPrepend={() => alert('Cisco Systems!')} />
+      </div>
+      <div style={{marginBottom: 20}}>
+        <ATextInput placeholder="Read Only State" readOnly />
+      </div>
+      <div style={{marginBottom: 20}}>
+        <ATextInput placeholder="Read Only State" readOnly prependIcon="cisco" appendIcon="information" onClickPrepend={() => alert('Cisco Systems!')} />
+      </div>
+      <div style={{marginBottom: 20}}>
+        <ATextInput validationState="warning" placeholder="Warning State" />
+      </div>
+      <div style={{marginBottom: 20}}>
+        <ATextInput validationState="warning" placeholder="Warning" prependIcon="cisco" appendIcon="information" onClickPrepend={() => alert('Cisco Systems!')} />
+      </div>
+      <div style={{marginBottom: 20}}>
+        <ATextInput validationState="danger" placeholder="Danger State" />
+      </div>
+      <div style={{marginBottom: 20}}>
+        <ATextInput validationState="danger" placeholder="Danger State" prependIcon="cisco" appendIcon="information" onClickPrepend={() => alert('Cisco Systems!')} />
+      </div>
     </AApp>
   </Story>
 </Preview>
@@ -72,16 +92,36 @@ The `ATextInput` component inherits passed props.
 <Preview style={{backgroundColor: '#18191d'}}>
   <Story name="dusk-1">
     <AApp theme="dusk">
-      <ATextInput placeholder="Normal" />
-      <ATextInput placeholder="Normal" prependIcon="cisco" appendIcon="information" onClickPrepend={() => alert('Cisco Systems!')} />
-      <ATextInput placeholder="Disabled" disabled />
-      <ATextInput placeholder="Disabled" disabled prependIcon="cisco" appendIcon="information" onClickPrepend={() => alert('Cisco Systems!')} />
-      <ATextInput placeholder="Read Only State" readOnly />
-      <ATextInput placeholder="Read Only State" readOnly prependIcon="cisco" appendIcon="information" onClickPrepend={() => alert('Cisco Systems!')} />
-      <ATextInput validationState="warning" placeholder="Warning State" />
-      <ATextInput validationState="warning" placeholder="Warning" prependIcon="cisco" appendIcon="information" onClickPrepend={() => alert('Cisco Systems!')} />
-      <ATextInput validationState="danger" placeholder="Danger State" />
-      <ATextInput validationState="danger" placeholder="Danger State" prependIcon="cisco" appendIcon="information" onClickPrepend={() => alert('Cisco Systems!')} />
+      <div style={{marginBottom: 20}}>
+        <ATextInput placeholder="Normal" />
+      </div>
+      <div style={{marginBottom: 20}}>
+        <ATextInput placeholder="Normal" prependIcon="cisco" appendIcon="information" onClickPrepend={() => alert('Cisco Systems!')} />
+      </div>
+      <div style={{marginBottom: 20}}>
+        <ATextInput placeholder="Disabled" disabled />
+      </div>
+      <div style={{marginBottom: 20}}>
+        <ATextInput placeholder="Disabled" disabled prependIcon="cisco" appendIcon="information" onClickPrepend={() => alert('Cisco Systems!')} />
+      </div>
+      <div style={{marginBottom: 20}}>
+        <ATextInput placeholder="Read Only State" readOnly />
+      </div>
+      <div style={{marginBottom: 20}}>
+        <ATextInput placeholder="Read Only State" readOnly prependIcon="cisco" appendIcon="information" onClickPrepend={() => alert('Cisco Systems!')} />
+      </div>
+      <div style={{marginBottom: 20}}>
+        <ATextInput validationState="warning" placeholder="Warning State" />
+      </div>
+      <div style={{marginBottom: 20}}>
+        <ATextInput validationState="warning" placeholder="Warning" prependIcon="cisco" appendIcon="information" onClickPrepend={() => alert('Cisco Systems!')} />
+      </div>
+      <div style={{marginBottom: 20}}>
+        <ATextInput validationState="danger" placeholder="Danger State" />
+      </div>
+      <div style={{marginBottom: 20}}>
+        <ATextInput validationState="danger" placeholder="Danger State" prependIcon="cisco" appendIcon="information" onClickPrepend={() => alert('Cisco Systems!')} />
+      </div>
     </AApp>
   </Story>
 </Preview>
@@ -102,3 +142,9 @@ Animations are enabled by default on the `AApp` component and can be disabled.
     </AApp>
   </Story>
 </Preview>
+
+## Accessibility Notes
+
+The `ATextInput` `click` event handlers for prepended and appended icons are triggered both by the `click` event and by the `keyDown` event for both the `Enter` and `Space` keys.
+
+Interactable prepended and appended icons are tab-focusable with a visual overlay.

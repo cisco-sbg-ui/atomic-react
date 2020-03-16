@@ -10,4 +10,10 @@ The aim is to provide an Atomic Design component library for React developers th
 
 ## The Plan For Now
 
-Using the Atomic UI Toolkit (v1.8.0) as a base, and leveraging the work done in [threatgrid/atomic-ui-components], create a base set of components while addressing common developer issues such as CSS specificity and library size (in KB). Get documentation set up, published. Get a package into artifactory (or public if possible).
+Using the Atomic UI Toolkit (v1.8.0) as a base, and leveraging the work done in [threatgrid/atomic-ui-components], create a base set of components while addressing common developer issues such as CSS specificity and library size (in KB). Get documentation set up, published. Get a package into artifactory. Aim for [WAI-ARIA](https://www.w3.org/WAI/standards-guidelines/aria/) compliance.
+
+## Future Discussion Points
+
+- Public docs and package.
+- Mobile friendliness.
+- Refactor to align better with conceptual framework.

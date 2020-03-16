@@ -83,3 +83,15 @@ The `ADropdownMenuItem` component inherits passed props.
     </AApp>
   </Story>
 </Preview>
+
+## Accessibility Notes
+
+By default, `ADropdownMenu` components are assigned the [WAI-ARIA](https://www.w3.org/WAI/standards-guidelines/aria/) role of [menu](https://www.w3.org/TR/wai-aria/#menu).
+
+By default, `ADropdownMenuItem` components are assigned the [WAI-ARIA](https://www.w3.org/WAI/standards-guidelines/aria/) role of [menuitem](https://www.w3.org/TR/wai-aria/#menuitem).
+
+Keyboard accessibility has been enabled via use of the arrow keys to navigate menu items.
+
+The `ADropdownMenuItem` `click` event handler is triggered both by the `click` event and by the `keyDown` event for both the `Enter` and `Space` keys.
+
+Ensure the activator is tab-focusable to remain compliant.

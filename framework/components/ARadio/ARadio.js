@@ -31,7 +31,6 @@ const ARadio = forwardRef(
           name={name}
           className="a-radio__input"
           value={value}
-          checked={checked}
           onChange={() => {}}
           disabled={disabled}
           onClick={onClick}

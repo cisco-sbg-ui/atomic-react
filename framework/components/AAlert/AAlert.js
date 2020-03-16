@@ -2,6 +2,7 @@ import PropTypes from "prop-types";
 import React, {forwardRef} from "react";
 
 import "./AAlert.scss";
+import {keyCodes} from "../../utils/helpers";
 import AIcon from "../AIcon";
 
 const AAlert = forwardRef(
@@ -16,6 +17,13 @@ const AAlert = forwardRef(
     },
     ref
   ) => {
+    const dismissableKeyDownHandler = e => {
+      if (onClose && [keyCodes.enter, keyCodes.space].includes(e.keyCode)) {
+        e.preventDefault();
+        onClose(e);
+      }
+    };
+
     let className = `a-alert a-alert--state-`,
       icon = "";
 
@@ -51,6 +59,7 @@ const AAlert = forwardRef(
           <AIcon
             className="a-alert__icon a-alert__icon--close"
             onClick={e => onClose && onClose(e)}
+            onKeyDown={dismissableKeyDownHandler}
             size="16"
             tabIndex={0}>
             close

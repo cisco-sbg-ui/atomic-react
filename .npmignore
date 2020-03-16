@@ -1,6 +1,7 @@
 .github/
 .storybook/
 docs/
+fonts/
 framework/
 .babelrc
 .buildme
@@ -9,4 +10,5 @@ framework/
 .gitignore
 .prettierignore
 .prettierrc.js
+now.json
 rollup.config.js

@@ -13,7 +13,6 @@ const ACheckbox = forwardRef(
       indeterminate = false,
       name,
       onClick,
-      tooltip,
       value,
       wrap,
       ...rest
@@ -32,19 +31,16 @@ const ACheckbox = forwardRef(
           type="checkbox"
           className="a-checkbox__input"
           name={name}
-          value={value || checked}
-          aria-checked={checked}
-          checked={checked}
+          value={value}
+          aria-checked={intermediate ? "mixed" : checked}
           disabled={disabled}
           onChange={() => {}}
           onClick={onClick}
           role="checkbox"
-          ref={el => el && (el.indeterminate = indeterminate)}
         />
         <span aria-hidden="true" className="a-checkbox__box" />
         <span
-          className={`a-checkbox__label ${wrap && "a-checkbox__label--wrap"}`}
-          title={tooltip}>
+          className={`a-checkbox__label ${wrap && "a-checkbox__label--wrap"}`}>
           {children}
         </span>
       </label>
@@ -79,10 +75,6 @@ ACheckbox.propTypes = {
    * A callback for handling the click event.
    */
   onClick: PropTypes.func,
-  /**
-   * The label's title.
-   */
-  tooltip: PropTypes.string,
   /**
    * The input's value.
    */

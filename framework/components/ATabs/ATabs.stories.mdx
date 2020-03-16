@@ -133,3 +133,13 @@ Tabs will render in the DOM as anchor tags if the `href` property is defined.
     </AApp>
   </Story>
 </Preview>
+
+## Accessibility Notes
+
+By default, `ATabGroup` components are assigned the [WAI-ARIA](https://www.w3.org/WAI/standards-guidelines/aria/) role of [tabslist](https://www.w3.org/TR/wai-aria/#tabslist).
+
+By default, `ATab` components are assigned the [WAI-ARIA](https://www.w3.org/WAI/standards-guidelines/aria/) role of [tab](https://www.w3.org/TR/wai-aria/#tab).
+
+The `ATab` `click` event handler is triggered both by the `click` event and by the `keyDown` event for both the `Enter` and `Space` keys.
+
+Each `ATab` component is tab-focusable with a visual overlay.

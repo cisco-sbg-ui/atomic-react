@@ -12,7 +12,6 @@ const ATextInput = forwardRef(
       autoComplete,
       className: propsClassName,
       disabled,
-      id,
       name,
       onBlur,
       onClickAppend,
@@ -98,7 +97,6 @@ const ATextInput = forwardRef(
           autoComplete={autoComplete}
           className={inputClassName}
           disabled={disabled}
-          id={id}
           name={name}
           onBlur={onBlur}
           onChange={onChange}
@@ -134,10 +132,6 @@ ATextInput.propTypes = {
    * Toggles the `disabled` state.
    */
   disabled: PropTypes.bool,
-  /**
-   * The input's `id` attribute.
-   */
-  id: PropTypes.string,
   /**
    * The input's `name` attribute.
    */

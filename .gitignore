@@ -1,11 +1,9 @@
 /docs/
 /node_modules/
 /A*.js
-/style-inject*
+/helpers*.js
+/style-inject*.js
 /index.js
 /_rollupPluginBabelHelpers*
-/*.ttf
-/*.woff
-/*.woff2
 
 .now
