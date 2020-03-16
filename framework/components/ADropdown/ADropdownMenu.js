@@ -11,7 +11,7 @@ const ADropdownMenu = forwardRef(
     }
 
     return (
-      <div {...rest} ref={ref} className={className}>
+      <div {...rest} role="menu" ref={ref} className={className}>
         {children}
       </div>
     );

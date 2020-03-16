@@ -8,6 +8,7 @@ $icon-size-small: $font-size;
   box-sizing: content-box;
   overflow: visible;
   width: 24px;
+  pointer-events: none;
 
   &--size-large {
     width: $icon-size-large;

@@ -4,7 +4,10 @@ import React, {forwardRef} from "react";
 import "./ADivider.scss";
 
 const ADivider = forwardRef(
-  ({className: propsClassName, light, lighter, ...rest}, ref) => {
+  (
+    {className: propsClassName, light, lighter, role = "separator", ...rest},
+    ref
+  ) => {
     let className = "a-divider";
 
     if (lighter) {
@@ -17,9 +20,13 @@ const ADivider = forwardRef(
       className += ` ${propsClassName}`;
     }
 
-    return <div {...rest} ref={ref} className={className} />;
+    return <hr {...rest} role={role} ref={ref} className={className} />;
   }
 );
+
+ADivider.defaultProps = {
+  role: "separator"
+};
 
 ADivider.propTypes = {
   /**
@@ -29,7 +36,11 @@ ADivider.propTypes = {
   /**
    * Toggles the lighter variant.
    */
-  lighter: PropTypes.bool
+  lighter: PropTypes.bool,
+  /**
+   * Sets the [WAI-ARIA](https://www.w3.org/WAI/standards-guidelines/aria/) role.
+   */
+  role: PropTypes.oneOf(["separator", "presentation"])
 };
 
 export default ADivider;
