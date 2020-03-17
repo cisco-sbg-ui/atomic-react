@@ -22,12 +22,10 @@ const StorybookHeader = () => {
         </AHeaderLogo>
         <AHeaderTitle>Atomic Components for React</AHeaderTitle>
         <AHeaderNavigation />
-        <AHeaderToolbar>
-          <a
-            href="https://www.github.com/threatgrid/atomic-react"
-            target="_blank">
-            <AIcon tabIndex="0">github</AIcon>
-          </a>
+        <AHeaderToolbar
+          href="https://www.github.com/threatgrid/atomic-react"
+          target="_blank">
+          <AIcon tabIndex="0">github</AIcon>
         </AHeaderToolbar>
       </AHeader>
     </AApp>

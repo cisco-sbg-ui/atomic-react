@@ -1,16 +1,35 @@
 $link-color-alt-font-size: rem(0.8125);
 
-@include theme(a-app--wrap) using ($theme) {
+.theme--default {
   a {
-    color: map-deep-get($theme, "base", "brand-color");
+    color: map-deep-get($atomic-default, "base", "brand-color");
 
     &:hover,
     &:focus {
-      color: map-deep-get($theme, "base", "brand-color");
+      color: map-deep-get($atomic-default, "base", "brand-color");
     }
 
     &:active {
-      color: map-deep-get($theme, "base", "color--active");
+      color: map-deep-get($atomic-default, "base", "color--active");
+    }
+
+    &.disabled {
+      color: map-get($grey, "lighten-2");
+    }
+  }
+}
+
+.theme--dusk {
+  a {
+    color: map-deep-get($atomic-dusk, "base", "brand-color");
+
+    &:hover,
+    &:focus {
+      color: map-deep-get($atomic-dusk, "base", "brand-color");
+    }
+
+    &:active {
+      color: map-deep-get($atomic-dusk, "base", "color--active");
     }
 
     &.disabled {

@@ -5,9 +5,9 @@
   "main": "index.js",
   "module": "index.js",
   "scripts": {
-    "build": "rollup -c && build-storybook -c .storybook -o docs --docs",
+    "build": "rollup -c && build-storybook -s .storybook/public -c .storybook -o docs --docs",
     "now-build": "",
-    "start": "rollup -c && start-storybook --docs"
+    "start": "rollup -c && start-storybook -s .storybook/public --docs"
   },
   "peerDependencies": {
     "react": "^16.8.0",
@@ -22,8 +22,8 @@
     "@rollup/plugin-commonjs": "^11.0.2",
     "@rollup/plugin-json": "^4.0.2",
     "@rollup/plugin-node-resolve": "^7.1.1",
-    "@storybook/addon-docs": "^5.3.14",
-    "@storybook/react": "^5.3.14",
+    "@storybook/addon-docs": "^5.3.17",
+    "@storybook/react": "^5.3.17",
     "babel-loader": "^8.0.6",
     "eslint": "^6.8.0",
     "eslint-config-prettier": "^6.9.0",

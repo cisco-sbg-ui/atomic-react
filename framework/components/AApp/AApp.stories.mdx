@@ -1,4 +1,4 @@
-import { Meta, Preview, Story, Props } from "@storybook/addon-docs/blocks";
+import { Meta, Preview, Story, Props, ColorPalette, ColorItem } from "@storybook/addon-docs/blocks";
 
 import LoremIpsum from "../../utils/lorem-ipsum"
 import AApp from "./AApp"
@@ -209,3 +209,129 @@ The `AApp` component provides theming, typography, scrollbar stylings as well as
     </AApp>
   </Story>
 </Preview>
+
+## Color Palette
+
+Apply color overrides using helper classes:
+- To override the background, add `className="[color_name]--[color_variant]"`, for example: `className="fern--wash-1"`.
+- To override the text color, add `className="[color_name]--[color_variant]--text"`, for example: `className="dark-blue--burnt-1--text"`
+- For either background or text color classes, there is no need to specify the base color variant. For example, `className="cisco-blue white--text"`
+
+<!-- Named colors is available in Storybook 6, which is still in alpha as of 3/17/2020 -->
+<ColorPalette>
+  <ColorItem
+    title="grey"
+    subtitle="darken-7, darken-6, darken-5, darken-4, darken-3, darken-2, darken-1, base, lighten-1, lighten-2, lighten-3, lighten-4, lighten-5, lighten-6"
+    colors={['#18191d','#39393b','#58585b','#626469','#737373','#7f7f86','#828284','#9e9ea2','#b6b9bb','#c6c7ca','#dfdfdf','#e8ebf1','#f2f2f2','#fbfbfb']}
+  />
+  <ColorItem
+    title="dusk"
+    subtitle="1, 2, 3, 4, 5, 6"
+    colors={['#6a7890','#34455c','#29384b','#253040','#1b2638','#17202b']}
+  />
+  <ColorItem
+    title="status-red"
+    subtitle="burnt-3, burnt-2, burnt-1, base, wash-1, wash-2, wash-3"
+    colors={['#82000b','#9c000d','#b5000f','#cf2030','#e6505d','#ff8c96','#ffd9dc']}
+  />
+  <ColorItem
+    title="status-blue"
+    subtitle="burnt-3, burnt-2, burnt-1, base, wash-1, wash-2, wash-3"
+    colors={['#105270','#247296','#4095bd','#64bbe3','#81cdf0','#a3e2ff','#d6f2ff']}
+  />
+  <ColorItem
+    title="status-green"
+    subtitle="burnt-3, burnt-2, burnt-1, base, wash-1, wash-2, wash-3"
+    colors={['#1b4f0f','#307316','#4b992c','#6cc04a','#93e872','#b4ff96','#e2ffd6']}
+  />
+  <ColorItem
+    title="status-yellow"
+    subtitle="burnt-3, burnt-2, burnt-1, base, wash-1, wash-2, wash-3"
+    colors={['#8c7300','#b39200','#d9b100','#ffcc00','#ffde4c','#ffec99','#fff5cc']}
+  />
+  <ColorItem
+    title="status-orange"
+    subtitle="burnt-3, burnt-2, burnt-1, base, wash-1, wash-2, wash-3"
+    colors={['#8c3f00','#b35000','#d96200','#ff7300','#ff9d4c','#ffc799','#ffead9']}
+  />
+  <ColorItem
+    title="cisco-blue"
+    subtitle="burnt-3, burnt-2, burnt-1, base, wash-1, wash-2, wash-3"
+    colors={['#004b66','#00678c','#0083b3','#049fd9','#3bcaff','#9ee5ff','#ebfaff']}
+  />
+  <ColorItem
+    title="sage-green"
+    subtitle="burnt-3, burnt-2, burnt-1, base, wash-1, wash-2, wash-3"
+    colors={['#424f00','#637507','#869c19','#abc233','#d1e85f','#eeff9c','#f9ffdb']}
+  />
+  <ColorItem
+    title="turquoise"
+    subtitle="burnt-3, burnt-2, burnt-1, base, wash-1, wash-2, wash-3"
+    colors={['#00332b','#00594c','#03806d','#14a792','#37ccb6','#72f2df','#d1fff8']}
+  />
+  <ColorItem
+    title="purple"
+    subtitle="burnt-3, burnt-2, burnt-1, base, wash-1, wash-2, wash-3"
+    colors={['#2a082b','#501752','#752e78','#9a4b9d','#c47dc7','#ecc5ed','#feebff']}
+  />
+  <ColorItem
+    title="indigo-blue"
+    subtitle="burnt-1, base, wash-1, wash-2, wash-3, wash-4, wash-5"
+    colors={['#00364d','#005073','#217ea6','#57b2d9','#99e0ff','#ccf0ff','#f2fbff']}
+  />
+  <ColorItem
+    title="brand-orange"
+    subtitle="burnt-3, burnt-2, burnt-1, base, wash-1, wash-2, wash-3"
+    colors={['#734b00','#99690f','#d48a00','#fbab18','#ffc966','#ffe4b2','#fff2d9']}
+  />
+  <ColorItem
+    title="coral"
+    subtitle="burnt-3, burnt-2, burnt-1, base, wash-1, wash-2, wash-3"
+    colors={['#8c160b','#b32c20','#d94a3d','#ff6f61','#ff9187','#ffc0ba','#ffe8e5']}
+  />
+  <ColorItem
+    title="grape"
+    subtitle="burnt-3, burnt-2, burnt-1, base, wash-1, wash-2, wash-3"
+    colors={['#0b1d47','#1d356e','#355294','#5674b9','#89a3e0','#cfddff','#e5eeff']}
+  />
+  <ColorItem
+    title="fern"
+    subtitle="burnt-3, burnt-2, burnt-1, base, wash-1, wash-2, wash-3"
+    colors={['#070d00','#244200','#3a6900','#4e8f00','#70b51b','#96db42','#c0ff73']}
+  />
+  <ColorItem
+    title="teal"
+    subtitle="burnt-3, burnt-2, burnt-1, base, wash-1, wash-2, wash-3"
+    colors={['#00464f','#006875','#00899c','#00acc1','#23d1e8','#8cf2ff','#d9fbff']}
+  />
+  <ColorItem
+    title="berry"
+    subtitle="burnt-3, burnt-2, burnt-1, base, wash-1, wash-2, wash-3"
+    colors={['#47082d','#6e174a','#942e69','#bb4c8d','#e07eb7','#ffc2e5','#ffedf8']}
+  />
+  <ColorItem
+    title="dark-blue"
+    subtitle="burnt-2, burnt-1, base, wash-1, wash-2, wash-3, wash-4"
+    colors={['#061f45','#14376b','#2b5592','#517ab8','#83a7de','#bdd7ff','#e5f0ff']}
+  />
+  <ColorItem
+    title="magenta"
+    subtitle="burnt-3, burnt-2, burnt-1, base, wash-1, wash-2, wash-3"
+    colors={['#7a0029','#a10b3d','#c72259','#ec407a','#ff6b9c','#ffb2cc','#feebff']}
+  />
+  <ColorItem
+    title="dark-cool-grey"
+    subtitle="burnt-3, burnt-2, burnt-1, base, wash-1, wash-2, wash-3"
+    colors={['#0f1521','#273347','#46556e','#6a7890','#8d97a8','#b6bac2','#d9dadb']}
+  />
+  <ColorItem
+    title="black"
+    subtitle="base"
+    colors={['#000000']}
+  />
+  <ColorItem
+    title="white"
+    subtitle="base"
+    colors={['#ffffff']}
+  />
+</ColorPalette>
