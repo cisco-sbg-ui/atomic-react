@@ -28,7 +28,7 @@ The `AApp` component provides theming, typography, scrollbar stylings as well as
           style={{padding: 20}}
           className="dark-cool-grey--burnt-2--text">
           <h1 className="display-1">Display 1</h1>
-          <a href="#"><AIcon size="small">link</AIcon>Link with icon</a> | <a href="#" className="disabled">Disabled link</a>
+          <a href="#"><AIcon size="small" style={{paddingRight: 5}}>link</AIcon>Link with icon</a> | <a href="#" className="disabled">Disabled link</a>
           <p>
             {LoremIpsum}
           </p>
@@ -63,7 +63,7 @@ The `AApp` component provides theming, typography, scrollbar stylings as well as
     <AApp theme="dusk">
       <div style={{maxHeight: 300, maxWidth: 500, overflowY: "scroll", margin: "0 auto", padding: 20}}>
         <h1 className="display-1">Display 1</h1>
-        <a href="#"><AIcon size="small">link</AIcon>Link with icon</a> | <a href="#" className="disabled">Disabled link</a>
+        <a href="#"><AIcon size="small" style={{paddingRight: 5}}>link</AIcon>Link with icon</a> | <a href="#" className="disabled">Disabled link</a>
         <p>
           {LoremIpsum}
         </p>
@@ -218,6 +218,7 @@ Apply color overrides using helper classes:
 - For either background or text color classes, there is no need to specify the base color variant. For example, `className="cisco-blue white--text"`
 
 <!-- Named colors is available in Storybook 6, which is still in alpha as of 3/17/2020 -->
+<!-- see: https://github.com/storybookjs/storybook/milestone/15 -->
 <ColorPalette>
   <ColorItem
     title="grey"

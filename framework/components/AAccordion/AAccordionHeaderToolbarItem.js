@@ -1,13 +1,14 @@
 import React, {forwardRef} from "react";
 
-import "./AHeader.scss";
+import {keyCodes} from "../../utils/helpers";
+import "./AAccordion.scss";
 
-const AHeaderToolbarItem = forwardRef(
+const AAccordionHeaderToolbarItem = forwardRef(
   (
     {children, className: propsClassName, href, onClick, target, ...rest},
     ref
   ) => {
-    const className = "a-header__toolbar-item";
+    const className = "a-accordion__toolbar-item";
 
     if (propsClassName) {
       className += ` ${propsClassName}`;
@@ -45,4 +46,4 @@ const AHeaderToolbarItem = forwardRef(
   }
 );
 
-export default AHeaderToolbarItem;
+export default AAccordionHeaderToolbarItem;

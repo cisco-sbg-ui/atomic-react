@@ -4,11 +4,11 @@ $footer-min-height: 35px;
 $footer-max-height: 65px;
 $footer-padding: 10px 20px;
 $footer-font-size: $font-size--xs;
-$footer-border-color: map-get($grey, "lighten-5");
 
 @include theme(a-button) using ($theme) {
   background-color: map-deep-get($theme, "base", "bg");
   color: map-deep-get($theme, "control", "text-color");
+  border-top-color: map-deep-get($theme, "footer", "border-color");
 }
 
 .a-footer {
@@ -17,7 +17,8 @@ $footer-border-color: map-get($grey, "lighten-5");
   max-height: $footer-max-height;
   padding: $footer-padding;
   font-size: $footer-font-size;
-  border-top: $base-border-width solid $footer-border-color;
+  border-top-width: $base-border-width;
+  border-top-style: solid;
   &__legal {
     text-align: center;
   }
