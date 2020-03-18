@@ -126,17 +126,6 @@ $step-icon-border-color: rgba(map-get($grey, "lighten-2"), $alpha-3);
 $step-line-color: rgba(map-get($grey, "lighten-2"), $alpha-3);
 // (#c6c7ca, 30%);
 // -----------------------------------------------------------------------------
-// Tables
-// -----------------------------------------------------------------------------
-$table-bg: linear-gradient(
-  125.59deg,
-  rgba(map-get($dusk, "2"), $alpha-6) 0%,
-  rgba(map-get($dusk, "5"), $alpha-6) 100%
-); // #34455C, #1B2638
-$table-header-color: map-get($grey, "lighten-1"); // #b6b9bb;
-$table-row-hover-color: map-get($dusk, "6"); // #17202b;
-$table-row-stripe-color: transparent;
-// -----------------------------------------------------------------------------
 // Switch
 // -----------------------------------------------------------------------------
 $switch-bg: rgba(map-get($grey, "darken-4"), $alpha-8); // (#626469, 80%);

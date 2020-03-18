@@ -121,6 +121,12 @@ $atomic-default: (
     "fill--enabled": map-get($grey, "lighten-2"),
     "opacity-disabled": 1
   ),
+  "table": (
+    "bg": transparent,
+    "header-color": map-get($grey, "darken-2"),
+    "row-hover-color": map-get($grey, "lighten-3"),
+    "row-stripe-color": map-get($grey, "lighten-6")
+  ),
   "tabs": (
     "oversized-background-color": map-get($grey, "lighten-6"),
     "oversized--hover-background-color": $white

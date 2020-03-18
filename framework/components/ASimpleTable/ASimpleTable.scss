@@ -1,96 +1,98 @@
 @import "../../styles";
 
-/**
-    a {
-      color: $base-color;
-      font-size: $link-color-alt-font-size;
-    }
-**/
-
-$table-bg: transparent;
 $table__top-pane--padding-bottom: 8px;
 $table__total--padding-top: 15px;
 $table__title--font-size: 18px;
-$table-min-width: 600px;
 $table-row-height: 40px;
 $table-row-height-tight: 30px;
 $table-cell-padding-left-right: 15px;
 $table-cell-min-width: 90px;
 $table-header-font-size: 12px;
-$table-header-color: map-get($grey, "darken-2");
 $table-header-line-height: 15px;
 $table-body-font-size: 13px;
 $table-body-line-height: 16.5px;
+$table-link-font-size: rem(0.8125);
 $table-cell-padding-top-bottom: ($table-row-height - $table-body-font-size) / 2;
 $table-cell-tight-padding-top-bottom: (
     $table-row-height-tight - $table-body-font-size
   ) / 2;
-$table-row-hover-color: map-get($grey, "lighten-3");
-$table-row-stripe-color: map-get($grey, "lighten-6");
 
-th {
-  font-weight: normal;
-  text-align: left;
+@include theme(a-simple-table) using ($theme) {
+  background: map-deep-get($theme, "table", "bg");
+
+  &--striped {
+    tbody tr:nth-child(even):not(:hover) {
+      background-color: map-deep-get($theme, "table", "row-stripe-color");
+    }
+  }
+
+  tbody tr:hover {
+    background-color: map-deep-get($theme, "table", "row-hover-color");
+  }
+
+  th {
+    color: map-deep-get($theme, "table", "header-color");
+    border-color: map-deep-get($theme, "control", "stroke-color");
+  }
+
+  td {
+    border-color: map-deep-get($theme, "control", "stroke-color");
+  }
+
+  &--alt-links {
+    a {
+      color: map-deep-get($theme, "base", "color");
+    }
+  }
 }
-table,
-.table {
+
+.a-simple-table {
   border-collapse: collapse;
   width: 100%;
   max-width: 100%;
-  min-width: $table-min-width;
-  background: $table-bg;
-  &--type-tight {
-    .table__header-row,
-    .table__row {
-      height: $table-row-height-tight;
-    }
-    .table__cell {
-      padding-top: $table-cell-tight-padding-top-bottom;
-      padding-bottom: $table-cell-tight-padding-top-bottom;
-    }
-  }
-  &--type-striped {
-    .table__row:nth-child(even):not(:hover) {
-      background-color: $table-row-stripe-color;
-    }
-  }
+
   &__top-pane {
     display: flex;
     align-items: flex-end;
     justify-content: space-between;
     padding-bottom: $table__top-pane--padding-bottom;
   }
+
   &__title {
     font-size: $table__title--font-size;
   }
+
   &__total {
     padding-top: $table__total--padding-top;
   }
-  &__header-row,
-  &__row {
+
+  tr {
     height: $table-row-height;
   }
-  &__row:hover {
-    background-color: $table-row-hover-color;
-  }
-  &__header-cell,
-  &__cell {
+
+  th,
+  td {
     padding-left: $table-cell-padding-left-right;
     padding-right: $table-cell-padding-left-right;
     min-width: $table-cell-min-width;
   }
-  &__header-cell {
+
+  th {
+    font-weight: normal;
+    text-align: left;
     text-align: inherit;
     font-size: $table-header-font-size;
     font-weight: bold;
     line-height: $table-header-line-height;
-    color: $table-header-color;
-    border: $base-border-width solid $control-stroke-color;
+    border-width: $base-border-width;
+    border-style: solid;
   }
-  &__cell {
+
+  td {
     font-size: $table-body-font-size;
     line-height: $table-body-line-height;
-    border: $base-border-width solid $control-stroke-color;
+    border-width: $base-border-width;
+    border-style: solid;
     padding-top: $table-cell-padding-top-bottom;
     padding-bottom: $table-cell-padding-top-bottom;
     vertical-align: top;
@@ -102,12 +104,19 @@ table,
       border-right: none;
     }
   }
-  &__header-cell--align-right,
-  &__cell--align-right {
-    text-align: right;
+
+  &--tight {
+    tr {
+      height: $table-row-height-tight;
+    }
+
+    td {
+      padding-top: $table-cell-tight-padding-top-bottom;
+      padding-bottom: $table-cell-tight-padding-top-bottom;
+    }
   }
-  &__header-cell--align-center,
-  &__cell--align-center {
-    text-align: center;
+
+  a {
+    font-size: $table-link-font-size;
   }
 }
