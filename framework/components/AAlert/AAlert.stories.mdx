@@ -42,9 +42,9 @@ import AAlert from "@cisco-ats/atomic-react/AAlert";
         <div>
           <h3>Examples</h3>
           {alerts.map((alert, index) =>
-            <p>
-              <AAlert level={alert} dismissable key={index} onClose={() => closeHandler(index)}>{LoremIpsum}</AAlert>
-            </p>
+            <div className="my-2" key={index}>
+              <AAlert level={alert} dismissable onClose={() => closeHandler(index)}>{LoremIpsum}</AAlert>
+            </div>
           )}
           <ADivider />
           <p>
@@ -69,18 +69,18 @@ The `AAlert` component inherits passed props.
 <Preview style={{backgroundColor: '#18191d'}}>
   <Story name="dusk-1">
     <AApp theme="dusk">
-      <p>
+      <div className="my-2">
         <AAlert level="info" dismissable>{LoremIpsum}</AAlert>
-      </p>
-      <p>
+      </div>
+      <div className="my-2">
         <AAlert level="success" dismissable>{LoremIpsum}</AAlert>
-      </p>
-      <p>
+      </div>
+      <div className="my-2">
         <AAlert level="warning" dismissable>{LoremIpsum}</AAlert>
-      </p>
-      <p>
+      </div>
+      <div className="my-2">
         <AAlert level="danger" dismissable>{LoremIpsum}</AAlert>
-      </p>
+      </div>
     </AApp>
   </Story>
 </Preview>

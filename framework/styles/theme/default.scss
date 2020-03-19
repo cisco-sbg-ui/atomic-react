@@ -131,6 +131,10 @@ $atomic-default: (
     "oversized-background-color": map-get($grey, "lighten-6"),
     "oversized--hover-background-color": $white
   ),
+  "tag": (
+    "bg-color": map-get($grey, "lighten-3"),
+    "color": map-get($grey, "darken-6")
+  ),
   "text-input": (
     "bg": $white,
     "color--disabled": map-get($grey, "base"),

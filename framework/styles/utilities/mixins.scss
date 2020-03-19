@@ -232,25 +232,21 @@
   $box-shadow
 ) {
   color: $color;
-  fill: $color;
   background-color: $background;
   border-color: $border;
   &:hover {
     color: $color-hover;
-    fill: $color-hover;
     background-color: $background-hover;
     border-color: $border-hover;
   }
   &:focus {
     color: $color-focus;
-    fill: $color-focus;
     background-color: $background-focus;
     border-color: $border-focus;
     box-shadow: $box-shadow;
   }
   &:active {
     color: $color-active;
-    fill: $color-active;
     background-color: $background-active;
     border-color: $border-active;
   }
@@ -258,7 +254,6 @@
   &:disabled {
     box-shadow: none;
     color: $color-disabled;
-    fill: $color-disabled;
     background-color: $background-disabled;
     border-color: $border-disabled;
     opacity: 0.5;

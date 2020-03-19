@@ -42,6 +42,7 @@ const config = {
     ARadio: "framework/components/ARadio",
     ASimpleTable: "framework/components/ASimpleTable",
     ATabs: "framework/components/ATabs",
+    ATag: "framework/components/ATag",
     ATextarea: "framework/components/ATextarea",
     ATextInput: "framework/components/ATextInput"
   },

@@ -125,7 +125,8 @@ $btn-transition: color $transition-duration--extra-fast
   text-decoration: none;
   vertical-align: middle;
   user-select: none;
-  border: $base-border-width solid;
+  border-width: $base-border-width;
+  border-style: solid;
   border-radius: $base-border-radius;
   cursor: pointer;
   @include text-truncate;
@@ -135,6 +136,11 @@ $btn-transition: color $transition-duration--extra-fast
   margin: $btn-margin;
   min-width: $btn-min-width;
   font-size: $font-size--sm;
+
+  &:focus,
+  &:hover {
+    text-decoration: none !important;
+  }
 
   &--tertiary,
   &--tertiary-alt,

@@ -22,7 +22,7 @@ const AButton = forwardRef(
     },
     ref
   ) => {
-    let className = "a-button a-button--";
+    let className = "a-button focus-box-shadow a-button--";
 
     if (primary) {
       className += "primary";
@@ -62,6 +62,7 @@ const AButton = forwardRef(
       if (!disabled) {
         props.href = href;
         props.target = target;
+        props.tabIndex = 0;
       }
     } else {
       props.disabled = disabled;
