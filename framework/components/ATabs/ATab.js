@@ -14,6 +14,7 @@ const ATab = forwardRef(
       children,
       href,
       onClick,
+      onKeyDown,
       selected,
       target,
       ...rest
@@ -57,6 +58,8 @@ const ATab = forwardRef(
           e.preventDefault();
           setTabChanged(tabId);
           onClick && onClick(e);
+        } else {
+          onKeyDown && onKeyDown(e);
         }
       },
       role: "tab",

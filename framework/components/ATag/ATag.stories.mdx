@@ -1,0 +1,121 @@
+import { Meta, Preview, Story, Props } from '@storybook/addon-docs/blocks';
+import {useState} from 'react'
+
+import YourComponent from '../../utils/storybook-function'
+
+import AApp from '../AApp'
+import AIcon from '../AIcon'
+import {
+  ADropdown,
+  ADropdownMenu,
+  ADropdownMenuItem
+} from '../ADropdown'
+import ATag from "./ATag"
+
+<Meta title="Components/Tags" component={ATag} />
+
+# Tags
+
+## Install
+
+In the target component add:
+
+```
+import ATag from "@cisco-ats/atomic-react/ATag";
+```
+
+## Usage
+
+<Preview>
+  <Story name="usage-1">
+  <AApp style={{minHeight: 120}}>
+    <ATag>
+      Simple Tag
+    </ATag>
+    <ATag className="status-red white--text ma-1">
+      <AIcon className="mr-1">critical-stop</AIcon>Status Tag
+    </ATag>
+    <ATag href="/" target="_blank" className="ma-1">
+      Linked Tag
+    </ATag>
+    <ATag className="cisco-blue white--text ma-1">
+      <AIcon className="mr-1">user</AIcon>User Tag<AIcon className="ml-1 cursor-pointer" onClick={() => alert('Close icon clicked!')}>close</AIcon>
+    </ATag>
+      <YourComponent>
+      {() => {
+        const [selectedOption, setSelectedOption] = useState("Option 1");
+        const [active, setActive] = useState(false);
+        return (
+          <>
+          <ATag className="ma-1 grape white--text" onClick={() => setActive(!active)}>
+            {selectedOption} Tag<AIcon className="ml-1 cursor-pointer">chevron-down</AIcon>
+          </ATag>
+          <ADropdown active={active}>
+            <ADropdownMenu style={{right:5}}>
+              <ADropdownMenuItem onClick={() => { setSelectedOption("Option 1"); setActive(!active); }}>Option 1</ADropdownMenuItem>
+              <ADropdownMenuItem onClick={() => { setSelectedOption("Option 2"); setActive(!active); }}>Option 2</ADropdownMenuItem>
+              <ADropdownMenuItem onClick={() => { setSelectedOption("Option 3"); setActive(!active); }}>Option 3</ADropdownMenuItem>
+            </ADropdownMenu>
+          </ADropdown>
+          </>
+        );
+      }}
+      </YourComponent>
+  </AApp>
+  </Story>
+</Preview>
+
+## Tag Props
+
+The `ATag` component inherits passed props.
+
+<Props of={ATag} />
+
+## Dusk Theme
+
+<Preview style={{backgroundColor: '#18191d'}}>
+  <Story name="dusk-1">
+  <AApp theme="dusk" style={{minHeight: 120}}>
+    <ATag>
+      Simple Tag
+    </ATag>
+    <ATag className="status-red white--text ma-1">
+      <AIcon className="mr-1">critical-stop</AIcon>Status Tag
+    </ATag>
+    <ATag href="/" target="_blank" className="ma-1">
+      Linked Tag
+    </ATag>
+    <ATag className="cisco-blue white--text ma-1">
+      <AIcon className="mr-1">user</AIcon>User Tag<AIcon className="ml-1 cursor-pointer" onClick={() => alert('Close icon clicked!')}>close</AIcon>
+    </ATag>
+      <YourComponent>
+      {() => {
+        const [selectedOption, setSelectedOption] = useState("Option 1");
+        const [active, setActive] = useState(false);
+        return (
+          <>
+          <ATag className="ma-1 grape white--text" onClick={() => setActive(!active)}>
+            {selectedOption} Tag<AIcon className="ml-1 cursor-pointer">chevron-down</AIcon>
+          </ATag>
+          <ADropdown active={active}>
+            <ADropdownMenu style={{right:5}}>
+              <ADropdownMenuItem onClick={() => { setSelectedOption("Option 1"); setActive(!active); }}>Option 1</ADropdownMenuItem>
+              <ADropdownMenuItem onClick={() => { setSelectedOption("Option 2"); setActive(!active); }}>Option 2</ADropdownMenuItem>
+              <ADropdownMenuItem onClick={() => { setSelectedOption("Option 3"); setActive(!active); }}>Option 3</ADropdownMenuItem>
+            </ADropdownMenu>
+          </ADropdown>
+          </>
+        );
+      }}
+      </YourComponent>
+  </AApp>
+  </Story>
+</Preview>
+
+## Accessibility Notes
+
+The `ATag` `click` event handler is triggered both by the `click` event and by the `keyDown` event for the `Enter` key.
+
+Each `ATag` component is tab-focusable with a visual overlay when either the `href` or `onClick` properties are used.
+
+If the `ATag` has an `onClick` handler specified, it is assigned the [WAI-ARIA](https://www.w3.org/WAI/standards-guidelines/aria/) role of [button](https://www.w3.org/TR/wai-aria/#button).

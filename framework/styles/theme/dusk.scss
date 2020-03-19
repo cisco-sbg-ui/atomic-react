@@ -146,6 +146,10 @@ $atomic-dusk: (
     "oversized-background-color": transparent,
     "oversized--hover-background-color": transparent
   ),
+  "tag": (
+    "bg-color": map-get($grey, "darken-5"),
+    "color": $white
+  ),
   "text-input": (
     "bg": transparent,
     "color--disabled": rgba(map-get($grey, "base"), $alpha-5),

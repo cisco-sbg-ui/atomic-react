@@ -24,7 +24,7 @@ const AAlert = forwardRef(
       }
     };
 
-    let className = `a-alert a-alert--state-`,
+    let className = `a-alert focus-box-shadow a-alert--state-`,
       icon = "";
 
     switch (level) {
@@ -57,7 +57,7 @@ const AAlert = forwardRef(
         <div className="a-alert__message">{children}</div>
         {dismissable && (
           <AIcon
-            className="a-alert__icon a-alert__icon--close"
+            className="a-alert__icon focus-box-shadow a-alert__icon--close"
             onClick={e => onClose && onClose(e)}
             onKeyDown={dismissableKeyDownHandler}
             size="16"

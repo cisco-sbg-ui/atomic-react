@@ -37,6 +37,7 @@ import {
 import ARadio from "./components/ARadio";
 import ASimpleTable from "./components/ASimpleTable";
 import {ATabGroup, ATab, ATabHeading} from "./components/ATabs";
+import ATag from "./components/ATag";
 import ATextarea from "./components/ATextarea";
 import ATextInput from "./components/ATextInput";
 
@@ -75,6 +76,7 @@ export {
   ATabGroup,
   ATab,
   ATabHeading,
+  ATag,
   ATextarea,
   ATextInput
 };
