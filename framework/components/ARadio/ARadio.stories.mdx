@@ -38,7 +38,7 @@ import ARadio from "@cisco-ats/atomic-react/ARadio";
           </ARadio>
           <ADivider />
           <h3>Options</h3>
-          <div style={{display: 'flex',marginTop: 20, flexFlow: 'column'}}>
+          <div className="d-flex mt-4 flex-column">
             <ACheckbox checked={checked} onClick={() => setChecked(!checked)}>Checked State</ACheckbox>
             <ACheckbox checked={disabled} onClick={() => setDisabled(!disabled)}>Disabled State</ACheckbox>
             <ACheckbox checked={wrap} onClick={() => setWrap(!wrap)}>Wrap Label</ACheckbox>
@@ -62,7 +62,7 @@ The `ARadio` component inherits passed props.
 <Preview style={{backgroundColor: '#18191d'}}>
   <Story name="dusk-1">
     <AApp theme="dusk">
-      <div style={{display: 'flex', flexFlow: 'column'}}>
+      <div className="d-flex flex-column">
         <ARadio>
           Default
         </ARadio>

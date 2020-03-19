@@ -5,21 +5,7 @@
 @import "./base/scrollbar";
 @import "./base/typography";
 @import "./base/animations";
+@import "./base/color-helpers";
 @import "./base/helpers";
 @import "./base/links";
 @import "./base/lists";
-
-.a-app {
-  @import "./base/vendor/bootstrap/functions";
-  @import "./base/vendor/bootstrap/mixins/breakpoints";
-  @import "./base/vendor/bootstrap/mixins/grid";
-  @import "./base/vendor/bootstrap/utilities/custom";
-  @import "./base/vendor/bootstrap/utilities/flex";
-  @import "./base/vendor/bootstrap/mixins/grid-framework";
-  @import "./base/vendor/bootstrap/grid";
-
-  .container {
-    padding-right: 0;
-    padding-left: 0;
-  }
-}

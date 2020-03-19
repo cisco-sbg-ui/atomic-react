@@ -35,6 +35,7 @@ import {
   APanelFooter
 } from "./components/APanel";
 import ARadio from "./components/ARadio";
+import ASimpleTable from "./components/ASimpleTable";
 import {ATabGroup, ATab, ATabHeading} from "./components/ATabs";
 import ATextarea from "./components/ATextarea";
 import ATextInput from "./components/ATextInput";
@@ -70,6 +71,7 @@ export {
   APanelBody,
   APanelFooter,
   ARadio,
+  ASimpleTable,
   ATabGroup,
   ATab,
   ATabHeading,

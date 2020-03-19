@@ -23,18 +23,16 @@ The `AApp` component provides theming, typography, scrollbar stylings as well as
 <Preview>
   <Story name="1">
     <AApp>
-      <div style={{maxHeight: 300, maxWidth: 500, overflowY: "scroll", margin: "0 auto"}}>
+      <div className="mx-auto my-0 overflow-y-scroll pa-4" style={{maxHeight: 300, maxWidth: 500}}>
         <div
-          style={{padding: 20}}
           className="dark-cool-grey--burnt-2--text">
           <h1 className="display-1">Display 1</h1>
-          <a href="#"><AIcon size="small" style={{paddingRight: 5}}>link</AIcon>Link with icon</a> | <a href="#" className="disabled">Disabled link</a>
+          <a href="#"><AIcon size="small" className="pr-1">link</AIcon>Link with icon</a> | <a href="#" className="disabled">Disabled link</a>
           <p>
             {LoremIpsum}
           </p>
         </div>
         <div
-          style={{padding: 20}}
           className="brand-orange grey--darken-7--text">
           <h2>Heading 2</h2>
           <p>
@@ -61,9 +59,9 @@ The `AApp` component provides theming, typography, scrollbar stylings as well as
 <Preview style={{backgroundColor: "#18191d"}}>
   <Story name="dusk1">
     <AApp theme="dusk">
-      <div style={{maxHeight: 300, maxWidth: 500, overflowY: "scroll", margin: "0 auto", padding: 20}}>
+      <div className="mx-auto my-0 overflow-y-scroll pa-4" style={{maxHeight: 300, maxWidth: 500}}>
         <h1 className="display-1">Display 1</h1>
-        <a href="#"><AIcon size="small" style={{paddingRight: 5}}>link</AIcon>Link with icon</a> | <a href="#" className="disabled">Disabled link</a>
+        <a href="#"><AIcon size="small" className="pr-1">link</AIcon>Link with icon</a> | <a href="#" className="disabled">Disabled link</a>
         <p>
           {LoremIpsum}
         </p>
@@ -96,31 +94,31 @@ The `AApp` component provides theming, typography, scrollbar stylings as well as
 <Preview>
   <Story name="typography-1">
     <AApp>
-      <div style={{display:"flex", flexWrap: "wrap", alignItems: "baseline"}}>
-        <div style={{flexBasis: "25%", textAlign: "right", paddingRight: 20}}>Display 1</div>
-        <div style={{flexBasis: "75%", marginTop: 20}}><span className="display-1">Display 1</span></div>
-        <div style={{flexBasis: "25%", textAlign: "right", paddingRight: 20}}>Display 2</div>
-        <div style={{flexBasis: "75%", marginTop: 20}}><span className="display-2">Display 2</span></div>
-        <div style={{flexBasis: "25%", textAlign: "right", paddingRight: 20}}>Heading 1</div>
-        <div style={{flexBasis: "75%", marginTop: 20}}><h1>Heading 1</h1></div>
-        <div style={{flexBasis: "25%", textAlign: "right", paddingRight: 20}}>Heading 2</div>
-        <div style={{flexBasis: "75%", marginTop: 20}}><h2>Heading 2</h2></div>
-        <div style={{flexBasis: "25%", textAlign: "right", paddingRight: 20}}>Heading 3</div>
-        <div style={{flexBasis: "75%", marginTop: 20}}><h3>Heading 3</h3></div>
-        <div style={{flexBasis: "25%", textAlign: "right", paddingRight: 20}}>Heading 4</div>
-        <div style={{flexBasis: "75%", marginTop: 20}}><h4>Heading 4</h4></div>
-        <div style={{flexBasis: "25%", textAlign: "right", paddingRight: 20}}>Heading 5</div>
-        <div style={{flexBasis: "75%", marginTop: 20}}><h5>Heading 5</h5></div>
-        <div style={{flexBasis: "25%", textAlign: "right", paddingRight: 20}}>Small</div>
-        <div style={{flexBasis: "75%", marginTop: 20}}><small>Small</small></div>
-        <div style={{flexBasis: "25%", textAlign: "right", paddingRight: 20}}>Mark</div>
-        <div style={{flexBasis: "75%", marginTop: 20}}>Indicate <mark>marked</mark> information</div>
-        <div style={{flexBasis: "25%", textAlign: "right", paddingRight: 20}}>Abbreviation</div>
-        <div style={{flexBasis: "75%", marginTop: 20}}>Cisco <abbr title="Security Business Group">sbg</abbr></div>
-        <div style={{flexBasis: "25%", textAlign: "right", paddingRight: 20}}>Blockquote</div>
-        <div style={{flexBasis: "75%", marginTop: 20}}><blockquote> All that we see or seem is but a dream within a dream.<cite>Edgar Allan Poe</cite></blockquote></div>
-        <div style={{flexBasis: "25%", textAlign: "right", paddingRight: 20}}>Monospaced</div>
-        <div style={{flexBasis: "75%", marginTop: 20}}>
+      <div className="d-flex flex-wrap align-baseline">
+        <div className="text-align-right pr-4" style={{flexBasis: "25%"}}>Display 1</div>
+        <div className="mt-4" style={{flexBasis: "75%"}}><span className="display-1">Display 1</span></div>
+        <div className="text-align-right pr-4" style={{flexBasis: "25%"}}>Display 2</div>
+        <div className="mt-4" style={{flexBasis: "75%"}}><span className="display-2">Display 2</span></div>
+        <div className="text-align-right pr-4" style={{flexBasis: "25%"}}>Heading 1</div>
+        <div className="mt-4" style={{flexBasis: "75%"}}><h1>Heading 1</h1></div>
+        <div className="text-align-right pr-4" style={{flexBasis: "25%"}}>Heading 2</div>
+        <div className="mt-4" style={{flexBasis: "75%"}}><h2>Heading 2</h2></div>
+        <div className="text-align-right pr-4" style={{flexBasis: "25%"}}>Heading 3</div>
+        <div className="mt-4" style={{flexBasis: "75%"}}><h3>Heading 3</h3></div>
+        <div className="text-align-right pr-4" style={{flexBasis: "25%"}}>Heading 4</div>
+        <div className="mt-4" style={{flexBasis: "75%"}}><h4>Heading 4</h4></div>
+        <div className="text-align-right pr-4" style={{flexBasis: "25%"}}>Heading 5</div>
+        <div className="mt-4" style={{flexBasis: "75%"}}><h5>Heading 5</h5></div>
+        <div className="text-align-right pr-4" style={{flexBasis: "25%"}}>Small</div>
+        <div className="mt-4" style={{flexBasis: "75%"}}><small>Small</small></div>
+        <div className="text-align-right pr-4" style={{flexBasis: "25%"}}>Mark</div>
+        <div className="mt-4" style={{flexBasis: "75%"}}>Indicate <mark>marked</mark> information</div>
+        <div className="text-align-right pr-4" style={{flexBasis: "25%"}}>Abbreviation</div>
+        <div className="mt-4" style={{flexBasis: "75%"}}>Cisco <abbr title="Security Business Group">sbg</abbr></div>
+        <div className="text-align-right pr-4" style={{flexBasis: "25%"}}>Blockquote</div>
+        <div className="mt-4" style={{flexBasis: "75%"}}><blockquote> All that we see or seem is but a dream within a dream.<cite>Edgar Allan Poe</cite></blockquote></div>
+        <div className="text-align-right pr-4" style={{flexBasis: "25%"}}>Monospaced</div>
+        <div className="mt-4" style={{flexBasis: "75%"}}>
           <p>
             <code>var code = "code";</code>
           </p>
@@ -143,69 +141,75 @@ The `AApp` component provides theming, typography, scrollbar stylings as well as
 
 <Preview>
   <Story name="lists-1">
-    <AApp style={{paddingRight: 15}}>
-    <h2>List Ordered</h2>
-    <ol>
-        <li>Lorem ipsum dolor sit amet</li>
-        <li>Consectetur adipiscing elit</li>
-        <li>Integer molestie lorem at massa</li>
-        <li>Facilisis in pretium nisl aliquet</li>
-        <li>Nulla volutpat aliquam velit
+    <AApp>
+      <div className="pr-3">
+        <h2>List Ordered</h2>
+        <ol>
+          <li>Lorem ipsum dolor sit amet</li>
+          <li>Consectetur adipiscing elit</li>
+          <li>Integer molestie lorem at massa</li>
+          <li>Facilisis in pretium nisl aliquet</li>
+          <li>Nulla volutpat aliquam velit
             <ol>
-                <li>Phasellus iaculis neque</li>
-                <li>Purus sodales ultricies</li>
-                <li>Vestibulum laoreet porttitor sem</li>
-                <li>Ac tristique libero volutpat at</li>
+              <li>Phasellus iaculis neque</li>
+              <li>Purus sodales ultricies</li>
+              <li>Vestibulum laoreet porttitor sem</li>
+              <li>Ac tristique libero volutpat at</li>
             </ol>
-        </li>
-        <li>Faucibus porta lacus fringilla vel</li>
-        <li>Aenean sit amet erat nunc</li>
-        <li>Eget porttitor lorem</li>
-    </ol>
+          </li>
+          <li>Faucibus porta lacus fringilla vel</li>
+          <li>Aenean sit amet erat nunc</li>
+          <li>Eget porttitor lorem</li>
+        </ol>
+      </div>
     </AApp>
   </Story>
   <Story name="lists-2">
-    <AApp style={{paddingRight: 15}}>
-    <h2>List Unordered</h2>
-    <ul>
-        <li>Lorem ipsum dolor sit amet</li>
-        <li>Consectetur adipiscing elit</li>
-        <li>Integer molestie lorem at massa</li>
-        <li>Facilisis in pretium nisl aliquet</li>
-        <li>Nulla volutpat aliquam velit
+    <AApp>
+      <div className="pr-3">
+        <h2>List Unordered</h2>
+        <ul>
+          <li>Lorem ipsum dolor sit amet</li>
+          <li>Consectetur adipiscing elit</li>
+          <li>Integer molestie lorem at massa</li>
+          <li>Facilisis in pretium nisl aliquet</li>
+          <li>Nulla volutpat aliquam velit
             <ul>
-                <li>Phasellus iaculis neque</li>
-                <li>Purus sodales ultricies</li>
-                <li>Vestibulum laoreet porttitor sem</li>
-                <li>Ac tristique libero volutpat at</li>
+              <li>Phasellus iaculis neque</li>
+              <li>Purus sodales ultricies</li>
+              <li>Vestibulum laoreet porttitor sem</li>
+              <li>Ac tristique libero volutpat at</li>
             </ul>
-        </li>
-        <li>Faucibus porta lacus fringilla vel</li>
-        <li>Aenean sit amet erat nunc</li>
-        <li>Eget porttitor lorem</li>
-    </ul>
+          </li>
+          <li>Faucibus porta lacus fringilla vel</li>
+          <li>Aenean sit amet erat nunc</li>
+          <li>Eget porttitor lorem</li>
+        </ul>
+      </div>
     </AApp>
   </Story>
   <Story name="lists-3">
-    <AApp style={{paddingRight: 15}}>
-    <h2>List Unstyled</h2>
-    <ul class="unstyled">
-        <li>Lorem ipsum dolor sit amet</li>
-        <li>Consectetur adipiscing elit</li>
-        <li>Integer molestie lorem at massa</li>
-        <li>Facilisis in pretium nisl aliquet</li>
-        <li>Nulla volutpat aliquam velit
+    <AApp>
+      <div className="pr-3">
+        <h2>List Unstyled</h2>
+        <ul class="unstyled">
+          <li>Lorem ipsum dolor sit amet</li>
+          <li>Consectetur adipiscing elit</li>
+          <li>Integer molestie lorem at massa</li>
+          <li>Facilisis in pretium nisl aliquet</li>
+          <li>Nulla volutpat aliquam velit
             <ul>
-                <li>Phasellus iaculis neque</li>
-                <li>Purus sodales ultricies</li>
-                <li>Vestibulum laoreet porttitor sem</li>
-                <li>Ac tristique libero volutpat at</li>
+              <li>Phasellus iaculis neque</li>
+              <li>Purus sodales ultricies</li>
+              <li>Vestibulum laoreet porttitor sem</li>
+              <li>Ac tristique libero volutpat at</li>
             </ul>
-        </li>
-        <li>Faucibus porta lacus fringilla vel</li>
-        <li>Aenean sit amet erat nunc</li>
-        <li>Eget porttitor lorem</li>
-    </ul>
+          </li>
+          <li>Faucibus porta lacus fringilla vel</li>
+          <li>Aenean sit amet erat nunc</li>
+          <li>Eget porttitor lorem</li>
+        </ul>
+      </div>
     </AApp>
   </Story>
 </Preview>
@@ -336,3 +340,78 @@ Apply color overrides using helper classes:
     colors={['#ffffff']}
   />
 </ColorPalette>
+
+## Helper classes
+
+`AApp` includes a number of helper functions with breakpoint options.
+
+They generally take the form `.[property]-[breakpoint/print]-[value]`, where specifying the breakpoint is optional. Targeting print media is also an option.
+
+For example, `d-flex d-md-block d-print-none`:
+- Displays as a flexbox from a 0 to 991 pixel screen width.
+- Displays as a block from 992 pixels and higher.
+- Does not display when printed.
+
+### Breakpoints
+
+Breakpoints are set to the following:
+
+- xs: 479px
+- sm: 767px
+- md: 992px
+- lg: 1200px
+- xl: 1440px
+
+### Overflow
+
+- `.overflow-[overflow-value]`: Example: `overflow-auto`
+- `.overflow-x-[overflow-value]`: Example: `overflow-x-auto overflow-x-xs-scroll`
+- `.overflow-y-[overflow-value]`: Example: `overflow-y-scroll overflow-y-lg-auto`
+
+### Display
+
+- `.d-[display-value]`: Example: `d-flex d-sm-block d-print-none`
+
+### Float
+
+- `.float-[float-value]`: Example: `float-left float-xl-none`
+
+### Flex
+
+- `.flex-[flex-direction-value]`
+- `.flex-[flex-wrap-value]`
+- `.flex-fill`: overrides the flex property to `1 1 auto`.
+- `.flex-[(grow|shrink)-(0|1)]`: set the flex grow/shrink values to zero or one. Example: `flex-shrink-0 flex-xl-shrink-1`
+- `.justify-[justify-content-value]`
+- `.align-[align-items-value]`
+- `.align-content-[align-content-value]`
+- `.align-self-[align-self-value]`
+- `.order-[order-value]`: includes `order-first`, `order-last` in addition to `order-(0-12)`
+
+### Margins
+
+- `.ma-[0-12|auto]`: adds margins to `all` sides
+- `.mx-[0-12|auto]`: adds margins to left and right sides
+- `.my-[0-12|auto]`: adds margins to top and bottom sides
+- `.mt-[0-12|auto]`: adds margins to top
+- `.mr-[0-12|auto]`: adds margins to right
+- `.mb-[0-12|auto]`: adds margins to bottom
+- `.ml-[0-12|auto]`: adds margins to left
+
+### Padding
+
+- `.pa-[0-12|auto]`: adds padding to `all` sides
+- `.px-[0-12|auto]`: adds padding to left and right sides
+- `.py-[0-12|auto]`: adds padding to top and bottom sides
+- `.pt-[0-12|auto]`: adds padding to top
+- `.pr-[0-12|auto]`: adds padding to right
+- `.pb-[0-12|auto]`: adds padding to bottom
+- `.pl-[0-12|auto]`: adds padding to left
+
+### Text
+
+- `.text-[text-align-value]`
+- `.text-[white-space-value]`
+- `.text-break`: breaks lines of text mid-word
+- `.text-truncate`: to have text trailing off in an ellipsis.
+- `.text-[text-transform-value]`

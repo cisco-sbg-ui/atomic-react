@@ -1,0 +1,235 @@
+import { Meta, Preview, Story, Props } from '@storybook/addon-docs/blocks';
+import {useState} from 'react'
+
+import AApp from '../AApp'
+import LoremIpsum from '../../utils/lorem-ipsum'
+import YourComponent from '../../utils/storybook-function'
+import ACheckbox from "../ACheckbox"
+import ADivider from "../ADivider"
+import ASimpleTable from "./ASimpleTable"
+
+<Meta title="Components/Simple Tables" component={ASimpleTable} />
+
+# Simple Tables
+
+## Install
+
+In the target component add:
+
+```
+import ASimpleTable from "@cisco-ats/atomic-react/ASimpleTable";
+```
+
+## Usage
+
+<Preview>
+  <Story name="usage-1">
+    <AApp>
+      <ASimpleTable striped tight>
+        <thead>
+          <tr>
+            <th className="text-capitalize">alpha</th>
+            <th className="text-capitalize text-align-center">bravo</th>
+            <th className="text-capitalize text-align-center">charlie</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>11.1</td>
+            <td className="text-align-center">526</td>
+            <td className="text-align-right"><a href="/" target="_blank">Details</a></td>
+          </tr>
+          <tr>
+            <td>8.9</td>
+            <td className="text-align-center">611</td>
+            <td className="text-align-right"><a href="/" target="_blank">Details</a></td>
+          </tr>
+          <tr>
+            <td>10.5</td>
+            <td className="text-align-center">475</td>
+            <td className="text-align-right"><a href="/" target="_blank">Details</a></td>
+          </tr>
+        </tbody>
+      </ASimpleTable>
+    </AApp>
+  </Story>
+</Preview>
+
+## Simple Table Props
+
+The `ASimpleTable` component inherits passed props.
+
+<Props of={ASimpleTable} />
+
+## Dusk Theme
+
+<Preview style={{backgroundColor: '#18191d'}}>
+  <Story name="dusk-1">
+    <AApp theme="dusk">
+      <ASimpleTable striped tight>
+        <thead>
+          <tr>
+            <th className="text-capitalize">alpha</th>
+            <th className="text-capitalize text-align-center">bravo</th>
+            <th className="text-capitalize text-align-center">charlie</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>11.1</td>
+            <td className="text-align-center">526</td>
+            <td className="text-align-right"><a href="/" target="_blank">Details</a></td>
+          </tr>
+          <tr>
+            <td>8.9</td>
+            <td className="text-align-center">611</td>
+            <td className="text-align-right"><a href="/" target="_blank">Details</a></td>
+          </tr>
+          <tr>
+            <td>10.5</td>
+            <td className="text-align-center">475</td>
+            <td className="text-align-right"><a href="/" target="_blank">Details</a></td>
+          </tr>
+        </tbody>
+      </ASimpleTable>
+    </AApp>
+  </Story>
+</Preview>
+
+## Tight
+
+<Preview>
+  <Story name="tight-1">
+    <AApp>
+      <div className="pr-4">
+        <h3>Tight Off</h3>
+        <ASimpleTable>
+          <thead>
+            <tr>
+              <th className="text-capitalize">alpha</th>
+              <th className="text-capitalize text-align-center">bravo</th>
+              <th className="text-capitalize text-align-center">charlie</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>11.1</td>
+              <td className="text-align-center">526</td>
+              <td className="text-align-right"><a href="/" target="_blank">Details</a></td>
+            </tr>
+            <tr>
+              <td>8.9</td>
+              <td className="text-align-center">611</td>
+              <td className="text-align-right"><a href="/" target="_blank">Details</a></td>
+            </tr>
+            <tr>
+              <td>10.5</td>
+              <td className="text-align-center">475</td>
+              <td className="text-align-right"><a href="/" target="_blank">Details</a></td>
+            </tr>
+          </tbody>
+        </ASimpleTable>
+      </div>
+    </AApp>
+  </Story>
+  <Story name="tight-2">
+    <AApp>
+      <h3>Tight On</h3>
+      <ASimpleTable tight>
+        <thead>
+          <tr>
+            <th className="text-capitalize">alpha</th>
+            <th className="text-capitalize text-align-center">bravo</th>
+            <th className="text-capitalize text-align-center">charlie</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>11.1</td>
+            <td className="text-align-center">526</td>
+            <td className="text-align-right"><a href="/" target="_blank">Details</a></td>
+          </tr>
+          <tr>
+            <td>8.9</td>
+            <td className="text-align-center">611</td>
+            <td className="text-align-right"><a href="/" target="_blank">Details</a></td>
+          </tr>
+          <tr>
+            <td>10.5</td>
+            <td className="text-align-center">475</td>
+            <td className="text-align-right"><a href="/" target="_blank">Details</a></td>
+          </tr>
+        </tbody>
+      </ASimpleTable>
+    </AApp>
+  </Story>
+</Preview>
+
+## Alt Links
+
+<Preview>
+  <Story name="alt-links-1">
+    <AApp>
+      <div className="pr-4">
+        <h3>Regular Links</h3>
+        <ASimpleTable>
+          <thead>
+            <tr>
+              <th className="text-capitalize">alpha</th>
+              <th className="text-capitalize text-align-center">bravo</th>
+              <th className="text-capitalize text-align-center">charlie</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>11.1</td>
+              <td className="text-align-center">526</td>
+              <td className="text-align-right"><a href="/" target="_blank">Details</a></td>
+            </tr>
+            <tr>
+              <td>8.9</td>
+              <td className="text-align-center">611</td>
+              <td className="text-align-right"><a href="/" target="_blank">Details</a></td>
+            </tr>
+            <tr>
+              <td>10.5</td>
+              <td className="text-align-center">475</td>
+              <td className="text-align-right"><a href="/" target="_blank">Details</a></td>
+            </tr>
+          </tbody>
+        </ASimpleTable>
+      </div>
+    </AApp>
+  </Story>
+  <Story name="alt-links-2">
+    <AApp>
+      <h3>Alt Links</h3>
+      <ASimpleTable altLinks>
+        <thead>
+          <tr>
+            <th className="text-capitalize">alpha</th>
+            <th className="text-capitalize text-align-center">bravo</th>
+            <th className="text-capitalize text-align-center">charlie</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>11.1</td>
+            <td className="text-align-center">526</td>
+            <td className="text-align-right"><a href="/" target="_blank">Details</a></td>
+          </tr>
+          <tr>
+            <td>8.9</td>
+            <td className="text-align-center">611</td>
+            <td className="text-align-right"><a href="/" target="_blank">Details</a></td>
+          </tr>
+          <tr>
+            <td>10.5</td>
+            <td className="text-align-center">475</td>
+            <td className="text-align-right"><a href="/" target="_blank">Details</a></td>
+          </tr>
+        </tbody>
+      </ASimpleTable>
+    </AApp>
+  </Story>
+</Preview>

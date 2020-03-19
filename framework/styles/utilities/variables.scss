@@ -38,8 +38,17 @@ $border-radius--lg: rem(0.375) !default; // 6px
 $border-radius--sm: rem(0.1875) !default; // 3px
 $border-radius--xs: rem(0.125) !default; // 2px
 $border-width: rem(0.0625) !default; // 1px
-$spacer: rem(1.25) !default;
+$spacer: 5px !default;
 $spacing: rem(1.25) !default; // 20px
+$spacers: () !default;
+@for $i from 0 through 12 {
+  $spacers: map-merge(
+    $spacers,
+    (
+      $i: $spacer * $i
+    )
+  );
+}
 $z-index: 0 !default;
 // -----------------------------------------------------------------------------
 // Heading
@@ -47,7 +56,7 @@ $z-index: 0 !default;
 $headings-font-family: inherit !default;
 $headings-font-weight: 300 !default;
 $headings-line-height: 1.1 !default;
-$headings-margin: ($spacer / 2) !default;
+$headings-margin: $spacer * 2 !default;
 $headings-color: inherit !default;
 // -----------------------------------------------------------------------------
 // Display Heading
@@ -70,21 +79,11 @@ $mark-bg: map-get($status-yellow, "wash-3") !default;
 $page-width--min: 320px !default;
 $page-width--max: 1440px !default;
 $breakpoints: (
-  "xs": (
-    min-width: 479px
-  ),
-  "sm": (
-    min-width: 767px
-  ),
-  "md": (
-    min-width: 992px
-  ),
-  "lg": (
-    min-width: 1200px
-  ),
-  "xl": (
-    min-width: 1440px
-  )
+  "xs": 479px,
+  "sm": 767px,
+  "md": 992px,
+  "lg": 1200px,
+  "xl": 1440px
 );
 $grid-columns: 12 !default;
 $grid-gutter-width: 30px !default;

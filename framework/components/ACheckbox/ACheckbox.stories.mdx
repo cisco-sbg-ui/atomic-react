@@ -38,7 +38,7 @@ import ACheckbox from "@cisco-ats/atomic-react/ACheckbox";
           </ACheckbox>
           <ADivider />
           <h3>Options</h3>
-          <div style={{display: 'flex',marginTop: 20, flexFlow: 'column'}}>
+          <div className="d-flex mt-4 flex-column">
             <ACheckbox checked={checked} onClick={() => setChecked(!checked)}>Checked State</ACheckbox>
             <ACheckbox checked={indeterminate} onClick={() => setIndeterminate(!indeterminate)}>Indeterminate State</ACheckbox>
             <ACheckbox checked={disabled} onClick={() => setDisabled(!disabled)}>Disabled State</ACheckbox>
@@ -63,7 +63,7 @@ The `ACheckbox` component inherits passed props.
 <Preview style={{backgroundColor: '#18191d'}}>
   <Story name="dusk-1">
     <AApp theme="dusk">
-      <div style={{display: 'flex', flexFlow: 'column'}}>
+      <div className="d-flex flex-column">
         <ACheckbox>
           Default
         </ACheckbox>
