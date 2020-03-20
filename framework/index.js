@@ -3,8 +3,6 @@ import {
   AAccordionBody,
   AAccordionHeader,
   AAccordionHeaderTitle,
-  AAccordionHeaderToolbar,
-  AAccordionHeaderToolbarItem,
   AAccordionPanel
 } from "./components/AAccordion";
 import AAlert from "./components/AAlert";
@@ -22,9 +20,7 @@ import {
   AHeader,
   AHeaderLogo,
   AHeaderTitle,
-  AHeaderNavigation,
-  AHeaderToolbar,
-  AHeaderToolbarItem
+  AHeaderNavigation
 } from "./components/AHeader";
 import AIcon from "./components/AIcon";
 import {
@@ -46,8 +42,6 @@ export {
   AAccordionBody,
   AAccordionHeader,
   AAccordionHeaderTitle,
-  AAccordionHeaderToolbar,
-  AAccordionHeaderToolbarItem,
   AAccordionPanel,
   AAlert,
   AApp,
@@ -63,8 +57,6 @@ export {
   AHeaderLogo,
   AHeaderTitle,
   AHeaderNavigation,
-  AHeaderToolbar,
-  AHeaderToolbarItem,
   AIcon,
   APanel,
   APanelHeader,

@@ -21,4 +21,12 @@ $icon-size-small: $font-size;
   &--size-small {
     width: $icon-size-small;
   }
+
+  &--left {
+    margin-right: 5px;
+  }
+
+  &--right {
+    margin-left: 5px;
+  }
 }

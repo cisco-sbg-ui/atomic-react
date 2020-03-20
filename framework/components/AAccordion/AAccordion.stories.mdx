@@ -2,6 +2,7 @@ import { Meta, Preview, Story, Props } from '@storybook/addon-docs/blocks';
 import {useState} from 'react'
 
 import AApp from '../AApp';
+import AButton from '../AButton';
 import AIcon from '../AIcon';
 import {
   ADropdown,
@@ -17,8 +18,6 @@ import {
   AAccordionPanel,
   AAccordionHeader,
   AAccordionHeaderTitle,
-  AAccordionHeaderToolbar,
-  AAccordionHeaderToolbarItem,
   AAccordionBody
 } from "./";
 
@@ -36,8 +35,6 @@ import {
   AAccordionPanel,
   AAccordionHeader,
   AAccordionHeaderTitle,
-  AAccordionHeaderToolbar,
-  AAccordionHeaderToolbarItem,
   AAccordionBody
 } from "@cisco-ats/atomic-react/AAccordion";
 ```
@@ -55,16 +52,14 @@ import {
           <AAccordionPanel>
             <AAccordionHeader>
               <AAccordionHeaderTitle chevron={false}>Accordion Item 1</AAccordionHeaderTitle>
-              <AAccordionHeaderToolbar>
-                <AAccordionHeaderToolbarItem onClick={() => setActive(!active)}>
-                  <ADropdown active={active}>
-                    <AIcon>ellipsis-horizontal</AIcon>
-                    <ADropdownMenu style={{top:27,right:0}}>
-                      <ADropdownMenuItem>See More</ADropdownMenuItem>
-                    </ADropdownMenu>
-                  </ADropdown>
-                </AAccordionHeaderToolbarItem>
-              </AAccordionHeaderToolbar>
+              <ADropdown active={active}>
+                <AButton icon tertiaryAlt onClick={() => setActive(!active)}>
+                  <AIcon>ellipsis-horizontal</AIcon>
+                </AButton>
+                <ADropdownMenu style={{top:27,right:0}}>
+                  <ADropdownMenuItem>See More</ADropdownMenuItem>
+                </ADropdownMenu>
+              </ADropdown>
             </AAccordionHeader>
           </AAccordionPanel>
           <AAccordionPanel collapsed={false}>
@@ -76,11 +71,9 @@ import {
           <AAccordionPanel>
             <AAccordionHeader>
               <AAccordionHeaderTitle>Accordion Item 3</AAccordionHeaderTitle>
-              <AAccordionHeaderToolbar>
-                <AAccordionHeaderToolbarItem href="/" target="_blank">
-                  <AIcon>information</AIcon>
-                </AAccordionHeaderToolbarItem>
-              </AAccordionHeaderToolbar>
+              <AButton icon tertiaryAlt href="/" target="_blank">
+                <AIcon>information</AIcon>
+              </AButton>
             </AAccordionHeader>
             <AAccordionBody>{LoremIpsum}</AAccordionBody>
           </AAccordionPanel>
@@ -94,7 +87,7 @@ import {
 
 ## Props
 
-All Accordion components (`AAccordion`, `AAccordionPanel`, `AAccordionHeader`, `AAccordionHeaderTitle`, `AAccordionHeaderToolbar`, `AAccordionHeaderToolbarItem`, `AAccordionBody`) inherit passed props.
+All Accordion components (`AAccordion`, `AAccordionPanel`, `AAccordionHeader`, `AAccordionHeaderTitle`, `AAccordionBody`) inherit passed props.
 
 ### Accordion Props
 <Props of={AAccordion} />
@@ -107,12 +100,6 @@ All Accordion components (`AAccordion`, `AAccordionPanel`, `AAccordionHeader`, `
 
 ### AccordionHeaderTitle Props
 <Props of={AAccordionHeaderTitle} />
-
-### AccordionHeaderToolbar Props
-<Props of={AAccordionHeaderToolbar} />
-
-### AccordionHeaderToolbarItem Props
-<Props of={AAccordionHeaderToolbarItem} />
 
 ### AccordionBody Props
 <Props of={AAccordionBody} />
@@ -130,16 +117,14 @@ All Accordion components (`AAccordion`, `AAccordionPanel`, `AAccordionHeader`, `
           <AAccordionPanel>
             <AAccordionHeader>
               <AAccordionHeaderTitle chevron={false}>Accordion Item 1</AAccordionHeaderTitle>
-              <AAccordionHeaderToolbar>
-                <AAccordionHeaderToolbarItem onClick={() => setActive(!active)}>
-                  <ADropdown active={active}>
-                    <AIcon>ellipsis-horizontal</AIcon>
-                    <ADropdownMenu style={{top:27,right:0}}>
-                      <ADropdownMenuItem>See More</ADropdownMenuItem>
-                    </ADropdownMenu>
-                  </ADropdown>
-                </AAccordionHeaderToolbarItem>
-              </AAccordionHeaderToolbar>
+              <ADropdown active={active}>
+                <AButton icon tertiaryAlt onClick={() => setActive(!active)}>
+                  <AIcon>ellipsis-horizontal</AIcon>
+                </AButton>
+                <ADropdownMenu style={{top:27,right:0}}>
+                  <ADropdownMenuItem>See More</ADropdownMenuItem>
+                </ADropdownMenu>
+              </ADropdown>
             </AAccordionHeader>
           </AAccordionPanel>
           <AAccordionPanel collapsed={false}>
@@ -151,11 +136,9 @@ All Accordion components (`AAccordion`, `AAccordionPanel`, `AAccordionHeader`, `
           <AAccordionPanel>
             <AAccordionHeader>
               <AAccordionHeaderTitle>Accordion Item 3</AAccordionHeaderTitle>
-              <AAccordionHeaderToolbar>
-                <AAccordionHeaderToolbarItem href="/" target="_blank">
-                  <AIcon>information</AIcon>
-                </AAccordionHeaderToolbarItem>
-              </AAccordionHeaderToolbar>
+              <AButton icon tertiaryAlt href="/" target="_blank">
+                <AIcon>information</AIcon>
+              </AButton>
             </AAccordionHeader>
             <AAccordionBody>{LoremIpsum}</AAccordionBody>
           </AAccordionPanel>
@@ -167,13 +150,51 @@ All Accordion components (`AAccordion`, `AAccordionPanel`, `AAccordionHeader`, `
   </Story>
 </Preview>
 
+## Animations
+
+<Preview>
+  <Story name="animation-1">
+    <AApp>
+      <AAccordion className="mr-4">
+        <AAccordionPanel collapsed={false}>
+          <AAccordionHeader>
+            <AAccordionHeaderTitle>Animated Accordion Item 1</AAccordionHeaderTitle>
+          </AAccordionHeader>
+          <AAccordionBody>{LoremIpsum}</AAccordionBody>
+        </AAccordionPanel>
+        <AAccordionPanel>
+          <AAccordionHeader>
+            <AAccordionHeaderTitle>Animated Accordion Item 2</AAccordionHeaderTitle>
+          </AAccordionHeader>
+          <AAccordionBody>{LoremIpsum}</AAccordionBody>
+        </AAccordionPanel>
+      </AAccordion>
+    </AApp>
+  </Story>
+  <Story name="animation-2">
+    <AApp animations={false}>
+      <AAccordion>
+        <AAccordionPanel collapsed={false}>
+          <AAccordionHeader>
+            <AAccordionHeaderTitle>Not Animated Accordion Item 1</AAccordionHeaderTitle>
+          </AAccordionHeader>
+          <AAccordionBody>{LoremIpsum}</AAccordionBody>
+        </AAccordionPanel>
+        <AAccordionPanel>
+          <AAccordionHeader>
+            <AAccordionHeaderTitle>Not Animated Accordion Item 2</AAccordionHeaderTitle>
+          </AAccordionHeader>
+          <AAccordionBody>{LoremIpsum}</AAccordionBody>
+        </AAccordionPanel>
+      </AAccordion>
+    </AApp>
+  </Story>
+</Preview>
+
 ## Accessibility Notes
 
 The `AAccordionPanel` component uses the [aria-expanded](https://www.w3.org/TR/wai-aria/#aria-expanded) attribute to express the collapsed state.
-If the `AAccordionPanel` component has no child `AAccordionBody` component, it will not be interactable outside of the `AAccordionHeaderToolbar` components.
+If the `AAccordionPanel` component has no child `AAccordionBody` component, the `AAccordionHeaderTitle` will not be interactable.
 
 By default, `AAccordionHeaderTitle` components are assigned the [WAI-ARIA](https://www.w3.org/WAI/standards-guidelines/aria/) role of [button](https://www.w3.org/TR/wai-aria/#button) and made tab-focusable with visual overlay.
 The `AAccordionHeaderTitle` toggles the `collapsed` state in response to either the `click` event or the `keyDown` event for `Enter` or `Space` keys.
-
-If the `AAccordionToolbarItem` has either a `href` or `onClick` handler specified, it is made tab-focusable with visual overlay.
-If the `AAccordionToolbarItem` has an `onClick` handler specified, it is assigned the [WAI-ARIA](https://www.w3.org/WAI/standards-guidelines/aria/) role of [button](https://www.w3.org/TR/wai-aria/#button).

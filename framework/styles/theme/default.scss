@@ -107,7 +107,9 @@ $atomic-default: (
   ),
   "panel": (
     "bg": $white,
-    "bg-gray": map-get($grey, "lighten-5")
+    "bg-gray": map-get($grey, "lighten-5"),
+    "dialog-header-bg": $white,
+    "dialog-footer-bg": map-get($grey, "lighten-5")
   ),
   "radio": (
     "bg--disabled": $white,

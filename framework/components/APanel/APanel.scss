@@ -1,11 +1,12 @@
 @import "../../styles";
 
-$panel-body-margin: 15px 0;
+$panel-body-padding: 15px 20px 15px 20px;
+$panel-footer-padding: 0 20px 20px 20px;
 $panel-border-radius: $base-border-radius;
 $panel-border-width: $base-border-width;
 $panel-icon-size: $font-size;
 $panel-margin: 15px;
-$panel-padding: 20px;
+$panel-padding: 20px 20px 0 20px;
 $panel-title-font-size: rem(1.125);
 $panel-title-font-size-small: $base-font-size;
 $panel-white-bg: $white;
@@ -24,17 +25,29 @@ $panel-white-color: map-get($grey, "darken-6");
     background: $panel-white-bg;
     color: $panel-white-color;
   }
+
+  &--type-dialog {
+    background: map-deep-get($theme, "control", "fill-color");
+
+    .a-panel__header {
+      background-color: map-deep-get($theme, "panel", "dialog-header-bg");
+    }
+
+    .a-panel__footer {
+      background-color: map-deep-get($theme, "panel", "dialog-footer-bg");
+    }
+  }
 }
 
 .a-panel {
   border-width: $panel-border-width;
   border-style: solid;
   border-radius: $panel-border-radius;
-  padding: $panel-padding;
   height: auto;
   display: block;
   position: relative;
   margin: $panel-margin;
+  overflow: hidden;
 
   &--color-gray {
     border: none;
@@ -44,8 +57,26 @@ $panel-white-color: map-get($grey, "darken-6");
     border: none;
   }
 
+  &--type-dialog {
+    border: none;
+
+    .a-panel__header {
+      box-shadow: $default-box-shadow;
+      padding-bottom: 15px;
+    }
+
+    .a-panel__body {
+      padding-bottom: 20px;
+    }
+
+    .a-panel__footer {
+      padding-top: 20px;
+    }
+  }
+
   &__header {
     display: flex;
+    padding: $panel-padding;
   }
 
   &__title {
@@ -58,11 +89,12 @@ $panel-white-color: map-get($grey, "darken-6");
   }
 
   &__body {
-    margin: $panel-body-margin;
+    padding: $panel-body-padding;
   }
 
   &__footer {
     text-align: right;
+    padding: $panel-footer-padding;
   }
 
   & .a-icon {

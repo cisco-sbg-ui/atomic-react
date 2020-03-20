@@ -1,0 +1,57 @@
+@import "../../styles";
+
+$modal-top: 0;
+$modal-right: 0;
+$modal-bottom: 0;
+$modal-left: 0;
+$modal-z-index: 1050;
+$modal-backdrop-top: 0;
+$modal-backdrop-right: 0;
+$modal-backdrop-bottom: 0;
+$modal-backdrop-left: 0;
+$modal-backdrop-bg: $black;
+$modal-backdrop-z-index: 0.5;
+$modal-backdrop-opacity: 0.5;
+$modal-z-index: 1040;
+
+.a-dialog-backdrop {
+  display: none;
+  position: fixed;
+  top: $modal-backdrop-top;
+  right: $modal-backdrop-right;
+  bottom: $modal-backdrop-bottom;
+  left: $modal-backdrop-left;
+  background-color: $modal-backdrop-bg;
+  opacity: $modal-backdrop-opacity;
+  pointer-events: initial;
+  z-index: $modal-z-index;
+
+  &--active {
+    display: block;
+    position: absolute;
+  }
+}
+
+.a-dialog {
+  display: none;
+  position: fixed;
+  top: $modal-top;
+  right: $modal-right;
+  bottom: $modal-bottom;
+  left: $modal-left;
+  overflow-x: hidden;
+  overflow-y: auto;
+  z-index: $modal-z-index;
+
+  &--active {
+    display: block;
+    position: absolute;
+  }
+}
+
+.a-app--animated .a-dialog {
+  .a-dialog__dialog {
+    animation-name: slideInBottom;
+    animation-duration: $transition-duration;
+  }
+}

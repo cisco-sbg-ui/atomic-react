@@ -10,13 +10,13 @@ const AButton = forwardRef(
       className: propsClassName,
       disabled,
       href,
+      icon,
       primary,
       secondary,
       selected,
       target,
       tertiary,
       tertiaryAlt,
-      tertiaryAltIcon,
       type = "button",
       ...rest
     },
@@ -32,8 +32,6 @@ const AButton = forwardRef(
       className += "tertiary";
     } else if (tertiaryAlt) {
       className += "tertiary-alt";
-    } else if (tertiaryAltIcon) {
-      className += "tertiary-icon";
     } else {
       className += "primary";
     }
@@ -44,6 +42,10 @@ const AButton = forwardRef(
 
     if (selected) {
       className += " a-button--state-selected";
+    }
+
+    if (icon) {
+      className += " a-button--icon";
     }
 
     if (propsClassName) {
@@ -91,6 +93,10 @@ AButton.propTypes = {
    */
   href: PropTypes.string,
   /**
+   * Signifies an icon-only button.
+   */
+  icon: PropTypes.bool,
+  /**
    * Toggles the `primary` style variant. If no style variant is chosen, `primary` is applied.
    */
   primary: PropTypes.bool,
@@ -114,10 +120,6 @@ AButton.propTypes = {
    * Toggles the `tertiaryAlt` style variant.
    */
   tertiaryAlt: PropTypes.bool,
-  /**
-   * Toggles the `tertiaryAltIcon` style variant.
-   */
-  tertiaryAltIcon: PropTypes.bool,
   /**
    * The button type.
    */

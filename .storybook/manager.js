@@ -4,13 +4,12 @@ import {addons} from "@storybook/addons";
 import {create} from "@storybook/theming/create";
 
 import AApp from "../AApp";
+import AButton from "../AButton";
 import {
   AHeader,
   AHeaderLogo,
   AHeaderTitle,
-  AHeaderNavigation,
-  AHeaderToolbar,
-  AHeaderToolbarItem
+  AHeaderNavigation
 } from "../AHeader";
 import AIcon from "../AIcon";
 
@@ -23,13 +22,13 @@ const StorybookHeader = () => {
         </AHeaderLogo>
         <AHeaderTitle>Atomic Components for React</AHeaderTitle>
         <AHeaderNavigation />
-        <AHeaderToolbar>
-          <AHeaderToolbarItem
-            href="https://www.github.com/threatgrid/atomic-react"
-            target="_blank">
-            <AIcon>github</AIcon>
-          </AHeaderToolbarItem>
-        </AHeaderToolbar>
+        <AButton
+          icon
+          tertiaryAlt
+          href="https://www.github.com/threatgrid/atomic-react"
+          target="_blank">
+          <AIcon>github</AIcon>
+        </AButton>
       </AHeader>
     </AApp>
   );

@@ -33,13 +33,13 @@ import ATag from "@cisco-ats/atomic-react/ATag";
       Simple Tag
     </ATag>
     <ATag className="status-red white--text ma-1">
-      <AIcon className="mr-1">critical-stop</AIcon>Status Tag
+      <AIcon left>critical-stop</AIcon>Status Tag
     </ATag>
     <ATag href="/" target="_blank" className="ma-1">
       Linked Tag
     </ATag>
     <ATag className="cisco-blue white--text ma-1">
-      <AIcon className="mr-1">user</AIcon>User Tag<AIcon className="ml-1 cursor-pointer" onClick={() => alert('Close icon clicked!')}>close</AIcon>
+      <AIcon left>user</AIcon>User Tag<AIcon right className="cursor-pointer" onClick={() => alert('Close icon clicked!')}>close</AIcon>
     </ATag>
       <YourComponent>
       {() => {
@@ -48,7 +48,7 @@ import ATag from "@cisco-ats/atomic-react/ATag";
         return (
           <>
           <ATag className="ma-1 grape white--text" onClick={() => setActive(!active)}>
-            {selectedOption} Tag<AIcon className="ml-1 cursor-pointer">chevron-down</AIcon>
+            {selectedOption} Tag<AIcon right className="cursor-pointer">chevron-down</AIcon>
           </ATag>
           <ADropdown active={active}>
             <ADropdownMenu style={{right:5}}>
@@ -80,13 +80,13 @@ The `ATag` component inherits passed props.
       Simple Tag
     </ATag>
     <ATag className="status-red white--text ma-1">
-      <AIcon className="mr-1">critical-stop</AIcon>Status Tag
+      <AIcon left>critical-stop</AIcon>Status Tag
     </ATag>
     <ATag href="/" target="_blank" className="ma-1">
       Linked Tag
     </ATag>
     <ATag className="cisco-blue white--text ma-1">
-      <AIcon className="mr-1">user</AIcon>User Tag<AIcon className="ml-1 cursor-pointer" onClick={() => alert('Close icon clicked!')}>close</AIcon>
+      <AIcon left>user</AIcon>User Tag<AIcon right className="cursor-pointer" onClick={() => alert('Close icon clicked!')}>close</AIcon>
     </ATag>
       <YourComponent>
       {() => {
@@ -95,7 +95,7 @@ The `ATag` component inherits passed props.
         return (
           <>
           <ATag className="ma-1 grape white--text" onClick={() => setActive(!active)}>
-            {selectedOption} Tag<AIcon className="ml-1 cursor-pointer">chevron-down</AIcon>
+            {selectedOption} Tag<AIcon right className="cursor-pointer">chevron-down</AIcon>
           </ATag>
           <ADropdown active={active}>
             <ADropdownMenu style={{right:5}}>

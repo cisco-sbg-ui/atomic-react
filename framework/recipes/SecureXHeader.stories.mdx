@@ -3,8 +3,9 @@ import {useState} from 'react'
 
 import YourComponent from '../utils/storybook-function'
 import AApp from '../components/AApp'
+import AButton from '../components/AButton'
 import {ADropdown, ADropdownMenu, ADropdownMenuItem} from '../components/ADropdown'
-import {AHeader, AHeaderLogo, AHeaderTitle, AHeaderNavigation, AHeaderToolbar, AHeaderToolbarItem} from "../components/AHeader"
+import {AHeader, AHeaderLogo, AHeaderTitle, AHeaderNavigation} from "../components/AHeader"
 import AIcon from '../components/AIcon'
 import {ATabGroup, ATab} from '../components/ATabs'
 
@@ -18,8 +19,9 @@ In the target component add:
 
 ```
 import AApp from "@cisco-ats/atomic-react/AApp";
+import AButton from "@cisco-ats/atomic-react/AButton";
 import {ADropdown, ADropdownMenu, ADropdownMenuItem} from "@cisco-ats/atomic-react/ADropdown";
-import {AHeader, AHeaderLogo, AHeaderTitle, AHeaderNavigation, AHeaderToolbar, AHeaderToolbarItem} from "@cisco-ats/atomic-react/AHeader";
+import {AHeader, AHeaderLogo, AHeaderTitle, AHeaderNavigation} from "@cisco-ats/atomic-react/AHeader";
 import AIcon from "@cisco-ats/atomic-react/AIcon";
 import {ATabGroup, ATab} from "@cisco-ats/atomic-react/ATabs";
 ```
@@ -61,28 +63,18 @@ import {ATabGroup, ATab} from "@cisco-ats/atomic-react/ATabs";
               </ATab>
             </ATabGroup>
           </AHeaderNavigation>
-          <AHeaderToolbar>
-            <AHeaderToolbarItem>
-              <AIcon>alert</AIcon>
-            </AHeaderToolbarItem>
-            <AHeaderToolbarItem>
-              <AIcon>help</AIcon>
-            </AHeaderToolbarItem>
-            <AHeaderToolbarItem href="https://platform.int.iroh.site/settings">
-              <AIcon>settings</AIcon>
-            </AHeaderToolbarItem>
-            <AHeaderToolbarItem>
-              <ADropdown active={isActive}>
-                <span onClick={e => { setIsActive(!isActive); }}>
-                  <AIcon>user</AIcon>
-                  <AIcon style={{width: 10}}>triangle-down</AIcon>
-                </span>
-                <ADropdownMenu style={{left: 'auto', right: 0}}>
-                  <ADropdownMenuItem href="https://platform.int.iroh.site/logout">Logout</ADropdownMenuItem>
-                </ADropdownMenu>
-              </ADropdown>
-            </AHeaderToolbarItem>
-          </AHeaderToolbar>
+          <AButton tertiaryAlt icon><AIcon>alert</AIcon></AButton>
+          <AButton tertiaryAlt icon><AIcon>help</AIcon></AButton>
+          <AButton tertiaryAlt icon href="https://platform.int.iroh.site/settings"><AIcon>settings</AIcon></AButton>
+          <ADropdown active={isActive}>
+            <AButton tertiaryAlt icon onClick={e => { setIsActive(!isActive); }}>
+              <AIcon>user</AIcon>
+              <AIcon style={{width: 10}}>triangle-down</AIcon>
+            </AButton>
+            <ADropdownMenu style={{left: 'auto', right: 0}}>
+              <ADropdownMenuItem href="https://platform.int.iroh.site/logout">Logout</ADropdownMenuItem>
+            </ADropdownMenu>
+          </ADropdown>
         </AHeader>
       </AApp>
     );
