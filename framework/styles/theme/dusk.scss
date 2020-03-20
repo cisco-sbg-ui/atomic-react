@@ -117,7 +117,9 @@ $atomic-dusk: (
         125.59deg,
         rgba(map-get($dusk, "2"), $alpha-6) 0%,
         rgba(map-get($dusk, "5"), $alpha-6) 100%
-      )
+      ),
+    "dialog-header-bg": map-get($dusk, "4"),
+    "dialog-footer-bg": map-get($dusk, "4")
   ),
   "radio": (
     "bg--disabled": transparent,

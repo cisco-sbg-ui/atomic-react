@@ -17,11 +17,22 @@ const isSize = function(props, propName, componentName) {
 };
 
 const AIcon = forwardRef(
-  ({children, className: propsClassName, label, size, ...rest}, ref) => {
+  (
+    {children, className: propsClassName, label, left, right, size, ...rest},
+    ref
+  ) => {
     let className = `a-icon`;
 
     if (size && isNaN(size)) {
       className += ` a-icon--size-${size}`;
+    }
+
+    if (left) {
+      className += ` a-icon--left`;
+    }
+
+    if (right) {
+      className += ` a-icon--right`;
     }
 
     if (propsClassName) {
@@ -54,6 +65,14 @@ AIcon.propTypes = {
    * Overrides the default `aria-label`, "[icon_name] icon".
    */
   label: PropTypes.string,
+  /**
+   * Adjusts margins if on the left side of text.
+   */
+  left: PropTypes.bool,
+  /**
+   * Adjusts margins if on the right side of text.
+   */
+  right: PropTypes.bool,
   /**
    * Size, if provided, is either a number or one of `["small", "medium", "large"]`
    */

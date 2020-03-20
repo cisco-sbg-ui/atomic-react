@@ -63,7 +63,7 @@ All Panel components (`APanel`, `APanelHeader`, `APanelTitle`, `APanelBody`, `AP
 
 <Preview>
   <Story name="variants-1">
-    <AApp>
+    <AApp style={{minWidth:300}}>
       <APanel>
         <APanelHeader>
           <APanelTitle>
@@ -81,7 +81,7 @@ All Panel components (`APanel`, `APanelHeader`, `APanelTitle`, `APanelBody`, `AP
     </AApp>
   </Story>
   <Story name="variants-2">
-    <AApp>
+    <AApp style={{minWidth:300}}>
       <APanel type="grey">
         <APanelHeader>
           <APanelTitle>
@@ -116,6 +116,25 @@ All Panel components (`APanel`, `APanelHeader`, `APanelTitle`, `APanelBody`, `AP
       </APanel>
     </AApp>
   </Story>
+  <Story name="variants-4">
+    <AApp style={{padding:20,position:'relative',minWidth:300}}>
+      <APanel type="dialog" style={{zIndex:1}}>
+        <APanelHeader>
+          <APanelTitle>
+            Feature: Panels
+          </APanelTitle>
+          <AIcon>close</AIcon>
+        </APanelHeader>
+        <APanelBody>
+          Panels create a sense of discreteness in the content.
+        </APanelBody>
+        <APanelFooter>
+          Use panels today!
+        </APanelFooter>
+      </APanel>
+      <div style={{backgroundColor:'#000',opacity: 0.5,position:'absolute',top:0,bottom:0,right:0,left:0}}></div>
+    </AApp>
+  </Story>
 </Preview>
 
 
@@ -123,7 +142,7 @@ All Panel components (`APanel`, `APanelHeader`, `APanelTitle`, `APanelBody`, `AP
 
 <Preview style={{backgroundColor: '#18191d'}}>
   <Story name="dusk-1">
-    <AApp theme="dusk">
+    <AApp theme="dusk" style={{minWidth:300}}>
       <APanel>
         <APanelHeader>
           <APanelTitle>
@@ -141,7 +160,7 @@ All Panel components (`APanel`, `APanelHeader`, `APanelTitle`, `APanelBody`, `AP
     </AApp>
   </Story>
   <Story name="dusk-2">
-    <AApp theme="dusk">
+    <AApp theme="dusk" style={{minWidth:300}}>
       <APanel type="grey">
         <APanelHeader>
           <APanelTitle>
@@ -174,6 +193,25 @@ All Panel components (`APanel`, `APanelHeader`, `APanelTitle`, `APanelBody`, `AP
           Use panels today!
         </APanelFooter>
       </APanel>
+    </AApp>
+  </Story>
+  <Story name="dusk-4">
+    <AApp theme="dusk" style={{padding:20,position:'relative',minWidth:300}}>
+      <APanel type="dialog" style={{zIndex:1}}>
+        <APanelHeader>
+          <APanelTitle>
+            Feature: Panels
+          </APanelTitle>
+          <AIcon>close</AIcon>
+        </APanelHeader>
+        <APanelBody>
+          Panels create a sense of discreteness in the content.
+        </APanelBody>
+        <APanelFooter>
+          Use panels today!
+        </APanelFooter>
+      </APanel>
+      <div style={{backgroundColor:'#000',opacity: 0.5,position:'absolute',top:0,bottom:0,right:0,left:0}}></div>
     </AApp>
   </Story>
 </Preview>

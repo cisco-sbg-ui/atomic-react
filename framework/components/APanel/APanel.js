@@ -15,6 +15,8 @@ const APanel = forwardRef(
       className += " a-panel--color-gray";
     } else if (type === "white") {
       className += " a-panel--color-white";
+    } else if (type === "dialog") {
+      className += " a-panel--type-dialog";
     }
 
     return (
@@ -29,7 +31,7 @@ APanel.propTypes = {
   /**
    * Display a style variant.
    */
-  type: PropTypes.oneOf(["default", "grey", "white"])
+  type: PropTypes.oneOf(["default", "grey", "white", "dialog"])
 };
 
 export default APanel;

@@ -53,11 +53,6 @@ $help-block-color-error: map-get($status-red, "wash-1");
 // Page Loading Indicator
 $page-loader-base-background-color: map-get($dusk, "6"); // #17202b;
 // -----------------------------------------------------------------------------
-// Modal / Dialog
-// -----------------------------------------------------------------------------
-$modal-header-bg: map-get($dusk, "4"); // #253040;
-$modal-footer-bg: map-get($dusk, "4"); // #253040;
-// -----------------------------------------------------------------------------
 // Numeric Input
 // -----------------------------------------------------------------------------
 $spinner-box-bg: map-get($grey, "darken-7"); // #18191d;

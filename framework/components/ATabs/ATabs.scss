@@ -119,11 +119,14 @@ $tab-oversized-margin: 0;
     font-size: $tab-font-size;
     background-color: transparent;
     cursor: pointer;
-    text-decoration: none;
 
     &:active {
       outline: none;
     }
+  }
+
+  .a-tab-group__tab {
+    text-decoration: none;
 
     &:active,
     &:focus,

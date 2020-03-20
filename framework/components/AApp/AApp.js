@@ -1,6 +1,7 @@
 import PropTypes from "prop-types";
-import React, {forwardRef, useEffect} from "react";
+import React, {createRef, forwardRef} from "react";
 
+import AAppContext from "./AAppContext";
 import "./AApp.scss";
 
 const AApp = forwardRef(
@@ -32,9 +33,19 @@ const AApp = forwardRef(
       wrapClassName += " a-app--scrollbars";
     }
 
+    const mountPointRef = createRef();
+
+    const appContext = {
+      mountPoint: () =>
+        mountPointRef.current.closest(".a-app").querySelector(".a-app--mount")
+    };
+
     return (
       <div {...rest} ref={ref} className={className}>
-        <div className={wrapClassName}>{children}</div>
+        <AAppContext.Provider value={appContext}>
+          <div className={wrapClassName}>{children}</div>
+          <div ref={mountPointRef} className="a-app--mount"></div>
+        </AAppContext.Provider>
       </div>
     );
   }

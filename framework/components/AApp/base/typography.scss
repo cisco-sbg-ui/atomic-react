@@ -4,7 +4,7 @@ $code-font-size: 87.5% !default;
 $code-padding: 2px 4px;
 $pre-padding: 10px;
 
-@include theme(a-app--wrap) using ($theme) {
+@mixin theme-app($theme) {
   background-color: map-deep-get($theme, "base", "bg");
   color: map-deep-get($theme, "base", "color");
 
@@ -15,7 +15,15 @@ $pre-padding: 10px;
   }
 }
 
-.a-app--wrap {
+.a-app.theme--default {
+  @include theme-app($atomic-default);
+}
+
+.a-app.theme--dusk {
+  @include theme-app($atomic-dusk);
+}
+
+.a-app {
   -webkit-text-size-adjust: 100%;
   -ms-text-size-adjust: 100%;
   -webkit-font-smoothing: antialiased;
