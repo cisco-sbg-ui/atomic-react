@@ -123,6 +123,9 @@ $atomic-default: (
     "fill--enabled": map-get($grey, "lighten-2"),
     "opacity-disabled": 1
   ),
+  "select": (
+    "border-color--focus": map-get($cisco-blue, "base")
+  ),
   "table": (
     "bg": transparent,
     "header-color": map-get($grey, "darken-2"),

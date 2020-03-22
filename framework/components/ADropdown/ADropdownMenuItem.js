@@ -2,10 +2,20 @@ import PropTypes from "prop-types";
 import React, {forwardRef} from "react";
 
 import "./ADropdown.scss";
+import {keyCodes} from "../../utils/helpers";
 
 const ADropdownMenuItem = forwardRef(
   (
-    {children, className: propsClassName, href, selected, target, ...rest},
+    {
+      children,
+      className: propsClassName,
+      href,
+      onClick,
+      onKeyDown,
+      selected,
+      target,
+      ...rest
+    },
     ref
   ) => {
     let className = "a-dropdown__item";
@@ -23,13 +33,25 @@ const ADropdownMenuItem = forwardRef(
       ...rest,
       ref,
       className,
-      tabIndex: 0
+      onClick,
+      onKeyDown: e => {
+        if (onClick && e.keyCode === keyCodes.enter) {
+          e.preventDefault();
+          onClick(e);
+        }
+
+        onKeyDown && onKeyDown(e);
+      }
     };
 
     if (href) {
       TagName = "a";
       props.href = href;
       props.target = target;
+    }
+
+    if (href || onClick) {
+      props.tabIndex = 0;
     }
 
     return <TagName {...props}>{children}</TagName>;

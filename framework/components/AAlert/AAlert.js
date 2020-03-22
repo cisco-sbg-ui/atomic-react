@@ -51,7 +51,7 @@ const AAlert = forwardRef(
 
     return (
       <div {...rest} role="alert" tabIndex={0} ref={ref} className={className}>
-        <AIcon className="a-alert__icon" size="16">
+        <AIcon className="a-alert__icon" size={16}>
           {icon}
         </AIcon>
         <div className="a-alert__message">{children}</div>
@@ -60,7 +60,7 @@ const AAlert = forwardRef(
             className="a-alert__icon focus-box-shadow a-alert__icon--close"
             onClick={e => onClose && onClose(e)}
             onKeyDown={dismissableKeyDownHandler}
-            size="16"
+            size={16}
             tabIndex={0}>
             close
           </AIcon>

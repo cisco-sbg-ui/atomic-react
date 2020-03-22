@@ -66,12 +66,12 @@ import {ATabGroup, ATab} from "@cisco-ats/atomic-react/ATabs";
           <AButton tertiaryAlt icon><AIcon>alert</AIcon></AButton>
           <AButton tertiaryAlt icon><AIcon>help</AIcon></AButton>
           <AButton tertiaryAlt icon href="https://platform.int.iroh.site/settings"><AIcon>settings</AIcon></AButton>
-          <ADropdown active={isActive}>
+          <ADropdown>
             <AButton tertiaryAlt icon onClick={e => { setIsActive(!isActive); }}>
               <AIcon>user</AIcon>
               <AIcon style={{width: 10}}>triangle-down</AIcon>
             </AButton>
-            <ADropdownMenu style={{left: 'auto', right: 0}}>
+            <ADropdownMenu open={isActive} onClose={() => setIsActive(false)} style={{left: 'auto', right: 0}}>
               <ADropdownMenuItem href="https://platform.int.iroh.site/logout">Logout</ADropdownMenuItem>
             </ADropdownMenu>
           </ADropdown>

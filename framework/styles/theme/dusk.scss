@@ -133,6 +133,9 @@ $atomic-dusk: (
     "fill--enabled": map-get($cisco-blue, "burnt-1"),
     "opacity-disabled": $alpha-3
   ),
+  "select": (
+    "border-color--focus": map-get($cisco-blue, "burnt-1")
+  ),
   "table": (
     "bg":
       linear-gradient(

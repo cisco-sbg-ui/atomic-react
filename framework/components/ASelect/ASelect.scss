@@ -4,8 +4,6 @@ $select-height: 28px;
 $select-width: 250px;
 $select-padding: 6px;
 $select-swatch-width: 3px;
-$select-border-color--focus: $base-brand-color;
-$select__surface-padding-right: 20px;
 $select__surface-order: 0;
 $select__surface-width: 100%;
 $select__open-icon-height: 1em;
@@ -16,121 +14,144 @@ $select__open-icon-right: 8px;
 $select__label-padding-top: 3px;
 $select__menu-item-width: 100%;
 $select__menu-item-line-height: $line-height--lg;
-$select__menu-item-padding-top: 2px;
+$select__menu-item-padding: 2px 0 0 0;
 $select__menu-item-checkmark-right: 8px;
 $select__menu-items-margin: 0;
-$select__menu-items-padding: 0;
 $select__menu-items-right: 0;
 $select__menu-items-left: 0;
 $select__menu-items-z-index: 999;
+$select__margin-bottom: ($spacing * 0.75);
 
-.select {
-  position: relative;
-  display: inline-block;
-  flex: 1;
-  width: $select-width;
-  max-width: $select-width;
-  margin-bottom: $form-group-margin-bottom;
-  &__open-icon {
-    position: absolute;
-    // Subject for refactoring, switch to the actual icon
-    @include open-icon;
-  }
-  &__native-select,
+@include theme(a-select) using ($theme) {
   &__surface {
-    order: $select__surface-order;
-    width: $select__surface-width;
-    height: $select-height;
-    color: $base-color;
-    background-color: $control-fill-color;
-    cursor: pointer;
-    appearance: none;
-    user-select: none;
-    padding-left: $select-padding;
-    padding-right: $select__surface-padding-right;
-    border: $base-border-width solid $base-stroke-color;
-    border-radius: $base-border-radius;
+    color: map-deep-get($theme, "base", "color");
+    background-color: map-deep-get($theme, "control", "fill-color");
+    border-color: map-deep-get($theme, "base", "stroke-color");
+
     &:hover {
-      border-color: $control-stroke-color--hover;
+      border-color: map-deep-get($theme, "control", "stroke-color--hover");
     }
+
     &:focus,
     &--focused {
-      border-color: $select-border-color--focus;
-      box-shadow: $base-box-shadow;
-    }
-    &:-moz-focusring {
-      color: transparent;
-      text-shadow: 0 0 0 $base-color;
-    }
-    &:disabled,
-    &--disabled {
-      @include disabled;
-      background-color: $control-fill-color--disabled;
-      border-color: $control-stroke-color--disabled;
-      ~ .select__open-icon {
-        color: $control-stroke-color--disabled;
-      }
+      border-color: map-deep-get($theme, "select", "border-color--focus");
+      box-shadow: map-deep-get($theme, "base", "box-shadow");
     }
 
-    .select__label {
-      padding-top: $select__label-padding-top;
+    &:-moz-focusring {
+      color: transparent;
+      text-shadow: 0 0 0 map-deep-get($theme, "base", "color");
+    }
+
+    &:disabled,
+    &--disabled {
+      background-color: map-deep-get($theme, "control", "fill-color--disabled");
+      border-color: map-deep-get($theme, "control", "stroke-color--disabled");
+      ~ .select__open-icon {
+        color: map-deep-get($theme, "control", "stroke-color--disabled");
+      }
     }
   }
 
   &__menu-items {
-    display: none;
-    position: absolute;
-    top: $select-height - 1px;
-    right: $select__menu-items-right;
-    left: $select__menu-items-left;
-    z-index: $select__menu-items-z-index;
-    margin: $select__menu-items-margin;
-    padding: $select__menu-items-padding;
-    overflow: auto;
-    list-style: none;
-    background-color: $control-fill-color;
-    border: $base-border-width solid $select-border-color--focus;
-    border-bottom-left-radius: $base-border-radius;
-    border-bottom-right-radius: $base-border-radius;
-    cursor: pointer;
-    user-select: none;
-    &--opened {
-      display: block;
-    }
+    background-color: map-deep-get($theme, "control", "fill-color");
+    border-color: map-deep-get($theme, "select", "border-color--focus");
   }
+
   &__menu-item {
-    width: $select__menu-item-width;
-    height: $select-height;
-    line-height: $select__menu-item-line-height;
-    padding-top: $select__menu-item-padding-top;
-    position: relative;
-    text-indent: $select-padding;
-    text-overflow: ellipsis;
-    white-space: nowrap;
     &::after {
-      content: "";
-      display: none;
-      border: solid $white;
-      position: relative;
+      border-color: $white;
     }
+
     &:hover {
       color: $white;
-      background-color: $base-color--hover;
+      background-color: map-deep-get($theme, "base", "color--hover");
     }
+
     &--selected {
       &:hover::after {
         border-color: $white;
       }
       &::after {
-        @include checkmark;
-        border-color: $select-border-color--focus;
-        top: $select-padding;
-        right: $select__menu-item-checkmark-right;
+        border-color: map-deep-get($theme, "select", "border-color--focus");
       }
     }
+
     &--active,
     &:active {
-      background-color: $select-border-color--focus;
+      background-color: map-deep-get($theme, "select", "border-color--focus");
+    }
+
+    &[aria-disabled] {
+      color: map-deep-get($theme, "control", "stroke-color--disabled");
+      background-color: transparent;
+    }
+  }
+}
+
+.a-select {
+  position: relative;
+  display: inline-block;
+  flex: 1;
+  width: $select-width;
+  max-width: $select-width;
+  margin-bottom: $select__margin-bottom;
+
+  &__surface {
+    order: $select__surface-order;
+    width: $select__surface-width;
+    height: $select-height;
+    cursor: pointer;
+    appearance: none;
+    user-select: none;
+    padding: 0 $select-padding;
+    border-width: $base-border-width;
+    border-style: solid;
+    border-radius: $base-border-radius;
+    display: inline-flex;
+    &:disabled,
+    &--disabled {
+      @include disabled;
+    }
+
+    .a-select__label {
+      padding-top: $select__label-padding-top;
+      flex-grow: 1;
+    }
+  }
+
+  .a-select__menu-items {
+    border-bottom-left-radius: $base-border-radius;
+    border-bottom-right-radius: $base-border-radius;
+    cursor: pointer;
+    left: $select__menu-items-left;
+    margin: $select__menu-items-margin;
+    overflow: auto;
+    right: $select__menu-items-right;
+    top: $select-height - 1px;
+    user-select: none;
+    z-index: $select__menu-items-z-index;
+
+    .a-select__menu-item {
+      height: $select-height;
+      line-height: $select__menu-item-line-height;
+      padding: $select__menu-item-padding;
+      text-indent: $select-padding;
+
+      &::after {
+        content: "";
+        border-style: solid;
+        display: none;
+        position: absolute;
+      }
+
+      &--selected {
+        &::after {
+          @include checkmark;
+          top: $select-padding;
+          right: $select__menu-item-checkmark-right;
+        }
+      }
     }
   }
 }
