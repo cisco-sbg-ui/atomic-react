@@ -110,25 +110,6 @@
   border-left: solid $border-width $left;
 }
 // -----------------------------------------------------------------------------
-// Select / Dropdown
-// -----------------------------------------------------------------------------
-// Subject for refactoring, switch to the actual icon
-@mixin open-icon() {
-  height: $select__open-icon-height;
-  font-size: $select__open-icon-font-size;
-  font-weight: $font-weight-xbold;
-  line-height: $select__open-icon-line-height;
-  right: $select__open-icon-right;
-  top: $select__open-icon-top;
-  color: $base-icon-color;
-  pointer-events: none;
-  transform: scaleX(1.2);
-  &:after {
-    font-family: "atomic-font";
-    content: "\e919";
-  }
-}
-// -----------------------------------------------------------------------------
 // Flex
 // -----------------------------------------------------------------------------
 @mixin flex-fluid {

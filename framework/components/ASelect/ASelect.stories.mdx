@@ -1,0 +1,167 @@
+import {Meta, Preview, Story, Props} from "@storybook/addon-docs/blocks";
+import {useState} from "react";
+
+import AApp from "../AApp";
+import ADivider from "../ADivider";
+import YourComponent from "../../utils/storybook-function";
+import ASelect from "./ASelect";
+
+<Meta title="Components/Selects" component={ASelect} />
+
+# Selects
+
+## Install
+
+In the target component add:
+
+```
+import ASelect from "@cisco-ats/atomic-react/ASelect";
+```
+
+## Usage
+
+<Preview>
+  <Story name="usage-1">
+    <AApp style={{minHeight: 200, marginRight: 20}}>
+      <h3>Simple Select</h3>
+      <YourComponent>
+        {() => {
+          const [selectedItem, setSelectedItem] = useState(null);
+          const items = [
+            "Bread, Cereal, Rice, and Pasta",
+            "Vegetables",
+            "Fruit",
+            "Milk, Yogurt, and Cheese",
+            "Meat, Poultry, Fish",
+            "Fats, Oils, and Sweets"
+          ];
+          return (
+            <>
+              <ASelect items={items} placeholder="Pick a Food Group" onSelected={item => setSelectedItem(item)} />
+              <ADivider />
+              <p>Selected Item: {JSON.stringify(selectedItem)}</p>
+            </>
+          );
+        }}
+      </YourComponent>
+    </AApp>
+  </Story>
+  <Story name="usage-2">
+    <AApp style={{minHeight: 200, marginRight: 20}}>
+      <h3>Typical Select</h3>
+      <YourComponent>
+        {() => {
+          const items = [
+            {id: 1, name: "Bread, Cereal, Rice, and Pasta"},
+            {id: 2, name: "Vegetables"},
+            {id: 3, name: "Fruit", selected: true},
+            {id: 4, name: "Milk, Yogurt, and Cheese"},
+            {id: 5, name: "Meat, Poultry, Fish", disabled: true},
+            {id: 6, name: "Fats, Oils, and Sweets"}
+          ];
+          const [selectedItem, setSelectedItem] = useState(items[2]);
+          return (
+            <>
+              <ASelect
+                items={items}
+                itemText="name"
+                itemValue="id"
+                placeholder="Pick a Food Group"
+                onSelected={item => setSelectedItem(item)}
+              />
+              <ADivider />
+              <p>Selected Item: {JSON.stringify(selectedItem)}</p>
+            </>
+          );
+        }}
+      </YourComponent>
+    </AApp>
+  </Story>
+  <Story name="usage-3">
+    <AApp style={{minHeight: 200}}>
+      <h3>Disabled Select</h3>
+      <ASelect disabled placeholder="Pick a Food Group" />
+    </AApp>
+  </Story>
+</Preview>
+
+## Select Props
+
+The `ASelect` component inherits passed props.
+
+<Props of={ASelect} />
+
+## Dusk Theme
+
+<Preview style={{backgroundColor: '#18191d'}}>
+  <Story name="dusk-1">
+    <AApp theme="dusk" style={{minHeight: 200, marginRight: 20}}>
+      <h3>Simple Select</h3>
+      <YourComponent>
+        {() => {
+          const [selectedItem, setSelectedItem] = useState(null);
+          const items = [
+            "Bread, Cereal, Rice, and Pasta",
+            "Vegetables",
+            "Fruit",
+            "Milk, Yogurt, and Cheese",
+            "Meat, Poultry, Fish",
+            "Fats, Oils, and Sweets"
+          ];
+          return (
+            <>
+              <ASelect items={items} placeholder="Pick a Food Group" onSelected={item => setSelectedItem(item)} />
+              <ADivider />
+              <p>Selected Item: {JSON.stringify(selectedItem)}</p>
+            </>
+          );
+        }}
+      </YourComponent>
+    </AApp>
+  </Story>
+  <Story name="dusk-2">
+    <AApp theme="dusk" style={{minHeight: 200, marginRight: 20}}>
+      <h3>Typical Select</h3>
+      <YourComponent>
+        {() => {
+          const items = [
+            {id: 1, name: "Bread, Cereal, Rice, and Pasta"},
+            {id: 2, name: "Vegetables"},
+            {id: 3, name: "Fruit", selected: true},
+            {id: 4, name: "Milk, Yogurt, and Cheese"},
+            {id: 5, name: "Meat, Poultry, Fish", disabled: true},
+            {id: 6, name: "Fats, Oils, and Sweets"}
+          ];
+          const [selectedItem, setSelectedItem] = useState(items[2]);
+          return (
+            <>
+              <ASelect
+                items={items}
+                itemText="name"
+                itemValue="id"
+                placeholder="Pick a Food Group"
+                onSelected={item => setSelectedItem(item)}
+              />
+              <ADivider />
+              <p>Selected Item: {JSON.stringify(selectedItem)}</p>
+            </>
+          );
+        }}
+      </YourComponent>
+    </AApp>
+  </Story>
+  <Story name="dusk-3">
+    <AApp theme="dusk" style={{minHeight: 200}}>
+      <h3>Disabled Select</h3>
+      <ASelect disabled placeholder="Pick a Food Group" />
+    </AApp>
+  </Story>
+</Preview>
+
+## Accessibility Notes
+
+In addition to inheriting all of the accessibility features of `ADropdown`,
+the `ASelect` surface (the box with chevron) will select and focus previous/next items
+on `up` or `down` keys for the `keydown` event.
+
+Unlike the `ADropdown` component, opening the menu will focus the selected item if one exists.

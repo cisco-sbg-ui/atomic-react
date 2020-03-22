@@ -4,18 +4,6 @@ import React, {forwardRef} from "react";
 import "./AIcon.scss";
 import Icons from "./icons.json";
 
-const isSize = function(props, propName, componentName) {
-  if (
-    props[propName] &&
-    isNaN(props[propName]) &&
-    !["small", "medium", "large"].includes(props[propName])
-  ) {
-    return new Error(
-      `Invalid prop ${propName} passed to ${componentName}. Expected a number or one of [ "small", "medium", "large" ].`
-    );
-  }
-};
-
 const AIcon = forwardRef(
   (
     {children, className: propsClassName, label, left, right, size, ...rest},
@@ -74,9 +62,12 @@ AIcon.propTypes = {
    */
   right: PropTypes.bool,
   /**
-   * Size, if provided, is either a number or one of `["small", "medium", "large"]`
+   * Sets a custom icon width.
    */
-  size: isSize
+  size: PropTypes.oneOfType([
+    PropTypes.number,
+    PropTypes.oneOf(["small", "medium", "large"])
+  ])
 };
 
 export default AIcon;

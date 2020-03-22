@@ -25,16 +25,27 @@ import {ADropdown, ADropdownMenu, ADropdownMenuItem} from "@cisco-ats/atomic-rea
     <AApp style={{minHeight: 150}}>
       <YourComponent>
     {() => {
-      const [isActive, setIsActive] = useState(false);
+      const [isActive1, setIsActive1] = useState(false);
+      const [isActive2, setIsActive2] = useState(false);
       return (
-        <ADropdown active={isActive}>
-          <AButton aria-haspopup="true" onClick={() => setIsActive(!isActive)}>Open Menu</AButton>
-          <ADropdownMenu>
-            <ADropdownMenuItem selected>One - Selected</ADropdownMenuItem>
+        <>
+        <ADropdown>
+          <AButton className="mr-3" aria-haspopup="true" onClick={() => setIsActive1(!isActive1)}>Open Menu</AButton>
+          <ADropdownMenu open={isActive1} onClose={() => setIsActive1(false)}>
+            <ADropdownMenuItem onClick={() => 1} selected>One - Selected</ADropdownMenuItem>
             <ADropdownMenuItem href="https://www.cisco.com" target="_blank">Cisco.com</ADropdownMenuItem>
-            <ADropdownMenuItem>Three</ADropdownMenuItem>
+            <ADropdownMenuItem onClick={() => 3}>Three</ADropdownMenuItem>
           </ADropdownMenu>
         </ADropdown>
+        <ADropdown>
+          <AButton aria-haspopup="true" onClick={() => setIsActive2(!isActive2)}>Open Menu</AButton>
+          <ADropdownMenu open={isActive2} onClose={() => setIsActive2(false)}>
+            <ADropdownMenuItem onClick={() => 1}>One</ADropdownMenuItem>
+            <ADropdownMenuItem href="https://www.cisco.com" target="_blank">Cisco.com</ADropdownMenuItem>
+            <ADropdownMenuItem onClick={() => 3} selected>Three - Selected</ADropdownMenuItem>
+          </ADropdownMenu>
+        </ADropdown>
+        </>
       );
     }}
       </YourComponent>
@@ -67,16 +78,27 @@ The `ADropdownMenuItem` component inherits passed props.
     <AApp theme="dusk" style={{minHeight: 150}}>
       <YourComponent>
     {() => {
-      const [isActive, setIsActive] = useState(false);
+      const [isActive1, setIsActive1] = useState(false);
+      const [isActive2, setIsActive2] = useState(false);
       return (
-        <ADropdown active={isActive}>
-          <AButton aria-haspopup="true" onClick={() => setIsActive(!isActive)}>Open Menu</AButton>
-          <ADropdownMenu>
-            <ADropdownMenuItem>One - Selected</ADropdownMenuItem>
+        <>
+        <ADropdown>
+          <AButton className="mr-3" aria-haspopup="true" onClick={() => setIsActive1(!isActive1)}>Open Menu</AButton>
+          <ADropdownMenu open={isActive1} onClose={() => setIsActive1(false)}>
+            <ADropdownMenuItem onClick={() => 1} selected>One - Selected</ADropdownMenuItem>
             <ADropdownMenuItem href="https://www.cisco.com" target="_blank">Cisco.com</ADropdownMenuItem>
-            <ADropdownMenuItem selected>Three - Selected</ADropdownMenuItem>
+            <ADropdownMenuItem onClick={() => 3}>Three</ADropdownMenuItem>
           </ADropdownMenu>
         </ADropdown>
+        <ADropdown>
+          <AButton aria-haspopup="true" onClick={() => setIsActive2(!isActive2)}>Open Menu</AButton>
+          <ADropdownMenu open={isActive2} onClose={() => setIsActive2(false)}>
+            <ADropdownMenuItem onClick={() => 1}>One</ADropdownMenuItem>
+            <ADropdownMenuItem href="https://www.cisco.com" target="_blank">Cisco.com</ADropdownMenuItem>
+            <ADropdownMenuItem onClick={() => 3} selected>Three - Selected</ADropdownMenuItem>
+          </ADropdownMenu>
+        </ADropdown>
+        </>
       );
     }}
       </YourComponent>
@@ -87,11 +109,11 @@ The `ADropdownMenuItem` component inherits passed props.
 ## Accessibility Notes
 
 By default, `ADropdownMenu` components are assigned the [WAI-ARIA](https://www.w3.org/WAI/standards-guidelines/aria/) role of [menu](https://www.w3.org/TR/wai-aria/#menu).
+On open, focus is set to the `ADropdownMenu`. If a close handler is specified, focus is
+returned to the opener on close. `keydown` events for the `up` and `down` arrow keys will
+navigate menu items, the `esc` key calls the `onClose` handler. Additionally, for the `tab`
+key the menu will request to be closed and set focus to the opener, which allows native `tab`
+key functionality to focus the next tab-focusable item.
 
 By default, `ADropdownMenuItem` components are assigned the [WAI-ARIA](https://www.w3.org/WAI/standards-guidelines/aria/) role of [menuitem](https://www.w3.org/TR/wai-aria/#menuitem).
-
-Keyboard accessibility has been enabled via use of the arrow keys to navigate menu items.
-
-The `ADropdownMenuItem` `click` event handler is triggered both by the `click` event and by the `keyDown` event for both the `Enter` and `Space` keys.
-
-Ensure the activator is tab-focusable to remain compliant.
+The `ADropdownMenuItem` `click` event handler is triggered both by the `click` event and by the `keyDown` event for the `Enter` key. This is followed up by a request to the `onClose` handler.

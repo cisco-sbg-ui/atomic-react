@@ -37,50 +37,49 @@ $dropdown--state-active-transition: visibility 0s ease,
 .a-dropdown {
   display: inline-block;
   position: relative;
-  cursor: pointer;
 
   &__menu {
     @include list--unstyled;
-    padding: $dropdown-padding;
-    opacity: 0;
-    visibility: hidden;
-    display: none;
     border-width: $border-width;
     border-style: solid;
-    position: absolute;
-    pointer-events: auto;
-    top: calc(100% + 10px);
-    width: auto;
-    min-width: $dropdown-min-width;
-    transform: translateY(-2em);
-    text-align: left;
+    display: none;
     line-height: 1.5;
-  }
-  &__item {
-    text-decoration: none;
-    font-size: $base-font-size;
-    z-index: $dropdown-item-z-index;
-    display: inline-flex;
-    padding: $dropdown-item-padding;
-    width: $dropdown-item-width;
-    position: relative;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    &:hover {
-      text-decoration: none;
-    }
-    &:focus {
-      text-decoration: none;
-    }
-  }
-  &--state-active {
-    .a-dropdown__menu {
+    min-width: $dropdown-min-width;
+    opacity: 0;
+    padding: $dropdown-padding;
+    pointer-events: auto;
+    position: absolute;
+    text-align: left;
+    top: calc(100% + 10px);
+    transform: translateY(-2em);
+    visibility: hidden;
+    width: auto;
+
+    &--is-active {
       transition: opacity 0.3s;
       opacity: 1;
       visibility: visible;
       display: block;
       z-index: $dropdown-active-z-index;
       transform: translateY(0);
+    }
+  }
+
+  .a-dropdown__item {
+    display: inline-flex;
+    font-size: $base-font-size;
+    padding: $dropdown-item-padding;
+    position: relative;
+    text-decoration: none;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: $dropdown-item-width;
+    z-index: $dropdown-item-z-index;
+    &:hover {
+      text-decoration: none;
+    }
+    &:focus {
+      text-decoration: none;
     }
   }
 }

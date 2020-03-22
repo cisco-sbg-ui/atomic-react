@@ -52,11 +52,11 @@ import {
           <AAccordionPanel>
             <AAccordionHeader>
               <AAccordionHeaderTitle chevron={false}>Accordion Item 1</AAccordionHeaderTitle>
-              <ADropdown active={active}>
+              <ADropdown>
                 <AButton icon tertiaryAlt onClick={() => setActive(!active)}>
                   <AIcon>ellipsis-horizontal</AIcon>
                 </AButton>
-                <ADropdownMenu style={{top:27,right:0}}>
+                <ADropdownMenu open={active} onClose={() => setActive(false)} style={{top:27,right:0}}>
                   <ADropdownMenuItem>See More</ADropdownMenuItem>
                 </ADropdownMenu>
               </ADropdown>
@@ -117,11 +117,11 @@ All Accordion components (`AAccordion`, `AAccordionPanel`, `AAccordionHeader`, `
           <AAccordionPanel>
             <AAccordionHeader>
               <AAccordionHeaderTitle chevron={false}>Accordion Item 1</AAccordionHeaderTitle>
-              <ADropdown active={active}>
+              <ADropdown>
                 <AButton icon tertiaryAlt onClick={() => setActive(!active)}>
                   <AIcon>ellipsis-horizontal</AIcon>
                 </AButton>
-                <ADropdownMenu style={{top:27,right:0}}>
+                <ADropdownMenu open={active} onClose={() => setActive(false)} style={{top:27,right:0}}>
                   <ADropdownMenuItem>See More</ADropdownMenuItem>
                 </ADropdownMenu>
               </ADropdown>
