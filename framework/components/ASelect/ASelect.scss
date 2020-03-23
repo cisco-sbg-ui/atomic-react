@@ -11,7 +11,7 @@ $select__open-icon-font-size: $font-size--xxs;
 $select__open-icon-line-height: 1;
 $select__open-icon-top: 10px;
 $select__open-icon-right: 8px;
-$select__label-padding-top: 3px;
+$select__selection-padding-top: 3px;
 $select__menu-item-width: 100%;
 $select__menu-item-line-height: $line-height--lg;
 $select__menu-item-padding: 2px 0 0 0;
@@ -21,8 +21,13 @@ $select__menu-items-right: 0;
 $select__menu-items-left: 0;
 $select__menu-items-z-index: 999;
 $select__margin-bottom: ($spacing * 0.75);
+$select-label-margin: 0;
 
 @include theme(a-select) using ($theme) {
+  &__label {
+    color: map-deep-get($theme, "label", "color");
+  }
+
   &__surface {
     color: map-deep-get($theme, "base", "color");
     background-color: map-deep-get($theme, "control", "fill-color");
@@ -97,6 +102,13 @@ $select__margin-bottom: ($spacing * 0.75);
   max-width: $select-width;
   margin-bottom: $select__margin-bottom;
 
+  &__label {
+    display: block;
+    margin: $select-label-margin;
+    font-size: $base-font-size;
+    cursor: default;
+  }
+
   &__surface {
     order: $select__surface-order;
     width: $select__surface-width;
@@ -114,8 +126,8 @@ $select__margin-bottom: ($spacing * 0.75);
       @include disabled;
     }
 
-    .a-select__label {
-      padding-top: $select__label-padding-top;
+    .a-select__selection {
+      padding-top: $select__selection-padding-top;
       flex-grow: 1;
     }
   }

@@ -1,79 +1,102 @@
 @import "../../styles";
 
 $textarea-width: 250px;
+$textarea-label-margin: 0;
 
 @include theme(a-textarea) using ($theme) {
-  background: map-deep-get($theme, "text-input", "bg");
-  border-color: map-deep-get($theme, "base", "stroke-color");
-  color: map-deep-get($theme, "base", "color");
-
-  &:hover {
-    border-color: map-deep-get($theme, "control", "stroke-color--hover");
+  &__label {
+    color: map-deep-get($theme, "label", "color");
   }
 
-  &:focus {
-    border-color: map-deep-get($theme, "base", "color--hover");
-    box-shadow: map-deep-get($theme, "base", "box-shadow");
-  }
+  &__field {
+    background: map-deep-get($theme, "text-input", "bg");
+    border-color: map-deep-get($theme, "base", "stroke-color");
+    color: map-deep-get($theme, "base", "color");
 
-  &.disabled,
-  &[disabled] {
-    color: map-deep-get($theme, "text-input", "color--disabled");
-    border-color: map-deep-get($theme, "text-input", "border-color--disabled");
-    background: map-deep-get($theme, "text-input", "bg--disabled");
-  }
+    &:hover {
+      border-color: map-deep-get($theme, "control", "stroke-color--hover");
+    }
 
-  &[readonly],
-  &[readonly]:focus {
-    border-color: map-deep-get($theme, "text-input", "border-color--readonly");
-    background: map-deep-get($theme, "text-input", "bg--readonly");
-  }
+    &:focus {
+      border-color: map-deep-get($theme, "base", "color--hover");
+      box-shadow: map-deep-get($theme, "base", "box-shadow");
+    }
 
-  &--state-warning {
-    @include input-state(
-      $color-warning,
-      $warning-box-shadow,
-      map-deep-get($theme, "color", "warning--state-hover")
-    );
-  }
+    &.disabled,
+    &[disabled] {
+      color: map-deep-get($theme, "text-input", "color--disabled");
+      border-color: map-deep-get(
+        $theme,
+        "text-input",
+        "border-color--disabled"
+      );
+      background: map-deep-get($theme, "text-input", "bg--disabled");
+    }
 
-  &--state-danger {
-    @include input-state(
-      $color-error,
-      $danger-box-shadow,
-      map-deep-get($theme, "color", "error--state-hover")
-    );
+    &[readonly],
+    &[readonly]:focus {
+      border-color: map-deep-get(
+        $theme,
+        "text-input",
+        "border-color--readonly"
+      );
+      background: map-deep-get($theme, "text-input", "bg--readonly");
+    }
+
+    &--state-warning {
+      @include input-state(
+        $color-warning,
+        $warning-box-shadow,
+        map-deep-get($theme, "color", "warning--state-hover")
+      );
+    }
+
+    &--state-danger {
+      @include input-state(
+        $color-error,
+        $danger-box-shadow,
+        map-deep-get($theme, "color", "error--state-hover")
+      );
+    }
   }
 }
 
 .a-textarea {
-  width: $textarea-width;
-  box-sizing: border-box;
-  position: relative;
-  padding: $input-padding;
-  border-style: solid;
-  border-width: $base-border-width;
-  border-radius: $base-border-radius;
-  appearance: none;
-  &:focus {
-    outline: none;
+  &__label {
+    display: block;
+    margin: $textarea-label-margin;
+    font-size: $base-font-size;
   }
 
-  &:active {
-    border-color: $input-border-color--active;
-  }
+  &__field {
+    width: $textarea-width;
+    box-sizing: border-box;
+    position: relative;
+    padding: $input-padding;
+    border-style: solid;
+    border-width: $base-border-width;
+    border-radius: $base-border-radius;
+    appearance: none;
+    &:focus {
+      outline: none;
+    }
 
-  &.disabled,
-  &[disabled] {
-    @include disabled;
-  }
+    &:active {
+      border-color: $input-border-color--active;
+    }
 
-  &[readonly],
-  &[readonly]:focus {
-    box-shadow: none;
+    &.disabled,
+    &[disabled] {
+      @include disabled;
+    }
+
+    &[readonly],
+    &[readonly]:focus {
+      box-shadow: none;
+    }
   }
 }
 
-.a-app--animated .a-textarea {
+.a-app--animated .a-textarea__field {
   @include transition($input-transition);
 }

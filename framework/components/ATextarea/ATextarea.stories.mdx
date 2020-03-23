@@ -20,21 +20,21 @@ import ATextarea from "@cisco-ats/atomic-react/ATextarea";
 <Preview>
   <Story name="usage-1">
     <AApp>
-      <p>
-        <ATextarea placeholder="Normal" />
-      </p>
-      <p>
-        <ATextarea placeholder="Disabled" disabled />
-      </p>
-      <p>
-        <ATextarea placeholder="Read Only State" readOnly />
-      </p>
-      <p>
-        <ATextarea validationState="warning" placeholder="Warning State" />
-      </p>
-      <p>
-        <ATextarea validationState="danger" placeholder="Error State" />
-      </p>
+      <div className="mb-4">
+        <ATextarea label="Label" placeholder="Normal" />
+      </div>
+      <div className="mb-4">
+        <ATextarea label="Label" placeholder="Disabled" disabled />
+      </div>
+      <div className="mb-4">
+        <ATextarea label="Label" placeholder="Read Only State" readOnly />
+      </div>
+      <div className="mb-4">
+        <ATextarea label="Label" validationState="warning" placeholder="Warning State" />
+      </div>
+      <div className="mb-4">
+        <ATextarea label="Label" validationState="danger" placeholder="Error State" />
+      </div>
     </AApp>
   </Story>
 </Preview>
@@ -50,21 +50,21 @@ The `ATextarea` component inherits passed props.
 <Preview style={{backgroundColor: '#18191d'}}>
   <Story name="dusk-1">
     <AApp theme="dusk">
-      <p>
-        <ATextarea placeholder="Normal" />
-      </p>
-      <p>
-        <ATextarea placeholder="Disabled" disabled />
-      </p>
-      <p>
-        <ATextarea placeholder="Read Only State" readOnly />
-      </p>
-      <p>
-        <ATextarea validationState="warning" placeholder="Warning State" />
-      </p>
-      <p>
-        <ATextarea validationState="danger" placeholder="Error State" />
-      </p>
+      <div className="mb-4">
+        <ATextarea label="Label" placeholder="Normal" />
+      </div>
+      <div className="mb-4">
+        <ATextarea label="Label" placeholder="Disabled" disabled />
+      </div>
+      <div className="mb-4">
+        <ATextarea label="Label" placeholder="Read Only State" readOnly />
+      </div>
+      <div className="mb-4">
+        <ATextarea label="Label" validationState="warning" placeholder="Warning State" />
+      </div>
+      <div className="mb-4">
+        <ATextarea label="Label" validationState="danger" placeholder="Error State" />
+      </div>
     </AApp>
   </Story>
 </Preview>
@@ -76,12 +76,12 @@ Animations are enabled by default on the `AApp` component and can be disabled.
 <Preview>
   <Story name="animations-1">
     <AApp>
-      <ATextarea placeholder="Animated" />
+      <ATextarea label="Label" placeholder="Animated" />
     </AApp>
   </Story>
   <Story name="animations-2">
     <AApp animations={false}>
-      <ATextarea placeholder="Not Animated" />
+      <ATextarea label="Label" placeholder="Not Animated" />
     </AApp>
   </Story>
 </Preview>

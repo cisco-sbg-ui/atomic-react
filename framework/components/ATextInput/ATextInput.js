@@ -1,9 +1,11 @@
 import PropTypes from "prop-types";
-import React, {forwardRef} from "react";
+import React, {forwardRef, useState} from "react";
 
 import "./ATextInput.scss";
 import {keyCodes} from "../../utils/helpers";
 import AIcon from "../AIcon";
+
+let textInputCounter = 0;
 
 const ATextInput = forwardRef(
   (
@@ -12,6 +14,7 @@ const ATextInput = forwardRef(
       autoComplete,
       className: propsClassName,
       disabled,
+      label,
       name,
       onBlur,
       onClickAppend,
@@ -30,6 +33,8 @@ const ATextInput = forwardRef(
     },
     ref
   ) => {
+    const [textInputId] = useState(textInputCounter++);
+
     const onClickPrependKeyDown = e => {
       if (
         onClickPrepend &&
@@ -94,11 +99,19 @@ const ATextInput = forwardRef(
 
     return (
       <div {...rest} ref={ref} className={className}>
+        {label && (
+          <label
+            htmlFor={`a-text-input_${textInputId}`}
+            className="a-text-input__label">
+            {label}
+          </label>
+        )}
         {prependIcon && <AIcon {...prependProps}>{prependIcon}</AIcon>}
         <input
           autoComplete={autoComplete}
           className={inputClassName}
           disabled={disabled}
+          id={`a-text-input_${textInputId}`}
           name={name}
           onBlur={onBlur}
           onChange={onChange}
@@ -134,6 +147,10 @@ ATextInput.propTypes = {
    * Toggles the `disabled` state.
    */
   disabled: PropTypes.bool,
+  /**
+   * Sets the input label text.
+   */
+  label: PropTypes.node,
   /**
    * The input's `name` attribute.
    */

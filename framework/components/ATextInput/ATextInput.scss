@@ -11,8 +11,13 @@ $text-input--append--pad-y: 9px;
 $text-input--append--width: 10px;
 $search-input-padding-left: 24px;
 $search-input-padding-top: 1px;
+$text-input-label-margin: 0;
 
 @include theme(a-text-input) using ($theme) {
+  &__label {
+    color: map-deep-get($theme, "label", "color");
+  }
+
   &--disabled .a-text-input__prepend-icon,
   &--disabled .a-text-input__append-icon,
   &--readonly .a-text-input__prepend-icon,
@@ -85,6 +90,12 @@ $search-input-padding-top: 1px;
   position: relative;
   display: inline-block;
 
+  &__label {
+    display: block;
+    margin: $text-input-label-margin;
+    font-size: $base-font-size;
+  }
+
   &__prepend-icon,
   &__append-icon {
     position: absolute;
@@ -98,14 +109,14 @@ $search-input-padding-top: 1px;
 
   &__prepend-icon {
     left: 0;
-    top: 0;
+    bottom: 0;
     padding: $text-input--prepend--pad-y $text-input--prepend--pad-x;
     width: $text-input--prepend--width;
   }
 
   &__append-icon {
     right: 0;
-    top: 0;
+    bottom: 0;
     padding: $text-input--append--pad-y $text-input--append--pad-x;
     width: $text-input--append--width;
   }
