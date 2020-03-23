@@ -6,6 +6,8 @@ import AIcon from "../AIcon";
 import {ADropdown, ADropdownMenu, ADropdownMenuItem} from "../ADropdown";
 import {keyCodes} from "../../utils/helpers";
 
+let selectCounter = 0;
+
 const ASelect = forwardRef(
   (
     {
@@ -17,6 +19,7 @@ const ASelect = forwardRef(
       itemText = "text",
       itemValue = "value",
       items = [],
+      label,
       onSelected,
       placeholder,
       ...rest
@@ -24,6 +27,9 @@ const ASelect = forwardRef(
     ref
   ) => {
     const dropdownMenuRef = useRef(null);
+    const surfaceRef = useRef(null);
+
+    const [selectId] = useState(selectCounter++);
 
     const [selectedItem, setSelectedItem] = useState(
       items.find(x => x[itemSelected])
@@ -82,6 +88,11 @@ const ASelect = forwardRef(
     if (disabled) {
       surfaceProps.className += " a-select__surface--disabled";
     } else {
+      if (label) {
+        surfaceProps["aria-labelledby"] = `a-select__label_${selectId}`;
+      }
+
+      surfaceProps.ref = surfaceRef;
       surfaceProps.tabIndex = 0;
       surfaceProps.onClick = () => {
         setIsOpen(!isOpen);
@@ -123,9 +134,17 @@ const ASelect = forwardRef(
 
     return (
       <div {...rest} ref={ref} className={className}>
+        {label && (
+          <div
+            id={`a-select__label_${selectId}`}
+            onClick={() => !disabled && surfaceRef.current.focus()}
+            className="a-select__label">
+            {label}
+          </div>
+        )}
         <ADropdown style={{width: "100%"}}>
           <div {...surfaceProps}>
-            <div className="a-select__label">
+            <div className="a-select__selection">
               {(selectedItem && selectedItem[itemText]) ||
                 selectedItem ||
                 placeholder}
@@ -213,6 +232,10 @@ ASelect.propTypes = {
     PropTypes.arrayOf(PropTypes.string),
     PropTypes.arrayOf(PropTypes.object)
   ]),
+  /**
+   * Sets the select label text.
+   */
+  label: PropTypes.node,
   /**
    * Handles the `selected` event.
    */

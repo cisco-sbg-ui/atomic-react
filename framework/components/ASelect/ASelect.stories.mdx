@@ -37,7 +37,7 @@ import ASelect from "@cisco-ats/atomic-react/ASelect";
           ];
           return (
             <>
-              <ASelect items={items} placeholder="Pick a Food Group" onSelected={item => setSelectedItem(item)} />
+              <ASelect label="Food Group" items={items} placeholder="Pick a Food Group" onSelected={item => setSelectedItem(item)} />
               <ADivider />
               <p>Selected Item: {JSON.stringify(selectedItem)}</p>
             </>
@@ -63,6 +63,7 @@ import ASelect from "@cisco-ats/atomic-react/ASelect";
           return (
             <>
               <ASelect
+                label="Food Group"
                 items={items}
                 itemText="name"
                 itemValue="id"
@@ -80,7 +81,7 @@ import ASelect from "@cisco-ats/atomic-react/ASelect";
   <Story name="usage-3">
     <AApp style={{minHeight: 200}}>
       <h3>Disabled Select</h3>
-      <ASelect disabled placeholder="Pick a Food Group" />
+      <ASelect disabled label="Food Group" placeholder="Pick a Food Group" />
     </AApp>
   </Story>
 </Preview>
@@ -110,7 +111,7 @@ The `ASelect` component inherits passed props.
           ];
           return (
             <>
-              <ASelect items={items} placeholder="Pick a Food Group" onSelected={item => setSelectedItem(item)} />
+              <ASelect label="Food Group" items={items} placeholder="Pick a Food Group" onSelected={item => setSelectedItem(item)} />
               <ADivider />
               <p>Selected Item: {JSON.stringify(selectedItem)}</p>
             </>
@@ -136,6 +137,7 @@ The `ASelect` component inherits passed props.
           return (
             <>
               <ASelect
+                label="Food Group"
                 items={items}
                 itemText="name"
                 itemValue="id"
@@ -153,7 +155,7 @@ The `ASelect` component inherits passed props.
   <Story name="dusk-3">
     <AApp theme="dusk" style={{minHeight: 200}}>
       <h3>Disabled Select</h3>
-      <ASelect disabled placeholder="Pick a Food Group" />
+      <ASelect label="Food Group" disabled placeholder="Pick a Food Group" />
     </AApp>
   </Story>
 </Preview>
@@ -165,3 +167,8 @@ the `ASelect` surface (the box with chevron) will select and focus previous/next
 on `up` or `down` keys for the `keydown` event.
 
 Unlike the `ADropdown` component, opening the menu will focus the selected item if one exists.
+
+Because the HTML `select` element is not used, the surface uses the
+[aria-labelledby](https://www.w3.org/TR/wai-aria/#aria-labelledby) attribute to refer to the
+label, if one is present.
+
