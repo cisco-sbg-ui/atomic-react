@@ -8,6 +8,7 @@ import {
 import AAlert from "./components/AAlert";
 import AApp from "./components/AApp";
 import AButton from "./components/AButton";
+import AButtonGroup from "./components/AButtonGroup";
 import ACheckbox from "./components/ACheckbox";
 import ADivider from "./components/ADivider";
 import {
@@ -47,6 +48,7 @@ export {
   AAlert,
   AApp,
   AButton,
+  AButtonGroup,
   ACheckbox,
   ADivider,
   ADropdown,

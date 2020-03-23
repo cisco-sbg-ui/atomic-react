@@ -1,7 +1,8 @@
 import PropTypes from "prop-types";
-import React, {forwardRef} from "react";
+import React, {forwardRef, useContext} from "react";
 
 import "./AButton.scss";
+import AButtonGroupContext from "../AButtonGroup/AButtonGroupContext";
 
 const AButton = forwardRef(
   (
@@ -12,17 +13,20 @@ const AButton = forwardRef(
       disabled,
       href,
       icon,
+      onClick,
       primary,
       secondary,
-      selected,
       target,
       tertiary,
       tertiaryAlt,
       type = "button",
+      value,
       ...rest
     },
     ref
   ) => {
+    const {selectedValues, toggleValue} = useContext(AButtonGroupContext);
+
     let className = "a-button focus-box-shadow a-button--";
 
     if (primary) {
@@ -41,7 +45,7 @@ const AButton = forwardRef(
       className += " disabled";
     }
 
-    if (selected) {
+    if (selectedValues && selectedValues.includes(value)) {
       className += " a-button--state-selected";
     }
 
@@ -57,7 +61,14 @@ const AButton = forwardRef(
     const props = {
       ...rest,
       ref,
-      className
+      className,
+      onClick: e => {
+        if (toggleValue) {
+          toggleValue(value);
+        }
+
+        onClick && onClick(e);
+      }
     };
 
     if (href) {
@@ -74,6 +85,7 @@ const AButton = forwardRef(
 
       props.disabled = disabled;
       props.type = type;
+      props.value = value;
     }
 
     return <TagName {...props}>{children}</TagName>;
@@ -109,10 +121,6 @@ AButton.propTypes = {
    * Toggles the `secondary` style variant.
    */
   secondary: PropTypes.bool,
-  /**
-   * Toggles the `selected` state. For use in toggle button group.
-   */
-  selected: PropTypes.bool,
   /**
    * If the `href` property is defined, the target can be set (ex: `_blank`, `_self`, `_parent`, `_top`)
    */

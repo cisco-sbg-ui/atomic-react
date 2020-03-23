@@ -72,6 +72,9 @@ $atomic-default: (
       "color--focus": map-get($cisco-blue, "burnt-1"),
       "color--disabled": map-get($cisco-blue, "base"),
       "opacity--disabled": $alpha-5
+    ),
+    "group": (
+      "color": map-get($grey, "darken-5")
     )
   ),
   "checkbox": (
