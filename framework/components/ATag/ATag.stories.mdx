@@ -112,6 +112,15 @@ The `ATag` component inherits passed props.
   </Story>
 </Preview>
 
+## Router Integrations
+
+Set the `component` property to your router's link type, for example:
+
+```
+// With react-router:
+<ATag component={RouterLink} to="/">Tag 1</ATag>
+```
+
 ## Accessibility Notes
 
 The `ATag` `click` event handler is triggered both by the `click` event and by the `keyDown` event for the `Enter` key.

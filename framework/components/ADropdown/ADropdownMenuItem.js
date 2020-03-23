@@ -9,6 +9,7 @@ const ADropdownMenuItem = forwardRef(
     {
       children,
       className: propsClassName,
+      component,
       href,
       onClick,
       onKeyDown,
@@ -50,8 +51,12 @@ const ADropdownMenuItem = forwardRef(
       props.target = target;
     }
 
-    if (href || onClick) {
+    if (href || onClick || component) {
       props.tabIndex = 0;
+    }
+
+    if (component) {
+      TagName = component;
     }
 
     return <TagName {...props}>{children}</TagName>;
@@ -59,6 +64,10 @@ const ADropdownMenuItem = forwardRef(
 );
 
 ADropdownMenuItem.propTypes = {
+  /**
+   * Sets the base component. Useful for integrating with routers.
+   */
+  component: PropTypes.elementType,
   /**
    * If specified, the component will render as an HTML link.
    */
