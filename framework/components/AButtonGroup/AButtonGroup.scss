@@ -1,0 +1,72 @@
+@import "../../styles";
+
+$btn-group-button-margin: 0;
+$btn-group-type-iconic-width: rem(1.75);
+$btn-group-type-iconic-padding: 0;
+$btn-group-icon-font-size: rem(1);
+
+@include theme(a-button-group) using ($theme) {
+  .a-button + .a-button {
+    border-left: $base-border-width solid transparent;
+  }
+
+  > .a-button {
+    background-color: transparent;
+    color: map-deep-get($theme, "button", "group", "color");
+    box-shadow: none;
+    border: $base-border-width solid
+      map-deep-get($theme, "base", "stroke-color");
+
+    &--state-selected {
+      border: $base-border-width solid
+        map-deep-get($theme, "base", "color--selected");
+      background-color: map-deep-get($theme, "base", "color--selected");
+      color: map-deep-get($theme, "base", "inverse-color");
+    }
+
+    &:hover {
+      color: map-deep-get($theme, "base", "inverse-color");
+      background-color: map-deep-get($theme, "base", "color--hover");
+      border-color: map-deep-get($theme, "base", "color--hover");
+    }
+
+    &:focus {
+      border-color: map-deep-get($theme, "base", "brand-color");
+      box-shadow: map-deep-get($theme, "base", "box-shadow");
+    }
+
+    &:active {
+      color: map-deep-get($theme, "base", "inverse-color");
+      background-color: map-deep-get($theme, "base", "color--active");
+      border-color: map-deep-get($theme, "base", "color--active");
+    }
+  }
+}
+
+.a-button-group {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  vertical-align: top;
+
+  .a-button + .a-button {
+    margin: $btn-group-button-margin;
+  }
+
+  > .a-button:not(:last-child),
+  > .a-button-group:not(:last-child) > .a-button {
+    @include border-right-radius(0);
+  }
+  > .a-button:not(:first-child),
+  > .a-button-group:not(:first-child) > .a-button {
+    @include border-left-radius(0);
+  }
+
+  .a-button + .a-button,
+  .a-button + .a-button-group,
+  .a-button-group + .a-button,
+  .a-button-group + .a-button-group {
+    margin-left: -$base-border-width;
+  }
+}

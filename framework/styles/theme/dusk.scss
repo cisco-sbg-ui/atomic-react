@@ -72,6 +72,9 @@ $atomic-dusk: (
       "color--focus": map-get($cisco-blue, "wash-1"),
       "color--disabled": lighten(map-get($dusk, "1"), 30%),
       "opacity--disabled": $alpha-5
+    ),
+    "group": (
+      "color": map-get($grey, "lighten-5")
     )
   ),
   "checkbox": (

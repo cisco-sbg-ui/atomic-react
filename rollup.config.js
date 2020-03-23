@@ -32,6 +32,7 @@ const config = {
     AAlert: "framework/components/AAlert",
     AApp: "framework/components/AApp",
     AButton: "framework/components/AButton",
+    AButtonGroup: "framework/components/AButtonGroup",
     ACheckbox: "framework/components/ACheckbox",
     ADivider: "framework/components/ADivider",
     ADropdown: "framework/components/ADropdown",

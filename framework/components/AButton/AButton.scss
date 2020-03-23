@@ -148,7 +148,11 @@ $btn-transition: color $transition-duration--extra-fast
   }
 
   &--icon {
-    padding: 0 10px;
+    padding: 0;
+
+    .a-icon {
+      padding: 6px;
+    }
   }
 }
 
