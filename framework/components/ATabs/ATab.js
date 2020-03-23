@@ -12,6 +12,7 @@ const ATab = forwardRef(
     {
       className: propsClassName,
       children,
+      component,
       href,
       onClick,
       onKeyDown,
@@ -72,13 +73,19 @@ const ATab = forwardRef(
       props.target = target;
     }
 
+    if (component) {
+      TagName = component;
+    }
+
     return <TagName {...props}>{children}</TagName>;
   }
 );
 
-ATab.contextType = ATabContext;
-
 ATab.propTypes = {
+  /**
+   * Sets the base component. Useful for integrating with routers.
+   */
+  component: PropTypes.elementType,
   /**
    * If specified, the component will render as an HTML link.
    */

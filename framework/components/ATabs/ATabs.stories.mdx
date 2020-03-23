@@ -134,6 +134,15 @@ Tabs will render in the DOM as anchor tags if the `href` property is defined.
   </Story>
 </Preview>
 
+## Router Integrations
+
+On `ATab`, set the `component` property to your router's link type, for example:
+
+```
+// With react-router:
+<ATab component={RouterLink} to="/">Tab 1</ATab>
+```
+
 ## Accessibility Notes
 
 By default, `ATabGroup` components are assigned the [WAI-ARIA](https://www.w3.org/WAI/standards-guidelines/aria/) role of [tabslist](https://www.w3.org/TR/wai-aria/#tabslist).

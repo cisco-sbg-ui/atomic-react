@@ -8,6 +8,7 @@ const AButton = forwardRef(
     {
       children,
       className: propsClassName,
+      component,
       disabled,
       href,
       icon,
@@ -67,6 +68,10 @@ const AButton = forwardRef(
         props.tabIndex = 0;
       }
     } else {
+      if (component) {
+        TagName = component;
+      }
+
       props.disabled = disabled;
       props.type = type;
     }
@@ -81,9 +86,9 @@ AButton.defaultProps = {
 
 AButton.propTypes = {
   /**
-   * A class name to append to the component.
+   * Sets the base component. Useful for integrating with routers.
    */
-  className: PropTypes.string,
+  component: PropTypes.elementType,
   /**
    * Toggles the `disabled` state.
    */
