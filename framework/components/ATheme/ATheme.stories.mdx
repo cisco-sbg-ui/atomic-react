@@ -1,0 +1,57 @@
+import { Meta, Preview, Story, Props, ColorPalette, ColorItem } from "@storybook/addon-docs/blocks";
+import {useState} from 'react'
+
+import LoremIpsum from "../../utils/lorem-ipsum"
+import {ATheme, useATheme} from "./"
+import AButtonGroup from "../AButtonGroup"
+import AButton from "../AButton"
+import YourComponent from "../../utils/storybook-function"
+
+<Meta title="Components/Theme" component={ATheme} />
+
+# Themes
+
+## Install
+
+In the target component add:
+
+```
+import {ATheme} from "@cisco-ats/atomic-react/ATheme";
+```
+
+`ATheme` is bundled with `AApp`. If you use `AApp`, `ATheme` is unnecessary.
+
+### Hook
+
+To access and modify the current theme, use the react hook provided:
+
+```
+import {useATheme} from "@cisco-ats/atomic-react/ATheme";
+```
+
+
+## Usage
+
+<Preview>
+  <Story name="usage-1">
+    <ATheme>
+      <YourComponent>
+        {() => {
+          const {currentTheme, setCurrentTheme} = useATheme();
+          return (
+            <div style={{padding:20, backgroundColor: currentTheme === "default" ? '#fff' : '#000'}}>
+              <AButtonGroup selectedValues={[currentTheme]} onChange={(_, selectedValues) => setCurrentTheme(selectedValues[0])}>
+                <AButton value="default">Default</AButton>
+                <AButton value="dusk">Dusk</AButton>
+              </AButtonGroup>
+            </div>
+          );
+        }}
+      </YourComponent>
+    </ATheme>
+  </Story>
+</Preview>
+
+## Props
+
+<Props of={ATheme} />
