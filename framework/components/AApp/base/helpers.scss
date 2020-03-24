@@ -1,15 +1,15 @@
 $helpers: (
   "overflow": (
     property: overflow,
-    values: auto hidden visible
+    values: auto hidden scroll visible
   ),
   "overflow-x": (
     property: overflow-x,
-    values: auto hidden
+    values: auto hidden scroll visible
   ),
   "overflow-y": (
     property: overflow-y,
-    values: auto hidden
+    values: auto hidden scroll visible
   ),
   "display": (
     responsive: true,

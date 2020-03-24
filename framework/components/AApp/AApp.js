@@ -1,6 +1,7 @@
 import PropTypes from "prop-types";
 import React, {createRef, forwardRef} from "react";
 
+import {ATheme} from "../ATheme";
 import AAppContext from "./AAppContext";
 import "./AApp.scss";
 
@@ -10,8 +11,9 @@ const AApp = forwardRef(
       animations = true,
       children,
       className: propsClassName,
+      defaultTheme,
+      persistTheme = false,
       scrollbars = true,
-      theme,
       ...rest
     },
     ref
@@ -21,8 +23,6 @@ const AApp = forwardRef(
     if (animations) {
       className += " a-app--animated";
     }
-
-    className += theme === "dusk" ? " theme--dusk" : " theme--default";
 
     if (propsClassName) {
       className += ` ${propsClassName}`;
@@ -41,12 +41,17 @@ const AApp = forwardRef(
     };
 
     return (
-      <div {...rest} ref={ref} className={className}>
+      <ATheme
+        {...rest}
+        ref={ref}
+        className={className}
+        persist={persistTheme}
+        defaultTheme={defaultTheme}>
         <AAppContext.Provider value={appContext}>
           <div className={wrapClassName}>{children}</div>
           <div ref={mountPointRef} className="a-app--mount"></div>
         </AAppContext.Provider>
-      </div>
+      </ATheme>
     );
   }
 );
@@ -62,13 +67,17 @@ AApp.propTypes = {
    */
   animations: PropTypes.bool,
   /**
+   * Sets the default theme.
+   */
+  defaultTheme: PropTypes.oneOf(["default", "dusk"]),
+  /**
+   * Toggles whether the theme is persisted in local storage.
+   */
+  persistTheme: PropTypes.bool,
+  /**
    * Toggles styled scrollbars.
    */
-  scrollbars: PropTypes.bool,
-  /**
-   * Sets the application theme.
-   */
-  theme: PropTypes.oneOf(["default", "dusk"])
+  scrollbars: PropTypes.bool
 };
 
 export default AApp;
