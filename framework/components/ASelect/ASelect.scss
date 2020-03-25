@@ -21,6 +21,10 @@ $select__menu-items-right: 0;
 $select__menu-items-left: 0;
 $select__menu-items-z-index: 999;
 $select-label-margin: 0;
+$checkmark-height: rem(0.75);
+$checkmark-width: rem(0.3125);
+$checkmark-border: 0 rem(0.125) rem(0.125) 0;
+$checkmark-rotation: 45deg;
 
 @include theme(a-select) using ($theme) {
   &__label {
@@ -156,7 +160,11 @@ $select-label-margin: 0;
 
       &--selected {
         &::after {
-          @include checkmark;
+          display: block;
+          width: $checkmark-width;
+          height: $checkmark-height;
+          border-width: $checkmark-border;
+          transform: rotate($checkmark-rotation);
           top: $select-padding;
           right: $select__menu-item-checkmark-right;
         }

@@ -9,6 +9,7 @@ import {Meta} from "@storybook/addon-docs/blocks";
 - add color palette to Application page
 - add field labels to `ATextInput` and `ATextarea`
 - add router integrations to `AButton`, `ADropdownMenuItem`, `ATab`
+- `ACheckbox` refactored and added custom colors.
 
 Added the following icons:
 
@@ -31,12 +32,14 @@ Added the following components:
 - `ASimpleTable`
 - `ATag`
 - `ATheme`
+- `AContainer`, `ARow`, `ACol`, `ASpacer`
 
 ### Breaking Changes
 
 - `ADropdown` interface has been changed to be keyboard accessible.
 - Removed `selected` property from `AButton`, and modified style variants.
 - Removed `AHeaderToolbar`, `AHeaderToolbarItem`, `AAccordionHeaderToolbar`, `AAccordionHeaderToolbarItem`
+- Input element style changed to fill container width (`ATextInput`, `ATextarea`, `ASelect`).
 
 ## 0.2.x
 

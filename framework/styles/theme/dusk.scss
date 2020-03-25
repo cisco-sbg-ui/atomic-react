@@ -77,11 +77,6 @@ $atomic-dusk: (
       "color": map-get($grey, "lighten-5")
     )
   ),
-  "checkbox": (
-    "box-color-active": map-get($cisco-blue, "base"),
-    "box-color-disabled": rgba(map-get($dusk, "1"), $alpha-3),
-    "box-color-selected": map-get($cisco-blue, "burnt-1")
-  ),
   "color": (
     "warning--state-hover": map-get($status-orange, "wash-1"),
     "error--state-hover": map-get($status-red, "wash-1")

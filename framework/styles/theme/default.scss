@@ -77,11 +77,6 @@ $atomic-default: (
       "color": map-get($grey, "darken-5")
     )
   ),
-  "checkbox": (
-    "box-color-active": map-get($cisco-blue, "burnt-2"),
-    "box-color-disabled": transparent,
-    "box-color-selected": map-get($cisco-blue, "burnt-1")
-  ),
   "color": (
     "warning--state-hover": map-get($status-orange, "burnt-2"),
     "error--state-hover": map-get($status-red, "burnt-2")

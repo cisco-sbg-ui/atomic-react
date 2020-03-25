@@ -6,6 +6,7 @@ import LoremIpsum from '../../utils/lorem-ipsum'
 import YourComponent from '../../utils/storybook-function'
 import ACheckbox from "./ACheckbox"
 import ADivider from "../ADivider"
+import ASelect from "../ASelect"
 
 <Meta title="Components/Checkboxes" component={ACheckbox} />
 
@@ -30,10 +31,11 @@ import ACheckbox from "@cisco-ats/atomic-react/ACheckbox";
       const [indeterminate, setIndeterminate] = useState(false);
       const [disabled, setDisabled] = useState(false);
       const [wrap, setWrap] = useState(false);
+      const [color, setColor] = useState("cisco-blue");
       return (
         <div>
           <h3>Example</h3>
-          <ACheckbox checked={checked} disabled={disabled} indeterminate={indeterminate} wrap={wrap}>
+          <ACheckbox checked={checked} color={color} disabled={disabled} indeterminate={indeterminate} wrap={wrap}>
             {LoremIpsum}
           </ACheckbox>
           <ADivider />
@@ -43,6 +45,7 @@ import ACheckbox from "@cisco-ats/atomic-react/ACheckbox";
             <ACheckbox checked={indeterminate} onClick={() => setIndeterminate(!indeterminate)}>Indeterminate State</ACheckbox>
             <ACheckbox checked={disabled} onClick={() => setDisabled(!disabled)}>Disabled State</ACheckbox>
             <ACheckbox checked={wrap} onClick={() => setWrap(!wrap)}>Wrap Label</ACheckbox>
+            <ASelect label="Color" items={["cisco-blue", "grape", "magenta--burnt-1", "fern--wash-1", "rgba(238, 85, 65, 0.8)"]} onSelected={value => setColor(value)} />
           </div>
         </div>
       );

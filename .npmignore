@@ -7,6 +7,7 @@ fonts/
 .editorconfig
 .eslintrc.json
 .gitignore
+.nowignore
 .prettierignore
 .prettierrc.js
 now.json
