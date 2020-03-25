@@ -1,6 +1,6 @@
 @import "../../styles";
 
-$textarea-width: 250px;
+$textarea-width: 100%;
 $textarea-label-margin: 0;
 
 @include theme(a-textarea) using ($theme) {

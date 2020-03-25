@@ -1,7 +1,7 @@
 @import "../../styles";
 
 $input-height: 28px;
-$input-width: 250px;
+$input-width: 100%;
 $search-margin: 10px 0;
 $text-input--prepend--pad-x: 5px;
 $text-input--prepend--pad-y: 7px;
@@ -89,6 +89,7 @@ $text-input-label-margin: 0;
 .a-text-input {
   position: relative;
   display: inline-block;
+  width: $input-width;
 
   &__label {
     display: block;

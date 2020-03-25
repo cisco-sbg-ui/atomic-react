@@ -78,7 +78,7 @@ $mark-bg: map-get($status-yellow, "wash-3") !default;
 // -----------------------------------------------------------------------------
 $page-width--min: 320px !default;
 $page-width--max: 1440px !default;
-$breakpoints: (
+$grid-breakpoints: (
   "xs": 479px,
   "sm": 767px,
   "md": 992px,
@@ -86,7 +86,51 @@ $breakpoints: (
   "xl": 1440px
 );
 $grid-columns: 12 !default;
+$grid-gutter: $spacer * 5 !default;
+$form-grid-gutter: $spacer * 2 !default;
 $grid-gutter-width: 30px !default;
+
+$container-padding-x: $grid-gutter / 2 !default;
+
+$grid-gutters: (
+  "xs": $grid-gutter / 12,
+  "sm": $grid-gutter / 6,
+  "md": $grid-gutter / 3,
+  "lg": $grid-gutter * 2/3,
+  "xl": $grid-gutter
+);
+
+$container-max-widths: (
+  "md": map-get($grid-breakpoints, "md") * 0.9375,
+  "lg": map-get($grid-breakpoints, "lg") * 0.9375,
+  "xl": map-get($grid-breakpoints, "xl") * 0.9375
+);
+
+$display-breakpoints: (
+  "print-only": "only print",
+  "screen-only": "only screen",
+  "xs-only":
+    "only screen and (max-width: #{map-get($grid-breakpoints, 'sm') - 1})",
+  "sm-only":
+    "only screen and (min-width: #{map-get($grid-breakpoints, 'sm')}) and (max-width: #{map-get($grid-breakpoints, 'md') - 1})",
+  "sm-and-down":
+    "only screen and (max-width: #{map-get($grid-breakpoints, 'md') - 1})",
+  "sm-and-up":
+    "only screen and (min-width: #{map-get($grid-breakpoints, 'sm')})",
+  "md-only":
+    "only screen and (min-width: #{map-get($grid-breakpoints, 'md')}) and (max-width: #{map-get($grid-breakpoints, 'lg') - 1})",
+  "md-and-down":
+    "only screen and (max-width: #{map-get($grid-breakpoints, 'lg') - 1})",
+  "md-and-up":
+    "only screen and (min-width: #{map-get($grid-breakpoints, 'md')})",
+  "lg-only":
+    "only screen and (min-width: #{map-get($grid-breakpoints, 'lg')}) and (max-width: #{map-get($grid-breakpoints, 'xl') - 1})",
+  "lg-and-down":
+    "only screen and (max-width: #{map-get($grid-breakpoints, 'xl') - 1})",
+  "lg-and-up":
+    "only screen and (min-width: #{map-get($grid-breakpoints, 'lg')})",
+  "xl-only": "only screen and (min-width: #{map-get($grid-breakpoints, 'xl')})"
+);
 // -----------------------------------------------------------------------------
 // Alert colors
 // -----------------------------------------------------------------------------

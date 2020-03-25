@@ -24,6 +24,7 @@ import {
   AHeaderNavigation
 } from "./components/AHeader";
 import AIcon from "./components/AIcon";
+import {AContainer, ARow, ACol, ASpacer} from "./components/ALayout";
 import {
   APanel,
   APanelHeader,
@@ -50,6 +51,8 @@ export {
   AButton,
   AButtonGroup,
   ACheckbox,
+  ACol,
+  AContainer,
   ADivider,
   ADropdown,
   ADropdownMenu,
@@ -67,8 +70,10 @@ export {
   APanelBody,
   APanelFooter,
   ARadio,
+  ARow,
   ASelect,
   ASimpleTable,
+  ASpacer,
   ATabGroup,
   ATab,
   ATabHeading,

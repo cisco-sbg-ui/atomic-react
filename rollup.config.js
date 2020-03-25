@@ -39,6 +39,7 @@ const config = {
     AFooter: "framework/components/AFooter",
     AHeader: "framework/components/AHeader",
     AIcon: "framework/components/AIcon",
+    ALayout: "framework/components/ALayout",
     APanel: "framework/components/APanel",
     ARadio: "framework/components/ARadio",
     ASelect: "framework/components/ASelect",
