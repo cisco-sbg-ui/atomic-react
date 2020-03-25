@@ -82,14 +82,6 @@
     clear: both;
   }
 }
-// Checkmark
-@mixin checkmark {
-  display: block;
-  width: $checkmark-width;
-  height: $checkmark-height;
-  border-width: $checkmark-border;
-  transform: rotate($checkmark-rotation);
-}
 // Hide the default input field. Used by Checkboxes, Radios Buttons.
 @mixin hidden-input {
   display: block;

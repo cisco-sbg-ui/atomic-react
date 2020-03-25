@@ -97,9 +97,12 @@ const ASelect = forwardRef(
       surfaceProps.onClick = () => {
         setIsOpen(!isOpen);
         setTimeout(() => {
-          dropdownMenuRef.current
-            .querySelectorAll(".a-dropdown__item")
-            [getSelectedIndex()].focus();
+          const selectedIndex = getSelectedIndex();
+          if (selectedIndex > -1) {
+            dropdownMenuRef.current
+              .querySelectorAll(".a-dropdown__item")
+              [selectedIndex].focus();
+          }
         }, 10);
       };
       if (isOpen) {
@@ -111,9 +114,12 @@ const ASelect = forwardRef(
           e.preventDefault();
           setIsOpen(!isOpen);
           setTimeout(() => {
-            dropdownMenuRef.current
-              .querySelectorAll(".a-dropdown__item")
-              [getSelectedIndex()].focus();
+            const selectedIndex = getSelectedIndex();
+            if (selectedIndex > -1) {
+              dropdownMenuRef.current
+                .querySelectorAll(".a-dropdown__item")
+                [selectedIndex].focus();
+            }
           }, 10);
         } else if (e.keyCode === keyCodes.up) {
           e.preventDefault();
