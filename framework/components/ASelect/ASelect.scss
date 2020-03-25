@@ -1,7 +1,7 @@
 @import "../../styles";
 
 $select-height: 28px;
-$select-width: 250px;
+$select-width: 100%;
 $select-padding: 6px;
 $select-swatch-width: 3px;
 $select__surface-order: 0;
@@ -20,7 +20,6 @@ $select__menu-items-margin: 0;
 $select__menu-items-right: 0;
 $select__menu-items-left: 0;
 $select__menu-items-z-index: 999;
-$select__margin-bottom: ($spacing * 0.75);
 $select-label-margin: 0;
 
 @include theme(a-select) using ($theme) {
@@ -99,8 +98,6 @@ $select-label-margin: 0;
   display: inline-block;
   flex: 1;
   width: $select-width;
-  max-width: $select-width;
-  margin-bottom: $select__margin-bottom;
 
   &__label {
     display: block;

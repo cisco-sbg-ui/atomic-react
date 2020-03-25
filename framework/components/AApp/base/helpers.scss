@@ -341,17 +341,11 @@ $helpers: (
   }
 }
 
-@mixin media-breakpoint-up($name, $breakpoints: $breakpoints) {
-  @media (min-width: map-get($breakpoints, $name)) {
-    @content;
-  }
-}
-
 @each $key, $utility in $helpers {
   @include generate-utility($utility, "");
 }
 
-@each $breakpoint in map-keys($breakpoints) {
+@each $breakpoint in map-keys($grid-breakpoints) {
   @include media-breakpoint-up($breakpoint) {
     $infix: "-#{$breakpoint}";
 
@@ -367,6 +361,18 @@ $helpers: (
   @each $key, $utility in $helpers {
     @if (map-get($utility, print) == true) {
       @include generate-utility($utility, "-print");
+    }
+  }
+}
+
+.a-app {
+  @each $size, $media_query in $display-breakpoints {
+    .hidden {
+      &-#{$size} {
+        @media #{$media_query} {
+          display: none !important;
+        }
+      }
     }
   }
 }
