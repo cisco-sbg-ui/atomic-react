@@ -22,7 +22,7 @@ import ASelect from "@cisco-ats/atomic-react/ASelect";
 
 <Preview>
   <Story name="usage-1">
-    <AApp style={{minHeight: 200, marginRight: 20}}>
+    <AApp style={{minHeight: 220, marginRight: 20}}>
       <h3>Simple Select</h3>
       <YourComponent>
         {() => {
@@ -37,7 +37,12 @@ import ASelect from "@cisco-ats/atomic-react/ASelect";
           ];
           return (
             <>
-              <ASelect label="Food Group" items={items} placeholder="Pick a Food Group" onSelected={item => setSelectedItem(item)} />
+              <ASelect
+                label="Food Group"
+                items={items}
+                placeholder="Pick a Food Group"
+                onSelected={(item) => setSelectedItem(item)}
+              />
               <ADivider />
               <p>Selected Item: {JSON.stringify(selectedItem)}</p>
             </>
@@ -47,7 +52,7 @@ import ASelect from "@cisco-ats/atomic-react/ASelect";
     </AApp>
   </Story>
   <Story name="usage-2">
-    <AApp style={{minHeight: 200, marginRight: 20}}>
+    <AApp style={{minHeight: 220, marginRight: 20}}>
       <h3>Typical Select</h3>
       <YourComponent>
         {() => {
@@ -68,7 +73,7 @@ import ASelect from "@cisco-ats/atomic-react/ASelect";
                 itemText="name"
                 itemValue="id"
                 placeholder="Pick a Food Group"
-                onSelected={item => setSelectedItem(item)}
+                onSelected={(item) => setSelectedItem(item)}
               />
               <ADivider />
               <p>Selected Item: {JSON.stringify(selectedItem)}</p>
@@ -79,7 +84,7 @@ import ASelect from "@cisco-ats/atomic-react/ASelect";
     </AApp>
   </Story>
   <Story name="usage-3">
-    <AApp style={{minHeight: 200}}>
+    <AApp style={{minHeight: 220}}>
       <h3>Disabled Select</h3>
       <ASelect disabled label="Food Group" placeholder="Pick a Food Group" />
     </AApp>
@@ -94,9 +99,9 @@ The `ASelect` component inherits passed props.
 
 ## Dusk Theme
 
-<Preview style={{backgroundColor: '#18191d'}}>
+<Preview style={{backgroundColor: "#18191d"}}>
   <Story name="dusk-1">
-    <AApp defaultTheme="dusk" style={{minHeight: 200, marginRight: 20}}>
+    <AApp defaultTheme="dusk" style={{minHeight: 220, marginRight: 20}}>
       <h3>Simple Select</h3>
       <YourComponent>
         {() => {
@@ -111,7 +116,12 @@ The `ASelect` component inherits passed props.
           ];
           return (
             <>
-              <ASelect label="Food Group" items={items} placeholder="Pick a Food Group" onSelected={item => setSelectedItem(item)} />
+              <ASelect
+                label="Food Group"
+                items={items}
+                placeholder="Pick a Food Group"
+                onSelected={(item) => setSelectedItem(item)}
+              />
               <ADivider />
               <p>Selected Item: {JSON.stringify(selectedItem)}</p>
             </>
@@ -121,7 +131,7 @@ The `ASelect` component inherits passed props.
     </AApp>
   </Story>
   <Story name="dusk-2">
-    <AApp defaultTheme="dusk" style={{minHeight: 200, marginRight: 20}}>
+    <AApp defaultTheme="dusk" style={{minHeight: 220, marginRight: 20}}>
       <h3>Typical Select</h3>
       <YourComponent>
         {() => {
@@ -142,7 +152,7 @@ The `ASelect` component inherits passed props.
                 itemText="name"
                 itemValue="id"
                 placeholder="Pick a Food Group"
-                onSelected={item => setSelectedItem(item)}
+                onSelected={(item) => setSelectedItem(item)}
               />
               <ADivider />
               <p>Selected Item: {JSON.stringify(selectedItem)}</p>
@@ -153,7 +163,7 @@ The `ASelect` component inherits passed props.
     </AApp>
   </Story>
   <Story name="dusk-3">
-    <AApp defaultTheme="dusk" style={{minHeight: 200}}>
+    <AApp defaultTheme="dusk" style={{minHeight: 220}}>
       <h3>Disabled Select</h3>
       <ASelect label="Food Group" disabled placeholder="Pick a Food Group" />
     </AApp>
@@ -171,4 +181,3 @@ Unlike the `ADropdown` component, opening the menu will focus the selected item 
 Because the HTML `select` element is not used, the surface uses the
 [aria-labelledby](https://www.w3.org/TR/wai-aria/#aria-labelledby) attribute to refer to the
 label, if one is present.
-

@@ -47,7 +47,8 @@ const config = {
     ATabs: "framework/components/ATabs",
     ATag: "framework/components/ATag",
     ATextarea: "framework/components/ATextarea",
-    ATextInput: "framework/components/ATextInput"
+    ATextInput: "framework/components/ATextInput",
+    ATheme: "framework/components/ATheme"
   },
   output: {
     format: "es",

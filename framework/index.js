@@ -39,6 +39,7 @@ import {ATabGroup, ATab, ATabHeading} from "./components/ATabs";
 import ATag from "./components/ATag";
 import ATextarea from "./components/ATextarea";
 import ATextInput from "./components/ATextInput";
+import {ATheme, useATheme} from "./components/ATheme";
 
 export {
   AAccordion,
@@ -79,5 +80,7 @@ export {
   ATabHeading,
   ATag,
   ATextarea,
-  ATextInput
+  ATextInput,
+  ATheme,
+  useATheme
 };

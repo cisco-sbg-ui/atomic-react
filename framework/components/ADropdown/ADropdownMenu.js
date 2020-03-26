@@ -25,10 +25,21 @@ const ADropdownMenu = forwardRef(
     const [launcherElement, setLauncherElement] = useState(null);
 
     useEffect(() => {
+      const close = (e) => {
+        if (e.target.closest(".a-dropdown") === null) {
+          onClose && onClose(e);
+        }
+      };
+
       if (open) {
+        document.addEventListener("click", close);
         setLauncherElement(document.activeElement);
         combinedRef.current.focus();
       }
+
+      return () => {
+        document.removeEventListener("click", close);
+      };
     }, [open]);
 
     let className = "a-dropdown__menu";
@@ -46,8 +57,9 @@ const ADropdownMenu = forwardRef(
         combinedRef.current.querySelectorAll(".a-dropdown__item[tabindex]")
       );
       return (
-        items[items.findIndex(x => x.isSameNode(document.activeElement)) - 1] ||
-        items[items.length - 1]
+        items[
+          items.findIndex((x) => x.isSameNode(document.activeElement)) - 1
+        ] || items[items.length - 1]
       );
     };
 
@@ -56,12 +68,13 @@ const ADropdownMenu = forwardRef(
         combinedRef.current.querySelectorAll(".a-dropdown__item[tabindex]")
       );
       return (
-        items[items.findIndex(x => x.isSameNode(document.activeElement)) + 1] ||
-        items[0]
+        items[
+          items.findIndex((x) => x.isSameNode(document.activeElement)) + 1
+        ] || items[0]
       );
     };
 
-    const blurHandler = e => {
+    const blurHandler = (e) => {
       onBlur && onBlur(e);
       if (
         !e.relatedTarget ||
@@ -74,17 +87,19 @@ const ADropdownMenu = forwardRef(
       }
     };
 
-    const closeHandler = e => {
+    const closeHandler = (e) => {
       launcherElement && launcherElement.focus();
       onClose && onClose(e);
     };
 
-    const clickHandler = e => {
-      onClick && onClick(e);
-      closeHandler(e);
+    const clickHandler = (e) => {
+      if (!e.target.hasAttribute("aria-disabled")) {
+        onClick && onClick(e);
+        closeHandler(e);
+      }
     };
 
-    const keyDownHandler = e => {
+    const keyDownHandler = (e) => {
       if (onClose && [keyCodes.esc, keyCodes.enter].includes(e.keyCode)) {
         e.preventDefault();
         closeHandler(e);
