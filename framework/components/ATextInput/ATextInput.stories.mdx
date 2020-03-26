@@ -1,9 +1,9 @@
-import { Meta, Preview, Story, Props } from '@storybook/addon-docs/blocks';
-import {useState} from 'react'
+import {Meta, Preview, Story, Props} from "@storybook/addon-docs/blocks";
+import {useState} from "react";
 
-import YourComponent from '../../utils/storybook-function'
-import AApp from '../AApp'
-import ATextInput from "./ATextInput"
+import YourComponent from "../../utils/storybook-function";
+import AApp from "../AApp";
+import ATextInput from "./ATextInput";
 
 <Meta title="Components/Text Inputs" component={ATextInput} />
 
@@ -21,23 +21,36 @@ import ATextInput from "@cisco-ats/atomic-react/ATextInput";
 
 <Preview>
   <Story name="usage-1">
-    <AApp>
+    <AApp style={{maxWidth: 250}}>
       <YourComponent>
-    {() => {
-      const [status, setStatus] = useState("default");
-      const [value, setValue] = useState("Clear Me ->");
-      return (
-        <ATextInput
-          appendIcon="close"
-          label="Location"
-          onChange={(e) => { setValue(e.target.value); setStatus(e.target.value.length === 0 ? "danger" : e.target.value.length < 3 ? "warning" : "default"); }}
-          onClickAppend={() => { setValue(""); setStatus("default"); }}
-          placeholder="ZIP or City, State"
-          prependIcon="global-view"
-          validationState={status}
-          value={value} />
-      );
-    }}
+        {() => {
+          const [status, setStatus] = useState("default");
+          const [value, setValue] = useState("Clear Me ->");
+          return (
+            <ATextInput
+              appendIcon="close"
+              label="Location"
+              onChange={(e) => {
+                setValue(e.target.value);
+                setStatus(
+                  e.target.value.length === 0
+                    ? "danger"
+                    : e.target.value.length < 3
+                    ? "warning"
+                    : "default"
+                );
+              }}
+              onClickAppend={() => {
+                setValue("");
+                setStatus("default");
+              }}
+              placeholder="ZIP or City, State"
+              prependIcon="global-view"
+              validationState={status}
+              value={value}
+            />
+          );
+        }}
       </YourComponent>
     </AApp>
   </Story>
@@ -53,36 +66,78 @@ The `ATextInput` component inherits passed props.
 
 <Preview>
   <Story name="validation-1">
-    <AApp>
+    <AApp style={{maxWidth: 250}}>
       <div className="mb-4">
         <ATextInput label="Label" placeholder="Normal" />
       </div>
       <div className="mb-4">
-        <ATextInput label="Label" placeholder="Normal" prependIcon="cisco" appendIcon="information" onClickPrepend={() => alert('Cisco Systems!')} />
+        <ATextInput
+          label="Label"
+          placeholder="Normal"
+          prependIcon="cisco"
+          appendIcon="information"
+          onClickPrepend={() => alert("Cisco Systems!")}
+        />
       </div>
       <div className="mb-4">
         <ATextInput label="Label" placeholder="Disabled" disabled />
       </div>
       <div className="mb-4">
-        <ATextInput label="Label" placeholder="Disabled" disabled prependIcon="cisco" appendIcon="information" onClickPrepend={() => alert('Cisco Systems!')} />
+        <ATextInput
+          label="Label"
+          placeholder="Disabled"
+          disabled
+          prependIcon="cisco"
+          appendIcon="information"
+          onClickPrepend={() => alert("Cisco Systems!")}
+        />
       </div>
       <div className="mb-4">
         <ATextInput label="Label" placeholder="Read Only State" readOnly />
       </div>
       <div className="mb-4">
-        <ATextInput label="Label" placeholder="Read Only State" readOnly prependIcon="cisco" appendIcon="information" onClickPrepend={() => alert('Cisco Systems!')} />
+        <ATextInput
+          label="Label"
+          placeholder="Read Only State"
+          readOnly
+          prependIcon="cisco"
+          appendIcon="information"
+          onClickPrepend={() => alert("Cisco Systems!")}
+        />
       </div>
       <div className="mb-4">
-        <ATextInput label="Label" validationState="warning" placeholder="Warning State" />
+        <ATextInput
+          label="Label"
+          validationState="warning"
+          placeholder="Warning State"
+        />
       </div>
       <div className="mb-4">
-        <ATextInput label="Label" validationState="warning" placeholder="Warning" prependIcon="cisco" appendIcon="information" onClickPrepend={() => alert('Cisco Systems!')} />
+        <ATextInput
+          label="Label"
+          validationState="warning"
+          placeholder="Warning"
+          prependIcon="cisco"
+          appendIcon="information"
+          onClickPrepend={() => alert("Cisco Systems!")}
+        />
       </div>
       <div className="mb-4">
-        <ATextInput label="Label" validationState="danger" placeholder="Danger State" />
+        <ATextInput
+          label="Label"
+          validationState="danger"
+          placeholder="Danger State"
+        />
       </div>
       <div className="mb-4">
-        <ATextInput label="Label" validationState="danger" placeholder="Danger State" prependIcon="cisco" appendIcon="information" onClickPrepend={() => alert('Cisco Systems!')} />
+        <ATextInput
+          label="Label"
+          validationState="danger"
+          placeholder="Danger State"
+          prependIcon="cisco"
+          appendIcon="information"
+          onClickPrepend={() => alert("Cisco Systems!")}
+        />
       </div>
     </AApp>
   </Story>
@@ -90,38 +145,80 @@ The `ATextInput` component inherits passed props.
 
 ## Dusk Theme
 
-<Preview style={{backgroundColor: '#18191d'}}>
+<Preview style={{backgroundColor: "#18191d"}}>
   <Story name="dusk-1">
-    <AApp defaultTheme="dusk">
+    <AApp defaultTheme="dusk" style={{maxWidth: 250}}>
       <div className="mb-4">
         <ATextInput label="Label" placeholder="Normal" />
       </div>
       <div className="mb-4">
-        <ATextInput label="Label" placeholder="Normal" prependIcon="cisco" appendIcon="information" onClickPrepend={() => alert('Cisco Systems!')} />
+        <ATextInput
+          label="Label"
+          placeholder="Normal"
+          prependIcon="cisco"
+          appendIcon="information"
+          onClickPrepend={() => alert("Cisco Systems!")}
+        />
       </div>
       <div className="mb-4">
         <ATextInput label="Label" placeholder="Disabled" disabled />
       </div>
       <div className="mb-4">
-        <ATextInput label="Label" placeholder="Disabled" disabled prependIcon="cisco" appendIcon="information" onClickPrepend={() => alert('Cisco Systems!')} />
+        <ATextInput
+          label="Label"
+          placeholder="Disabled"
+          disabled
+          prependIcon="cisco"
+          appendIcon="information"
+          onClickPrepend={() => alert("Cisco Systems!")}
+        />
       </div>
       <div className="mb-4">
         <ATextInput label="Label" placeholder="Read Only State" readOnly />
       </div>
       <div className="mb-4">
-        <ATextInput label="Label" placeholder="Read Only State" readOnly prependIcon="cisco" appendIcon="information" onClickPrepend={() => alert('Cisco Systems!')} />
+        <ATextInput
+          label="Label"
+          placeholder="Read Only State"
+          readOnly
+          prependIcon="cisco"
+          appendIcon="information"
+          onClickPrepend={() => alert("Cisco Systems!")}
+        />
       </div>
       <div className="mb-4">
-        <ATextInput label="Label" validationState="warning" placeholder="Warning State" />
+        <ATextInput
+          label="Label"
+          validationState="warning"
+          placeholder="Warning State"
+        />
       </div>
       <div className="mb-4">
-        <ATextInput label="Label" validationState="warning" placeholder="Warning" prependIcon="cisco" appendIcon="information" onClickPrepend={() => alert('Cisco Systems!')} />
+        <ATextInput
+          label="Label"
+          validationState="warning"
+          placeholder="Warning"
+          prependIcon="cisco"
+          appendIcon="information"
+          onClickPrepend={() => alert("Cisco Systems!")}
+        />
       </div>
       <div className="mb-4">
-        <ATextInput label="Label" validationState="danger" placeholder="Danger State" />
+        <ATextInput
+          label="Label"
+          validationState="danger"
+          placeholder="Danger State"
+        />
       </div>
       <div className="mb-4">
-        <ATextInput label="Label" validationState="danger" placeholder="Danger State" prependIcon="cisco" appendIcon="information" onClickPrepend={() => alert('Cisco Systems!')} />
+        <ATextInput
+          label="Label"
+          validationState="danger"
+          placeholder="Danger State"
+          prependIcon="cisco"
+          appendIcon="information"
+          onClickPrepend={() => alert("Cisco Systems!")}
+        />
       </div>
     </AApp>
   </Story>
@@ -133,7 +230,7 @@ Animations are enabled by default on the `AApp` component and can be disabled.
 
 <Preview>
   <Story name="animations-1">
-    <AApp>
+    <AApp style={{marginRight: 20}}>
       <ATextInput label="Label" placeholder="Animated" />
     </AApp>
   </Story>

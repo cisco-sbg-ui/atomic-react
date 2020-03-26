@@ -9,7 +9,10 @@ const ATextarea = forwardRef(
   (
     {
       className: propsClassName,
+      disabled,
       label,
+      placeholder,
+      readOnly,
       rows = "3",
       validationState = "default",
       ...rest
@@ -39,6 +42,9 @@ const ATextarea = forwardRef(
         )}
         <textarea
           id={`a-textarea__field_${textareaId}`}
+          disabled={disabled}
+          placeholder={placeholder}
+          readOnly={readOnly}
           rows={rows}
           className={fieldClassName}
         />

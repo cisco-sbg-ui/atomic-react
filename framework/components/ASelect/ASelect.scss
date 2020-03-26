@@ -67,22 +67,27 @@ $checkmark-rotation: 45deg;
   }
 
   &__menu-item {
-    &::after {
-      border-color: $white;
+    &--selected {
+      &::after {
+        border-color: map-deep-get($theme, "select", "border-color--focus");
+      }
+
+      &:focus {
+        &::after {
+          border-color: $white;
+        }
+      }
+
+      &:hover {
+        &:after {
+          border-color: $white;
+        }
+      }
     }
 
     &:hover {
       color: $white;
       background-color: map-deep-get($theme, "base", "color--hover");
-    }
-
-    &--selected {
-      &:hover::after {
-        border-color: $white;
-      }
-      &::after {
-        border-color: map-deep-get($theme, "select", "border-color--focus");
-      }
     }
 
     &--active,
@@ -155,19 +160,23 @@ $checkmark-rotation: 45deg;
         content: "";
         border-style: solid;
         display: none;
+        height: $checkmark-height;
         position: absolute;
+        width: $checkmark-width;
+        border-width: $checkmark-border;
+        transform: rotate($checkmark-rotation);
+        top: $select-padding;
+        right: $select__menu-item-checkmark-right;
       }
 
       &--selected {
         &::after {
           display: block;
-          width: $checkmark-width;
-          height: $checkmark-height;
-          border-width: $checkmark-border;
-          transform: rotate($checkmark-rotation);
-          top: $select-padding;
-          right: $select__menu-item-checkmark-right;
         }
+      }
+
+      &[aria-disabled] {
+        cursor: default;
       }
     }
   }

@@ -1,7 +1,7 @@
-import { Meta, Preview, Story, Props } from '@storybook/addon-docs/blocks';
+import {Meta, Preview, Story, Props} from "@storybook/addon-docs/blocks";
 
-import AApp from '../AApp'
-import ATextarea from "./ATextarea"
+import AApp from "../AApp";
+import ATextarea from "./ATextarea";
 
 <Meta title="Components/Textareas" component={ATextarea} />
 
@@ -19,7 +19,7 @@ import ATextarea from "@cisco-ats/atomic-react/ATextarea";
 
 <Preview>
   <Story name="usage-1">
-    <AApp>
+    <AApp style={{maxWidth: 250}}>
       <div className="mb-4">
         <ATextarea label="Label" placeholder="Normal" />
       </div>
@@ -30,10 +30,18 @@ import ATextarea from "@cisco-ats/atomic-react/ATextarea";
         <ATextarea label="Label" placeholder="Read Only State" readOnly />
       </div>
       <div className="mb-4">
-        <ATextarea label="Label" validationState="warning" placeholder="Warning State" />
+        <ATextarea
+          label="Label"
+          validationState="warning"
+          placeholder="Warning State"
+        />
       </div>
       <div className="mb-4">
-        <ATextarea label="Label" validationState="danger" placeholder="Error State" />
+        <ATextarea
+          label="Label"
+          validationState="danger"
+          placeholder="Error State"
+        />
       </div>
     </AApp>
   </Story>
@@ -47,9 +55,9 @@ The `ATextarea` component inherits passed props.
 
 ## Dusk Theme
 
-<Preview style={{backgroundColor: '#18191d'}}>
+<Preview style={{backgroundColor: "#18191d"}}>
   <Story name="dusk-1">
-    <AApp defaultTheme="dusk">
+    <AApp defaultTheme="dusk" style={{maxWidth: 250}}>
       <div className="mb-4">
         <ATextarea label="Label" placeholder="Normal" />
       </div>
@@ -60,10 +68,18 @@ The `ATextarea` component inherits passed props.
         <ATextarea label="Label" placeholder="Read Only State" readOnly />
       </div>
       <div className="mb-4">
-        <ATextarea label="Label" validationState="warning" placeholder="Warning State" />
+        <ATextarea
+          label="Label"
+          validationState="warning"
+          placeholder="Warning State"
+        />
       </div>
       <div className="mb-4">
-        <ATextarea label="Label" validationState="danger" placeholder="Error State" />
+        <ATextarea
+          label="Label"
+          validationState="danger"
+          placeholder="Error State"
+        />
       </div>
     </AApp>
   </Story>
@@ -75,7 +91,7 @@ Animations are enabled by default on the `AApp` component and can be disabled.
 
 <Preview>
   <Story name="animations-1">
-    <AApp>
+    <AApp style={{marginRight: 20}}>
       <ATextarea label="Label" placeholder="Animated" />
     </AApp>
   </Story>

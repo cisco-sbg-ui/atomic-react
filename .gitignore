@@ -4,6 +4,7 @@
 /helpers*.js
 /style-inject*.js
 /index*.js
+/useA*.js
 /_rollupPluginBabelHelpers*
 
 .now
