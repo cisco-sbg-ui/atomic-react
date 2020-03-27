@@ -35,7 +35,7 @@ const ATextInput = forwardRef(
   ) => {
     const [textInputId] = useState(textInputCounter++);
 
-    const onClickPrependKeyDown = e => {
+    const onClickPrependKeyDown = (e) => {
       if (
         onClickPrepend &&
         [keyCodes.enter, keyCodes.space].includes(e.keyCode)
@@ -45,7 +45,7 @@ const ATextInput = forwardRef(
       }
     };
 
-    const onClickAppendKeyDown = e => {
+    const onClickAppendKeyDown = (e) => {
       if (
         onClickAppend &&
         [keyCodes.enter, keyCodes.space].includes(e.keyCode)

@@ -1,9 +1,9 @@
-import { Meta, Preview, Story, Props } from '@storybook/addon-docs/blocks';
-import {useState} from 'react'
+import {Meta, Preview, Story, Props} from "@storybook/addon-docs/blocks";
+import {useState} from "react";
 
-import AApp from '../AApp'
-import YourComponent from '../../utils/storybook-function'
-import {ATabGroup, ATab, ATabHeading} from './'
+import AApp from "../AApp";
+import YourComponent from "../../utils/storybook-function";
+import {ATabGroup, ATab, ATabHeading} from "./";
 
 <Meta title="Components/Tabs" component={ATabGroup} />
 
@@ -53,7 +53,9 @@ Tabs will render in the DOM as anchor tags if the `href` property is defined.
       <ATabGroup tall>
         <ATab selected>One</ATab>
         <ATab href="https://www.github.com">GitHub</ATab>
-        <ATab href="https://www.cisco.com" target="_blank">Cisco.com</ATab>
+        <ATab href="https://www.cisco.com" target="_blank">
+          Cisco.com
+        </ATab>
       </ATabGroup>
     </AApp>
   </Story>
@@ -98,10 +100,9 @@ Tabs will render in the DOM as anchor tags if the `href` property is defined.
   </Story>
 </Preview>
 
-
 ## Dusk Theme
 
-<Preview style={{backgroundColor: '#18191d'}}>
+<Preview style={{backgroundColor: "#18191d"}}>
   <Story name="dusk-1">
     <AApp defaultTheme="dusk">
       <ATabGroup>

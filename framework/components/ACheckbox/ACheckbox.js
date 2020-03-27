@@ -74,7 +74,7 @@ const ACheckbox = forwardRef(
           onChange={() => {}}
           onClick={onClick}
           role="checkbox"
-          ref={el =>
+          ref={(el) =>
             el && ((el.indeterminate = indeterminate) || (el.checked = checked))
           }
         />

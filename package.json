@@ -1,12 +1,11 @@
 {
   "name": "@cisco-ats/atomic-react",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "",
   "main": "index.js",
   "module": "index.js",
   "scripts": {
     "build": "rollup -c && build-storybook -s .storybook/public -c .storybook -o docs --docs",
-    "now-build": "",
     "start": "rollup -c && start-storybook -s .storybook/public --docs"
   },
   "peerDependencies": {

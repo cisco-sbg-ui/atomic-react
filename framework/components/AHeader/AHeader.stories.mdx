@@ -1,13 +1,13 @@
-import { Meta, Preview, Story, Props } from '@storybook/addon-docs/blocks';
-import {useState} from 'react'
+import {Meta, Preview, Story, Props} from "@storybook/addon-docs/blocks";
+import {useState} from "react";
 
-import AApp from '../AApp'
-import AButton from '../AButton'
-import LoremIpsum from '../../utils/lorem-ipsum'
-import YourComponent from '../../utils/storybook-function'
-import {AHeader, AHeaderLogo, AHeaderTitle, AHeaderNavigation} from "./"
-import AIcon from '../AIcon'
-import {ATabGroup, ATab} from '../ATabs'
+import AApp from "../AApp";
+import AButton from "../AButton";
+import LoremIpsum from "../../utils/lorem-ipsum";
+import YourComponent from "../../utils/storybook-function";
+import {AHeader, AHeaderLogo, AHeaderTitle, AHeaderNavigation} from "./";
+import AIcon from "../AIcon";
+import {ATabGroup, ATab} from "../ATabs";
 
 <Meta title="Components/Headers" component={AHeader} />
 
@@ -35,14 +35,10 @@ import {
         <AHeaderLogo href="#cisco">
           <AIcon>cisco</AIcon>
         </AHeaderLogo>
-        <AHeaderTitle>
-          Product Name
-        </AHeaderTitle>
+        <AHeaderTitle>Product Name</AHeaderTitle>
         <AHeaderNavigation>
           <ATabGroup tall>
-            <ATab selected>
-              Demo Tab
-            </ATab>
+            <ATab selected>Demo Tab</ATab>
             <ATab href="https://www.cisco.com" target="_blank">
               Cisco.com
             </ATab>
@@ -85,21 +81,17 @@ The `AHeaderNavigation` component inherits passed props.
 
 ## Dusk Theme
 
-<Preview style={{backgroundColor: '#18191d'}}>
+<Preview style={{backgroundColor: "#18191d"}}>
   <Story name="dusk-1">
     <AApp defaultTheme="dusk">
       <AHeader>
         <AHeaderLogo href="#cisco">
           <AIcon>cisco</AIcon>
         </AHeaderLogo>
-        <AHeaderTitle>
-          Product Name
-        </AHeaderTitle>
+        <AHeaderTitle>Product Name</AHeaderTitle>
         <AHeaderNavigation>
           <ATabGroup tall>
-            <ATab selected>
-              Demo Tab
-            </ATab>
+            <ATab selected>Demo Tab</ATab>
             <ATab href="https://www.cisco.com" target="_blank">
               Cisco.com
             </ATab>

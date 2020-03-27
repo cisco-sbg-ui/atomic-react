@@ -1,12 +1,12 @@
-import { Meta, Preview, Story, Props } from '@storybook/addon-docs/blocks';
-import {useState} from 'react'
+import {Meta, Preview, Story, Props} from "@storybook/addon-docs/blocks";
+import {useState} from "react";
 
-import AApp from '../AApp'
-import LoremIpsum from '../../utils/lorem-ipsum'
-import YourComponent from '../../utils/storybook-function'
-import ACheckbox from "./ACheckbox"
-import ADivider from "../ADivider"
-import ASelect from "../ASelect"
+import AApp from "../AApp";
+import LoremIpsum from "../../utils/lorem-ipsum";
+import YourComponent from "../../utils/storybook-function";
+import ACheckbox from "./ACheckbox";
+import ADivider from "../ADivider";
+import ASelect from "../ASelect";
 
 <Meta title="Components/Checkboxes" component={ACheckbox} />
 
@@ -26,30 +26,59 @@ import ACheckbox from "@cisco-ats/atomic-react/ACheckbox";
   <Story name="usage-1">
     <AApp>
       <YourComponent>
-    {() => {
-      const [checked, setChecked] = useState(false);
-      const [indeterminate, setIndeterminate] = useState(false);
-      const [disabled, setDisabled] = useState(false);
-      const [wrap, setWrap] = useState(false);
-      const [color, setColor] = useState("cisco-blue");
-      return (
-        <div>
-          <h3>Example</h3>
-          <ACheckbox checked={checked} color={color} disabled={disabled} indeterminate={indeterminate} wrap={wrap}>
-            {LoremIpsum}
-          </ACheckbox>
-          <ADivider />
-          <h3>Options</h3>
-          <div className="d-flex mt-4 flex-column">
-            <ACheckbox checked={checked} onClick={() => setChecked(!checked)}>Checked State</ACheckbox>
-            <ACheckbox checked={indeterminate} onClick={() => setIndeterminate(!indeterminate)}>Indeterminate State</ACheckbox>
-            <ACheckbox checked={disabled} onClick={() => setDisabled(!disabled)}>Disabled State</ACheckbox>
-            <ACheckbox checked={wrap} onClick={() => setWrap(!wrap)}>Wrap Label</ACheckbox>
-            <ASelect label="Color" items={["cisco-blue", "grape", "magenta--burnt-1", "fern--wash-1", "rgba(238, 85, 65, 0.8)"]} onSelected={value => setColor(value)} />
-          </div>
-        </div>
-      );
-    }}
+        {() => {
+          const [checked, setChecked] = useState(false);
+          const [indeterminate, setIndeterminate] = useState(false);
+          const [disabled, setDisabled] = useState(false);
+          const [wrap, setWrap] = useState(false);
+          const [color, setColor] = useState("cisco-blue");
+          return (
+            <div>
+              <h3>Example</h3>
+              <ACheckbox
+                checked={checked}
+                color={color}
+                disabled={disabled}
+                indeterminate={indeterminate}
+                wrap={wrap}>
+                {LoremIpsum}
+              </ACheckbox>
+              <ADivider />
+              <h3>Options</h3>
+              <div className="d-flex mt-4 flex-column">
+                <ACheckbox
+                  checked={checked}
+                  onClick={() => setChecked(!checked)}>
+                  Checked State
+                </ACheckbox>
+                <ACheckbox
+                  checked={indeterminate}
+                  onClick={() => setIndeterminate(!indeterminate)}>
+                  Indeterminate State
+                </ACheckbox>
+                <ACheckbox
+                  checked={disabled}
+                  onClick={() => setDisabled(!disabled)}>
+                  Disabled State
+                </ACheckbox>
+                <ACheckbox checked={wrap} onClick={() => setWrap(!wrap)}>
+                  Wrap Label
+                </ACheckbox>
+                <ASelect
+                  label="Color"
+                  items={[
+                    "cisco-blue",
+                    "grape",
+                    "magenta--burnt-1",
+                    "fern--wash-1",
+                    "rgba(238, 85, 65, 0.8)"
+                  ]}
+                  onSelected={(value) => setColor(value)}
+                />
+              </div>
+            </div>
+          );
+        }}
       </YourComponent>
     </AApp>
   </Story>
@@ -63,34 +92,22 @@ The `ACheckbox` component inherits passed props.
 
 ## Dusk Theme
 
-<Preview style={{backgroundColor: '#18191d'}}>
+<Preview style={{backgroundColor: "#18191d"}}>
   <Story name="dusk-1">
     <AApp defaultTheme="dusk">
       <div className="d-flex flex-column">
-        <ACheckbox>
-          Default
-        </ACheckbox>
-        <ACheckbox checked>
-          Checked
-        </ACheckbox>
-        <ACheckbox indeterminate>
-          Indeterminate
-        </ACheckbox>
-        <ACheckbox disabled>
-          Disabled
-        </ACheckbox>
+        <ACheckbox>Default</ACheckbox>
+        <ACheckbox checked>Checked</ACheckbox>
+        <ACheckbox indeterminate>Indeterminate</ACheckbox>
+        <ACheckbox disabled>Disabled</ACheckbox>
         <ACheckbox disabled checked>
           Disabled and Checked
         </ACheckbox>
         <ACheckbox disabled indeterminate>
           Disabled and Indeterminate
         </ACheckbox>
-        <ACheckbox>
-          Very long truncated text. {LoremIpsum}
-        </ACheckbox>
-        <ACheckbox wrap>
-          Very long wrapping text. {LoremIpsum}
-        </ACheckbox>
+        <ACheckbox>Very long truncated text. {LoremIpsum}</ACheckbox>
+        <ACheckbox wrap>Very long wrapping text. {LoremIpsum}</ACheckbox>
       </div>
     </AApp>
   </Story>
@@ -104,28 +121,28 @@ Animations are enabled by default on the `AApp` component and can be disabled.
   <Story name="animations-1">
     <AApp>
       <YourComponent>
-    {() => {
-      const [checked, setChecked] = useState(false);
-      return (
-        <ACheckbox checked={checked} onClick={() => setChecked(!checked)}>
-          Animated
-        </ACheckbox>
-      );
-    }}
+        {() => {
+          const [checked, setChecked] = useState(false);
+          return (
+            <ACheckbox checked={checked} onClick={() => setChecked(!checked)}>
+              Animated
+            </ACheckbox>
+          );
+        }}
       </YourComponent>
     </AApp>
   </Story>
   <Story name="animations-2">
     <AApp animations={false}>
       <YourComponent>
-    {() => {
-      const [checked, setChecked] = useState(false);
-      return (
-        <ACheckbox checked={checked} onClick={() => setChecked(!checked)}>
-          Not Animated
-        </ACheckbox>
-      );
-    }}
+        {() => {
+          const [checked, setChecked] = useState(false);
+          return (
+            <ACheckbox checked={checked} onClick={() => setChecked(!checked)}>
+              Not Animated
+            </ACheckbox>
+          );
+        }}
       </YourComponent>
     </AApp>
   </Story>

@@ -1,17 +1,13 @@
-import { Meta, Preview, Story, Props } from '@storybook/addon-docs/blocks';
-import {useState} from 'react'
+import {Meta, Preview, Story, Props} from "@storybook/addon-docs/blocks";
+import {useState} from "react";
 
-import AApp from '../AApp';
-import AButton from '../AButton';
-import AIcon from '../AIcon';
-import {
-  ADropdown,
-  ADropdownMenu,
-  ADropdownMenuItem
-} from '../ADropdown';
+import AApp from "../AApp";
+import AButton from "../AButton";
+import AIcon from "../AIcon";
+import {ADropdown, ADropdownMenu, ADropdownMenuItem} from "../ADropdown";
 
-import LoremIpsum from '../../utils/lorem-ipsum'
-import YourComponent from '../../utils/storybook-function'
+import LoremIpsum from "../../utils/lorem-ipsum";
+import YourComponent from "../../utils/storybook-function";
 
 import {
   AAccordion,
@@ -45,41 +41,53 @@ import {
   <Story name="usage-1">
     <AApp>
       <YourComponent>
-      {() => {
-        const [active, setActive] = useState(false);
-        return (
-        <AAccordion bordered>
-          <AAccordionPanel>
-            <AAccordionHeader>
-              <AAccordionHeaderTitle chevron={false}>Accordion Item 1</AAccordionHeaderTitle>
-              <ADropdown>
-                <AButton icon tertiaryAlt onClick={() => setActive(!active)}>
-                  <AIcon>ellipsis-horizontal</AIcon>
-                </AButton>
-                <ADropdownMenu open={active} onClose={() => setActive(false)} style={{top:27,right:0}}>
-                  <ADropdownMenuItem>See More</ADropdownMenuItem>
-                </ADropdownMenu>
-              </ADropdown>
-            </AAccordionHeader>
-          </AAccordionPanel>
-          <AAccordionPanel collapsed={false}>
-            <AAccordionHeader>
-              <AAccordionHeaderTitle>Accordion Item 2</AAccordionHeaderTitle>
-            </AAccordionHeader>
-            <AAccordionBody>{LoremIpsum}</AAccordionBody>
-          </AAccordionPanel>
-          <AAccordionPanel>
-            <AAccordionHeader>
-              <AAccordionHeaderTitle>Accordion Item 3</AAccordionHeaderTitle>
-              <AButton icon tertiaryAlt href="/" target="_blank">
-                <AIcon>information</AIcon>
-              </AButton>
-            </AAccordionHeader>
-            <AAccordionBody>{LoremIpsum}</AAccordionBody>
-          </AAccordionPanel>
-        </AAccordion>
-        );
-      }}
+        {() => {
+          const [active, setActive] = useState(false);
+          return (
+            <AAccordion bordered>
+              <AAccordionPanel>
+                <AAccordionHeader>
+                  <AAccordionHeaderTitle chevron={false}>
+                    Accordion Item 1
+                  </AAccordionHeaderTitle>
+                  <ADropdown>
+                    <AButton
+                      icon
+                      tertiaryAlt
+                      onClick={() => setActive(!active)}>
+                      <AIcon>ellipsis-horizontal</AIcon>
+                    </AButton>
+                    <ADropdownMenu
+                      open={active}
+                      onClose={() => setActive(false)}
+                      style={{top: 27, right: 0}}>
+                      <ADropdownMenuItem>See More</ADropdownMenuItem>
+                    </ADropdownMenu>
+                  </ADropdown>
+                </AAccordionHeader>
+              </AAccordionPanel>
+              <AAccordionPanel collapsed={false}>
+                <AAccordionHeader>
+                  <AAccordionHeaderTitle>
+                    Accordion Item 2
+                  </AAccordionHeaderTitle>
+                </AAccordionHeader>
+                <AAccordionBody>{LoremIpsum}</AAccordionBody>
+              </AAccordionPanel>
+              <AAccordionPanel>
+                <AAccordionHeader>
+                  <AAccordionHeaderTitle>
+                    Accordion Item 3
+                  </AAccordionHeaderTitle>
+                  <AButton icon tertiaryAlt href="/" target="_blank">
+                    <AIcon>information</AIcon>
+                  </AButton>
+                </AAccordionHeader>
+                <AAccordionBody>{LoremIpsum}</AAccordionBody>
+              </AAccordionPanel>
+            </AAccordion>
+          );
+        }}
       </YourComponent>
     </AApp>
   </Story>
@@ -90,61 +98,78 @@ import {
 All Accordion components (`AAccordion`, `AAccordionPanel`, `AAccordionHeader`, `AAccordionHeaderTitle`, `AAccordionBody`) inherit passed props.
 
 ### Accordion Props
+
 <Props of={AAccordion} />
 
 ### AccordionPanel Props
+
 <Props of={AAccordionPanel} />
 
 ### AccordionHeader Props
+
 <Props of={AAccordionHeader} />
 
 ### AccordionHeaderTitle Props
+
 <Props of={AAccordionHeaderTitle} />
 
 ### AccordionBody Props
+
 <Props of={AAccordionBody} />
 
 ## Dusk Theme
 
-<Preview style={{backgroundColor: '#18191d'}}>
+<Preview style={{backgroundColor: "#18191d"}}>
   <Story name="dusk-1">
     <AApp defaultTheme="dusk">
       <YourComponent>
-      {() => {
-        const [active, setActive] = useState(false);
-        return (
-        <AAccordion bordered>
-          <AAccordionPanel>
-            <AAccordionHeader>
-              <AAccordionHeaderTitle chevron={false}>Accordion Item 1</AAccordionHeaderTitle>
-              <ADropdown>
-                <AButton icon tertiaryAlt onClick={() => setActive(!active)}>
-                  <AIcon>ellipsis-horizontal</AIcon>
-                </AButton>
-                <ADropdownMenu open={active} onClose={() => setActive(false)} style={{top:27,right:0}}>
-                  <ADropdownMenuItem>See More</ADropdownMenuItem>
-                </ADropdownMenu>
-              </ADropdown>
-            </AAccordionHeader>
-          </AAccordionPanel>
-          <AAccordionPanel collapsed={false}>
-            <AAccordionHeader>
-              <AAccordionHeaderTitle>Accordion Item 2</AAccordionHeaderTitle>
-            </AAccordionHeader>
-            <AAccordionBody>{LoremIpsum}</AAccordionBody>
-          </AAccordionPanel>
-          <AAccordionPanel>
-            <AAccordionHeader>
-              <AAccordionHeaderTitle>Accordion Item 3</AAccordionHeaderTitle>
-              <AButton icon tertiaryAlt href="/" target="_blank">
-                <AIcon>information</AIcon>
-              </AButton>
-            </AAccordionHeader>
-            <AAccordionBody>{LoremIpsum}</AAccordionBody>
-          </AAccordionPanel>
-        </AAccordion>
-        );
-      }}
+        {() => {
+          const [active, setActive] = useState(false);
+          return (
+            <AAccordion bordered>
+              <AAccordionPanel>
+                <AAccordionHeader>
+                  <AAccordionHeaderTitle chevron={false}>
+                    Accordion Item 1
+                  </AAccordionHeaderTitle>
+                  <ADropdown>
+                    <AButton
+                      icon
+                      tertiaryAlt
+                      onClick={() => setActive(!active)}>
+                      <AIcon>ellipsis-horizontal</AIcon>
+                    </AButton>
+                    <ADropdownMenu
+                      open={active}
+                      onClose={() => setActive(false)}
+                      style={{top: 27, right: 0}}>
+                      <ADropdownMenuItem>See More</ADropdownMenuItem>
+                    </ADropdownMenu>
+                  </ADropdown>
+                </AAccordionHeader>
+              </AAccordionPanel>
+              <AAccordionPanel collapsed={false}>
+                <AAccordionHeader>
+                  <AAccordionHeaderTitle>
+                    Accordion Item 2
+                  </AAccordionHeaderTitle>
+                </AAccordionHeader>
+                <AAccordionBody>{LoremIpsum}</AAccordionBody>
+              </AAccordionPanel>
+              <AAccordionPanel>
+                <AAccordionHeader>
+                  <AAccordionHeaderTitle>
+                    Accordion Item 3
+                  </AAccordionHeaderTitle>
+                  <AButton icon tertiaryAlt href="/" target="_blank">
+                    <AIcon>information</AIcon>
+                  </AButton>
+                </AAccordionHeader>
+                <AAccordionBody>{LoremIpsum}</AAccordionBody>
+              </AAccordionPanel>
+            </AAccordion>
+          );
+        }}
       </YourComponent>
     </AApp>
   </Story>
@@ -158,13 +183,17 @@ All Accordion components (`AAccordion`, `AAccordionPanel`, `AAccordionHeader`, `
       <AAccordion className="mr-4">
         <AAccordionPanel collapsed={false}>
           <AAccordionHeader>
-            <AAccordionHeaderTitle>Animated Accordion Item 1</AAccordionHeaderTitle>
+            <AAccordionHeaderTitle>
+              Animated Accordion Item 1
+            </AAccordionHeaderTitle>
           </AAccordionHeader>
           <AAccordionBody>{LoremIpsum}</AAccordionBody>
         </AAccordionPanel>
         <AAccordionPanel>
           <AAccordionHeader>
-            <AAccordionHeaderTitle>Animated Accordion Item 2</AAccordionHeaderTitle>
+            <AAccordionHeaderTitle>
+              Animated Accordion Item 2
+            </AAccordionHeaderTitle>
           </AAccordionHeader>
           <AAccordionBody>{LoremIpsum}</AAccordionBody>
         </AAccordionPanel>
@@ -176,13 +205,17 @@ All Accordion components (`AAccordion`, `AAccordionPanel`, `AAccordionHeader`, `
       <AAccordion>
         <AAccordionPanel collapsed={false}>
           <AAccordionHeader>
-            <AAccordionHeaderTitle>Not Animated Accordion Item 1</AAccordionHeaderTitle>
+            <AAccordionHeaderTitle>
+              Not Animated Accordion Item 1
+            </AAccordionHeaderTitle>
           </AAccordionHeader>
           <AAccordionBody>{LoremIpsum}</AAccordionBody>
         </AAccordionPanel>
         <AAccordionPanel>
           <AAccordionHeader>
-            <AAccordionHeaderTitle>Not Animated Accordion Item 2</AAccordionHeaderTitle>
+            <AAccordionHeaderTitle>
+              Not Animated Accordion Item 2
+            </AAccordionHeaderTitle>
           </AAccordionHeader>
           <AAccordionBody>{LoremIpsum}</AAccordionBody>
         </AAccordionPanel>

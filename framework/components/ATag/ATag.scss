@@ -6,12 +6,6 @@ $tag-line-height: $font-size--xxs;
 $tag-padding: 0 12px;
 $tag-border-radius: $border-radius--sm;
 $tag-icon-font-size: $font-size--xxs;
-//$tag-colors: ("info", $color-information, $white, $info-box-shadow),
-//  ("info-alt", $color-information-alt, $white, $base-box-shadow),
-//  ("success", $color-good, $white, $success-box-shadow),
-//  ("warning", $color-warning, $white, $warning-box-shadow),
-//  ("warning-alt", $color-warning-alt, $tag-color, $warning-alt-box-shadow),
-//  ("danger", $color-error, $white, $danger-box-shadow);
 
 @include theme(a-tag) using ($theme) {
   background-color: map-deep-get($theme, "tag", "bg-color");
@@ -53,6 +47,4 @@ $tag-icon-font-size: $font-size--xxs;
   .a-icon {
     width: $tag-icon-font-size;
   }
-
-  //@include tag-color($tag-bg, $tag-color, $tag-box-shadow);
 }
