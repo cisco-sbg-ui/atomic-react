@@ -36,7 +36,7 @@ const ARadio = forwardRef(
           onClick={onClick}
           aria-checked={checked}
           role="radio"
-          ref={el => el && (el.checked = checked)}
+          ref={(el) => el && (el.checked = checked)}
         />
         <span className="a-radio__box" />
         <span className={`a-radio__label ${wrap && "a-radio__label--wrap"}`}>

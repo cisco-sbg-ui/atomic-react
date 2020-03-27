@@ -93,7 +93,10 @@ The `ASpacer` component inherits passed props.
   <Story name="advanced-1">
     <AApp>
       <AContainer>
-        <ARow noGutters className="mb-3 cisco-blue white--text" style={{boxShadow: '0 0 3px #000', borderRadius: 3}}>
+        <ARow
+          noGutters
+          className="mb-3 cisco-blue white--text"
+          style={{boxShadow: "0 0 3px #000", borderRadius: 3}}>
           <ACol className="d-flex align-center pl-3">
             <AIcon size={64}>cisco</AIcon>
             <div className="h2 mr-1 ml-4">Title</div>
@@ -107,34 +110,35 @@ The `ASpacer` component inherits passed props.
           <ASpacer />
           <ACol cols="8">
             <APanel className="px-2" type="grey">
-            <AContainer>
-              <ARow>
-                <ACol>
-                  <h3>Form</h3>
-                  <p>
-                    Please submit the following form. Responsive trigger at 986px.
-                  </p>
-                </ACol>
-              </ARow>
-              <ARow>
-                <ACol cols="12" sm="6">
-                  <ATextInput label="Name" />
-                </ACol>
-                <ACol>
-                  <ASelect items={["Read", "Write", "Admin"]} label="Role" />
-                </ACol>
-              </ARow>
-              <ARow>
-                <ACol>
-                  <ATextarea label="Comments" style={{width:'100%'}} />
-                </ACol>
-              </ARow>
-              <ARow>
-                <ACol className="text-right">
-                  <AButton>Submit</AButton>
-                </ACol>
-              </ARow>
-            </AContainer>
+              <AContainer>
+                <ARow>
+                  <ACol>
+                    <h3>Form</h3>
+                    <p>
+                      Please submit the following form. Responsive trigger at
+                      986px.
+                    </p>
+                  </ACol>
+                </ARow>
+                <ARow>
+                  <ACol cols="12" sm="6">
+                    <ATextInput label="Name" />
+                  </ACol>
+                  <ACol>
+                    <ASelect items={["Read", "Write", "Admin"]} label="Role" />
+                  </ACol>
+                </ARow>
+                <ARow>
+                  <ACol>
+                    <ATextarea label="Comments" style={{width: "100%"}} />
+                  </ACol>
+                </ARow>
+                <ARow>
+                  <ACol className="text-right">
+                    <AButton>Submit</AButton>
+                  </ACol>
+                </ARow>
+              </AContainer>
             </APanel>
           </ACol>
           <ASpacer />

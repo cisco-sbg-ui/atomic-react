@@ -50,11 +50,11 @@ const ATab = forwardRef(
       "aria-selected": isSelected,
       ref,
       className,
-      onClick: e => {
+      onClick: (e) => {
         setTabChanged(tabId);
         onClick && onClick(e);
       },
-      onKeyDown: e => {
+      onKeyDown: (e) => {
         if (!href && [keyCodes.enter].includes(e.keyCode)) {
           e.preventDefault();
           setTabChanged(tabId);

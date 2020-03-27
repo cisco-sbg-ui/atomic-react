@@ -51,7 +51,7 @@ const ADialog = forwardRef(
     }, [open, combinedRef]);
 
     const keyDownEscHandler = useCallback(
-      e => {
+      (e) => {
         if (e.keyCode === keyCodes.esc) {
           onClickOutside();
         }
@@ -79,7 +79,7 @@ const ADialog = forwardRef(
       className += ` ${propsClassName}`;
     }
 
-    const onClickHandler = e => {
+    const onClickHandler = (e) => {
       if (onClickOutside && e.currentTarget === e.target) {
         onClickOutside(e);
       }

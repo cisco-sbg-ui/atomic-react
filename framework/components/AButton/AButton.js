@@ -62,7 +62,7 @@ const AButton = forwardRef(
       ...rest,
       ref,
       className,
-      onClick: e => {
+      onClick: (e) => {
         if (toggleValue) {
           toggleValue(value);
         }
@@ -71,12 +71,15 @@ const AButton = forwardRef(
       }
     };
 
+    if (href || component) {
+      props.tabIndex = 0;
+    }
+
     if (href) {
       TagName = "a";
       if (!disabled) {
         props.href = href;
         props.target = target;
-        props.tabIndex = 0;
       }
     } else {
       if (component) {

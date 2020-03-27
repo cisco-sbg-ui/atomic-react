@@ -27,18 +27,18 @@ const AAccordionHeaderTitle = forwardRef(
 
     const togglePanel = () => {
       if (openedPanels.includes(panelId)) {
-        setOpenedPanels(openedPanels.filter(x => x !== panelId));
+        setOpenedPanels(openedPanels.filter((x) => x !== panelId));
       } else {
         setOpenedPanels([...openedPanels, panelId]);
       }
     };
 
-    const handleClick = e => {
+    const handleClick = (e) => {
       hasBody && togglePanel();
       onClick && onClick(e);
     };
 
-    const handleKeyDown = e => {
+    const handleKeyDown = (e) => {
       if (hasBody && [keyCodes.enter, keyCodes.space].includes(e.keyCode)) {
         e.preventDefault();
         togglePanel();
@@ -47,12 +47,12 @@ const AAccordionHeaderTitle = forwardRef(
       onKeyDown && onKeyDown(e);
     };
 
-    const handleBlur = e => {
+    const handleBlur = (e) => {
       hasBody && setIsFocused(false);
       onBlur && onBlur(e);
     };
 
-    const handleFocus = e => {
+    const handleFocus = (e) => {
       hasBody && setIsFocused(true);
       onFocus && onFocus(e);
     };

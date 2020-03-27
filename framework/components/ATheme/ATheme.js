@@ -26,7 +26,7 @@ const ATheme = forwardRef(
 
     const themeContext = {
       currentTheme,
-      setCurrentTheme: theme => {
+      setCurrentTheme: (theme) => {
         const newTheme = theme === "dusk" ? theme : "default";
         persist && localStorage.setItem(LS_KEY, newTheme);
         setCurrentTheme(newTheme);

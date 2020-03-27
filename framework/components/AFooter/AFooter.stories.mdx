@@ -1,8 +1,8 @@
-import { Meta, Preview, Story, Props } from '@storybook/addon-docs/blocks';
+import {Meta, Preview, Story, Props} from "@storybook/addon-docs/blocks";
 
-import AApp from '../AApp'
-import AFooter from "./AFooter"
-import AFooterLegal from "./AFooterLegal"
+import AApp from "../AApp";
+import AFooter from "./AFooter";
+import AFooterLegal from "./AFooterLegal";
 
 <Meta title="Components/Footers" component={AFooter} />
 
@@ -26,8 +26,8 @@ import {
     <AApp>
       <AFooter>
         <AFooterLegal>
-          &copy; 2017 Cisco Systems, Inc. Cisco, Cisco Systems
-          and <a href="https://www.cisco.com">Cisco Systems</a> logo are registered
+          &copy; 2017 Cisco Systems, Inc. Cisco, Cisco Systems and{" "}
+          <a href="https://www.cisco.com">Cisco Systems</a> logo are registered
           trademarks of Cisco Systems, Inc. and/or its affiliates in the U.S.
           and certain other countries.
         </AFooterLegal>
@@ -50,13 +50,13 @@ All Footer components (`AFooter`, `AFooterLegal`) inherit passed props.
 
 ## Dusk Theme
 
-<Preview style={{backgroundColor: '#18191d'}}>
+<Preview style={{backgroundColor: "#18191d"}}>
   <Story name="dusk-1">
     <AApp defaultTheme="dusk">
       <AFooter>
         <AFooterLegal>
-          &copy; 2017 Cisco Systems, Inc. Cisco, Cisco Systems
-          and <a href="https://www.cisco.com">Cisco Systems</a> logo are registered
+          &copy; 2017 Cisco Systems, Inc. Cisco, Cisco Systems and{" "}
+          <a href="https://www.cisco.com">Cisco Systems</a> logo are registered
           trademarks of Cisco Systems, Inc. and/or its affiliates in the U.S.
           and certain other countries.
         </AFooterLegal>

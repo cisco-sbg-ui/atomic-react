@@ -24,9 +24,9 @@ const AButtonGroup = forwardRef(
 
     const buttonGroupContext = {
       selectedValues,
-      toggleValue: toggledValue => {
+      toggleValue: (toggledValue) => {
         let newSelectedValues = selectedValues.includes(toggledValue)
-          ? selectedValues.filter(x => x !== toggledValue)
+          ? selectedValues.filter((x) => x !== toggledValue)
           : multiple
           ? selectedValues.concat([toggledValue])
           : [toggledValue];

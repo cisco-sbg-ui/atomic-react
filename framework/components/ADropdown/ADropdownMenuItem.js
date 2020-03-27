@@ -35,7 +35,7 @@ const ADropdownMenuItem = forwardRef(
       ref,
       className,
       onClick,
-      onKeyDown: e => {
+      onKeyDown: (e) => {
         if (onClick && e.keyCode === keyCodes.enter) {
           e.preventDefault();
           onClick(e);

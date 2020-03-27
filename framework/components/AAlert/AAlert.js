@@ -17,7 +17,7 @@ const AAlert = forwardRef(
     },
     ref
   ) => {
-    const dismissableKeyDownHandler = e => {
+    const dismissableKeyDownHandler = (e) => {
       if (onClose && [keyCodes.enter, keyCodes.space].includes(e.keyCode)) {
         e.preventDefault();
         onClose(e);
@@ -58,7 +58,7 @@ const AAlert = forwardRef(
         {dismissable && (
           <AIcon
             className="a-alert__icon focus-box-shadow a-alert__icon--close"
-            onClick={e => onClose && onClose(e)}
+            onClick={(e) => onClose && onClose(e)}
             onKeyDown={dismissableKeyDownHandler}
             size={16}
             tabIndex={0}>

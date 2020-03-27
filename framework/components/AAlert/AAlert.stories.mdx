@@ -1,12 +1,12 @@
-import { Meta, Preview, Story, Props } from '@storybook/addon-docs/blocks';
-import {useState} from 'react'
+import {Meta, Preview, Story, Props} from "@storybook/addon-docs/blocks";
+import {useState} from "react";
 
-import AApp from '../AApp'
-import LoremIpsum from '../../utils/lorem-ipsum'
-import YourComponent from '../../utils/storybook-function'
-import AAlert from "./AAlert"
-import AButton from "../AButton"
-import ADivider from "../ADivider"
+import AApp from "../AApp";
+import LoremIpsum from "../../utils/lorem-ipsum";
+import YourComponent from "../../utils/storybook-function";
+import AAlert from "./AAlert";
+import AButton from "../AButton";
+import ADivider from "../ADivider";
 
 <Meta title="Components/Alerts" component={AAlert} />
 
@@ -26,33 +26,48 @@ import AAlert from "@cisco-ats/atomic-react/AAlert";
   <Story name="usage-1">
     <AApp>
       <YourComponent>
-    {() => {
-      const [alertsCount, setAlertsCount] = useState(3);
-      const [alerts, setAlerts] = useState(["info", "success", "warning", "danger"]);
-      const closeHandler = key => {
-        var newAlerts = alerts.slice();
-        newAlerts.splice(key, 1);
-        setAlerts(newAlerts);
-      };
-      const addHandler = () => {
-        setAlertsCount(alertsCount + 1);
-        setAlerts([...alerts, ["info", "success", "warning", "danger"][Math.floor(Math.random() * 4)]]);
-      };
-      return (
-        <div>
-          <h3>Examples</h3>
-          {alerts.map((alert, index) =>
-            <div className="my-2" key={index}>
-              <AAlert level={alert} dismissable onClose={() => closeHandler(index)}>{LoremIpsum}</AAlert>
+        {() => {
+          const [alertsCount, setAlertsCount] = useState(3);
+          const [alerts, setAlerts] = useState([
+            "info",
+            "success",
+            "warning",
+            "danger"
+          ]);
+          const closeHandler = (key) => {
+            var newAlerts = alerts.slice();
+            newAlerts.splice(key, 1);
+            setAlerts(newAlerts);
+          };
+          const addHandler = () => {
+            setAlertsCount(alertsCount + 1);
+            setAlerts([
+              ...alerts,
+              ["info", "success", "warning", "danger"][
+                Math.floor(Math.random() * 4)
+              ]
+            ]);
+          };
+          return (
+            <div>
+              <h3>Examples</h3>
+              {alerts.map((alert, index) => (
+                <div className="my-2" key={index}>
+                  <AAlert
+                    level={alert}
+                    dismissable
+                    onClose={() => closeHandler(index)}>
+                    {LoremIpsum}
+                  </AAlert>
+                </div>
+              ))}
+              <ADivider />
+              <p>
+                <AButton onClick={() => addHandler()}>Add Alert</AButton>
+              </p>
             </div>
-          )}
-          <ADivider />
-          <p>
-            <AButton onClick={() => addHandler()}>Add Alert</AButton>
-          </p>
-        </div>
-      );
-    }}
+          );
+        }}
       </YourComponent>
     </AApp>
   </Story>
@@ -66,20 +81,28 @@ The `AAlert` component inherits passed props.
 
 ## Dusk Theme
 
-<Preview style={{backgroundColor: '#18191d'}}>
+<Preview style={{backgroundColor: "#18191d"}}>
   <Story name="dusk-1">
     <AApp defaultTheme="dusk">
       <div className="my-2">
-        <AAlert level="info" dismissable>{LoremIpsum}</AAlert>
+        <AAlert level="info" dismissable>
+          {LoremIpsum}
+        </AAlert>
       </div>
       <div className="my-2">
-        <AAlert level="success" dismissable>{LoremIpsum}</AAlert>
+        <AAlert level="success" dismissable>
+          {LoremIpsum}
+        </AAlert>
       </div>
       <div className="my-2">
-        <AAlert level="warning" dismissable>{LoremIpsum}</AAlert>
+        <AAlert level="warning" dismissable>
+          {LoremIpsum}
+        </AAlert>
       </div>
       <div className="my-2">
-        <AAlert level="danger" dismissable>{LoremIpsum}</AAlert>
+        <AAlert level="danger" dismissable>
+          {LoremIpsum}
+        </AAlert>
       </div>
     </AApp>
   </Story>

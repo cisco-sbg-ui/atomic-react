@@ -50,6 +50,10 @@ $btn-group-icon-font-size: rem(1);
   justify-content: center;
   vertical-align: top;
 
+  .a-button--icon {
+    padding: 6px;
+  }
+
   .a-button + .a-button {
     margin: $btn-group-button-margin;
   }

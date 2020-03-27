@@ -1,11 +1,11 @@
-import { Meta, Preview, Story, Props } from '@storybook/addon-docs/blocks';
-import {useState} from 'react'
+import {Meta, Preview, Story, Props} from "@storybook/addon-docs/blocks";
+import {useState} from "react";
 
-import AApp from '../AApp'
-import AButton from "./AButton"
-import ADivider from "../ADivider"
-import AIcon from "../AIcon"
-import YourComponent from '../../utils/storybook-function'
+import AApp from "../AApp";
+import AButton from "./AButton";
+import ADivider from "../ADivider";
+import AIcon from "../AIcon";
+import YourComponent from "../../utils/storybook-function";
 
 <Meta title="Components/Buttons" component={AButton} />
 
@@ -25,26 +25,21 @@ import AButton from "@cisco-ats/atomic-react/AButton";
   <Story name="usage-1">
     <AApp>
       <YourComponent>
-    {() => {
-      const [count, setCount] = useState(0);
-      return (
-        <div>
-          <AButton
-            className="fern"
-            onClick={() => setCount(count + 1)}>
-            Click Me
-          </AButton>
-          <div>
-            Button has been clicked {count} times.
-          </div>
-        </div>
-      );
-    }}
+        {() => {
+          const [count, setCount] = useState(0);
+          return (
+            <div>
+              <AButton className="fern" onClick={() => setCount(count + 1)}>
+                Click Me
+              </AButton>
+              <div>Button has been clicked {count} times.</div>
+            </div>
+          );
+        }}
       </YourComponent>
     </AApp>
   </Story>
 </Preview>
-
 
 ## Button Props
 
@@ -93,7 +88,9 @@ The `AButton` component inherits passed props.
         </AButton>
       </p>
       <p>
-        <AButton secondary disabled>Secondary Disabled</AButton>
+        <AButton secondary disabled>
+          Secondary Disabled
+        </AButton>
       </p>
     </AApp>
   </Story>
@@ -114,7 +111,9 @@ The `AButton` component inherits passed props.
         </AButton>
       </p>
       <p>
-        <AButton tertiary disabled>Tertiary Disabled</AButton>
+        <AButton tertiary disabled>
+          Tertiary Disabled
+        </AButton>
       </p>
     </AApp>
   </Story>
@@ -135,7 +134,9 @@ The `AButton` component inherits passed props.
         </AButton>
       </p>
       <p>
-        <AButton tertiaryAlt disabled>Tertiary Alt Disabled</AButton>
+        <AButton tertiaryAlt disabled>
+          Tertiary Alt Disabled
+        </AButton>
       </p>
     </AApp>
   </Story>
@@ -143,7 +144,7 @@ The `AButton` component inherits passed props.
 
 ## Dusk Theme
 
-<Preview style={{backgroundColor: '#18191d'}}>
+<Preview style={{backgroundColor: "#18191d"}}>
   <Story name="dusk-1">
     <AApp defaultTheme="dusk">
       <p>
@@ -182,7 +183,9 @@ The `AButton` component inherits passed props.
         </AButton>
       </p>
       <p>
-        <AButton secondary disabled>Secondary Disabled</AButton>
+        <AButton secondary disabled>
+          Secondary Disabled
+        </AButton>
       </p>
     </AApp>
   </Story>
@@ -203,7 +206,9 @@ The `AButton` component inherits passed props.
         </AButton>
       </p>
       <p>
-        <AButton tertiary disabled>Tertiary Disabled</AButton>
+        <AButton tertiary disabled>
+          Tertiary Disabled
+        </AButton>
       </p>
     </AApp>
   </Story>
@@ -224,7 +229,9 @@ The `AButton` component inherits passed props.
         </AButton>
       </p>
       <p>
-        <AButton tertiaryAlt disabled>Tertiary Alt Disabled</AButton>
+        <AButton tertiaryAlt disabled>
+          Tertiary Alt Disabled
+        </AButton>
       </p>
     </AApp>
   </Story>
@@ -257,13 +264,9 @@ Animations are enabled by default on the `AApp` component and can be disabled.
 
 <Preview>
   <AApp>
-    <AButton>
-      Animated
-    </AButton>
+    <AButton>Animated</AButton>
   </AApp>
   <AApp animations={false}>
-    <AButton>
-      Not Animated
-    </AButton>
+    <AButton>Not Animated</AButton>
   </AApp>
 </Preview>

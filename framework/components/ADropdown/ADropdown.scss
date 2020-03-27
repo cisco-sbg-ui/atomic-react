@@ -35,7 +35,7 @@ $dropdown--state-active-transition: visibility 0s ease,
 }
 
 .a-dropdown {
-  display: inline-block;
+  display: inline-flex;
   position: relative;
 
   &__menu {

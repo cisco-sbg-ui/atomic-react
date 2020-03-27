@@ -32,7 +32,7 @@ const ASelect = forwardRef(
     const [selectId] = useState(selectCounter++);
 
     const [selectedItem, setSelectedItem] = useState(
-      items.find(x => x[itemSelected])
+      items.find((x) => x[itemSelected])
     );
     const [isOpen, setIsOpen] = useState(false);
     let className = "a-select";
@@ -42,7 +42,7 @@ const ASelect = forwardRef(
     }
 
     const getSelectedIndex = () => {
-      return items.findIndex(item => {
+      return items.findIndex((item) => {
         if (typeof item === "string") {
           return item === selectedItem;
         } else if (typeof item === "object") {
@@ -51,8 +51,8 @@ const ASelect = forwardRef(
       });
     };
 
-    const getPreviousItem = selectedIndex => {
-      if (items.every(x => x[itemDisabled])) return null;
+    const getPreviousItem = (selectedIndex) => {
+      if (items.every((x) => x[itemDisabled])) return null;
 
       let newItem = items[selectedIndex - 1];
       if (!newItem) {
@@ -66,8 +66,8 @@ const ASelect = forwardRef(
       return newItem;
     };
 
-    const getNextItem = selectedIndex => {
-      if (items.every(x => x[itemDisabled])) return null;
+    const getNextItem = (selectedIndex) => {
+      if (items.every((x) => x[itemDisabled])) return null;
 
       let newItem = items[selectedIndex + 1];
       if (!newItem) {
@@ -109,7 +109,7 @@ const ASelect = forwardRef(
         surfaceProps.className += " a-select__surface--focused";
       }
 
-      surfaceProps.onKeyDown = e => {
+      surfaceProps.onKeyDown = (e) => {
         if ([keyCodes.enter, keyCodes.space].includes(e.keyCode)) {
           e.preventDefault();
           setIsOpen(!isOpen);
@@ -133,7 +133,7 @@ const ASelect = forwardRef(
       };
     }
 
-    const selectItem = item => {
+    const selectItem = (item) => {
       setSelectedItem(item);
       onSelected && onSelected(item);
     };
