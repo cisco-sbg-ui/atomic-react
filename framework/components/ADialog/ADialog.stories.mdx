@@ -25,6 +25,8 @@ In the target component add:
 
 ```
 import ADialog from "@cisco-ats/atomic-react/ADialog";
+// or if you're able to treekshake node_modules
+import {ADialog} from "@cisco-ats/atomic-react";
 ```
 
 It is necessary for `ADialog` to be a descendant of `AApp` for mounting.
