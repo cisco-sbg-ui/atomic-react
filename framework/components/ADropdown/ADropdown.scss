@@ -75,11 +75,17 @@ $dropdown--state-active-transition: visibility 0s ease,
     white-space: nowrap;
     width: $dropdown-item-width;
     z-index: $dropdown-item-z-index;
+
     &:hover {
       text-decoration: none;
     }
+
     &:focus {
       text-decoration: none;
+    }
+
+    &[tabindex] {
+      cursor: pointer;
     }
   }
 }

@@ -18,6 +18,8 @@ In the target component add:
 
 ```
 import ASimpleTable from "@cisco-ats/atomic-react/ASimpleTable";
+// or if you're able to treekshake node_modules
+import {ASimpleTable} from "@cisco-ats/atomic-react";
 ```
 
 ## Usage
@@ -29,15 +31,15 @@ import ASimpleTable from "@cisco-ats/atomic-react/ASimpleTable";
         <thead>
           <tr>
             <th className="text-capitalize">alpha</th>
-            <th className="text-capitalize text-align-center">bravo</th>
-            <th className="text-capitalize text-align-center">charlie</th>
+            <th className="text-capitalize text-center">bravo</th>
+            <th className="text-capitalize text-center">charlie</th>
           </tr>
         </thead>
         <tbody>
           <tr>
             <td>11.1</td>
-            <td className="text-align-center">526</td>
-            <td className="text-align-right">
+            <td className="text-center">526</td>
+            <td className="text-right">
               <a href="/" target="_blank">
                 Details
               </a>
@@ -45,8 +47,8 @@ import ASimpleTable from "@cisco-ats/atomic-react/ASimpleTable";
           </tr>
           <tr>
             <td>8.9</td>
-            <td className="text-align-center">611</td>
-            <td className="text-align-right">
+            <td className="text-center">611</td>
+            <td className="text-right">
               <a href="/" target="_blank">
                 Details
               </a>
@@ -54,8 +56,8 @@ import ASimpleTable from "@cisco-ats/atomic-react/ASimpleTable";
           </tr>
           <tr>
             <td>10.5</td>
-            <td className="text-align-center">475</td>
-            <td className="text-align-right">
+            <td className="text-center">475</td>
+            <td className="text-right">
               <a href="/" target="_blank">
                 Details
               </a>
@@ -82,15 +84,15 @@ The `ASimpleTable` component inherits passed props.
         <thead>
           <tr>
             <th className="text-capitalize">alpha</th>
-            <th className="text-capitalize text-align-center">bravo</th>
-            <th className="text-capitalize text-align-center">charlie</th>
+            <th className="text-capitalize text-center">bravo</th>
+            <th className="text-capitalize text-center">charlie</th>
           </tr>
         </thead>
         <tbody>
           <tr>
             <td>11.1</td>
-            <td className="text-align-center">526</td>
-            <td className="text-align-right">
+            <td className="text-center">526</td>
+            <td className="text-right">
               <a href="/" target="_blank">
                 Details
               </a>
@@ -98,8 +100,8 @@ The `ASimpleTable` component inherits passed props.
           </tr>
           <tr>
             <td>8.9</td>
-            <td className="text-align-center">611</td>
-            <td className="text-align-right">
+            <td className="text-center">611</td>
+            <td className="text-right">
               <a href="/" target="_blank">
                 Details
               </a>
@@ -107,8 +109,8 @@ The `ASimpleTable` component inherits passed props.
           </tr>
           <tr>
             <td>10.5</td>
-            <td className="text-align-center">475</td>
-            <td className="text-align-right">
+            <td className="text-center">475</td>
+            <td className="text-right">
               <a href="/" target="_blank">
                 Details
               </a>
@@ -131,15 +133,15 @@ The `ASimpleTable` component inherits passed props.
           <thead>
             <tr>
               <th className="text-capitalize">alpha</th>
-              <th className="text-capitalize text-align-center">bravo</th>
-              <th className="text-capitalize text-align-center">charlie</th>
+              <th className="text-capitalize text-center">bravo</th>
+              <th className="text-capitalize text-center">charlie</th>
             </tr>
           </thead>
           <tbody>
             <tr>
               <td>11.1</td>
-              <td className="text-align-center">526</td>
-              <td className="text-align-right">
+              <td className="text-center">526</td>
+              <td className="text-right">
                 <a href="/" target="_blank">
                   Details
                 </a>
@@ -147,8 +149,8 @@ The `ASimpleTable` component inherits passed props.
             </tr>
             <tr>
               <td>8.9</td>
-              <td className="text-align-center">611</td>
-              <td className="text-align-right">
+              <td className="text-center">611</td>
+              <td className="text-right">
                 <a href="/" target="_blank">
                   Details
                 </a>
@@ -156,8 +158,8 @@ The `ASimpleTable` component inherits passed props.
             </tr>
             <tr>
               <td>10.5</td>
-              <td className="text-align-center">475</td>
-              <td className="text-align-right">
+              <td className="text-center">475</td>
+              <td className="text-right">
                 <a href="/" target="_blank">
                   Details
                 </a>
@@ -175,15 +177,15 @@ The `ASimpleTable` component inherits passed props.
         <thead>
           <tr>
             <th className="text-capitalize">alpha</th>
-            <th className="text-capitalize text-align-center">bravo</th>
-            <th className="text-capitalize text-align-center">charlie</th>
+            <th className="text-capitalize text-center">bravo</th>
+            <th className="text-capitalize text-center">charlie</th>
           </tr>
         </thead>
         <tbody>
           <tr>
             <td>11.1</td>
-            <td className="text-align-center">526</td>
-            <td className="text-align-right">
+            <td className="text-center">526</td>
+            <td className="text-right">
               <a href="/" target="_blank">
                 Details
               </a>
@@ -191,8 +193,8 @@ The `ASimpleTable` component inherits passed props.
           </tr>
           <tr>
             <td>8.9</td>
-            <td className="text-align-center">611</td>
-            <td className="text-align-right">
+            <td className="text-center">611</td>
+            <td className="text-right">
               <a href="/" target="_blank">
                 Details
               </a>
@@ -200,8 +202,8 @@ The `ASimpleTable` component inherits passed props.
           </tr>
           <tr>
             <td>10.5</td>
-            <td className="text-align-center">475</td>
-            <td className="text-align-right">
+            <td className="text-center">475</td>
+            <td className="text-right">
               <a href="/" target="_blank">
                 Details
               </a>
@@ -224,15 +226,15 @@ The `ASimpleTable` component inherits passed props.
           <thead>
             <tr>
               <th className="text-capitalize">alpha</th>
-              <th className="text-capitalize text-align-center">bravo</th>
-              <th className="text-capitalize text-align-center">charlie</th>
+              <th className="text-capitalize text-center">bravo</th>
+              <th className="text-capitalize text-center">charlie</th>
             </tr>
           </thead>
           <tbody>
             <tr>
               <td>11.1</td>
-              <td className="text-align-center">526</td>
-              <td className="text-align-right">
+              <td className="text-center">526</td>
+              <td className="text-right">
                 <a href="/" target="_blank">
                   Details
                 </a>
@@ -240,8 +242,8 @@ The `ASimpleTable` component inherits passed props.
             </tr>
             <tr>
               <td>8.9</td>
-              <td className="text-align-center">611</td>
-              <td className="text-align-right">
+              <td className="text-center">611</td>
+              <td className="text-right">
                 <a href="/" target="_blank">
                   Details
                 </a>
@@ -249,8 +251,8 @@ The `ASimpleTable` component inherits passed props.
             </tr>
             <tr>
               <td>10.5</td>
-              <td className="text-align-center">475</td>
-              <td className="text-align-right">
+              <td className="text-center">475</td>
+              <td className="text-right">
                 <a href="/" target="_blank">
                   Details
                 </a>
@@ -268,15 +270,15 @@ The `ASimpleTable` component inherits passed props.
         <thead>
           <tr>
             <th className="text-capitalize">alpha</th>
-            <th className="text-capitalize text-align-center">bravo</th>
-            <th className="text-capitalize text-align-center">charlie</th>
+            <th className="text-capitalize text-center">bravo</th>
+            <th className="text-capitalize text-center">charlie</th>
           </tr>
         </thead>
         <tbody>
           <tr>
             <td>11.1</td>
-            <td className="text-align-center">526</td>
-            <td className="text-align-right">
+            <td className="text-center">526</td>
+            <td className="text-right">
               <a href="/" target="_blank">
                 Details
               </a>
@@ -284,8 +286,8 @@ The `ASimpleTable` component inherits passed props.
           </tr>
           <tr>
             <td>8.9</td>
-            <td className="text-align-center">611</td>
-            <td className="text-align-right">
+            <td className="text-center">611</td>
+            <td className="text-right">
               <a href="/" target="_blank">
                 Details
               </a>
@@ -293,8 +295,8 @@ The `ASimpleTable` component inherits passed props.
           </tr>
           <tr>
             <td>10.5</td>
-            <td className="text-align-center">475</td>
-            <td className="text-align-right">
+            <td className="text-center">475</td>
+            <td className="text-right">
               <a href="/" target="_blank">
                 Details
               </a>

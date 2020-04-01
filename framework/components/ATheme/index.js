@@ -1,4 +1,5 @@
-import useATheme from "./useATheme";
 import ATheme from "./ATheme";
+import AThemeContext from "./AThemeContext";
+import useATheme from "./useATheme";
 
-export {ATheme, useATheme};
+export {ATheme, AThemeContext, useATheme};
