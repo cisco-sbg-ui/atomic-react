@@ -29,6 +29,7 @@ const config = {
      * }, {})
      */
     index: "framework",
+    AAccordion: "framework/components/AAccordion",
     AAlert: "framework/components/AAlert",
     AApp: "framework/components/AApp",
     AButton: "framework/components/AButton",
