@@ -12,16 +12,16 @@ const ATheme = forwardRef(
   ) => {
     let initialTheme = "default";
     if (persist) {
-      // if localstorage has key
-      initialTheme = localStorage.hasOwnProperty(LS_KEY)
-        ? JSON.parse(localStorage.getItem(LS_KEY))
-        : // otherwise fall back to browser/os prefs
+      if (localStorage.hasOwnProperty(LS_KEY)) {
+        initialTheme = localStorage.getItem(LS_KEY) === "dusk" && "dusk";
+      } else if (
         window.matchMedia &&
-          window.matchMedia("(prefers-color-scheme: dark)").matches
-        ? "dusk"
-        : "default";
-    } else if (["dusk", "default"].includes(defaultTheme)) {
-      initialTheme = defaultTheme;
+        window.matchMedia("(prefers-color-scheme: dark)").matches
+      ) {
+        initialTheme = "dusk";
+      }
+    } else if (defaultTheme === "dusk") {
+      initialTheme = "dusk";
     }
 
     const [currentTheme, setCurrentTheme] = useState(initialTheme);
