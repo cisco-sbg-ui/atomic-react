@@ -110,6 +110,10 @@ $accordion--state-collapsed-transition: visibility $transition-duration ease,
     border-style: solid;
     font-size: $accordion-header-font-size;
     vertical-align: middle;
+
+    .a-button--icon {
+      padding: 6px;
+    }
   }
 
   &__link {
@@ -128,17 +132,6 @@ $accordion--state-collapsed-transition: visibility $transition-duration ease,
       width: $accordion-toggle-font-size;
       margin: $accordion-toggle-margin;
       vertical-align: middle;
-    }
-  }
-
-  &__toolbar-item {
-    height: 28px;
-    border-width: 1px;
-    border-style: solid;
-    display: inline-block;
-    .a-icon {
-      width: 14px;
-      padding: 6px;
     }
   }
 
