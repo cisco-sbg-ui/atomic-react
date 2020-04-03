@@ -10,6 +10,7 @@ import AApp from "./components/AApp";
 import AButton from "./components/AButton";
 import AButtonGroup from "./components/AButtonGroup";
 import ACheckbox from "./components/ACheckbox";
+import ADialog from "./components/ADialog";
 import ADivider from "./components/ADivider";
 import {
   ADropdown,
@@ -54,6 +55,7 @@ export {
   ACheckbox,
   ACol,
   AContainer,
+  ADialog,
   ADivider,
   ADropdown,
   ADropdownMenu,

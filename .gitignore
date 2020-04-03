@@ -2,6 +2,7 @@
 /node_modules/
 /A*.js
 /helpers*.js
+/hooks*.js
 /style-inject*.js
 /index*.js
 /useA*.js
