@@ -11,9 +11,9 @@ const AFooter = forwardRef(
     }
 
     return (
-      <div {...rest} ref={ref} className={className}>
+      <footer {...rest} ref={ref} className={className}>
         {children}
-      </div>
+      </footer>
     );
   }
 );

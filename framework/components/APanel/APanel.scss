@@ -58,11 +58,10 @@ $panel-white-color: map-get($grey, "darken-6");
   }
 
   &--type-dialog {
-    border: none;
-
     .a-panel__header {
       box-shadow: $default-box-shadow;
       padding-bottom: 15px;
+      padding-top: 16px;
     }
 
     .a-panel__body {
