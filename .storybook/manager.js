@@ -1,7 +1,8 @@
-import React from "react";
+import React, {useState} from "react";
 import ReactDOM from "react-dom";
 import {addons} from "@storybook/addons";
 import {create} from "@storybook/theming/create";
+import {SET_STORIES} from "@storybook/core-events";
 
 import AApp from "../AApp";
 import AButton from "../AButton";
@@ -12,6 +13,8 @@ import {
   AHeaderNavigation
 } from "../AHeader";
 import AIcon from "../AIcon";
+import ATextInput from "../ATextInput";
+import ATree from "../ATree";
 
 const StorybookHeader = () => {
   return (
@@ -34,7 +37,57 @@ const StorybookHeader = () => {
   );
 };
 
-addons.register("atomic-react/header", api => {
+const StorybookSidebar = ({nav}) => {
+  const [filter, setFilter] = useState("");
+  const [items, setItems] = useState(nav);
+
+  const filterItems = (base) => {
+    return base.items
+      .map((item) => {
+        if (
+          !item.items &&
+          !item.content.toLowerCase().includes(filter.toLowerCase())
+        )
+          return null;
+
+        const newItem = {
+          ...item
+        };
+        if (newItem.items) {
+          newItem.items = filterItems(newItem);
+        }
+
+        return newItem;
+      })
+      .filter((x) => x && (!x.items || x.items.length > 0));
+  };
+
+  return (
+    <AApp>
+      <div className="root-sidebar cisco-blue overflow-y-scroll py-3">
+        <div className="px-3 pb-3">
+          <ATextInput
+            prependIcon="filter"
+            value={filter}
+            onChange={({target}) => {
+              setFilter(target.value);
+            }}
+          />
+        </div>
+        <ATree
+          className="white--text"
+          hoverable
+          activatable
+          expandOnClick
+          items={filter.length ? filterItems({items}) : items}
+          onChange={(x) => setItems(x)}
+        />
+      </div>
+    </AApp>
+  );
+};
+
+addons.register("atomic-react/header", (api) => {
   var rootHeader = document.createElement("div");
   rootHeader.id = "root-header";
   var body = document.querySelector("body");
@@ -42,10 +95,57 @@ addons.register("atomic-react/header", api => {
   ReactDOM.render(<StorybookHeader />, document.querySelector("#root-header"));
 
   document.querySelector("#root").className =
-    "a-app a-app--wrap a-app--scrollbars";
+    "a-app a-app--wrap a-app--scrollbars theme--default";
 });
 
-const convertSvgToBase64ImgString = SVG =>
+addons.register("atomic-react/sidebar", (api) => {
+  var rootSidebar = document.createElement("div");
+  rootSidebar.id = "root-sidebar";
+  var body = document.querySelector("body");
+  body.insertBefore(rootSidebar, body.childNodes[1]);
+
+  api.on(SET_STORIES, ({stories}) => {
+    const storybookPages = Object.values(stories).reduce((acc, item) => {
+      item.kind.split("/").reduce((currentNode, pathPart, index, original) => {
+        const followedPath = currentNode.find((x) => x.content === pathPart);
+        if (followedPath) {
+          return followedPath.items;
+        }
+
+        if (!followedPath) {
+          const newNode = {
+            content: pathPart
+          };
+
+          if (index < original.length - 1) {
+            newNode.expanded = true;
+            newNode.items = [];
+          } else {
+            newNode.contentProps = {
+              onClick: () => api.navigate("/docs/" + item.id),
+              onKeyDown: (e) => {
+                if (e.keyCode === 13) api.navigate("/docs/" + item.id);
+              }
+            };
+          }
+
+          currentNode.push(newNode);
+
+          return newNode.items;
+        }
+      }, acc);
+
+      return acc;
+    }, []);
+
+    ReactDOM.render(
+      <StorybookSidebar nav={storybookPages} />,
+      document.querySelector("#root-sidebar")
+    );
+  });
+});
+
+const convertSvgToBase64ImgString = (SVG) =>
   `data:image/svg+xml;base64,${Buffer.from(SVG).toString("base64")}`;
 
 const ConvertedLogo = convertSvgToBase64ImgString(

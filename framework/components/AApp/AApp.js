@@ -24,15 +24,15 @@ const AApp = forwardRef(
       className += " a-app--animated";
     }
 
+    if (scrollbars) {
+      className += " a-app--scrollbars";
+    }
+
     if (propsClassName) {
       className += ` ${propsClassName}`;
     }
 
     let wrapClassName = "a-app--wrap";
-    if (scrollbars) {
-      wrapClassName += " a-app--scrollbars";
-    }
-
     const mountPointRef = createRef();
 
     const appContext = {

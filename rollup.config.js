@@ -50,7 +50,8 @@ const config = {
     ATag: "framework/components/ATag",
     ATextarea: "framework/components/ATextarea",
     ATextInput: "framework/components/ATextInput",
-    ATheme: "framework/components/ATheme"
+    ATheme: "framework/components/ATheme",
+    ATree: "framework/components/ATree"
   },
   output: {
     format: "es",
