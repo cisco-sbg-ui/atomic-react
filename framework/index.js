@@ -7,6 +7,7 @@ import {
 } from "./components/AAccordion";
 import AAlert from "./components/AAlert";
 import AApp from "./components/AApp";
+import ABadge from "./components/ABadge";
 import AButton from "./components/AButton";
 import AButtonGroup from "./components/AButtonGroup";
 import ACheckbox from "./components/ACheckbox";
@@ -51,6 +52,7 @@ export {
   AAccordionPanel,
   AAlert,
   AApp,
+  ABadge,
   AButton,
   AButtonGroup,
   ACheckbox,

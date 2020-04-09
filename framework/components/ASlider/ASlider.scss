@@ -72,9 +72,9 @@ $slider-tick-label-width: 42px;
     width: $slider-handle-width;
     height: $slider-handle-height;
     background-color: $base-inverse-color;
-    border: $base-border-width solid $slider-handle-border-color;
+    border: $border-width solid $slider-handle-border-color;
     &:hover {
-      border: $base-border-width solid $slider-handle-border-color-hover;
+      border: $border-width solid $slider-handle-border-color-hover;
       box-shadow: inset 0 0 0 2px $base-inverse-color,
         inset 0 0 0 2.5px $slider-handle-border-color-hover;
     }
@@ -82,7 +82,7 @@ $slider-tick-label-width: 42px;
       box-shadow: $base-box-shadow;
     }
     &:active {
-      border: $base-border-width solid $slider-handle-border-color-active;
+      border: $border-width solid $slider-handle-border-color-active;
       box-shadow: inset 0 0 0 4px $base-inverse-color,
         inset 0 0 0 8px $slider-handle-border-color-active;
     }
@@ -109,10 +109,10 @@ $slider-tick-label-width: 42px;
       background-color: $slider-selection-bg-disabled;
     }
     & .slider__handle {
-      border: $base-border-width solid $slider-handle-border-disabled;
+      border: $border-width solid $slider-handle-border-disabled;
       &:hover,
       &:active {
-        border: $base-border-width solid $slider-handle-border-disabled;
+        border: $border-width solid $slider-handle-border-disabled;
         box-shadow: none;
       }
     }

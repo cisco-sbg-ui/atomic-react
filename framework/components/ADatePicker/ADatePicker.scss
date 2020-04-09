@@ -36,13 +36,13 @@ $date-picker-range-bg: map-get($grey, "lighten-5");
   width: $date-picker-width;
   max-width: $date-picker-max-width;
   background-color: $control-fill-color;
-  border: $base-border-width solid $control-stroke-color;
-  border-radius: $base-border-radius;
+  border: $border-width solid $control-stroke-color;
+  border-radius: $border-radius--sm;
   z-index: $date-picker-z-index;
   &__header {
     position: relative;
     padding: $date-picker-header-padding;
-    border-bottom: $base-border-width solid $date-picker-header-border-color;
+    border-bottom: $border-width solid $date-picker-header-border-color;
   }
   &__prev,
   &__next {

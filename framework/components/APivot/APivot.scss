@@ -30,8 +30,8 @@ $pivot-li-color-disabled: $control-stroke-color--disabled;
   word-wrap: break-word;
   background-color: $control-fill-color;
   background-clip: padding-box;
-  border: $base-border-width solid $base-stroke-color;
-  border-radius: $base-border-radius;
+  border: $border-width solid $base-stroke-color;
+  border-radius: $border-radius--sm;
   box-shadow: $pivot-box-shadow;
   ul {
     list-style: none;
@@ -67,7 +67,7 @@ $pivot-li-color-disabled: $control-stroke-color--disabled;
       border-top-color: $base-stroke-color;
     }
     .pivot__arrow::after {
-      bottom: $base-border-width;
+      bottom: 1px;
       border-top-color: $control-fill-color;
     }
   }
@@ -90,7 +90,7 @@ $pivot-li-color-disabled: $control-stroke-color--disabled;
       border-right-color: $base-stroke-color;
     }
     .pivot__arrow::after {
-      left: $base-border-width;
+      left: 1px;
       border-right-color: $control-fill-color;
     }
   }
@@ -110,7 +110,7 @@ $pivot-li-color-disabled: $control-stroke-color--disabled;
       border-bottom-color: $base-stroke-color;
     }
     .pivot__arrow::after {
-      top: $base-border-width;
+      top: 1px;
       border-bottom-color: $control-fill-color;
     }
   }
@@ -133,7 +133,7 @@ $pivot-li-color-disabled: $control-stroke-color--disabled;
       border-left-color: $base-stroke-color;
     }
     .pivot__arrow::after {
-      right: $base-border-width;
+      right: 1px;
       border-left-color: $control-fill-color;
     }
   }

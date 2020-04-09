@@ -11,8 +11,8 @@ $combobox-padding: 3px 5px 2px 6px;
   padding: $combobox-padding;
   color: $base-color;
   background: transparent;
-  border: $base-border-width solid $base-stroke-color;
-  border-radius: $base-border-radius;
+  border: $border-width solid $base-stroke-color;
+  border-radius: $border-radius--sm;
   appearance: none;
   &::-webkit-calendar-picker-indicator {
     opacity: 100;

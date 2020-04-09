@@ -5,7 +5,6 @@ $radio-fill-height: 7px;
 $radio-fill-width: 7px;
 $radio-fill-height--active: 5px;
 $radio-fill-width--active: 5px;
-$radio-fill-border-width: ($base-border-width * 0.75);
 $radio-height: 15px;
 $radio-padding: 10px;
 $radio-width: 15px;
@@ -107,7 +106,7 @@ $radio-transition: border-color $transition-duration--extra-fast
         left: 3px;
         top: 3px;
         border-radius: 50%;
-        border: $radio-fill-border-width solid $radio-border--enabled;
+        border: $border-width solid $radio-border--enabled;
       }
     }
 

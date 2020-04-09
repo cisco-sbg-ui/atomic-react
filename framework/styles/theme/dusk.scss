@@ -25,6 +25,9 @@ $atomic-dusk: (
       "color": map-get($status-green, "burnt-1")
     )
   ),
+  "badge": (
+    "border-color": transparent
+  ),
   "base": (
     "bg": map-get($grey, "darken-7"),
     "brand-color": map-get($cisco-blue, "wash-1"),

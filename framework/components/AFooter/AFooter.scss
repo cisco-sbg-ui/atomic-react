@@ -17,7 +17,7 @@ $footer-font-size: $font-size--xs;
   max-height: $footer-max-height;
   padding: $footer-padding;
   font-size: $footer-font-size;
-  border-top-width: $base-border-width;
+  border-top-width: $border-width;
   border-top-style: solid;
   &__legal {
     text-align: center;

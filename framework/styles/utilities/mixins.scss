@@ -59,13 +59,13 @@
   $input-box-shadow,
   $input-border-color--hover
 ) {
-  border: $base-border-width solid $input-border-color;
+  border: $border-width solid $input-border-color;
   &:hover {
-    border: $base-border-width solid $input-border-color--hover;
+    border: $border-width solid $input-border-color--hover;
   }
   &:focus,
   &:active {
-    border: $base-border-width solid $input-border-color;
+    border: $border-width solid $input-border-color;
     box-shadow: $input-box-shadow;
   }
 }
@@ -116,20 +116,6 @@
   flex: 1;
   flex-shrink: 1;
   flex-wrap: wrap;
-}
-// -----------------------------------------------------------------------------
-// Badges
-// -----------------------------------------------------------------------------
-@mixin badge-size(
-  $badge-font-size,
-  $badge-width,
-  $badge-height,
-  $badge-line-height
-) {
-  font-size: $badge-font-size;
-  width: $badge-width;
-  height: $badge-height;
-  line-height: $badge-line-height;
 }
 // -----------------------------------------------------------------------------
 // Pagination

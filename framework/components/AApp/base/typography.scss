@@ -28,9 +28,9 @@ $pre-padding: 10px;
   -ms-text-size-adjust: 100%;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  font-size: $base-font-size;
+  font-size: $font-size--sm;
   font-family: $font-family;
-  font-weight: $base-font-weight;
+  font-weight: $font-weight;
   line-height: $line-height;
   height: 100%;
   margin: 0;
@@ -82,13 +82,13 @@ $pre-padding: 10px;
   .display-1 {
     font-size: $display1-size;
     font-weight: $display1-weight;
-    line-height: $display-line-height;
+    line-height: $headings-line-height;
   }
 
   .display-2 {
     font-size: $display2-size;
     font-weight: $display2-weight;
-    line-height: $display-line-height;
+    line-height: $headings-line-height;
   }
 
   small,
@@ -136,7 +136,7 @@ $pre-padding: 10px;
   code,
   pre {
     font-size: $code-font-size;
-    border-radius: $base-border-radius;
+    border-radius: $border-radius--sm;
   }
 
   code {

@@ -25,6 +25,9 @@ $atomic-default: (
       "color": map-get($status-red, "burnt-2")
     )
   ),
+  "badge": (
+    "border-color": $white
+  ),
   "base": (
     "bg": $white,
     "brand-color": map-get($cisco-blue, "base"),

@@ -7,18 +7,17 @@ $btn-group-icon-font-size: rem(1);
 
 @include theme(a-button-group) using ($theme) {
   .a-button + .a-button {
-    border-left: $base-border-width solid transparent;
+    border-left: $border-width solid transparent;
   }
 
   > .a-button {
     background-color: transparent;
     color: map-deep-get($theme, "button", "group", "color");
     box-shadow: none;
-    border: $base-border-width solid
-      map-deep-get($theme, "base", "stroke-color");
+    border: $border-width solid map-deep-get($theme, "base", "stroke-color");
 
     &--state-selected {
-      border: $base-border-width solid
+      border: $border-width solid
         map-deep-get($theme, "base", "color--selected");
       background-color: map-deep-get($theme, "base", "color--selected");
       color: map-deep-get($theme, "base", "inverse-color");
@@ -71,6 +70,6 @@ $btn-group-icon-font-size: rem(1);
   .a-button + .a-button-group,
   .a-button-group + .a-button,
   .a-button-group + .a-button-group {
-    margin-left: -$base-border-width;
+    margin-left: -1px;
   }
 }

@@ -35,14 +35,14 @@ $tooltip-left-arrow-margin-top: rem(0.3125);
   &__text {
     visibility: hidden;
     font-size: $tooltip-font-size;
-    line-height: $base-line-height;
+    line-height: $line-height;
     min-width: $tooltip-min-width;
     width: 100%;
     background-color: $tooltip-bg;
     color: $base-inverse-color;
     text-align: center;
     padding: $tooltip-padding;
-    border-radius: $base-border-radius;
+    border-radius: $border-radius--sm;
     box-shadow: $tooltip-box-shadow;
     position: absolute;
     z-index: $tooltip-z-index;

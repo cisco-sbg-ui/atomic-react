@@ -21,7 +21,7 @@ $sidebar__list-menu-icon-color-gray: $base-icon-color;
   display: block;
   // Change the position to "absolute" when you need the Sidebar to be positioned on the left side of the page.
   position: relative;
-  font-size: $base-font-size;
+  font-size: $font-size--sm;
   top: 0;
   left: 0;
   padding: $sidebar-padding;

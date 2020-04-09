@@ -65,7 +65,7 @@ $textarea-label-margin: 0;
   &__label {
     display: block;
     margin: $textarea-label-margin;
-    font-size: $base-font-size;
+    font-size: $font-size--sm;
   }
 
   &__field {
@@ -74,8 +74,8 @@ $textarea-label-margin: 0;
     position: relative;
     padding: $input-padding;
     border-style: solid;
-    border-width: $base-border-width;
-    border-radius: $base-border-radius;
+    border-width: $border-width;
+    border-radius: $border-radius--sm;
     appearance: none;
     &:focus {
       outline: none;
