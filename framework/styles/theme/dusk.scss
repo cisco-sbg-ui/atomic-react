@@ -163,5 +163,11 @@ $atomic-dusk: (
     "border-color--disabled": transparent,
     "border-color--readonly": rgba(map-get($grey, "lighten-2"), $alpha-3),
     "bg--readonly": rgba(map-get($grey, "lighten-6"), $alpha-1)
+  ),
+  "tree": (
+    "color": map-get($grey, "lighten-5"),
+    "background-color--focus": map-get($grey, "darken-5"),
+    "background-color--hover": map-get($grey, "darken-4"),
+    "box-shadow": 5px 0 0 map-get($cisco-blue, "burnt-1") inset
   )
 );

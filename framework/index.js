@@ -41,6 +41,7 @@ import ATag from "./components/ATag";
 import ATextarea from "./components/ATextarea";
 import ATextInput from "./components/ATextInput";
 import {ATheme, useATheme} from "./components/ATheme";
+import ATree from "./components/ATree";
 
 export {
   AAccordion,
@@ -84,5 +85,6 @@ export {
   ATextarea,
   ATextInput,
   ATheme,
+  ATree,
   useATheme
 };

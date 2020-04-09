@@ -1,78 +1,133 @@
 @import "../../styles";
 
-$tree-padding: 0;
-$tree-ul-margin: 0 0 0 20px;
-$tree-icon-critical-stop-font-size: $icon-small-font-size;
-$tree-icon-font-size: $font-size--xxs;
-$tree-icon-critical-stop-width: 20px; // 20px
-$tree-type-label-li-margin: 0 0 0 20px;
-$tree-type-label-icon-margin: 0 10px 0 -20px;
-$tree-type-iconic-li-margin: 0 0 0 50px;
-$tree-type-iconic-icon-margin: 0 30px 0 -50px;
-$tree-type-iconic-critical-stop-margin: 0 10px 0 -20px;
-$tree-type-checkbox-li-margin: 0 0 0 20px;
-$tree-type-checkbox-icon-margin: 0 10px 0 -20px;
+@include theme(a-tree) using ($theme) {
+  &__root {
+    &--active {
+      background-color: map-deep-get($theme, "tree", "background-color--hover");
+      box-shadow: map-deep-get($theme, "tree", "box-shadow");
+      color: map-deep-get($theme, "tree", "color");
+    }
 
-.tree {
-  @include list--unstyled;
-  color: $base-color;
-  padding: $tree-padding;
-  &--type-label {
-    > li {
-      margin: $tree-type-label-li-margin;
-      .tree__icon {
-        margin: $tree-type-label-icon-margin;
+    &--focus {
+      background-color: map-deep-get($theme, "tree", "background-color--focus");
+    }
+
+    > .a-button:focus {
+      box-shadow: none;
+      overflow: visible;
+
+      &:after {
+        content: "";
+        box-shadow: 0 0 2px 2px currentColor;
+        opacity: 0.4;
+        position: absolute;
+        width: 22px;
+        height: 22px;
+        left: 4px;
+        top: 4px;
       }
     }
   }
-  &--type-iconic {
-    > li {
-      margin: $tree-type-iconic-li-margin;
-      .icon-chevron-down,
-      .icon-chevron-right {
-        margin: $tree-type-iconic-icon-margin;
-      }
-      .icon-critical-stop {
-        margin: $tree-type-iconic-critical-stop-margin;
-      }
-    }
-  }
-  &--type-checkbox {
-    > li {
-      margin: $tree-type-checkbox-li-margin;
-      .tree__icon {
-        margin: $tree-type-checkbox-icon-margin;
-      }
-    }
-  }
-  &__icon {
-    font-size: $tree-icon-font-size;
-    font-weight: $font-weight-xbold;
-    vertical-align: middle;
-    color: $base-icon-color;
-    &.icon-critical-stop {
-      width: $tree-icon-critical-stop-width;
-      color: $color-error;
-      font-size: $tree-icon-critical-stop-font-size;
-      line-height: $base-line-height;
-    }
+
+  &__content {
+    color: currentColor;
+
+    &:hover,
     &:focus {
-      &:before {
-        box-shadow: $base-box-shadow;
+      color: currentColor;
+      text-decoration: none;
+    }
+  }
+
+  &--hoverable {
+    .a-tree__root {
+      &--hover {
+        background-color: map-deep-get(
+          $theme,
+          "tree",
+          "background-color--hover"
+        );
+        box-shadow: map-deep-get($theme, "tree", "box-shadow");
+        color: map-deep-get($theme, "tree", "color");
+
+        .a-tree__content {
+          color: map-deep-get($theme, "tree", "color");
+        }
+      }
+
+      &--focus {
+        background-color: map-deep-get(
+          $theme,
+          "tree",
+          "background-color--focus"
+        );
       }
     }
   }
-  ul {
-    list-style: none;
-    padding: 0;
+
+  &--dense {
+    .a-tree__root > .a-button:focus:after {
+      width: 16px;
+      height: 16px;
+      left: 4px;
+      top: 4px;
+    }
   }
-  > li > ul,
-  > li > ul > li > ul {
-    margin: $tree-ul-margin;
+}
+
+.a-tree {
+  &__root {
+    display: flex;
+    height: 30px;
+    position: relative;
+    align-items: center;
+
+    &--leaf {
+      padding-left: 30px;
+    }
+
+    > .a-button {
+      position: relative;
+      flex-shrink: 0;
+    }
   }
-  .checkbox {
-    display: inline-flex;
-    vertical-align: middle;
-    padding: 0;
+
+  &__content {
+    flex-grow: 1;
+    padding-right: 30px;
+    user-select: none;
+    text-decoration: none;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    line-height: 29px;
+
+    &:hover,
+    &:active,
+    &:focus {
+      text-decoration: none;
+    }
+  }
+
+  &__level {
+    width: 17px;
+  }
+
+  &--dense {
+    .a-tree__root {
+      height: 24px;
+
+      &--leaf {
+        padding-left: 24px;
+      }
+
+      > .a-button {
+        padding: 7px;
+      }
+    }
+
+    .a-tree__content {
+      line-height: 24px;
+    }
   }
 }

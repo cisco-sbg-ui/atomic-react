@@ -1,1 +1,1 @@
-document.querySelector("html").className = "a-app--scrollbars";
+document.querySelector("html").className = "theme--default a-app--scrollbars";

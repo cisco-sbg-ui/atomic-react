@@ -50,6 +50,10 @@ $checkbox-transition: box-shadow $transition-duration--extra-fast
     vertical-align: middle;
     box-sizing: border-box;
 
+    > svg {
+      position: absolute;
+    }
+
     &:after {
       content: "";
       position: absolute;

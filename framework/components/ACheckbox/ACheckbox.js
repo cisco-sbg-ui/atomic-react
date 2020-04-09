@@ -84,7 +84,9 @@ const ACheckbox = forwardRef(
           </svg>
         </span>
         <span
-          className={`a-checkbox__label ${wrap && "a-checkbox__label--wrap"}`}>
+          className={`a-checkbox__label${
+            wrap ? " a-checkbox__label--wrap" : ""
+          }`}>
           {children}
         </span>
       </label>

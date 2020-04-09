@@ -39,7 +39,8 @@ const ARadio = forwardRef(
           ref={(el) => el && (el.checked = checked)}
         />
         <span className="a-radio__box" />
-        <span className={`a-radio__label ${wrap && "a-radio__label--wrap"}`}>
+        <span
+          className={`a-radio__label${wrap ? " a-radio__label--wrap" : ""}`}>
           {children}
         </span>
       </label>
