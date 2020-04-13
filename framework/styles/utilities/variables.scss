@@ -37,7 +37,7 @@ $border-radius: rem(0.25) !default; // 4px
 $border-radius--lg: rem(0.375) !default; // 6px
 $border-radius--sm: rem(0.1875) !default; // 3px
 $border-radius--xs: rem(0.125) !default; // 2px
-$border-width: rem(0.0625) !default; // 1px
+$border-width: thin !default; // ~1px
 $spacer: 5px !default;
 $spacing: rem(1.25) !default; // 20px
 $spacers: () !default;
@@ -66,7 +66,6 @@ $display2-size: rem(2) !default; // 32px
 
 $display1-weight: 300 !default;
 $display2-weight: 300 !default;
-$display-line-height: $headings-line-height !default;
 // -----------------------------------------------------------------------------
 // Subheadings, Emphasis
 // -----------------------------------------------------------------------------
@@ -184,14 +183,6 @@ $base-icon-color: map-get($grey, "darken-5"); // Icons (#58585b);
 // General Colors
 // -----------------------------------------------------------------------------
 $control-text-color: map-get($grey, "darken-5"); // Alternative Text (#58585b);
-// -----------------------------------------------------------------------------
-// Base Properties
-// -----------------------------------------------------------------------------
-$base-font-size: $font-size--sm; // 14px
-$base-font-weight: $font-weight; // 400
-$base-line-height: $line-height; // 21px
-$base-border-width: $border-width; // 1px;
-$base-border-radius: $border-radius--sm; // 3px
 // -----------------------------------------------------------------------------
 // Motion
 // -----------------------------------------------------------------------------

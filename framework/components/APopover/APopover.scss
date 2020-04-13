@@ -32,7 +32,7 @@ $popover-footer-arrow-color: map-get($grey, "lighten-5");
   word-wrap: break-word;
   background-color: $control-fill-color;
   background-clip: padding-box;
-  border: $base-border-width solid $base-stroke-color;
+  border: $border-width solid $base-stroke-color;
   border-radius: $popover-border-radius;
   box-shadow: $default-box-shadow;
   &__arrow {
@@ -65,7 +65,7 @@ $popover-footer-arrow-color: map-get($grey, "lighten-5");
       border-top-color: $base-stroke-color;
     }
     .popover__arrow::after {
-      bottom: $base-border-width + 1;
+      bottom: 2px;
       border-top-color: $popover-footer-arrow-color;
     }
   }
@@ -88,7 +88,7 @@ $popover-footer-arrow-color: map-get($grey, "lighten-5");
       border-right-color: $base-stroke-color;
     }
     .popover__arrow::after {
-      left: $base-border-width + 1;
+      left: 2px;
       border-right-color: $popover-header-arrow-color;
     }
   }
@@ -108,7 +108,7 @@ $popover-footer-arrow-color: map-get($grey, "lighten-5");
       border-bottom-color: $base-stroke-color;
     }
     .popover__arrow::after {
-      top: $base-border-width + 1;
+      top: 2px;
       border-bottom-color: $popover-header-arrow-color;
     }
   }
@@ -131,7 +131,7 @@ $popover-footer-arrow-color: map-get($grey, "lighten-5");
       border-left-color: $base-stroke-color;
     }
     .popover__arrow::after {
-      right: $base-border-width + 1;
+      right: 2px;
       border-left-color: $popover-header-arrow-color;
     }
   }

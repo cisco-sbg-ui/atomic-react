@@ -58,7 +58,7 @@ $step-line-color: map-get($grey, "lighten-2");
       font-size: $step-icon-font-size;
       background: $step-icon-bg;
       color: $step-icon-color;
-      border: $base-border-width solid $step-icon-border-color;
+      border: $border-width solid $step-icon-border-color;
       margin: $step-icon-margin;
       position: relative;
       display: inline-flex;
@@ -93,7 +93,7 @@ $step-line-color: map-get($grey, "lighten-2");
       .step__icon {
         background: $base-color--selected;
         color: $base-inverse-color;
-        border: $base-border-width solid $base-color--selected;
+        border: $border-width solid $base-color--selected;
       }
     }
 
@@ -101,7 +101,7 @@ $step-line-color: map-get($grey, "lighten-2");
       .step__icon {
         background: $step-icon-bg-visited;
         color: $step-icon-color-visited;
-        border: $base-border-width solid $color-good;
+        border: $border-width solid $color-good;
       }
     }
     &.visited {

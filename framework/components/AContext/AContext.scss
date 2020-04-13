@@ -18,11 +18,11 @@ $context-arrow-left: 10%;
   min-height: 40px;
   color: $base-color;
   background-color: $control-fill-color;
-  border: $base-border-width solid transparent;
+  border: $border-width solid transparent;
   border-left: $context-border-left-width solid transparent;
   margin: $context-margin;
   padding: $context-padding;
-  border-radius: $base-border-radius;
+  border-radius: $border-radius--sm;
   &__arrow {
     position: absolute;
     display: block;
@@ -56,7 +56,7 @@ $context-arrow-left: 10%;
       border-top-color: transparent;
     }
     .context__arrow::after {
-      bottom: $base-border-width + 1;
+      bottom: 2px;
       border-top-color: $control-fill-color;
     }
   }
@@ -81,7 +81,7 @@ $context-arrow-left: 10%;
       border-right-color: transparent;
     }
     .context__arrow::after {
-      left: $base-border-width;
+      left: 1px;
       border-right-color: transparent;
     }
   }
@@ -101,7 +101,7 @@ $context-arrow-left: 10%;
       border-bottom-color: transparent;
     }
     .context__arrow::after {
-      top: $base-border-width + 1;
+      top: 2px;
       border-bottom-color: $control-fill-color;
     }
   }
@@ -124,7 +124,7 @@ $context-arrow-left: 10%;
       border-left-color: transparent;
     }
     .context__arrow::after {
-      right: $base-border-width + 1;
+      right: 2px;
       border-left-color: $control-fill-color;
     }
   }

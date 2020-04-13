@@ -31,8 +31,8 @@ $context-menu-footer-padding: 15px;
   word-wrap: break-word;
   background-color: $control-fill-color;
   background-clip: padding-box;
-  border: $base-border-width solid $base-stroke-color;
-  border-radius: $base-border-radius;
+  border: $border-width solid $base-stroke-color;
+  border-radius: $border-radius--sm;
   box-shadow: $context-menu-box-shadow;
   ul {
     list-style: none;
@@ -68,7 +68,7 @@ $context-menu-footer-padding: 15px;
       border-top-color: $base-stroke-color;
     }
     .context-menu__arrow::after {
-      bottom: $base-border-width;
+      bottom: 1px;
       border-top-color: $control-fill-color;
     }
   }
@@ -91,7 +91,7 @@ $context-menu-footer-padding: 15px;
       border-right-color: $base-stroke-color;
     }
     .context-menu__arrow::after {
-      left: $base-border-width;
+      left: 1px;
       border-right-color: $control-fill-color;
     }
   }
@@ -111,7 +111,7 @@ $context-menu-footer-padding: 15px;
       border-bottom-color: $base-stroke-color;
     }
     .context-menu__arrow::after {
-      top: $base-border-width;
+      top: 1px;
       border-bottom-color: $control-fill-color;
     }
   }
@@ -134,7 +134,7 @@ $context-menu-footer-padding: 15px;
       border-left-color: $base-stroke-color;
     }
     .context-menu__arrow::after {
-      right: $base-border-width;
+      right: 1px;
       border-left-color: $control-fill-color;
     }
   }
@@ -171,7 +171,7 @@ $context-menu-footer-padding: 15px;
   &__footer {
     text-align: left;
     padding: $context-menu-footer-padding;
-    border-top: $base-border-width solid $base-stroke-color;
+    border-top: $border-width solid $base-stroke-color;
     & a:focus {
       text-decoration: underline;
     }

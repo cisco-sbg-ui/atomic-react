@@ -2,13 +2,12 @@
 
 $panel-body-padding: 15px 20px 15px 20px;
 $panel-footer-padding: 0 20px 20px 20px;
-$panel-border-radius: $base-border-radius;
-$panel-border-width: $base-border-width;
+$panel-border-radius: $border-radius--sm;
 $panel-icon-size: $font-size;
 $panel-margin: 15px;
 $panel-padding: 20px 20px 0 20px;
 $panel-title-font-size: rem(1.125);
-$panel-title-font-size-small: $base-font-size;
+$panel-title-font-size-small: $font-size--sm;
 $panel-white-bg: $white;
 $panel-white-color: map-get($grey, "darken-6");
 
@@ -40,7 +39,7 @@ $panel-white-color: map-get($grey, "darken-6");
 }
 
 .a-panel {
-  border-width: $panel-border-width;
+  border-width: $border-width;
   border-style: solid;
   border-radius: $panel-border-radius;
   height: auto;

@@ -118,9 +118,9 @@ $btn-transition: color $transition-duration--extra-fast
   align-items: center;
   text-decoration: none;
   user-select: none;
-  border-width: $base-border-width;
+  border-width: $border-width;
   border-style: solid;
-  border-radius: $base-border-radius;
+  border-radius: $border-radius--sm;
   cursor: pointer;
   @include text-truncate;
   font-weight: $btn-font-weight;

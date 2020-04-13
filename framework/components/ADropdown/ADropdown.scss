@@ -67,7 +67,7 @@ $dropdown--state-active-transition: visibility 0s ease,
 
   .a-dropdown__item {
     display: inline-flex;
-    font-size: $base-font-size;
+    font-size: $font-size--sm;
     padding: $dropdown-item-padding;
     position: relative;
     text-decoration: none;

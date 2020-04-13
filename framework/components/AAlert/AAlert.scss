@@ -72,9 +72,9 @@ $alert-danger-close-icon--hover: map-get($status-red, "burnt-1");
   position: relative;
   width: 100%;
   min-height: $alert-min-height;
-  border-width: $base-border-width;
+  border-width: $border-width;
   border-style: solid;
-  border-radius: $base-border-radius;
+  border-radius: $border-radius--sm;
   margin: $alert-margin;
   padding: $alert-padding;
   &__icon {

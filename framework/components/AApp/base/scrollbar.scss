@@ -5,7 +5,7 @@ $scrollbar-thumb-border-radius: 8px;
 .theme--default.a-app--scrollbars {
   ::-webkit-scrollbar-track {
     background: map-deep-get($atomic-default, "app", "scrollbar", "track-bg");
-    border: $base-border-width solid
+    border: $border-width solid
       map-deep-get($atomic-default, "app", "scrollbar", "track-border-color");
   }
 
@@ -22,7 +22,7 @@ $scrollbar-thumb-border-radius: 8px;
 .theme--dusk.a-app--scrollbars {
   ::-webkit-scrollbar-track {
     background: map-deep-get($atomic-dusk, "app", "scrollbar", "track-bg");
-    border: $base-border-width solid
+    border: $border-width solid
       map-deep-get($atomic-dusk, "app", "scrollbar", "track-border-color");
   }
 

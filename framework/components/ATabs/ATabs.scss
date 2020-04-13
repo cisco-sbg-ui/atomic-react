@@ -54,11 +54,11 @@ $tab-oversized-margin: 0;
 
   &--size-oversized {
     .a-tab-group__tab {
-      border-top: $base-border-width solid
+      border-top: $border-width solid
         map-deep-get($theme, "control", "stroke-color");
-      border-bottom: $base-border-width solid
+      border-bottom: $border-width solid
         map-deep-get($theme, "control", "stroke-color");
-      border-left: $base-border-width solid
+      border-left: $border-width solid
         map-deep-get($theme, "control", "stroke-color");
       background-color: map-deep-get(
         $theme,
@@ -67,14 +67,14 @@ $tab-oversized-margin: 0;
       );
 
       &:last-of-type {
-        border-right: $base-border-width solid
+        border-right: $border-width solid
           map-deep-get($theme, "control", "stroke-color");
       }
 
       &--selected {
         background-color: $tab-oversized--selected-background-color;
-        border-top: $base-border-width solid transparent;
-        border-bottom: $base-border-width solid transparent;
+        border-top: $border-width solid transparent;
+        border-bottom: $border-width solid transparent;
         @include tab-bar(
           $tab-top-bar-height,
           map-deep-get($theme, "base", "color--selected")
@@ -83,7 +83,7 @@ $tab-oversized-margin: 0;
 
       &:focus,
       &:hover {
-        border-top: $base-border-width solid transparent;
+        border-top: $border-width solid transparent;
         @include tab-bar(
           $tab-top-bar-height,
           map-deep-get($theme, "base", "color--hover")

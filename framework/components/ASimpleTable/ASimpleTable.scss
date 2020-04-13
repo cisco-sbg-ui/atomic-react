@@ -84,14 +84,14 @@ $table-cell-tight-padding-top-bottom: (
     font-size: $table-header-font-size;
     font-weight: bold;
     line-height: $table-header-line-height;
-    border-width: $base-border-width;
+    border-width: $border-width;
     border-style: solid;
   }
 
   td {
     font-size: $table-body-font-size;
     line-height: $table-body-line-height;
-    border-width: $base-border-width;
+    border-width: $border-width;
     border-style: solid;
     padding-top: $table-cell-padding-top-bottom;
     padding-bottom: $table-cell-padding-top-bottom;

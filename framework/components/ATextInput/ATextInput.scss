@@ -94,7 +94,7 @@ $text-input-label-margin: 0;
   &__label {
     display: block;
     margin: $text-input-label-margin;
-    font-size: $base-font-size;
+    font-size: $font-size--sm;
   }
 
   &__prepend-icon,
@@ -133,8 +133,8 @@ $text-input-label-margin: 0;
     position: relative;
     padding: $input-padding;
     border-style: solid;
-    border-width: $base-border-width;
-    border-radius: $base-border-radius;
+    border-width: $border-width;
+    border-radius: $border-radius--sm;
     appearance: none;
     text-indent: 1px;
     &:focus {

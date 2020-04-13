@@ -94,7 +94,7 @@ $accordion--state-collapsed-transition: visibility $transition-duration ease,
     }
 
     &--is-focused .a-accordion__header {
-      border-width: $base-border-width;
+      border-width: $border-width;
       border-style: solid;
     }
 
@@ -106,7 +106,7 @@ $accordion--state-collapsed-transition: visibility $transition-duration ease,
   &__header {
     height: 30px;
     display: inline-flex;
-    border-width: $base-border-width;
+    border-width: $border-width;
     border-style: solid;
     font-size: $accordion-header-font-size;
     vertical-align: middle;
@@ -142,7 +142,7 @@ $accordion--state-collapsed-transition: visibility $transition-duration ease,
   }
 
   &--style-bordered {
-    border-width: $base-border-width;
+    border-width: $border-width;
     border-style: solid;
   }
 }
