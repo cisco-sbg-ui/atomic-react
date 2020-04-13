@@ -1,0 +1,223 @@
+import {Meta, Preview, Story, Props} from "@storybook/addon-docs/blocks";
+import {useState} from "react";
+
+import AApp from "../AApp";
+import ADivider from "../ADivider";
+import YourComponent from "../../utils/storybook-function";
+import ACombobox from "./ACombobox";
+
+<Meta title="Components/Comboboxes" component={ACombobox} />
+
+# Comboboxes
+
+## Install
+
+In the target component add:
+
+```
+import ACombobox from "@cisco-ats/atomic-react/ACombobox";
+// or if you're able to treekshake node_modules
+import {ACombobox} from "@cisco-ats/atomic-react";
+```
+
+## Usage
+
+<Preview>
+  <Story name="usage-1">
+    <AApp style={{minHeight: 220, marginRight: 20}}>
+      <h3>Combobox with Strings</h3>
+      <YourComponent>
+        {() => {
+          const items = [
+            "Bread, Cereal, Rice, and Pasta",
+            "Vegetables",
+            "Fruit",
+            "Milk, Yogurt, and Cheese",
+            "Meat, Poultry, Fish",
+            "Fats, Oils, and Sweets"
+          ];
+          const [value, setValue] = useState("");
+          const [filteredItems, setFilteredItems] = useState(items);
+          return (
+            <ACombobox
+              label="Food Group"
+              items={filteredItems}
+              placeholder="Pick a Food Group"
+              onSelected={(item) => {
+                setValue(item);
+              }}
+              value={value}
+              onChange={(e) => {
+                setFilteredItems(
+                  items.filter((x) =>
+                    x.toLowerCase().includes(e.target.value.toLowerCase())
+                  )
+                );
+                setValue(e.target.value);
+              }}
+            />
+          );
+        }}
+      </YourComponent>
+    </AApp>
+  </Story>
+  <Story name="usage-2">
+    <AApp style={{minHeight: 220, marginRight: 20}}>
+      <h3>Combobox with Objects</h3>
+      <YourComponent>
+        {() => {
+          const items = [
+            {id: 1, name: "Bread, Cereal, Rice, and Pasta"},
+            {id: 2, name: "Vegetables"},
+            {id: 3, name: "Fruit", selected: true},
+            {id: 4, name: "Milk, Yogurt, and Cheese"},
+            {id: 5, name: "Meat, Poultry, Fish", disabled: true},
+            {id: 6, name: "Fats, Oils, and Sweets"}
+          ];
+          const [value, setValue] = useState("");
+          const [filteredItems, setFilteredItems] = useState(items);
+          return (
+            <ACombobox
+              label="Food Group"
+              items={filteredItems}
+              itemValue="id"
+              itemText="name"
+              placeholder="Pick a Food Group"
+              onSelected={(item) => {
+                setValue(item.name);
+              }}
+              value={value}
+              onChange={(e) => {
+                setFilteredItems(
+                  items.filter((x) =>
+                    x.name.toLowerCase().includes(e.target.value.toLowerCase())
+                  )
+                );
+                setValue(e.target.value);
+              }}
+            />
+          );
+        }}
+      </YourComponent>
+    </AApp>
+  </Story>
+  <Story name="usage-3">
+    <AApp style={{minHeight: 220}}>
+      <h3>Disabled Combobox</h3>
+      <ACombobox disabled label="Food Group" placeholder="Pick a Food Group" />
+      <ADivider />
+      <h3>No Data Combobox</h3>
+      <ACombobox
+        label="Food Group"
+        placeholder="Pick a Food Group"
+        noDataContent="Check again when we restock!"
+      />
+    </AApp>
+  </Story>
+</Preview>
+
+## Combobox Props
+
+The `ACombobox` component inherits passed props.
+
+<Props of={ACombobox} />
+
+## Dusk Theme
+
+<Preview style={{backgroundColor: "#18191d"}}>
+  <Story name="dusk-1">
+    <AApp defaultTheme="dusk" style={{minHeight: 220, marginRight: 20}}>
+      <h3>Combobox with Strings</h3>
+      <YourComponent>
+        {() => {
+          const items = [
+            "Bread, Cereal, Rice, and Pasta",
+            "Vegetables",
+            "Fruit",
+            "Milk, Yogurt, and Cheese",
+            "Meat, Poultry, Fish",
+            "Fats, Oils, and Sweets"
+          ];
+          const [value, setValue] = useState("");
+          const [filteredItems, setFilteredItems] = useState(items);
+          return (
+            <ACombobox
+              label="Food Group"
+              items={filteredItems}
+              placeholder="Pick a Food Group"
+              onSelected={(item) => {
+                setValue(item);
+              }}
+              value={value}
+              onChange={(e) => {
+                setFilteredItems(
+                  items.filter((x) =>
+                    x.toLowerCase().includes(e.target.value.toLowerCase())
+                  )
+                );
+                setValue(e.target.value);
+              }}
+            />
+          );
+        }}
+      </YourComponent>
+    </AApp>
+  </Story>
+  <Story name="dusk-2">
+    <AApp defaultTheme="dusk" style={{minHeight: 220, marginRight: 20}}>
+      <h3>Combobox with Objects</h3>
+      <YourComponent>
+        {() => {
+          const items = [
+            {id: 1, name: "Bread, Cereal, Rice, and Pasta"},
+            {id: 2, name: "Vegetables"},
+            {id: 3, name: "Fruit", selected: true},
+            {id: 4, name: "Milk, Yogurt, and Cheese"},
+            {id: 5, name: "Meat, Poultry, Fish", disabled: true},
+            {id: 6, name: "Fats, Oils, and Sweets"}
+          ];
+          const [value, setValue] = useState("");
+          const [filteredItems, setFilteredItems] = useState(items);
+          return (
+            <ACombobox
+              label="Food Group"
+              items={filteredItems}
+              itemValue="id"
+              itemText="name"
+              placeholder="Pick a Food Group"
+              onSelected={(item) => {
+                setValue(item.name);
+              }}
+              value={value}
+              onChange={(e) => {
+                setFilteredItems(
+                  items.filter((x) =>
+                    x.name.toLowerCase().includes(e.target.value.toLowerCase())
+                  )
+                );
+                setValue(e.target.value);
+              }}
+            />
+          );
+        }}
+      </YourComponent>
+    </AApp>
+  </Story>
+  <Story name="dusk-3">
+    <AApp defaultTheme="dusk" style={{minHeight: 220}}>
+      <h3>Disabled Combobox</h3>
+      <ACombobox disabled label="Food Group" placeholder="Pick a Food Group" />
+      <h3>No Data Combobox</h3>
+      <ACombobox
+        label="Food Group"
+        placeholder="Pick a Food Group"
+        noDataContent="Check again when we restock!"
+      />
+    </AApp>
+  </Story>
+</Preview>
+
+## Accessibility Notes
+
+In addition to inheriting all of the accessibility features of `ADropdown` and `ATextInput`,
+the `ACombobox` will select and focus previous/next items on `up` or `down` keys for the `keydown` event.

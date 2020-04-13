@@ -124,7 +124,7 @@ $btn-transition: color $transition-duration--extra-fast
   cursor: pointer;
   @include text-truncate;
   font-weight: $btn-font-weight;
-  line-height: normal;
+  line-height: 0;
   padding: $btn-padding;
   margin: $btn-margin;
   font-size: $font-size--sm;
