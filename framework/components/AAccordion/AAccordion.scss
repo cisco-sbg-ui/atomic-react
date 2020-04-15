@@ -107,6 +107,10 @@ $accordion--state-collapsed-transition: visibility $transition-duration ease,
   &__link {
     padding: $accordion-header-padding;
     text-decoration: none;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+
     @include flex-fluid;
     &:visited,
     &:hover,
