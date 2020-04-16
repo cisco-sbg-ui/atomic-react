@@ -58,18 +58,6 @@ $accordion--state-collapsed-transition: visibility $transition-duration ease,
   &--style-bordered {
     border-color: map-deep-get($theme, "control", "stroke-color");
   }
-
-  &__toolbar-item {
-    color: map-deep-get($theme, "header", "icon-color");
-    border-color: transparent;
-    &:focus {
-      border-color: map-deep-get($theme, "base", "brand-color");
-    }
-
-    &:hover {
-      color: map-get($cisco-blue, "base");
-    }
-  }
 }
 
 .a-accordion {

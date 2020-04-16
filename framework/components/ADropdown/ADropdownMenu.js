@@ -15,6 +15,7 @@ const ADropdownMenu = forwardRef(
       onClose,
       onKeyDown,
       open,
+      focusOnOpen = true,
       role = "menu",
       ...rest
     },
@@ -34,7 +35,9 @@ const ADropdownMenu = forwardRef(
       if (open) {
         document.addEventListener("click", close);
         setLauncherElement(document.activeElement);
-        combinedRef.current.focus();
+        if (focusOnOpen) {
+          combinedRef.current.focus();
+        }
       }
 
       return () => {
@@ -135,6 +138,10 @@ const ADropdownMenu = forwardRef(
 );
 
 ADropdownMenu.propTypes = {
+  /**
+   * Toggles whether the menu is focused when opened.
+   */
+  focusOnOpen: PropTypes.bool,
   /**
    * Handles the request to close the menu.
    */

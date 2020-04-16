@@ -11,6 +11,7 @@ import ABadge from "./components/ABadge";
 import AButton from "./components/AButton";
 import AButtonGroup from "./components/AButtonGroup";
 import ACheckbox from "./components/ACheckbox";
+import ACombobox from "./components/ACombobox";
 import ADialog from "./components/ADialog";
 import ADivider from "./components/ADivider";
 import {
@@ -57,6 +58,7 @@ export {
   AButtonGroup,
   ACheckbox,
   ACol,
+  ACombobox,
   AContainer,
   ADialog,
   ADivider,

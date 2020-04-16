@@ -1,37 +1,32 @@
 @import "../../styles";
 
 $combobox-height: 28px;
-$combobox-width: 250px;
-$combobox-padding: 3px 5px 2px 6px;
+$combobox-padding: 6px;
+$combobox__menu-item-line-height: $line-height--lg;
+$combobox__menu-item-padding: 2px 0 0 0;
+$combobox__menu-items-margin: 0;
+$combobox__menu-items-right: 0;
+$combobox__menu-items-left: 0;
+$combobox__menu-items-z-index: 999;
 
-.combobox {
-  position: relative;
-  height: $combobox-height;
-  width: $combobox-width;
-  padding: $combobox-padding;
-  color: $base-color;
-  background: transparent;
-  border: $border-width solid $base-stroke-color;
-  border-radius: $border-radius--sm;
-  appearance: none;
-  &::-webkit-calendar-picker-indicator {
-    opacity: 100;
-    color: $control-text-color;
-    &:hover {
-      background-color: transparent;
+.a-combobox {
+  &__menu-items {
+    top: calc(100% - 1px);
+    border-bottom-left-radius: $border-radius--sm;
+    border-bottom-right-radius: $border-radius--sm;
+    cursor: pointer;
+    left: $combobox__menu-items-left;
+    margin: $combobox__menu-items-margin;
+    overflow: auto;
+    right: $combobox__menu-items-right;
+    user-select: none;
+    z-index: $combobox__menu-items-z-index;
+
+    .a-combobox__menu-item {
+      height: $combobox-height;
+      line-height: $combobox__menu-item-line-height;
+      padding: $combobox__menu-item-padding;
+      text-indent: $combobox-padding;
     }
   }
-  &:hover {
-    border-color: $control-stroke-color--hover;
-  }
-  &:focus {
-    border-color: $base-color--hover;
-    box-shadow: $base-box-shadow;
-  }
-  &:active {
-    border-color: $input-border-color--active;
-  }
-}
-.a-app--animated .combobox {
-  @include transition($input-transition);
 }

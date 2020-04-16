@@ -41,7 +41,9 @@ const StorybookSidebar = ({nav}) => {
   const [filter, setFilter] = useState("");
   const [items, setItems] = useState(nav);
 
-  const filterItems = (base) => {
+  const filterItems = (filter, base) => {
+    if (!filter.length) return base.items;
+
     return base.items
       .map((item) => {
         if (
@@ -54,7 +56,7 @@ const StorybookSidebar = ({nav}) => {
           ...item
         };
         if (newItem.items) {
-          newItem.items = filterItems(newItem);
+          newItem.items = filterItems(filter, newItem);
         }
 
         return newItem;
@@ -71,6 +73,7 @@ const StorybookSidebar = ({nav}) => {
             value={filter}
             onChange={({target}) => {
               setFilter(target.value);
+              setItems(filterItems(target.value, {items: nav}));
             }}
           />
         </div>
@@ -79,7 +82,7 @@ const StorybookSidebar = ({nav}) => {
           hoverable
           activatable
           expandOnClick
-          items={filter.length ? filterItems({items}) : items}
+          items={items}
           onChange={(x) => setItems(x)}
         />
       </div>

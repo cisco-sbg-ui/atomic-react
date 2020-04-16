@@ -131,6 +131,7 @@ $tab-oversized-margin: 0;
     &:focus,
     &:hover {
       text-decoration: none;
+      outline-offset: 0;
     }
   }
 
