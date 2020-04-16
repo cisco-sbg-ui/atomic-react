@@ -1,0 +1,294 @@
+import {Meta, Preview, Story, Props} from "@storybook/addon-docs/blocks";
+import {useState} from "react";
+
+import AApp from "../AApp";
+import AButton from "../AButton";
+import ADivider from "../ADivider";
+import LoremIpsum from "../../utils/lorem-ipsum";
+import {
+  AList,
+  AListItem,
+  AListItemAvatar,
+  AListItemSubtitle,
+  AListItemTitle,
+  AListItemContent,
+  AListItemAction
+} from "./";
+import AIcon from "../AIcon";
+
+<Meta title="Components/Lists" component={AList} />
+
+# Lists
+
+## Install
+
+In the target component add:
+
+```
+import {
+  AList,
+  AListItem,
+  AListItemAvatar,
+  AListItemSubtitle,
+  AListItemTitle,
+  AListItemContent,
+  AListItemAction
+} from "@cisco-ats/atomic-react/AList";
+// or if you're able to treekshake node_modules
+import {
+  AList,
+  AListItem,
+  AListItemAvatar,
+  AListItemSubtitle,
+  AListItemTitle,
+  AListItemContent,
+  AListItemAction
+} from "@cisco-ats/atomic-react";
+```
+
+## Usage
+
+<Preview>
+  <Story name="usage-1">
+    <AApp>
+      <AList className="mr-2">
+        <AListItem twoLine>
+          <AListItemAvatar>
+            <AIcon size={16} className="status-red--text">
+              critical-stop
+            </AIcon>
+          </AListItemAvatar>
+          <AListItemContent>
+            <AListItemTitle>Source Application</AListItemTitle>
+            <AListItemSubtitle>
+              Danger. Text to describe the notification or an issue that needs
+              to be addressed. Very, very, very, very, very long text.
+            </AListItemSubtitle>
+          </AListItemContent>
+          <AListItemAction>
+            <AButton tertiaryAlt icon onClick={() => {}}>
+              <AIcon size={10}>close</AIcon>
+            </AButton>
+          </AListItemAction>
+        </AListItem>
+        <ADivider light className="ma-0" />
+        <AListItem onClick={() => {}}>Logout</AListItem>
+      </AList>
+    </AApp>
+  </Story>
+  <Story name="usage-2">
+    <AApp>
+      <AList className="ml-2 mr-2 pl-2">
+        <AListItem twoLine>
+          <AListItemAvatar className="ma-2 ml-0">
+            <div
+              className="d-flex align-center justify-center"
+              style={{
+                width: 48,
+                height: 48,
+                color: "#f2f2f2",
+                borderRadius: 4,
+                backgroundColor: "#750b76"
+              }}>
+              AMP
+            </div>
+          </AListItemAvatar>
+          <AListItemContent>
+            <AListItemTitle>AMP for Endpoints</AListItemTitle>
+            <AListItemSubtitle>
+              <a href="#">New in 5.4.2</a> | <a href="#">API Docs</a>
+            </AListItemSubtitle>
+          </AListItemContent>
+        </AListItem>
+        <ADivider light className="ma-0" />
+        <AListItem twoLine>
+          <AListItemAvatar className="ma-2 ml-0">
+            <div
+              className="d-flex align-center justify-center ma-0"
+              style={{
+                width: 48,
+                height: 48,
+                color: "#f2f2f2",
+                borderRadius: 4,
+                backgroundColor: "#191970"
+              }}>
+              Cdo
+            </div>
+          </AListItemAvatar>
+          <AListItemContent>
+            <AListItemTitle>Cisco Defense Orchestrator</AListItemTitle>
+            <AListItemSubtitle>
+              <a href="#">What's New</a> | <a href="#">API Docs</a>
+            </AListItemSubtitle>
+          </AListItemContent>
+        </AListItem>
+      </AList>
+    </AApp>
+  </Story>
+  <Story name="usage-3">
+    <AApp>
+      <AList className="ml-2">
+        <AListItem href="#" target="_blank">
+          One
+        </AListItem>
+        <AListItem href="#" target="_blank">
+          Two
+        </AListItem>
+        <AListItem href="#" target="_blank">
+          Three
+        </AListItem>
+      </AList>
+    </AApp>
+  </Story>
+</Preview>
+
+## List Props
+
+The `AList` component inherits passed props.
+
+<Props of={AList} />
+
+## List Item Props
+
+The `AListItem` component inherits passed props.
+
+<Props of={AListItem} />
+
+## List Item Avatar Props
+
+The `AListItemAvatar` component inherits passed props.
+
+<Props of={AListItemAvatar} />
+
+## List Item Subtitle Props
+
+The `AListItemSubtitle` component inherits passed props.
+
+<Props of={AListItemSubtitle} />
+
+## List Item Title Props
+
+The `AListItemTitle` component inherits passed props.
+
+<Props of={AListItemTitle} />
+
+## List Item Content Props
+
+The `AListItemContent` component inherits passed props.
+
+<Props of={AListItem} />
+
+## List Item Action Props
+
+The `AListItemAction` component inherits passed props.
+
+<Props of={AListItemAction} />
+
+## Dusk Theme
+
+<Preview style={{backgroundColor: "#18191d"}}>
+  <Story name="dusk-1">
+    <AApp defaultTheme="dusk">
+      <AList className="mr-2">
+        <AListItem twoLine>
+          <AListItemAvatar>
+            <AIcon size={16} className="status-red--text">
+              critical-stop
+            </AIcon>
+          </AListItemAvatar>
+          <AListItemContent>
+            <AListItemTitle>Source Application</AListItemTitle>
+            <AListItemSubtitle>
+              Danger. Text to describe the notification or an issue that needs
+              to be addressed. Very, very, very, very, very long text.
+            </AListItemSubtitle>
+          </AListItemContent>
+          <AListItemAction>
+            <AButton tertiaryAlt icon onClick={() => {}}>
+              <AIcon size={10}>close</AIcon>
+            </AButton>
+          </AListItemAction>
+        </AListItem>
+        <ADivider light className="ma-0" />
+        <AListItem onClick={() => {}}>Logout</AListItem>
+      </AList>
+    </AApp>
+  </Story>
+  <Story name="dusk-2">
+    <AApp defaultTheme="dusk">
+      <AList className="ml-2 mr-2 pl-2">
+        <AListItem twoLine>
+          <AListItemAvatar className="ma-2 ml-0">
+            <div
+              className="d-flex align-center justify-center"
+              style={{
+                width: 48,
+                height: 48,
+                color: "#f2f2f2",
+                borderRadius: 4,
+                backgroundColor: "#750b76"
+              }}>
+              AMP
+            </div>
+          </AListItemAvatar>
+          <AListItemContent>
+            <AListItemTitle>AMP for Endpoints</AListItemTitle>
+            <AListItemSubtitle>
+              <a href="#">New in 5.4.2</a> | <a href="#">API Docs</a>
+            </AListItemSubtitle>
+          </AListItemContent>
+        </AListItem>
+        <ADivider light className="ma-0" />
+        <AListItem twoLine>
+          <AListItemAvatar className="ma-2 ml-0">
+            <div
+              className="d-flex align-center justify-center ma-0"
+              style={{
+                width: 48,
+                height: 48,
+                color: "#f2f2f2",
+                borderRadius: 4,
+                backgroundColor: "#191970"
+              }}>
+              Cdo
+            </div>
+          </AListItemAvatar>
+          <AListItemContent>
+            <AListItemTitle>Cisco Defense Orchestrator</AListItemTitle>
+            <AListItemSubtitle>
+              <a href="#">What's New</a> | <a href="#">API Docs</a>
+            </AListItemSubtitle>
+          </AListItemContent>
+        </AListItem>
+      </AList>
+    </AApp>
+  </Story>
+  <Story name="dusk-3">
+    <AApp defaultTheme="dusk">
+      <AList className="ml-2">
+        <AListItem href="#" target="_blank">
+          One
+        </AListItem>
+        <AListItem href="#" target="_blank">
+          Two
+        </AListItem>
+        <AListItem href="#" target="_blank">
+          Three
+        </AListItem>
+      </AList>
+    </AApp>
+  </Story>
+</Preview>
+
+## Router Integrations
+
+On `AListItem`, set the `component` property to your router's link type, for example:
+
+```
+// With react-router:
+<AListItem component={RouterLink} to="/">List Item 1</AListItem>
+```
+
+## Accessibility Notes
+
+The `AListItem` `click` event handler is triggered both by the `click` event and by the `keyDown` event for the `Enter` key.

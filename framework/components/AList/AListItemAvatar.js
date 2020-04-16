@@ -1,0 +1,21 @@
+import React, {forwardRef} from "react";
+
+import "./AList.scss";
+
+const AListItemAvatar = forwardRef(
+  ({children, className: propsClassName, ...rest}, ref) => {
+    let className = "a-list-item__avatar";
+
+    if (propsClassName) {
+      className += ` ${propsClassName}`;
+    }
+
+    return (
+      <div {...rest} ref={ref} className={className}>
+        {children}
+      </div>
+    );
+  }
+);
+
+export default AListItemAvatar;

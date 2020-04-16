@@ -44,6 +44,7 @@ const config = {
     AHeader: "framework/components/AHeader",
     AIcon: "framework/components/AIcon",
     ALayout: "framework/components/ALayout",
+    AList: "framework/components/AList",
     APanel: "framework/components/APanel",
     ARadio: "framework/components/ARadio",
     ASelect: "framework/components/ASelect",

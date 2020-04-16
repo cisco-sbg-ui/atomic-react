@@ -31,9 +31,7 @@ import {AButton} from "@cisco-ats/atomic-react";
           const [count, setCount] = useState(0);
           return (
             <div>
-              <AButton className="fern" onClick={() => setCount(count + 1)}>
-                Click Me
-              </AButton>
+              <AButton onClick={() => setCount(count + 1)}>Click Me</AButton>
               <div>Button has been clicked {count} times.</div>
             </div>
           );
@@ -64,7 +62,7 @@ The `AButton` component inherits passed props.
         </AButton>
       </p>
       <p>
-        <AButton>
+        <AButton icon>
           <AIcon>sync</AIcon>
         </AButton>
       </p>
@@ -85,7 +83,7 @@ The `AButton` component inherits passed props.
         </AButton>
       </p>
       <p>
-        <AButton secondary>
+        <AButton secondary icon>
           <AIcon>sync</AIcon>
         </AButton>
       </p>
@@ -108,7 +106,7 @@ The `AButton` component inherits passed props.
         </AButton>
       </p>
       <p>
-        <AButton tertiary>
+        <AButton tertiary icon>
           <AIcon>sync</AIcon>
         </AButton>
       </p>
@@ -131,7 +129,7 @@ The `AButton` component inherits passed props.
         </AButton>
       </p>
       <p>
-        <AButton tertiaryAlt>
+        <AButton tertiaryAlt icon>
           <AIcon>sync</AIcon>
         </AButton>
       </p>
@@ -159,7 +157,7 @@ The `AButton` component inherits passed props.
         </AButton>
       </p>
       <p>
-        <AButton>
+        <AButton icon>
           <AIcon>sync</AIcon>
         </AButton>
       </p>
@@ -180,7 +178,7 @@ The `AButton` component inherits passed props.
         </AButton>
       </p>
       <p>
-        <AButton secondary>
+        <AButton secondary icon>
           <AIcon>sync</AIcon>
         </AButton>
       </p>
@@ -203,7 +201,7 @@ The `AButton` component inherits passed props.
         </AButton>
       </p>
       <p>
-        <AButton tertiary>
+        <AButton tertiary icon>
           <AIcon>sync</AIcon>
         </AButton>
       </p>
@@ -226,7 +224,7 @@ The `AButton` component inherits passed props.
         </AButton>
       </p>
       <p>
-        <AButton tertiaryAlt>
+        <AButton tertiaryAlt icon>
           <AIcon>sync</AIcon>
         </AButton>
       </p>

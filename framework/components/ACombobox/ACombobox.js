@@ -77,7 +77,7 @@ const ACombobox = forwardRef(
           />
           <ADropdownMenu
             focusOnOpen={false}
-            open={(items.length || noDataContent) && isOpen}
+            open={Boolean((items.length || noDataContent) && isOpen)}
             onClose={() => setIsOpen(false)}
             ref={dropdownMenuRef}
             role="listbox"
