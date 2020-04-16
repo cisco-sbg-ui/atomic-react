@@ -6,6 +6,9 @@ import {Meta} from "@storybook/addon-docs/blocks";
 
 ## 1.4.x
 
+- Changing tab `selected` prop to `false` should unselect the tab.
+- Preventing default "ghost" mousedown event in webkit browsers that resulted in `ADropdownMenu` closing prematurely.
+- Removing `type` prop when component specified for `AButton`. Results in `<a>` tags appearing as buttons in Safari when using one of `react-router[-dom]`'s link components.
 - Finalized font location.
 
 Added the following components:

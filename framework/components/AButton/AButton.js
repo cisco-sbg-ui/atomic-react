@@ -81,11 +81,11 @@ const AButton = forwardRef(
         props.href = href;
         props.target = target;
       }
+    } else if (component) {
+      TagName = component;
+      props.disabled = disabled;
+      props.value = value;
     } else {
-      if (component) {
-        TagName = component;
-      }
-
       props.disabled = disabled;
       props.type = type;
       props.value = value;
@@ -94,10 +94,6 @@ const AButton = forwardRef(
     return <TagName {...props}>{children}</TagName>;
   }
 );
-
-AButton.defaultProps = {
-  type: "button"
-};
 
 AButton.propTypes = {
   /**
