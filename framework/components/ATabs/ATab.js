@@ -35,6 +35,13 @@ const ATab = forwardRef(
       setIsSelected(tabChanged === tabId);
     });
 
+    useEffect(() => {
+      if (!selected && isSelected) {
+        setTabChanged(-1);
+        setIsSelected(false);
+      }
+    }, [selected]);
+
     let className = "a-tab-group__tab";
     if (isSelected) {
       className += " a-tab-group__tab--selected";
