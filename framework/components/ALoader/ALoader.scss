@@ -4,14 +4,11 @@ $loader-padding: 0;
 $loader-margin: 10px 0;
 // Default Loading Indicator
 $loader-container-width: 36px;
-$loader-dot-background-color: $base-brand-color;
 $loader-dot-diameter: 8px;
 $loader-dot-animation-delay: 1.4s;
 $loader-dot-bounce1-delay: -0.32s;
 $loader-dot-bounce2-delay: -0.16s;
 // Page Loading Indicator
-$page-loader-base-background-color: map-get($grey, "lighten-3");
-$page-loader-background-color: $base-brand-color;
 $page-loader-small-diameter: 100px;
 $page-loader-medium-diameter: 200px;
 $page-loader-large-diameter: 300px;
@@ -47,10 +44,97 @@ $cisco-loader-bar-top--index7: -4%;
 $cisco-loader-bar-top--index8: 25%;
 $cisco-loader-bar-top--index9: 48%;
 
+@include theme(a-loader) using ($theme) {
+  &__dot {
+    background-color: map-deep-get($theme, "base", "brand-color");
+  }
+}
+
+@include theme(a-page-loader) using ($theme) {
+  &:after {
+    @include loader-border(
+      $page-loader-medium-thickness,
+      map-deep-get($theme, "base", "brand-color"),
+      transparent,
+      transparent,
+      transparent
+    );
+  }
+  &:before {
+    @include loader-border(
+      $page-loader-medium-thickness,
+      map-deep-get($theme, "loader", "background-color"),
+      map-deep-get($theme, "loader", "background-color"),
+      map-deep-get($theme, "loader", "background-color"),
+      map-deep-get($theme, "loader", "background-color")
+    );
+  }
+  &--size-small {
+    &:before {
+      @include loader-border(
+        $page-loader-small-thickness,
+        map-deep-get($theme, "loader", "background-color"),
+        map-deep-get($theme, "loader", "background-color"),
+        map-deep-get($theme, "loader", "background-color"),
+        map-deep-get($theme, "loader", "background-color")
+      );
+    }
+    &:after {
+      @include loader-border(
+        $page-loader-small-thickness,
+        map-deep-get($theme, "base", "brand-color"),
+        transparent,
+        transparent,
+        transparent
+      );
+    }
+  }
+  &--size-medium {
+    &:before {
+      @include loader-border(
+        $page-loader-medium-thickness,
+        map-deep-get($theme, "loader", "background-color"),
+        map-deep-get($theme, "loader", "background-color"),
+        map-deep-get($theme, "loader", "background-color"),
+        map-deep-get($theme, "loader", "background-color")
+      );
+    }
+    &:after {
+      @include loader-border(
+        $page-loader-medium-thickness,
+        map-deep-get($theme, "base", "brand-color"),
+        transparent,
+        transparent,
+        transparent
+      );
+    }
+  }
+  &--size-large {
+    &:before {
+      @include loader-border(
+        $page-loader-large-thickness,
+        map-deep-get($theme, "loader", "background-color"),
+        map-deep-get($theme, "loader", "background-color"),
+        map-deep-get($theme, "loader", "background-color"),
+        map-deep-get($theme, "loader", "background-color")
+      );
+    }
+    &:after {
+      @include loader-border(
+        $page-loader-large-thickness,
+        map-deep-get($theme, "base", "brand-color"),
+        transparent,
+        transparent,
+        transparent
+      );
+    }
+  }
+}
+
 // -----------------------------------------------------------------------------
 // Default Loading Indicator
 // -----------------------------------------------------------------------------
-.loader {
+.a-loader {
   margin: $loader-margin;
   padding: $loader-padding;
   text-align: center;
@@ -58,7 +142,6 @@ $cisco-loader-bar-top--index9: 48%;
   &__dot {
     width: $loader-dot-diameter;
     height: $loader-dot-diameter;
-    background-color: $loader-dot-background-color;
     border-radius: 100%;
     display: inline-block;
     animation: dot-animation $loader-dot-animation-delay infinite ease-in-out
@@ -74,7 +157,7 @@ $cisco-loader-bar-top--index9: 48%;
 // -----------------------------------------------------------------------------
 // Page Level Loading Indicator
 // -----------------------------------------------------------------------------
-.page-loader {
+.a-page-loader {
   display: inline-block;
   box-sizing: border-box;
   position: relative;
@@ -83,6 +166,8 @@ $cisco-loader-bar-top--index9: 48%;
   text-align: center;
   width: $page-loader-medium-diameter;
   height: $page-loader-medium-diameter;
+  overflow: hidden;
+
   &:after,
   &:before {
     position: absolute;
@@ -98,22 +183,6 @@ $cisco-loader-bar-top--index9: 48%;
   &:after {
     animation: page-loader-animation $page-loader-animation-delay linear
       infinite;
-    @include loader-border(
-      $page-loader-medium-thickness,
-      $page-loader-background-color,
-      transparent,
-      transparent,
-      transparent
-    );
-  }
-  &:before {
-    @include loader-border(
-      $page-loader-medium-thickness,
-      $page-loader-base-background-color,
-      $page-loader-base-background-color,
-      $page-loader-base-background-color,
-      $page-loader-base-background-color
-    );
   }
   &--size-small {
     width: $page-loader-small-diameter;
@@ -123,24 +192,6 @@ $cisco-loader-bar-top--index9: 48%;
       @include loader-bounding-box(
         $page-loader-small-diameter,
         $page-loader-small-diameter
-      );
-    }
-    &:before {
-      @include loader-border(
-        $page-loader-small-thickness,
-        $page-loader-base-background-color,
-        $page-loader-base-background-color,
-        $page-loader-base-background-color,
-        $page-loader-base-background-color
-      );
-    }
-    &:after {
-      @include loader-border(
-        $page-loader-small-thickness,
-        $page-loader-background-color,
-        transparent,
-        transparent,
-        transparent
       );
     }
   }
@@ -154,24 +205,6 @@ $cisco-loader-bar-top--index9: 48%;
         $page-loader-medium-diameter
       );
     }
-    &:before {
-      @include loader-border(
-        $page-loader-medium-thickness,
-        $page-loader-base-background-color,
-        $page-loader-base-background-color,
-        $page-loader-base-background-color,
-        $page-loader-base-background-color
-      );
-    }
-    &:after {
-      @include loader-border(
-        $page-loader-medium-thickness,
-        $page-loader-background-color,
-        transparent,
-        transparent,
-        transparent
-      );
-    }
   }
   &--size-large {
     width: $page-loader-large-diameter;
@@ -183,30 +216,12 @@ $cisco-loader-bar-top--index9: 48%;
         $page-loader-large-diameter
       );
     }
-    &:before {
-      @include loader-border(
-        $page-loader-large-thickness,
-        $page-loader-base-background-color,
-        $page-loader-base-background-color,
-        $page-loader-base-background-color,
-        $page-loader-base-background-color
-      );
-    }
-    &:after {
-      @include loader-border(
-        $page-loader-large-thickness,
-        $page-loader-background-color,
-        transparent,
-        transparent,
-        transparent
-      );
-    }
   }
 }
 // -----------------------------------------------------------------------------
 // Cisco Logo Loading Indicator
 // -----------------------------------------------------------------------------
-.cisco-loader {
+.a-cisco-loader {
   height: $cisco-loader-height;
   width: $cisco-loader-width;
   min-width: $cisco-loader-min-width;

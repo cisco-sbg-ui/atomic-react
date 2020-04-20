@@ -32,11 +32,6 @@ $date-picker-range-bg: rgba(
 $help-block-color-warning: map-get($status-orange, "base");
 $help-block-color-error: map-get($status-red, "wash-1");
 // -----------------------------------------------------------------------------
-// Loading Indicators
-// -----------------------------------------------------------------------------
-// Page Loading Indicator
-$page-loader-base-background-color: map-get($dusk, "6"); // #17202b;
-// -----------------------------------------------------------------------------
 // Numeric Input
 // -----------------------------------------------------------------------------
 $spinner-box-bg: map-get($grey, "darken-7"); // #18191d;

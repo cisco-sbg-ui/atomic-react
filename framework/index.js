@@ -37,6 +37,7 @@ import {
   AListItemContent,
   AListItemAction
 } from "./components/AList";
+import {ACiscoLoader, ADotLoader, APageLoader} from "./components/ALoader";
 import {
   APanel,
   APanelHeader,
@@ -66,11 +67,13 @@ export {
   AButton,
   AButtonGroup,
   ACheckbox,
+  ACiscoLoader,
   ACol,
   ACombobox,
   AContainer,
   ADialog,
   ADivider,
+  ADotLoader,
   ADropdown,
   ADropdownMenu,
   ADropdownMenuItem,
@@ -88,6 +91,7 @@ export {
   AListItemContent,
   AListItemSubtitle,
   AListItemTitle,
+  APageLoader,
   APanel,
   APanelHeader,
   APanelTitle,
