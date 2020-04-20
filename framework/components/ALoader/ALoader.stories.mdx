@@ -1,0 +1,90 @@
+import {Meta, Preview, Story, Props} from "@storybook/addon-docs/blocks";
+import {useState} from "react";
+
+import AApp from "../AApp";
+import {ACiscoLoader, ADotLoader, APageLoader} from "./";
+
+<Meta title="Components/Loaders" component={ADotLoader} />
+
+# Loaders
+
+## Install
+
+In the target component add:
+
+```
+import {
+  ACiscoLoader,
+  ADotLoader,
+  APageLoader
+} from "@cisco-ats/atomic-react/ALoader";
+// or if you're able to treekshake node_modules
+import {
+  ACiscoLoader,
+  ADotLoader,
+  APageLoader
+} from "@cisco-ats/atomic-react";
+```
+
+## Usage
+
+<Preview>
+  <Story name="usage-1">
+    <AApp>
+      <ACiscoLoader />
+    </AApp>
+  </Story>
+  <Story name="usage-2">
+    <AApp>
+      <ADotLoader />
+    </AApp>
+  </Story>
+  <Story name="usage-3">
+    <AApp>
+      <APageLoader size="small" />
+    </AApp>
+  </Story>
+</Preview>
+
+## Cisco Loader Props
+
+The `ACiscoLoader` component inherits passed props.
+
+<Props of={ACiscoLoader} />
+
+## Dot Loader Props
+
+The `ADotLoader` component inherits passed props.
+
+<Props of={ADotLoader} />
+
+## Page Loader Props
+
+The `APageLoader` component inherits passed props.
+
+<Props of={APageLoader} />
+
+## Dusk Theme
+
+<Preview style={{backgroundColor: "#18191d"}}>
+  <Story name="dusk-1">
+    <AApp defaultTheme="dusk">
+      <ACiscoLoader />
+    </AApp>
+  </Story>
+  <Story name="dusk-2">
+    <AApp defaultTheme="dusk">
+      <ADotLoader />
+    </AApp>
+  </Story>
+  <Story name="dusk-3">
+    <AApp defaultTheme="dusk">
+      <APageLoader size="small" />
+    </AApp>
+  </Story>
+</Preview>
+
+## Accessibility Notes
+
+By default, `ACiscoLoader`, `ADotLoader`, and `APageLoader` are assigned the [WAI-ARIA](https://www.w3.org/WAI/standards-guidelines/aria/) role of [progressbar](https://www.w3.org/TR/wai-aria/#progressbar).
+Additionally applied are the suggested `aria-valuemin` and `aria-valuemax` set at `0` and `100`, respectively, although all loaders are indeterminate.
