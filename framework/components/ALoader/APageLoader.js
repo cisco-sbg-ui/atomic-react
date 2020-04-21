@@ -44,7 +44,7 @@ APageLoader.propTypes = {
   /**
    * Sets the size of the indicator.
    */
-  size: PropTypes.oneOf("small", "medium", "large")
+  size: PropTypes.oneOf(["small", "medium", "large"])
 };
 
 APageLoader.displayName = "APageLoader";

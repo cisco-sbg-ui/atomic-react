@@ -1,6 +1,6 @@
 import React, {forwardRef} from "react";
 
-export default forwardRef((props, ref) => {
+const LoadNotification = forwardRef((props, ref) => {
   const {
     level = "warning",
     message = "There was not enough data to render this chart.",
@@ -14,3 +14,7 @@ export default forwardRef((props, ref) => {
     </div>
   );
 });
+
+LoadNotification.displayName = "LoadNotification";
+
+export default LoadNotification;

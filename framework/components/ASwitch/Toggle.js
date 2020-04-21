@@ -37,4 +37,6 @@ Toggle.propTypes = {
   onChange: PropTypes.func
 };
 
+Toggle.displayName = "Toggle";
+
 export default Toggle;
