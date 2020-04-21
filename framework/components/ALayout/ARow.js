@@ -26,4 +26,6 @@ ARow.propTypes = {
   noGutters: PropTypes.bool
 };
 
+ARow.displayName = "ARow";
+
 export default ARow;

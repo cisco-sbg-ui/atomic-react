@@ -138,4 +138,6 @@ AButton.propTypes = {
   type: PropTypes.oneOf(["button", "submit", "reset"])
 };
 
+AButton.displayName = "AButton";
+
 export default AButton;

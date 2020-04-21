@@ -25,4 +25,6 @@ const ADropdown = forwardRef(
   }
 );
 
+ADropdown.displayName = "ADropdown";
+
 export default ADropdown;

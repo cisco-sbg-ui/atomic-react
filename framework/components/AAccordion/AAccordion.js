@@ -40,4 +40,6 @@ AAccordion.propTypes = {
   bordered: PropTypes.bool
 };
 
+AAccordion.displayName = "AAccordion";
+
 export default AAccordion;

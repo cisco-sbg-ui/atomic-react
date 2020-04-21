@@ -46,4 +46,6 @@ ATabGroup.propTypes = {
   tall: PropTypes.bool
 };
 
+ATabGroup.displayName = "ATabGroup";
+
 export default ATabGroup;

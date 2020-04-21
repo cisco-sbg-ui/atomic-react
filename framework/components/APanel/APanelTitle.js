@@ -30,4 +30,6 @@ APanelTitle.propTypes = {
   small: PropTypes.bool
 };
 
+APanelTitle.displayName = "APanelTitle";
+
 export default APanelTitle;

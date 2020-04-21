@@ -61,4 +61,6 @@ AButtonGroup.propTypes = {
   selectedValues: PropTypes.arrayOf(PropTypes.string)
 };
 
+AButtonGroup.displayName = "AButtonGroup";
+
 export default AButtonGroup;

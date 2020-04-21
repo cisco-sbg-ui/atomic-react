@@ -4,7 +4,7 @@ import "./AHeader.scss";
 
 const AHeaderNavigation = forwardRef(
   ({children, className: propsClassName, ...rest}, ref) => {
-    const className = "a-header__navigation";
+    let className = "a-header__navigation";
 
     if (propsClassName) {
       className += ` ${propsClassName}`;
@@ -17,5 +17,7 @@ const AHeaderNavigation = forwardRef(
     );
   }
 );
+
+AHeaderNavigation.displayName = "AHeaderNavigation";
 
 export default AHeaderNavigation;

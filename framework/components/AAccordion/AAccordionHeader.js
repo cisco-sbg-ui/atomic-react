@@ -18,4 +18,6 @@ const AAccordionHeader = forwardRef(
   }
 );
 
+AAccordionHeader.displayName = "AAccordionHeader";
+
 export default AAccordionHeader;

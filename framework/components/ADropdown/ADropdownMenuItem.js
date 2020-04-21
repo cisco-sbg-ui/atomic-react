@@ -82,4 +82,6 @@ ADropdownMenuItem.propTypes = {
   target: PropTypes.string
 };
 
+ADropdownMenuItem.displayName = "ADropdownMenuItem";
+
 export default ADropdownMenuItem;

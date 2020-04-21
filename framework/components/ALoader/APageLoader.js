@@ -15,6 +15,7 @@ const APageLoader = forwardRef(
 
       case "large": {
         className += " a-page-loader--size-large";
+        break;
       }
 
       default: {
@@ -45,5 +46,7 @@ APageLoader.propTypes = {
    */
   size: PropTypes.oneOf("small", "medium", "large")
 };
+
+APageLoader.displayName = "APageLoader";
 
 export default APageLoader;

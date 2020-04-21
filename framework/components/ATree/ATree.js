@@ -40,7 +40,7 @@ const ATree = forwardRef(
         });
     };
 
-    const hoverHandler = (isHovered, path) => (e) => {
+    const hoverHandler = (isHovered, path) => () => {
       if (!hoverable) return;
 
       const allItems = {items: items.slice()};
@@ -51,7 +51,7 @@ const ATree = forwardRef(
       onChange && onChange(allItems.items);
     };
 
-    const expandHandler = (path) => (e) => {
+    const expandHandler = (path) => () => {
       const allItems = {items: items.slice()};
       const thisItem = path.reduce((acc, nextIndex) => {
         return acc.items[nextIndex];
@@ -223,5 +223,7 @@ ATree.propTypes = {
    */
   onChange: PropTypes.func
 };
+
+ATree.displayName = "ATree";
 
 export default ATree;

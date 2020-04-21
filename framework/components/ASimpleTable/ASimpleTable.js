@@ -49,4 +49,6 @@ ASimpleTable.propTypes = {
   tight: PropTypes.bool
 };
 
+ASimpleTable.displayName = "ASimpleTable";
+
 export default ASimpleTable;

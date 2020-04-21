@@ -145,4 +145,6 @@ ACol.propTypes = {
   ])
 };
 
+ACol.displayName = "ACol";
+
 export default ACol;

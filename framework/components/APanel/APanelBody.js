@@ -18,4 +18,6 @@ const APanelBody = forwardRef(
   }
 );
 
+APanelBody.displayName = "APanelBody";
+
 export default APanelBody;

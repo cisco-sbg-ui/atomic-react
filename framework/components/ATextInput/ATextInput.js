@@ -209,4 +209,6 @@ ATextInput.propTypes = {
   value: PropTypes.string
 };
 
+ATextInput.displayName = "ATextInput";
+
 export default ATextInput;

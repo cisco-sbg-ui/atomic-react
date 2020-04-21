@@ -16,7 +16,7 @@ const AList = forwardRef(
     }
 
     return (
-      <div {...rest} className={className}>
+      <div {...rest} ref={ref} className={className}>
         {children}
       </div>
     );
@@ -29,5 +29,7 @@ AList.propTypes = {
    */
   hoverable: PropTypes.bool
 };
+
+AList.displayName = "AList";
 
 export default AList;

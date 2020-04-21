@@ -90,7 +90,7 @@ const StorybookSidebar = ({nav}) => {
   );
 };
 
-addons.register("atomic-react/header", (api) => {
+addons.register("atomic-react/header", () => {
   var rootHeader = document.createElement("div");
   rootHeader.id = "root-header";
   var body = document.querySelector("body");

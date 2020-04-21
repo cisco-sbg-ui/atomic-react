@@ -18,4 +18,6 @@ const AListItemSubtitle = forwardRef(
   }
 );
 
+AListItemSubtitle.displayName = "AListItemSubtitle";
+
 export default AListItemSubtitle;

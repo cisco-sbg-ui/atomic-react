@@ -9,7 +9,6 @@ import {keyCodes} from "../../utils/helpers";
 const ACombobox = forwardRef(
   (
     {
-      children,
       className: propsClassName,
       disabled,
       itemText = "text",
@@ -42,6 +41,7 @@ const ACombobox = forwardRef(
             appendIcon="chevron-down"
             onClickAppend={() => setIsOpen(!isOpen)}
             disabled={disabled}
+            label={label}
             placeholder={placeholder}
             ref={surfaceRef}
             value={value}
@@ -87,7 +87,6 @@ const ACombobox = forwardRef(
             )}
             {items.map((item, index) => {
               const itemProps = {
-                key: `a-combobox__menu-item_${index}`,
                 value: null,
                 children: null,
                 className: "a-combobox__menu-item",
@@ -111,7 +110,12 @@ const ACombobox = forwardRef(
                 };
               }
 
-              return <ADropdownMenuItem {...itemProps} />;
+              return (
+                <ADropdownMenuItem
+                  key={`a-combobox__menu-item_${index}`}
+                  {...itemProps}
+                />
+              );
             })}
           </ADropdownMenu>
         </ADropdown>
@@ -165,5 +169,7 @@ ACombobox.propTypes = {
    */
   value: PropTypes.string
 };
+
+ACombobox.displayName = "ACombobox";
 
 export default ACombobox;

@@ -70,4 +70,6 @@ AIcon.propTypes = {
   ])
 };
 
+AIcon.displayName = "AIcon";
+
 export default AIcon;

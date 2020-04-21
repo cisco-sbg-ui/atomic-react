@@ -18,4 +18,6 @@ const APanelHeader = forwardRef(
   }
 );
 
+APanelHeader.displayName = "APanelHeader";
+
 export default APanelHeader;

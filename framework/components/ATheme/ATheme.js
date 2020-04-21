@@ -12,8 +12,10 @@ const ATheme = forwardRef(
   ) => {
     let initialTheme = "default";
     if (persist) {
-      if (localStorage.hasOwnProperty(LS_KEY)) {
+      if (Object.prototype.hasOwnProperty.call(localStorage, LS_KEY)) {
         initialTheme = localStorage.getItem(LS_KEY) === "dusk" && "dusk";
+      } else if (["default", "dusk"].includes(defaultTheme)) {
+        initialTheme = defaultTheme;
       } else if (
         window.matchMedia &&
         window.matchMedia("(prefers-color-scheme: dark)").matches
@@ -61,5 +63,7 @@ ATheme.propTypes = {
    */
   persist: PropTypes.bool
 };
+
+ATheme.displayName = "ATheme";
 
 export default ATheme;

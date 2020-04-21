@@ -66,7 +66,7 @@ const ADialog = forwardRef(
       return () => {
         mountPoint().removeEventListener("keydown", keyDownEscHandler);
       };
-    }, [keyDownEscHandler]);
+    }, [keyDownEscHandler, mountPoint]);
 
     let backdropClassName = "a-dialog-backdrop";
     let className = "a-dialog";
@@ -119,5 +119,7 @@ ADialog.propTypes = {
    */
   open: PropTypes.bool
 };
+
+ADialog.displayName = "ADialog";
 
 export default ADialog;

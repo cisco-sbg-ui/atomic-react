@@ -90,4 +90,6 @@ AAlert.propTypes = {
   onClose: PropTypes.func
 };
 
+AAlert.displayName = "AAlert";
+
 export default AAlert;
