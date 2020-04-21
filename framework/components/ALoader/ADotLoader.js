@@ -23,4 +23,6 @@ const ADotLoader = forwardRef(({className: propsClassName, ...rest}, ref) => {
   );
 });
 
+ADotLoader.displayName = "ADotLoader";
+
 export default ADotLoader;

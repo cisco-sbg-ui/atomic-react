@@ -18,4 +18,6 @@ const AFooter = forwardRef(
   }
 );
 
+AFooter.displayName = "AFooter";
+
 export default AFooter;

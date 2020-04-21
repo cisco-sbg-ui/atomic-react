@@ -18,7 +18,7 @@ const ARadio = forwardRef(
     },
     ref
   ) => {
-    const className = "a-radio";
+    let className = "a-radio";
 
     if (propsClassName) {
       className += ` ${propsClassName}`;
@@ -79,5 +79,7 @@ ARadio.propTypes = {
    */
   wrap: PropTypes.bool
 };
+
+ARadio.displayName = "ARadio";
 
 export default ARadio;

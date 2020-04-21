@@ -11,7 +11,6 @@ let selectCounter = 0;
 const ASelect = forwardRef(
   (
     {
-      children,
       className: propsClassName,
       disabled,
       itemDisabled = "disabled",
@@ -99,9 +98,10 @@ const ASelect = forwardRef(
         setTimeout(() => {
           const selectedIndex = getSelectedIndex();
           if (selectedIndex > -1) {
-            dropdownMenuRef.current
-              .querySelectorAll(".a-dropdown__item")
-              [selectedIndex].focus();
+            const dropdownItems = dropdownMenuRef.current.querySelectorAll(
+              ".a-dropdown__item"
+            );
+            dropdownItems[selectedIndex].focus();
           }
         }, 10);
       };
@@ -116,9 +116,10 @@ const ASelect = forwardRef(
           setTimeout(() => {
             const selectedIndex = getSelectedIndex();
             if (selectedIndex > -1) {
-              dropdownMenuRef.current
-                .querySelectorAll(".a-dropdown__item")
-                [selectedIndex].focus();
+              const dropdownItems = dropdownMenuRef.current.querySelectorAll(
+                ".a-dropdown__item"
+              );
+              dropdownItems[selectedIndex].focus();
             }
           }, 10);
         } else if (e.keyCode === keyCodes.up) {
@@ -165,7 +166,6 @@ const ASelect = forwardRef(
             className="a-select__menu-items">
             {items.map((item, index) => {
               const itemProps = {
-                key: `a-select__menu-item_${index}`,
                 value: null,
                 children: null,
                 className: "a-select__menu-item",
@@ -201,7 +201,12 @@ const ASelect = forwardRef(
                 }
               }
 
-              return <ADropdownMenuItem {...itemProps} />;
+              return (
+                <ADropdownMenuItem
+                  key={`a-select__menu-item_${index}`}
+                  {...itemProps}
+                />
+              );
             })}
           </ADropdownMenu>
         </ADropdown>
@@ -251,5 +256,7 @@ ASelect.propTypes = {
    */
   placeholder: PropTypes.string
 };
+
+ASelect.displayName = "ASelect";
 
 export default ASelect;

@@ -33,14 +33,14 @@ const ATab = forwardRef(
       }
 
       setIsSelected(tabChanged === tabId);
-    });
+    }, [setIsSelected, selected, setTabChanged, tabChanged, tabId]);
 
     useEffect(() => {
       if (!selected && isSelected) {
         setTabChanged(-1);
         setIsSelected(false);
       }
-    }, [selected]);
+    }, [selected, isSelected, setTabChanged]);
 
     let className = "a-tab-group__tab";
     if (isSelected) {
@@ -106,5 +106,7 @@ ATab.propTypes = {
    */
   target: PropTypes.string
 };
+
+ATab.displayName = "ATab";
 
 export default ATab;

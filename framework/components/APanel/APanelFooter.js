@@ -18,4 +18,6 @@ const APanelFooter = forwardRef(
   }
 );
 
+APanelFooter.displayName = "APanelFooter";
+
 export default APanelFooter;

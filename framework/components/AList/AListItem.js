@@ -91,4 +91,6 @@ AListItem.propTypes = {
   twoLine: PropTypes.bool
 };
 
+AListItem.displayName = "AListItem";
+
 export default AListItem;

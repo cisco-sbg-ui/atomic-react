@@ -1,17 +1,23 @@
-import React from "react";
+import React, {forwardRef} from "react";
 
 import "./AList.scss";
 
-export default ({children, className: propsClassName, ...rest}) => {
-  let className = "a-list-item__action";
+const AListItemAction = forwardRef(
+  ({children, className: propsClassName, ...rest}, ref) => {
+    let className = "a-list-item__action";
 
-  if (propsClassName) {
-    className += ` ${propsClassName}`;
+    if (propsClassName) {
+      className += ` ${propsClassName}`;
+    }
+
+    return (
+      <div {...rest} ref={ref} className={className}>
+        {children}
+      </div>
+    );
   }
+);
 
-  return (
-    <div {...rest} className={className}>
-      {children}
-    </div>
-  );
-};
+AListItemAction.displayName = "AListItemAction";
+
+export default AListItemAction;

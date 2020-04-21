@@ -26,4 +26,6 @@ AContainer.propTypes = {
   fluid: PropTypes.bool
 };
 
+AContainer.displayName = "AContainer";
+
 export default AContainer;

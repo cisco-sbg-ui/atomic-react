@@ -43,7 +43,7 @@ const ADropdownMenu = forwardRef(
       return () => {
         document.removeEventListener("click", close);
       };
-    }, [open]);
+    }, [open, combinedRef, focusOnOpen, onClose]);
 
     let className = "a-dropdown__menu";
 
@@ -155,5 +155,7 @@ ADropdownMenu.propTypes = {
    */
   role: PropTypes.string
 };
+
+ADropdownMenu.displayName = "ADropdownMenu";
 
 export default ADropdownMenu;

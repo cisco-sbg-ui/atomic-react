@@ -43,4 +43,6 @@ ADivider.propTypes = {
   role: PropTypes.oneOf(["separator", "presentation"])
 };
 
+ADivider.displayName = "ADivider";
+
 export default ADivider;

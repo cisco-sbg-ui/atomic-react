@@ -1,7 +1,7 @@
 import React from "react";
 import {Sprite, Tippy} from "@cisco-ats/components";
 
-export default props => {
+const HelpTooltip = (props) => {
   if (!props.text && !props.tooltipKey) {
     return null;
   }
@@ -40,3 +40,7 @@ export default props => {
     </Tippy>
   );
 };
+
+HelpTooltip.displayName = "HelpTooltip";
+
+export default HelpTooltip;

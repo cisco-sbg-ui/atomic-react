@@ -15,6 +15,7 @@ const APageLoader = forwardRef(
 
       case "large": {
         className += " a-page-loader--size-large";
+        break;
       }
 
       default: {
@@ -43,7 +44,9 @@ APageLoader.propTypes = {
   /**
    * Sets the size of the indicator.
    */
-  size: PropTypes.oneOf("small", "medium", "large")
+  size: PropTypes.oneOf(["small", "medium", "large"])
 };
+
+APageLoader.displayName = "APageLoader";
 
 export default APageLoader;

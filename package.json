@@ -1,10 +1,11 @@
 {
   "name": "@cisco-ats/atomic-react",
-  "version": "1.5.0",
+  "version": "1.5.1",
   "description": "",
   "main": "index.js",
   "module": "index.js",
   "scripts": {
+    "test": "eslint framework .storybook",
     "build": "rollup -c && build-storybook -s .storybook/public -c .storybook -o docs --docs",
     "start": "rollup -c && start-storybook -s .storybook/public --docs"
   },
@@ -23,6 +24,7 @@
     "@rollup/plugin-node-resolve": "^7.1.1",
     "@storybook/addon-docs": "^5.3.17",
     "@storybook/react": "^5.3.17",
+    "babel-eslint": "10.1.0",
     "babel-loader": "^8.1.0",
     "eslint": "^6.8.0",
     "eslint-config-prettier": "^6.10.1",

@@ -81,4 +81,6 @@ ATag.propTypes = {
   target: PropTypes.string
 };
 
+ATag.displayName = "ATag";
+
 export default ATag;

@@ -18,4 +18,6 @@ const AListItemAvatar = forwardRef(
   }
 );
 
+AListItemAvatar.displayName = "AListItemAvatar";
+
 export default AListItemAvatar;

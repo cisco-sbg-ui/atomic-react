@@ -20,7 +20,7 @@ const AAccordionPanel = forwardRef(
         setPanelId(index);
         if (collapsed) setOpenedPanels([...openedPanels, index]);
       }
-    });
+    }, [panelId, collapsed, setOpenedPanels, openedPanels]);
 
     const isCollapsed = openedPanels.includes(panelId);
     let className = "a-accordion__card";
@@ -73,5 +73,7 @@ AAccordionPanel.propTypes = {
    */
   collapsed: PropTypes.bool
 };
+
+AAccordionPanel.displayName = "AAccordionPanel";
 
 export default AAccordionPanel;

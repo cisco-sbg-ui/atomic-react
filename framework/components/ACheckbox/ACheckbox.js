@@ -135,4 +135,6 @@ ACheckbox.propTypes = {
   wrap: PropTypes.bool
 };
 
+ACheckbox.displayName = "ACheckbox";
+
 export default ACheckbox;

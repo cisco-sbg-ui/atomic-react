@@ -34,4 +34,6 @@ APanel.propTypes = {
   type: PropTypes.oneOf(["default", "grey", "white", "dialog"])
 };
 
+APanel.displayName = "APanel";
+
 export default APanel;

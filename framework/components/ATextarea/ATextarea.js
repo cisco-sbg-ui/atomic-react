@@ -68,4 +68,6 @@ ATextarea.propTypes = {
   validationState: PropTypes.oneOf(["default", "warning", "danger"])
 };
 
+ATextarea.displayName = "ATextarea";
+
 export default ATextarea;

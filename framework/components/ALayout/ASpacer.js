@@ -12,4 +12,6 @@ const ASpacer = forwardRef(({className: propsClassName, ...rest}, ref) => {
   return <div {...rest} ref={ref} className={className} />;
 });
 
+ASpacer.displayName = "ASpacer";
+
 export default ASpacer;

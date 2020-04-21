@@ -18,4 +18,6 @@ const AFooterLegal = forwardRef(
   }
 );
 
+AFooterLegal.displayName = "AFooterLegal";
+
 export default AFooterLegal;

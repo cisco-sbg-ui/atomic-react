@@ -5,7 +5,7 @@ import "./AHeader.scss";
 
 const AHeaderLogo = forwardRef(
   ({children, className: propsClassName, href, ...rest}, ref) => {
-    const className = "a-header__logo";
+    let className = "a-header__logo";
 
     if (propsClassName) {
       className += ` ${propsClassName}`;
@@ -29,5 +29,7 @@ AHeaderLogo.propTypes = {
    */
   href: PropTypes.string
 };
+
+AHeaderLogo.displayName = "AHeaderLogo";
 
 export default AHeaderLogo;

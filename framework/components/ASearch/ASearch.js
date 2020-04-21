@@ -1,7 +1,7 @@
 import React, {forwardRef} from "react";
 import HelpTooltip from "./HelpTooltip";
 
-export default forwardRef((props, ref) => {
+const ASearch = forwardRef((props, ref) => {
   const {
     inputRef,
     id = "input",
@@ -42,7 +42,7 @@ export default forwardRef((props, ref) => {
         {input}
         <span
           className="search__icon icon-close"
-          onClick={e => {
+          onClick={(e) => {
             e.stopPropagation();
             onChange({target: {value: ""}});
           }}
@@ -70,3 +70,7 @@ export default forwardRef((props, ref) => {
     </div>
   );
 });
+
+ASearch.displayName = "ASearch";
+
+export default ASearch;

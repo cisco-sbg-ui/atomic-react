@@ -26,4 +26,6 @@ const AAccordionBody = forwardRef(
   }
 );
 
+AAccordionBody.displayName = "AAccordionBody";
+
 export default AAccordionBody;

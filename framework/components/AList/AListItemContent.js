@@ -18,4 +18,6 @@ const AListItemContent = forwardRef(
   }
 );
 
+AListItemContent.displayName = "AListItemContent";
+
 export default AListItemContent;

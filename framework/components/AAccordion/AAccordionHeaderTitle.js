@@ -102,4 +102,6 @@ AAccordionHeaderTitle.propTypes = {
   chevron: PropTypes.bool
 };
 
+AAccordionHeaderTitle.displayName = "AAccordionHeaderTitle";
+
 export default AAccordionHeaderTitle;

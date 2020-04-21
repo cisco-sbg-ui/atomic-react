@@ -80,4 +80,6 @@ AApp.propTypes = {
   scrollbars: PropTypes.bool
 };
 
+AApp.displayName = "AApp";
+
 export default AApp;

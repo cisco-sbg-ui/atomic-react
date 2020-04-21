@@ -83,4 +83,6 @@ ABadge.propTypes = {
   label: PropTypes.string
 };
 
+ABadge.displayName = "ABadge";
+
 export default ABadge;

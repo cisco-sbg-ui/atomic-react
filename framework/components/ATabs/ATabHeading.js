@@ -18,4 +18,6 @@ const ATabHeading = forwardRef(
   }
 );
 
+ATabHeading.displayName = "ATabHeading";
+
 export default ATabHeading;
