@@ -19,7 +19,7 @@ const ACheckbox = forwardRef(
       checked = false,
       children,
       className: propsClassName,
-      color = "cisco-blue",
+      color = "#049fd9",
       disabled = false,
       indeterminate = false,
       onClick,
@@ -106,7 +106,7 @@ ACheckbox.propTypes = {
    */
   checked: PropTypes.bool,
   /**
-   * Specify the checkbox color. Accepts any stock color or CSS color value.
+   * Specify the checkbox color. Accepts any stock color or CSS color value. The default value is cisco-blue base.
    */
   color: isValidColor,
   /**
