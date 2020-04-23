@@ -1,0 +1,129 @@
+import {Meta, Preview, Story, Props} from "@storybook/addon-docs/blocks";
+import {useState} from "react";
+
+import AApp from "../AApp";
+import LoremIpsum from "../../utils/lorem-ipsum";
+import YourComponent from "../../utils/storybook-function";
+import ASwitch from "./ASwitch";
+import ADivider from "../ADivider";
+import ASelect from "../ASelect";
+
+<Meta title="Components/Switches" component={ASwitch} />
+
+# Switches
+
+## Install
+
+In the target component add:
+
+```
+import ASwitch from "@cisco-ats/atomic-react/ASwitch";
+// or if you're able to treekshake node_modules
+import {ASwitch} from "@cisco-ats/atomic-react";
+```
+
+## Usage
+
+<Preview>
+  <Story name="usage-1">
+    <AApp>
+      <YourComponent>
+        {() => {
+          const [checked, setChecked] = useState(false);
+          const [disabled, setDisabled] = useState(false);
+          const [wrap, setWrap] = useState(false);
+          return (
+            <div>
+              <h3>Example</h3>
+              <ASwitch checked={checked} disabled={disabled} wrap={wrap}>
+                {LoremIpsum}
+              </ASwitch>
+              <ADivider />
+              <h3>Options</h3>
+              <div className="d-flex mt-4 flex-column">
+                <ASwitch checked={checked} onClick={() => setChecked(!checked)}>
+                  Checked State
+                </ASwitch>
+                <ASwitch
+                  checked={disabled}
+                  onClick={() => setDisabled(!disabled)}>
+                  Disabled State
+                </ASwitch>
+                <ASwitch checked={wrap} onClick={() => setWrap(!wrap)}>
+                  Wrap Label
+                </ASwitch>
+              </div>
+            </div>
+          );
+        }}
+      </YourComponent>
+    </AApp>
+  </Story>
+</Preview>
+
+## Switch Props
+
+The `ASwitch` component inherits passed props.
+
+<Props of={ASwitch} />
+
+## Dusk Theme
+
+<Preview style={{backgroundColor: "#18191d"}}>
+  <Story name="dusk-1">
+    <AApp defaultTheme="dusk">
+      <div className="d-flex flex-column">
+        <ASwitch>Default</ASwitch>
+        <ASwitch checked>Checked</ASwitch>
+        <ASwitch disabled>Disabled</ASwitch>
+        <ASwitch disabled checked>
+          Disabled and Checked
+        </ASwitch>
+        <ASwitch>Very long truncated text. {LoremIpsum}</ASwitch>
+        <ASwitch wrap>Very long wrapping text. {LoremIpsum}</ASwitch>
+      </div>
+    </AApp>
+  </Story>
+</Preview>
+
+## Animations
+
+Animations are enabled by default on the `AApp` component and can be disabled.
+
+<Preview>
+  <Story name="animations-1">
+    <AApp>
+      <YourComponent>
+        {() => {
+          const [checked, setChecked] = useState(false);
+          return (
+            <ASwitch checked={checked} onClick={() => setChecked(!checked)}>
+              Animated
+            </ASwitch>
+          );
+        }}
+      </YourComponent>
+    </AApp>
+  </Story>
+  <Story name="animations-2">
+    <AApp animations={false}>
+      <YourComponent>
+        {() => {
+          const [checked, setChecked] = useState(false);
+          return (
+            <ASwitch checked={checked} onClick={() => setChecked(!checked)}>
+              Not Animated
+            </ASwitch>
+          );
+        }}
+      </YourComponent>
+    </AApp>
+  </Story>
+</Preview>
+
+## Accessibility Notes
+
+By default, `ASwitch` components are assigned the [WAI-ARIA](https://www.w3.org/WAI/standards-guidelines/aria/) role of [switch](https://www.w3.org/TR/wai-aria/#switch).
+
+The `ASwitch` component uses the [aria-checked](https://www.w3.org/TR/wai-aria/#aria-checked) attribute to express the input checked state.
+The `ASwitch` component uses the [aria-disabled](https://www.w3.org/TR/wai-aria/#aria-disabled) attribute to express the input disabled state.

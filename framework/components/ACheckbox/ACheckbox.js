@@ -22,7 +22,6 @@ const ACheckbox = forwardRef(
       color = "cisco-blue",
       disabled = false,
       indeterminate = false,
-      name,
       onClick,
       value,
       wrap,
@@ -67,9 +66,10 @@ const ACheckbox = forwardRef(
         <input
           type="checkbox"
           className="a-checkbox__input"
-          name={name}
           value={value}
           aria-checked={indeterminate ? "mixed" : checked}
+          checked={checked}
+          aria-disabled={disabled}
           disabled={disabled}
           onChange={() => {}}
           onClick={onClick}
@@ -117,10 +117,6 @@ ACheckbox.propTypes = {
    * Toggles the `indeterminate` state.
    */
   indeterminate: PropTypes.bool,
-  /**
-   * The input's name.
-   */
-  name: PropTypes.string,
   /**
    * A callback for handling the click event.
    */

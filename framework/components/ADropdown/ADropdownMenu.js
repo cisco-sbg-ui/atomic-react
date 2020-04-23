@@ -81,10 +81,10 @@ const ADropdownMenu = forwardRef(
       onBlur && onBlur(e);
       if (
         !e.relatedTarget ||
-        !e.relatedTarget.closest(".a-dropdown__menu") ||
+        !e.relatedTarget.closest(".a-dropdown") ||
         !e.relatedTarget
-          .closest(".a-dropdown__menu")
-          .isSameNode(combinedRef.current)
+          .closest(".a-dropdown")
+          .isSameNode(combinedRef.current.closest(".a-dropdown"))
       ) {
         onClose && onClose(e);
       }

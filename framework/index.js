@@ -48,6 +48,7 @@ import {
 import ARadio from "./components/ARadio";
 import ASelect from "./components/ASelect";
 import ASimpleTable from "./components/ASimpleTable";
+import ASwitch from "./components/ASwitch";
 import {ATabGroup, ATab, ATabHeading} from "./components/ATabs";
 import ATag from "./components/ATag";
 import ATextarea from "./components/ATextarea";
@@ -102,6 +103,7 @@ export {
   ASelect,
   ASimpleTable,
   ASpacer,
+  ASwitch,
   ATabGroup,
   ATab,
   ATabHeading,

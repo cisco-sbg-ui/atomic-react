@@ -96,62 +96,6 @@ $step-icon-border-color: rgba(map-get($grey, "lighten-2"), $alpha-3);
 $step-line-color: rgba(map-get($grey, "lighten-2"), $alpha-3);
 // (#c6c7ca, 30%);
 // -----------------------------------------------------------------------------
-// Switch
-// -----------------------------------------------------------------------------
-$switch-bg: rgba(map-get($grey, "darken-4"), $alpha-8); // (#626469, 80%);
-$switch__circle-border-color: rgba(
-  map-get($grey, "darken-4"),
-  $alpha-8
-); // (#626469, 80%);
-$switch__circle--inner-box-shadow-hover: map-get(
-  $cisco-blue,
-  "burnt-1"
-); // #0083b3;
-$switch__circle--inner-border-active: rgba(
-  map-get($grey, "darken-4"),
-  $alpha-8
-);
-// (#626469, 80%);
-$switch__circle--inner-border-active-hover: map-get(
-  $cisco-blue,
-  "burnt-1"
-); // #0083b3;
-$switch-bg--checked: map-get($cisco-blue, "base"); // #049fd9;
-$switch__circle-border-color--checked: map-get($cisco-blue, "base");
-// #049fd9;
-$switch__circle-border-color--checked--hover: map-get($cisco-blue, "base");
-// #049fd9;
-$switch__circle--inner-box-shadow-checked-hover: map-get(
-  $cisco-blue,
-  "base"
-); // #049fd9;
-$switch__circle--inner-border-checked-active: map-get($cisco-blue, "base");
-// #049fd9;
-$switch__circle--inner-box-shadow-checked-active: map-get(
-  $cisco-blue,
-  "base"
-); // #049fd9;
-$switch__circle--inner-border-checked-active-hover: map-get(
-  $cisco-blue,
-  "base"
-); // #049fd9;
-$switch__circle--inner-box-shadow-checked-active-hover: map-get(
-  $cisco-blue,
-  "burnt-1"
-); // #0083b3;
-$switch-bg--disabled: rgba(map-get($grey, "darken-4"), $alpha-8);
-// (#626469, 80%);
-$switch__circle-border-color--disabled: rgba(
-  map-get($grey, "darken-4"),
-  $alpha-8
-); // (#626469, 80%);
-$switch-bg--disabled--checked: map-get($cisco-blue, "base"); // #049fd9;
-$switch__circle-border-color--disabled--checked: map-get(
-  $cisco-blue,
-  "base"
-); // #049fd9;
-$switch-opacity-disabled: $alpha-3;
-// -----------------------------------------------------------------------------
 // Timeline
 // -----------------------------------------------------------------------------
 $timeline-line-bg-color: map-get($grey, "darken-4"); // #626469
