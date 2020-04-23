@@ -3,7 +3,7 @@ import React, {forwardRef} from "react";
 import "./ADropdown.scss";
 
 const ADropdown = forwardRef(
-  ({children, className: propsClassName, onMouseDown, ...rest}, ref) => {
+  ({children, className: propsClassName, ...rest}, ref) => {
     let className = "a-dropdown";
 
     if (propsClassName) {
@@ -11,14 +11,7 @@ const ADropdown = forwardRef(
     }
 
     return (
-      <div
-        {...rest}
-        ref={ref}
-        className={className}
-        onMouseDown={(e) => {
-          e.preventDefault();
-          onMouseDown && onMouseDown(e);
-        }}>
+      <div {...rest} ref={ref} className={className}>
         {children}
       </div>
     );
