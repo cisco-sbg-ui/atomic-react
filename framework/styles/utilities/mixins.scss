@@ -236,26 +236,26 @@
 // Contextual Notifications Color
 // -----------------------------------------------------------------------------
 @mixin context-border-color($context-border-color) {
-  &.context--top {
-    .context__arrow::before {
+  &.a-context--top {
+    .a-context__arrow::before {
       border-top-color: $context-border-color;
     }
   }
-  &.context--right {
-    .context__arrow::before {
+  &.a-context--right {
+    .a-context__arrow::before {
       border-right-color: $context-border-color;
     }
-    .context__arrow::after {
+    .a-context__arrow::after {
       border-right-color: $context-border-color;
     }
   }
-  &.context--bottom {
-    .context__arrow::before {
+  &.a-context--bottom {
+    .a-context__arrow::before {
       border-bottom-color: $context-border-color;
     }
   }
-  &.context--left {
-    .context__arrow::before {
+  &.a-context--left {
+    .a-context__arrow::before {
       border-left-color: $context-border-color;
     }
   }
