@@ -18,11 +18,11 @@ const AAccordionPanel = forwardRef(
       if (!panelId) {
         const index = accordionPanelCounter++;
         setPanelId(index);
-        if (collapsed) setOpenedPanels([...openedPanels, index]);
+        if (!collapsed) setOpenedPanels([...openedPanels, index]);
       }
     }, [panelId, collapsed, setOpenedPanels, openedPanels]);
 
-    const isCollapsed = openedPanels.includes(panelId);
+    const isCollapsed = !openedPanels.includes(panelId);
     let className = "a-accordion__card";
 
     if (isCollapsed) {
