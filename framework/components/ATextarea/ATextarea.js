@@ -10,11 +10,14 @@ const ATextarea = forwardRef(
     {
       className: propsClassName,
       disabled,
+      inputRef,
+      inputProps,
       label,
       placeholder,
       readOnly,
       rows = "3",
       validationState = "default",
+      value,
       ...rest
     },
     ref
@@ -41,12 +44,15 @@ const ATextarea = forwardRef(
           </label>
         )}
         <textarea
+          ref={inputRef}
           id={`a-textarea__field_${textareaId}`}
           disabled={disabled}
           placeholder={placeholder}
           readOnly={readOnly}
           rows={rows}
           className={fieldClassName}
+          value={value}
+          {...inputProps}
         />
       </div>
     );
@@ -58,6 +64,10 @@ ATextarea.defaultProps = {
 };
 
 ATextarea.propTypes = {
+  inputRef: PropTypes.oneOfType([
+    PropTypes.func,
+    PropTypes.shape({current: PropTypes.any})
+  ]),
   /**
    * Sets the textarea label text.
    */
@@ -65,7 +75,11 @@ ATextarea.propTypes = {
   /**
    * Applies a validation state.
    */
-  validationState: PropTypes.oneOf(["default", "warning", "danger"])
+  validationState: PropTypes.oneOf(["default", "warning", "danger"]),
+  /**
+   * Text value for the textarea
+   */
+  value: PropTypes.string
 };
 
 ATextarea.displayName = "ATextarea";

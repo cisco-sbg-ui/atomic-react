@@ -14,6 +14,7 @@ const ATextInput = forwardRef(
       autoComplete,
       className: propsClassName,
       disabled,
+      inputRef,
       label,
       name,
       onBlur,
@@ -108,6 +109,7 @@ const ATextInput = forwardRef(
         )}
         {prependIcon && <AIcon {...prependProps}>{prependIcon}</AIcon>}
         <input
+          ref={inputRef}
           autoComplete={autoComplete}
           className={inputClassName}
           disabled={disabled}
@@ -147,6 +149,13 @@ ATextInput.propTypes = {
    * Toggles the `disabled` state.
    */
   disabled: PropTypes.bool,
+  /**
+   * React ref for the input element
+   */
+  inputRef: PropTypes.oneOfType([
+    PropTypes.func,
+    PropTypes.shape({current: PropTypes.any})
+  ]),
   /**
    * Sets the input label text.
    */
