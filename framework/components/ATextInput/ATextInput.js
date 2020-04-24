@@ -198,7 +198,7 @@ ATextInput.propTypes = {
   /**
    * Change the input type to take advantage of native behavior.
    */
-  type: PropTypes.oneOf(["text", "password", "email"]),
+  type: PropTypes.oneOf(["text", "password", "email", "number"]),
   /**
    * Applies a validation state.
    */
