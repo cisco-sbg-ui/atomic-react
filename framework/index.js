@@ -54,6 +54,12 @@ import {ATabGroup, ATab, ATabHeading} from "./components/ATabs";
 import ATag from "./components/ATag";
 import ATextarea from "./components/ATextarea";
 import ATextInput from "./components/ATextInput";
+import {
+  ATimeline,
+  ATimelineItem,
+  ATimelineItemBody,
+  ATimelineItemTitle
+} from "./components/ATimeline";
 import {ATheme, useATheme} from "./components/ATheme";
 import ATree from "./components/ATree";
 
@@ -112,6 +118,10 @@ export {
   ATag,
   ATextarea,
   ATextInput,
+  ATimeline,
+  ATimelineItem,
+  ATimelineItemBody,
+  ATimelineItemTitle,
   ATheme,
   ATree,
   useATheme

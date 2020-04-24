@@ -1,5 +1,4 @@
 @import "../../styles";
-
 $timeline-item-margin: 20px auto;
 $timeline-item-padding: $base-padding-small;
 $timeline-item-width: 100%;
@@ -20,10 +19,30 @@ $timeline-line-width: 2px;
 $timeline-line-z-index: 1;
 $timeline-item-transition: $transition-duration--fast;
 $timeline-transition: background-color $timeline-item-transition;
+@include theme(a-timeline) using ($theme) {
+  color: map-deep-get($theme, "label", "color");
 
-.timeline {
+  &__item {
+    &:active,
+    &:hover {
+      background-color: map-deep-get($theme, "timeline", "item-bg-hover-color");
+    }
+  }
+
+  &__icon {
+    border: $timeline-icon-border-width solid
+      map-deep-get($theme, "timeline", "icon-border-color");
+    background-color: map-deep-get($theme, "timeline", "icon-bg-color");
+  }
+
+  &::after {
+    background-color: map-deep-get($theme, "timeline", "icon-border-color");
+  }
+}
+
+.a-timeline {
   position: relative;
-  color: $base-color;
+
   &__item {
     display: inline-flex;
     align-items: flex-start;
@@ -32,42 +51,62 @@ $timeline-transition: background-color $timeline-item-transition;
     padding: $timeline-item-padding;
     width: $timeline-item-width;
 
-    &:hover,
-    &:active {
+    &:active,
+    &:hover {
       cursor: default;
-      background-color: $timeline-item-color-hover;
       @include transition($timeline-transition);
     }
+
+    &--state-default {
+      .a-timeline__icon {
+        background-color: $black;
+      }
+    }
+
     &--state-success {
-      .timeline__icon {
+      .a-timeline__icon {
         background-color: $color-good;
       }
+
+      .a-timeline__title {
+        color: $color-good;
+      }
     }
+
     &--state-info {
-      .timeline__icon {
+      .a-timeline__icon {
         background-color: $color-information;
       }
+
+      .a-timeline__title {
+        color: $color-information;
+      }
     }
+
     &--state-warning {
-      .timeline__icon {
+      .a-timeline__icon {
         background-color: $color-warning;
       }
-    }
-    &--state-danger {
-      .timeline__icon {
-        background-color: $color-error;
+
+      .a-timeline__title {
+        color: $color-warning;
       }
     }
-  }
-  &--centered {
-    .timeline__item {
-      align-items: center;
+
+    &--state-danger {
+      .a-timeline__icon {
+        background-color: $color-error;
+      }
+
+      .a-timeline__title {
+        color: $color-error;
+      }
     }
   }
 
-  &--block {
-    .timeline__content {
-      width: 100%;
+  &--centered {
+    .a-timeline__item {
+      align-items: center;
     }
   }
 
@@ -78,8 +117,6 @@ $timeline-transition: background-color $timeline-item-transition;
     position: absolute;
     left: 139px;
     z-index: $timeline-icon-z-index;
-    border: $timeline-icon-border-width solid $timeline-icon-border-color;
-    background-color: $timeline-icon-bg-color;
   }
 
   &__time {
@@ -90,27 +127,17 @@ $timeline-transition: background-color $timeline-item-transition;
     font-style: oblique;
     padding: $timeline-time-padding;
   }
+
   &__content {
     margin: $timeline-content-margin;
   }
+
   &__title {
     font-weight: bold;
-    &--state-success {
-      color: $color-good;
-    }
-    &--state-info {
-      color: $color-information;
-    }
-    &--state-warning {
-      color: $color-warning;
-    }
-    &--state-danger {
-      color: $color-error;
-    }
   }
-  &:after {
-    background-color: $timeline-line-bg-color;
-    content: " ";
+
+  &::after {
+    content: "";
     position: absolute;
     display: block;
     width: $timeline-line-width;
