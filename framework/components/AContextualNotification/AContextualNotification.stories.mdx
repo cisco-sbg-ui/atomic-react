@@ -1,0 +1,75 @@
+import {Meta, Preview, Story, Props} from "@storybook/addon-docs/blocks";
+
+import AApp from "../AApp";
+import AContextualNotification from "./AContextualNotification";
+import YourComponent from "../../utils/storybook-function";
+
+<Meta title="Components/Context" component={AContextualNotification} />
+
+# Context
+
+## Install
+
+In the target component add:
+
+```
+import AContextualNotification from "@cisco-ats/atomic-react/AContextualNotification";
+// or if you're able to treekshake node_modules
+import {AContextualNotification} from "@cisco-ats/atomic-react";
+```
+
+## Usage
+
+<Preview>
+  <Story name="usage-1">
+    <AApp>
+      <AContextualNotification variant="success">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+        tempor incididunt ut labore et dolore magna aliqua.
+      </AContextualNotification>
+      <AContextualNotification variant="info">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+        tempor incididunt ut labore et dolore magna aliqua.
+      </AContextualNotification>
+      <AContextualNotification variant="warning">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+        tempor incididunt ut labore et dolore magna aliqua.
+      </AContextualNotification>
+      <AContextualNotification variant="danger">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+        tempor incididunt ut labore et dolore magna aliqua.
+      </AContextualNotification>
+    </AApp>
+  </Story>
+</Preview>
+
+## Context Props
+
+The `AContextualNotification` component inherits passed props.
+
+<Props of={AContextualNotification} />
+
+## Dusk Theme
+
+<Preview style={{backgroundColor: "#18191d"}}>
+  <Story name="dusk-1">
+    <AApp defaultTheme="dusk" style={{margin: "10px"}}>
+      <AContextualNotification variant="success">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+        tempor incididunt ut labore et dolore magna aliqua.
+      </AContextualNotification>
+      <AContextualNotification variant="info">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+        tempor incididunt ut labore et dolore magna aliqua.
+      </AContextualNotification>
+      <AContextualNotification variant="warning">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+        tempor incididunt ut labore et dolore magna aliqua.
+      </AContextualNotification>
+      <AContextualNotification variant="danger">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+        tempor incididunt ut labore et dolore magna aliqua.
+      </AContextualNotification>
+    </AApp>
+  </Story>
+</Preview>
