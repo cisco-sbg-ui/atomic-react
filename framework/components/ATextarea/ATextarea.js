@@ -10,7 +10,6 @@ const ATextarea = forwardRef(
     {
       className: propsClassName,
       disabled,
-      inputRef,
       inputProps,
       label,
       placeholder,
@@ -44,7 +43,6 @@ const ATextarea = forwardRef(
           </label>
         )}
         <textarea
-          ref={inputRef}
           id={`a-textarea__field_${textareaId}`}
           disabled={disabled}
           placeholder={placeholder}
@@ -64,10 +62,6 @@ ATextarea.defaultProps = {
 };
 
 ATextarea.propTypes = {
-  inputRef: PropTypes.oneOfType([
-    PropTypes.func,
-    PropTypes.shape({current: PropTypes.any})
-  ]),
   /**
    * Sets the textarea label text.
    */
