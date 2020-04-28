@@ -5,9 +5,15 @@
   "main": "index.js",
   "module": "index.js",
   "scripts": {
-    "test": "eslint framework .storybook",
     "build": "rollup -c && build-storybook -s .storybook/public -c .storybook -o docs --docs",
-    "start": "rollup -c && start-storybook -s .storybook/public --docs"
+    "cypress:open": "cypress open",
+    "cypress:run": "cypress run",
+    "cypress:runUpdateSnapshots": "cypress run --env updateSnapshots=true",
+    "dev": "start-server-and-test start:ci http://localhost:8081 cypress:open",
+    "start": "rollup -c && start-storybook -p 8081 -s .storybook/public --docs",
+    "start:ci": "rollup -c && start-storybook -p 8081 -s .storybook/public --docs --ci",
+    "test": "eslint framework .storybook && start-server-and-test start:ci http://localhost:8081 cypress:run",
+    "updateSnapshots": "start-server-and-test start:ci http://localhost:8081 cypress:runUpdateSnapshots"
   },
   "peerDependencies": {
     "react": "^16.8.0",
@@ -26,8 +32,12 @@
     "@storybook/react": "^5.3.17",
     "babel-eslint": "10.1.0",
     "babel-loader": "^8.1.0",
+    "cypress": "^4.4.1",
+    "cypress-image-snapshot": "3.1.1",
+    "cypress-plugin-tab": "1.0.5",
     "eslint": "^6.8.0",
     "eslint-config-prettier": "^6.10.1",
+    "eslint-plugin-cypress": "2.10.3",
     "eslint-plugin-import": "^2.20.0",
     "eslint-plugin-jsx-a11y": "^6.2.3",
     "eslint-plugin-react": "^7.19.0",
@@ -41,7 +51,8 @@
     "rollup-plugin-peer-deps-external": "^2.2.2",
     "rollup-plugin-postcss": "^2.5.0",
     "sass": "^1.26.3",
-    "sass-loader": "^8.0.2"
+    "sass-loader": "^8.0.2",
+    "start-server-and-test": "^1.10.11"
   },
   "repository": {
     "type": "git",

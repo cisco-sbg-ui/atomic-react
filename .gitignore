@@ -7,3 +7,4 @@
 /index*.js
 /useA*.js
 /_rollupPluginBabelHelpers*
+__diff_output__
