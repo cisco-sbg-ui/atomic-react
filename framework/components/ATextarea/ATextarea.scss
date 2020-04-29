@@ -62,6 +62,10 @@ $textarea-label-margin: 0;
 }
 
 .a-textarea {
+  &--auto-grow .a-textarea__field {
+    overflow: hidden;
+  }
+
   &__label {
     display: block;
     margin: $textarea-label-margin;

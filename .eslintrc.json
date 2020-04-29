@@ -24,7 +24,8 @@
     "no-debugger": "error",
     "react-hooks/rules-of-hooks": "warn",
     "react-hooks/exhaustive-deps": "warn",
-    "react/prop-types": "off"
+    "react/prop-types": "off",
+    "cypress/no-unnecessary-waiting": "off"
   },
   "settings": {
     "react": {

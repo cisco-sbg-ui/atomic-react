@@ -1,7 +1,6 @@
 {
   "fixturesFolder": false,
   "integrationFolder": "framework",
-  "screenshotOnRunFailure": false,
   "testFiles": "**/*.spec.js",
   "video": false,
   "viewportHeight": 700,
