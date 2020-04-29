@@ -1,6 +1,10 @@
+import {useState} from "react";
 import {Meta, Preview, Story, Props} from "@storybook/addon-docs/blocks";
 
+import LoremIpsum from "../../utils/lorem-ipsum";
+import YourComponent from "../../utils/storybook-function";
 import AApp from "../AApp";
+import ACheckbox from "../ACheckbox";
 import ATextarea from "./ATextarea";
 
 <Meta title="Components/Textareas" component={ATextarea} />
@@ -23,7 +27,31 @@ import {ATextarea} from "@cisco-ats/atomic-react";
   <Story name="usage-1">
     <AApp style={{maxWidth: 250}}>
       <div className="mb-4">
-        <ATextarea label="Label" placeholder="Normal" />
+        <YourComponent>
+          {() => {
+            const [autoGrow, setAutoGrow] = useState(true);
+            const [value, setValue] = useState(LoremIpsum);
+            return (
+              <>
+                <ACheckbox
+                  checked={autoGrow}
+                  onClick={() => setAutoGrow(!autoGrow)}>
+                  Toggle autoGrow
+                </ACheckbox>
+                <ATextarea
+                  label="Label"
+                  placeholder="Normal with autoGrow"
+                  autoGrow={autoGrow}
+                  disableGrammarly
+                  value={value}
+                  onChange={(e) => {
+                    setValue(e.target.value);
+                  }}
+                />
+              </>
+            );
+          }}
+        </YourComponent>
       </div>
       <div className="mb-4">
         <ATextarea label="Label" placeholder="Disabled" disabled />
