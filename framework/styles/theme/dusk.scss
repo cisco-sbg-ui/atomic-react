@@ -191,6 +191,11 @@ $atomic-dusk: (
     "border-color--readonly": rgba(map-get($grey, "lighten-2"), $alpha-3),
     "bg--readonly": rgba(map-get($grey, "lighten-6"), $alpha-1)
   ),
+  "timeline": (
+    "item-bg-hover-color": map-get($dusk, "6"),
+    "icon-border-color": map-get($grey, "darken-4"),
+    "icon-bg-color": map-get($grey, "darken-4")
+  ),
   "tree": (
     "color": map-get($grey, "lighten-5"),
     "background-color--focus": map-get($grey, "darken-5"),

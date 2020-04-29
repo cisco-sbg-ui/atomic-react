@@ -176,6 +176,11 @@ $atomic-default: (
     "border-color--readonly": map-get($grey, "lighten-2"),
     "bg--readonly": map-get($grey, "lighten-6")
   ),
+  "timeline": (
+    "item-bg-hover-color": map-get($grey, "lighten-5"),
+    "icon-border-color": map-get($grey, "lighten-5"),
+    "icon-bg-color": map-get($grey, "lighten-5")
+  ),
   "tree": (
     "color": $white,
     "background-color--focus": map-get($cisco-blue, "burnt-2"),

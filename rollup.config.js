@@ -56,6 +56,7 @@ const config = {
     ATag: "framework/components/ATag",
     ATextarea: "framework/components/ATextarea",
     ATextInput: "framework/components/ATextInput",
+    ATimeline: "framework/components/ATimeline",
     ATheme: "framework/components/ATheme",
     ATree: "framework/components/ATree"
   },
