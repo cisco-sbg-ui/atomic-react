@@ -27,10 +27,11 @@ import {ATextInput} from "@cisco-ats/atomic-react";
       <YourComponent>
         {() => {
           const [status, setStatus] = useState("default");
-          const [value, setValue] = useState("Clear Me ->");
+          const [value, setValue] = useState("autoFocused clearable");
           return (
             <ATextInput
               appendIcon="close"
+              autoFocus={true}
               label="Location"
               onChange={(e) => {
                 setValue(e.target.value);

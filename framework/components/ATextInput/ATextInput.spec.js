@@ -5,6 +5,14 @@ context("ATextInput", () => {
     );
   });
 
+  it("has a working auto-focus", () => {
+    cy.get("#story--components-text-inputs--usage-1 .a-text-input__input").then(
+      ($el) => {
+        Cypress.dom.isFocused($el);
+      }
+    );
+  });
+
   it("has a working non-interactable prepend icon", () => {
     cy.get("#story--components-text-inputs--validation-1")
       .find(".a-text-input__prepend-icon")
@@ -114,6 +122,16 @@ context("ATextInput", () => {
   });
 
   it("supports themes", () => {
-    cy.matchImageSnapshot("a-text-input--theme");
+    // There isn't a way yet to tell if fonts are loaded, so wait 3 seconds.
+    cy.wait(3000)
+      .get("#story--components-text-inputs--validation-1")
+      .parent()
+      .parent()
+      .matchImageSnapshot("a-text-input--validation-1");
+
+    cy.get("#story--components-text-inputs--dusk-1")
+      .parent()
+      .parent()
+      .matchImageSnapshot("a-text-input--dusk-1");
   });
 });

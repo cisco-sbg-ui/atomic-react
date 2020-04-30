@@ -1,7 +1,8 @@
 import PropTypes from "prop-types";
-import React, {forwardRef, useState} from "react";
+import React, {forwardRef, useEffect, useRef, useState} from "react";
 
 import "./ATextInput.scss";
+import {useCombinedRefs} from "../../utils/hooks";
 import {keyCodes} from "../../utils/helpers";
 import AIcon from "../AIcon";
 
@@ -12,6 +13,7 @@ const ATextInput = forwardRef(
     {
       appendIcon,
       autoComplete,
+      autoFocus,
       className: propsClassName,
       disabled,
       label,
@@ -33,7 +35,22 @@ const ATextInput = forwardRef(
     },
     ref
   ) => {
+    const textInputRef = useRef(null);
     const [textInputId] = useState(textInputCounter++);
+    const combinedRef = useCombinedRefs(ref, textInputRef);
+    useEffect(() => {
+      if (
+        !autoFocus ||
+        typeof document === "undefined" ||
+        !combinedRef ||
+        !combinedRef.current ||
+        document.activeElement ===
+          combinedRef.current.querySelector(".a-text-input__input")
+      )
+        return;
+
+      combinedRef.current.querySelector(".a-text-input__input").focus();
+    }, [autoFocus, combinedRef]);
 
     const onClickPrependKeyDown = (e) => {
       if (
@@ -98,7 +115,7 @@ const ATextInput = forwardRef(
     }
 
     return (
-      <div {...rest} ref={ref} className={className}>
+      <div {...rest} ref={combinedRef} className={className}>
         {label && (
           <label
             htmlFor={`a-text-input_${textInputId}`}
@@ -129,11 +146,6 @@ const ATextInput = forwardRef(
   }
 );
 
-ATextInput.defaultProps = {
-  type: "text",
-  validationState: "default"
-};
-
 ATextInput.propTypes = {
   /**
    * Appends an icon inside the text input. The value should be an [icon name](/?path=/docs/components-icons--page).
@@ -143,6 +155,10 @@ ATextInput.propTypes = {
    * The input's `autocomplete` attribute.
    */
   autoComplete: PropTypes.string,
+  /**
+   * Toggles whether the input auto-focuses on mount.
+   */
+  autoFocus: PropTypes.bool,
   /**
    * Toggles the `disabled` state.
    */
