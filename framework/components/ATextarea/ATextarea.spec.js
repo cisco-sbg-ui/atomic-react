@@ -8,6 +8,8 @@ context("ATextInput", () => {
   });
 
   it("supports themes", () => {
+    if (Cypress.env("snapshots") === "off") return;
+
     // There isn't a way yet to tell if fonts are loaded, so wait 3 seconds.
     cy.wait(3000)
       .get("#story--components-textareas--usage-1")

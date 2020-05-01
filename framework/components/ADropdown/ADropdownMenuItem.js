@@ -13,6 +13,7 @@ const ADropdownMenuItem = forwardRef(
       href,
       onClick,
       onKeyDown,
+      role = "menuitem",
       selected,
       target,
       ...rest
@@ -42,7 +43,8 @@ const ADropdownMenuItem = forwardRef(
         }
 
         onKeyDown && onKeyDown(e);
-      }
+      },
+      role
     };
 
     if (href) {
@@ -72,6 +74,10 @@ ADropdownMenuItem.propTypes = {
    * If specified, the component will render as an HTML link.
    */
   href: PropTypes.string,
+  /**
+   * Sets the [WAI-ARIA](https://www.w3.org/WAI/standards-guidelines/aria/) role.
+   */
+  role: PropTypes.string,
   /**
    * Toggles the `selected` state.
    */

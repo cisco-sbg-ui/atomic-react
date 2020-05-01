@@ -19,9 +19,10 @@ const ATextInput = forwardRef(
       label,
       name,
       onBlur,
+      onChange,
+      onClick,
       onClickAppend,
       onClickPrepend,
-      onChange,
       onFocus,
       onKeyUp,
       onPaste,
@@ -132,6 +133,7 @@ const ATextInput = forwardRef(
           name={name}
           onBlur={onBlur}
           onChange={onChange}
+          onClick={onClick}
           onFocus={onFocus}
           onKeyUp={onKeyUp}
           onPaste={onPaste}
@@ -176,6 +178,14 @@ ATextInput.propTypes = {
    */
   onBlur: PropTypes.func,
   /**
+   * Handles the `change` event.
+   */
+  onChange: PropTypes.func,
+  /**
+   * Handles the `click` event for the input.
+   */
+  onClick: PropTypes.func,
+  /**
    * Handles the `click` event for an appended icon.
    */
   onClickAppend: PropTypes.func,
@@ -183,10 +193,6 @@ ATextInput.propTypes = {
    * Handles the `click` event for a prepended icon.
    */
   onClickPrepend: PropTypes.func,
-  /**
-   * Handles the `change` event.
-   */
-  onChange: PropTypes.func,
   /**
    * Handles the `focus` event.
    */

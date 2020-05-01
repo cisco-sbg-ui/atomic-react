@@ -6,6 +6,8 @@ context("ATimeline", () => {
   });
 
   it("supports themes", () => {
+    if (Cypress.env("snapshots") === "off") return;
+
     cy.matchImageSnapshot("a-timeline--theme");
   });
 });

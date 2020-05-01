@@ -6,13 +6,13 @@
   "module": "index.js",
   "scripts": {
     "build": "rollup -c && build-storybook -s .storybook/public -c .storybook -o docs --docs",
-    "cypress:open": "cypress open",
+    "cypress:open": "cypress open --env snapshots=off",
     "cypress:run": "cypress run",
     "cypress:runUpdateSnapshots": "cypress run --env updateSnapshots=true",
     "dev": "start-server-and-test start:ci http://localhost:8081 cypress:open",
     "start": "rollup -c && start-storybook -p 8081 -s .storybook/public --docs",
     "start:ci": "rollup -c && start-storybook -p 8081 -s .storybook/public --docs --ci",
-    "test": "eslint framework .storybook && start-server-and-test start:ci http://localhost:8081 cypress:run",
+    "test": "eslint framework .storybook --max-warnings 0 && start-server-and-test start:ci http://localhost:8081 cypress:run",
     "updateSnapshots": "start-server-and-test start:ci http://localhost:8081 cypress:runUpdateSnapshots"
   },
   "peerDependencies": {

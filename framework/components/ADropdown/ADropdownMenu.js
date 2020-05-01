@@ -151,7 +151,7 @@ ADropdownMenu.propTypes = {
    */
   open: PropTypes.bool,
   /**
-   * Assigns an accessibility role.
+   * Sets the [WAI-ARIA](https://www.w3.org/WAI/standards-guidelines/aria/) role.
    */
   role: PropTypes.string
 };

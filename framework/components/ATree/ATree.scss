@@ -111,6 +111,7 @@
 
   &__level {
     width: 17px;
+    flex-shrink: 0;
   }
 
   &--dense {
