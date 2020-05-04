@@ -575,66 +575,194 @@ For example, `d-flex d-md-block d-print-none`:
 - Displays as a block from 992 pixels and higher.
 - Does not display when printed.
 
-### Breakpoints
+### Media Queries and Breakpoints
 
-Breakpoints are set to the following:
+Media queries are set for the following breakpoints:
 
 - xs: 479px
 - sm: 767px
 - md: 992px
 - lg: 1200px
 - xl: 1440px
+- print (for print styles)
 
-### Overflow
+### Reference
 
-- `.overflow-[overflow-value]`: Example: `overflow-auto`
-- `.overflow-x-[overflow-value]`: Example: `overflow-x-auto overflow-x-xs-scroll`
-- `.overflow-y-[overflow-value]`: Example: `overflow-y-scroll overflow-y-lg-auto`
-
-### Display
-
-- `.d-[display-value]`: Example: `d-flex d-sm-block d-print-none`
-
-### Float
-
-- `.float-[float-value]`: Example: `float-left float-xl-none`
-
-### Flex
-
-- `.flex-[flex-direction-value]`
-- `.flex-[flex-wrap-value]`
-- `.flex-fill`: overrides the flex property to `1 1 auto`.
-- `.flex-[(grow|shrink)-(0|1)]`: set the flex grow/shrink values to zero or one. Example: `flex-shrink-0 flex-xl-shrink-1`
-- `.justify-[justify-content-value]`
-- `.align-[align-items-value]`
-- `.align-content-[align-content-value]`
-- `.align-self-[align-self-value]`
-- `.order-[order-value]`: includes `order-first`, `order-last` in addition to `order-(0-12)`
-
-### Margins
-
-- `.ma-[0-12|auto]`: adds margins to `all` sides
-- `.mx-[0-12|auto]`: adds margins to left and right sides
-- `.my-[0-12|auto]`: adds margins to top and bottom sides
-- `.mt-[0-12|auto]`: adds margins to top
-- `.mr-[0-12|auto]`: adds margins to right
-- `.mb-[0-12|auto]`: adds margins to bottom
-- `.ml-[0-12|auto]`: adds margins to left
-
-### Padding
-
-- `.pa-[0-12|auto]`: adds padding to `all` sides
-- `.px-[0-12|auto]`: adds padding to left and right sides
-- `.py-[0-12|auto]`: adds padding to top and bottom sides
-- `.pt-[0-12|auto]`: adds padding to top
-- `.pr-[0-12|auto]`: adds padding to right
-- `.pb-[0-12|auto]`: adds padding to bottom
-- `.pl-[0-12|auto]`: adds padding to left
-
-### Text
-
-- `.text-[text-align-value]`
-- `.text-[white-space-value]`
-- `.text-break`: breaks lines of text mid-word
-- `.text-truncate`: to have text trailing off in an ellipsis.
-- `.text-[text-transform-value]`
+- `overflow`
+  - not responsive
+  - values: `auto`, `hidden`, `scroll`, `visible`
+  - examples: `overflow-visible`
+- `overflow-x`
+  - not responsive
+  - values: `auto`, `hidden`, `scroll`, `visible`
+  - examples: `overflow-x-hidden`
+- `overflow-y`
+  - not responsive
+  - values: `auto`, `hidden`, `scroll`, `visible`
+  - examples: `overflow-y-scroll`
+- `display`
+  - prefix: `d`,
+  - is responsive
+  - values: `none`, `inline`, `inline-block`, `block`, `table`, `table-row`, `table-cell`, `flex`, `inline-flex`
+  - examples: `d-flex d-print-none`
+- `float`
+  - is responsive
+  - values: `none`, `left`, `right`
+  - examples: `float-left float-xl-none`
+- `flex`
+  - is responsive (not print)
+  - values: `fill`
+  - examples: `flex-fill, flex-sm-fill`
+  - notes: sets the styling to `flex: 1 1 auto`
+- `flex-direction`
+  - prefix: `flex`
+  - is responsive (not print)
+  - values: `row`, `column`, `row-reverse`, `column-reverse`
+  - examples: `flex-row-reverse flex-sm-row`
+- `flex-grow`
+  - prefix: `flex`
+  - is responsive (not print)
+  - values: `grow-0`, `grow-1`
+  - examples: `flex-grow-0 flex-lg-grow-1`
+- `flex-shrink`
+  - prefix: `flex`
+  - is responsive (not print)
+  - values: `shrink-0`, `shrink-1`
+  - examples: `flex-shrink-1 flex-xs-shrink-0`
+- `flex-wrap`
+  - prefix: `flex`
+  - is responsive (not print)
+  - values: `wrap`, `nowrap`, `wrap-reverse`
+  - examples: `flex-wrap flex-md-nowrap`
+- `justify-content`
+  - prefix: `justify`
+  - is responsive (not print)
+  - values: `start`, `end`, `center`, `space-between`, `space-around`
+  - examples: `justify-md-start justify-center`
+- `align-items`
+  - prefix: `align`
+  - is responsive (not print)
+  - values: `start`, `end`, `center`, `baseline`, `stretch`
+  - examples: `align-start align-md-center`
+- `align-content`
+  - is responsive (not print)
+  - values: `start`, `end`, `center`, `space-between`, `space-around`, `stretch`
+  - examples: `align-content-start align-content-lg-stretch`
+- `align-self`
+  - is responsive (not print)
+  - values: `auto`, `start`, `end`, `center`, `baseline`, `stretch`
+  - examples: `align-self-baseline align-self-xs-start`
+- `order`
+  - is responsive (not print)
+  - values: `first`, `0`, `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `10`, `11`, `12`, `last`
+  - examples: `order-0 order-sm-last`
+- `margin`
+  - prefix: `ma`
+  - is responsive (not print)
+  - values: `0`, `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `10`, `11`, `12`, `auto`
+  - examples: `ma-0 ma-xl-4`
+  - note: applies margins in increments of 5 pixels, to all sides (`ma-4` => `margin: 20px`)
+- `margin` (left and right sides)
+  - prefix: `mx`
+  - is responsive (not print)
+  - values: `0`, `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `10`, `11`, `12`, `auto`
+  - examples: `mx-4 mx-lg-auto`
+  - note: applies margins in increments of 5 pixels, to left and right sides (`mx-4` => `margin-left: 20px; margin-right: 20px`)
+- `margin` (top and bottom sides)
+  - prefix: `my`
+  - is responsive (not print)
+  - values: `0`, `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `10`, `11`, `12`, `auto`
+  - examples: `my-3 my-xs-0`
+  - note: applies margins in increments of 5 pixels, to top and bottom sides (`my-4` => `margin-top: 20px; margin-bottom: 20px`)
+- `margin` (top side)
+  - prefix: `mt`
+  - is responsive (not print)
+  - values: `0`, `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `10`, `11`, `12`, `auto`
+  - examples: `mt-3 mt-xs-0`
+  - note: applies margins in increments of 5 pixels, to top side (`mt-4` => `margin-top: 20px`)
+- `margin` (right side)
+  - prefix: `mr`
+  - is responsive (not print)
+  - values: `0`, `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `10`, `11`, `12`, `auto`
+  - examples: `mr-3 mr-xs-0`
+  - note: applies margins in increments of 5 pixels, to right side (`mr-4` => `margin-right: 20px`)
+- `margin` (bottom side)
+  - prefix: `mb`
+  - is responsive (not print)
+  - values: `0`, `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `10`, `11`, `12`, `auto`
+  - examples: `mb-3 mb-xs-0`
+  - note: applies margins in increments of 5 pixels, to bottom side (`mb-4` => `margin-bottom: 20px`)
+- `margin` (left side)
+  - prefix: `ml`
+  - is responsive (not print)
+  - values: `0`, `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `10`, `11`, `12`, `auto`
+  - examples: `ml-3 ml-xs-0`
+  - note: applies margins in increments of 5 pixels, to left side (`ml-4` => `margin-left: 20px`)
+- `padding`
+  - prefix: `pa`
+  - is responsive (not print)
+  - values: `0`, `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `10`, `11`, `12`, `auto`
+  - examples: `pa-0 pa-xl-4`
+  - note: applies padding in increments of 5 pixels, to all sides (`pa-4` => `padding: 20px`)
+- `padding` (left and right sides)
+  - prefix: `px`
+  - is responsive (not print)
+  - values: `0`, `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `10`, `11`, `12`, `auto`
+  - examples: `px-4 px-lg-auto`
+  - note: applies padding in increments of 5 pixels, to left and right sides (`px-4` => `padding-left: 20px; padding-right: 20px`)
+- `padding` (top and bottom sides)
+  - prefix: `py`
+  - is responsive (not print)
+  - values: `0`, `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `10`, `11`, `12`, `auto`
+  - examples: `py-3 py-xs-0`
+  - note: applies padding in increments of 5 pixels, to top and bottom sides (`py-4` => `padding-top: 20px; padding-bottom: 20px`)
+- `padding` (top side)
+  - prefix: `pt`
+  - is responsive (not print)
+  - values: `0`, `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `10`, `11`, `12`, `auto`
+  - examples: `pt-3 pt-xs-0`
+  - note: applies padding in increments of 5 pixels, to top side (`pt-4` => `padding-top: 20px`)
+- `padding` (right side)
+  - prefix: `pr`
+  - is responsive (not print)
+  - values: `0`, `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `10`, `11`, `12`, `auto`
+  - examples: `pr-3 pr-xs-0`
+  - note: applies padding in increments of 5 pixels, to right side (`pr-4` => `padding-right: 20px`)
+- `padding` (bottom side)
+  - prefix: `pb`
+  - is responsive (not print)
+  - values: `0`, `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `10`, `11`, `12`, `auto`
+  - examples: `pb-3 pb-xs-0`
+  - note: applies padding in increments of 5 pixels, to bottom side (`pb-4` => `padding-bottom: 20px`)
+- `padding` (left side)
+  - prefix: `pl`
+  - is responsive (not print)
+  - values: `0`, `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `10`, `11`, `12`, `auto`
+  - examples: `pl-3 pl-xs-0`
+  - note: applies padding in increments of 5 pixels, to left side (`pl-4` => `padding-left: 20px`)
+- `text-align`
+  - prefix: `text`
+  - is responsive (not print)
+  - values: `left`, `right`, `center`, `justify`, `start`, `end`
+  - examples: `text-center text-sm-left`
+- `white-space`
+  - prefix: `text`
+  - is not responsive
+  - values: `wrap`, `no-wrap`
+  - examples: `text-no-wrap`
+- `overflow-wrap`
+  - prefix: `text`
+  - is not responsive
+  - values: `break`
+  - examples: `text-break`
+- `text-overflow`
+  - prefix: `text`
+  - is not responsive
+  - values: `truncate`
+  - examples: `text-truncate`
+  - notes: automatically adds styling for trailing ellipsis text.
+- `text-transform`
+  - prefix: `text`
+  - is not responsive
+  - values: `none`, `capitalize`, `lowercase`, `uppercase`
+  - examples: `text-capitalize`
