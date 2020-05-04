@@ -63,7 +63,7 @@ const AAccordionHeaderTitle = forwardRef(
       className += ` ${propsClassName}`;
     }
 
-    const chevronIcon = openedPanels.includes(panelId)
+    const chevronIcon = !openedPanels.includes(panelId)
       ? "chevron-right"
       : "chevron-down";
 

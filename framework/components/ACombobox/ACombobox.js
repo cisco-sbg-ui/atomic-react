@@ -38,7 +38,9 @@ const ACombobox = forwardRef(
       <div {...rest} ref={ref} className={className}>
         <ADropdown style={{width: "100%"}}>
           <ATextInput
+            autoComplete="off"
             appendIcon="chevron-down"
+            onClick={() => setIsOpen(true)}
             onClickAppend={() => setIsOpen(!isOpen)}
             disabled={disabled}
             label={label}
