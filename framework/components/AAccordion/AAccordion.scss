@@ -5,7 +5,6 @@ $accordion-width: 100%;
 $accordion-margin: 20px 0;
 $accordion-header-font-size: $font-size--sm;
 $accordion-header-padding: 4px 10px;
-$accordion-body-max-height: 80em;
 $accordion-body-padding: 15px 10px;
 $accordion-message-font-size: 13px;
 $accordion-toggle-font-size: $font-size--xxs;
@@ -144,7 +143,6 @@ $accordion--state-collapsed-transition: visibility $transition-duration ease,
     .a-accordion__body {
       display: block;
       padding: 0 10px;
-      max-height: $accordion-body-max-height;
       visibility: visible;
       overflow: hidden;
       opacity: 1;
