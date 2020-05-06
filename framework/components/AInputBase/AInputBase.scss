@@ -28,11 +28,22 @@
 
   &--warning {
     .a-input-base__surface {
-      @include input-state(
-        $color-warning,
-        $warning-box-shadow,
-        map-deep-get($theme, "color", "warning--state-hover")
-      );
+      border: $border-width solid $color-warning;
+
+      &:hover {
+        border: $border-width solid
+          map-deep-get($theme, "color", "warning--state-hover");
+      }
+
+      &:active {
+        border: $border-width solid $color-warning;
+        box-shadow: $warning-box-shadow;
+      }
+    }
+
+    &.a-input-base--focused .a-input-base__surface {
+      border: $border-width solid $color-warning;
+      box-shadow: $warning-box-shadow;
     }
 
     .a-input-base__hint {
@@ -42,11 +53,22 @@
 
   &--danger {
     .a-input-base__surface {
-      @include input-state(
-        $color-error,
-        $danger-box-shadow,
-        map-deep-get($theme, "color", "error--state-hover")
-      );
+      border: $border-width solid $color-error;
+
+      &:hover {
+        border: $border-width solid
+          map-deep-get($theme, "color", "error--state-hover");
+      }
+
+      &:active {
+        border: $border-width solid $color-error;
+        box-shadow: $danger-box-shadow;
+      }
+    }
+
+    &.a-input-base--focused .a-input-base__surface {
+      border: $border-width solid $color-error;
+      box-shadow: $danger-box-shadow;
     }
 
     .a-input-base__hint {
@@ -103,7 +125,6 @@
   }
 
   &__prepend {
-    min-width: 6px;
     display: inline-flex;
     align-items: center;
   }
@@ -115,7 +136,6 @@
   }
 
   &__append {
-    min-width: 20px;
     display: inline-flex;
     align-items: center;
   }

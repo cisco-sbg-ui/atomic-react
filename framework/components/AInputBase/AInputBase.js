@@ -19,15 +19,23 @@ const AInputBase = forwardRef(
       labelFor,
       labelId,
       onClear,
+      onClickLabel,
       prepend,
       readOnly,
-      type = "text",
       validationState = "default",
       ...rest
     },
     ref
   ) => {
     let className = "a-input-base";
+    if (prepend) {
+      className += " a-input-base--prepend";
+    }
+
+    if (append) {
+      className += " a-input-base--append";
+    }
+
     if (focused) {
       className += " a-input-base--focused";
     }
@@ -54,34 +62,37 @@ const AInputBase = forwardRef(
           <label
             id={labelId}
             htmlFor={labelFor}
+            onClick={onClickLabel}
             className="a-input-base__label">
             {label}
           </label>
         )}
         <div className="a-input-base__surface">
-          <div class="a-input-base__prepend">{prepend}</div>
-          <div class="a-input-base__control">{children}</div>
-          <div class="a-input-base__append">
-            {clearable && !readOnly && !disabled && (
-              <AIcon
-                tabIndex={0}
-                role="button"
-                className="a-input-base__clear"
-                size={10}
-                onClick={onClear}
-                onKeyDown={(e) => {
-                  if ([keyCodes.enter, keyCodes.space].includes(e.keyCode)) {
-                    e.preventDefault();
-                    onClear(e);
-                  }
-                }}>
-                close
-              </AIcon>
-            )}
-            {append}
-          </div>
+          {prepend && <div className="a-input-base__prepend">{prepend}</div>}
+          <div className="a-input-base__control">{children}</div>
+          {(append || clearable) && (
+            <div className="a-input-base__append">
+              {clearable && !readOnly && !disabled && (
+                <AIcon
+                  tabIndex={0}
+                  role="button"
+                  className="a-input-base__clear"
+                  size={10}
+                  onClick={onClear}
+                  onKeyDown={(e) => {
+                    if ([keyCodes.enter, keyCodes.space].includes(e.keyCode)) {
+                      e.preventDefault();
+                      onClear(e);
+                    }
+                  }}>
+                  close
+                </AIcon>
+              )}
+              {append}
+            </div>
+          )}
         </div>
-        {hint && <div class="a-input-base__hint">{hint}</div>}
+        {hint && <div className="a-input-base__hint">{hint}</div>}
       </div>
     );
   }
@@ -124,6 +135,10 @@ AInputBase.propTypes = {
    * Handles the `clear` event.
    */
   onClear: PropTypes.func,
+  /**
+   * Handles the label's `click` event.
+   */
+  onClickLabel: PropTypes.func,
   /**
    * Prepends content to the control.
    */

@@ -1,66 +1,9 @@
 @import "../../styles";
 
 $select-height: 28px;
-$select-width: 100%;
 $select-padding: 6px;
-$select-swatch-width: 3px;
-$select__surface-order: 0;
-$select__surface-width: 100%;
-$select__open-icon-height: 1em;
-$select__open-icon-font-size: $font-size--xxs;
-$select__open-icon-line-height: 1;
-$select__open-icon-top: 10px;
-$select__open-icon-right: 8px;
-$select__selection-padding-top: 3px;
-$select__menu-item-width: 100%;
-$select__menu-item-line-height: $line-height--lg;
-$select__menu-item-padding: 2px 0 0 0;
-$select__menu-item-checkmark-right: 8px;
-$select__menu-items-margin: 0;
-$select__menu-items-right: 0;
-$select__menu-items-left: 0;
-$select__menu-items-z-index: 999;
-$select-label-margin: 0;
-$checkmark-height: rem(0.75);
-$checkmark-width: rem(0.3125);
-$checkmark-border: 0 rem(0.125) rem(0.125) 0;
-$checkmark-rotation: 45deg;
 
 @include theme(a-select) using ($theme) {
-  &__label {
-    color: map-deep-get($theme, "label", "color");
-  }
-
-  &__surface {
-    color: map-deep-get($theme, "base", "color");
-    background-color: map-deep-get($theme, "control", "fill-color");
-    border-color: map-deep-get($theme, "base", "stroke-color");
-
-    &:hover {
-      border-color: map-deep-get($theme, "control", "stroke-color--hover");
-    }
-
-    &:focus,
-    &--focused {
-      border-color: map-deep-get($theme, "select", "border-color--focus");
-      box-shadow: map-deep-get($theme, "base", "box-shadow");
-    }
-
-    &:-moz-focusring {
-      color: transparent;
-      text-shadow: 0 0 0 map-deep-get($theme, "base", "color");
-    }
-
-    &:disabled,
-    &--disabled {
-      background-color: map-deep-get($theme, "control", "fill-color--disabled");
-      border-color: map-deep-get($theme, "control", "stroke-color--disabled");
-      ~ .select__open-icon {
-        color: map-deep-get($theme, "control", "stroke-color--disabled");
-      }
-    }
-  }
-
   &__menu-items {
     background-color: map-deep-get($theme, "control", "fill-color");
     border-color: map-deep-get($theme, "select", "border-color--focus");
@@ -103,70 +46,58 @@ $checkmark-rotation: 45deg;
 }
 
 .a-select {
-  position: relative;
-  display: inline-block;
-  flex: 1;
-  width: $select-width;
-
-  &__label {
-    display: block;
-    margin: $select-label-margin;
-    font-size: $font-size--sm;
-    cursor: default;
+  &__selection {
+    width: 100%;
+    cursor: pointer;
+    user-select: none;
+    align-self: stretch;
+    display: flex;
+    align-items: center;
+    padding-left: 6px;
   }
 
-  &__surface {
-    order: $select__surface-order;
-    width: $select__surface-width;
-    height: $select-height;
+  &__chevron {
     cursor: pointer;
-    appearance: none;
-    user-select: none;
-    padding: 0 $select-padding;
-    border-width: $border-width;
-    border-style: solid;
-    border-radius: $border-radius--sm;
-    display: inline-flex;
-    &:disabled,
-    &--disabled {
-      @include disabled;
-    }
+    padding: 0 7px;
+    align-self: stretch;
+  }
 
-    .a-select__selection {
-      padding-top: $select__selection-padding-top;
-      flex-grow: 1;
-    }
+  .a-dropdown {
+    width: 100%;
+    align-self: stretch;
+    display: flex;
+    align-items: center;
   }
 
   .a-select__menu-items {
     border-bottom-left-radius: $border-radius--sm;
     border-bottom-right-radius: $border-radius--sm;
     cursor: pointer;
-    left: $select__menu-items-left;
-    margin: $select__menu-items-margin;
+    left: -1px;
+    margin: 0;
     overflow: auto;
-    right: $select__menu-items-right;
-    top: $select-height - 1px;
+    right: -25px;
+    top: $select-height - 2px;
     user-select: none;
-    z-index: $select__menu-items-z-index;
+    z-index: 999;
 
     .a-select__menu-item {
       height: $select-height;
-      line-height: $select__menu-item-line-height;
-      padding: $select__menu-item-padding;
+      line-height: $line-height--lg;
+      padding: 2px 0 0 0;
       text-indent: $select-padding;
 
       &::after {
         content: "";
         border-style: solid;
         display: none;
-        height: $checkmark-height;
+        height: rem(0.75);
         position: absolute;
-        width: $checkmark-width;
-        border-width: $checkmark-border;
-        transform: rotate($checkmark-rotation);
+        width: rem(0.3125);
+        border-width: 0 rem(0.125) rem(0.125) 0;
+        transform: rotate(45deg);
         top: $select-padding;
-        right: $select__menu-item-checkmark-right;
+        right: 8px;
       }
 
       &--selected {
@@ -178,6 +109,13 @@ $checkmark-rotation: 45deg;
       &[aria-disabled] {
         cursor: default;
       }
+    }
+  }
+
+  &.a-input-base--readonly {
+    .a-select__selection,
+    .a-select__chevron {
+      cursor: default;
     }
   }
 }

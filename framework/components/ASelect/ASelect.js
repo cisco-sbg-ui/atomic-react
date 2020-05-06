@@ -2,17 +2,20 @@ import PropTypes from "prop-types";
 import React, {forwardRef, useRef, useState} from "react";
 
 import "./ASelect.scss";
+import AInputBase from "../AInputBase";
 import AIcon from "../AIcon";
 import {ADropdown, ADropdownMenu, ADropdownMenuItem} from "../ADropdown";
 import {keyCodes} from "../../utils/helpers";
 
 let selectCounter = 0;
+const WAIT_TO_FOCUS_ACTIVE_ITEM = 50;
 
 const ASelect = forwardRef(
   (
     {
       className: propsClassName,
       disabled,
+      hint,
       itemDisabled = "disabled",
       itemSelected = "selected",
       itemText = "text",
@@ -21,6 +24,8 @@ const ASelect = forwardRef(
       label,
       onSelected,
       placeholder,
+      readOnly,
+      validationState,
       ...rest
     },
     ref
@@ -33,6 +38,7 @@ const ASelect = forwardRef(
     const [selectedItem, setSelectedItem] = useState(
       items.find((x) => x[itemSelected])
     );
+    const [isFocused, setIsFocused] = useState(false);
     const [isOpen, setIsOpen] = useState(false);
     let className = "a-select";
 
@@ -80,38 +86,25 @@ const ASelect = forwardRef(
       return newItem;
     };
 
-    const surfaceProps = {
-      className: "a-select__surface"
+    const chevronProps = {
+      className: "a-select__chevron"
     };
 
-    if (disabled) {
-      surfaceProps.className += " a-select__surface--disabled";
-    } else {
-      if (label) {
-        surfaceProps["aria-labelledby"] = `a-select__label_${selectId}`;
-      }
+    const selectionProps = {
+      className: "a-select__selection"
+    };
 
-      surfaceProps.ref = surfaceRef;
-      surfaceProps.tabIndex = 0;
-      surfaceProps.onClick = () => {
-        setIsOpen(!isOpen);
-        setTimeout(() => {
-          const selectedIndex = getSelectedIndex();
-          if (selectedIndex > -1) {
-            const dropdownItems = dropdownMenuRef.current.querySelectorAll(
-              ".a-dropdown__item"
-            );
-            dropdownItems[selectedIndex].focus();
-          }
-        }, 10);
-      };
-      if (isOpen) {
-        surfaceProps.className += " a-select__surface--focused";
-      }
+    if (label) {
+      selectionProps["aria-labelledby"] = `a-select__label_${selectId}`;
+    }
 
-      surfaceProps.onKeyDown = (e) => {
-        if ([keyCodes.enter, keyCodes.space].includes(e.keyCode)) {
-          e.preventDefault();
+    if (!disabled) {
+      selectionProps.ref = surfaceRef;
+      selectionProps.tabIndex = 0;
+      selectionProps.role = "button";
+
+      if (!readOnly) {
+        chevronProps.onClick = selectionProps.onClick = () => {
           setIsOpen(!isOpen);
           setTimeout(() => {
             const selectedIndex = getSelectedIndex();
@@ -121,17 +114,45 @@ const ASelect = forwardRef(
               );
               dropdownItems[selectedIndex].focus();
             }
-          }, 10);
-        } else if (e.keyCode === keyCodes.up) {
-          e.preventDefault();
-          const newItem = getPreviousItem(getSelectedIndex());
-          newItem && selectItem(newItem);
-        } else if (e.keyCode === keyCodes.down) {
-          e.preventDefault();
-          const newItem = getNextItem(getSelectedIndex());
-          newItem && selectItem(newItem);
+          }, WAIT_TO_FOCUS_ACTIVE_ITEM);
+        };
+
+        if (isOpen) {
+          selectionProps.className += " a-select__surface--focused";
         }
-      };
+
+        selectionProps.onFocus = () => {
+          setIsFocused(true);
+        };
+
+        selectionProps.onBlur = () => {
+          setIsFocused(false);
+        };
+
+        selectionProps.onKeyDown = (e) => {
+          if ([keyCodes.enter, keyCodes.space].includes(e.keyCode)) {
+            e.preventDefault();
+            setIsOpen(!isOpen);
+            setTimeout(() => {
+              const selectedIndex = getSelectedIndex();
+              if (selectedIndex > -1) {
+                const dropdownItems = dropdownMenuRef.current.querySelectorAll(
+                  ".a-dropdown__item"
+                );
+                dropdownItems[selectedIndex].focus();
+              }
+            }, WAIT_TO_FOCUS_ACTIVE_ITEM);
+          } else if (e.keyCode === keyCodes.up) {
+            e.preventDefault();
+            const newItem = getPreviousItem(getSelectedIndex());
+            newItem && selectItem(newItem);
+          } else if (e.keyCode === keyCodes.down) {
+            e.preventDefault();
+            const newItem = getNextItem(getSelectedIndex());
+            newItem && selectItem(newItem);
+          }
+        };
+      }
     }
 
     const selectItem = (item) => {
@@ -140,23 +161,28 @@ const ASelect = forwardRef(
     };
 
     return (
-      <div {...rest} ref={ref} className={className}>
-        {label && (
-          <div
-            id={`a-select__label_${selectId}`}
-            onClick={() => !disabled && surfaceRef.current.focus()}
-            className="a-select__label">
-            {label}
-          </div>
-        )}
+      <AInputBase
+        {...rest}
+        ref={ref}
+        className={className}
+        label={label}
+        labelId={`a-select__label_${selectId}`}
+        onClickLabel={() => !disabled && surfaceRef.current.focus()}
+        disabled={disabled}
+        append={
+          <AIcon {...chevronProps} size={10}>
+            chevron-down
+          </AIcon>
+        }
+        focused={isFocused || isOpen}
+        readOnly={readOnly}
+        validationState={validationState}
+        hint={hint}>
         <ADropdown style={{width: "100%"}}>
-          <div {...surfaceProps}>
-            <div className="a-select__selection">
-              {(selectedItem && selectedItem[itemText]) ||
-                selectedItem ||
-                placeholder}
-            </div>
-            <AIcon size={10}>chevron-down</AIcon>
+          <div {...selectionProps} className="a-select__selection">
+            {(selectedItem && selectedItem[itemText]) ||
+              selectedItem ||
+              placeholder}
           </div>
           <ADropdownMenu
             open={isOpen}
@@ -210,7 +236,7 @@ const ASelect = forwardRef(
             })}
           </ADropdownMenu>
         </ADropdown>
-      </div>
+      </AInputBase>
     );
   }
 );
@@ -220,6 +246,10 @@ ASelect.propTypes = {
    * Toggles the disabled state.
    */
   disabled: PropTypes.bool,
+  /**
+   * Sets the hint content.
+   */
+  hint: PropTypes.node,
   /**
    * The property name of the value indicating a disabled option when `items` is an array of objects.
    */
@@ -244,7 +274,7 @@ ASelect.propTypes = {
     PropTypes.arrayOf(PropTypes.object)
   ]),
   /**
-   * Sets the select label text.
+   * Sets the label content.
    */
   label: PropTypes.node,
   /**
@@ -254,7 +284,15 @@ ASelect.propTypes = {
   /**
    * Sets the text when no option is selected.
    */
-  placeholder: PropTypes.string
+  placeholder: PropTypes.string,
+  /**
+   * Toggles the `read-only` state
+   */
+  readOnly: PropTypes.bool,
+  /**
+   * Applies a validation state.
+   */
+  validationState: PropTypes.oneOf(["default", "warning", "danger"])
 };
 
 ASelect.displayName = "ASelect";
