@@ -89,7 +89,9 @@ $atomic-default: (
     "fill-color--disabled": map-get($grey, "lighten-3"),
     "stroke-color": map-get($grey, "lighten-3"),
     "stroke-color--hover": map-get($grey, "darken-4"),
-    "stroke-color--disabled": map-get($grey, "lighten-2")
+    "stroke-color--disabled": map-get($grey, "lighten-2"),
+    "warning-color": map-get($status-orange, "burnt-1"),
+    "error-color": map-get($status-red, "base")
   ),
   "divider": (
     "color-default": map-get($grey, "lighten-1"),

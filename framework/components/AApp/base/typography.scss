@@ -91,6 +91,12 @@ $pre-padding: 10px;
     line-height: $headings-line-height;
   }
 
+  .caption {
+    font-style: normal;
+    line-height: 16px;
+    font-size: $font-size--xs;
+  }
+
   small,
   .small {
     font-size: 80%;

@@ -28,6 +28,7 @@ import {
   AHeaderNavigation
 } from "./components/AHeader";
 import AIcon from "./components/AIcon";
+import AInputBase from "./components/AInputBase";
 import {AContainer, ARow, ACol, ASpacer} from "./components/ALayout";
 import {
   AList,
@@ -93,6 +94,7 @@ export {
   AHeaderTitle,
   AHeaderNavigation,
   AIcon,
+  AInputBase,
   AList,
   AListItem,
   AListItemAction,
