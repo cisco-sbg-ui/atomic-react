@@ -89,7 +89,9 @@ $atomic-dusk: (
     "fill-color--disabled": rgba(map-get($grey, "lighten-3"), $alpha-3),
     "stroke-color": rgba(map-get($grey, "lighten-3"), $alpha-2),
     "stroke-color--hover": map-get($grey, "lighten-1"),
-    "stroke-color--disabled": rgba(map-get($grey, "lighten-2"), $alpha-3)
+    "stroke-color--disabled": rgba(map-get($grey, "lighten-2"), $alpha-3),
+    "warning-color": map-get($status-orange, "base"),
+    "error-color": map-get($status-red, "wash-1")
   ),
   "divider": (
     "color-default": rgba(map-get($grey, "lighten-3"), $alpha-5),

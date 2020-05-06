@@ -1,0 +1,153 @@
+@import "../../styles";
+
+@include theme(a-input-base) using ($theme) {
+  &__label {
+    color: map-deep-get($theme, "label", "color");
+  }
+
+  &__surface {
+    background: map-deep-get($theme, "text-input", "bg");
+    border-color: map-deep-get($theme, "base", "stroke-color");
+    color: map-deep-get($theme, "base", "color");
+
+    &:hover {
+      border-color: map-deep-get($theme, "control", "stroke-color--hover");
+    }
+  }
+
+  &__clear:focus {
+    box-shadow: map-deep-get($theme, "base", "box-shadow");
+  }
+
+  &--focused {
+    .a-input-base__surface {
+      border-color: map-deep-get($theme, "base", "color--hover");
+      box-shadow: map-deep-get($theme, "base", "box-shadow");
+    }
+  }
+
+  &--warning {
+    .a-input-base__surface {
+      @include input-state(
+        $color-warning,
+        $warning-box-shadow,
+        map-deep-get($theme, "color", "warning--state-hover")
+      );
+    }
+
+    .a-input-base__hint {
+      color: map-deep-get($theme, "control", "warning-color");
+    }
+  }
+
+  &--danger {
+    .a-input-base__surface {
+      @include input-state(
+        $color-error,
+        $danger-box-shadow,
+        map-deep-get($theme, "color", "error--state-hover")
+      );
+    }
+
+    .a-input-base__hint {
+      color: map-deep-get($theme, "control", "error-color");
+    }
+  }
+
+  &--disabled {
+    .a-input-base__surface {
+      color: map-deep-get($theme, "text-input", "color--disabled");
+      border-color: map-deep-get(
+        $theme,
+        "text-input",
+        "border-color--disabled"
+      );
+      background: map-deep-get($theme, "text-input", "bg--disabled");
+    }
+  }
+
+  &--readonly {
+    .a-input-base__surface {
+      border-color: map-deep-get(
+        $theme,
+        "text-input",
+        "border-color--readonly"
+      );
+      background: map-deep-get($theme, "text-input", "bg--readonly");
+    }
+  }
+}
+
+.a-input-base {
+  position: relative;
+  display: inline-flex;
+  flex-direction: column;
+  width: 100%;
+
+  &__label {
+    display: block;
+    margin: 0;
+    font-size: $font-size--sm;
+  }
+
+  &__surface {
+    display: flex;
+    box-sizing: border-box;
+    min-height: 28px;
+    width: 100%;
+    position: relative;
+    padding: 0 0 0 0;
+    border-style: solid;
+    border-width: $border-width;
+    border-radius: $border-radius--sm;
+  }
+
+  &__prepend {
+    min-width: 6px;
+    display: inline-flex;
+    align-items: center;
+  }
+
+  &__control {
+    flex-grow: 1;
+    display: inline-flex;
+    align-items: center;
+  }
+
+  &__append {
+    min-width: 20px;
+    display: inline-flex;
+    align-items: center;
+  }
+
+  &--disabled {
+    .a-input-base__surface {
+      @include disabled;
+    }
+  }
+
+  &--readonly {
+    .a-input-base__surface {
+      box-shadow: none;
+    }
+  }
+
+  &__clear {
+    padding: 0 7px;
+    align-self: stretch;
+    cursor: pointer;
+  }
+
+  &__hint {
+    display: block;
+    font-style: oblique;
+    line-height: 16px;
+    margin: 2px 0 0 0;
+    font-size: $font-size--xs;
+    color: map-get($grey, "base");
+  }
+}
+
+.a-app--animated .a-input-base__surface {
+  @include transition($input-transition);
+}

@@ -44,6 +44,7 @@ const config = {
     AFooter: "framework/components/AFooter",
     AHeader: "framework/components/AHeader",
     AIcon: "framework/components/AIcon",
+    AInputBase: "framework/components/AInputBase",
     ALayout: "framework/components/ALayout",
     ALoader: "framework/components/ALoader",
     AList: "framework/components/AList",
