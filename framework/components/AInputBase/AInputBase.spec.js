@@ -1,4 +1,4 @@
-context("ATextInput", () => {
+context("AInputBase", () => {
   before(() => {
     cy.visit(
       "http://localhost:8081/iframe.html?id=extend-input-base--usage-1&viewMode=docs"

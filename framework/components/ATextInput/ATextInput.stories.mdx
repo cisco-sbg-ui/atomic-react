@@ -30,8 +30,8 @@ import {ATextInput} from "@cisco-ats/atomic-react";
           const [value, setValue] = useState("autoFocused clearable");
           return (
             <ATextInput
-              appendIcon="close"
               autoFocus={true}
+              clearable
               label="Location"
               onChange={(e) => {
                 setValue(e.target.value);
@@ -43,8 +43,7 @@ import {ATextInput} from "@cisco-ats/atomic-react";
                     : "default"
                 );
               }}
-              onClickAppend={() => {
-                setValue("");
+              onClear={() => {
                 setStatus("default");
               }}
               placeholder="ZIP or City, State"

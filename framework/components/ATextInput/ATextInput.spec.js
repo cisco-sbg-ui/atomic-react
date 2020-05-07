@@ -13,6 +13,21 @@ context("ATextInput", () => {
     );
   });
 
+  it("is clearable", () => {
+    cy.get("#story--components-text-inputs--usage-1 .a-text-input__input").then(
+      ($el) => {
+        const value = $el.attr("value");
+        expect(value.length).to.be.gt(0);
+        cy.get(
+          "#story--components-text-inputs--usage-1 .a-input-base__clear"
+        ).click();
+        cy.get(
+          "#story--components-text-inputs--usage-1 .a-text-input__input"
+        ).should("have.value", "");
+      }
+    );
+  });
+
   it("has a working non-interactable prepend icon", () => {
     cy.get("#story--components-text-inputs--validation-1")
       .find(".a-text-input__prepend-icon")

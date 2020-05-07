@@ -6,7 +6,7 @@ context("ACombobox", () => {
   });
 
   it("has a label that works", () => {
-    cy.get("#story--components-comboboxes--usage-1 .a-text-input__label")
+    cy.get("#story--components-comboboxes--usage-1 .a-input-base__label")
       .eq(0)
       .click()
       .then(($el) => {
