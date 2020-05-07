@@ -1,107 +1,17 @@
 @import "../../styles";
 
-$input-height: 28px;
-$input-width: 100%;
-$search-margin: 10px 0;
-$text-input--prepend--pad-x: 5px;
-$text-input--prepend--pad-y: 7px;
-$text-input--prepend--width: 14px;
-$text-input--append--pad-x: 7px;
-$text-input--append--pad-y: 9px;
-$text-input--append--width: 10px;
-$search-input-padding-left: 24px;
-$search-input-padding-top: 1px;
-$text-input-label-margin: 0;
-
 @include theme(a-text-input) using ($theme) {
-  &__label {
-    color: map-deep-get($theme, "label", "color");
-  }
-
-  &--disabled .a-text-input__prepend-icon,
-  &--disabled .a-text-input__append-icon,
-  &--readonly .a-text-input__prepend-icon,
-  &--readonly .a-text-input__append-icon {
-    @include disabled;
-    box-shadow: none;
-    color: map-deep-get($theme, "text-input", "color--disabled");
-  }
-
   &__prepend-icon,
   &__append-icon {
     &.interactable:focus {
       box-shadow: map-deep-get($theme, "base", "box-shadow");
     }
   }
-
-  &__input {
-    background: map-deep-get($theme, "text-input", "bg");
-    border-color: map-deep-get($theme, "base", "stroke-color");
-    color: map-deep-get($theme, "base", "color");
-
-    &:hover {
-      border-color: map-deep-get($theme, "control", "stroke-color--hover");
-    }
-
-    &:focus {
-      border-color: map-deep-get($theme, "base", "color--hover");
-      box-shadow: map-deep-get($theme, "base", "box-shadow");
-    }
-
-    &[disabled] {
-      color: map-deep-get($theme, "text-input", "color--disabled");
-      border-color: map-deep-get(
-        $theme,
-        "text-input",
-        "border-color--disabled"
-      );
-      background: map-deep-get($theme, "text-input", "bg--disabled");
-    }
-
-    &[readonly],
-    &[readonly]:focus {
-      border-color: map-deep-get(
-        $theme,
-        "text-input",
-        "border-color--readonly"
-      );
-      background: map-deep-get($theme, "text-input", "bg--readonly");
-    }
-
-    &--state-warning {
-      @include input-state(
-        $color-warning,
-        $warning-box-shadow,
-        map-deep-get($theme, "color", "warning--state-hover")
-      );
-    }
-
-    &--state-danger {
-      @include input-state(
-        $color-error,
-        $danger-box-shadow,
-        map-deep-get($theme, "color", "error--state-hover")
-      );
-    }
-  }
 }
 
 .a-text-input {
-  position: relative;
-  display: inline-block;
-  width: $input-width;
-
-  &__label {
-    display: block;
-    margin: $text-input-label-margin;
-    font-size: $font-size--sm;
-  }
-
   &__prepend-icon,
   &__append-icon {
-    position: absolute;
-    z-index: 1;
-
     &.interactable {
       box-shadow: none;
       cursor: pointer;
@@ -109,53 +19,41 @@ $text-input-label-margin: 0;
   }
 
   &__prepend-icon {
-    left: 0;
-    bottom: 0;
-    padding: $text-input--prepend--pad-y $text-input--prepend--pad-x;
-    width: $text-input--prepend--width;
+    padding: 0 5px;
+    width: 14px;
+    align-self: stretch;
   }
 
   &__append-icon {
-    right: 0;
-    bottom: 0;
-    padding: $text-input--append--pad-y $text-input--append--pad-x;
-    width: $text-input--append--width;
-  }
-
-  &__prepend-icon + .a-text-input__input {
-    padding-left: $search-input-padding-left;
+    padding: 0 5px;
+    width: 14px;
+    align-self: stretch;
   }
 
   &__input {
+    background: transparent;
     box-sizing: border-box;
-    height: $input-height;
-    width: $input-width;
+    width: 100%;
     position: relative;
-    padding: $input-padding;
-    border-style: solid;
-    border-width: $border-width;
-    border-radius: $border-radius--sm;
+    padding: 2px 20px 0 6px;
+    border: none;
     appearance: none;
     text-indent: 1px;
+    align-self: stretch;
     &:focus {
       outline: none;
     }
+  }
 
-    &:active {
-      border-color: $input-border-color--active;
-    }
-
-    &[disabled] {
-      @include disabled;
-    }
-
-    &[readonly],
-    &[readonly]:focus {
-      box-shadow: none;
+  &.a-input-base--append {
+    .a-text-input__input {
+      padding-right: 0;
     }
   }
-}
 
-.a-app--animated .a-text-input__input {
-  @include transition($input-transition);
+  &.a-input-base--prepend {
+    .a-text-input__input {
+      padding-left: 0;
+    }
+  }
 }

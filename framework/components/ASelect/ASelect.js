@@ -103,6 +103,14 @@ const ASelect = forwardRef(
       selectionProps.tabIndex = 0;
       selectionProps.role = "button";
 
+      selectionProps.onFocus = () => {
+        setIsFocused(true);
+      };
+
+      selectionProps.onBlur = () => {
+        setIsFocused(false);
+      };
+
       if (!readOnly) {
         chevronProps.onClick = selectionProps.onClick = () => {
           setIsOpen(!isOpen);
@@ -120,14 +128,6 @@ const ASelect = forwardRef(
         if (isOpen) {
           selectionProps.className += " a-select__surface--focused";
         }
-
-        selectionProps.onFocus = () => {
-          setIsFocused(true);
-        };
-
-        selectionProps.onBlur = () => {
-          setIsFocused(false);
-        };
 
         selectionProps.onKeyDown = (e) => {
           if ([keyCodes.enter, keyCodes.space].includes(e.keyCode)) {

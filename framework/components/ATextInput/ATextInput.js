@@ -2,9 +2,10 @@ import PropTypes from "prop-types";
 import React, {forwardRef, useEffect, useRef, useState} from "react";
 
 import "./ATextInput.scss";
+import AInputBase from "../AInputBase";
+import AIcon from "../AIcon";
 import {useCombinedRefs} from "../../utils/hooks";
 import {keyCodes} from "../../utils/helpers";
-import AIcon from "../AIcon";
 
 let textInputCounter = 0;
 
@@ -15,11 +16,14 @@ const ATextInput = forwardRef(
       autoComplete,
       autoFocus,
       className: propsClassName,
+      clearable,
       disabled,
+      hint,
       label,
       name,
       onBlur,
       onChange,
+      onClear,
       onClick,
       onClickAppend,
       onClickPrepend,
@@ -38,6 +42,7 @@ const ATextInput = forwardRef(
   ) => {
     const textInputRef = useRef(null);
     const [textInputId] = useState(textInputCounter++);
+    const [isFocused, setIsFocused] = useState(false);
     const combinedRef = useCombinedRefs(ref, textInputRef);
     useEffect(() => {
       if (
@@ -53,44 +58,6 @@ const ATextInput = forwardRef(
       combinedRef.current.querySelector(".a-text-input__input").focus();
     }, [autoFocus, combinedRef]);
 
-    const onClickPrependKeyDown = (e) => {
-      if (
-        onClickPrepend &&
-        [keyCodes.enter, keyCodes.space].includes(e.keyCode)
-      ) {
-        e.preventDefault();
-        onClickPrepend(e);
-      }
-    };
-
-    const onClickAppendKeyDown = (e) => {
-      if (
-        onClickAppend &&
-        [keyCodes.enter, keyCodes.space].includes(e.keyCode)
-      ) {
-        e.preventDefault();
-        onClickAppend(e);
-      }
-    };
-
-    let className = "a-text-input";
-    if (disabled) {
-      className += " a-text-input--disabled";
-    }
-
-    if (readOnly) {
-      className += " a-text-input--readonly";
-    }
-
-    if (propsClassName) {
-      className += ` ${propsClassName}`;
-    }
-
-    let inputClassName = "a-text-input__input";
-    if (validationState !== "default") {
-      inputClassName += ` a-text-input__input--state-${validationState}`;
-    }
-
     const prependProps = {
       className: "a-text-input__prepend-icon"
     };
@@ -98,7 +65,15 @@ const ATextInput = forwardRef(
     if (!disabled && !readOnly && onClickPrepend) {
       prependProps.className += " interactable";
       prependProps.onClick = onClickPrepend;
-      prependProps.onKeyDown = onClickPrependKeyDown;
+      prependProps.onKeyDown = (e) => {
+        if (
+          onClickPrepend &&
+          [keyCodes.enter, keyCodes.space].includes(e.keyCode)
+        ) {
+          e.preventDefault();
+          onClickPrepend(e);
+        }
+      };
       prependProps.tabIndex = 0;
       prependProps.role = "button";
     }
@@ -110,40 +85,72 @@ const ATextInput = forwardRef(
     if (!disabled && !readOnly && onClickAppend) {
       appendProps.className += " interactable";
       appendProps.onClick = onClickAppend;
-      appendProps.onKeyDown = onClickAppendKeyDown;
+      appendProps.onKeyDown = (e) => {
+        if (
+          onClickAppend &&
+          [keyCodes.enter, keyCodes.space].includes(e.keyCode)
+        ) {
+          e.preventDefault();
+          onClickAppend(e);
+        }
+      };
       appendProps.tabIndex = 0;
       appendProps.role = "button";
     }
 
+    const inputBaseProps = {
+      ...rest,
+      ref: combinedRef,
+      className: "a-text-input",
+      clearable,
+      hint,
+      label,
+      labelFor: `a-text-input_${textInputId}`,
+      disabled,
+      focused: isFocused,
+      append: appendIcon && <AIcon {...appendProps}>{appendIcon}</AIcon>,
+      prepend: prependIcon && <AIcon {...prependProps}>{prependIcon}</AIcon>,
+      readOnly,
+      validationState,
+      onClear: () => {
+        const e = combinedRef.current.querySelector(".a-text-input__input");
+        e.value = "";
+        onClear && onClear(e);
+      }
+    };
+
+    if (propsClassName) {
+      inputBaseProps.className += ` ${propsClassName}`;
+    }
+
+    const inputProps = {
+      autoComplete,
+      className: "a-text-input__input",
+      disabled,
+      id: `a-text-input_${textInputId}`,
+      name,
+      onBlur: (e) => {
+        setIsFocused(false);
+        onBlur && onBlur(e);
+      },
+      onChange,
+      onClick,
+      onFocus: (e) => {
+        setIsFocused(true);
+        onFocus && onFocus(e);
+      },
+      onKeyUp,
+      onPaste,
+      placeholder,
+      readOnly,
+      type,
+      value
+    };
+
     return (
-      <div {...rest} ref={combinedRef} className={className}>
-        {label && (
-          <label
-            htmlFor={`a-text-input_${textInputId}`}
-            className="a-text-input__label">
-            {label}
-          </label>
-        )}
-        {prependIcon && <AIcon {...prependProps}>{prependIcon}</AIcon>}
-        <input
-          autoComplete={autoComplete}
-          className={inputClassName}
-          disabled={disabled}
-          id={`a-text-input_${textInputId}`}
-          name={name}
-          onBlur={onBlur}
-          onChange={onChange}
-          onClick={onClick}
-          onFocus={onFocus}
-          onKeyUp={onKeyUp}
-          onPaste={onPaste}
-          placeholder={placeholder}
-          readOnly={readOnly}
-          type={type}
-          value={value}
-        />
-        {appendIcon && <AIcon {...appendProps}>{appendIcon}</AIcon>}
-      </div>
+      <AInputBase {...inputBaseProps}>
+        <input {...inputProps} />
+      </AInputBase>
     );
   }
 );
@@ -162,11 +169,19 @@ ATextInput.propTypes = {
    */
   autoFocus: PropTypes.bool,
   /**
+   * Toggles whether to display a clearable icon.
+   */
+  clearable: PropTypes.bool,
+  /**
    * Toggles the `disabled` state.
    */
   disabled: PropTypes.bool,
   /**
-   * Sets the input label text.
+   * Sets the hint content.
+   */
+  hint: PropTypes.node,
+  /**
+   * Sets the label content.
    */
   label: PropTypes.node,
   /**
@@ -181,6 +196,10 @@ ATextInput.propTypes = {
    * Handles the `change` event.
    */
   onChange: PropTypes.func,
+  /**
+   * Handles the `clear` event (for supplemental handling).
+   */
+  onClear: PropTypes.func,
   /**
    * Handles the `click` event for the input.
    */
