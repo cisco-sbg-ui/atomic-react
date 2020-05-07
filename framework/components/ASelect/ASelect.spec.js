@@ -6,12 +6,12 @@ context("ASelect", () => {
   });
 
   it("has a label that works", () => {
-    cy.get("#story--components-selects--usage-1 .a-select__label")
+    cy.get("#story--components-selects--usage-1 .a-input-base__label")
       .eq(0)
       .click()
       .then(($el) => {
         const labelId = $el.attr("id");
-        cy.get("#story--components-selects--usage-1 .a-select__surface")
+        cy.get("#story--components-selects--usage-1 .a-select__selection")
           .eq(0)
           .then(($el2) => {
             Cypress.dom.isFocused($el2);
@@ -24,7 +24,7 @@ context("ASelect", () => {
     cy.get("#story--components-selects--usage-1 .a-select__menu-items")
       .eq(0)
       .should("not.be.visible");
-    cy.get("#story--components-selects--usage-1 .a-select__surface")
+    cy.get("#story--components-selects--usage-1 .a-select__selection")
       .eq(0)
       .click();
     cy.get("#story--components-selects--usage-1 .a-select__menu-items")
@@ -39,24 +39,24 @@ context("ASelect", () => {
   });
 
   it("tabs appropriately", () => {
-    cy.get("#story--components-selects--usage-1 .a-select__surface")
+    cy.get("#story--components-selects--usage-1 .a-select__selection")
       .eq(0)
       .focus()
       .tab();
-    cy.get("#story--components-selects--usage-2 .a-select__surface")
+    cy.get("#story--components-selects--usage-2 .a-select__selection")
       .eq(0)
       .then(($el) => {
         Cypress.dom.isFocused($el);
       });
 
-    cy.get("#story--components-selects--usage-1 .a-select__surface")
+    cy.get("#story--components-selects--usage-1 .a-select__selection")
       .eq(0)
       .click()
       .tab();
     cy.get("#story--components-selects--usage-1 .a-select__menu-items")
       .eq(0)
       .should("not.be.visible");
-    cy.get("#story--components-selects--usage-2 .a-select__surface")
+    cy.get("#story--components-selects--usage-2 .a-select__selection")
       .eq(0)
       .then(($el) => {
         Cypress.dom.isFocused($el);
@@ -64,7 +64,7 @@ context("ASelect", () => {
   });
 
   it("arrow-keys menus appropriately", () => {
-    cy.get("#story--components-selects--usage-1 .a-select__surface")
+    cy.get("#story--components-selects--usage-1 .a-select__selection")
       .eq(0)
       .click()
       .next()
@@ -84,7 +84,7 @@ context("ASelect", () => {
       })
       .type("{esc}");
 
-    cy.get("#story--components-selects--usage-1 .a-select__surface")
+    cy.get("#story--components-selects--usage-1 .a-select__selection")
       .eq(0)
       .click()
       .next()
@@ -103,7 +103,7 @@ context("ASelect", () => {
   });
 
   it("arrow-keys the surface appropriately", () => {
-    cy.get("#story--components-selects--usage-1 .a-select__surface")
+    cy.get("#story--components-selects--usage-1 .a-select__selection")
       .eq(0)
       .focus()
       .type("{downArrow}")
@@ -119,7 +119,7 @@ context("ASelect", () => {
   });
 
   it("has working selected prop", () => {
-    cy.get("#story--components-selects--usage-2 .a-select__surface")
+    cy.get("#story--components-selects--usage-2 .a-select__selection")
       .eq(0)
       .click();
     cy.get("#story--components-selects--usage-2 .a-select__menu-item")
@@ -129,7 +129,7 @@ context("ASelect", () => {
   });
 
   it("has appropriate role attributes", () => {
-    cy.get("#story--components-selects--usage-1 .a-select__surface")
+    cy.get("#story--components-selects--usage-1 .a-select__selection")
       .eq(0)
       .click()
       .next()
@@ -146,7 +146,7 @@ context("ASelect", () => {
     // There isn't a way yet to tell if fonts are loaded, so wait 3 seconds.
     cy.wait(3000);
 
-    cy.get("#story--components-selects--usage-1 .a-select__surface")
+    cy.get("#story--components-selects--usage-1 .a-select__selection")
       .first()
       .click();
 
@@ -155,7 +155,7 @@ context("ASelect", () => {
       .parent()
       .matchImageSnapshot("a-select--usage-1");
 
-    cy.get("#story--components-selects--dusk-1 .a-select__surface")
+    cy.get("#story--components-selects--dusk-1 .a-select__selection")
       .first()
       .focus()
       .type("{downArrow}")
