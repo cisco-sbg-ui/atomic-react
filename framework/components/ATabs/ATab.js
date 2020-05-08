@@ -5,7 +5,7 @@ import ATabContext from "./ATabContext";
 import "./ATabs.scss";
 import {keyCodes} from "../../utils/helpers";
 
-let tabCounter = 0;
+let tabCounter = 1;
 
 const ATab = forwardRef(
   (
@@ -40,7 +40,7 @@ const ATab = forwardRef(
         setTabChanged(-1);
         setIsSelected(false);
       }
-    }, [selected, isSelected, setTabChanged]);
+    }, [selected]); // eslint-disable-line react-hooks/exhaustive-deps
 
     let className = "a-tab-group__tab";
     if (isSelected) {
