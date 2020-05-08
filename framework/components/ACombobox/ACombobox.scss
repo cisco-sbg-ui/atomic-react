@@ -1,32 +1,57 @@
 @import "../../styles";
 
-$combobox-height: 28px;
-$combobox-padding: 6px;
-$combobox__menu-item-line-height: $line-height--lg;
-$combobox__menu-item-padding: 2px 0 0 0;
-$combobox__menu-items-margin: 0;
-$combobox__menu-items-right: 0;
-$combobox__menu-items-left: 0;
-$combobox__menu-items-z-index: 999;
-
 .a-combobox {
+  .a-dropdown {
+    display: flex;
+    align-items: center;
+    align-self: stretch;
+  }
+
+  &__input {
+    background: transparent;
+    box-sizing: border-box;
+    color: currentColor;
+    width: 100%;
+    position: relative;
+    padding: 2px 0 0 6px;
+    border: none;
+    appearance: none;
+    text-indent: 1px;
+    align-self: stretch;
+    &:focus {
+      outline: none;
+    }
+  }
+
+  &__chevron {
+    cursor: pointer;
+    padding: 0 7px;
+    align-self: stretch;
+  }
+
   &__menu-items {
-    top: calc(100% - 1px);
+    top: 100%;
     border-bottom-left-radius: $border-radius--sm;
     border-bottom-right-radius: $border-radius--sm;
     cursor: pointer;
-    left: $combobox__menu-items-left;
-    margin: $combobox__menu-items-margin;
+    left: -1px;
+    margin: 0;
     overflow: auto;
-    right: $combobox__menu-items-right;
+    right: -25px;
     user-select: none;
-    z-index: $combobox__menu-items-z-index;
+    z-index: 999;
 
     .a-combobox__menu-item {
-      height: $combobox-height;
-      line-height: $combobox__menu-item-line-height;
-      padding: $combobox__menu-item-padding;
-      text-indent: $combobox-padding;
+      height: 28px;
+      line-height: $line-height--lg;
+      padding: 2px 0 0 0;
+      text-indent: 6px;
+    }
+  }
+
+  &.a-input-base--clearable {
+    .a-combobox__menu-items {
+      right: -50px;
     }
   }
 }

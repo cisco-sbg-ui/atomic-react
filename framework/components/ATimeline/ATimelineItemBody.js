@@ -8,8 +8,6 @@ const ATimelineItemBody = forwardRef(
       className += ` ${propsClassName}`;
     }
 
-    console.log(className);
-
     return (
       <div {...rest} ref={ref} className={className}>
         {children}

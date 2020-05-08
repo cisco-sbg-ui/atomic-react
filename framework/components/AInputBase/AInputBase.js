@@ -36,6 +36,10 @@ const AInputBase = forwardRef(
       className += " a-input-base--append";
     }
 
+    if (clearable) {
+      className += " a-input-base--clearable";
+    }
+
     if (focused) {
       className += " a-input-base--focused";
     }

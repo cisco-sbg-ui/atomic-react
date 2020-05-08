@@ -24,7 +24,7 @@ import {ACombobox} from "@cisco-ats/atomic-react";
 
 <Preview>
   <Story name="usage-1">
-    <AApp style={{minHeight: 220, marginRight: 20}}>
+    <AApp style={{minHeight: 220, minWidth: 250, marginRight: 20}}>
       <h3>Combobox with Strings</h3>
       <YourComponent>
         {() => {
@@ -40,6 +40,7 @@ import {ACombobox} from "@cisco-ats/atomic-react";
           const [filteredItems, setFilteredItems] = useState(items);
           return (
             <ACombobox
+              clearable
               label="Food Group"
               items={filteredItems}
               placeholder="Pick a Food Group"
@@ -55,6 +56,7 @@ import {ACombobox} from "@cisco-ats/atomic-react";
                 );
                 setValue(e.target.value);
               }}
+              hint="Hint: Clearable"
             />
           );
         }}
@@ -62,7 +64,7 @@ import {ACombobox} from "@cisco-ats/atomic-react";
     </AApp>
   </Story>
   <Story name="usage-2">
-    <AApp style={{minHeight: 220, marginRight: 20}}>
+    <AApp style={{minHeight: 220, minWidth: 250, marginRight: 20}}>
       <h3>Combobox with Objects</h3>
       <YourComponent>
         {() => {
@@ -102,15 +104,57 @@ import {ACombobox} from "@cisco-ats/atomic-react";
     </AApp>
   </Story>
   <Story name="usage-3">
-    <AApp style={{minHeight: 220}}>
+    <AApp style={{minHeight: 220, minWidth: 250, marginRight: 20}}>
       <h3>Disabled Combobox</h3>
-      <ACombobox disabled label="Food Group" placeholder="Pick a Food Group" />
-      <ADivider />
+      <ACombobox
+        disabled
+        label="Food Group"
+        placeholder="Pick a Food Group"
+        hint="Hint: Disabled"
+      />
+    </AApp>
+  </Story>
+  <Story name="usage-4">
+    <AApp style={{minHeight: 220, minWidth: 250, marginRight: 20}}>
+      <h3>Read-only Combobox</h3>
+      <ACombobox
+        readOnly
+        label="Food Group"
+        placeholder="Pick a Food Group"
+        hint="Hint: Read-only"
+      />
+    </AApp>
+  </Story>
+  <Story name="usage-5">
+    <AApp style={{minHeight: 220, minWidth: 250, marginRight: 20}}>
+      <h3>Warning Combobox</h3>
+      <ACombobox
+        label="Food Group"
+        placeholder="Pick a Food Group"
+        hint="Hint: Warning"
+        validationState="warning"
+      />
+    </AApp>
+  </Story>
+  <Story name="usage-6">
+    <AApp style={{minHeight: 220, minWidth: 250, marginRight: 20}}>
+      <h3>Danger Combobox</h3>
+      <ACombobox
+        label="Food Group"
+        placeholder="Pick a Food Group"
+        hint="Hint: Danger"
+        validationState="danger"
+      />
+    </AApp>
+  </Story>
+  <Story name="usage-7">
+    <AApp style={{minHeight: 220, minWidth: 250, marginRight: 20}}>
       <h3>No Data Combobox</h3>
       <ACombobox
         label="Food Group"
         placeholder="Pick a Food Group"
         noDataContent="Check again when we restock!"
+        hint="Hint: No Data"
       />
     </AApp>
   </Story>
@@ -126,7 +170,9 @@ The `ACombobox` component inherits passed props.
 
 <Preview style={{backgroundColor: "#18191d"}}>
   <Story name="dusk-1">
-    <AApp defaultTheme="dusk" style={{minHeight: 220, marginRight: 20}}>
+    <AApp
+      defaultTheme="dusk"
+      style={{minHeight: 220, minWidth: 250, marginRight: 20}}>
       <h3>Combobox with Strings</h3>
       <YourComponent>
         {() => {
@@ -142,6 +188,7 @@ The `ACombobox` component inherits passed props.
           const [filteredItems, setFilteredItems] = useState(items);
           return (
             <ACombobox
+              clearable
               label="Food Group"
               items={filteredItems}
               placeholder="Pick a Food Group"
@@ -157,6 +204,7 @@ The `ACombobox` component inherits passed props.
                 );
                 setValue(e.target.value);
               }}
+              hint="Hint: Clearable"
             />
           );
         }}
@@ -164,7 +212,9 @@ The `ACombobox` component inherits passed props.
     </AApp>
   </Story>
   <Story name="dusk-2">
-    <AApp defaultTheme="dusk" style={{minHeight: 220, marginRight: 20}}>
+    <AApp
+      defaultTheme="dusk"
+      style={{minHeight: 220, minWidth: 250, marginRight: 20}}>
       <h3>Combobox with Objects</h3>
       <YourComponent>
         {() => {
@@ -204,14 +254,67 @@ The `ACombobox` component inherits passed props.
     </AApp>
   </Story>
   <Story name="dusk-3">
-    <AApp defaultTheme="dusk" style={{minHeight: 220}}>
+    <AApp
+      defaultTheme="dusk"
+      style={{minHeight: 220, minWidth: 250, marginRight: 20}}>
       <h3>Disabled Combobox</h3>
-      <ACombobox disabled label="Food Group" placeholder="Pick a Food Group" />
+      <ACombobox
+        disabled
+        label="Food Group"
+        placeholder="Pick a Food Group"
+        hint="Hint: Disabled"
+      />
+    </AApp>
+  </Story>
+  <Story name="dusk-4">
+    <AApp
+      defaultTheme="dusk"
+      style={{minHeight: 220, minWidth: 250, marginRight: 20}}>
+      <h3>Read-only Combobox</h3>
+      <ACombobox
+        readOnly
+        label="Food Group"
+        placeholder="Pick a Food Group"
+        hint="Hint: Read-only"
+      />
+    </AApp>
+  </Story>
+  <Story name="dusk-5">
+    <AApp
+      defaultTheme="dusk"
+      style={{minHeight: 220, minWidth: 250, marginRight: 20}}>
+      <h3>Warning Combobox</h3>
+      <ACombobox
+        label="Food Group"
+        placeholder="Pick a Food Group"
+        hint="Hint: Warning"
+        validationState="warning"
+      />
+    </AApp>
+  </Story>
+  <Story name="dusk-6">
+    <AApp
+      defaultTheme="dusk"
+      style={{minHeight: 220, minWidth: 250, marginRight: 20}}>
+      <h3>Danger Combobox</h3>
+      <ACombobox
+        label="Food Group"
+        placeholder="Pick a Food Group"
+        hint="Hint: Danger"
+        validationState="danger"
+      />
+    </AApp>
+  </Story>
+  <Story name="dusk-7">
+    <AApp
+      defaultTheme="dusk"
+      style={{minHeight: 220, minWidth: 250, marginRight: 20}}>
       <h3>No Data Combobox</h3>
       <ACombobox
         label="Food Group"
         placeholder="Pick a Food Group"
         noDataContent="Check again when we restock!"
+        hint="Hint: No Data"
       />
     </AApp>
   </Story>
@@ -219,5 +322,6 @@ The `ACombobox` component inherits passed props.
 
 ## Accessibility Notes
 
-In addition to inheriting all of the accessibility features of `ADropdown` and `ATextInput`,
+`ACombobox` inherits the accessibility features of `ADropdown`.
+
 the `ACombobox` will select and focus previous/next items on `up` or `down` keys for the `keydown` event.

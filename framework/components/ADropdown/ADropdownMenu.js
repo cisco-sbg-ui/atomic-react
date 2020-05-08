@@ -27,7 +27,9 @@ const ADropdownMenu = forwardRef(
 
     useEffect(() => {
       const close = (e) => {
-        if (e.target.closest(".a-dropdown") === null) {
+        const closestDropdown = e.target.closest(".a-dropdown");
+        const ourDropdown = combinedRef.current.closest(".a-dropdown");
+        if (!closestDropdown || !closestDropdown.isSameNode(ourDropdown)) {
           onClose && onClose(e);
         }
       };

@@ -114,7 +114,13 @@ const ATextInput = forwardRef(
       validationState,
       onClear: () => {
         const e = combinedRef.current.querySelector(".a-text-input__input");
-        e.value = "";
+        var nativeInputValueSetter = Object.getOwnPropertyDescriptor(
+          window.HTMLInputElement.prototype,
+          "value"
+        ).set;
+        nativeInputValueSetter.call(e, "");
+        var event = new Event("input", {bubbles: true});
+        e.dispatchEvent(event);
         onClear && onClear(e);
       }
     };
