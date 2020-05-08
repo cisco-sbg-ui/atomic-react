@@ -90,10 +90,3 @@ $step-icon-border-color: rgba(map-get($grey, "lighten-2"), $alpha-3);
 // (#c6c7ca, 30%);
 $step-line-color: rgba(map-get($grey, "lighten-2"), $alpha-3);
 // (#c6c7ca, 30%);
-// -----------------------------------------------------------------------------
-// Timeline
-// -----------------------------------------------------------------------------
-$timeline-line-bg-color: map-get($grey, "darken-4"); // #626469
-$timeline-icon-border-color: map-get($grey, "darken-4"); // #626469
-$timeline-icon-bg-color: map-get($grey, "lighten-3"); // #dfdfdf;
-$timeline-item-color-hover: map-get($dusk, "6"); // #17202B;
