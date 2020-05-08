@@ -196,7 +196,7 @@ $atomic-dusk: (
   "timeline": (
     "item-bg-hover-color": map-get($dusk, "6"),
     "icon-border-color": map-get($grey, "darken-4"),
-    "icon-bg-color": map-get($grey, "darken-4")
+    "icon-bg-color": map-get($grey, "lighten-3")
   ),
   "tree": (
     "color": map-get($grey, "lighten-5"),
