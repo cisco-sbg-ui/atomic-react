@@ -11,14 +11,14 @@ context("ACombobox", () => {
       .click()
       .then(($el) => {
         const labelFor = $el.attr("for");
-        cy.get("#story--components-comboboxes--usage-1 .a-text-input__input")
+        cy.get("#story--components-comboboxes--usage-1 .a-combobox__input")
           .eq(0)
           .then(($el2) => {
             Cypress.dom.isFocused($el2);
             cy.wrap($el2).should("have.attr", "id", labelFor);
           });
       });
-    cy.get("#story--components-comboboxes--usage-1 .a-text-input__append-icon")
+    cy.get("#story--components-comboboxes--usage-1 .a-combobox__chevron")
       .eq(0)
       .click();
   });
@@ -27,45 +27,44 @@ context("ACombobox", () => {
     cy.get("#story--components-comboboxes--usage-1 .a-combobox__menu-items")
       .eq(0)
       .should("not.be.visible");
-    cy.get("#story--components-comboboxes--usage-1 .a-text-input__append-icon")
+    cy.get("#story--components-comboboxes--usage-1 .a-combobox__chevron")
       .eq(0)
       .click();
     cy.get("#story--components-comboboxes--usage-1 .a-combobox__menu-items")
       .eq(0)
       .should("be.visible")
-      .type("{esc}")
-      .should("not.be.visible")
       .prev()
       .then(($el) => {
         Cypress.dom.isFocused($el);
       });
-    cy.get("#story--components-comboboxes--usage-1 .a-text-input__input")
-      .eq(0)
-      .type("{downArrow}");
-    cy.get("#story--components-comboboxes--usage-1 .a-combobox__menu-items")
-      .eq(0)
-      .should("be.visible");
-    cy.get("#story--components-comboboxes--usage-1 .a-text-input__append-icon")
+    cy.get("#story--components-comboboxes--usage-1 .a-combobox__chevron")
       .eq(0)
       .click();
     cy.get("#story--components-comboboxes--usage-1 .a-combobox__menu-items")
       .eq(0)
       .should("not.be.visible");
+    cy.get("#story--components-comboboxes--usage-1 .a-combobox__input")
+      .eq(0)
+      .type("{downArrow}");
+    cy.get("#story--components-comboboxes--usage-1 .a-combobox__menu-items")
+      .eq(0)
+      .should("be.visible");
   });
 
   it("tabs appropriately", () => {
-    cy.get("#story--components-comboboxes--usage-1 .a-text-input__input")
+    cy.get("#story--components-comboboxes--usage-1 .a-combobox__input")
       .eq(0)
       .click()
       .tab();
-    cy.get("#story--components-comboboxes--usage-1 .a-text-input__append-icon")
+    cy.get("#story--components-comboboxes--usage-1 .a-combobox__menu-items")
       .eq(0)
+      .find(".a-combobox__menu-item")
+      .first()
       .then(($el) => {
         Cypress.dom.isFocused($el);
       })
-      .click()
       .tab();
-    cy.get("#story--components-comboboxes--usage-2 .a-text-input__input")
+    cy.get("#story--components-comboboxes--usage-2 .a-combobox__input")
       .eq(0)
       .then(($el) => {
         Cypress.dom.isFocused($el);
@@ -73,7 +72,7 @@ context("ACombobox", () => {
   });
 
   it("arrow-keys menus appropriately", () => {
-    cy.get("#story--components-comboboxes--usage-1 .a-text-input__input")
+    cy.get("#story--components-comboboxes--usage-1 .a-combobox__input")
       .eq(0)
       .type("{downArrow}");
     cy.get("#story--components-comboboxes--usage-1 .a-combobox__menu-items")
@@ -90,7 +89,7 @@ context("ACombobox", () => {
       })
       .type("{esc}");
 
-    cy.get("#story--components-comboboxes--usage-1 .a-text-input__input")
+    cy.get("#story--components-comboboxes--usage-1 .a-combobox__input")
       .eq(0)
       .type("{upArrow}");
     cy.get("#story--components-comboboxes--usage-1 .a-combobox__menu-items")
@@ -109,7 +108,7 @@ context("ACombobox", () => {
   });
 
   it("arrow-keys the surface appropriately", () => {
-    cy.get("#story--components-comboboxes--usage-1 .a-text-input__input")
+    cy.get("#story--components-comboboxes--usage-1 .a-combobox__input")
       .eq(0)
       .click()
       .type("{downArrow}{enter}")
@@ -117,7 +116,7 @@ context("ACombobox", () => {
   });
 
   it("has appropriate role attributes", () => {
-    cy.get("#story--components-comboboxes--usage-1 .a-text-input__input")
+    cy.get("#story--components-comboboxes--usage-1 .a-combobox__input")
       .eq(0)
       .click();
     cy.get("#story--components-comboboxes--usage-1 .a-combobox__menu-items")
@@ -126,6 +125,7 @@ context("ACombobox", () => {
       .find(".a-combobox__menu-item")
       .first()
       .should("have.attr", "role", "option")
+      .focus()
       .type("{esc}");
   });
 
@@ -135,18 +135,18 @@ context("ACombobox", () => {
     // There isn't a way yet to tell if fonts are loaded, so wait 3 seconds.
     cy.wait(3000);
 
-    cy.get("#story--components-comboboxes--usage-1 .a-text-input__input")
+    cy.get("#story--components-comboboxes--usage-1 .a-combobox__input")
       .first()
-      .click();
+      .type("{downArrow}");
 
     cy.get("#story--components-comboboxes--usage-1")
       .parent()
       .parent()
       .matchImageSnapshot("a-combobox--usage-1");
 
-    cy.get("#story--components-comboboxes--dusk-1 .a-text-input__input")
+    cy.get("#story--components-comboboxes--dusk-1 .a-combobox__input")
       .first()
-      .click();
+      .type("{downArrow}");
 
     cy.get("#story--components-comboboxes--dusk-1")
       .parent()
