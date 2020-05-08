@@ -5,7 +5,7 @@ import AAccordionContext from "./AAccordionContext";
 import AAccordionPanelContext from "./AAccordionPanelContext";
 import "./AAccordion.scss";
 
-let accordionPanelCounter = 0;
+let accordionPanelCounter = 1;
 
 const AAccordionPanel = forwardRef(
   ({children, className: propsClassName, collapsed = true, ...rest}, ref) => {
