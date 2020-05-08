@@ -215,8 +215,6 @@ $btn--icon-border-radius: 30px;
 // -----------------------------------------------------------------------------
 // Shared input styles
 // -----------------------------------------------------------------------------
-$input-border-color--active: map-get($cisco-blue, "burnt-1");
-$input-padding: 4px 20px 2px 6px;
 $input-transition: border-color $transition-duration--extra-fast
     $transition-timing-function--standard,
   box-shadow $transition-duration--extra-fast

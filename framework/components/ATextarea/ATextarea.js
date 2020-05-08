@@ -1,8 +1,9 @@
 import PropTypes from "prop-types";
 import React, {forwardRef, useEffect, useRef, useState} from "react";
 
-import {useCombinedRefs} from "../../utils/hooks";
 import "./ATextarea.scss";
+import AInputBase from "../AInputBase";
+import {useCombinedRefs} from "../../utils/hooks";
 
 let textareaCounter = 0;
 
@@ -13,6 +14,7 @@ const ATextarea = forwardRef(
       className: propsClassName,
       disabled,
       disableGrammarly,
+      hint,
       label,
       onBlur,
       onChange: propsOnChange,
@@ -30,6 +32,7 @@ const ATextarea = forwardRef(
   ) => {
     const textareaRef = useRef(null);
     const combinedRef = useCombinedRefs(ref, textareaRef);
+    const [isFocused, setIsFocused] = useState(false);
     const [textareaId] = useState(textareaCounter++);
 
     useEffect(() => {
@@ -45,25 +48,6 @@ const ATextarea = forwardRef(
       }
     }, [autoGrow]); // eslint-disable-line react-hooks/exhaustive-deps
 
-    let className = "a-textarea";
-    if (autoGrow) {
-      className += " a-textarea--auto-grow";
-    }
-
-    if (propsClassName) {
-      className += ` ${propsClassName}`;
-    }
-
-    let fieldClassName = "a-textarea__field";
-    if (validationState !== "default") {
-      fieldClassName += " a-textarea__field--state-" + validationState;
-    }
-
-    const additionalTextareaProps = {};
-    if (disableGrammarly) {
-      additionalTextareaProps["data-gramm"] = false;
-    }
-
     const calculateInputHeight = () => {
       const input =
         combinedRef.current &&
@@ -76,39 +60,62 @@ const ATextarea = forwardRef(
       input.style.height = Math.max(minHeight, height) + "px";
     };
 
-    const onChange = (e) => {
-      if (autoGrow) {
-        calculateInputHeight();
-      }
-
-      propsOnChange && propsOnChange(e);
+    const inputBaseProps = {
+      ...rest,
+      ref: combinedRef,
+      className: "a-textarea",
+      focused: isFocused,
+      hint,
+      label,
+      labelFor: `a-textarea__field_${textareaId}`,
+      disabled,
+      readOnly,
+      validationState
     };
 
+    if (autoGrow) {
+      inputBaseProps.className += " a-textarea--auto-grow";
+    }
+
+    if (propsClassName) {
+      inputBaseProps.className += ` ${propsClassName}`;
+    }
+
+    const fieldProps = {
+      className: "a-textarea__field",
+      id: `a-textarea__field_${textareaId}`,
+      disabled,
+      placeholder,
+      readOnly,
+      rows,
+      value,
+      onBlur: (e) => {
+        setIsFocused(false);
+        onBlur && onBlur(e);
+      },
+      onChange: (e) => {
+        if (autoGrow) {
+          calculateInputHeight();
+        }
+
+        propsOnChange && propsOnChange(e);
+      },
+      onFocus: (e) => {
+        setIsFocused(true);
+        onFocus && onFocus(e);
+      },
+      onKeyUp,
+      onPaste
+    };
+
+    if (disableGrammarly) {
+      fieldProps["data-gramm"] = false;
+    }
+
     return (
-      <div {...rest} ref={combinedRef} className={className}>
-        {label && (
-          <label
-            htmlFor={`a-textarea__field_${textareaId}`}
-            className="a-textarea__label">
-            {label}
-          </label>
-        )}
-        <textarea
-          {...additionalTextareaProps}
-          id={`a-textarea__field_${textareaId}`}
-          disabled={disabled}
-          placeholder={placeholder}
-          readOnly={readOnly}
-          rows={rows}
-          className={fieldClassName}
-          value={value}
-          onChange={onChange}
-          onBlur={onBlur}
-          onKeyUp={onKeyUp}
-          onFocus={onFocus}
-          onPaste={onPaste}
-        />
-      </div>
+      <AInputBase {...inputBaseProps}>
+        <textarea {...fieldProps} />
+      </AInputBase>
     );
   }
 );
@@ -127,7 +134,11 @@ ATextarea.propTypes = {
    */
   disableGrammarly: PropTypes.bool,
   /**
-   * Sets the textarea label text.
+   * Sets the hint content.
+   */
+  hint: PropTypes.node,
+  /**
+   * Sets the label content.
    */
   label: PropTypes.node,
   /**

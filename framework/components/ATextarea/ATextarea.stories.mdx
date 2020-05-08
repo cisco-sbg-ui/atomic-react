@@ -47,6 +47,7 @@ import {ATextarea} from "@cisco-ats/atomic-react";
                   onChange={(e) => {
                     setValue(e.target.value);
                   }}
+                  hint="Hint: Normal"
                 />
               </>
             );
@@ -54,23 +55,35 @@ import {ATextarea} from "@cisco-ats/atomic-react";
         </YourComponent>
       </div>
       <div className="mb-4">
-        <ATextarea label="Label" placeholder="Disabled" disabled />
+        <ATextarea
+          label="Label"
+          placeholder="Disabled"
+          disabled
+          hint="Hint: Disabled"
+        />
       </div>
       <div className="mb-4">
-        <ATextarea label="Label" placeholder="Read Only State" readOnly />
+        <ATextarea
+          label="Label"
+          placeholder="Read-only State"
+          readOnly
+          hint="Hint: Read-only"
+        />
       </div>
       <div className="mb-4">
         <ATextarea
           label="Label"
           validationState="warning"
           placeholder="Warning State"
+          hint="Hint: Warning"
         />
       </div>
       <div className="mb-4">
         <ATextarea
           label="Label"
           validationState="danger"
-          placeholder="Error State"
+          placeholder="Danger State"
+          hint="Hint: Danger"
         />
       </div>
     </AApp>
@@ -89,26 +102,38 @@ The `ATextarea` component inherits passed props.
   <Story name="dusk-1">
     <AApp defaultTheme="dusk" style={{maxWidth: 250}}>
       <div className="mb-4">
-        <ATextarea label="Label" placeholder="Normal" />
+        <ATextarea label="Label" placeholder="Normal" hint="Hint: Normal" />
       </div>
       <div className="mb-4">
-        <ATextarea label="Label" placeholder="Disabled" disabled />
+        <ATextarea
+          label="Label"
+          placeholder="Disabled"
+          disabled
+          hint="Hint: Disabled"
+        />
       </div>
       <div className="mb-4">
-        <ATextarea label="Label" placeholder="Read Only State" readOnly />
+        <ATextarea
+          label="Label"
+          placeholder="Read-only State"
+          readOnly
+          hint="Hint: Read-only"
+        />
       </div>
       <div className="mb-4">
         <ATextarea
           label="Label"
           validationState="warning"
           placeholder="Warning State"
+          hint="Hint: Warning"
         />
       </div>
       <div className="mb-4">
         <ATextarea
           label="Label"
           validationState="danger"
-          placeholder="Error State"
+          placeholder="Danger State"
+          hint="Hint: Danger"
         />
       </div>
     </AApp>

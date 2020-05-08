@@ -52,24 +52,6 @@
   min-width: $btn-min-width;
 }
 // -----------------------------------------------------------------------------
-// Inputs
-// -----------------------------------------------------------------------------
-@mixin input-state(
-  $input-border-color,
-  $input-box-shadow,
-  $input-border-color--hover
-) {
-  border: $border-width solid $input-border-color;
-  &:hover {
-    border: $border-width solid $input-border-color--hover;
-  }
-  &:focus,
-  &:active {
-    border: $border-width solid $input-border-color;
-    box-shadow: $input-box-shadow;
-  }
-}
-// -----------------------------------------------------------------------------
 // Lists
 // -----------------------------------------------------------------------------
 @mixin list--unstyled {
