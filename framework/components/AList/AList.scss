@@ -25,6 +25,10 @@
     color: map-deep-get($theme, "base", "inverse-color");
     background-color: map-deep-get($theme, "base", "color--selected");
   }
+
+  a.a-list-item--two-line {
+    color: currentColor;
+  }
 }
 
 .a-list {
@@ -108,5 +112,9 @@
 
   &-item__action {
     padding-right: 5px;
+  }
+
+  a.a-list-item--two-line {
+    text-decoration: none;
   }
 }
