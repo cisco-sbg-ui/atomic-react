@@ -129,11 +129,59 @@ context("ATextInput", () => {
 
   it("accepts input", () => {
     cy.get("#story--components-text-inputs--usage-1")
-      .find(".a-text-input input")
+      .find(".a-text-input__input")
       .clear()
       .type("elephant")
       .should("have.value", "elephant")
       .blur();
+  });
+
+  it("works as a number type", () => {
+    cy.get("#story--components-text-inputs--numeric-1")
+      .find(".a-text-input__input")
+      .eq(0)
+      .should("have.value", "1");
+    cy.get("#story--components-text-inputs--numeric-1")
+      .find(".a-text-input__spinner__up")
+      .eq(0)
+      .click();
+    cy.get("#story--components-text-inputs--numeric-1")
+      .find(".a-text-input__input")
+      .eq(0)
+      .should("have.value", "2");
+    cy.get("#story--components-text-inputs--numeric-1")
+      .find(".a-text-input__spinner__down")
+      .eq(0)
+      .click();
+    cy.get("#story--components-text-inputs--numeric-1")
+      .find(".a-text-input__input")
+      .eq(0)
+      .should("have.value", "1");
+
+    cy.get("#story--components-text-inputs--numeric-1")
+      .find(".a-text-input__input")
+      .eq(1)
+      .should("have.value", "");
+    cy.get("#story--components-text-inputs--numeric-1")
+      .find(".a-text-input__spinner__up")
+      .eq(1)
+      .click();
+    cy.get("#story--components-text-inputs--numeric-1")
+      .find(".a-text-input__input")
+      .eq(1)
+      .should("have.value", "1");
+    cy.get("#story--components-text-inputs--numeric-1")
+      .find(".a-input-base__clear")
+      .eq(0)
+      .click();
+    cy.get("#story--components-text-inputs--numeric-1")
+      .find(".a-text-input__input")
+      .eq(1)
+      .should("have.value", "");
+
+    cy.get("#story--components-text-inputs--numeric-1")
+      .find(".a-text-input__spinner")
+      .should("have.length", 2);
   });
 
   it("supports themes", () => {
@@ -145,6 +193,11 @@ context("ATextInput", () => {
       .parent()
       .parent()
       .matchImageSnapshot("a-text-input--validation-1");
+
+    cy.get("#story--components-text-inputs--numeric-1")
+      .parent()
+      .parent()
+      .matchImageSnapshot("a-text-input--numeric-1");
 
     cy.get("#story--components-text-inputs--dusk-1")
       .parent()

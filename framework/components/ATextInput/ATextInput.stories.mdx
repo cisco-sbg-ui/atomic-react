@@ -64,6 +64,69 @@ The `ATextInput` component inherits passed props.
 
 <Props of={ATextInput} />
 
+## Numeric Input
+
+<Preview>
+  <Story name="numeric-1">
+    <AApp style={{maxWidth: 250}}>
+      <YourComponent>
+        {() => {
+          const [value1, setValue1] = useState(1);
+          const [value2, setValue2] = useState("");
+          return (
+            <>
+              <div className="mb-4">
+                <ATextInput
+                  type="number"
+                  label="Number Type"
+                  placeholder="Placeholder"
+                  value={value1}
+                  onChange={(e) => setValue1(e.target.value)}
+                />
+              </div>
+              <div className="mb-4">
+                <ATextInput
+                  clearable
+                  type="number"
+                  label="Number Type with Appended Icon"
+                  placeholder="Placeholder"
+                  appendIcon="information"
+                  value={value2}
+                  onChange={(e) => setValue2(e.target.value)}
+                />
+              </div>
+              <div className="mb-4">
+                <ATextInput
+                  clearable
+                  disabled
+                  type="number"
+                  label="Disabled with Appended Icon"
+                  placeholder="Disabled"
+                  appendIcon="information"
+                  value={value2}
+                  onChange={(e) => setValue2(e.target.value)}
+                />
+              </div>
+              <div className="mb-4">
+                <ATextInput
+                  clearable
+                  readOnly
+                  type="number"
+                  label="Read-only with Appended Icon"
+                  placeholder="Read-only"
+                  appendIcon="information"
+                  value={value2}
+                  onChange={(e) => setValue2(e.target.value)}
+                />
+              </div>
+            </>
+          );
+        }}
+      </YourComponent>
+    </AApp>
+  </Story>
+</Preview>
+
 ## Validation States
 
 <Preview>

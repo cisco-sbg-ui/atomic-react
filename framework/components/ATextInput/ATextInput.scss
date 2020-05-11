@@ -10,6 +10,33 @@
 }
 
 .a-text-input {
+  &--type-number {
+    .a-text-input__input {
+      -moz-appearance: textfield;
+
+      &::-webkit-inner-spin-button,
+      &::-webkit-outer-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+      }
+    }
+
+    & .a-text-input__spinner {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      height: 20px;
+      width: 23px;
+      &__up,
+      &__down {
+        height: 10px;
+        align-self: stretch;
+        fill: currentColor;
+        user-select: none;
+      }
+    }
+  }
+
   &__prepend-icon,
   &__append-icon {
     &.interactable {

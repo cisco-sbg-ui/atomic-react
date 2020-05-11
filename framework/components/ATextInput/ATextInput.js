@@ -7,6 +7,11 @@ import AIcon from "../AIcon";
 import {useCombinedRefs} from "../../utils/hooks";
 import {keyCodes} from "../../utils/helpers";
 
+const chevronDown =
+  "M15.787 4.837a.686.686 0 000-.994.744.744 0 00-1.029 0L8 10.376 1.24 3.843a.744.744 0 00-1.028 0 .69.69 0 000 .994L8 12.364l7.787-7.527z";
+const chevronUp =
+  "M.213 11.163a.686.686 0 000 .995.744.744 0 001.029 0L8 5.624l6.759 6.534a.744.744 0 001.028 0 .69.69 0 000-.995L8 3.636.213 11.163z";
+
 let textInputCounter = 0;
 
 const ATextInput = forwardRef(
@@ -43,6 +48,8 @@ const ATextInput = forwardRef(
     const textInputRef = useRef(null);
     const [textInputId] = useState(textInputCounter++);
     const [isFocused, setIsFocused] = useState(false);
+    const [longClickTimeout, setLongClickTimeout] = useState(null);
+    const [longClickInterval, setLongClickInterval] = useState(null);
     const combinedRef = useCombinedRefs(ref, textInputRef);
     useEffect(() => {
       if (
@@ -79,7 +86,8 @@ const ATextInput = forwardRef(
     }
 
     const appendProps = {
-      className: "a-text-input__append-icon"
+      className: "a-text-input__append-icon",
+      key: "a-text-input__append-icon"
     };
 
     if (!disabled && !readOnly && onClickAppend) {
@@ -98,6 +106,94 @@ const ATextInput = forwardRef(
       appendProps.role = "button";
     }
 
+    let appendContent = [];
+
+    const isNumberType = type === "number";
+
+    const incrementInput = (amount = 1) => {
+      const input = combinedRef.current.querySelector(".a-text-input__input");
+      const nativeInputValueGetter = Object.getOwnPropertyDescriptor(
+        window.HTMLInputElement.prototype,
+        "value"
+      ).get;
+      const nativeInputValueSetter = Object.getOwnPropertyDescriptor(
+        window.HTMLInputElement.prototype,
+        "value"
+      ).set;
+      const currentValue = parseFloat(nativeInputValueGetter.call(input));
+      nativeInputValueSetter.call(
+        input,
+        isNaN(currentValue) ? amount : currentValue + amount
+      );
+      const event = new Event("input", {bubbles: true});
+      input.dispatchEvent(event);
+    };
+
+    if (isNumberType && !disabled && !readOnly) {
+      appendContent.push(
+        <div key="a-text-input__spinner" className="a-text-input__spinner">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 16 16"
+            className="a-text-input__spinner__up"
+            onMouseLeave={() => {
+              clearTimeout(longClickTimeout);
+              clearInterval(longClickInterval);
+            }}
+            onMouseUp={() => {
+              clearTimeout(longClickTimeout);
+              clearInterval(longClickInterval);
+            }}
+            onMouseDown={() => {
+              setLongClickTimeout(
+                setTimeout(() => {
+                  setLongClickInterval(
+                    setInterval(() => {
+                      incrementInput();
+                    }, 33)
+                  );
+                }, 300)
+              );
+
+              incrementInput();
+            }}>
+            <path d={chevronUp} />
+          </svg>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 16 16"
+            className="a-text-input__spinner__down"
+            onMouseLeave={() => {
+              clearTimeout(longClickTimeout);
+              clearInterval(longClickInterval);
+            }}
+            onMouseUp={() => {
+              clearTimeout(longClickTimeout);
+              clearInterval(longClickInterval);
+            }}
+            onMouseDown={() => {
+              setLongClickTimeout(
+                setTimeout(() => {
+                  setLongClickInterval(
+                    setInterval(() => {
+                      incrementInput(-1);
+                    }, 33)
+                  );
+                }, 300)
+              );
+
+              incrementInput(-1);
+            }}>
+            <path d={chevronDown} />
+          </svg>
+        </div>
+      );
+    }
+
+    if (appendIcon) {
+      appendContent.push(<AIcon {...appendProps}>{appendIcon}</AIcon>);
+    }
+
     const inputBaseProps = {
       ...rest,
       ref: combinedRef,
@@ -108,22 +204,26 @@ const ATextInput = forwardRef(
       labelFor: `a-text-input_${textInputId}`,
       disabled,
       focused: isFocused,
-      append: appendIcon && <AIcon {...appendProps}>{appendIcon}</AIcon>,
+      append: appendContent,
       prepend: prependIcon && <AIcon {...prependProps}>{prependIcon}</AIcon>,
       readOnly,
       validationState,
       onClear: () => {
         const e = combinedRef.current.querySelector(".a-text-input__input");
-        var nativeInputValueSetter = Object.getOwnPropertyDescriptor(
+        const nativeInputValueSetter = Object.getOwnPropertyDescriptor(
           window.HTMLInputElement.prototype,
           "value"
         ).set;
         nativeInputValueSetter.call(e, "");
-        var event = new Event("input", {bubbles: true});
+        const event = new Event("input", {bubbles: true});
         e.dispatchEvent(event);
         onClear && onClear(e);
       }
     };
+
+    if (isNumberType) {
+      inputBaseProps.className += " a-text-input--type-number";
+    }
 
     if (propsClassName) {
       inputBaseProps.className += ` ${propsClassName}`;
@@ -253,7 +353,7 @@ ATextInput.propTypes = {
   /**
    * The input's `value` attribute.
    */
-  value: PropTypes.string
+  value: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
 };
 
 ATextInput.displayName = "ATextInput";
