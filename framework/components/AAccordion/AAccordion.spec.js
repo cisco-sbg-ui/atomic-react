@@ -5,6 +5,21 @@ context("AAccordion", () => {
     );
   });
 
+  it("has appropriate default state", () => {
+    cy.get("#story--components-accordions--usage-1 .a-accordion__card")
+      .eq(0)
+      .should("not.have.attr", "aria-expanded");
+    cy.get("#story--components-accordions--usage-1 .a-accordion__card")
+      .eq(1)
+      .should("have.attr", "aria-expanded", "true");
+    cy.get("#story--components-accordions--usage-1 .a-accordion__card")
+      .eq(2)
+      .should("have.attr", "aria-expanded", "false");
+    cy.get("#story--components-accordions--usage-1 .a-accordion__card")
+      .eq(3)
+      .should("have.attr", "aria-expanded", "true");
+  });
+
   it("tabs appropriately", () => {
     cy.get("#story--components-accordions--usage-1 .a-button")
       .eq(0)
