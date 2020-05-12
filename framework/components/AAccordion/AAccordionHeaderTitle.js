@@ -14,6 +14,8 @@ const AAccordionHeaderTitle = forwardRef(
       chevron = true,
       children,
       className: propsClassName,
+      collapseIcon = "chevron-down",
+      expandIcon = "chevron-right",
       onBlur,
       onClick,
       onFocus,
@@ -64,8 +66,8 @@ const AAccordionHeaderTitle = forwardRef(
     }
 
     const chevronIcon = !openedPanels.includes(panelId)
-      ? "chevron-right"
-      : "chevron-down";
+      ? expandIcon
+      : collapseIcon;
 
     const props = {};
 
@@ -99,7 +101,15 @@ AAccordionHeaderTitle.propTypes = {
   /**
    * Toggles the chevron.
    */
-  chevron: PropTypes.bool
+  chevron: PropTypes.bool,
+  /**
+   * Sets an alternative collapse icon.
+   */
+  collapseIcon: PropTypes.string,
+  /**
+   * Sets an alternative expand icon.
+   */
+  expandIcon: PropTypes.string
 };
 
 AAccordionHeaderTitle.displayName = "AAccordionHeaderTitle";

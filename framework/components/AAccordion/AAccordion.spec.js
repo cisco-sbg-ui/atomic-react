@@ -44,6 +44,14 @@ context("AAccordion", () => {
       });
   });
 
+  it("supports alternative icons", () => {
+    cy.get("#story--components-accordions--icons-1 .a-accordion__link .a-icon")
+      .eq(1)
+      .should("have.attr", "aria-label", "subtract icon")
+      .click()
+      .should("have.attr", "aria-label", "add icon");
+  });
+
   it("expands/collapses appropriately", () => {
     cy.get("#story--components-accordions--usage-1 .a-accordion__card")
       .eq(1)
