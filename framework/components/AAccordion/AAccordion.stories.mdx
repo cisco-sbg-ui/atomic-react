@@ -133,6 +133,53 @@ All Accordion components (`AAccordion`, `AAccordionPanel`, `AAccordionHeader`, `
 
 <Props of={AAccordionBody} />
 
+## Alternative Icons
+
+<Preview>
+  <Story name="icons-1">
+    <AApp>
+      <AAccordion>
+        <AAccordionPanel>
+          <AAccordionHeader>
+            <AAccordionHeaderTitle
+              expandIcon="triangle-right"
+              collapseIcon="triangle-down">
+              Accordion Item 1
+            </AAccordionHeaderTitle>
+          </AAccordionHeader>
+          <AAccordionBody>{LoremIpsum}</AAccordionBody>
+        </AAccordionPanel>
+        <AAccordionPanel collapsed={false}>
+          <AAccordionHeader>
+            <AAccordionHeaderTitle expandIcon="add" collapseIcon="subtract">
+              Accordion Item 2
+            </AAccordionHeaderTitle>
+          </AAccordionHeader>
+          <AAccordionBody>{LoremIpsum}</AAccordionBody>
+        </AAccordionPanel>
+        <AAccordionPanel>
+          <AAccordionHeader>
+            <AAccordionHeaderTitle
+              expandIcon="triangle-down"
+              collapseIcon="triangle-up">
+              Accordion Item 3
+            </AAccordionHeaderTitle>
+          </AAccordionHeader>
+          <AAccordionBody>{LoremIpsum}</AAccordionBody>
+        </AAccordionPanel>
+        <AAccordionPanel collapsed={false}>
+          <AAccordionHeader>
+            <AAccordionHeaderTitle>
+              Additional Accordion Item
+            </AAccordionHeaderTitle>
+          </AAccordionHeader>
+          <AAccordionBody>{LoremIpsum}</AAccordionBody>
+        </AAccordionPanel>
+      </AAccordion>
+    </AApp>
+  </Story>
+</Preview>
+
 ## Dusk Theme
 
 <Preview style={{backgroundColor: "#18191d"}}>
