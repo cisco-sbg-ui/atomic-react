@@ -1,0 +1,67 @@
+@import "../../styles";
+
+.a-autocomplete {
+  .a-dropdown {
+    display: flex;
+    align-items: center;
+    align-self: stretch;
+  }
+
+  &__input {
+    background: transparent;
+    box-sizing: border-box;
+    color: currentColor;
+    width: 100%;
+    position: relative;
+    padding: 2px 0 0 0;
+    border: none;
+    appearance: none;
+    text-indent: 1px;
+    align-self: stretch;
+    &:focus {
+      outline: none;
+    }
+  }
+
+  &__menu-items {
+    top: 100%;
+    border-bottom-left-radius: $border-radius--sm;
+    border-bottom-right-radius: $border-radius--sm;
+    cursor: pointer;
+    left: -25px;
+    margin: 0;
+    overflow: auto;
+    right: 0px;
+    user-select: none;
+    z-index: 999;
+
+    .a-autocomplete__menu-item {
+      height: 28px;
+      line-height: $line-height--lg;
+      padding: 2px 0 0 0;
+      text-indent: 6px;
+    }
+  }
+
+  &__prepend-icon {
+    padding: 4px;
+    align-self: stretch;
+  }
+
+  & .a-loader {
+    height: 20px;
+    margin: 0 4px;
+  }
+
+  &--loading {
+    .a-autocomplete__menu-items {
+      left: -45px;
+    }
+  }
+
+  &.a-input-base--clearable {
+    .a-autocomplete__menu-items {
+      right: -25px;
+    }
+  }
+}

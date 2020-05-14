@@ -7,6 +7,7 @@ import {
 } from "./components/AAccordion";
 import AAlert from "./components/AAlert";
 import AApp from "./components/AApp";
+import AAutocomplete from "./components/AAutocomplete";
 import ABadge from "./components/ABadge";
 import AButton from "./components/AButton";
 import AButtonGroup from "./components/AButtonGroup";
@@ -72,6 +73,7 @@ export {
   AAccordionPanel,
   AAlert,
   AApp,
+  AAutocomplete,
   ABadge,
   AButton,
   AButtonGroup,
