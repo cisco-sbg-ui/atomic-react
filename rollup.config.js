@@ -32,6 +32,7 @@ const config = {
     AAccordion: "framework/components/AAccordion",
     AAlert: "framework/components/AAlert",
     AApp: "framework/components/AApp",
+    AAutocomplete: "framework/components/AAutocomplete",
     ABadge: "framework/components/ABadge",
     AButton: "framework/components/AButton",
     AButtonGroup: "framework/components/AButtonGroup",
