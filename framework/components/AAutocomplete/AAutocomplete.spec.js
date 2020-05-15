@@ -150,6 +150,7 @@ context("AAutocomplete", () => {
 
     cy.get("#story--components-autocompletes--usage-1 .a-autocomplete__input")
       .first()
+      .type("{downArrow}")
       .type("{downArrow}");
 
     cy.get("#story--components-autocompletes--usage-1")
@@ -159,6 +160,7 @@ context("AAutocomplete", () => {
 
     cy.get("#story--components-autocompletes--states-1 .a-autocomplete__input")
       .first()
+      .type("{downArrow}")
       .type("{downArrow}");
 
     cy.get("#story--components-autocompletes--states-1")
@@ -168,6 +170,7 @@ context("AAutocomplete", () => {
 
     cy.get("#story--components-autocompletes--dusk-1 .a-autocomplete__input")
       .first()
+      .type("{downArrow}")
       .type("{downArrow}");
 
     cy.get("#story--components-autocompletes--dusk-1")
