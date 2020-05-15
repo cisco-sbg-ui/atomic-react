@@ -1,6 +1,6 @@
 context("AAlert", () => {
   before(() => {
-    cy.visit(
+    cy.visitInLightTheme(
       "http://localhost:8081/iframe.html?id=components-alerts--usage-1&viewMode=docs"
     );
   });
@@ -10,14 +10,14 @@ context("AAlert", () => {
   // TODO: Test accessibility
 
   it("supports themes", () => {
-    // There isn't a way yet to tell if fonts are loaded, so wait 3 seconds.
-    cy.wait(3000)
-      .get("#story--components-alerts--usage-1")
+    cy.get("#story--components-alerts--usage-1")
       .parent()
       .parent()
       .matchImageSnapshot("a-alert--usage-1");
 
-    cy.get("#story--components-alerts--dusk-1")
+    cy.get(".a-button").eq(1).click();
+
+    cy.get("#story--components-alerts--usage-1")
       .parent()
       .parent()
       .matchImageSnapshot("a-alert--dusk-1");

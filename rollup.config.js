@@ -49,6 +49,7 @@ const config = {
     ALayout: "framework/components/ALayout",
     ALoader: "framework/components/ALoader",
     AList: "framework/components/AList",
+    AMenuBase: "framework/components/AMenuBase",
     APanel: "framework/components/APanel",
     ARadio: "framework/components/ARadio",
     ASelect: "framework/components/ASelect",
@@ -60,6 +61,7 @@ const config = {
     ATextInput: "framework/components/ATextInput",
     ATimeline: "framework/components/ATimeline",
     ATheme: "framework/components/ATheme",
+    ATooltip: "framework/components/ATooltip",
     ATree: "framework/components/ATree"
   },
   output: {

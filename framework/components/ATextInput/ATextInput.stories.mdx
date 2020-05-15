@@ -2,7 +2,6 @@ import {Meta, Preview, Story, Props} from "@storybook/addon-docs/blocks";
 import {useState} from "react";
 
 import YourComponent from "../../utils/storybook-function";
-import AApp from "../AApp";
 import ATextInput from "./ATextInput";
 
 <Meta title="Components/Text Inputs" component={ATextInput} />
@@ -23,7 +22,7 @@ import {ATextInput} from "@cisco-ats/atomic-react";
 
 <Preview>
   <Story name="usage-1">
-    <AApp style={{maxWidth: 250}}>
+    <div style={{maxWidth: 250}}>
       <YourComponent>
         {() => {
           const [status, setStatus] = useState("default");
@@ -54,7 +53,7 @@ import {ATextInput} from "@cisco-ats/atomic-react";
           );
         }}
       </YourComponent>
-    </AApp>
+    </div>
   </Story>
 </Preview>
 
@@ -68,7 +67,7 @@ The `ATextInput` component inherits passed props.
 
 <Preview>
   <Story name="numeric-1">
-    <AApp style={{maxWidth: 250}}>
+    <div style={{maxWidth: 250}}>
       <YourComponent>
         {() => {
           const [value1, setValue1] = useState(1);
@@ -123,7 +122,7 @@ The `ATextInput` component inherits passed props.
           );
         }}
       </YourComponent>
-    </AApp>
+    </div>
   </Story>
 </Preview>
 
@@ -131,7 +130,7 @@ The `ATextInput` component inherits passed props.
 
 <Preview>
   <Story name="validation-1">
-    <AApp style={{maxWidth: 250}}>
+    <div style={{maxWidth: 250}}>
       <div className="mb-4">
         <ATextInput label="Label" placeholder="Normal" />
       </div>
@@ -208,110 +207,7 @@ The `ATextInput` component inherits passed props.
           hint="Hint: Danger"
         />
       </div>
-    </AApp>
-  </Story>
-</Preview>
-
-## Dusk Theme
-
-<Preview style={{backgroundColor: "#18191d"}}>
-  <Story name="dusk-1">
-    <AApp defaultTheme="dusk" style={{maxWidth: 250}}>
-      <div className="mb-4">
-        <ATextInput label="Label" placeholder="Normal" />
-      </div>
-      <div className="mb-4">
-        <ATextInput
-          label="Label"
-          placeholder="Normal"
-          prependIcon="cisco"
-          appendIcon="information"
-          onClickAppend={() => alert("Information!")}
-          onClickPrepend={() => alert("Cisco Systems!")}
-          hint="Hint: Normal"
-        />
-      </div>
-      <div className="mb-4">
-        <ATextInput label="Label" placeholder="Disabled" disabled />
-      </div>
-      <div className="mb-4">
-        <ATextInput
-          label="Label"
-          placeholder="Disabled"
-          disabled
-          prependIcon="cisco"
-          appendIcon="information"
-          hint="Hint: Disabled"
-        />
-      </div>
-      <div className="mb-4">
-        <ATextInput label="Label" placeholder="Read-only State" readOnly />
-      </div>
-      <div className="mb-4">
-        <ATextInput
-          label="Label"
-          placeholder="Read-only State"
-          readOnly
-          prependIcon="cisco"
-          appendIcon="information"
-          onClickPrepend={() => alert("Cisco Systems!")}
-          hint="Hint: Read-only"
-        />
-      </div>
-      <div className="mb-4">
-        <ATextInput
-          label="Label"
-          validationState="warning"
-          placeholder="Warning State"
-        />
-      </div>
-      <div className="mb-4">
-        <ATextInput
-          label="Label"
-          validationState="warning"
-          placeholder="Warning"
-          prependIcon="cisco"
-          appendIcon="information"
-          onClickPrepend={() => alert("Cisco Systems!")}
-          hint="Hint: Warning"
-        />
-      </div>
-      <div className="mb-4">
-        <ATextInput
-          label="Label"
-          validationState="danger"
-          placeholder="Danger State"
-        />
-      </div>
-      <div className="mb-4">
-        <ATextInput
-          label="Label"
-          validationState="danger"
-          placeholder="Danger State"
-          prependIcon="cisco"
-          appendIcon="information"
-          onClickPrepend={() => alert("Cisco Systems!")}
-          hint="Hint: Danger"
-        />
-      </div>
-    </AApp>
-  </Story>
-</Preview>
-
-## Animations
-
-Animations are enabled by default on the `AApp` component and can be disabled.
-
-<Preview>
-  <Story name="animations-1">
-    <AApp style={{marginRight: 20}}>
-      <ATextInput label="Label" placeholder="Animated" />
-    </AApp>
-  </Story>
-  <Story name="animations-2">
-    <AApp animations={false}>
-      <ATextInput label="Label" placeholder="Not Animated" />
-    </AApp>
+    </div>
   </Story>
 </Preview>
 

@@ -1,11 +1,5 @@
 import {Meta, Preview, Story, Props} from "@storybook/addon-docs/blocks";
-import {useState} from "react";
 
-import AApp from "../AApp";
-import LoremIpsum from "../../utils/lorem-ipsum";
-import YourComponent from "../../utils/storybook-function";
-import ACheckbox from "../ACheckbox";
-import ADivider from "../ADivider";
 import ASimpleTable from "./ASimpleTable";
 
 <Meta title="Components/Simple Tables" component={ASimpleTable} />
@@ -26,46 +20,44 @@ import {ASimpleTable} from "@cisco-ats/atomic-react";
 
 <Preview>
   <Story name="usage-1">
-    <AApp>
-      <ASimpleTable striped tight>
-        <thead>
-          <tr>
-            <th className="text-capitalize">alpha</th>
-            <th className="text-capitalize text-center">bravo</th>
-            <th className="text-capitalize text-center">charlie</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>11.1</td>
-            <td className="text-center">526</td>
-            <td className="text-right">
-              <a href="/" target="_blank">
-                Details
-              </a>
-            </td>
-          </tr>
-          <tr>
-            <td>8.9</td>
-            <td className="text-center">611</td>
-            <td className="text-right">
-              <a href="/" target="_blank">
-                Details
-              </a>
-            </td>
-          </tr>
-          <tr>
-            <td>10.5</td>
-            <td className="text-center">475</td>
-            <td className="text-right">
-              <a href="/" target="_blank">
-                Details
-              </a>
-            </td>
-          </tr>
-        </tbody>
-      </ASimpleTable>
-    </AApp>
+    <ASimpleTable striped tight>
+      <thead>
+        <tr>
+          <th className="text-capitalize">alpha</th>
+          <th className="text-capitalize text-center">bravo</th>
+          <th className="text-capitalize text-center">charlie</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>11.1</td>
+          <td className="text-center">526</td>
+          <td className="text-right">
+            <a href="/" target="_blank">
+              Details
+            </a>
+          </td>
+        </tr>
+        <tr>
+          <td>8.9</td>
+          <td className="text-center">611</td>
+          <td className="text-right">
+            <a href="/" target="_blank">
+              Details
+            </a>
+          </td>
+        </tr>
+        <tr>
+          <td>10.5</td>
+          <td className="text-center">475</td>
+          <td className="text-right">
+            <a href="/" target="_blank">
+              Details
+            </a>
+          </td>
+        </tr>
+      </tbody>
+    </ASimpleTable>
   </Story>
 </Preview>
 
@@ -75,12 +67,13 @@ The `ASimpleTable` component inherits passed props.
 
 <Props of={ASimpleTable} />
 
-## Dusk Theme
+## Tight
 
-<Preview style={{backgroundColor: "#18191d"}}>
-  <Story name="dusk-1">
-    <AApp defaultTheme="dusk">
-      <ASimpleTable striped tight>
+<Preview>
+  <Story name="tight-1">
+    <div className="pr-4">
+      <h3>Tight Off</h3>
+      <ASimpleTable>
         <thead>
           <tr>
             <th className="text-capitalize">alpha</th>
@@ -118,60 +111,10 @@ The `ASimpleTable` component inherits passed props.
           </tr>
         </tbody>
       </ASimpleTable>
-    </AApp>
-  </Story>
-</Preview>
-
-## Tight
-
-<Preview>
-  <Story name="tight-1">
-    <AApp>
-      <div className="pr-4">
-        <h3>Tight Off</h3>
-        <ASimpleTable>
-          <thead>
-            <tr>
-              <th className="text-capitalize">alpha</th>
-              <th className="text-capitalize text-center">bravo</th>
-              <th className="text-capitalize text-center">charlie</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>11.1</td>
-              <td className="text-center">526</td>
-              <td className="text-right">
-                <a href="/" target="_blank">
-                  Details
-                </a>
-              </td>
-            </tr>
-            <tr>
-              <td>8.9</td>
-              <td className="text-center">611</td>
-              <td className="text-right">
-                <a href="/" target="_blank">
-                  Details
-                </a>
-              </td>
-            </tr>
-            <tr>
-              <td>10.5</td>
-              <td className="text-center">475</td>
-              <td className="text-right">
-                <a href="/" target="_blank">
-                  Details
-                </a>
-              </td>
-            </tr>
-          </tbody>
-        </ASimpleTable>
-      </div>
-    </AApp>
+    </div>
   </Story>
   <Story name="tight-2">
-    <AApp>
+    <>
       <h3>Tight On</h3>
       <ASimpleTable tight>
         <thead>
@@ -211,7 +154,7 @@ The `ASimpleTable` component inherits passed props.
           </tr>
         </tbody>
       </ASimpleTable>
-    </AApp>
+    </>
   </Story>
 </Preview>
 
@@ -219,52 +162,50 @@ The `ASimpleTable` component inherits passed props.
 
 <Preview>
   <Story name="alt-links-1">
-    <AApp>
-      <div className="pr-4">
-        <h3>Regular Links</h3>
-        <ASimpleTable>
-          <thead>
-            <tr>
-              <th className="text-capitalize">alpha</th>
-              <th className="text-capitalize text-center">bravo</th>
-              <th className="text-capitalize text-center">charlie</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>11.1</td>
-              <td className="text-center">526</td>
-              <td className="text-right">
-                <a href="/" target="_blank">
-                  Details
-                </a>
-              </td>
-            </tr>
-            <tr>
-              <td>8.9</td>
-              <td className="text-center">611</td>
-              <td className="text-right">
-                <a href="/" target="_blank">
-                  Details
-                </a>
-              </td>
-            </tr>
-            <tr>
-              <td>10.5</td>
-              <td className="text-center">475</td>
-              <td className="text-right">
-                <a href="/" target="_blank">
-                  Details
-                </a>
-              </td>
-            </tr>
-          </tbody>
-        </ASimpleTable>
-      </div>
-    </AApp>
+    <div className="pr-4">
+      <h3>Regular Links</h3>
+      <ASimpleTable>
+        <thead>
+          <tr>
+            <th className="text-capitalize">alpha</th>
+            <th className="text-capitalize text-center">bravo</th>
+            <th className="text-capitalize text-center">charlie</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>11.1</td>
+            <td className="text-center">526</td>
+            <td className="text-right">
+              <a href="/" target="_blank">
+                Details
+              </a>
+            </td>
+          </tr>
+          <tr>
+            <td>8.9</td>
+            <td className="text-center">611</td>
+            <td className="text-right">
+              <a href="/" target="_blank">
+                Details
+              </a>
+            </td>
+          </tr>
+          <tr>
+            <td>10.5</td>
+            <td className="text-center">475</td>
+            <td className="text-right">
+              <a href="/" target="_blank">
+                Details
+              </a>
+            </td>
+          </tr>
+        </tbody>
+      </ASimpleTable>
+    </div>
   </Story>
   <Story name="alt-links-2">
-    <AApp>
+    <>
       <h3>Alt Links</h3>
       <ASimpleTable altLinks>
         <thead>
@@ -304,6 +245,6 @@ The `ASimpleTable` component inherits passed props.
           </tr>
         </tbody>
       </ASimpleTable>
-    </AApp>
+    </>
   </Story>
 </Preview>

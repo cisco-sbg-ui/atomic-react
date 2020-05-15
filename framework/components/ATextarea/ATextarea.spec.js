@@ -2,7 +2,7 @@ import LoremIpsum from "../../utils/lorem-ipsum";
 
 context("ATextarea", () => {
   before(() => {
-    cy.visit(
+    cy.visitInLightTheme(
       "http://localhost:8081/iframe.html?id=components-textareas--usage-1&viewMode=docs"
     );
   });
@@ -10,14 +10,14 @@ context("ATextarea", () => {
   it("supports themes", () => {
     if (Cypress.env("snapshots") === "off") return;
 
-    // There isn't a way yet to tell if fonts are loaded, so wait 3 seconds.
-    cy.wait(3000)
-      .get("#story--components-textareas--usage-1")
+    cy.get("#story--components-textareas--usage-1")
       .parent()
       .parent()
       .matchImageSnapshot("a-textarea--usage-1");
 
-    cy.get("#story--components-textareas--dusk-1")
+    cy.get(".a-button").eq(1).click();
+
+    cy.get("#story--components-textareas--usage-1")
       .parent()
       .parent()
       .matchImageSnapshot("a-textarea--dusk-1");

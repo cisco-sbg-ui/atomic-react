@@ -1,9 +1,7 @@
 import {Meta, Preview, Story, Props} from "@storybook/addon-docs/blocks";
 import {useState} from "react";
 
-import AApp from "../AApp";
 import AButton from "./AButton";
-import ADivider from "../ADivider";
 import AIcon from "../AIcon";
 import YourComponent from "../../utils/storybook-function";
 
@@ -25,19 +23,17 @@ import {AButton} from "@cisco-ats/atomic-react";
 
 <Preview>
   <Story name="usage-1">
-    <AApp>
-      <YourComponent>
-        {() => {
-          const [count, setCount] = useState(0);
-          return (
-            <div>
-              <AButton onClick={() => setCount(count + 1)}>Click Me</AButton>
-              <div>Button has been clicked {count} times.</div>
-            </div>
-          );
-        }}
-      </YourComponent>
-    </AApp>
+    <YourComponent>
+      {() => {
+        const [count, setCount] = useState(0);
+        return (
+          <div>
+            <AButton onClick={() => setCount(count + 1)}>Click Me</AButton>
+            <div>Button has been clicked {count} times.</div>
+          </div>
+        );
+      }}
+    </YourComponent>
   </Story>
 </Preview>
 
@@ -51,7 +47,7 @@ The `AButton` component inherits passed props.
 
 <Preview>
   <Story name="variant-1">
-    <AApp>
+    <>
       <p>
         <AButton>Primary</AButton>
       </p>
@@ -69,10 +65,10 @@ The `AButton` component inherits passed props.
       <p>
         <AButton disabled>Primary Disabled</AButton>
       </p>
-    </AApp>
+    </>
   </Story>
   <Story name="variant-2">
-    <AApp>
+    <>
       <p>
         <AButton secondary>Secondary</AButton>
       </p>
@@ -92,10 +88,10 @@ The `AButton` component inherits passed props.
           Secondary Disabled
         </AButton>
       </p>
-    </AApp>
+    </>
   </Story>
   <Story name="variant-3">
-    <AApp>
+    <>
       <p>
         <AButton tertiary>Tertiary</AButton>
       </p>
@@ -115,10 +111,10 @@ The `AButton` component inherits passed props.
           Tertiary Disabled
         </AButton>
       </p>
-    </AApp>
+    </>
   </Story>
   <Story name="variant-4">
-    <AApp>
+    <>
       <p>
         <AButton tertiaryAlt>Tertiary Alt</AButton>
       </p>
@@ -138,102 +134,7 @@ The `AButton` component inherits passed props.
           Tertiary Alt Disabled
         </AButton>
       </p>
-    </AApp>
-  </Story>
-</Preview>
-
-## Dusk Theme
-
-<Preview style={{backgroundColor: "#18191d"}}>
-  <Story name="dusk-1">
-    <AApp defaultTheme="dusk">
-      <p>
-        <AButton>Primary</AButton>
-      </p>
-      <p>
-        <AButton>
-          <AIcon left>edit</AIcon>
-          Primary with Icon
-        </AButton>
-      </p>
-      <p>
-        <AButton icon>
-          <AIcon>sync</AIcon>
-        </AButton>
-      </p>
-      <p>
-        <AButton disabled>Primary Disabled</AButton>
-      </p>
-    </AApp>
-  </Story>
-  <Story name="dusk-2">
-    <AApp defaultTheme="dusk">
-      <p>
-        <AButton secondary>Secondary</AButton>
-      </p>
-      <p>
-        <AButton secondary>
-          <AIcon left>edit</AIcon>
-          Secondary with Icon
-        </AButton>
-      </p>
-      <p>
-        <AButton secondary icon>
-          <AIcon>sync</AIcon>
-        </AButton>
-      </p>
-      <p>
-        <AButton secondary disabled>
-          Secondary Disabled
-        </AButton>
-      </p>
-    </AApp>
-  </Story>
-  <Story name="dusk-3">
-    <AApp defaultTheme="dusk">
-      <p>
-        <AButton tertiary>Tertiary</AButton>
-      </p>
-      <p>
-        <AButton tertiary>
-          <AIcon left>edit</AIcon>
-          Tertiary with Icon
-        </AButton>
-      </p>
-      <p>
-        <AButton tertiary icon>
-          <AIcon>sync</AIcon>
-        </AButton>
-      </p>
-      <p>
-        <AButton tertiary disabled>
-          Tertiary Disabled
-        </AButton>
-      </p>
-    </AApp>
-  </Story>
-  <Story name="dusk-4">
-    <AApp defaultTheme="dusk">
-      <p>
-        <AButton tertiaryAlt>Tertiary Alt</AButton>
-      </p>
-      <p>
-        <AButton tertiaryAlt>
-          <AIcon left>edit</AIcon>
-          Tertiary Alt with Icon
-        </AButton>
-      </p>
-      <p>
-        <AButton tertiaryAlt icon>
-          <AIcon>sync</AIcon>
-        </AButton>
-      </p>
-      <p>
-        <AButton tertiaryAlt disabled>
-          Tertiary Alt Disabled
-        </AButton>
-      </p>
-    </AApp>
+    </>
   </Story>
 </Preview>
 
@@ -242,11 +143,9 @@ The `AButton` component inherits passed props.
 If the `href` property is used, the component will render as an HTML anchor.
 
 <Preview>
-  <AApp>
-    <AButton secondary href="https://www.cisco.com">
-      Launch Cisco.com
-    </AButton>
-  </AApp>
+  <AButton secondary href="https://www.cisco.com">
+    Launch Cisco.com
+  </AButton>
 </Preview>
 
 ## Router Integrations
@@ -257,16 +156,3 @@ Set the `component` property to your router's link type, for example:
 // With react-router:
 <AButton component={RouterLink} to="/">Button 1</AButton>
 ```
-
-## Animations
-
-Animations are enabled by default on the `AApp` component and can be disabled.
-
-<Preview>
-  <AApp>
-    <AButton>Animated</AButton>
-  </AApp>
-  <AApp animations={false}>
-    <AButton>Not Animated</AButton>
-  </AApp>
-</Preview>

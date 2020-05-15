@@ -1,6 +1,6 @@
 context("ASelect", () => {
   before(() => {
-    cy.visit(
+    cy.visitInLightTheme(
       "http://localhost:8081/iframe.html?id=components-selects--usage-1&viewMode=docs"
     );
   });
@@ -143,9 +143,6 @@ context("ASelect", () => {
   it("supports themes", () => {
     if (Cypress.env("snapshots") === "off") return;
 
-    // There isn't a way yet to tell if fonts are loaded, so wait 3 seconds.
-    cy.wait(3000);
-
     cy.get("#story--components-selects--usage-1 .a-select__selection")
       .first()
       .click();
@@ -155,13 +152,15 @@ context("ASelect", () => {
       .parent()
       .matchImageSnapshot("a-select--usage-1");
 
-    cy.get("#story--components-selects--dusk-1 .a-select__selection")
+    cy.get(".a-button").eq(1).click();
+
+    cy.get("#story--components-selects--usage-1 .a-select__selection")
       .first()
       .focus()
       .type("{downArrow}")
       .click();
 
-    cy.get("#story--components-selects--dusk-1")
+    cy.get("#story--components-selects--usage-1")
       .parent()
       .parent()
       .matchImageSnapshot("a-select--dusk-1");

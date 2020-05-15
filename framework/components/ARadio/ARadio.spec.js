@@ -1,6 +1,6 @@
 context("ARadio", () => {
   before(() => {
-    cy.visit(
+    cy.visitInLightTheme(
       "http://localhost:8081/iframe.html?id=components-radio-buttons--usage-1&viewMode=docs"
     );
   });
@@ -9,17 +9,15 @@ context("ARadio", () => {
 
   // TODO: Test accessibility
 
-  // TODO: First snapshot should be of a `states` story, not usage.
-
   it("supports themes", () => {
-    // There isn't a way yet to tell if fonts are loaded, so wait 3 seconds.
-    cy.wait(3000)
-      .get("#story--components-radio-buttons--usage-1")
+    cy.get("#story--components-radio-buttons--states-1")
       .parent()
       .parent()
-      .matchImageSnapshot("a-radio-buttons--usage-1");
+      .matchImageSnapshot("a-radio-buttons--states-1");
 
-    cy.get("#story--components-radio-buttons--dusk-1")
+    cy.get(".a-button").eq(1).click();
+
+    cy.get("#story--components-radio-buttons--states-1")
       .parent()
       .parent()
       .matchImageSnapshot("a-radio-buttons--dusk-1");

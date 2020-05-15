@@ -1,7 +1,6 @@
 import {Meta, Preview, Story, Props} from "@storybook/addon-docs/blocks";
 import {useState} from "react";
 
-import AApp from "../AApp";
 import ACheckbox from "../ACheckbox";
 import ADivider from "../ADivider";
 import ATree from "./ATree";
@@ -25,7 +24,7 @@ import {ATree} from "@cisco-ats/atomic-react";
 
 <Preview>
   <Story name="usage-1">
-    <AApp style={{maxWidth: 250}}>
+    <div style={{maxWidth: 250}}>
       <YourComponent>
         {() => {
           const [activatable, setActivatable] = useState(false);
@@ -131,7 +130,7 @@ import {ATree} from "@cisco-ats/atomic-react";
           );
         }}
       </YourComponent>
-    </AApp>
+    </div>
   </Story>
 </Preview>
 
@@ -140,85 +139,6 @@ import {ATree} from "@cisco-ats/atomic-react";
 The `ATree` component inherits passed props.
 
 <Props of={ATree} />
-
-## Dusk Theme
-
-<Preview>
-  <Story name="dusk-1">
-    <AApp style={{maxWidth: 250}} defaultTheme="dusk">
-      <YourComponent>
-        {() => {
-          const [items, setItems] = useState([
-            {
-              content: "Live Dashboard",
-              contentProps: {
-                href: "https://www.google.com/",
-                target: "_blank"
-              },
-              // It isn't necessary to specify `contentComponent`
-              // as the use of "href" will be detected,
-              // but included for completeness. This would be useful
-              // in the case of a router integration.
-              contentComponent: "a"
-            },
-            {
-              content: "Predefined Reports Featuring Very Long Text",
-              items: [
-                {
-                  content: "Configuration"
-                },
-                {
-                  content: "Incident Summary"
-                },
-                {
-                  content: "Services"
-                },
-                {
-                  content: "Drill Down Reports",
-                  items: [
-                    {
-                      content: "User Reports"
-                    },
-                    {
-                      content: "Operation Reports"
-                    }
-                  ]
-                },
-                {
-                  content: "Inventory"
-                }
-              ]
-            },
-            {
-              content: "User Research",
-              contentProps: {
-                href: "https://www.google.com/",
-                target: "_blank"
-              },
-              items: [
-                {
-                  content: "Usage"
-                },
-                {
-                  content: "Documentation"
-                }
-              ]
-            }
-          ]);
-          return (
-            <ATree
-              activatable
-              expandOnClick
-              hoverable
-              items={items}
-              onChange={(items) => setItems(items)}
-            />
-          );
-        }}
-      </YourComponent>
-    </AApp>
-  </Story>
-</Preview>
 
 ## Accessibility Notes
 

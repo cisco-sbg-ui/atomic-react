@@ -1,6 +1,6 @@
 context("ATextInput", () => {
   before(() => {
-    cy.visit(
+    cy.visitInLightTheme(
       "http://localhost:8081/iframe.html?id=components-text-inputs--usage-1&viewMode=docs"
     );
   });
@@ -187,9 +187,7 @@ context("ATextInput", () => {
   it("supports themes", () => {
     if (Cypress.env("snapshots") === "off") return;
 
-    // There isn't a way yet to tell if fonts are loaded, so wait 3 seconds.
-    cy.wait(3000)
-      .get("#story--components-text-inputs--validation-1")
+    cy.get("#story--components-text-inputs--validation-1")
       .parent()
       .parent()
       .matchImageSnapshot("a-text-input--validation-1");
@@ -199,7 +197,9 @@ context("ATextInput", () => {
       .parent()
       .matchImageSnapshot("a-text-input--numeric-1");
 
-    cy.get("#story--components-text-inputs--dusk-1")
+    cy.get(".a-button").eq(1).click();
+
+    cy.get("#story--components-text-inputs--validation-1")
       .parent()
       .parent()
       .matchImageSnapshot("a-text-input--dusk-1");

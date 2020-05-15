@@ -7,7 +7,6 @@ import {
   Story
 } from "@storybook/addon-docs/blocks";
 
-import AApp from "../AApp";
 import AIcon from "./AIcon";
 import Icons from "./icons.json";
 
@@ -29,13 +28,13 @@ import {AIcon} from "@cisco-ats/atomic-react";
 
 <Preview>
   <Story name="usage-1">
-    <AApp>
+    <>
       <AIcon className="status-yellow--text">warning</AIcon>
       <AIcon size={32} className="status-red--text">
         block
       </AIcon>
       <AIcon size="large">add</AIcon>
-    </AApp>
+    </>
   </Story>
 </Preview>
 

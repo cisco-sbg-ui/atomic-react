@@ -1,7 +1,5 @@
 import {Meta, Preview, Story, Props} from "@storybook/addon-docs/blocks";
-import {useState} from "react";
 
-import AApp from "../AApp";
 import ABadge from "./ABadge";
 import AButton from "../AButton";
 import AIcon from "../AIcon";
@@ -24,7 +22,7 @@ import {ABadge} from "@cisco-ats/atomic-react";
 
 <Preview>
   <Story name="usage-1">
-    <AApp>
+    <>
       <ABadge color="cisco-blue" content="3" large className="mr-4">
         <AButton tertiaryAlt icon className="pa-1" onClick={() => {}}>
           <AIcon size={48}>alert</AIcon>
@@ -35,10 +33,10 @@ import {ABadge} from "@cisco-ats/atomic-react";
           <AIcon size={48}>alert</AIcon>
         </AButton>
       </ABadge>
-    </AApp>
+    </>
   </Story>
   <Story name="usage-2">
-    <AApp>
+    <>
       <ABadge color="cisco-blue" content="3" className="mr-4">
         <AButton secondary icon className="pa-1" onClick={() => {}}>
           <AIcon size={24}>alert</AIcon>
@@ -49,10 +47,10 @@ import {ABadge} from "@cisco-ats/atomic-react";
           <AIcon size={24}>alert</AIcon>
         </AButton>
       </ABadge>
-    </AApp>
+    </>
   </Story>
   <Story name="usage-3">
-    <AApp>
+    <>
       <ABadge color="cisco-blue" content="3" small className="mr-4">
         <AButton primary icon className="pa-1" onClick={() => {}}>
           <AIcon size={16}>alert</AIcon>
@@ -63,7 +61,7 @@ import {ABadge} from "@cisco-ats/atomic-react";
           <AIcon size={16}>alert</AIcon>
         </AButton>
       </ABadge>
-    </AApp>
+    </>
   </Story>
 </Preview>
 
@@ -72,53 +70,6 @@ import {ABadge} from "@cisco-ats/atomic-react";
 The `ABadge` component inherits passed props.
 
 <Props of={ABadge} />
-
-## Dusk Theme
-
-<Preview style={{backgroundColor: "#18191d"}}>
-  <Story name="dusk-1">
-    <AApp defaultTheme="dusk">
-      <ABadge color="cisco-blue" content="3" large className="mr-4">
-        <AButton tertiaryAlt icon className="pa-1" onClick={() => {}}>
-          <AIcon size={48}>alert</AIcon>
-        </AButton>
-      </ABadge>
-      <ABadge color="status-red" content="99+" large>
-        <AButton tertiaryAlt icon className="pa-1" onClick={() => {}}>
-          <AIcon size={48}>alert</AIcon>
-        </AButton>
-      </ABadge>
-    </AApp>
-  </Story>
-  <Story name="dusk-2">
-    <AApp defaultTheme="dusk">
-      <ABadge color="cisco-blue" content="3" className="mr-4">
-        <AButton secondary icon className="pa-1" onClick={() => {}}>
-          <AIcon size={24}>alert</AIcon>
-        </AButton>
-      </ABadge>
-      <ABadge color="status-red" content="99+">
-        <AButton secondary icon className="pa-1" onClick={() => {}}>
-          <AIcon size={24}>alert</AIcon>
-        </AButton>
-      </ABadge>
-    </AApp>
-  </Story>
-  <Story name="dusk-3">
-    <AApp defaultTheme="dusk">
-      <ABadge color="cisco-blue" content="3" small className="mr-4">
-        <AButton primary icon className="pa-1" onClick={() => {}}>
-          <AIcon size={16}>alert</AIcon>
-        </AButton>
-      </ABadge>
-      <ABadge color="status-red" content="99+" small>
-        <AButton primary icon className="pa-1" onClick={() => {}}>
-          <AIcon size={16}>alert</AIcon>
-        </AButton>
-      </ABadge>
-    </AApp>
-  </Story>
-</Preview>
 
 ## Accessibility Notes
 

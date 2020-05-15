@@ -3,7 +3,6 @@ import {Meta, Preview, Story, Props} from "@storybook/addon-docs/blocks";
 
 import LoremIpsum from "../../utils/lorem-ipsum";
 import YourComponent from "../../utils/storybook-function";
-import AApp from "../AApp";
 import ACheckbox from "../ACheckbox";
 import ATextarea from "./ATextarea";
 
@@ -25,7 +24,7 @@ import {ATextarea} from "@cisco-ats/atomic-react";
 
 <Preview>
   <Story name="usage-1">
-    <AApp style={{maxWidth: 250}}>
+    <div style={{maxWidth: 250}}>
       <div className="mb-4">
         <YourComponent>
           {() => {
@@ -86,7 +85,7 @@ import {ATextarea} from "@cisco-ats/atomic-react";
           hint="Hint: Danger"
         />
       </div>
-    </AApp>
+    </div>
   </Story>
 </Preview>
 
@@ -95,64 +94,3 @@ import {ATextarea} from "@cisco-ats/atomic-react";
 The `ATextarea` component inherits passed props.
 
 <Props of={ATextarea} />
-
-## Dusk Theme
-
-<Preview style={{backgroundColor: "#18191d"}}>
-  <Story name="dusk-1">
-    <AApp defaultTheme="dusk" style={{maxWidth: 250}}>
-      <div className="mb-4">
-        <ATextarea label="Label" placeholder="Normal" hint="Hint: Normal" />
-      </div>
-      <div className="mb-4">
-        <ATextarea
-          label="Label"
-          placeholder="Disabled"
-          disabled
-          hint="Hint: Disabled"
-        />
-      </div>
-      <div className="mb-4">
-        <ATextarea
-          label="Label"
-          placeholder="Read-only State"
-          readOnly
-          hint="Hint: Read-only"
-        />
-      </div>
-      <div className="mb-4">
-        <ATextarea
-          label="Label"
-          validationState="warning"
-          placeholder="Warning State"
-          hint="Hint: Warning"
-        />
-      </div>
-      <div className="mb-4">
-        <ATextarea
-          label="Label"
-          validationState="danger"
-          placeholder="Danger State"
-          hint="Hint: Danger"
-        />
-      </div>
-    </AApp>
-  </Story>
-</Preview>
-
-## Animations
-
-Animations are enabled by default on the `AApp` component and can be disabled.
-
-<Preview>
-  <Story name="animations-1">
-    <AApp style={{marginRight: 20}}>
-      <ATextarea label="Label" placeholder="Animated" />
-    </AApp>
-  </Story>
-  <Story name="animations-2">
-    <AApp animations={false}>
-      <ATextarea label="Label" placeholder="Not Animated" />
-    </AApp>
-  </Story>
-</Preview>

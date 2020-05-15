@@ -1,7 +1,5 @@
 import {Meta, Preview, Story, Props} from "@storybook/addon-docs/blocks";
-import {useState} from "react";
 
-import AApp from "../AApp";
 import AInputBase from "./AInputBase";
 
 <Meta title="Extend/Input Base" component={AInputBase} />
@@ -22,7 +20,7 @@ import {AInputBase} from "@cisco-ats/atomic-react";
 
 <Preview>
   <Story name="usage-1">
-    <AApp style={{maxWidth: 300}}>
+    <div style={{maxWidth: 300}}>
       <AInputBase
         append="[Append]"
         prepend="[Prepend]"
@@ -88,7 +86,7 @@ import {AInputBase} from "@cisco-ats/atomic-react";
         validationState="danger">
         [Children]
       </AInputBase>
-    </AApp>
+    </div>
   </Story>
 </Preview>
 
@@ -97,77 +95,3 @@ import {AInputBase} from "@cisco-ats/atomic-react";
 The `AInputBase` component inherits passed props.
 
 <Props of={AInputBase} />
-
-## Dusk Theme
-
-<Preview style={{backgroundColor: "#18191d"}}>
-  <Story name="dusk-1">
-    <AApp defaultTheme="dusk" style={{maxWidth: 300}}>
-      <AInputBase
-        append="[Append]"
-        prepend="[Prepend]"
-        className="mb-3"
-        clearable
-        onClear={() => alert("cleared")}
-        label="Label - Normal"
-        hint="This is a sample of hint text below a form input">
-        [Children]
-      </AInputBase>
-      <AInputBase
-        append="[Append]"
-        prepend="[Prepend]"
-        className="mb-3"
-        clearable
-        onClear={() => alert("cleared")}
-        label="Label - Focused"
-        hint="This is a sample of hint text below a form input"
-        focused>
-        [Children]
-      </AInputBase>
-      <AInputBase
-        append="[Append]"
-        prepend="[Prepend]"
-        className="mb-3"
-        clearable
-        onClear={() => alert("cleared")}
-        label="Label - Read-only"
-        hint="This is a sample of hint text below a form input"
-        readOnly>
-        [Children]
-      </AInputBase>
-      <AInputBase
-        append="[Append]"
-        prepend="[Prepend]"
-        className="mb-3"
-        clearable
-        onClear={() => alert("cleared")}
-        label="Label - Disabled"
-        hint="This is a sample of hint text below a form input"
-        disabled>
-        [Children]
-      </AInputBase>
-      <AInputBase
-        append="[Append]"
-        prepend="[Prepend]"
-        className="mb-3"
-        clearable
-        onClear={() => alert("cleared")}
-        label="Label - Warning"
-        hint="This is a sample of hint text below a form input"
-        validationState="warning">
-        [Children]
-      </AInputBase>
-      <AInputBase
-        append="[Append]"
-        prepend="[Prepend]"
-        className="mb-3"
-        clearable
-        onClear={() => alert("cleared")}
-        label="Label - Danger"
-        hint="This is a sample of hint text below a form input"
-        validationState="danger">
-        [Children]
-      </AInputBase>
-    </AApp>
-  </Story>
-</Preview>

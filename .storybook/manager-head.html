@@ -2,6 +2,7 @@
 <style>
   body {
     margin-top: 65px !important;
+    display: flex;
   }
 
   #root > div > div:nth-child(2),
@@ -10,10 +11,6 @@
   [data-simplebar],
   .sidebar-header {
     display: none !important;
-  }
-
-  nav [data-simplebar] {
-    display: block !important;
   }
 
   [offset="40"] {
@@ -41,7 +38,8 @@
     z-index: 1;
   }
 
-  .theme--default.a-app--scrollbars ::-webkit-scrollbar-track {
+  .theme--default.a-app--scrollbars ::-webkit-scrollbar-track,
+  .theme--dusk.a-app--scrollbars ::-webkit-scrollbar-track {
     background: transparent !important;
     border: none !important;
   }

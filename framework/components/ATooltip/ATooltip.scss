@@ -1,168 +1,159 @@
 @import "../../styles";
 
 $tooltip-bg: map-get($grey, "darken-4");
-$tooltip-box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.25);
-$tooltip-min-width: 75px;
-$tooltip-padding: rem(0.3125);
-$tooltip-font-size: $font-size--xs;
-$tooltip-z-index: 1;
-$tooltip-top-bottom: 110%;
-$tooltip-right-top: -3px;
-$tooltip-right-left: 110%;
-$tooltip-bottom-top: 110%;
-$tooltip-left-top: -3px;
-$tooltip-left-right: 110%;
-$tooltip-top-arrow-border-width: rem(0.3125) rem(0.3125) 0;
-$tooltip-top-arrow-bottom-var: rem(0.3);
-$tooltip-top-arrow-bottom: calc(110% - #{$tooltip-top-arrow-bottom-var});
-$tooltip-top-arrow-margin-left: rem(0.3125);
-$tooltip-right-arrow-border-width: rem(0.3125) rem(0.3125) rem(0.3125) 0;
-$tooltip-right-arrow-left-var: rem(0.3);
-$tooltip-right-arrow-left: calc(110% - #{$tooltip-right-arrow-left-var});
-$tooltip-right-arrow-margin-top: rem(0.3125);
-$tooltip-bottom-arrow-border-width: 0 rem(0.3125) rem(0.3125);
-$tooltip-bottom-arrow-top-var: rem(0.3);
-$tooltip-bottom-arrow-top: calc(110% - #{$tooltip-bottom-arrow-top-var});
-$tooltip-bottom-arrow-margin-left: rem(0.3125);
-$tooltip-left-arrow-border-width: rem(0.3125) 0 rem(0.3125) rem(0.3125);
-$tooltip-left-arrow-right-var: rem(0.3);
-$tooltip-left-arrow-right: calc(110% - #{$tooltip-left-arrow-right-var});
-$tooltip-left-arrow-margin-top: rem(0.3125);
 
-.tooltip {
-  position: relative;
+@include theme(a-tooltip) using ($theme) {
+  color: map-deep-get($theme, "base", "inverse-color");
+}
+
+.a-tooltip {
   display: inline-block;
-  &__text {
-    visibility: hidden;
-    font-size: $tooltip-font-size;
-    line-height: $line-height;
-    min-width: $tooltip-min-width;
-    width: 100%;
-    background-color: $tooltip-bg;
-    color: $base-inverse-color;
-    text-align: center;
-    padding: $tooltip-padding;
-    border-radius: $border-radius--sm;
-    box-shadow: $tooltip-box-shadow;
-    position: absolute;
-    z-index: $tooltip-z-index;
-    text-transform: none;
-    letter-spacing: normal;
-    word-break: normal;
-    word-spacing: normal;
-    word-wrap: normal;
-    white-space: normal;
-  }
-  &:hover {
-    .tooltip__arrow,
-    .tooltip__text {
-      visibility: visible;
-    }
-  }
-  &--top {
-    .tooltip__arrow {
-      bottom: $tooltip-top-arrow-bottom;
-      left: 50%;
-      margin-left: -$tooltip-top-arrow-margin-left;
-      border-width: $tooltip-top-arrow-border-width;
-      border-top-color: $tooltip-bg;
-    }
-    .tooltip__text {
-      bottom: $tooltip-top-bottom;
-      left: 0;
-    }
-  }
-  &--right {
-    .tooltip__arrow {
-      top: 50%;
-      left: $tooltip-right-arrow-left;
-      margin-top: -$tooltip-right-arrow-margin-top;
-      border-width: $tooltip-right-arrow-border-width;
-      border-right-color: $tooltip-bg;
-    }
-    .tooltip__text {
-      top: $tooltip-right-top;
-      left: $tooltip-right-left;
-    }
-  }
-  &--bottom {
-    .tooltip__arrow {
-      top: $tooltip-bottom-arrow-top;
-      left: 50%;
-      margin-left: -$tooltip-bottom-arrow-margin-left;
-      border-width: $tooltip-bottom-arrow-border-width;
-      border-bottom-color: $tooltip-bg;
-    }
-    .tooltip__text {
-      top: $tooltip-bottom-top;
-      left: 0;
-    }
-  }
-  &--left {
-    .tooltip__arrow {
-      top: 50%;
-      right: $tooltip-left-arrow-right;
-      margin-top: -$tooltip-left-arrow-margin-top;
-      border-width: $tooltip-left-arrow-border-width;
-      border-left-color: $tooltip-bg;
-    }
-    .tooltip__text {
-      top: $tooltip-left-top;
-      right: $tooltip-left-right;
+  font-size: $font-size--xs;
+  line-height: $line-height;
+  min-width: 75px;
+  max-width: 200px;
+  background-color: $tooltip-bg;
+  padding: rem(0.3125);
+  border-radius: $border-radius--sm;
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.25);
+  z-index: 1;
+
+  &--arrow.a-menu-base--top,
+  &--arrow.a-menu-base--top-left,
+  &--arrow.a-menu-base--top-right {
+    margin-top: -11px;
+    .a-menu-base__pointer {
+      width: 0;
+      height: 0;
+      border-style: solid;
+      border-width: 12px 6px 0 6px;
+      border-color: $tooltip-bg transparent transparent transparent;
+      position: absolute;
+      bottom: -11px;
     }
   }
 
-  &__arrow {
-    visibility: hidden;
-    position: absolute;
-    width: 0;
-    height: 0;
-    border-color: transparent;
-    border-style: solid;
+  &--arrow.a-menu-base--right,
+  &--arrow.a-menu-base--right-top,
+  &--arrow.a-menu-base--right-bottom {
+    margin-left: 11px;
+    .a-menu-base__pointer {
+      width: 0;
+      height: 0;
+      border-style: solid;
+      border-width: 6px 12px 6px 0;
+      border-color: transparent $tooltip-bg transparent transparent;
+      position: absolute;
+      left: -11px;
+    }
+  }
+
+  &--arrow.a-menu-base--bottom,
+  &--arrow.a-menu-base--bottom-left,
+  &--arrow.a-menu-base--bottom-right {
+    margin-top: 11px;
+    .a-menu-base__pointer {
+      width: 0;
+      height: 0;
+      border-style: solid;
+      border-width: 0 6px 12px 6px;
+      border-color: transparent transparent $tooltip-bg transparent;
+      position: absolute;
+      top: -11px;
+    }
+  }
+
+  &--arrow.a-menu-base--left,
+  &--arrow.a-menu-base--left-top,
+  &--arrow.a-menu-base--left-bottom {
+    margin-left: -11px;
+    .a-menu-base__pointer {
+      width: 0;
+      height: 0;
+      border-style: solid;
+      border-width: 6px 0 6px 12px;
+      border-color: transparent transparent transparent $tooltip-bg;
+      position: absolute;
+      right: -11px;
+    }
   }
 }
 
 // Fading and sliding for the regular Tooltip, only fading for the Tooltip with an arrow.
 // Could be reconsidered later.
-.a-app--animated .tooltip {
-  &:hover {
-    &.tooltip--top {
-      .tooltip__text {
-        animation-name: slideToTop;
-        animation-duration: $transition-duration--fast;
-      }
-    }
-    &.tooltip--right {
-      .tooltip__text {
-        animation-name: slideToRight;
-        animation-duration: $transition-duration--fast;
-      }
-    }
-    &.tooltip--bottom {
-      .tooltip__text {
-        animation-name: slideToBottom;
-        animation-duration: $transition-duration--fast;
-      }
-    }
-    &.tooltip--left {
-      .tooltip__text {
-        animation-name: slideToLeft;
-        animation-duration: $transition-duration--fast;
-      }
-    }
+.a-app--animated .a-tooltip {
+  animation-name: fade-in;
+  animation-duration: $transition-duration--fast;
+
+  &.a-menu-base--top,
+  &.a-menu-base--top-left,
+  &.a-menu-base--top-right {
+    animation-name: slideToTop;
+    animation-duration: $transition-duration--fast;
   }
-  &.tooltip--pointer {
-    &:hover {
-      &.tooltip--top,
-      &.tooltip--right,
-      &.tooltip--bottom,
-      &.tooltip--left {
-        .tooltip__arrow,
-        .tooltip__text {
-          animation-name: fade-in;
-          animation-duration: $transition-duration--fast;
-        }
-      }
-    }
+
+  &.a-menu-base--right,
+  &.a-menu-base--right-top,
+  &.a-menu-base--right-bottom {
+    animation-name: slideToRight;
+    animation-duration: $transition-duration--fast;
+  }
+
+  &.a-menu-base--bottom,
+  &.a-menu-base--bottom-right,
+  &.a-menu-base--bottom-left {
+    animation-name: slideToBottom;
+    animation-duration: $transition-duration--fast;
+  }
+
+  &.a-menu-base--left,
+  &.a-menu-base--left-bottom,
+  &.a-menu-base--left-top {
+    animation-name: slideToLeft;
+    animation-duration: $transition-duration--fast;
+  }
+}
+
+@keyframes slideToTop {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideToRight {
+  from {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideToBottom {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideToLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
   }
 }

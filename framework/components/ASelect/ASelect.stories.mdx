@@ -1,7 +1,6 @@
 import {Meta, Preview, Story, Props} from "@storybook/addon-docs/blocks";
 import {useState} from "react";
 
-import AApp from "../AApp";
 import YourComponent from "../../utils/storybook-function";
 import ASelect from "./ASelect";
 
@@ -23,7 +22,7 @@ import {ASelect} from "@cisco-ats/atomic-react";
 
 <Preview>
   <Story name="usage-1">
-    <AApp style={{minHeight: 220, minWidth: 250, marginRight: 20}}>
+    <div style={{minHeight: 220, minWidth: 250, marginRight: 20}}>
       <h3>Simple Select</h3>
       <YourComponent>
         {() => {
@@ -47,10 +46,10 @@ import {ASelect} from "@cisco-ats/atomic-react";
           );
         }}
       </YourComponent>
-    </AApp>
+    </div>
   </Story>
   <Story name="usage-2">
-    <AApp style={{minHeight: 220, minWidth: 250, marginRight: 20}}>
+    <div style={{minHeight: 220, minWidth: 250, marginRight: 20}}>
       <h3>Typical Select</h3>
       <YourComponent>
         {() => {
@@ -76,10 +75,10 @@ import {ASelect} from "@cisco-ats/atomic-react";
           );
         }}
       </YourComponent>
-    </AApp>
+    </div>
   </Story>
   <Story name="usage-3">
-    <AApp style={{minHeight: 220, minWidth: 250, marginRight: 20}}>
+    <div style={{minHeight: 220, minWidth: 250, marginRight: 20}}>
       <h3>Disabled Select</h3>
       <ASelect
         disabled
@@ -87,10 +86,10 @@ import {ASelect} from "@cisco-ats/atomic-react";
         placeholder="Pick a Food Group"
         hint="Hint: Disabled"
       />
-    </AApp>
+    </div>
   </Story>
   <Story name="usage-4">
-    <AApp style={{minHeight: 220, minWidth: 250, marginRight: 20}}>
+    <div style={{minHeight: 220, minWidth: 250, marginRight: 20}}>
       <h3>Read-only Select</h3>
       <ASelect
         readOnly
@@ -106,10 +105,10 @@ import {ASelect} from "@cisco-ats/atomic-react";
           "Fats, Oils, and Sweets"
         ]}
       />
-    </AApp>
+    </div>
   </Story>
   <Story name="usage-5">
-    <AApp style={{minHeight: 220, minWidth: 250, marginRight: 20}}>
+    <div style={{minHeight: 220, minWidth: 250, marginRight: 20}}>
       <h3>Warning Select</h3>
       <ASelect
         validationState="warning"
@@ -125,10 +124,10 @@ import {ASelect} from "@cisco-ats/atomic-react";
           "Fats, Oils, and Sweets"
         ]}
       />
-    </AApp>
+    </div>
   </Story>
   <Story name="usage-6">
-    <AApp style={{minHeight: 220, minWidth: 250, marginRight: 20}}>
+    <div style={{minHeight: 220, minWidth: 250, marginRight: 20}}>
       <h3>Danger Select</h3>
       <ASelect
         validationState="danger"
@@ -144,7 +143,7 @@ import {ASelect} from "@cisco-ats/atomic-react";
           "Fats, Oils, and Sweets"
         ]}
       />
-    </AApp>
+    </div>
   </Story>
 </Preview>
 
@@ -153,147 +152,6 @@ import {ASelect} from "@cisco-ats/atomic-react";
 The `ASelect` component inherits passed props.
 
 <Props of={ASelect} />
-
-## Dusk Theme
-
-<Preview style={{backgroundColor: "#18191d"}}>
-  <Story name="dusk-1">
-    <AApp
-      defaultTheme="dusk"
-      style={{minHeight: 220, minWidth: 250, marginRight: 20}}>
-      <h3>Simple Select</h3>
-      <YourComponent>
-        {() => {
-          const [selectedItem, setSelectedItem] = useState(null);
-          const items = [
-            "Bread, Cereal, Rice, and Pasta",
-            "Vegetables",
-            "Fruit",
-            "Milk, Yogurt, and Cheese",
-            "Meat, Poultry, Fish",
-            "Fats, Oils, and Sweets"
-          ];
-          return (
-            <ASelect
-              label="Food Group"
-              items={items}
-              placeholder="Pick a Food Group"
-              onSelected={(item) => setSelectedItem(item)}
-              hint={`Selected Item: ${JSON.stringify(selectedItem)}`}
-            />
-          );
-        }}
-      </YourComponent>
-    </AApp>
-  </Story>
-  <Story name="dusk-2">
-    <AApp
-      defaultTheme="dusk"
-      style={{minHeight: 220, minWidth: 250, marginRight: 20}}>
-      <h3>Typical Select</h3>
-      <YourComponent>
-        {() => {
-          const items = [
-            {id: 1, name: "Bread, Cereal, Rice, and Pasta"},
-            {id: 2, name: "Vegetables"},
-            {id: 3, name: "Fruit", selected: true},
-            {id: 4, name: "Milk, Yogurt, and Cheese"},
-            {id: 5, name: "Meat, Poultry, Fish", disabled: true},
-            {id: 6, name: "Fats, Oils, and Sweets"}
-          ];
-          const [selectedItem, setSelectedItem] = useState(items[2]);
-          return (
-            <ASelect
-              label="Food Group"
-              items={items}
-              itemText="name"
-              itemValue="id"
-              placeholder="Pick a Food Group"
-              onSelected={(item) => setSelectedItem(item)}
-              hint={`Selected Item: ${JSON.stringify(selectedItem)}`}
-            />
-          );
-        }}
-      </YourComponent>
-    </AApp>
-  </Story>
-  <Story name="dusk-3">
-    <AApp
-      defaultTheme="dusk"
-      style={{minHeight: 220, minWidth: 250, marginRight: 20}}>
-      <h3>Disabled Select</h3>
-      <ASelect
-        disabled
-        label="Food Group"
-        placeholder="Pick a Food Group"
-        hint="Hint: Disabled"
-      />
-    </AApp>
-  </Story>
-  <Story name="dusk-4">
-    <AApp
-      defaultTheme="dusk"
-      style={{minHeight: 220, minWidth: 250, marginRight: 20}}>
-      <h3>Read-only Select</h3>
-      <ASelect
-        readOnly
-        label="Food Group"
-        placeholder="Pick a Food Group"
-        hint="Hint: Read-only"
-        items={[
-          "Bread, Cereal, Rice, and Pasta",
-          "Vegetables",
-          "Fruit",
-          "Milk, Yogurt, and Cheese",
-          "Meat, Poultry, Fish",
-          "Fats, Oils, and Sweets"
-        ]}
-      />
-    </AApp>
-  </Story>
-  <Story name="dusk-5">
-    <AApp
-      defaultTheme="dusk"
-      style={{minHeight: 220, minWidth: 250, marginRight: 20}}>
-      <h3>Warning Select</h3>
-      <ASelect
-        validationState="warning"
-        label="Food Group"
-        placeholder="Pick a Food Group"
-        hint="Hint: Warning"
-        items={[
-          "Bread, Cereal, Rice, and Pasta",
-          "Vegetables",
-          "Fruit",
-          "Milk, Yogurt, and Cheese",
-          "Meat, Poultry, Fish",
-          "Fats, Oils, and Sweets"
-        ]}
-      />
-    </AApp>
-  </Story>
-  <Story name="dusk-6">
-    <AApp
-      defaultTheme="dusk"
-      style={{minHeight: 220, minWidth: 250, marginRight: 20}}>
-      <h3>Danger Select</h3>
-      <ASelect
-        validationState="danger"
-        label="Food Group"
-        placeholder="Pick a Food Group"
-        hint="Hint: Danger"
-        items={[
-          "Bread, Cereal, Rice, and Pasta",
-          "Vegetables",
-          "Fruit",
-          "Milk, Yogurt, and Cheese",
-          "Meat, Poultry, Fish",
-          "Fats, Oils, and Sweets"
-        ]}
-      />
-    </AApp>
-  </Story>
-</Preview>
 
 ## Accessibility Notes
 
