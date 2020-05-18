@@ -3,6 +3,6 @@
   "integrationFolder": "framework",
   "testFiles": "**/*.spec.js",
   "video": false,
-  "viewportHeight": 700,
-  "viewportWidth": 1020
+  "viewportHeight": 720,
+  "viewportWidth": 1280
 }
