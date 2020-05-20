@@ -1,13 +1,23 @@
 context("ATimeline", () => {
   before(() => {
-    cy.visit(
-      "http://localhost:8081/iframe.html?id=components-timeline--usage-1&viewMode=docs"
+    cy.visitInLightTheme(
+      "http://localhost:8081/iframe.html?id=components-timelines--usage-1&viewMode=docs"
     );
   });
 
   it("supports themes", () => {
     if (Cypress.env("snapshots") === "off") return;
 
-    cy.matchImageSnapshot("a-timeline--theme");
+    cy.get("#story--components-timelines--usage-1")
+      .parent()
+      .parent()
+      .matchImageSnapshot("a-timeline--usage-1");
+
+    cy.get(".a-button").eq(1).click();
+
+    cy.get("#story--components-timelines--usage-1")
+      .parent()
+      .parent()
+      .matchImageSnapshot("a-timeline--dusk-1");
   });
 });

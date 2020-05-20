@@ -31,45 +31,10 @@ The `AApp` component provides theming, typography, scrollbar stylings as well as
 
 <Preview>
   <Story name="usage-1">
-    <AApp>
-      <div
-        className="mx-auto my-0 overflow-y-scroll"
-        style={{maxHeight: 300, maxWidth: 500}}>
-        <div className="dark-cool-grey--burnt-2--text pa-4">
-          <h1 className="display-1">Display 1</h1>
-          <a href="#">
-            <AIcon size="small" left>
-              link
-            </AIcon>
-            Link with icon
-          </a> | <a href="#" className="disabled">
-            Disabled link
-          </a>
-          <p>{LoremIpsum}</p>
-        </div>
-        <div className="brand-orange grey--darken-7--text pa-4">
-          <h2>Heading 2</h2>
-          <p>{LoremIpsum}</p>
-          <p>{LoremIpsum}</p>
-          <p>{LoremIpsum}</p>
-        </div>
-      </div>
-    </AApp>
-  </Story>
-</Preview>
-
-## Props
-
-<Props of={AApp} />
-
-## Dusk Theme
-
-<Preview style={{backgroundColor: "#18191d"}}>
-  <Story name="dusk-1">
-    <AApp defaultTheme="dusk">
-      <div
-        className="mx-auto my-0 overflow-y-scroll pa-4"
-        style={{maxHeight: 300, maxWidth: 500}}>
+    <div
+      className="mx-auto my-0 overflow-y-scroll"
+      style={{maxHeight: 300, maxWidth: 500}}>
+      <div className="dark-cool-grey--burnt-2--text pa-4">
         <h1 className="display-1">Display 1</h1>
         <a href="#">
           <AIcon size="small" left>
@@ -80,9 +45,107 @@ The `AApp` component provides theming, typography, scrollbar stylings as well as
           Disabled link
         </a>
         <p>{LoremIpsum}</p>
+      </div>
+      <div className="brand-orange grey--darken-7--text pa-4">
         <h2>Heading 2</h2>
         <p>{LoremIpsum}</p>
         <p>{LoremIpsum}</p>
+        <p>{LoremIpsum}</p>
+      </div>
+    </div>
+  </Story>
+</Preview>
+
+## Props
+
+<Props of={AApp} />
+
+## Typography
+
+<Preview>
+  <Story name="typography-1">
+    <div className="d-flex flex-wrap align-baseline">
+      <div className="text-align-right pr-4" style={{flexBasis: "25%"}}>
+        Display 1
+      </div>
+      <div className="mt-4" style={{flexBasis: "75%"}}>
+        <span className="display-1">Display 1</span>
+      </div>
+      <div className="text-align-right pr-4" style={{flexBasis: "25%"}}>
+        Display 2
+      </div>
+      <div className="mt-4" style={{flexBasis: "75%"}}>
+        <span className="display-2">Display 2</span>
+      </div>
+      <div className="text-align-right pr-4" style={{flexBasis: "25%"}}>
+        Heading 1
+      </div>
+      <div className="mt-4" style={{flexBasis: "75%"}}>
+        <h1>Heading 1</h1>
+      </div>
+      <div className="text-align-right pr-4" style={{flexBasis: "25%"}}>
+        Heading 2
+      </div>
+      <div className="mt-4" style={{flexBasis: "75%"}}>
+        <h2>Heading 2</h2>
+      </div>
+      <div className="text-align-right pr-4" style={{flexBasis: "25%"}}>
+        Heading 3
+      </div>
+      <div className="mt-4" style={{flexBasis: "75%"}}>
+        <h3>Heading 3</h3>
+      </div>
+      <div className="text-align-right pr-4" style={{flexBasis: "25%"}}>
+        Heading 4
+      </div>
+      <div className="mt-4" style={{flexBasis: "75%"}}>
+        <h4>Heading 4</h4>
+      </div>
+      <div className="text-align-right pr-4" style={{flexBasis: "25%"}}>
+        Heading 5
+      </div>
+      <div className="mt-4" style={{flexBasis: "75%"}}>
+        <h5>Heading 5</h5>
+      </div>
+      <div className="text-align-right pr-4" style={{flexBasis: "25%"}}>
+        Caption
+      </div>
+      <div className="mt-4" style={{flexBasis: "75%"}}>
+        <span className="caption">Caption</span>
+      </div>
+      <div className="text-align-right pr-4" style={{flexBasis: "25%"}}>
+        Small
+      </div>
+      <div className="mt-4" style={{flexBasis: "75%"}}>
+        <small>Small</small>
+      </div>
+      <div className="text-align-right pr-4" style={{flexBasis: "25%"}}>
+        Mark
+      </div>
+      <div className="mt-4" style={{flexBasis: "75%"}}>
+        Indicate <mark>marked</mark> information
+      </div>
+      <div className="text-align-right pr-4" style={{flexBasis: "25%"}}>
+        Abbreviation
+      </div>
+      <div className="mt-4" style={{flexBasis: "75%"}}>
+        Cisco <abbr title="Security Business Group">sbg</abbr>
+      </div>
+      <div className="text-align-right pr-4" style={{flexBasis: "25%"}}>
+        Blockquote
+      </div>
+      <div className="mt-4" style={{flexBasis: "75%"}}>
+        <blockquote>
+          {" "}
+          All that we see or seem is but a dream within a dream.<cite>
+            Edgar Allan Poe
+          </cite>
+        </blockquote>
+      </div>
+      <div className="text-align-right pr-4" style={{flexBasis: "25%"}}>
+        Monospaced
+      </div>
+      <div className="mt-4" style={{flexBasis: "75%"}}>
         <p>
           <code>var code = "code";</code>
         </p>
@@ -94,110 +157,7 @@ The `AApp` component provides theming, typography, scrollbar stylings as well as
           <samp>var samp = "samp";</samp>
         </p>
       </div>
-    </AApp>
-  </Story>
-</Preview>
-
-## Typography
-
-<Preview>
-  <Story name="typography-1">
-    <AApp>
-      <div className="d-flex flex-wrap align-baseline">
-        <div className="text-align-right pr-4" style={{flexBasis: "25%"}}>
-          Display 1
-        </div>
-        <div className="mt-4" style={{flexBasis: "75%"}}>
-          <span className="display-1">Display 1</span>
-        </div>
-        <div className="text-align-right pr-4" style={{flexBasis: "25%"}}>
-          Display 2
-        </div>
-        <div className="mt-4" style={{flexBasis: "75%"}}>
-          <span className="display-2">Display 2</span>
-        </div>
-        <div className="text-align-right pr-4" style={{flexBasis: "25%"}}>
-          Heading 1
-        </div>
-        <div className="mt-4" style={{flexBasis: "75%"}}>
-          <h1>Heading 1</h1>
-        </div>
-        <div className="text-align-right pr-4" style={{flexBasis: "25%"}}>
-          Heading 2
-        </div>
-        <div className="mt-4" style={{flexBasis: "75%"}}>
-          <h2>Heading 2</h2>
-        </div>
-        <div className="text-align-right pr-4" style={{flexBasis: "25%"}}>
-          Heading 3
-        </div>
-        <div className="mt-4" style={{flexBasis: "75%"}}>
-          <h3>Heading 3</h3>
-        </div>
-        <div className="text-align-right pr-4" style={{flexBasis: "25%"}}>
-          Heading 4
-        </div>
-        <div className="mt-4" style={{flexBasis: "75%"}}>
-          <h4>Heading 4</h4>
-        </div>
-        <div className="text-align-right pr-4" style={{flexBasis: "25%"}}>
-          Heading 5
-        </div>
-        <div className="mt-4" style={{flexBasis: "75%"}}>
-          <h5>Heading 5</h5>
-        </div>
-        <div className="text-align-right pr-4" style={{flexBasis: "25%"}}>
-          Caption
-        </div>
-        <div className="mt-4" style={{flexBasis: "75%"}}>
-          <span className="caption">Caption</span>
-        </div>
-        <div className="text-align-right pr-4" style={{flexBasis: "25%"}}>
-          Small
-        </div>
-        <div className="mt-4" style={{flexBasis: "75%"}}>
-          <small>Small</small>
-        </div>
-        <div className="text-align-right pr-4" style={{flexBasis: "25%"}}>
-          Mark
-        </div>
-        <div className="mt-4" style={{flexBasis: "75%"}}>
-          Indicate <mark>marked</mark> information
-        </div>
-        <div className="text-align-right pr-4" style={{flexBasis: "25%"}}>
-          Abbreviation
-        </div>
-        <div className="mt-4" style={{flexBasis: "75%"}}>
-          Cisco <abbr title="Security Business Group">sbg</abbr>
-        </div>
-        <div className="text-align-right pr-4" style={{flexBasis: "25%"}}>
-          Blockquote
-        </div>
-        <div className="mt-4" style={{flexBasis: "75%"}}>
-          <blockquote>
-            {" "}
-            All that we see or seem is but a dream within a dream.<cite>
-              Edgar Allan Poe
-            </cite>
-          </blockquote>
-        </div>
-        <div className="text-align-right pr-4" style={{flexBasis: "25%"}}>
-          Monospaced
-        </div>
-        <div className="mt-4" style={{flexBasis: "75%"}}>
-          <p>
-            <code>var code = "code";</code>
-          </p>
-          <p>
-            <kbd>var kbd = "kbd";</kbd>
-          </p>
-          <pre>var pre = "pre";</pre>
-          <p>
-            <samp>var samp = "samp";</samp>
-          </p>
-        </div>
-      </div>
-    </AApp>
+    </div>
   </Story>
 </Preview>
 
@@ -205,79 +165,73 @@ The `AApp` component provides theming, typography, scrollbar stylings as well as
 
 <Preview>
   <Story name="lists-1">
-    <AApp>
-      <div className="pr-3">
-        <h2>List Ordered</h2>
-        <ol>
-          <li>Lorem ipsum dolor sit amet</li>
-          <li>Consectetur adipiscing elit</li>
-          <li>Integer molestie lorem at massa</li>
-          <li>Facilisis in pretium nisl aliquet</li>
-          <li>
-            Nulla volutpat aliquam velit
-            <ol>
-              <li>Phasellus iaculis neque</li>
-              <li>Purus sodales ultricies</li>
-              <li>Vestibulum laoreet porttitor sem</li>
-              <li>Ac tristique libero volutpat at</li>
-            </ol>
-          </li>
-          <li>Faucibus porta lacus fringilla vel</li>
-          <li>Aenean sit amet erat nunc</li>
-          <li>Eget porttitor lorem</li>
-        </ol>
-      </div>
-    </AApp>
+    <div className="pr-3">
+      <h2>List Ordered</h2>
+      <ol>
+        <li>Lorem ipsum dolor sit amet</li>
+        <li>Consectetur adipiscing elit</li>
+        <li>Integer molestie lorem at massa</li>
+        <li>Facilisis in pretium nisl aliquet</li>
+        <li>
+          Nulla volutpat aliquam velit
+          <ol>
+            <li>Phasellus iaculis neque</li>
+            <li>Purus sodales ultricies</li>
+            <li>Vestibulum laoreet porttitor sem</li>
+            <li>Ac tristique libero volutpat at</li>
+          </ol>
+        </li>
+        <li>Faucibus porta lacus fringilla vel</li>
+        <li>Aenean sit amet erat nunc</li>
+        <li>Eget porttitor lorem</li>
+      </ol>
+    </div>
   </Story>
   <Story name="lists-2">
-    <AApp>
-      <div className="pr-3">
-        <h2>List Unordered</h2>
-        <ul>
-          <li>Lorem ipsum dolor sit amet</li>
-          <li>Consectetur adipiscing elit</li>
-          <li>Integer molestie lorem at massa</li>
-          <li>Facilisis in pretium nisl aliquet</li>
-          <li>
-            Nulla volutpat aliquam velit
-            <ul>
-              <li>Phasellus iaculis neque</li>
-              <li>Purus sodales ultricies</li>
-              <li>Vestibulum laoreet porttitor sem</li>
-              <li>Ac tristique libero volutpat at</li>
-            </ul>
-          </li>
-          <li>Faucibus porta lacus fringilla vel</li>
-          <li>Aenean sit amet erat nunc</li>
-          <li>Eget porttitor lorem</li>
-        </ul>
-      </div>
-    </AApp>
+    <div className="pr-3">
+      <h2>List Unordered</h2>
+      <ul>
+        <li>Lorem ipsum dolor sit amet</li>
+        <li>Consectetur adipiscing elit</li>
+        <li>Integer molestie lorem at massa</li>
+        <li>Facilisis in pretium nisl aliquet</li>
+        <li>
+          Nulla volutpat aliquam velit
+          <ul>
+            <li>Phasellus iaculis neque</li>
+            <li>Purus sodales ultricies</li>
+            <li>Vestibulum laoreet porttitor sem</li>
+            <li>Ac tristique libero volutpat at</li>
+          </ul>
+        </li>
+        <li>Faucibus porta lacus fringilla vel</li>
+        <li>Aenean sit amet erat nunc</li>
+        <li>Eget porttitor lorem</li>
+      </ul>
+    </div>
   </Story>
   <Story name="lists-3">
-    <AApp>
-      <div className="pr-3">
-        <h2>List Unstyled</h2>
-        <ul className="unstyled">
-          <li>Lorem ipsum dolor sit amet</li>
-          <li>Consectetur adipiscing elit</li>
-          <li>Integer molestie lorem at massa</li>
-          <li>Facilisis in pretium nisl aliquet</li>
-          <li>
-            Nulla volutpat aliquam velit
-            <ul>
-              <li>Phasellus iaculis neque</li>
-              <li>Purus sodales ultricies</li>
-              <li>Vestibulum laoreet porttitor sem</li>
-              <li>Ac tristique libero volutpat at</li>
-            </ul>
-          </li>
-          <li>Faucibus porta lacus fringilla vel</li>
-          <li>Aenean sit amet erat nunc</li>
-          <li>Eget porttitor lorem</li>
-        </ul>
-      </div>
-    </AApp>
+    <div className="pr-3">
+      <h2>List Unstyled</h2>
+      <ul className="unstyled">
+        <li>Lorem ipsum dolor sit amet</li>
+        <li>Consectetur adipiscing elit</li>
+        <li>Integer molestie lorem at massa</li>
+        <li>Facilisis in pretium nisl aliquet</li>
+        <li>
+          Nulla volutpat aliquam velit
+          <ul>
+            <li>Phasellus iaculis neque</li>
+            <li>Purus sodales ultricies</li>
+            <li>Vestibulum laoreet porttitor sem</li>
+            <li>Ac tristique libero volutpat at</li>
+          </ul>
+        </li>
+        <li>Faucibus porta lacus fringilla vel</li>
+        <li>Aenean sit amet erat nunc</li>
+        <li>Eget porttitor lorem</li>
+      </ul>
+    </div>
   </Story>
 </Preview>
 

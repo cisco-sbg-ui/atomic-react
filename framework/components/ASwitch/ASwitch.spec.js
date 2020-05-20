@@ -1,6 +1,6 @@
 context("ASwitch", () => {
   before(() => {
-    cy.visit(
+    cy.visitInLightTheme(
       "http://localhost:8081/iframe.html?id=components-switches--usage-1&viewMode=docs"
     );
   });
@@ -12,14 +12,14 @@ context("ASwitch", () => {
   // TODO: First snapshot should be a `states` story, not usage.
 
   it("supports themes", () => {
-    // There isn't a way yet to tell if fonts are loaded, so wait 3 seconds.
-    cy.wait(3000)
-      .get("#story--components-switches--usage-1")
+    cy.get("#story--components-switches--states-1")
       .parent()
       .parent()
-      .matchImageSnapshot("a-switch--usage-1");
+      .matchImageSnapshot("a-switch--states-1");
 
-    cy.get("#story--components-switches--dusk-1")
+    cy.get(".a-button").eq(1).click();
+
+    cy.get("#story--components-switches--states-1")
       .parent()
       .parent()
       .matchImageSnapshot("a-switch--dusk-1");

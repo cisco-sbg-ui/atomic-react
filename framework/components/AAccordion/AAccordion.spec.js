@@ -1,6 +1,6 @@
 context("AAccordion", () => {
   before(() => {
-    cy.visit(
+    cy.visitInLightTheme(
       "http://localhost:8081/iframe.html?id=components-accordions--usage-1&viewMode=docs"
     );
   });
@@ -77,14 +77,14 @@ context("AAccordion", () => {
   it("supports themes", () => {
     if (Cypress.env("snapshots") === "off") return;
 
-    // There isn't a way yet to tell if fonts are loaded, so wait 3 seconds.
-    cy.wait(3000)
-      .get("#story--components-accordions--usage-1")
+    cy.get("#story--components-accordions--usage-1")
       .parent()
       .parent()
       .matchImageSnapshot("a-accordion--usage-1");
 
-    cy.get("#story--components-accordions--dusk-1")
+    cy.get(".a-button").eq(1).click();
+
+    cy.get("#story--components-accordions--usage-1")
       .parent()
       .parent()
       .matchImageSnapshot("a-accordion--dusk-1");

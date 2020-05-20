@@ -7,12 +7,6 @@ $pre-padding: 10px;
 @mixin theme-app($theme) {
   background-color: map-deep-get($theme, "base", "bg");
   color: map-deep-get($theme, "base", "color");
-
-  code,
-  pre {
-    background-color: map-deep-get($theme, "app", "code", "bg");
-    color: map-deep-get($theme, "app", "code", "color");
-  }
 }
 
 .a-app.theme--default {

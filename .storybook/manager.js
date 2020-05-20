@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import ReactDOM from "react-dom";
 import {addons} from "@storybook/addons";
 import {create} from "@storybook/theming/create";
@@ -15,31 +15,63 @@ import {
 import AIcon from "../AIcon";
 import ATextInput from "../ATextInput";
 import ATree from "../ATree";
+import {useATheme} from "../ATheme";
 
 const StorybookHeader = () => {
+  const {setCurrentTheme} = useATheme();
+
+  useEffect(() => {
+    const handleThemeChanged = (e) => {
+      setCurrentTheme(e.detail.currentTheme);
+    };
+
+    window.addEventListener("themeChanged", handleThemeChanged);
+
+    return () => window.removeEventListener("themeChanged", handleThemeChanged);
+  }, [setCurrentTheme]);
+
   return (
-    <AApp>
-      <AHeader>
-        <AHeaderLogo href="/">
-          <AIcon>cisco</AIcon>
-        </AHeaderLogo>
-        <AHeaderTitle>Atomic Components for React</AHeaderTitle>
-        <AHeaderNavigation />
-        <AButton
-          icon
-          tertiaryAlt
-          href="https://www.github.com/threatgrid/atomic-react"
-          target="_blank">
-          <AIcon>github</AIcon>
-        </AButton>
-      </AHeader>
-    </AApp>
+    <AHeader>
+      <AHeaderLogo href="/">
+        <AIcon>cisco</AIcon>
+      </AHeaderLogo>
+      <AHeaderTitle>Atomic Components for React</AHeaderTitle>
+      <AHeaderNavigation />
+      <AButton
+        icon
+        tertiaryAlt
+        href="https://www.github.com/threatgrid/atomic-react"
+        target="_blank">
+        <AIcon>github</AIcon>
+      </AButton>
+    </AHeader>
   );
 };
 
 const StorybookSidebar = ({nav}) => {
   const [filter, setFilter] = useState("");
   const [items, setItems] = useState(nav);
+  const {currentTheme, setCurrentTheme} = useATheme();
+
+  useEffect(() => {
+    const handleThemeChanged = (e) => {
+      setCurrentTheme(e.detail.currentTheme);
+    };
+
+    window.addEventListener("themeChanged", handleThemeChanged);
+
+    return () => window.removeEventListener("themeChanged", handleThemeChanged);
+  }, [setCurrentTheme]);
+
+  useEffect(() => {
+    if (currentTheme === "dusk") {
+      document.body.style.backgroundColor = "#000";
+      document.querySelector("iframe").style.backgroundColor = "#000";
+    } else {
+      document.body.style.backgroundColor = "#F6F9FC";
+      document.querySelector("iframe").style.backgroundColor = "#F6F9FC";
+    }
+  }, [currentTheme]);
 
   const filterItems = (filter, base) => {
     if (!filter.length) return base.items;
@@ -65,28 +97,29 @@ const StorybookSidebar = ({nav}) => {
   };
 
   return (
-    <AApp>
-      <div className="root-sidebar cisco-blue overflow-y-scroll py-3">
-        <div className="px-3 pb-3">
-          <ATextInput
-            prependIcon="filter"
-            value={filter}
-            onChange={({target}) => {
-              setFilter(target.value);
-              setItems(filterItems(target.value, {items: nav}));
-            }}
-          />
-        </div>
-        <ATree
-          className="white--text"
-          hoverable
-          activatable
-          expandOnClick
-          items={items}
-          onChange={(x) => setItems(x)}
+    <div
+      className={`root-sidebar overflow-y-scroll py-3${
+        currentTheme === "dusk" ? " grey--darken-6" : " cisco-blue"
+      }`}>
+      <div className="px-3 pb-3">
+        <ATextInput
+          prependIcon="filter"
+          value={filter}
+          onChange={({target}) => {
+            setFilter(target.value);
+            setItems(filterItems(target.value, {items: nav}));
+          }}
         />
       </div>
-    </AApp>
+      <ATree
+        className="white--text"
+        hoverable
+        activatable
+        expandOnClick
+        items={items}
+        onChange={(x) => setItems(x)}
+      />
+    </div>
   );
 };
 
@@ -95,10 +128,15 @@ addons.register("atomic-react/header", () => {
   rootHeader.id = "root-header";
   var body = document.querySelector("body");
   body.insertBefore(rootHeader, body.childNodes[0]);
-  ReactDOM.render(<StorybookHeader />, document.querySelector("#root-header"));
+  ReactDOM.render(
+    <AApp persistTheme>
+      <StorybookHeader />
+    </AApp>,
+    document.querySelector("#root-header")
+  );
 
   document.querySelector("#root").className =
-    "a-app a-app--wrap a-app--scrollbars theme--default";
+    "a-app a-app--wrap a-app--scrollbars";
 });
 
 addons.register("atomic-react/sidebar", (api) => {
@@ -142,7 +180,9 @@ addons.register("atomic-react/sidebar", (api) => {
     }, []);
 
     ReactDOM.render(
-      <StorybookSidebar nav={storybookPages} />,
+      <AApp persistTheme>
+        <StorybookSidebar nav={storybookPages} />
+      </AApp>,
       document.querySelector("#root-sidebar")
     );
   });

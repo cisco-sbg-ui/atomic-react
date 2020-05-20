@@ -1,6 +1,6 @@
 context("AButtonGroup", () => {
   before(() => {
-    cy.visit(
+    cy.visitInLightTheme(
       "http://localhost:8081/iframe.html?id=components-button-groups--usage-1&viewMode=docs"
     );
   });
@@ -8,14 +8,14 @@ context("AButtonGroup", () => {
   // TODO: Test interactability
 
   it("supports themes", () => {
-    // There isn't a way yet to tell if fonts are loaded, so wait 3 seconds.
-    cy.wait(3000)
-      .get("#story--components-button-groups--usage-1")
+    cy.get("#story--components-button-groups--usage-1")
       .parent()
       .parent()
       .matchImageSnapshot("a-button-group--usage-1");
 
-    cy.get("#story--components-button-groups--dusk-1")
+    cy.get(".a-button").eq(1).click();
+
+    cy.get("#story--components-button-groups--usage-1")
       .parent()
       .parent()
       .matchImageSnapshot("a-button-group--dusk-1");

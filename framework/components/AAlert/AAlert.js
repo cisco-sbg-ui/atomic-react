@@ -70,11 +70,6 @@ const AAlert = forwardRef(
   }
 );
 
-AAlert.defaultProps = {
-  dismissable: true,
-  level: "info"
-};
-
 AAlert.propTypes = {
   /**
    * Toggles the close button.

@@ -1,7 +1,6 @@
 import {Meta, Preview, Story, Props} from "@storybook/addon-docs/blocks";
 import {useState} from "react";
 
-import AApp from "../AApp";
 import LoremIpsum from "../../utils/lorem-ipsum";
 import YourComponent from "../../utils/storybook-function";
 import ASwitch from "./ASwitch";
@@ -26,38 +25,36 @@ import {ASwitch} from "@cisco-ats/atomic-react";
 
 <Preview>
   <Story name="usage-1">
-    <AApp>
-      <YourComponent>
-        {() => {
-          const [checked, setChecked] = useState(false);
-          const [disabled, setDisabled] = useState(false);
-          const [wrap, setWrap] = useState(false);
-          return (
-            <div>
-              <h3>Example</h3>
-              <ASwitch checked={checked} disabled={disabled} wrap={wrap}>
-                {LoremIpsum}
+    <YourComponent>
+      {() => {
+        const [checked, setChecked] = useState(false);
+        const [disabled, setDisabled] = useState(false);
+        const [wrap, setWrap] = useState(false);
+        return (
+          <div>
+            <h3>Example</h3>
+            <ASwitch checked={checked} disabled={disabled} wrap={wrap}>
+              {LoremIpsum}
+            </ASwitch>
+            <ADivider />
+            <h3>Options</h3>
+            <div className="d-flex mt-4 flex-column">
+              <ASwitch checked={checked} onClick={() => setChecked(!checked)}>
+                Checked State
               </ASwitch>
-              <ADivider />
-              <h3>Options</h3>
-              <div className="d-flex mt-4 flex-column">
-                <ASwitch checked={checked} onClick={() => setChecked(!checked)}>
-                  Checked State
-                </ASwitch>
-                <ASwitch
-                  checked={disabled}
-                  onClick={() => setDisabled(!disabled)}>
-                  Disabled State
-                </ASwitch>
-                <ASwitch checked={wrap} onClick={() => setWrap(!wrap)}>
-                  Wrap Label
-                </ASwitch>
-              </div>
+              <ASwitch
+                checked={disabled}
+                onClick={() => setDisabled(!disabled)}>
+                Disabled State
+              </ASwitch>
+              <ASwitch checked={wrap} onClick={() => setWrap(!wrap)}>
+                Wrap Label
+              </ASwitch>
             </div>
-          );
-        }}
-      </YourComponent>
-    </AApp>
+          </div>
+        );
+      }}
+    </YourComponent>
   </Story>
 </Preview>
 
@@ -67,57 +64,20 @@ The `ASwitch` component inherits passed props.
 
 <Props of={ASwitch} />
 
-## Dusk Theme
-
-<Preview style={{backgroundColor: "#18191d"}}>
-  <Story name="dusk-1">
-    <AApp defaultTheme="dusk">
-      <div className="d-flex flex-column">
-        <ASwitch>Default</ASwitch>
-        <ASwitch checked>Checked</ASwitch>
-        <ASwitch disabled>Disabled</ASwitch>
-        <ASwitch disabled checked>
-          Disabled and Checked
-        </ASwitch>
-        <ASwitch>Very long truncated text. {LoremIpsum}</ASwitch>
-        <ASwitch wrap>Very long wrapping text. {LoremIpsum}</ASwitch>
-      </div>
-    </AApp>
-  </Story>
-</Preview>
-
-## Animations
-
-Animations are enabled by default on the `AApp` component and can be disabled.
+## States
 
 <Preview>
-  <Story name="animations-1">
-    <AApp>
-      <YourComponent>
-        {() => {
-          const [checked, setChecked] = useState(false);
-          return (
-            <ASwitch checked={checked} onClick={() => setChecked(!checked)}>
-              Animated
-            </ASwitch>
-          );
-        }}
-      </YourComponent>
-    </AApp>
-  </Story>
-  <Story name="animations-2">
-    <AApp animations={false}>
-      <YourComponent>
-        {() => {
-          const [checked, setChecked] = useState(false);
-          return (
-            <ASwitch checked={checked} onClick={() => setChecked(!checked)}>
-              Not Animated
-            </ASwitch>
-          );
-        }}
-      </YourComponent>
-    </AApp>
+  <Story name="states-1">
+    <div className="d-flex flex-column">
+      <ASwitch>Default</ASwitch>
+      <ASwitch checked>Checked</ASwitch>
+      <ASwitch disabled>Disabled</ASwitch>
+      <ASwitch disabled checked>
+        Disabled and Checked
+      </ASwitch>
+      <ASwitch>Very long truncated text. {LoremIpsum}</ASwitch>
+      <ASwitch wrap>Very long wrapping text. {LoremIpsum}</ASwitch>
+    </div>
   </Story>
 </Preview>
 

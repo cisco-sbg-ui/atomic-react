@@ -1,6 +1,6 @@
 context("ATabs", () => {
   before(() => {
-    cy.visit(
+    cy.visitInLightTheme(
       "http://localhost:8081/iframe.html?id=components-tabs--usage-1&viewMode=docs"
     );
   });
@@ -50,9 +50,7 @@ context("ATabs", () => {
   it("supports themes", () => {
     if (Cypress.env("snapshots") === "off") return;
 
-    // There isn't a way yet to tell if fonts are loaded, so wait 3 seconds.
-    cy.wait(3000)
-      .get("#story--components-tabs--usage-1")
+    cy.get("#story--components-tabs--usage-1")
       .parent()
       .parent()
       .matchImageSnapshot("a-tab--usage-1");
@@ -67,9 +65,16 @@ context("ATabs", () => {
       .parent()
       .matchImageSnapshot("a-tab--variants-2");
 
-    cy.get("#story--components-tabs--dusk-1")
+    cy.get(".a-button").eq(1).click();
+
+    cy.get("#story--components-tabs--variants-1")
       .parent()
       .parent()
       .matchImageSnapshot("a-tab--dusk-1");
+
+    cy.get("#story--components-tabs--variants-2")
+      .parent()
+      .parent()
+      .matchImageSnapshot("a-tab--dusk-2");
   });
 });

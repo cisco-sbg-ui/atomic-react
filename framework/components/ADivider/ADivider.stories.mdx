@@ -1,6 +1,5 @@
 import {Meta, Preview, Story, Props} from "@storybook/addon-docs/blocks";
 
-import AApp from "../AApp";
 import LoremIpsum from "../../utils/lorem-ipsum";
 import ADivider from "./ADivider";
 
@@ -22,7 +21,7 @@ import {ADivider} from "@cisco-ats/atomic-react";
 
 <Preview>
   <Story name="usage-1">
-    <AApp>
+    <>
       {LoremIpsum}
       <ADivider />
       {LoremIpsum}
@@ -30,7 +29,7 @@ import {ADivider} from "@cisco-ats/atomic-react";
       {LoremIpsum}
       <ADivider lighter />
       {LoremIpsum}
-    </AApp>
+    </>
   </Story>
 </Preview>
 
@@ -39,22 +38,6 @@ import {ADivider} from "@cisco-ats/atomic-react";
 The `ADivider` component inherits passed props.
 
 <Props of={ADivider} />
-
-## Dusk Theme
-
-<Preview style={{backgroundColor: "#18191d"}}>
-  <Story name="dusk-1">
-    <AApp defaultTheme="dusk">
-      {LoremIpsum}
-      <ADivider />
-      {LoremIpsum}
-      <ADivider light />
-      {LoremIpsum}
-      <ADivider lighter />
-      {LoremIpsum}
-    </AApp>
-  </Story>
-</Preview>
 
 ## Accessibility Notes
 

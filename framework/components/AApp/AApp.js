@@ -1,8 +1,9 @@
 import PropTypes from "prop-types";
-import React, {createRef, forwardRef} from "react";
+import React, {useRef, forwardRef} from "react";
 
 import {ATheme} from "../ATheme";
 import AAppContext from "./AAppContext";
+import {useCombinedRefs} from "../../utils/hooks";
 import "./AApp.scss";
 
 const AApp = forwardRef(
@@ -33,23 +34,26 @@ const AApp = forwardRef(
     }
 
     let wrapClassName = "a-app--wrap";
-    const mountPointRef = createRef();
+    const appRef = useRef(null);
+    const wrapRef = useRef(null);
+    const combinedRef = useCombinedRefs(ref, appRef);
 
     const appContext = {
-      mountPoint: () =>
-        mountPointRef.current.closest(".a-app").querySelector(".a-app--mount")
+      appRef: combinedRef,
+      wrapRef
     };
 
     return (
       <ATheme
         {...rest}
-        ref={ref}
+        ref={combinedRef}
         className={className}
         persist={persistTheme}
         defaultTheme={defaultTheme}>
         <AAppContext.Provider value={appContext}>
-          <div className={wrapClassName}>{children}</div>
-          <div ref={mountPointRef} className="a-app--mount"></div>
+          <div ref={wrapRef} className={wrapClassName}>
+            {children}
+          </div>
         </AAppContext.Provider>
       </ATheme>
     );

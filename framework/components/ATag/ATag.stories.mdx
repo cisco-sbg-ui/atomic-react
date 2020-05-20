@@ -3,7 +3,6 @@ import {useState} from "react";
 
 import YourComponent from "../../utils/storybook-function";
 
-import AApp from "../AApp";
 import AIcon from "../AIcon";
 import {ADropdown, ADropdownMenu, ADropdownMenuItem} from "../ADropdown";
 import ATag from "./ATag";
@@ -26,7 +25,7 @@ import {ATag} from "@cisco-ats/atomic-react";
 
 <Preview>
   <Story name="usage-1">
-    <AApp style={{minHeight: 120}}>
+    <div style={{minHeight: 120}}>
       <ATag>Simple Tag</ATag>
       <ATag className="status-red white--text ma-1">
         <AIcon left>critical-stop</AIcon>Status Tag
@@ -89,7 +88,7 @@ import {ATag} from "@cisco-ats/atomic-react";
           );
         }}
       </YourComponent>
-    </AApp>
+    </div>
   </Story>
 </Preview>
 
@@ -98,77 +97,6 @@ import {ATag} from "@cisco-ats/atomic-react";
 The `ATag` component inherits passed props.
 
 <Props of={ATag} />
-
-## Dusk Theme
-
-<Preview style={{backgroundColor: "#18191d"}}>
-  <Story name="dusk-1">
-    <AApp defaultTheme="dusk" style={{minHeight: 120}}>
-      <ATag>Simple Tag</ATag>
-      <ATag className="status-red white--text ma-1">
-        <AIcon left>critical-stop</AIcon>Status Tag
-      </ATag>
-      <ATag href="/" target="_blank" className="ma-1">
-        Linked Tag
-      </ATag>
-      <ATag className="cisco-blue white--text ma-1">
-        <AIcon left>user</AIcon>User Tag
-        <AIcon
-          right
-          className="cursor-pointer"
-          onClick={() => alert("Close icon clicked!")}>
-          close
-        </AIcon>
-      </ATag>
-      <YourComponent>
-        {() => {
-          const [selectedOption, setSelectedOption] = useState("Option 1");
-          const [active, setActive] = useState(false);
-          return (
-            <>
-              <ATag
-                className="ma-1 grape white--text"
-                onClick={() => setActive(!active)}>
-                {selectedOption} Tag
-                <AIcon right className="cursor-pointer">
-                  chevron-down
-                </AIcon>
-              </ATag>
-              <ADropdown>
-                <ADropdownMenu
-                  open={active}
-                  onClose={() => setActive(false)}
-                  style={{right: 5}}>
-                  <ADropdownMenuItem
-                    onClick={() => {
-                      setSelectedOption("Option 1");
-                      setActive(!active);
-                    }}>
-                    Option 1
-                  </ADropdownMenuItem>
-                  <ADropdownMenuItem
-                    onClick={() => {
-                      setSelectedOption("Option 2");
-                      setActive(!active);
-                    }}>
-                    Option 2
-                  </ADropdownMenuItem>
-                  <ADropdownMenuItem
-                    onClick={() => {
-                      setSelectedOption("Option 3");
-                      setActive(!active);
-                    }}>
-                    Option 3
-                  </ADropdownMenuItem>
-                </ADropdownMenu>
-              </ADropdown>
-            </>
-          );
-        }}
-      </YourComponent>
-    </AApp>
-  </Story>
-</Preview>
 
 ## Router Integrations
 

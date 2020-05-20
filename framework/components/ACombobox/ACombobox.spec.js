@@ -1,6 +1,6 @@
 context("ACombobox", () => {
   before(() => {
-    cy.visit(
+    cy.visitInLightTheme(
       "http://localhost:8081/iframe.html?id=components-comboboxes--usage-1&viewMode=docs"
     );
   });
@@ -132,9 +132,6 @@ context("ACombobox", () => {
   it("supports themes", () => {
     if (Cypress.env("snapshots") === "off") return;
 
-    // There isn't a way yet to tell if fonts are loaded, so wait 3 seconds.
-    cy.wait(3000);
-
     cy.get("#story--components-comboboxes--usage-1 .a-combobox__input")
       .first()
       .type("{downArrow}");
@@ -144,11 +141,13 @@ context("ACombobox", () => {
       .parent()
       .matchImageSnapshot("a-combobox--usage-1");
 
-    cy.get("#story--components-comboboxes--dusk-1 .a-combobox__input")
+    cy.get(".a-button").eq(1).click();
+
+    cy.get("#story--components-comboboxes--usage-1 .a-combobox__input")
       .first()
       .type("{downArrow}");
 
-    cy.get("#story--components-comboboxes--dusk-1")
+    cy.get("#story--components-comboboxes--usage-1")
       .parent()
       .parent()
       .matchImageSnapshot("a-combobox--dusk-1");

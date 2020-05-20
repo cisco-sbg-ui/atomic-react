@@ -1,7 +1,6 @@
 import {Meta, Preview, Story, Props} from "@storybook/addon-docs/blocks";
 import {useState} from "react";
 
-import AApp from "../AApp";
 import AButton from "../AButton";
 import YourComponent from "../../utils/storybook-function";
 import {ADropdown, ADropdownMenu, ADropdownMenuItem} from "./";
@@ -24,7 +23,7 @@ import {ADropdown, ADropdownMenu, ADropdownMenuItem} from "@cisco-ats/atomic-rea
 
 <Preview>
   <Story name="usage-1">
-    <AApp style={{minHeight: 150}}>
+    <div style={{minHeight: 150}}>
       <YourComponent>
         {() => {
           const [isActive1, setIsActive1] = useState(false);
@@ -76,7 +75,7 @@ import {ADropdown, ADropdownMenu, ADropdownMenuItem} from "@cisco-ats/atomic-rea
           );
         }}
       </YourComponent>
-    </AApp>
+    </div>
   </Story>
 </Preview>
 
@@ -97,66 +96,6 @@ The `ADropdownMenu` component inherits passed props.
 The `ADropdownMenuItem` component inherits passed props.
 
 <Props of={ADropdownMenuItem} />
-
-## Dusk Theme
-
-<Preview style={{backgroundColor: "#18191d"}}>
-  <Story name="dusk-1">
-    <AApp defaultTheme="dusk" style={{minHeight: 150}}>
-      <YourComponent>
-        {() => {
-          const [isActive1, setIsActive1] = useState(false);
-          const [isActive2, setIsActive2] = useState(false);
-          return (
-            <>
-              <ADropdown>
-                <AButton
-                  className="mr-3"
-                  aria-haspopup="true"
-                  onClick={() => setIsActive1(!isActive1)}>
-                  Open Menu
-                </AButton>
-                <ADropdownMenu
-                  open={isActive1}
-                  onClose={() => setIsActive1(false)}>
-                  <ADropdownMenuItem onClick={() => 1} selected>
-                    One - Selected
-                  </ADropdownMenuItem>
-                  <ADropdownMenuItem
-                    href="https://www.cisco.com"
-                    target="_blank">
-                    Cisco.com
-                  </ADropdownMenuItem>
-                  <ADropdownMenuItem onClick={() => 3}>Three</ADropdownMenuItem>
-                </ADropdownMenu>
-              </ADropdown>
-              <ADropdown>
-                <AButton
-                  aria-haspopup="true"
-                  onClick={() => setIsActive2(!isActive2)}>
-                  Open Menu
-                </AButton>
-                <ADropdownMenu
-                  open={isActive2}
-                  onClose={() => setIsActive2(false)}>
-                  <ADropdownMenuItem onClick={() => 1}>One</ADropdownMenuItem>
-                  <ADropdownMenuItem
-                    href="https://www.cisco.com"
-                    target="_blank">
-                    Cisco.com
-                  </ADropdownMenuItem>
-                  <ADropdownMenuItem onClick={() => 3} selected>
-                    Three - Selected
-                  </ADropdownMenuItem>
-                </ADropdownMenu>
-              </ADropdown>
-            </>
-          );
-        }}
-      </YourComponent>
-    </AApp>
-  </Story>
-</Preview>
 
 ## Router Integrations
 

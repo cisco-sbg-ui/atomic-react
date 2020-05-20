@@ -1,7 +1,5 @@
 import {Meta, Preview, Story, Props} from "@storybook/addon-docs/blocks";
-import {useState} from "react";
 
-import AApp from "../AApp";
 import {ACiscoLoader, ADotLoader, APageLoader} from "./";
 
 <Meta title="Components/Loaders" component={ADotLoader} />
@@ -30,19 +28,13 @@ import {
 
 <Preview>
   <Story name="usage-1">
-    <AApp>
-      <ACiscoLoader />
-    </AApp>
+    <ACiscoLoader />
   </Story>
   <Story name="usage-2">
-    <AApp>
-      <ADotLoader />
-    </AApp>
+    <ADotLoader />
   </Story>
   <Story name="usage-3">
-    <AApp>
-      <APageLoader size="small" />
-    </AApp>
+    <APageLoader size="small" />
   </Story>
 </Preview>
 
@@ -63,26 +55,6 @@ The `ADotLoader` component inherits passed props.
 The `APageLoader` component inherits passed props.
 
 <Props of={APageLoader} />
-
-## Dusk Theme
-
-<Preview style={{backgroundColor: "#18191d"}}>
-  <Story name="dusk-1">
-    <AApp defaultTheme="dusk">
-      <ACiscoLoader />
-    </AApp>
-  </Story>
-  <Story name="dusk-2">
-    <AApp defaultTheme="dusk">
-      <ADotLoader />
-    </AApp>
-  </Story>
-  <Story name="dusk-3">
-    <AApp defaultTheme="dusk">
-      <APageLoader size="small" />
-    </AApp>
-  </Story>
-</Preview>
 
 ## Accessibility Notes
 

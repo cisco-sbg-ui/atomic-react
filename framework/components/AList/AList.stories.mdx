@@ -1,10 +1,7 @@
 import {Meta, Preview, Story, Props} from "@storybook/addon-docs/blocks";
-import {useState} from "react";
 
-import AApp from "../AApp";
 import AButton from "../AButton";
 import ADivider from "../ADivider";
-import LoremIpsum from "../../utils/lorem-ipsum";
 import {
   AList,
   AListItem,
@@ -50,98 +47,92 @@ import {
 
 <Preview>
   <Story name="usage-1">
-    <AApp>
-      <AList className="mr-2">
-        <AListItem twoLine>
-          <AListItemAvatar>
-            <AIcon size={16} className="status-red--text">
-              critical-stop
-            </AIcon>
-          </AListItemAvatar>
-          <AListItemContent>
-            <AListItemTitle>Source Application</AListItemTitle>
-            <AListItemSubtitle>
-              Danger. Text to describe the notification or an issue that needs
-              to be addressed. Very, very, very, very, very long text.
-            </AListItemSubtitle>
-          </AListItemContent>
-          <AListItemAction>
-            <AButton tertiaryAlt icon onClick={() => {}}>
-              <AIcon size={10}>close</AIcon>
-            </AButton>
-          </AListItemAction>
-        </AListItem>
-        <ADivider light className="ma-0" />
-        <AListItem onClick={() => {}}>Logout</AListItem>
-      </AList>
-    </AApp>
+    <AList className="mr-2">
+      <AListItem twoLine>
+        <AListItemAvatar>
+          <AIcon size={16} className="status-red--text">
+            critical-stop
+          </AIcon>
+        </AListItemAvatar>
+        <AListItemContent>
+          <AListItemTitle>Source Application</AListItemTitle>
+          <AListItemSubtitle>
+            Danger. Text to describe the notification or an issue that needs to
+            be addressed. Very, very, very, very, very long text.
+          </AListItemSubtitle>
+        </AListItemContent>
+        <AListItemAction>
+          <AButton tertiaryAlt icon onClick={() => {}}>
+            <AIcon size={10}>close</AIcon>
+          </AButton>
+        </AListItemAction>
+      </AListItem>
+      <ADivider light className="ma-0" />
+      <AListItem onClick={() => {}}>Logout</AListItem>
+    </AList>
   </Story>
   <Story name="usage-2">
-    <AApp>
-      <AList className="ml-2 mr-2 pl-2">
-        <AListItem twoLine>
-          <AListItemAvatar className="ma-2 ml-0">
-            <div
-              className="d-flex align-center justify-center"
-              style={{
-                width: 48,
-                height: 48,
-                color: "#f2f2f2",
-                borderRadius: 4,
-                backgroundColor: "#750b76"
-              }}>
-              AMP
-            </div>
-          </AListItemAvatar>
-          <AListItemContent>
-            <AListItemTitle>AMP for Endpoints</AListItemTitle>
-            <AListItemSubtitle>
-              <a href="#">New in 5.4.2</a> | <a href="#">API Docs</a>
-            </AListItemSubtitle>
-          </AListItemContent>
-        </AListItem>
-        <ADivider light className="ma-0" />
-        <AListItem twoLine>
-          <AListItemAvatar className="ma-2 ml-0">
-            <div
-              className="d-flex align-center justify-center ma-0"
-              style={{
-                width: 48,
-                height: 48,
-                color: "#f2f2f2",
-                borderRadius: 4,
-                backgroundColor: "#191970"
-              }}>
-              Cdo
-            </div>
-          </AListItemAvatar>
-          <AListItemContent>
-            <AListItemTitle>Cisco Defense Orchestrator</AListItemTitle>
-            <AListItemSubtitle>
-              <a href="#">What's New</a> | <a href="#">API Docs</a>
-            </AListItemSubtitle>
-          </AListItemContent>
-        </AListItem>
-      </AList>
-    </AApp>
+    <AList className="ml-2 mr-2 pl-2">
+      <AListItem twoLine>
+        <AListItemAvatar className="ma-2 ml-0">
+          <div
+            className="d-flex align-center justify-center"
+            style={{
+              width: 48,
+              height: 48,
+              color: "#f2f2f2",
+              borderRadius: 4,
+              backgroundColor: "#750b76"
+            }}>
+            AMP
+          </div>
+        </AListItemAvatar>
+        <AListItemContent>
+          <AListItemTitle>AMP for Endpoints</AListItemTitle>
+          <AListItemSubtitle>
+            <a href="#">New in 5.4.2</a> | <a href="#">API Docs</a>
+          </AListItemSubtitle>
+        </AListItemContent>
+      </AListItem>
+      <ADivider light className="ma-0" />
+      <AListItem twoLine>
+        <AListItemAvatar className="ma-2 ml-0">
+          <div
+            className="d-flex align-center justify-center ma-0"
+            style={{
+              width: 48,
+              height: 48,
+              color: "#f2f2f2",
+              borderRadius: 4,
+              backgroundColor: "#191970"
+            }}>
+            Cdo
+          </div>
+        </AListItemAvatar>
+        <AListItemContent>
+          <AListItemTitle>Cisco Defense Orchestrator</AListItemTitle>
+          <AListItemSubtitle>
+            <a href="#">What's New</a> | <a href="#">API Docs</a>
+          </AListItemSubtitle>
+        </AListItemContent>
+      </AListItem>
+    </AList>
   </Story>
   <Story name="usage-3">
-    <AApp>
-      <AList className="ml-2">
-        <AListItem href="#" target="_blank">
-          One
-        </AListItem>
-        <AListItem href="#" target="_blank">
-          Two
-        </AListItem>
-        <AListItem twoLine href="#" target="_blank">
-          <AListItemAvatar>
-            <AIcon size={16}>sign-out</AIcon>
-          </AListItemAvatar>
-          <AListItemContent>Log Out</AListItemContent>
-        </AListItem>
-      </AList>
-    </AApp>
+    <AList className="ml-2">
+      <AListItem href="#" target="_blank">
+        One
+      </AListItem>
+      <AListItem href="#" target="_blank">
+        Two
+      </AListItem>
+      <AListItem twoLine href="#" target="_blank">
+        <AListItemAvatar>
+          <AIcon size={16}>sign-out</AIcon>
+        </AListItemAvatar>
+        <AListItemContent>Log Out</AListItemContent>
+      </AListItem>
+    </AList>
   </Story>
 </Preview>
 
@@ -186,105 +177,6 @@ The `AListItemContent` component inherits passed props.
 The `AListItemAction` component inherits passed props.
 
 <Props of={AListItemAction} />
-
-## Dusk Theme
-
-<Preview style={{backgroundColor: "#18191d"}}>
-  <Story name="dusk-1">
-    <AApp defaultTheme="dusk">
-      <AList className="mr-2">
-        <AListItem twoLine>
-          <AListItemAvatar>
-            <AIcon size={16} className="status-red--text">
-              critical-stop
-            </AIcon>
-          </AListItemAvatar>
-          <AListItemContent>
-            <AListItemTitle>Source Application</AListItemTitle>
-            <AListItemSubtitle>
-              Danger. Text to describe the notification or an issue that needs
-              to be addressed. Very, very, very, very, very long text.
-            </AListItemSubtitle>
-          </AListItemContent>
-          <AListItemAction>
-            <AButton tertiaryAlt icon onClick={() => {}}>
-              <AIcon size={10}>close</AIcon>
-            </AButton>
-          </AListItemAction>
-        </AListItem>
-        <ADivider light className="ma-0" />
-        <AListItem onClick={() => {}}>Logout</AListItem>
-      </AList>
-    </AApp>
-  </Story>
-  <Story name="dusk-2">
-    <AApp defaultTheme="dusk">
-      <AList className="ml-2 mr-2 pl-2">
-        <AListItem twoLine>
-          <AListItemAvatar className="ma-2 ml-0">
-            <div
-              className="d-flex align-center justify-center"
-              style={{
-                width: 48,
-                height: 48,
-                color: "#f2f2f2",
-                borderRadius: 4,
-                backgroundColor: "#750b76"
-              }}>
-              AMP
-            </div>
-          </AListItemAvatar>
-          <AListItemContent>
-            <AListItemTitle>AMP for Endpoints</AListItemTitle>
-            <AListItemSubtitle>
-              <a href="#">New in 5.4.2</a> | <a href="#">API Docs</a>
-            </AListItemSubtitle>
-          </AListItemContent>
-        </AListItem>
-        <ADivider light className="ma-0" />
-        <AListItem twoLine>
-          <AListItemAvatar className="ma-2 ml-0">
-            <div
-              className="d-flex align-center justify-center ma-0"
-              style={{
-                width: 48,
-                height: 48,
-                color: "#f2f2f2",
-                borderRadius: 4,
-                backgroundColor: "#191970"
-              }}>
-              Cdo
-            </div>
-          </AListItemAvatar>
-          <AListItemContent>
-            <AListItemTitle>Cisco Defense Orchestrator</AListItemTitle>
-            <AListItemSubtitle>
-              <a href="#">What's New</a> | <a href="#">API Docs</a>
-            </AListItemSubtitle>
-          </AListItemContent>
-        </AListItem>
-      </AList>
-    </AApp>
-  </Story>
-  <Story name="dusk-3">
-    <AApp defaultTheme="dusk">
-      <AList className="ml-2">
-        <AListItem href="#" target="_blank">
-          One
-        </AListItem>
-        <AListItem href="#" target="_blank">
-          Two
-        </AListItem>
-        <AListItem twoLine href="#" target="_blank">
-          <AListItemAvatar>
-            <AIcon size={16}>sign-out</AIcon>
-          </AListItemAvatar>
-          <AListItemContent>Log Out</AListItemContent>
-        </AListItem>
-      </AList>
-    </AApp>
-  </Story>
-</Preview>
 
 ## Router Integrations
 

@@ -35,7 +35,7 @@ const ADialog = forwardRef(
       }
     }, [open]);
 
-    const {mountPoint} = useContext(AAppContext);
+    const {appRef} = useContext(AAppContext);
 
     const dialogRef = useRef(null);
     const combinedRef = useCombinedRefs(ref, dialogRef);
@@ -60,13 +60,14 @@ const ADialog = forwardRef(
     );
 
     useEffect(() => {
-      if (!mountPoint()) return;
-      mountPoint().addEventListener("keydown", keyDownEscHandler);
+      const mountEl = appRef.current;
+      if (!mountEl) return;
+      mountEl.addEventListener("keydown", keyDownEscHandler);
 
       return () => {
-        mountPoint().removeEventListener("keydown", keyDownEscHandler);
+        mountEl.removeEventListener("keydown", keyDownEscHandler);
       };
-    }, [keyDownEscHandler, mountPoint]);
+    }, [keyDownEscHandler, appRef]);
 
     let backdropClassName = "a-dialog-backdrop";
     let className = "a-dialog";
@@ -89,7 +90,7 @@ const ADialog = forwardRef(
 
     return (
       open &&
-      mountPoint() &&
+      appRef.current &&
       ReactDOM.createPortal(
         <>
           <div className={backdropClassName} />
@@ -103,7 +104,7 @@ const ADialog = forwardRef(
             {children}
           </div>
         </>,
-        mountPoint()
+        appRef.current
       )
     );
   }

@@ -1,6 +1,6 @@
 context("ADropdown", () => {
   before(() => {
-    cy.visit(
+    cy.visitInLightTheme(
       "http://localhost:8081/iframe.html?id=components-dropdowns--usage-1&viewMode=docs"
     );
   });
@@ -108,9 +108,6 @@ context("ADropdown", () => {
   it("supports themes", () => {
     if (Cypress.env("snapshots") === "off") return;
 
-    // There isn't a way yet to tell if fonts are loaded, so wait 3 seconds.
-    cy.wait(3000);
-
     cy.get("#story--components-dropdowns--usage-1 .a-button").first().click();
 
     cy.get("#story--components-dropdowns--usage-1")
@@ -118,9 +115,11 @@ context("ADropdown", () => {
       .parent()
       .matchImageSnapshot("a-dropdown--usage-1");
 
-    cy.get("#story--components-dropdowns--dusk-1 .a-button").first().click();
+    cy.get(".a-button").eq(1).click();
 
-    cy.get("#story--components-dropdowns--dusk-1")
+    cy.get("#story--components-dropdowns--usage-1 .a-button").first().click();
+
+    cy.get("#story--components-dropdowns--usage-1")
       .parent()
       .parent()
       .matchImageSnapshot("a-dropdown--dusk-1");

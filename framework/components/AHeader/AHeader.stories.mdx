@@ -1,10 +1,6 @@
 import {Meta, Preview, Story, Props} from "@storybook/addon-docs/blocks";
-import {useState} from "react";
 
-import AApp from "../AApp";
 import AButton from "../AButton";
-import LoremIpsum from "../../utils/lorem-ipsum";
-import YourComponent from "../../utils/storybook-function";
 import {AHeader, AHeaderLogo, AHeaderTitle, AHeaderNavigation} from "./";
 import AIcon from "../AIcon";
 import {ATabGroup, ATab} from "../ATabs";
@@ -37,28 +33,26 @@ import {
 
 <Preview>
   <Story name="usage-1">
-    <AApp>
-      <AHeader>
-        <AHeaderLogo href="#cisco">
-          <AIcon>cisco</AIcon>
-        </AHeaderLogo>
-        <AHeaderTitle>Product Name</AHeaderTitle>
-        <AHeaderNavigation>
-          <ATabGroup tall>
-            <ATab selected>Demo Tab</ATab>
-            <ATab href="https://www.cisco.com" target="_blank">
-              Cisco.com
-            </ATab>
-          </ATabGroup>
-        </AHeaderNavigation>
-        <AButton icon tertiaryAlt href="https://www.cisco.com" target="_blank">
-          <AIcon>search</AIcon>
-        </AButton>
-        <AButton icon tertiaryAlt href="https://www.github.com" target="_blank">
-          <AIcon>github</AIcon>
-        </AButton>
-      </AHeader>
-    </AApp>
+    <AHeader>
+      <AHeaderLogo href="#cisco">
+        <AIcon>cisco</AIcon>
+      </AHeaderLogo>
+      <AHeaderTitle>Product Name</AHeaderTitle>
+      <AHeaderNavigation>
+        <ATabGroup tall>
+          <ATab selected>Demo Tab</ATab>
+          <ATab href="https://www.cisco.com" target="_blank">
+            Cisco.com
+          </ATab>
+        </ATabGroup>
+      </AHeaderNavigation>
+      <AButton icon tertiaryAlt href="https://www.cisco.com" target="_blank">
+        <AIcon>search</AIcon>
+      </AButton>
+      <AButton icon tertiaryAlt href="https://www.github.com" target="_blank">
+        <AIcon>github</AIcon>
+      </AButton>
+    </AHeader>
   </Story>
 </Preview>
 
@@ -85,35 +79,6 @@ The `AHeaderTitle` component inherits passed props.
 The `AHeaderNavigation` component inherits passed props.
 
 <Props of={AHeaderNavigation} />
-
-## Dusk Theme
-
-<Preview style={{backgroundColor: "#18191d"}}>
-  <Story name="dusk-1">
-    <AApp defaultTheme="dusk">
-      <AHeader>
-        <AHeaderLogo href="#cisco">
-          <AIcon>cisco</AIcon>
-        </AHeaderLogo>
-        <AHeaderTitle>Product Name</AHeaderTitle>
-        <AHeaderNavigation>
-          <ATabGroup tall>
-            <ATab selected>Demo Tab</ATab>
-            <ATab href="https://www.cisco.com" target="_blank">
-              Cisco.com
-            </ATab>
-          </ATabGroup>
-        </AHeaderNavigation>
-        <AButton icon tertiaryAlt href="https://www.cisco.com" target="_blank">
-          <AIcon>search</AIcon>
-        </AButton>
-        <AButton icon tertiaryAlt href="https://www.github.com" target="_blank">
-          <AIcon>github</AIcon>
-        </AButton>
-      </AHeader>
-    </AApp>
-  </Story>
-</Preview>
 
 ## Accessibility Notes
 
