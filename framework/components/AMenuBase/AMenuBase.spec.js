@@ -29,18 +29,40 @@ context("AMenuBase", () => {
       .then(($el) => {
         $el.closest("html").css("overflow-y", "hidden");
       })
-      .click();
-    cy.get("#story--extend-menu-base--position-1 .a-button").eq(1).click();
-    cy.get("#story--extend-menu-base--position-1 .a-button").eq(2).click();
-    cy.get("#story--extend-menu-base--position-1 .a-button").eq(3).click();
-    cy.get("#story--extend-menu-base--position-1 .a-button").eq(4).click();
-    cy.get("#story--extend-menu-base--position-1 .a-button").eq(5).click();
-    cy.get("#story--extend-menu-base--position-1 .a-button").eq(6).click();
-    cy.get("#story--extend-menu-base--position-1 .a-button").eq(7).click();
-    cy.get("#story--extend-menu-base--position-1 .a-button").eq(8).click();
-    cy.get("#story--extend-menu-base--position-1 .a-button").eq(9).click();
-    cy.get("#story--extend-menu-base--position-1 .a-button").eq(10).click();
-    cy.get("#story--extend-menu-base--position-1 .a-button").eq(11).click();
+      .click({force: true});
+    cy.get("#story--extend-menu-base--position-1 .a-button")
+      .eq(1)
+      .click({force: true});
+    cy.get("#story--extend-menu-base--position-1 .a-button")
+      .eq(2)
+      .click({force: true});
+    cy.get("#story--extend-menu-base--position-1 .a-button")
+      .eq(3)
+      .click({force: true});
+    cy.get("#story--extend-menu-base--position-1 .a-button")
+      .eq(4)
+      .click({force: true});
+    cy.get("#story--extend-menu-base--position-1 .a-button")
+      .eq(5)
+      .click({force: true});
+    cy.get("#story--extend-menu-base--position-1 .a-button")
+      .eq(6)
+      .click({force: true});
+    cy.get("#story--extend-menu-base--position-1 .a-button")
+      .eq(7)
+      .click({force: true});
+    cy.get("#story--extend-menu-base--position-1 .a-button")
+      .eq(8)
+      .click({force: true});
+    cy.get("#story--extend-menu-base--position-1 .a-button")
+      .eq(9)
+      .click({force: true});
+    cy.get("#story--extend-menu-base--position-1 .a-button")
+      .eq(10)
+      .click({force: true});
+    cy.get("#story--extend-menu-base--position-1 .a-button")
+      .eq(11)
+      .click({force: true});
 
     cy.get("#story--extend-menu-base--position-1")
       .parent()

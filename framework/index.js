@@ -49,6 +49,7 @@ import {
   APanelBody,
   APanelFooter
 } from "./components/APanel";
+import APopover from "./components/APopover";
 import ARadio from "./components/ARadio";
 import ASelect from "./components/ASelect";
 import ASimpleTable from "./components/ASimpleTable";
@@ -113,6 +114,7 @@ export {
   APanelTitle,
   APanelBody,
   APanelFooter,
+  APopover,
   ARadio,
   ARow,
   ASelect,

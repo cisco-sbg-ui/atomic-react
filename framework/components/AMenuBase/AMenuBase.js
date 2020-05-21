@@ -132,8 +132,8 @@ const calculateMenuPosition = (
   }
 
   // Edge detection: min x
-  if (baseLeft + marginLeft < 0) {
-    baseLeft = -marginLeft;
+  if (baseLeft + marginLeft < window.pageXOffset) {
+    baseLeft = window.pageXOffset - marginLeft;
   }
 
   // Edge detection: max y
@@ -142,8 +142,8 @@ const calculateMenuPosition = (
   }
 
   // Edge detection: min y
-  else if (baseTop < 0) {
-    baseTop = -marginTop;
+  else if (baseTop < window.pageYOffset) {
+    baseTop = window.pageYOffset - marginTop;
   }
 
   setMenuLeft(Math.round(baseLeft));
