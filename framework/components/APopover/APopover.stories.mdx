@@ -1,0 +1,380 @@
+import {Meta, Preview, Story, Props} from "@storybook/addon-docs/blocks";
+import {useRef, useState} from "react";
+
+import YourComponent from "../../utils/storybook-function";
+import LoremIpsum from "../../utils/lorem-ipsum";
+
+import AButton from "../AButton";
+import APopover from "./APopover";
+import AIcon from "../AIcon";
+import {APanelHeader, APanelTitle, APanelBody, APanelFooter} from "../APanel";
+import {AContainer, ARow, ACol} from "../ALayout";
+import ASelect from "../ASelect";
+
+<Meta title="Components/Popovers" component={APopover} />
+
+# Popovers
+
+## Install
+
+In the target component add:
+
+```
+import APopover from "@cisco-ats/atomic-react/APopover";
+// or if you're able to treekshake node_modules
+import {APopover} from "@cisco-ats/atomic-react";
+```
+
+It is necessary for `APopover` to be a descendant of `AApp` for mounting.
+
+## Usage
+
+<Preview>
+  <Story name="usage-1">
+    <YourComponent>
+      {() => {
+        const [language, setLanguage] = useState({text: "English (US)"});
+        const [timeZone, setTimeZone] = useState({
+          text: "Eastern Standard Time"
+        });
+        const buttonRef = useRef(null);
+        const [open, setOpen] = useState(false);
+        return (
+          <>
+            <AButton
+              icon
+              tertiaryAlt
+              ref={buttonRef}
+              onClick={() => setOpen(!open)}>
+              <AIcon>time-zone</AIcon>
+            </AButton>
+            <APopover
+              anchorRef={buttonRef}
+              open={open}
+              placement="right-top"
+              onClose={() => setOpen(false)}>
+              <APanelHeader>
+                <APanelTitle>Localization Settings</APanelTitle>
+                <AButton onClick={() => setOpen(false)} tertiaryAlt icon>
+                  <AIcon>close</AIcon>
+                </AButton>
+              </APanelHeader>
+              <APanelBody>
+                <AContainer>
+                  <ARow>
+                    <ACol>
+                      <ASelect
+                        label="Language"
+                        items={[
+                          {text: "English (US)", selected: true},
+                          {text: "Japanese"}
+                        ]}
+                        itemText="text"
+                        itemValue="text"
+                        onSelected={(item) => setLanguage(item)}
+                      />
+                    </ACol>
+                    <ACol>
+                      <ASelect
+                        label="Time Zone"
+                        items={[
+                          {text: "Eastern Standard Time", selected: true},
+                          {text: "Japan Standard Time"}
+                        ]}
+                        itemText="text"
+                        itemValue="text"
+                        onSelected={(item) => setTimeZone(item)}
+                      />
+                    </ACol>
+                  </ARow>
+                </AContainer>
+              </APanelBody>
+              <APanelFooter>
+                <AButton
+                  tertiary
+                  className="mr-4"
+                  onClick={() => setOpen(false)}>
+                  Cancel
+                </AButton>
+                <AButton primary onClick={() => setOpen(false)}>
+                  Save Changes
+                </AButton>
+              </APanelFooter>
+            </APopover>
+          </>
+        );
+      }}
+    </YourComponent>
+  </Story>
+</Preview>
+
+## Popover Props
+
+The `APopover` component inherits passed props.
+
+<Props of={APopover} />
+
+## Position
+
+<Preview>
+  <Story name="position-1">
+    <YourComponent>
+      {() => {
+        const buttonRef1 = useRef(null);
+        const buttonRef2 = useRef(null);
+        const buttonRef3 = useRef(null);
+        const buttonRef4 = useRef(null);
+        const buttonRef5 = useRef(null);
+        const buttonRef6 = useRef(null);
+        const buttonRef7 = useRef(null);
+        const buttonRef8 = useRef(null);
+        const buttonRef9 = useRef(null);
+        const buttonRef10 = useRef(null);
+        const buttonRef11 = useRef(null);
+        const buttonRef12 = useRef(null);
+        const [open, setOpen] = useState(false);
+        const [placement, setPlacement] = useState("top-left");
+        const [anchorRef, setAnchorRef] = useState(buttonRef12);
+        return (
+          <AContainer className="pa-6">
+            <ARow>
+              <ACol cols="2" />
+              <ACol className="text-right">
+                <AButton
+                  ref={buttonRef8}
+                  onClick={() => {
+                    setPlacement("bottom-left");
+                    setAnchorRef(buttonRef8);
+                    setOpen(!open);
+                  }}>
+                  Bottom-Left
+                </AButton>
+              </ACol>
+              <ACol className="text-center">
+                <AButton
+                  ref={buttonRef7}
+                  onClick={() => {
+                    setPlacement("bottom");
+                    setAnchorRef(buttonRef7);
+                    setOpen(!open);
+                  }}>
+                  Bottom
+                </AButton>
+              </ACol>
+              <ACol>
+                <AButton
+                  ref={buttonRef6}
+                  onClick={() => {
+                    setPlacement("bottom-right");
+                    setAnchorRef(buttonRef6);
+                    setOpen(!open);
+                  }}>
+                  Bottom-Right
+                </AButton>
+              </ACol>
+              <ACol cols="2" />
+            </ARow>
+            <ARow>
+              <ACol>
+                <AButton
+                  ref={buttonRef3}
+                  onClick={() => {
+                    setPlacement("right-top");
+                    setAnchorRef(buttonRef3);
+                    setOpen(!open);
+                  }}>
+                  Right-Top
+                </AButton>
+              </ACol>
+              <ACol cols="6" />
+              <ACol className="text-right">
+                <AButton
+                  ref={buttonRef11}
+                  onClick={() => {
+                    setPlacement("left-top");
+                    setAnchorRef(buttonRef11);
+                    setOpen(!open);
+                  }}>
+                  Left-Top
+                </AButton>
+              </ACol>
+            </ARow>
+            <ARow>
+              <ACol>
+                <AButton
+                  ref={buttonRef4}
+                  onClick={() => {
+                    setPlacement("right");
+                    setAnchorRef(buttonRef4);
+                    setOpen(!open);
+                  }}>
+                  Right
+                </AButton>
+              </ACol>
+              <ACol cols="6" />
+              <ACol className="text-right">
+                <AButton
+                  ref={buttonRef10}
+                  onClick={() => {
+                    setPlacement("left");
+                    setAnchorRef(buttonRef10);
+                    setOpen(!open);
+                  }}>
+                  Left
+                </AButton>
+              </ACol>
+            </ARow>
+            <ARow>
+              <ACol>
+                <AButton
+                  ref={buttonRef5}
+                  onClick={() => {
+                    setPlacement("right-bottom");
+                    setAnchorRef(buttonRef5);
+                    setOpen(!open);
+                  }}>
+                  Right-Bottom
+                </AButton>
+              </ACol>
+              <ACol cols="6" />
+              <ACol className="text-right">
+                <AButton
+                  ref={buttonRef9}
+                  onClick={() => {
+                    setPlacement("left-bottom");
+                    setAnchorRef(buttonRef9);
+                    setOpen(!open);
+                  }}>
+                  Left-Bottom
+                </AButton>
+              </ACol>
+            </ARow>
+            <ARow>
+              <ACol cols="2" />
+              <ACol className="text-right">
+                <AButton
+                  ref={buttonRef12}
+                  onClick={() => {
+                    setPlacement("top-left");
+                    setAnchorRef(buttonRef12);
+                    setOpen(!open);
+                  }}>
+                  Top-Left
+                </AButton>
+              </ACol>
+              <ACol className="text-center">
+                <AButton
+                  ref={buttonRef1}
+                  onClick={() => {
+                    setPlacement("top");
+                    setAnchorRef(buttonRef1);
+                    setOpen(!open);
+                  }}>
+                  Top
+                </AButton>
+              </ACol>
+              <ACol>
+                <AButton
+                  ref={buttonRef2}
+                  onClick={() => {
+                    setPlacement("top-right");
+                    setAnchorRef(buttonRef2);
+                    setOpen(!open);
+                  }}>
+                  Top-Right
+                </AButton>
+              </ACol>
+              <ACol cols="2" />
+            </ARow>
+            <APopover anchorRef={anchorRef} open={open} placement={placement}>
+              <APanelHeader>
+                <APanelTitle>Confirmation</APanelTitle>
+                <AButton onClick={() => setOpen(false)} tertiaryAlt icon>
+                  <AIcon>close</AIcon>
+                </AButton>
+              </APanelHeader>
+              <APanelBody>
+                <p>Are you sure you want to continue with your action?</p>
+                Popover Body. Lorem ipsum dolor sit amet, consectetur adipisicing
+                elit, sed do eiusmod tempor incididunt ut labore et dolore magna
+                aliqua. Ut enim ad veniam.
+              </APanelBody>
+              <APanelFooter>
+                <AButton
+                  tertiary
+                  className="mr-4"
+                  onClick={() => setOpen(false)}>
+                  Cancel
+                </AButton>
+                <AButton primary onClick={() => setOpen(false)}>
+                  Apply
+                </AButton>
+              </APanelFooter>
+            </APopover>
+          </AContainer>
+        );
+      }}
+    </YourComponent>
+  </Story>
+</Preview>
+
+## `onClose` Handling
+
+<Preview>
+  <Story name="onclose-1">
+    <YourComponent>
+      {() => {
+        const buttonRef = useRef(null);
+        const [open, setOpen] = useState(false);
+        return (
+          <AContainer fluid>
+            <ARow>
+              <ACol className="text-center">
+                <AButton ref={buttonRef} onClick={() => setOpen(!open)}>
+                  Top
+                </AButton>
+                <p className="onclose-1__instruction">
+                  Clicking outside of the anchor or popover will close the
+                  popover in this example.
+                </p>
+                <APopover
+                  anchorRef={buttonRef}
+                  open={open}
+                  placement="top"
+                  onClose={() => setOpen(false)}>
+                  <APanelHeader>
+                    <APanelTitle>Confirmation</APanelTitle>
+                    <AButton onClick={() => setOpen(false)} tertiaryAlt icon>
+                      <AIcon>close</AIcon>
+                    </AButton>
+                  </APanelHeader>
+                  <APanelBody>
+                    <p>Are you sure you want to continue with your action?</p>
+                    Popover Body. Lorem ipsum dolor sit amet, consectetur adipisicing
+                    elit, sed do eiusmod tempor incididunt ut labore et dolore magna
+                    aliqua. Ut enim ad veniam.
+                  </APanelBody>
+                  <APanelFooter>
+                    <AButton
+                      tertiary
+                      className="mr-4"
+                      onClick={() => setOpen(false)}>
+                      Cancel
+                    </AButton>
+                    <AButton primary onClick={() => setOpen(false)}>
+                      Apply
+                    </AButton>
+                  </APanelFooter>
+                </APopover>
+              </ACol>
+            </ARow>
+          </AContainer>
+        );
+      }}
+    </YourComponent>
+  </Story>
+</Preview>
+
+## Accessibility Notes
+
+By default, `APopover` components are assigned the [WAI-ARIA](https://www.w3.org/WAI/standards-guidelines/aria/) role of [menu](https://www.w3.org/TR/wai-aria/#menu).

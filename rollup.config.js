@@ -51,6 +51,7 @@ const config = {
     AList: "framework/components/AList",
     AMenuBase: "framework/components/AMenuBase",
     APanel: "framework/components/APanel",
+    APopover: "framework/components/APopover",
     ARadio: "framework/components/ARadio",
     ASelect: "framework/components/ASelect",
     ASimpleTable: "framework/components/ASimpleTable",

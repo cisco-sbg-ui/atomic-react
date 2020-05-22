@@ -4,7 +4,7 @@ import React, {forwardRef} from "react";
 import "./APanel.scss";
 
 const APanel = forwardRef(
-  ({children, className: propsClassName, type, ...rest}, ref) => {
+  ({children, className: propsClassName, component, type, ...rest}, ref) => {
     let className = "a-panel";
 
     if (propsClassName) {
@@ -19,15 +19,21 @@ const APanel = forwardRef(
       className += " a-panel--type-dialog";
     }
 
+    const TagName = component || "div";
+
     return (
-      <div {...rest} ref={ref} className={className}>
+      <TagName {...rest} ref={ref} className={className}>
         {children}
-      </div>
+      </TagName>
     );
   }
 );
 
 APanel.propTypes = {
+  /**
+   * Sets the base component.
+   */
+  component: PropTypes.elementType,
   /**
    * Display a style variant.
    */

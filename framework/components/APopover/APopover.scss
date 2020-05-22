@@ -1,167 +1,217 @@
 @import "../../styles";
 
-$popover-zindex: 1060;
-$popover-width: 600px;
-$popover-font-size: $font-size--sm;
-$popover-border-radius: $border-radius--lg;
-$popover-arrow-width: rem(1);
-$popover-arrow-height: rem(0.5);
-$popover-arrow-margin: rem(0.3);
-$popover-arrow-top: 10%;
-$popover-arrow-left: 10%;
-$popover-header-font-size: rem(1.125);
-$popover-header-bg: $white;
-$popover-header-arrow-color: $white;
-$popover-header-margin: 0;
-$popover-header-padding: 20px 20px 15px 20px;
-$popover-body-padding: 20px;
-$popover-footer-padding: 20px;
-$popover-footer-bg: map-get($grey, "lighten-5");
-$popover-footer-arrow-color: map-get($grey, "lighten-5");
+@include theme(a-popover) using ($theme) {
+  &.a-menu-base--top,
+  &.a-menu-base--top-left,
+  &.a-menu-base--top-right {
+    .a-menu-base__pointer {
+      border-color: map-deep-get($theme, "base", "stroke-color") transparent
+        transparent transparent;
 
-.popover {
-  // Change position to absolute when positioning in your project;
-  // position: absolute;
-  position: relative;
-  top: 0;
-  left: 0;
-  z-index: $popover-zindex;
-  display: block;
-  max-width: $popover-width;
-  font-size: $popover-font-size;
-  word-wrap: break-word;
-  background-color: $control-fill-color;
-  background-clip: padding-box;
-  border: $border-width solid $base-stroke-color;
-  border-radius: $popover-border-radius;
-  box-shadow: $default-box-shadow;
-  &__arrow {
-    position: absolute;
-    display: block;
-    width: $popover-arrow-width;
-    height: $popover-arrow-height;
-    margin: 0 $popover-arrow-margin;
-    &::before,
-    &::after {
-      position: absolute;
-      display: block;
-      content: "";
-      border-color: transparent;
-      border-style: solid;
+      &:after {
+        border-color: map-deep-get($theme, "panel", "dialog-footer-bg")
+          transparent transparent transparent;
+      }
     }
   }
-  &--top {
-    margin-bottom: $popover-arrow-height;
-    .popover__arrow {
-      left: $popover-arrow-left;
-      bottom: calc(#{$popover-arrow-height} * -1);
-    }
-    .popover__arrow::before,
-    .popover__arrow::after {
-      border-width: $popover-arrow-height ($popover-arrow-width / 2) 0;
-    }
-    .popover__arrow::before {
-      bottom: 0;
-      border-top-color: $base-stroke-color;
-    }
-    .popover__arrow::after {
-      bottom: 2px;
-      border-top-color: $popover-footer-arrow-color;
+
+  &.a-menu-base--bottom,
+  &.a-menu-base--bottom-left,
+  &.a-menu-base--bottom-right {
+    .a-menu-base__pointer {
+      border-color: transparent transparent
+        map-deep-get($theme, "base", "stroke-color") transparent;
+
+      &:after {
+        border-color: transparent transparent
+          map-deep-get($theme, "panel", "dialog-header-bg") transparent;
+      }
     }
   }
-  &--right {
-    margin-left: $popover-arrow-height;
-    .popover__arrow {
-      top: $popover-arrow-top;
-      left: calc(#{$popover-arrow-height} * -1);
-      width: $popover-arrow-height;
-      height: $popover-arrow-width;
-      margin: 0;
-    }
-    .popover__arrow::before,
-    .popover__arrow::after {
-      border-width: ($popover-arrow-width / 2) $popover-arrow-height
-        ($popover-arrow-width / 2) 0;
-    }
-    .popover__arrow::before {
-      left: 0;
-      border-right-color: $base-stroke-color;
-    }
-    .popover__arrow::after {
-      left: 2px;
-      border-right-color: $popover-header-arrow-color;
+
+  &.a-menu-base--right .a-menu-base__pointer {
+    border-color: transparent map-deep-get($theme, "base", "stroke-color")
+      transparent transparent;
+
+    &:after {
+      border-color: transparent map-deep-get($theme, "control", "fill-color")
+        transparent transparent;
     }
   }
-  &--bottom {
-    margin-top: $popover-arrow-height;
-    .popover__arrow {
-      left: $popover-arrow-left;
-      top: calc(#{$popover-arrow-height} * -1);
-    }
-    .popover__arrow::before,
-    .popover__arrow::after {
-      border-width: 0 ($popover-arrow-width / 2) $popover-arrow-height
-        ($popover-arrow-width / 2);
-    }
-    .popover__arrow::before {
-      top: 0;
-      border-bottom-color: $base-stroke-color;
-    }
-    .popover__arrow::after {
-      top: 2px;
-      border-bottom-color: $popover-header-arrow-color;
+
+  &.a-menu-base--left .a-menu-base__pointer {
+    border-color: transparent transparent transparent
+      map-deep-get($theme, "base", "stroke-color");
+
+    &:after {
+      border-color: transparent transparent transparent
+        map-deep-get($theme, "control", "fill-color");
     }
   }
-  &--left {
-    margin-right: $popover-arrow-height;
-    .popover__arrow {
-      top: $popover-arrow-top;
-      right: calc(#{$popover-arrow-height} * -1);
-      width: $popover-arrow-height;
-      height: $popover-arrow-width;
-      margin: $popover-arrow-margin 0;
-    }
-    .popover__arrow::before,
-    .popover__arrow::after {
-      border-width: ($popover-arrow-width / 2) 0 ($popover-arrow-width / 2)
-        $popover-arrow-height;
-    }
-    .popover__arrow::before {
-      right: 0;
-      border-left-color: $base-stroke-color;
-    }
-    .popover__arrow::after {
-      right: 2px;
-      border-left-color: $popover-header-arrow-color;
+
+  &.a-menu-base--right-top .a-menu-base__pointer {
+    border-color: transparent map-deep-get($theme, "base", "stroke-color")
+      transparent transparent;
+
+    &:after {
+      border-color: transparent
+        map-deep-get($theme, "panel", "dialog-header-bg") transparent
+        transparent;
     }
   }
-  &__header {
-    font-size: $popover-header-font-size;
-    padding: $popover-header-padding;
-    margin: $popover-header-margin;
-    color: $base-color;
-    background-color: $popover-header-bg;
-    box-shadow: $default-box-shadow;
-    border-top-left-radius: $popover-border-radius;
-    border-top-right-radius: $popover-border-radius;
-    &:empty {
-      display: none;
+
+  &.a-menu-base--left-top .a-menu-base__pointer {
+    border-color: transparent transparent transparent
+      map-deep-get($theme, "base", "stroke-color");
+
+    &:after {
+      border-color: transparent transparent transparent
+        map-deep-get($theme, "panel", "dialog-header-bg");
     }
   }
-  &__body {
-    padding: $popover-body-padding;
-    color: $base-color;
+
+  &.a-menu-base--right-bottom .a-menu-base__pointer {
+    border-color: transparent map-deep-get($theme, "base", "stroke-color")
+      transparent transparent;
+
+    &:after {
+      border-color: transparent
+        map-deep-get($theme, "panel", "dialog-footer-bg") transparent
+        transparent;
+    }
   }
-  &__footer {
-    text-align: right;
-    padding: $popover-footer-padding;
-    background-color: $popover-footer-bg;
-    border-bottom-right-radius: $popover-border-radius;
-    border-bottom-left-radius: $popover-border-radius;
+
+  &.a-menu-base--left-bottom .a-menu-base__pointer {
+    border-color: transparent transparent transparent
+      map-deep-get($theme, "base", "stroke-color");
+
+    &:after {
+      border-color: transparent transparent transparent
+        map-deep-get($theme, "panel", "dialog-footer-bg");
+    }
   }
 }
 
-.a-app--animated .popover {
+.a-popover {
+  margin: 0;
+  width: 600px;
+  box-shadow: $default-box-shadow;
+  overflow: visible;
+
+  .a-panel__header {
+    border-radius: 3px 3px 0 0;
+  }
+
+  .a-panel__footer {
+    border-radius: 0 0 3px 3px;
+  }
+
+  &.a-menu-base--top,
+  &.a-menu-base--top-left,
+  &.a-menu-base--top-right {
+    margin-top: -13px;
+    .a-menu-base__pointer {
+      margin-left: -4px;
+      width: 0;
+      height: 0;
+      border-style: solid;
+      border-width: 14px 9.5px 0 9.5px;
+      position: absolute;
+      bottom: -14px;
+
+      &:after {
+        content: "";
+        width: 0;
+        height: 0;
+        border-style: solid;
+        border-width: 14px 9.5px 0 9.5px;
+        position: absolute;
+        right: -9.5px;
+        top: -16px;
+      }
+    }
+  }
+
+  &.a-menu-base--right,
+  &.a-menu-base--right-top,
+  &.a-menu-base--right-bottom {
+    margin-left: 13px;
+    .a-menu-base__pointer {
+      margin-top: -4px;
+      width: 0;
+      height: 0;
+      border-style: solid;
+      border-width: 9.5px 14px 9.5px 0;
+      position: absolute;
+      left: -14px;
+
+      &:after {
+        content: "";
+        width: 0;
+        height: 0;
+        border-style: solid;
+        border-width: 9.5px 14px 9.5px 0;
+        position: absolute;
+        right: -16px;
+        top: -9.5px;
+      }
+    }
+  }
+
+  &.a-menu-base--bottom,
+  &.a-menu-base--bottom-left,
+  &.a-menu-base--bottom-right {
+    margin-top: 13px;
+    .a-menu-base__pointer {
+      margin-left: -4px;
+      width: 0;
+      height: 0;
+      border-style: solid;
+      border-width: 0 9.5px 14px 9.5px;
+      position: absolute;
+      top: -14px;
+
+      &:after {
+        content: "";
+        width: 0;
+        height: 0;
+        border-style: solid;
+        border-width: 0 9.5px 14px 9.5px;
+        position: absolute;
+        right: -9.5px;
+        top: 2px;
+      }
+    }
+  }
+
+  &.a-menu-base--left,
+  &.a-menu-base--left-top,
+  &.a-menu-base--left-bottom {
+    margin-left: -13px;
+    .a-menu-base__pointer {
+      margin-top: -4px;
+      width: 0;
+      height: 0;
+      border-style: solid;
+      border-width: 9.5px 0 9.5px 14px;
+      position: absolute;
+      right: -14px;
+
+      &:after {
+        content: "";
+        width: 0;
+        height: 0;
+        border-style: solid;
+        border-width: 9.5px 0 9.5px 14px;
+        position: absolute;
+        right: 2px;
+        top: -9.5px;
+      }
+    }
+  }
+}
+
+.a-app--animated .a-popover {
   animation-name: fade-in;
   animation-duration: $transition-duration--fast;
 }
