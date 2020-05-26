@@ -221,7 +221,10 @@ const ASelect = forwardRef(
                   };
                 }
 
-                if (item[itemValue] === selectedItem[itemValue]) {
+                if (
+                  selectedItem &&
+                  item[itemValue] === selectedItem[itemValue]
+                ) {
                   itemProps.className += " a-select__menu-item--selected";
                   itemProps["aria-selected"] = true;
                 }

@@ -115,13 +115,15 @@ import {ASelect} from "@cisco-ats/atomic-react";
         label="Food Group"
         placeholder="Pick a Food Group"
         hint="Hint: Warning"
+        itemText="name"
+        itemValue="id"
         items={[
-          "Bread, Cereal, Rice, and Pasta",
-          "Vegetables",
-          "Fruit",
-          "Milk, Yogurt, and Cheese",
-          "Meat, Poultry, Fish",
-          "Fats, Oils, and Sweets"
+          {id: 1, name: "Bread, Cereal, Rice, and Pasta"},
+          {id: 2, name: "Vegetables"},
+          {id: 3, name: "Fruit"},
+          {id: 4, name: "Milk, Yogurt, and Cheese"},
+          {id: 5, name: "Meat, Poultry, Fish", disabled: true},
+          {id: 6, name: "Fats, Oils, and Sweets"}
         ]}
       />
     </div>
