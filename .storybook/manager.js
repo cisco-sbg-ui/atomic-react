@@ -48,24 +48,24 @@ const StorybookHeader = () => {
   );
 };
 
+const recurseItems = (root, forEachLeaf) => {
+  return root.map((item) => {
+    if (item.items) {
+      recurseItems(item.items, forEachLeaf);
+    }
+
+    if (item.contentProps && item.contentProps.id) {
+      forEachLeaf(item);
+    }
+
+    return item;
+  });
+};
+
 const StorybookSidebar = ({api, nav}) => {
   const [filter, setFilter] = useState("");
   const [items, setItems] = useState(nav);
   const {currentTheme, setCurrentTheme} = useATheme();
-
-  const recurseItems = (root, forEachLeaf) => {
-    return root.map((item) => {
-      if (item.items) {
-        recurseItems(item.items, forEachLeaf);
-      }
-
-      if (item.contentProps && item.contentProps.id) {
-        forEachLeaf(item);
-      }
-
-      return item;
-    });
-  };
 
   useEffect(() => {
     const newItems = recurseItems(items, (item) => {
@@ -81,7 +81,7 @@ const StorybookSidebar = ({api, nav}) => {
       });
       setItems(newItems);
     });
-  }, []);
+  }, [api, items]);
 
   useEffect(() => {
     const handleThemeChanged = (e) => {

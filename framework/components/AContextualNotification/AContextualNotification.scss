@@ -13,24 +13,6 @@ $context-arrow-left: 10%;
 @include theme(a-context) using ($theme) {
   color: map-deep-get($theme, "label", "color");
   background-color: map-deep-get($theme, "control", "fill-color");
-
-  &--top {
-    .a-context__arrow::after {
-      border-top-color: map-deep-get($theme, "control", "fill-color");
-    }
-  }
-
-  &--bottom {
-    .a-context__arrow::after {
-      border-bottom-color: map-deep-get($theme, "control", "fill-color");
-    }
-  }
-
-  &--left {
-    .a-context__arrow::after {
-      border-left-color: map-deep-get($theme, "control", "fill-color");
-    }
-  }
 }
 
 .a-context {
@@ -44,114 +26,14 @@ $context-arrow-left: 10%;
   margin: $context-margin;
   padding: $context-padding;
   border-radius: $border-radius--sm;
-  &__arrow {
-    position: absolute;
-    display: block;
-    width: $context-arrow-width;
-    height: $context-arrow-height;
-    margin: 0 $context-arrow-margin;
-    &::before,
-    &::after {
-      position: absolute;
-      display: block;
-      content: "";
-      border-color: transparent;
-      border-style: solid;
-    }
-  }
   &__icon {
     margin: $context-icon-margin;
     height: 14px;
     width: 14px;
   }
-  &--top {
-    margin-bottom: $context-arrow-height;
-    .a-context__arrow {
-      left: $context-arrow-left;
-      bottom: calc(#{$context-arrow-height} * -1);
-    }
-    .a-context__arrow::before,
-    .a-context__arrow::after {
-      border-width: $context-arrow-height ($context-arrow-width / 2) 0;
-    }
-    .a-context__arrow::before {
-      bottom: 0;
-      border-top-color: transparent;
-    }
-    .a-context__arrow::after {
-      bottom: 2px;
-    }
-  }
-  &--right {
-    margin-left: $context-arrow-height;
-    .a-context__arrow {
-      top: $context-arrow-top;
-      left: calc(
-        (#{$context-arrow-height} + #{$context-border-left-width}) * -1
-      );
-      width: $context-arrow-height;
-      height: $context-arrow-width;
-      margin: 0;
-    }
-    .a-context__arrow::before,
-    .a-context__arrow::after {
-      border-width: ($context-arrow-width / 2) $context-arrow-height
-        ($context-arrow-width / 2) 0;
-    }
-    .a-context__arrow::before {
-      left: 0;
-      border-right-color: transparent;
-    }
-    .a-context__arrow::after {
-      left: 1px;
-      border-right-color: transparent;
-    }
-  }
-  &--bottom {
-    margin-top: $context-arrow-height;
-    .a-context__arrow {
-      left: $context-arrow-left;
-      top: calc((#{$context-arrow-height}) * -1);
-    }
-    .a-context__arrow::before,
-    .a-context__arrow::after {
-      border-width: 0 ($context-arrow-width / 2) $context-arrow-height
-        ($context-arrow-width / 2);
-    }
-    .a-context__arrow::before {
-      top: 0;
-      border-bottom-color: transparent;
-    }
-    .a-context__arrow::after {
-      top: 2px;
-    }
-  }
-  &--left {
-    margin-right: $context-arrow-height;
-    .a-context__arrow {
-      top: $context-arrow-top;
-      right: calc((#{$context-arrow-height}) * -1);
-      width: $context-arrow-height;
-      height: $context-arrow-width;
-      margin: 0;
-    }
-    .a-context__arrow::before,
-    .a-context__arrow::after {
-      border-width: ($context-arrow-width / 2) 0 ($context-arrow-width / 2)
-        $context-arrow-height;
-    }
-    .a-context__arrow::before {
-      right: 0;
-      border-left-color: transparent;
-    }
-    .a-context__arrow::after {
-      right: 2px;
-    }
-  }
 
   &--state-warning {
     border-color: map-get($status-orange, "base");
-    @include context-border-color(map-get($status-orange, "base"));
 
     .a-context__icon {
       color: map-get($status-orange, "base");
@@ -159,7 +41,6 @@ $context-arrow-left: 10%;
   }
   &--state-danger {
     border-color: map-get($status-red, "base");
-    @include context-border-color(map-get($status-red, "base"));
 
     .a-context__icon {
       color: map-get($status-red, "base");
@@ -167,7 +48,6 @@ $context-arrow-left: 10%;
   }
   &--state-success {
     border-color: map-get($status-green, "base");
-    @include context-border-color(map-get($status-green, "base"));
 
     .a-context__icon {
       color: map-get($status-green, "base");
@@ -175,7 +55,6 @@ $context-arrow-left: 10%;
   }
   &--state-info {
     border-color: map-get($cisco-blue, "base");
-    @include context-border-color(map-get($cisco-blue, "base"));
 
     .a-context__icon {
       color: map-get($status-blue, "base");
