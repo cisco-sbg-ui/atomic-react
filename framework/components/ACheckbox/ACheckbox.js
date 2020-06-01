@@ -1,8 +1,8 @@
 import PropTypes from "prop-types";
 import React, {forwardRef} from "react";
 
-import "./ACheckbox.scss";
 import {isStockColor, isValidColor} from "../../utils/helpers";
+import "./ACheckbox.scss";
 
 const Icons = {
   checked:

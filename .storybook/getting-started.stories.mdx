@@ -14,11 +14,154 @@ The package is available on [Cisco's Artifactory package registry](https://devhu
 
 If you're implementing a library, place the package entry in the `peerDependencies` section of your `package.json`.
 
-## Content Security Policy
+<br />
+
+### Content Security Policy
 
 If your website has a content security policy, in order for the fonts to load an entry will need added:
 
 `font-src https://cdn.security.cisco.com`
+
+<br />
+
+## Integrating
+
+At this point, you can start importing components (e.g. `import AButton from "@cisco-ats/atomic-react/AButton"`) and using them.
+Alternatively, integrating the atomic-react `lib` with your build will give you control over the sass and automatically import the components you use for you. [`create-react-app` users can also use the atomic-react `lib`](#integration-with-create-react-app-cra).
+
+<br />
+
+### Add the Babel Preset
+
+The Babel preset **automatically imports** components. Add the following to your Babel configuration:
+
+```diff
+{
+  "presets": [
+    "@babel/preset-env",
+    "@babel/preset-react",
++    "@cisco-ats/atomic-react/babel-preset"
+  ]
+}
+```
+
+### ESLint plugin
+
+Without import statements, ESLint will complain about your source code. The atomic-react ESLint plugin will take care of that. First install the ESLint plugin:
+
+```
+npm i -D @cisco-ats/eslint-plugin-atomic-react
+```
+
+Then add the following to your ESLint configuration:
+
+```diff
+{
+  "extends": [
+    "eslint:recommended",
+    "plugin:react/recommended",
++    "plugin:@cisco-ats/eslint-config-atomic-react/recommended"
+  ],
+  ...
+}
+```
+
+### Support (Dart) Sass
+
+The `lib` build gives you control over the sass, so you'll need to support it if you don't. First install:
+
+```
+# Webpack
+npm i -D sass sass-loader css-loader style-loader
+# Rollup
+npm i -D sass rollup-plugin-postcss
+```
+
+For webpack, add to your config:
+
+```diff
+module.exports = {
+  module: {
+    rules: [
+      ...,
++      {
++        test: /\.s(a|c)ss$/,
++        use: [
++          "style-loader",
++          "css-loader",
++          {
++            loader: "sass-loader",
++            options: {
++              implementation: require("sass"),
++            },
++          },
++        ],
++      }
+    ]
+  }
+}
+```
+
+Or for Rollup, add to your config:
+
+```diff
++import postcss from "rollup-plugin-postcss";
+
+const config = {
+  plugins: [
+    ...,
++    postcss()
+  ]
+};
+
+export default config;
+```
+
+## Integration with `create-react-app` (CRA)
+
+You can use the atomic-react `lib` with auto-import and sass support in `create-react-app` applications as well.
+
+Start by installing the libraries necessary to modify the CRA build and support sass:
+
+```
+npm i -D customize-cra react-app-rewired sass @cisco-ats/eslint-plugin-atomic-react
+```
+
+Add a `config-overrides.js` file to the root of your directory:
+
+```
+const {override, addBabelPreset} = require("customize-cra");
+
+module.exports = override(
+  addBabelPreset("@cisco-ats/atomic-react/babel-preset")
+);
+```
+
+Make adjustments to your `package.json`:
+
+```diff
+{
+  "scripts": {
+-    "start": "react-scripts start",
++    "start": "react-app-rewired start",
+-    "build": "react-scripts build",
++    "build": "react-app-rewired build",
+-    "test": "react-scripts test",
++    "test": "react-app-rewired test",
+  },
+  ...
+}
+```
+
+Add the ESLint plugin to your ESLint config:
+
+```diff
+{
+-  "extends": ["react-app"],
++  "extends": ["react-app", "@cisco-ats/eslint-config-atomic-react"],
+  ...
+}
+```
 
 ## Getting Access to Artifactory
 

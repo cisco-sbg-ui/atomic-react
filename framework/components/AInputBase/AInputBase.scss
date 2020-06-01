@@ -1,5 +1,10 @@
 @import "../../styles";
 
+$input-transition: border-color $transition-duration--extra-fast
+    $transition-timing-function--standard,
+  box-shadow $transition-duration--extra-fast
+    $transition-timing-function--standard;
+
 @include theme(a-input-base) using ($theme) {
   &__label {
     color: map-deep-get($theme, "label", "color");

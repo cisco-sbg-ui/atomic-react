@@ -1,9 +1,9 @@
 import PropTypes from "prop-types";
 import React, {forwardRef, useEffect, useRef, useState} from "react";
 
-import "./ADropdown.scss";
 import {keyCodes} from "../../utils/helpers";
 import {useCombinedRefs} from "../../utils/hooks";
+import "./ADropdown.scss";
 
 const ADropdownMenu = forwardRef(
   (

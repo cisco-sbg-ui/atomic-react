@@ -1,9 +1,9 @@
 import PropTypes from "prop-types";
 import React, {forwardRef} from "react";
 
-import "./AAlert.scss";
 import {keyCodes} from "../../utils/helpers";
 import AIcon from "../AIcon";
+import "./AAlert.scss";
 
 const AAlert = forwardRef(
   (

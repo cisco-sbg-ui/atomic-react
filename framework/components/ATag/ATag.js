@@ -1,8 +1,8 @@
 import PropTypes from "prop-types";
 import React, {forwardRef} from "react";
 
-import "./ATag.scss";
 import {keyCodes} from "../../utils/helpers";
+import "./ATag.scss";
 
 const ATag = forwardRef(
   (

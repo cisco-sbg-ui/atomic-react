@@ -1,11 +1,11 @@
 import PropTypes from "prop-types";
 import React, {forwardRef, useRef, useState} from "react";
 
-import "./ASelect.scss";
 import AInputBase from "../AInputBase";
 import AIcon from "../AIcon";
 import {ADropdown, ADropdownMenu, ADropdownMenuItem} from "../ADropdown";
 import {keyCodes} from "../../utils/helpers";
+import "./ASelect.scss";
 
 let selectCounter = 0;
 const WAIT_TO_FOCUS_ACTIVE_ITEM = 50;

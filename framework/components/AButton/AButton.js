@@ -1,8 +1,8 @@
 import PropTypes from "prop-types";
 import React, {forwardRef, useContext} from "react";
 
-import "./AButton.scss";
 import AButtonGroupContext from "../AButtonGroup/AButtonGroupContext";
+import "./AButton.scss";
 
 const AButton = forwardRef(
   (

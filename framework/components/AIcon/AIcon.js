@@ -1,8 +1,8 @@
 import PropTypes from "prop-types";
 import React, {forwardRef} from "react";
 
-import "./AIcon.scss";
 import Icons from "./icons.json";
+import "./AIcon.scss";
 
 const AIcon = forwardRef(
   (
