@@ -1,8 +1,8 @@
 import PropTypes from "prop-types";
 import React, {forwardRef} from "react";
 
-import "./ABadge.scss";
 import {isStockColor, isValidColor} from "../../utils/helpers";
+import "./ABadge.scss";
 
 const ABadge = forwardRef(
   (

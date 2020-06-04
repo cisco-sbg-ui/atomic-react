@@ -1,13 +1,13 @@
 import PropTypes from "prop-types";
 import React, {forwardRef, useRef, useState} from "react";
 
-import "./AAutocomplete.scss";
 import {ADotLoader} from "../ALoader";
 import {ADropdown, ADropdownMenu, ADropdownMenuItem} from "../ADropdown";
 import AInputBase from "../AInputBase";
 import AIcon from "../AIcon";
 import {useCombinedRefs} from "../../utils/hooks";
 import {keyCodes} from "../../utils/helpers";
+import "./AAutocomplete.scss";
 
 let autocompleteCounter = 0;
 

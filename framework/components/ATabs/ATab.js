@@ -2,8 +2,8 @@ import PropTypes from "prop-types";
 import React, {forwardRef, useContext, useEffect, useState} from "react";
 
 import ATabContext from "./ATabContext";
-import "./ATabs.scss";
 import {keyCodes} from "../../utils/helpers";
+import "./ATabs.scss";
 
 let tabCounter = 1;
 

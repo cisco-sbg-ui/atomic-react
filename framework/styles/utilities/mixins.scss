@@ -33,11 +33,11 @@
 // -----------------------------------------------------------------------------
 @mixin btn-icon() {
   display: inline-flex;
-  height: $btn--icon-height;
-  width: $btn--icon-width;
+  height: 30px;
+  width: 30px;
   align-items: center;
   justify-content: center;
-  background-color: $btn--icon-bg;
+  background-color: transparent;
   &:hover {
     text-decoration: none;
   }

@@ -3,15 +3,18 @@
   "version": "2.0.0",
   "description": "",
   "main": "index.js",
-  "module": "index.js",
+  "module": "lib/index.js",
   "scripts": {
-    "build": "rollup -c && build-storybook -s .storybook/public -c .storybook -o docs --docs",
+    "build:lib": "cross-env NODE_ENV=lib babel framework --out-dir lib",
+    "build:cra": "rollup -c",
+    "build:storybook": "build-storybook -s .storybook/public -c .storybook -o docs --docs",
+    "build": "npm run build:cra && npm run build:lib && npm run build:storybook",
     "cypress:open": "cypress open --env snapshots=off",
     "cypress:run": "cypress run",
     "cypress:runUpdateSnapshots": "cypress run --env updateSnapshots=true",
     "dev": "start-server-and-test start:ci http://localhost:8081 cypress:open",
-    "start": "rollup -c && start-storybook -p 8081 -s .storybook/public --docs",
-    "start:ci": "rollup -c && start-storybook -p 8081 -s .storybook/public --docs --ci",
+    "start": "npm run build:cra && npm run build:lib && start-storybook -p 8081 -s .storybook/public --docs",
+    "start:ci": "npm run build:cra && npm run build:lib && start-storybook -p 8081 -s .storybook/public --docs --ci",
     "test": "eslint framework .storybook --max-warnings 0 && start-server-and-test start:ci http://localhost:8081 cypress:run",
     "updateSnapshots": "start-server-and-test start:ci http://localhost:8081 cypress:runUpdateSnapshots"
   },
@@ -19,6 +22,9 @@
     "react": "^16.8.0",
     "react-dom": "16.x",
     "prop-types": "15.x"
+  },
+  "dependencies": {
+    "babel-plugin-auto-import": "1.0.5"
   },
   "devDependencies": {
     "@babel/cli": "^7.8.4",
@@ -33,6 +39,8 @@
     "algoliasearch": "^4.2.0",
     "babel-eslint": "10.1.0",
     "babel-loader": "^8.1.0",
+    "babel-plugin-detective": "2.0.0",
+    "cross-env": "^7.0.2",
     "cypress": "^4.4.1",
     "cypress-image-snapshot": "3.1.1",
     "cypress-plugin-tab": "1.0.5",
@@ -44,6 +52,7 @@
     "eslint-plugin-jsx-a11y": "^6.2.3",
     "eslint-plugin-react": "^7.19.0",
     "eslint-plugin-react-hooks": "^2.5.1",
+    "glob": "7.1.6",
     "lodash.debounce": "^4.0.8",
     "prettier": "^2.0.2",
     "react-is": "^16.13.1",

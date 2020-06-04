@@ -49,7 +49,6 @@ $spacers: () !default;
     )
   );
 }
-$z-index: 0 !default;
 // -----------------------------------------------------------------------------
 // Heading
 // -----------------------------------------------------------------------------
@@ -77,12 +76,16 @@ $mark-bg: map-get($status-yellow, "wash-3") !default;
 // -----------------------------------------------------------------------------
 $page-width--min: 320px !default;
 $page-width--max: 1440px !default;
-$grid-breakpoints: (
-  "xs": 479px,
-  "sm": 767px,
-  "md": 992px,
-  "lg": 1200px,
-  "xl": 1440px
+$grid-breakpoints: () !default;
+$grid-breakpoints: map-merge(
+  (
+    "xs": 479px,
+    "sm": 767px,
+    "md": 992px,
+    "lg": 1200px,
+    "xl": 1440px
+  ),
+  $grid-breakpoints
 );
 $grid-columns: 12 !default;
 $grid-gutter: $spacer * 5 !default;
@@ -91,12 +94,16 @@ $grid-gutter-width: 30px !default;
 
 $container-padding-x: $grid-gutter / 2 !default;
 
-$grid-gutters: (
-  "xs": $grid-gutter / 12,
-  "sm": $grid-gutter / 6,
-  "md": $grid-gutter / 3,
-  "lg": $grid-gutter * 2/3,
-  "xl": $grid-gutter
+$grid-gutters: () !default;
+$grid-gutters: map-merge(
+  (
+    "xs": $grid-gutter / 12,
+    "sm": $grid-gutter / 6,
+    "md": $grid-gutter / 3,
+    "lg": $grid-gutter * 2/3,
+    "xl": $grid-gutter
+  ),
+  $grid-gutters
 );
 
 $container-max-widths: (
@@ -176,15 +183,7 @@ $alpha-7: 0.7;
 $alpha-8: 0.8;
 $alpha-9: 0.9;
 // -----------------------------------------------------------------------------
-// Base Colors
-// -----------------------------------------------------------------------------
-$base-icon-color: map-get($grey, "darken-5"); // Icons (#58585b);
-// -----------------------------------------------------------------------------
-// General Colors
-// -----------------------------------------------------------------------------
-$control-text-color: map-get($grey, "darken-5"); // Alternative Text (#58585b);
-// -----------------------------------------------------------------------------
-// Motion
+// Transitions
 // -----------------------------------------------------------------------------
 $transition-duration--extra-slow: 0.5s;
 $transition-duration--slow: 0.4s;
@@ -204,18 +203,4 @@ $transition-collapse: height 0.35s ease;
 $transition-item: color $transition-duration--extra-fast
     $transition-timing-function--standard,
   background-color $transition-duration--fast
-    $transition-timing-function--standard;
-// -----------------------------------------------------------------------------
-// Icons (used in other components)
-// -----------------------------------------------------------------------------
-$btn--icon-width: 30px;
-$btn--icon-height: 30px;
-$btn--icon-bg: transparent;
-$btn--icon-border-radius: 30px;
-// -----------------------------------------------------------------------------
-// Shared input styles
-// -----------------------------------------------------------------------------
-$input-transition: border-color $transition-duration--extra-fast
-    $transition-timing-function--standard,
-  box-shadow $transition-duration--extra-fast
     $transition-timing-function--standard;

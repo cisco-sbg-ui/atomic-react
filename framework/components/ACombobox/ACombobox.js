@@ -1,12 +1,12 @@
 import PropTypes from "prop-types";
 import React, {forwardRef, useRef, useState} from "react";
 
-import "./ACombobox.scss";
 import {ADropdown, ADropdownMenu, ADropdownMenuItem} from "../ADropdown";
 import AInputBase from "../AInputBase";
 import AIcon from "../AIcon";
 import {useCombinedRefs} from "../../utils/hooks";
 import {keyCodes} from "../../utils/helpers";
+import "./ACombobox.scss";
 
 let comboboxCounter = 0;
 

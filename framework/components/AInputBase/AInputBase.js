@@ -1,9 +1,9 @@
 import PropTypes from "prop-types";
 import React, {forwardRef} from "react";
 
-import "./AInputBase.scss";
 import AIcon from "../AIcon";
 import {keyCodes} from "../../utils/helpers";
+import "./AInputBase.scss";
 
 const AInputBase = forwardRef(
   (

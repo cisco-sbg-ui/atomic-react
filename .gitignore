@@ -1,5 +1,6 @@
 /docs/
 /node_modules/
+/lib/
 /A*.js
 /helpers*.js
 /hooks*.js

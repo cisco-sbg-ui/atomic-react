@@ -1,8 +1,8 @@
 import PropTypes from "prop-types";
 import React, {forwardRef} from "react";
 
-import "./AList.scss";
 import {keyCodes} from "../../utils/helpers";
+import "./AList.scss";
 
 const AListItem = forwardRef(
   (

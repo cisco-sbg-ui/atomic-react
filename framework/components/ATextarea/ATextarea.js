@@ -1,9 +1,9 @@
 import PropTypes from "prop-types";
 import React, {forwardRef, useEffect, useRef, useState} from "react";
 
-import "./ATextarea.scss";
 import AInputBase from "../AInputBase";
 import {useCombinedRefs} from "../../utils/hooks";
+import "./ATextarea.scss";
 
 let textareaCounter = 0;
 

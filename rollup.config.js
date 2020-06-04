@@ -1,3 +1,4 @@
+import glob from "glob";
 import babel from "rollup-plugin-babel";
 import resolve from "@rollup/plugin-node-resolve";
 import commonjs from "@rollup/plugin-commonjs";
@@ -11,60 +12,31 @@ const GLOBALS = {
   "react-dom": "ReactDOM"
 };
 
+const files = glob.sync("framework/**/index.js");
+
+let filesObj = files.reduce((acc, val) => {
+  const path = val.split("/");
+  if (path[1] === "components") {
+    acc[path[2]] = val;
+  }
+
+  if (path[1] === "index.js") {
+    acc.index = val;
+  }
+
+  return acc;
+}, {});
+
+const contextFiles = glob.sync("framework/**/*Context.js");
+
+filesObj = contextFiles.reduce((acc, val) => {
+  const path = val.split("/");
+  acc[path[3].slice(0, -3)] = val;
+  return acc;
+}, filesObj);
+
 const config = {
-  input: {
-    /**
-     * Eventually, use something like:
-     * const { readdirSync } = require('fs')
-     *
-     * const directories = readdirSync(
-     *     require('path').resolve(__dirname, "framework"),
-     *     { withFileTypes: true }
-     *   )
-     *   .filter(dirent => dirent.isDirectory())
-     *   .map(dirent => dirent.name)
-     *
-     * ...directories.reduce(packages, x => {
-     *  packages[x] = "framework/components/" + x
-     * }, {})
-     */
-    index: "framework",
-    AAccordion: "framework/components/AAccordion",
-    AAlert: "framework/components/AAlert",
-    AApp: "framework/components/AApp",
-    AAutocomplete: "framework/components/AAutocomplete",
-    ABadge: "framework/components/ABadge",
-    AButton: "framework/components/AButton",
-    AButtonGroup: "framework/components/AButtonGroup",
-    ACheckbox: "framework/components/ACheckbox",
-    ACombobox: "framework/components/ACombobox",
-    AContextualNotification: "framework/components/AContextualNotification",
-    ADialog: "framework/components/ADialog",
-    ADivider: "framework/components/ADivider",
-    ADropdown: "framework/components/ADropdown",
-    AFooter: "framework/components/AFooter",
-    AHeader: "framework/components/AHeader",
-    AIcon: "framework/components/AIcon",
-    AInputBase: "framework/components/AInputBase",
-    ALayout: "framework/components/ALayout",
-    ALoader: "framework/components/ALoader",
-    AList: "framework/components/AList",
-    AMenuBase: "framework/components/AMenuBase",
-    APanel: "framework/components/APanel",
-    APopover: "framework/components/APopover",
-    ARadio: "framework/components/ARadio",
-    ASelect: "framework/components/ASelect",
-    ASimpleTable: "framework/components/ASimpleTable",
-    ASwitch: "framework/components/ASwitch",
-    ATabs: "framework/components/ATabs",
-    ATag: "framework/components/ATag",
-    ATextarea: "framework/components/ATextarea",
-    ATextInput: "framework/components/ATextInput",
-    ATimeline: "framework/components/ATimeline",
-    ATheme: "framework/components/ATheme",
-    ATooltip: "framework/components/ATooltip",
-    ATree: "framework/components/ATree"
-  },
+  input: filesObj,
   output: {
     format: "es",
     globals: GLOBALS,
