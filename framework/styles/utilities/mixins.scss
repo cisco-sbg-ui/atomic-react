@@ -149,17 +149,6 @@
 }
 
 // -----------------------------------------------------------------------------
-// Alpha channel
-// -----------------------------------------------------------------------------
-// @include alpha-attribute('background-color', rgba(black, 0.5), white);
-@mixin alpha-attribute($attribute, $color, $background) {
-  $percent: alpha($color) * 100%;
-  $opaque: opacify($color, 1);
-  $solid-color: mix($opaque, $background, $percent);
-  #{$attribute}: $solid-color;
-  #{$attribute}: $color;
-}
-// -----------------------------------------------------------------------------
 // Buttons Color
 // -----------------------------------------------------------------------------
 @mixin btn-color(
@@ -241,28 +230,4 @@
       border-left-color: $context-border-color;
     }
   }
-}
-// -----------------------------------------------------------------------------
-// Progress Bar
-// -----------------------------------------------------------------------------
-@mixin progressbar-color($color) {
-  .progressbar__fill {
-    background-color: $color;
-  }
-}
-
-// -----------------------------------------------------------------------------
-// Gradients
-// ----------------------------------------------------------------------------
-@mixin gradient-striped($color: rgba($white, 0.15), $angle: 45deg) {
-  background-image: linear-gradient(
-    $angle,
-    $color 25%,
-    transparent 25%,
-    transparent 50%,
-    $color 50%,
-    $color 75%,
-    transparent 75%,
-    transparent
-  );
 }

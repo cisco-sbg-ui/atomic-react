@@ -132,6 +132,10 @@ module.exports = function () {
               path: "@cisco-ats/atomic-react/lib/components/APopover"
             },
             {
+              default: "AProgressbar",
+              path: "@cisco-ats/atomic-react/lib/components/AProgressbar"
+            },
+            {
               default: "ARadio",
               path: "@cisco-ats/atomic-react/lib/components/ARadio"
             },
