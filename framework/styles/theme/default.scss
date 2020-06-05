@@ -120,6 +120,9 @@ $atomic-default: (
     "dialog-header-bg": $white,
     "dialog-footer-bg": map-get($grey, "lighten-5")
   ),
+  "progressbar": (
+    "disabled-bg-color": map-get($status-blue, "wash-1")
+  ),
   "radio": (
     "bg--disabled": $white,
     "border--active--hover": map-get($cisco-blue, "base"),

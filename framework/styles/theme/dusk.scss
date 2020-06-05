@@ -130,6 +130,9 @@ $atomic-dusk: (
     "dialog-header-bg": map-get($dusk, "4"),
     "dialog-footer-bg": map-get($dusk, "4")
   ),
+  "progressbar": (
+    "disabled-bg-color": rgba(map-get($cisco-blue, "base"), $alpha-3)
+  ),
   "radio": (
     "bg--disabled": transparent,
     "border--active--hover": map-get($cisco-blue, "base"),

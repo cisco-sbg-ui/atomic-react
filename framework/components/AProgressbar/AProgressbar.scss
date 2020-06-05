@@ -2,40 +2,53 @@
 
 $progressbar-height: 8px;
 $progressbar-bg-height: 16px;
-$progressbar-width: 175px;
 $progressbar-margin: 20px 0;
 $progressbar-border-radius: 1px;
-$progressbar-fill-height: 8px;
+$progressbar-fill-height: 100%;
 $progressbar-fill-border-radius: 1px;
-$progressbar-bg-color: $base-brand-color;
-$progressbar-disabled-bg-color: map-get($status-blue, "wash-1");
 $progressbar-striped-opacity: 0.5;
 $progressbar-animation-timing: 1s linear infinite !default;
 $progressbar-transition: width 0.6s ease !default;
 
-.progressbar {
+@include theme(a-progressbar) using ($theme) {
+  &__bar {
+    background: map-deep-get($theme, "control", "stroke-color");
+  }
+
+  &__fill {
+    background-color: map-deep-get($theme, "base", "brand-color");
+  }
+
+  &--disabled {
+    .a-progressbar__fill {
+      background-color: map-deep-get(
+        $theme,
+        "progressbar",
+        "disabled-bg-color"
+      );
+    }
+  }
+}
+
+.a-progressbar {
+  display: flex;
+  align-items: center;
   margin: $progressbar-margin;
-  background: $control-stroke-color;
-  border-radius: $progressbar-border-radius;
-  height: $progressbar-height;
-  width: $progressbar-width;
+
+  &__bar {
+    border-radius: $progressbar-border-radius;
+    height: $progressbar-height;
+    width: 100%;
+  }
+
   &__fill {
     display: block;
     height: $progressbar-fill-height;
     border-radius: $progressbar-fill-border-radius;
   }
-  @include progressbar-color($progressbar-bg-color);
 
-  $i: 0;
-  @for $i from 0 through 100 {
-    &[data-percentage="#{$i}"] {
-      .progressbar__fill {
-        width: #{$i}#{"%"};
-      }
-    }
-  }
-  &--state-striped {
-    .progressbar__fill {
+  &--striped {
+    .a-progressbar__fill {
       background-image: linear-gradient(
         60deg,
         rgba(255, 255, 255, 0.15) 25%,
@@ -49,51 +62,30 @@ $progressbar-transition: width 0.6s ease !default;
       background-size: $progressbar-bg-height $progressbar-bg-height;
     }
   }
-  &--state-disabled {
-    @include progressbar-color($progressbar-disabled-bg-color);
+
+  &--disabled {
+    .a-progressbar__label {
+      opacity: $progressbar-striped-opacity;
+    }
+  }
+
+  &__label {
+    display: inline-block;
+    margin-right: 5px;
   }
 }
 
-.progressbar-label {
-  display: inline-block;
-  &--state-disabled {
-    opacity: $progressbar-striped-opacity;
+.a-app--animated .a-progressbar {
+  &__fill {
+    animation: progressbar-stripes $progressbar-animation-timing;
   }
 }
 
-.progressbar-label + .progressbar {
-  display: inline-block;
-  margin: 0;
-}
-
-.a-app--animated {
-  // Set '$enable-transitions' to 'false' if you want to stop animated progressbar
-  // even when the "a-app--animated" class applied to the root.
-  @if $enable-transitions {
-    .progressbar--state-animated {
-      .progressbar__fill {
-        animation: progressbar-stripes $progressbar-animation-timing;
-
-        @media (prefers-reduced-motion: disable) {
-          animation: none;
-        }
-      }
-    }
+@keyframes progressbar-stripes {
+  from {
+    background-position: $progressbar-bg-height 0;
   }
-}
-
-// -----------------------------------------------------------------------------
-// Animated Progress Bar
-// -----------------------------------------------------------------------------
-
-// Disable animation if transitions are disabled
-@if $enable-transitions {
-  @keyframes progressbar-stripes {
-    from {
-      background-position: $progressbar-bg-height 0;
-    }
-    to {
-      background-position: 0 0;
-    }
+  to {
+    background-position: 0 0;
   }
 }
