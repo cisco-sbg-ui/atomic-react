@@ -48,10 +48,40 @@ const StorybookHeader = () => {
   );
 };
 
-const StorybookSidebar = ({nav}) => {
+const StorybookSidebar = ({api, nav}) => {
   const [filter, setFilter] = useState("");
   const [items, setItems] = useState(nav);
   const {currentTheme, setCurrentTheme} = useATheme();
+
+  const recurseItems = (root, forEachLeaf) => {
+    return root.map((item) => {
+      if (item.items) {
+        recurseItems(item.items, forEachLeaf);
+      }
+
+      if (item.contentProps && item.contentProps.id) {
+        forEachLeaf(item);
+      }
+
+      return item;
+    });
+  };
+
+  useEffect(() => {
+    const newItems = recurseItems(items, (item) => {
+      item.active = window.location.href.includes(item.contentProps.id);
+    });
+    setItems(newItems);
+
+    api.on("navigateUrl", (eventData) => {
+      const newItems = recurseItems(items, (item) => {
+        item.active = eventData.startsWith(
+          `?path=/docs/${item.contentProps.id}`
+        );
+      });
+      setItems(newItems);
+    });
+  }, []);
 
   useEffect(() => {
     const handleThemeChanged = (e) => {
@@ -163,6 +193,7 @@ addons.register("atomic-react/sidebar", (api) => {
             newNode.items = [];
           } else {
             newNode.contentProps = {
+              id: item.id,
               onClick: () => api.navigate("/docs/" + item.id),
               onKeyDown: (e) => {
                 if (e.keyCode === 13) api.navigate("/docs/" + item.id);
@@ -181,7 +212,7 @@ addons.register("atomic-react/sidebar", (api) => {
 
     ReactDOM.render(
       <AApp persistTheme>
-        <StorybookSidebar nav={storybookPages} />
+        <StorybookSidebar api={api} nav={storybookPages} />
       </AApp>,
       document.querySelector("#root-sidebar")
     );
