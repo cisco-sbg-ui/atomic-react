@@ -54,6 +54,11 @@ module.exports = function () {
                 "@cisco-ats/atomic-react/lib/components/AContextualNotification"
             },
             {
+              default: "AContextualNotificationMenu",
+              path:
+                "@cisco-ats/atomic-react/lib/components/AContextualNotificationMenu"
+            },
+            {
               default: "ADialog",
               path: "@cisco-ats/atomic-react/lib/components/ADialog"
             },

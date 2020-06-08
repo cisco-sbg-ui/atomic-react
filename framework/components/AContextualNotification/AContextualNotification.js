@@ -7,9 +7,11 @@ import "./AContextualNotification.scss";
 const baseClass = "a-context";
 
 const AContextualNotification = forwardRef(
-  ({children, className: propsClassName, arrow, variant, ...rest}, ref) => {
+  (
+    {children, className: propsClassName, component, variant = "info", ...rest},
+    ref
+  ) => {
     let className = baseClass,
-      arrowClass = `${baseClass}__arrow`,
       iconClass = `${baseClass}__icon`,
       messageClass = `${baseClass}__message`,
       icon;
@@ -18,43 +20,40 @@ const AContextualNotification = forwardRef(
       className += ` ${propsClassName}`;
     }
 
-    if (variant) {
-      className += ` ${baseClass}--state-${variant}`;
-
-      if (variant === "success") {
-        icon = "good";
-      } else if (variant === "info") {
-        icon = "information";
-      } else if (variant === "danger") {
-        icon = "critical-stop";
-      } else {
-        icon = variant;
-      }
+    if (variant === "success") {
+      className += ` ${baseClass}--state-success`;
+      icon = "good";
+    } else if (variant === "warning") {
+      className += ` ${baseClass}--state-warning`;
+      icon = "warning";
+    } else if (variant === "danger") {
+      className += ` ${baseClass}--state-danger`;
+      icon = "critical-stop";
+    } else {
+      className += ` ${baseClass}--state-info`;
+      icon = "information";
     }
 
+    const TagName = component || "div";
+
     return (
-      <div {...rest} ref={ref} className={className}>
+      <TagName {...rest} ref={ref} className={className}>
         <AIcon className={iconClass}>{icon}</AIcon>
-        {arrow && <div className={arrowClass} />}
         <div className={messageClass}>{children}</div>
-      </div>
+      </TagName>
     );
   }
 );
 
 AContextualNotification.propTypes = {
   /**
-   * Render an arrow on the border of the component
+   * Sets the base component.
    */
-  arrow: PropTypes.bool,
+  component: PropTypes.elementType,
   /**
-   * Variant of the contextual notification
+   * Sets the display variant.
    */
   variant: PropTypes.oneOf(["success", "info", "warning", "danger"])
-};
-
-AContextualNotification.defaultProps = {
-  variant: "info"
 };
 
 AContextualNotification.displayName = "AContextualNotification";
