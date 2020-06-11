@@ -50,15 +50,19 @@ const StorybookHeader = () => {
 
 const recurseItems = (root, forEachLeaf) => {
   return root.map((item) => {
+    var newItem = {
+      ...item
+    };
+
     if (item.items) {
-      recurseItems(item.items, forEachLeaf);
+      newItem.items = recurseItems(item.items, forEachLeaf);
     }
 
     if (item.contentProps && item.contentProps.id) {
-      forEachLeaf(item);
+      forEachLeaf(newItem);
     }
 
-    return item;
+    return newItem;
   });
 };
 
@@ -68,18 +72,34 @@ const StorybookSidebar = ({api, nav}) => {
   const {currentTheme, setCurrentTheme} = useATheme();
 
   useEffect(() => {
+    let itemChanged = false;
     const newItems = recurseItems(items, (item) => {
-      item.active = window.location.href.includes(item.contentProps.id);
+      const value = window.location.href.includes(item.contentProps.id);
+      if (item.active !== value) {
+        item.active = value;
+        itemChanged = true;
+      }
     });
-    setItems(newItems);
+
+    if (itemChanged) {
+      setItems(newItems);
+    }
 
     api.on("navigateUrl", (eventData) => {
+      let itemChanged = false;
       const newItems = recurseItems(items, (item) => {
-        item.active = eventData.startsWith(
+        const value = eventData.startsWith(
           `?path=/docs/${item.contentProps.id}`
         );
+        if (item.active !== value) {
+          item.active = value;
+          itemChanged = true;
+        }
       });
-      setItems(newItems);
+
+      if (itemChanged) {
+        setItems(newItems);
+      }
     });
   }, [api, items]);
 

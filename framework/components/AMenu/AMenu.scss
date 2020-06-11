@@ -1,35 +1,37 @@
 @import "../../styles";
 
-@include theme(a-popover) using ($theme) {
-  &.a-menu-base--top,
-  &.a-menu-base--top-left,
-  &.a-menu-base--top-right {
+@include theme(a-menu) using ($theme) {
+  border-color: map-deep-get($theme, "base", "stroke-color");
+
+  &--pointer.a-menu-base--top,
+  &--pointer.a-menu-base--top-left,
+  &--pointer.a-menu-base--top-right {
     .a-menu-base__pointer {
       border-color: map-deep-get($theme, "base", "stroke-color") transparent
         transparent transparent;
 
       &:after {
-        border-color: map-deep-get($theme, "panel", "dialog-footer-bg")
-          transparent transparent transparent;
+        border-color: map-deep-get($theme, "control", "fill-color") transparent
+          transparent transparent;
       }
     }
   }
 
-  &.a-menu-base--bottom,
-  &.a-menu-base--bottom-left,
-  &.a-menu-base--bottom-right {
+  &--pointer.a-menu-base--bottom,
+  &--pointer.a-menu-base--bottom-left,
+  &--pointer.a-menu-base--bottom-right {
     .a-menu-base__pointer {
       border-color: transparent transparent
         map-deep-get($theme, "base", "stroke-color") transparent;
 
       &:after {
         border-color: transparent transparent
-          map-deep-get($theme, "panel", "dialog-header-bg") transparent;
+          map-deep-get($theme, "control", "fill-color") transparent;
       }
     }
   }
 
-  &.a-menu-base--right .a-menu-base__pointer {
+  &--pointer.a-menu-base--right .a-menu-base__pointer {
     border-color: transparent map-deep-get($theme, "base", "stroke-color")
       transparent transparent;
 
@@ -39,7 +41,7 @@
     }
   }
 
-  &.a-menu-base--left .a-menu-base__pointer {
+  &--pointer.a-menu-base--left .a-menu-base__pointer {
     border-color: transparent transparent transparent
       map-deep-get($theme, "base", "stroke-color");
 
@@ -49,67 +51,54 @@
     }
   }
 
-  &.a-menu-base--right-top .a-menu-base__pointer {
+  &--pointer.a-menu-base--right-top .a-menu-base__pointer {
     border-color: transparent map-deep-get($theme, "base", "stroke-color")
       transparent transparent;
 
     &:after {
-      border-color: transparent
-        map-deep-get($theme, "panel", "dialog-header-bg") transparent
-        transparent;
+      border-color: transparent map-deep-get($theme, "control", "fill-color")
+        transparent transparent;
     }
   }
 
-  &.a-menu-base--left-top .a-menu-base__pointer {
+  &--pointer.a-menu-base--left-top .a-menu-base__pointer {
     border-color: transparent transparent transparent
       map-deep-get($theme, "base", "stroke-color");
 
     &:after {
       border-color: transparent transparent transparent
-        map-deep-get($theme, "panel", "dialog-header-bg");
+        map-deep-get($theme, "control", "fill-color");
     }
   }
 
-  &.a-menu-base--right-bottom .a-menu-base__pointer {
+  &--pointer.a-menu-base--right-bottom .a-menu-base__pointer {
     border-color: transparent map-deep-get($theme, "base", "stroke-color")
       transparent transparent;
 
     &:after {
-      border-color: transparent
-        map-deep-get($theme, "panel", "dialog-footer-bg") transparent
-        transparent;
+      border-color: transparent map-deep-get($theme, "control", "fill-color")
+        transparent transparent;
     }
   }
 
-  &.a-menu-base--left-bottom .a-menu-base__pointer {
+  &--pointer.a-menu-base--left-bottom .a-menu-base__pointer {
     border-color: transparent transparent transparent
       map-deep-get($theme, "base", "stroke-color");
 
     &:after {
       border-color: transparent transparent transparent
-        map-deep-get($theme, "panel", "dialog-footer-bg");
+        map-deep-get($theme, "control", "fill-color");
     }
   }
 }
 
-.a-popover {
-  margin: 0;
-  width: 600px;
-  box-shadow: $default-box-shadow;
+.a-menu {
+  box-shadow: 1px 1px 3px 0 rgba(0, 0, 0, 0.2);
   overflow: visible;
-  position: absolute;
 
-  .a-panel__header {
-    border-radius: 3px 3px 0 0;
-  }
-
-  .a-panel__footer {
-    border-radius: 0 0 3px 3px;
-  }
-
-  &.a-menu-base--top,
-  &.a-menu-base--top-left,
-  &.a-menu-base--top-right {
+  &--pointer.a-menu-base--top,
+  &--pointer.a-menu-base--top-left,
+  &--pointer.a-menu-base--top-right {
     margin-top: -13px;
     .a-menu-base__pointer {
       margin-left: -4px;
@@ -133,9 +122,9 @@
     }
   }
 
-  &.a-menu-base--right,
-  &.a-menu-base--right-top,
-  &.a-menu-base--right-bottom {
+  &--pointer.a-menu-base--right,
+  &--pointer.a-menu-base--right-top,
+  &--pointer.a-menu-base--right-bottom {
     margin-left: 13px;
     .a-menu-base__pointer {
       margin-top: -4px;
@@ -159,9 +148,9 @@
     }
   }
 
-  &.a-menu-base--bottom,
-  &.a-menu-base--bottom-left,
-  &.a-menu-base--bottom-right {
+  &--pointer.a-menu-base--bottom,
+  &--pointer.a-menu-base--bottom-left,
+  &--pointer.a-menu-base--bottom-right {
     margin-top: 13px;
     .a-menu-base__pointer {
       margin-left: -4px;
@@ -185,9 +174,9 @@
     }
   }
 
-  &.a-menu-base--left,
-  &.a-menu-base--left-top,
-  &.a-menu-base--left-bottom {
+  &--pointer.a-menu-base--left,
+  &--pointer.a-menu-base--left-top,
+  &--pointer.a-menu-base--left-bottom {
     margin-left: -13px;
     .a-menu-base__pointer {
       margin-top: -4px;
@@ -212,7 +201,7 @@
   }
 }
 
-.a-app--animated .a-popover {
+.a-app--animated .a-menu {
   animation-name: fade-in;
   animation-duration: $transition-duration--fast;
 }

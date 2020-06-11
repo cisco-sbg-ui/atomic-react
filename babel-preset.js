@@ -122,6 +122,10 @@ module.exports = function () {
               path: "@cisco-ats/atomic-react/lib/components/AMenuBase"
             },
             {
+              default: "AMenu",
+              path: "@cisco-ats/atomic-react/lib/components/AMenu"
+            },
+            {
               default: "APanels",
               members: [
                 "APanel",

@@ -4,28 +4,31 @@ import React, {forwardRef, useEffect, useRef} from "react";
 import {keyCodes} from "../../utils/helpers";
 import {useCombinedRefs} from "../../utils/hooks";
 import AMenuBase from "../AMenuBase";
-import AContextualNotification from "../AContextualNotification";
-import "./AContextualNotificationMenu.scss";
+import {AList} from "../AList";
+import "./AMenu.scss";
 
-const AContextualNotificationMenu = forwardRef(
+const AMenu = forwardRef(
   (
     {
       anchorRef,
       children,
       className: propsClassName,
+      closeOnClick = true,
       focusOnOpen = true,
+      hoverable,
+      onClick,
       onClose,
       onKeyDown,
       open,
       placement,
+      pointer,
       role = "menu",
-      variant,
       ...rest
     },
     ref
   ) => {
-    const contextualNotificationMenuRef = useRef(null);
-    const combinedRef = useCombinedRefs(ref, contextualNotificationMenuRef);
+    const menuRef = useRef(null);
+    const combinedRef = useCombinedRefs(ref, menuRef);
 
     useEffect(() => {
       if (open && focusOnOpen) {
@@ -34,6 +37,28 @@ const AContextualNotificationMenu = forwardRef(
         }, 0);
       }
     }, [open, combinedRef, focusOnOpen]);
+
+    const getPrevious = () => {
+      const items = Array.from(
+        combinedRef.current.querySelectorAll(".a-list-item[tabindex]")
+      );
+      return (
+        items[
+          items.findIndex((x) => x.isSameNode(document.activeElement)) - 1
+        ] || items[items.length - 1]
+      );
+    };
+
+    const getNext = () => {
+      const items = Array.from(
+        combinedRef.current.querySelectorAll(".a-list-item[tabindex]")
+      );
+      return (
+        items[
+          items.findIndex((x) => x.isSameNode(document.activeElement)) + 1
+        ] || items[0]
+      );
+    };
 
     const closeHandler = (e) => {
       anchorRef.current && anchorRef.current.focus();
@@ -48,21 +73,38 @@ const AContextualNotificationMenu = forwardRef(
       } else if (e.keyCode === keyCodes.tab) {
         closeHandler(e);
         anchorRef.current.focus();
+      } else if (e.keyCode === keyCodes.up) {
+        e.preventDefault();
+        const previous = getPrevious();
+        previous && previous.focus();
+      } else if (e.keyCode === keyCodes.down) {
+        e.preventDefault();
+        const next = getNext();
+        next && next.focus();
       }
     };
 
-    let className = `a-contextual-notification-menu`;
+    let className = `a-menu`;
+    if (pointer) {
+      className += " a-menu--pointer";
+    }
+
     if (propsClassName) {
       className += ` ${propsClassName}`;
     }
 
     return (
-      <AContextualNotification
+      <AList
         {...rest}
         component={AMenuBase}
         ref={combinedRef}
         role={role}
         className={className}
+        hoverable={hoverable}
+        onClick={(e) => {
+          closeOnClick && closeHandler;
+          onClick && onClick(e);
+        }}
         onClose={onClose}
         onKeyDown={(e) => {
           keyDownHandler(e);
@@ -71,16 +113,15 @@ const AContextualNotificationMenu = forwardRef(
         open={open}
         placement={placement}
         anchorRef={anchorRef}
-        pointer={true}
-        variant={variant}
+        pointer={pointer}
         tabIndex={-1}>
         {children}
-      </AContextualNotification>
+      </AList>
     );
   }
 );
 
-AContextualNotificationMenu.propTypes = {
+AMenu.propTypes = {
   /**
    * The reference to the menu anchor.
    */
@@ -89,9 +130,17 @@ AContextualNotificationMenu.propTypes = {
     PropTypes.shape({current: PropTypes.any})
   ]).isRequired,
   /**
+   * Toggles the behavior of closing the menu on click.
+   */
+  closeOnClick: PropTypes.bool,
+  /**
    * Toggles the behavior of focusing the menu on open.
    */
   focusOnOpen: PropTypes.bool,
+  /**
+   * Toggles the hover visualization on list items.
+   */
+  hoverable: PropTypes.bool,
   /**
    * Handles the request to close the menu.
    */
@@ -118,15 +167,15 @@ AContextualNotificationMenu.propTypes = {
     "top-left"
   ]),
   /**
+   * Toggles the menu pointer.
+   */
+  pointer: PropTypes.bool,
+  /**
    * Sets the [WAI-ARIA](https://www.w3.org/WAI/standards-guidelines/aria/) role.
    */
-  role: PropTypes.string,
-  /**
-   * Sets the display variant.
-   */
-  variant: PropTypes.oneOf(["success", "info", "warning", "danger"])
+  role: PropTypes.string
 };
 
-AContextualNotificationMenu.displayName = "AContextualNotificationMenu";
+AMenu.displayName = "AMenu";
 
-export default AContextualNotificationMenu;
+export default AMenu;

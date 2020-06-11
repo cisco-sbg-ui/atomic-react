@@ -43,6 +43,7 @@ import {
 } from "./components/AList";
 import {ACiscoLoader, ADotLoader, APageLoader} from "./components/ALoader";
 import AMenuBase from "./components/AMenuBase";
+import AMenu from "./components/AMenu";
 import {
   APanel,
   APanelHeader,
@@ -110,6 +111,7 @@ export {
   AListItemSubtitle,
   AListItemTitle,
   AMenuBase,
+  AMenu,
   APageLoader,
   APanel,
   APanelHeader,
