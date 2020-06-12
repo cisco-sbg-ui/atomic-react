@@ -31,7 +31,23 @@ context("ATabs", () => {
       .should("have.attr", "aria-selected", "true");
   });
 
-  it("selects/deselects appropriately", () => {
+  it("controlled selects/deselects appropriately", () => {
+    cy.get("#story--components-tabs--usage-2 .a-tab-group__tab")
+      .eq(0)
+      .should("have.attr", "aria-selected", "false")
+      .click()
+      .should("have.attr", "aria-selected", "true");
+    cy.get("#story--components-tabs--usage-2 .a-tab-group__tab")
+      .eq(2)
+      .should("have.attr", "aria-selected", "false")
+      .type("{enter}")
+      .should("have.attr", "aria-selected", "true");
+    cy.get("#story--components-tabs--usage-2 .a-tab-group__tab")
+      .eq(0)
+      .should("have.attr", "aria-selected", "false");
+  });
+
+  it("uncontrolled selects/deselects appropriately", () => {
     cy.get("#story--components-tabs--usage-1 .a-tab-group__tab")
       .eq(0)
       .should("have.attr", "aria-selected", "false")
