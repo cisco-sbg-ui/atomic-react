@@ -264,6 +264,15 @@ $helpers: (
     class: text,
     values: left right center justify start end
   ),
+  "vertical-align": (
+    property: vertical-align,
+    values: (
+      top: top,
+      center: middle,
+      baseline: baseline,
+      bottom: bottom
+    )
+  ),
   "white-space": (
     property: white-space,
     class: text,
