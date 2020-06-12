@@ -66,8 +66,13 @@ $table-cell-tight-padding-top-bottom: (
     padding-top: $table__total--padding-top;
   }
 
+  tbody {
+    vertical-align: top;
+  }
+
   tr {
     height: $table-row-height;
+    vertical-align: inherit;
   }
 
   th,
@@ -75,6 +80,7 @@ $table-cell-tight-padding-top-bottom: (
     padding-left: $table-cell-padding-left-right;
     padding-right: $table-cell-padding-left-right;
     min-width: $table-cell-min-width;
+    vertical-align: inherit;
   }
 
   th {
@@ -95,7 +101,6 @@ $table-cell-tight-padding-top-bottom: (
     border-style: solid;
     padding-top: $table-cell-padding-top-bottom;
     padding-bottom: $table-cell-padding-top-bottom;
-    vertical-align: top;
     word-break: break-word;
     &:not(:first-child) {
       border-left: none;
