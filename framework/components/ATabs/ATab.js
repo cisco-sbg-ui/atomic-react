@@ -17,6 +17,7 @@ const ATab = forwardRef(
       onClick,
       onKeyDown,
       selected,
+      tabKey,
       target,
       ...rest
     },
@@ -26,6 +27,7 @@ const ATab = forwardRef(
     const [isSelected, setIsSelected] = useState(null);
     const {tabChanged, setTabChanged} = useContext(ATabContext);
     useEffect(() => {
+      if (tabKey) return;
       if (!tabId) {
         const index = tabCounter++;
         setTabId(index);
@@ -33,17 +35,18 @@ const ATab = forwardRef(
       }
 
       setIsSelected(tabChanged === tabId);
-    }, [setIsSelected, selected, setTabChanged, tabChanged, tabId]);
+    }, [setIsSelected, selected, setTabChanged, tabChanged, tabId, tabKey]);
 
     useEffect(() => {
+      if (tabKey) return;
       if (!selected && isSelected) {
         setTabChanged(-1);
         setIsSelected(false);
       }
-    }, [selected]); // eslint-disable-line react-hooks/exhaustive-deps
+    }, [selected, tabKey]); // eslint-disable-line react-hooks/exhaustive-deps
 
     let className = "a-tab-group__tab";
-    if (isSelected) {
+    if ((tabKey && selected) || isSelected) {
       className += " a-tab-group__tab--selected";
     }
 
@@ -54,17 +57,17 @@ const ATab = forwardRef(
     let TagName = "div";
     const props = {
       ...rest,
-      "aria-selected": isSelected,
+      "aria-selected": Boolean((tabKey && selected) || isSelected),
       ref,
       className,
       onClick: (e) => {
-        setTabChanged(tabId);
+        !tabKey && setTabChanged(tabId);
         onClick && onClick(e);
       },
       onKeyDown: (e) => {
         if (!href && [keyCodes.enter].includes(e.keyCode)) {
           e.preventDefault();
-          setTabChanged(tabId);
+          !tabKey && setTabChanged(tabId);
           onClick && onClick(e);
         } else {
           onKeyDown && onKeyDown(e);
@@ -98,7 +101,7 @@ ATab.propTypes = {
    */
   href: PropTypes.string,
   /**
-   * Toggles the `selected` state.
+   * Toggles the `selected` state in controlled mode. Provides the default `selected` state in uncontrolled mode.
    */
   selected: PropTypes.bool,
   /**
