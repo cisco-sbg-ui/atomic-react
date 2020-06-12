@@ -45,12 +45,14 @@ It is necessary for `AContextualNotificationMenu` to be a descendant of `AApp` f
                 <ATextInput
                   ref={textInputRef}
                   onChange={(e) => {
-                    setOpen(false);
+                    setOpen(Boolean(e.target.value));
                     setValue(e.target.value);
                   }}
                   value={value}
                   label="First Name"
                   validationState={open ? "danger" : "default"}
+                  tabIndex={-1}
+                  aria-haspopup="true"
                 />
                 <AContextualNotificationMenu
                   anchorRef={textInputRef}
@@ -69,7 +71,7 @@ It is necessary for `AContextualNotificationMenu` to be a descendant of `AApp` f
             </ARow>
             <ARow>
               <ACol className="text-right">
-                <AButton ref={buttonRef} onClick={() => setOpen(true)}>
+                <AButton ref={buttonRef} onClick={() => {}}>
                   Submit
                 </AButton>
               </ACol>
@@ -120,6 +122,8 @@ The `AContextualNotificationMenu` component inherits passed props.
                       ? validationState
                       : "default"
                   }
+                  tabIndex={-1}
+                  aria-haspopup="true"
                 />
                 <AContextualNotificationMenu
                   anchorRef={textareaRef}
@@ -400,3 +404,14 @@ The `AContextualNotificationMenu` component inherits passed props.
 ## Accessibility Notes
 
 By default, `AContextualNotificationMenu` components are assigned the [WAI-ARIA](https://www.w3.org/WAI/standards-guidelines/aria/) role of [menu](https://www.w3.org/TR/wai-aria/#menu).
+
+`AContextualNotificationMenu` components are mounted outside of the application area to avoid issues with overflow and position.
+Accordingly, `AContextualNotificationMenu` attempts to manage the user's focus by defaulting to focus the menu on open.
+This behavior can be disabled by setting the `focusOnOpen` prop to false.
+On close, the menu will return focus to the anchor element.
+
+`keydown` events for the `esc` key calls the `onClose` handler. Additionally, for the `tab`
+key the menu will request to be closed and set focus to the opener, which allows native `tab`
+key functionality to focus the next tab-focusable item.
+
+Remember to indicate that your anchor element has a menu via the `aria-haspopup` attribute. In addition, your anchor element should have a `tabindex` if it does not already.

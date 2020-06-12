@@ -1,6 +1,8 @@
 import PropTypes from "prop-types";
-import React, {forwardRef} from "react";
+import React, {forwardRef, useEffect, useRef} from "react";
 
+import {keyCodes} from "../../utils/helpers";
+import {useCombinedRefs} from "../../utils/hooks";
 import AMenuBase from "../AMenuBase";
 import {APanel} from "../APanel";
 import "./APopover.scss";
@@ -11,7 +13,9 @@ const APopover = forwardRef(
       anchorRef,
       children,
       className: propsClassName,
+      focusOnOpen = true,
       onClose,
+      onKeyDown,
       open,
       placement,
       role = "menu",
@@ -19,6 +23,33 @@ const APopover = forwardRef(
     },
     ref
   ) => {
+    const contextualNotificationMenuRef = useRef(null);
+    const combinedRef = useCombinedRefs(ref, contextualNotificationMenuRef);
+
+    useEffect(() => {
+      if (open && focusOnOpen) {
+        setTimeout(() => {
+          combinedRef.current.focus();
+        }, 0);
+      }
+    }, [open, combinedRef, focusOnOpen]);
+
+    const closeHandler = (e) => {
+      anchorRef.current && anchorRef.current.focus();
+      onClose && onClose(e);
+    };
+
+    const keyDownHandler = (e) => {
+      if (onClose && e.keyCode === keyCodes.esc) {
+        e.preventDefault();
+        closeHandler(e);
+        anchorRef.current.focus();
+      } else if (e.keyCode === keyCodes.tab) {
+        closeHandler(e);
+        anchorRef.current.focus();
+      }
+    };
+
     let className = `a-popover`;
     if (propsClassName) {
       className += ` ${propsClassName}`;
@@ -28,15 +59,20 @@ const APopover = forwardRef(
       <APanel
         {...rest}
         component={AMenuBase}
-        ref={ref}
+        ref={combinedRef}
         role={role}
         className={className}
         onClose={onClose}
+        onKeyDown={(e) => {
+          keyDownHandler(e);
+          onKeyDown && onKeyDown(e);
+        }}
         open={open}
         placement={placement}
         anchorRef={anchorRef}
         pointer={true}
-        type="dialog">
+        type="dialog"
+        tabIndex={-1}>
         {children}
       </APanel>
     );
@@ -51,6 +87,10 @@ APopover.propTypes = {
     PropTypes.func,
     PropTypes.shape({current: PropTypes.any})
   ]).isRequired,
+  /**
+   * Toggles the behavior of focusing the menu on open.
+   */
+  focusOnOpen: PropTypes.bool,
   /**
    * Handles the request to close the menu.
    */

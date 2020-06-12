@@ -15,10 +15,28 @@ context("APopover", () => {
 
     cy.get("#story--components-popovers--onclose-1 .a-button").click();
     cy.get(".a-app .a-menu-base").should("exist");
-    cy.get(
-      "#story--components-popovers--onclose-1 .onclose-1__instruction"
-    ).click();
+    cy.get("#story--components-popovers--onclose-1").click("left");
     cy.get(".a-app .a-menu-base").should("not.exist");
+  });
+
+  it("has working keyboard events", () => {
+    cy.get(".a-popover").should("not.be.visible");
+    cy.get("#story--components-popovers--usage-1 .a-button").eq(0).click();
+    cy.get(".a-popover")
+      .eq(0)
+      .should("be.visible")
+      .then(($el) => {
+        Cypress.dom.isFocused($el);
+      })
+      .type("{esc}");
+    cy.get(".a-popover").should("not.be.visible");
+    cy.get("#story--components-popovers--usage-1 .a-button")
+      .eq(0)
+      .then(($el) => {
+        Cypress.dom.isFocused($el);
+      });
+
+    // TODO: test tab key functionality once cypress supports it.
   });
 
   it("supports themes", () => {

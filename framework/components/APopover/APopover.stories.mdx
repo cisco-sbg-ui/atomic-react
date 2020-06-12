@@ -45,7 +45,8 @@ It is necessary for `APopover` to be a descendant of `AApp` for mounting.
               icon
               tertiaryAlt
               ref={buttonRef}
-              onClick={() => setOpen(!open)}>
+              onClick={() => setOpen(!open)}
+              aria-haspopup="true">
               <AIcon>time-zone</AIcon>
             </AButton>
             <APopover
@@ -146,7 +147,8 @@ The `APopover` component inherits passed props.
                     setPlacement("bottom-left");
                     setAnchorRef(buttonRef8);
                     setOpen(!open);
-                  }}>
+                  }}
+                  aria-haspopup="true">
                   Bottom-Left
                 </AButton>
               </ACol>
@@ -157,7 +159,8 @@ The `APopover` component inherits passed props.
                     setPlacement("bottom");
                     setAnchorRef(buttonRef7);
                     setOpen(!open);
-                  }}>
+                  }}
+                  aria-haspopup="true">
                   Bottom
                 </AButton>
               </ACol>
@@ -168,7 +171,8 @@ The `APopover` component inherits passed props.
                     setPlacement("bottom-right");
                     setAnchorRef(buttonRef6);
                     setOpen(!open);
-                  }}>
+                  }}
+                  aria-haspopup="true">
                   Bottom-Right
                 </AButton>
               </ACol>
@@ -182,7 +186,8 @@ The `APopover` component inherits passed props.
                     setPlacement("right-top");
                     setAnchorRef(buttonRef3);
                     setOpen(!open);
-                  }}>
+                  }}
+                  aria-haspopup="true">
                   Right-Top
                 </AButton>
               </ACol>
@@ -194,7 +199,8 @@ The `APopover` component inherits passed props.
                     setPlacement("left-top");
                     setAnchorRef(buttonRef11);
                     setOpen(!open);
-                  }}>
+                  }}
+                  aria-haspopup="true">
                   Left-Top
                 </AButton>
               </ACol>
@@ -207,7 +213,8 @@ The `APopover` component inherits passed props.
                     setPlacement("right");
                     setAnchorRef(buttonRef4);
                     setOpen(!open);
-                  }}>
+                  }}
+                  aria-haspopup="true">
                   Right
                 </AButton>
               </ACol>
@@ -219,7 +226,8 @@ The `APopover` component inherits passed props.
                     setPlacement("left");
                     setAnchorRef(buttonRef10);
                     setOpen(!open);
-                  }}>
+                  }}
+                  aria-haspopup="true">
                   Left
                 </AButton>
               </ACol>
@@ -232,7 +240,8 @@ The `APopover` component inherits passed props.
                     setPlacement("right-bottom");
                     setAnchorRef(buttonRef5);
                     setOpen(!open);
-                  }}>
+                  }}
+                  aria-haspopup="true">
                   Right-Bottom
                 </AButton>
               </ACol>
@@ -244,7 +253,8 @@ The `APopover` component inherits passed props.
                     setPlacement("left-bottom");
                     setAnchorRef(buttonRef9);
                     setOpen(!open);
-                  }}>
+                  }}
+                  aria-haspopup="true">
                   Left-Bottom
                 </AButton>
               </ACol>
@@ -258,7 +268,8 @@ The `APopover` component inherits passed props.
                     setPlacement("top-left");
                     setAnchorRef(buttonRef12);
                     setOpen(!open);
-                  }}>
+                  }}
+                  aria-haspopup="true">
                   Top-Left
                 </AButton>
               </ACol>
@@ -269,7 +280,8 @@ The `APopover` component inherits passed props.
                     setPlacement("top");
                     setAnchorRef(buttonRef1);
                     setOpen(!open);
-                  }}>
+                  }}
+                  aria-haspopup="true">
                   Top
                 </AButton>
               </ACol>
@@ -280,7 +292,8 @@ The `APopover` component inherits passed props.
                     setPlacement("top-right");
                     setAnchorRef(buttonRef2);
                     setOpen(!open);
-                  }}>
+                  }}
+                  aria-haspopup="true">
                   Top-Right
                 </AButton>
               </ACol>
@@ -330,8 +343,11 @@ The `APopover` component inherits passed props.
           <AContainer fluid>
             <ARow>
               <ACol className="text-center">
-                <AButton ref={buttonRef} onClick={() => setOpen(!open)}>
-                  Top
+                <AButton
+                  ref={buttonRef}
+                  onClick={() => setOpen(!open)}
+                  aria-haspopup="true">
+                  Bottom
                 </AButton>
                 <p className="onclose-1__instruction">
                   Clicking outside of the anchor or popover will close the
@@ -340,7 +356,7 @@ The `APopover` component inherits passed props.
                 <APopover
                   anchorRef={buttonRef}
                   open={open}
-                  placement="top"
+                  placement="bottom"
                   onClose={() => setOpen(false)}>
                   <APanelHeader>
                     <APanelTitle>Confirmation</APanelTitle>
@@ -378,3 +394,14 @@ The `APopover` component inherits passed props.
 ## Accessibility Notes
 
 By default, `APopover` components are assigned the [WAI-ARIA](https://www.w3.org/WAI/standards-guidelines/aria/) role of [menu](https://www.w3.org/TR/wai-aria/#menu).
+
+`APopover` components are mounted outside of the application area to avoid issues with overflow and position.
+Accordingly, `APopover` attempts to manage the user's focus by defaulting to focus the menu on open.
+This behavior can be disabled by setting the `focusOnOpen` prop to false.
+On close, the menu will return focus to the anchor element.
+
+`keydown` event for the `esc` key calls the `onClose` handler. Additionally, for the `tab`
+key the menu will request to be closed and set focus to the opener, which allows native `tab`
+key functionality to focus the next tab-focusable item.
+
+Remember to indicate that your anchor element has a menu via the `aria-haspopup` attribute. In addition, your anchor element should have a `tabindex` if it does not already.

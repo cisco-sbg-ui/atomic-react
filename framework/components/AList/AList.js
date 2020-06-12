@@ -4,7 +4,10 @@ import React, {forwardRef} from "react";
 import "./AList.scss";
 
 const AList = forwardRef(
-  ({children, className: propsClassName, hoverable = true, ...rest}, ref) => {
+  (
+    {children, className: propsClassName, component, hoverable = true, ...rest},
+    ref
+  ) => {
     let className = "a-list";
 
     if (hoverable) {
@@ -15,15 +18,21 @@ const AList = forwardRef(
       className += ` ${propsClassName}`;
     }
 
+    const TagName = component || "div";
+
     return (
-      <div {...rest} ref={ref} className={className}>
+      <TagName {...rest} ref={ref} className={className}>
         {children}
-      </div>
+      </TagName>
     );
   }
 );
 
 AList.propTypes = {
+  /**
+   * Sets the base component.
+   */
+  component: PropTypes.elementType,
   /**
    * Toggles the hover visualization on list items.
    */

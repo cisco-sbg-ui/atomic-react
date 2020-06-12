@@ -1,6 +1,7 @@
 import PropTypes from "prop-types";
-import React, {forwardRef} from "react";
+import React, {forwardRef, useEffect, useRef, useState} from "react";
 
+import {useCombinedRefs} from "../../utils/hooks";
 import {keyCodes} from "../../utils/helpers";
 import "./AList.scss";
 
@@ -13,6 +14,7 @@ const AListItem = forwardRef(
       href,
       onClick,
       onKeyDown,
+      role,
       selected,
       target,
       twoLine,
@@ -20,6 +22,21 @@ const AListItem = forwardRef(
     },
     ref
   ) => {
+    const [roleValue, setRoleValue] = useState(null);
+    const listItemRef = useRef(null);
+    const combinedRef = useCombinedRefs(ref, listItemRef);
+
+    useEffect(() => {
+      if (
+        !role &&
+        !roleValue &&
+        combinedRef.current &&
+        combinedRef.current.closest(".a-menu") !== null
+      ) {
+        setRoleValue("menuitem");
+      }
+    }, [role, combinedRef, roleValue]);
+
     let className = "a-list-item";
 
     if (twoLine) {
@@ -37,7 +54,7 @@ const AListItem = forwardRef(
     let TagName = "div";
     const props = {
       ...rest,
-      ref,
+      ref: combinedRef,
       className,
       onClick,
       onKeyDown: (e) => {
@@ -47,7 +64,8 @@ const AListItem = forwardRef(
         }
 
         onKeyDown && onKeyDown(e);
-      }
+      },
+      role: roleValue
     };
 
     if (href) {
@@ -77,6 +95,11 @@ AListItem.propTypes = {
    * If specified, the component will render as an HTML link.
    */
   href: PropTypes.string,
+  /**
+   * Sets the [WAI-ARIA](https://www.w3.org/WAI/standards-guidelines/aria/) role.
+   * If the role is not set, the component may infer this.
+   */
+  role: PropTypes.string,
   /**
    * Toggles the `selected` state.
    */
