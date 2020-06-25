@@ -10,6 +10,18 @@ $checkbox-transition: box-shadow $transition-duration--extra-fast
   $transition-timing-function--standard;
 
 @include theme(a-checkbox) using ($theme) {
+  &--warning {
+    .a-checkbox__box {
+      color: map-deep-get($theme, "control", "warning-color");
+    }
+  }
+
+  &--danger {
+    .a-checkbox__box {
+      color: map-deep-get($theme, "control", "error-color");
+    }
+  }
+
   &__input {
     &:disabled ~ .a-checkbox__box {
       color: map-deep-get($theme, "control", "stroke-color--disabled");
@@ -18,13 +30,15 @@ $checkbox-transition: box-shadow $transition-duration--extra-fast
 }
 
 .a-checkbox {
-  display: flex;
-  position: relative;
-  padding: $checkbox-padding;
-  align-items: center;
-  cursor: pointer;
+  &__wrap {
+    display: flex;
+    position: relative;
+    padding: $checkbox-padding;
+    align-items: center;
+    cursor: pointer;
+  }
 
-  &--disabled {
+  &--disabled .a-checkbox__wrap {
     cursor: default;
   }
 
@@ -83,7 +97,7 @@ $checkbox-transition: box-shadow $transition-duration--extra-fast
     overflow: visible;
   }
 
-  & .a-icon {
+  &__wrap .a-icon {
     width: $checkbox-icon-size;
     padding-left: $checkbox-icon-padding-left;
   }

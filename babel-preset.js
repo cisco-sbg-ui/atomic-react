@@ -77,6 +77,14 @@ module.exports = function () {
               path: "@cisco-ats/atomic-react/lib/components/AFooter"
             },
             {
+              default: "AForm",
+              path: "@cisco-ats/atomic-react/lib/components/AForm"
+            },
+            {
+              default: "AFormContext",
+              path: "@cisco-ats/atomic-react/lib/components/AForm/AFormContext"
+            },
+            {
               default: "AHeaders",
               members: [
                 "AHeader",

@@ -140,6 +140,38 @@ context("ASelect", () => {
       .type("{esc}");
   });
 
+  it("validates", () => {
+    cy.get("#story--components-selects--rules-1 .a-select__selection")
+      .eq(0)
+      .click();
+    cy.get("#story--components-selects--rules-1 .a-select__menu-item")
+      .eq(0)
+      .click();
+    cy.get("#story--components-selects--rules-1 .a-input-base__hint")
+      .eq(0)
+      .contains("Role is required");
+
+    cy.get("#story--components-selects--rules-1 .a-select__selection")
+      .eq(0)
+      .click();
+    cy.get("#story--components-selects--rules-1 .a-select__menu-item")
+      .eq(3)
+      .click();
+    cy.get("#story--components-selects--rules-1 .a-input-base__hint")
+      .eq(0)
+      .contains("Role is set to Admin");
+
+    cy.get("#story--components-selects--rules-1 .a-select__selection")
+      .eq(0)
+      .click();
+    cy.get("#story--components-selects--rules-1 .a-select__menu-item")
+      .eq(1)
+      .click();
+    cy.get("#story--components-selects--rules-1 .a-input-base__hint").should(
+      "not.exist"
+    );
+  });
+
   it("supports themes", () => {
     if (Cypress.env("snapshots") === "off") return;
 

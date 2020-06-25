@@ -1,8 +1,15 @@
 import PropTypes from "prop-types";
-import React, {forwardRef, useRef, useState} from "react";
+import React, {
+  forwardRef,
+  useContext,
+  useEffect,
+  useRef,
+  useState
+} from "react";
 
 import {ADropdown, ADropdownMenu, ADropdownMenuItem} from "../ADropdown";
 import AInputBase from "../AInputBase";
+import AFormContext from "../AForm/AFormContext";
 import AIcon from "../AIcon";
 import {useCombinedRefs} from "../../utils/hooks";
 import {keyCodes} from "../../utils/helpers";
@@ -27,6 +34,9 @@ const ACombobox = forwardRef(
       onSelected,
       placeholder,
       readOnly,
+      required,
+      rules,
+      validateOnBlur,
       validationState,
       value,
       ...rest
@@ -40,6 +50,62 @@ const ACombobox = forwardRef(
     const [comboboxId] = useState(comboboxCounter++);
     const [isFocused, setIsFocused] = useState(false);
     const [isOpen, setIsOpen] = useState(false);
+    const [error, setError] = useState("");
+    const [workingValidationState, setWorkingValidationState] = useState(
+      validationState
+    );
+
+    const {register} = useContext(AFormContext);
+    useEffect(() => {
+      setWorkingValidationState(validationState);
+    }, [validationState]);
+
+    useEffect(() => {
+      if (register) {
+        register(`a-combobox_${comboboxId}`, {
+          reset,
+          validate
+        });
+      }
+    }, [validationState, value, rules]); // eslint-disable-line react-hooks/exhaustive-deps
+
+    const validate = (testValue = value) => {
+      if (rules || required) {
+        let workingRules = [];
+        if (rules) {
+          workingRules = [...rules];
+        }
+
+        if (required) {
+          workingRules = [
+            {
+              test: (v) => !!v || `${label ? label + " is r" : "R"}equired`,
+              level: "danger"
+            },
+            ...workingRules
+          ];
+        }
+
+        setWorkingValidationState("default");
+        setError(null);
+        for (let i = 0; i < workingRules.length; i++) {
+          const error = workingRules[i].test(testValue);
+          if (error !== true) {
+            setError(error);
+            setWorkingValidationState(workingRules[i].level || "danger");
+            return {
+              message: error,
+              level: workingRules[i].level || "danger"
+            };
+          }
+        }
+      }
+    };
+
+    const reset = () => {
+      setWorkingValidationState(validationState);
+      setError("");
+    };
 
     const chevronProps = {
       className: "a-combobox__chevron",
@@ -61,7 +127,7 @@ const ACombobox = forwardRef(
       disabled,
       focused: Boolean(isFocused || isOpen),
       append: <AIcon {...chevronProps}>chevron-down</AIcon>,
-      hint,
+      hint: error || hint,
       label,
       labelFor: `a-combobox_${comboboxId}`,
       onClear: () => {
@@ -74,10 +140,11 @@ const ACombobox = forwardRef(
         var event = new Event("input", {bubbles: true});
         e.dispatchEvent(event);
         setIsOpen(false);
+        reset();
         onClear && onClear(e);
       },
       readOnly,
-      validationState
+      validationState: workingValidationState
     };
 
     if (propsClassName) {
@@ -89,11 +156,15 @@ const ACombobox = forwardRef(
       className: "a-combobox__input",
       disabled,
       id: `a-combobox_${comboboxId}`,
-      onBlur: () => {
+      onBlur: (e) => {
         setIsFocused(false);
+        validateOnBlur &&
+          !dropdownMenuRef.current.contains(e.relatedTarget) &&
+          validate(value);
       },
       onChange: (e) => {
         setIsOpen(items.length || noDataContent);
+        !validateOnBlur && validate(e.target.value);
         onChange && onChange(e);
       },
       onClick: () => setIsOpen(items.length || noDataContent),
@@ -152,6 +223,7 @@ const ACombobox = forwardRef(
                 role: "option",
                 "aria-selected": false,
                 onClick: () => {
+                  validate(typeof item === "string" ? item : item[itemValue]);
                   onSelected && onSelected(item);
                   setTimeout(() => {
                     combinedRef.current
@@ -239,6 +311,23 @@ ACombobox.propTypes = {
    * Toggles the `readOnly` state.
    */
   readOnly: PropTypes.bool,
+  /**
+   * Toggles a default rule for required values.
+   */
+  required: PropTypes.bool,
+  /**
+   * Sets validation rules for the component.
+   */
+  rules: PropTypes.arrayOf(
+    PropTypes.shape({
+      test: PropTypes.func,
+      level: PropTypes.string
+    })
+  ),
+  /**
+   * Sets the validation rules to evaluate on `blur` rather than on `change`.
+   */
+  validateOnBlur: PropTypes.bool,
   /**
    * Applies a validation state.
    */

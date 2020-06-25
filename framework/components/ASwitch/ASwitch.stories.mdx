@@ -64,6 +64,35 @@ The `ASwitch` component inherits passed props.
 
 <Props of={ASwitch} />
 
+## Validation
+
+<Preview>
+  <Story name="rules-1">
+    <YourComponent>
+      {() => {
+        const [checked, setChecked] = useState(false);
+        return (
+          <div>
+            <h3>Switch with Validation</h3>
+            <ASwitch
+              checked={checked}
+              onClick={() => setChecked(!checked)}
+              required
+              rules={[
+                {
+                  test: (v) => !v || "This feature is potentially unsafe",
+                  level: "warning"
+                }
+              ]}>
+              Enable potentially unsafe feature.
+            </ASwitch>
+          </div>
+        );
+      }}
+    </YourComponent>
+  </Story>
+</Preview>
+
 ## States
 
 <Preview>

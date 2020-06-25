@@ -2,7 +2,6 @@
 
 $switch-width: 38px;
 $switch-height: 15px;
-$switch-margin: 10px 10px;
 $switch-border-radius: 11px;
 $switch__label-margin: 0 0 0 10px;
 $switch__circle-width: 21px;
@@ -176,10 +175,12 @@ $switch-after-transition: transform $transition-duration--fast
 }
 
 .a-switch {
-  display: flex;
-  align-items: center;
-  margin: $switch-margin;
-  cursor: pointer;
+  &__wrap {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    padding: 5px 0;
+  }
 
   &__box {
     display: flex;
@@ -226,7 +227,7 @@ $switch-after-transition: transform $transition-duration--fast
     overflow: visible;
   }
 
-  &--disabled {
+  &--disabled .a-switch__wrap {
     cursor: default;
   }
 }

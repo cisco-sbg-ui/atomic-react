@@ -1,7 +1,16 @@
 import PropTypes from "prop-types";
-import React, {forwardRef} from "react";
+import React, {
+  forwardRef,
+  useContext,
+  useEffect,
+  useRef,
+  useState
+} from "react";
 
+import AFormContext from "../AForm/AFormContext";
+import AHint from "../AHint";
 import {isStockColor, isValidColor} from "../../utils/helpers";
+import {useCombinedRefs} from "../../utils/hooks";
 import "./ACheckbox.scss";
 
 const Icons = {
@@ -13,6 +22,8 @@ const Icons = {
     "M2.254 0A2.268 2.268 0 000 2.254v10.49A2.268 2.268 0 002.254 15h10.49A2.267 2.267 0 0015 12.744V7.693l-2.348-.104a1.23 1.23 0 01-.37.858c-.241.209-.534.395-.892.41H3.828c-.447-.04-.74-.202-.942-.406l-.002-.002-.003-.003a1.14 1.14 0 01-.35-.855V7.59c0-.335.133-.653.37-.89v-.002c.23-.23.539-.37.895-.37h7.591c.36 0 .7.192.895.37.229.207.375.536.37.892L15 7.693v-5.44A2.268 2.268 0 0012.744 0z"
 };
 
+let checkboxCounter = 0;
+
 const ACheckbox = forwardRef(
   (
     {
@@ -21,15 +32,83 @@ const ACheckbox = forwardRef(
       className: propsClassName,
       color = "#049fd9",
       disabled = false,
+      hint,
       indeterminate = false,
       onClick,
+      required,
+      rules,
+      validationState,
       value,
       wrap,
       ...rest
     },
     ref
   ) => {
+    const checkboxRef = useRef(null);
+    const combinedRef = useCombinedRefs(ref, checkboxRef);
+    const [checkboxId] = useState(checkboxCounter++);
+    const [error, setError] = useState("");
+    const [workingValidationState, setWorkingValidationState] = useState(
+      validationState
+    );
+
+    const {register} = useContext(AFormContext);
+    useEffect(() => {
+      setWorkingValidationState(validationState);
+    }, [validationState]);
+
+    useEffect(() => {
+      if (register) {
+        register(`a-checkbox_${checkboxId}`, {
+          reset,
+          validate
+        });
+      }
+    }, [validationState, checked, value, rules]); // eslint-disable-line react-hooks/exhaustive-deps
+
+    const validate = (testValue = checked) => {
+      if (rules || required) {
+        let workingRules = [];
+        if (rules) {
+          workingRules = [...rules];
+        }
+
+        if (required) {
+          workingRules = [
+            {
+              test: (v) => !!v || "Required",
+              level: "danger"
+            },
+            ...workingRules
+          ];
+        }
+
+        setWorkingValidationState("default");
+        setError(null);
+        for (let i = 0; i < workingRules.length; i++) {
+          const error = workingRules[i].test(testValue);
+          if (error !== true) {
+            setError(error);
+            setWorkingValidationState(workingRules[i].level || "danger");
+            return {
+              message: error,
+              level: workingRules[i].level || "danger"
+            };
+          }
+        }
+      }
+    };
+
+    const reset = () => {
+      setWorkingValidationState(validationState);
+      setError("");
+    };
+
     let className = "a-checkbox";
+
+    if (["danger", "warning"].includes(workingValidationState)) {
+      className += ` a-checkbox--${workingValidationState}`;
+    }
 
     if (disabled) {
       className += " a-checkbox--disabled";
@@ -44,7 +123,7 @@ const ACheckbox = forwardRef(
       className: "a-checkbox__box"
     };
 
-    if (!disabled) {
+    if (!disabled && !["danger", "warning"].includes(workingValidationState)) {
       if (isStockColor(color)) {
         boxProps.className += ` ${color}--text`;
       } else {
@@ -62,43 +141,48 @@ const ACheckbox = forwardRef(
     }
 
     return (
-      <label {...rest} ref={ref} className={className}>
-        <input
-          type="checkbox"
-          className="a-checkbox__input"
-          value={value}
-          aria-checked={indeterminate ? "mixed" : checked}
-          checked={checked}
-          aria-disabled={disabled}
-          disabled={disabled}
-          onChange={() => {}}
-          onClick={onClick}
-          role="checkbox"
-          ref={(el) =>
-            el && ((el.indeterminate = indeterminate) || (el.checked = checked))
-          }
-        />
-        <span {...boxProps}>
-          <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15">
-            <path d={currentPath} />
-          </svg>
-        </span>
-        <span
-          className={`a-checkbox__label${
-            wrap ? " a-checkbox__label--wrap" : ""
-          }`}>
-          {children}
-        </span>
-      </label>
+      <div {...rest} ref={combinedRef} className={className}>
+        <label className="a-checkbox__wrap">
+          <input
+            type="checkbox"
+            className="a-checkbox__input"
+            value={value}
+            aria-checked={indeterminate ? "mixed" : checked}
+            checked={checked}
+            aria-disabled={disabled}
+            disabled={disabled}
+            onChange={() => {}}
+            onClick={(e) => {
+              validate(e.target.checked);
+              onClick && onClick(e);
+            }}
+            role="checkbox"
+            ref={(el) =>
+              el &&
+              ((el.indeterminate = indeterminate) || (el.checked = checked))
+            }
+          />
+          <span {...boxProps}>
+            <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15">
+              <path d={currentPath} />
+            </svg>
+          </span>
+          <span
+            className={`a-checkbox__label${
+              wrap ? " a-checkbox__label--wrap" : ""
+            }`}>
+            {children}
+          </span>
+        </label>
+        {(error || hint) && (
+          <AHint validationState={workingValidationState}>
+            {error || hint}
+          </AHint>
+        )}
+      </div>
     );
   }
 );
-
-ACheckbox.defaultProps = {
-  checked: false,
-  disabled: false,
-  indeterminate: false
-};
 
 ACheckbox.propTypes = {
   /**
@@ -114,6 +198,10 @@ ACheckbox.propTypes = {
    */
   disabled: PropTypes.bool,
   /**
+   * Sets the hint content.
+   */
+  hint: PropTypes.node,
+  /**
    * Toggles the `indeterminate` state.
    */
   indeterminate: PropTypes.bool,
@@ -121,6 +209,23 @@ ACheckbox.propTypes = {
    * A callback for handling the click event.
    */
   onClick: PropTypes.func,
+  /**
+   * Toggles a default rule for required values.
+   */
+  required: PropTypes.bool,
+  /**
+   * Sets validation rules for the component.
+   */
+  rules: PropTypes.arrayOf(
+    PropTypes.shape({
+      test: PropTypes.func,
+      level: PropTypes.string
+    })
+  ),
+  /**
+   * Applies a validation state.
+   */
+  validationState: PropTypes.oneOf(["default", "warning", "danger"]),
   /**
    * The input's value.
    */

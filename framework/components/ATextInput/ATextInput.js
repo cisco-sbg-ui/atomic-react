@@ -1,7 +1,14 @@
 import PropTypes from "prop-types";
-import React, {forwardRef, useEffect, useRef, useState} from "react";
+import React, {
+  forwardRef,
+  useContext,
+  useEffect,
+  useRef,
+  useState
+} from "react";
 
 import AInputBase from "../AInputBase";
+import AFormContext from "../AForm/AFormContext";
 import AIcon from "../AIcon";
 import {useCombinedRefs} from "../../utils/hooks";
 import {keyCodes} from "../../utils/helpers";
@@ -25,6 +32,9 @@ const ATextInput = forwardRef(
       disabled,
       hint,
       label,
+      max,
+      maxLength,
+      min,
       name,
       onBlur,
       onChange,
@@ -38,7 +48,11 @@ const ATextInput = forwardRef(
       placeholder,
       prependIcon,
       readOnly,
+      required,
+      rules,
+      step,
       type = "text",
+      validateOnBlur,
       validationState = "default",
       value,
       ...rest
@@ -50,6 +64,10 @@ const ATextInput = forwardRef(
     const [isFocused, setIsFocused] = useState(false);
     const [longClickTimeout, setLongClickTimeout] = useState(null);
     const [longClickInterval, setLongClickInterval] = useState(null);
+    const [error, setError] = useState("");
+    const [workingValidationState, setWorkingValidationState] = useState(
+      validationState
+    );
     const combinedRef = useCombinedRefs(ref, textInputRef);
     useEffect(() => {
       if (
@@ -64,6 +82,19 @@ const ATextInput = forwardRef(
 
       combinedRef.current.querySelector(".a-text-input__input").focus();
     }, [autoFocus, combinedRef]);
+    const {register} = useContext(AFormContext);
+    useEffect(() => {
+      setWorkingValidationState(validationState);
+    }, [validationState]);
+
+    useEffect(() => {
+      if (register) {
+        register(`a-text-input_${textInputId}`, {
+          reset,
+          validate
+        });
+      }
+    }, [validationState, value, rules]); // eslint-disable-line react-hooks/exhaustive-deps
 
     const prependProps = {
       className: "a-text-input__prepend-icon"
@@ -110,7 +141,7 @@ const ATextInput = forwardRef(
 
     const isNumberType = type === "number";
 
-    const incrementInput = (amount = 1) => {
+    const incrementInput = (amount = step || 1) => {
       const input = combinedRef.current.querySelector(".a-text-input__input");
       const nativeInputValueGetter = Object.getOwnPropertyDescriptor(
         window.HTMLInputElement.prototype,
@@ -121,10 +152,16 @@ const ATextInput = forwardRef(
         "value"
       ).set;
       const currentValue = parseFloat(nativeInputValueGetter.call(input));
-      nativeInputValueSetter.call(
-        input,
-        isNaN(currentValue) ? amount : currentValue + amount
-      );
+      let finalValue = isNaN(currentValue) ? amount : currentValue + amount;
+      if (typeof min !== "undefined") {
+        finalValue = Math.max(min, finalValue);
+      }
+
+      if (typeof min !== "undefined") {
+        finalValue = Math.min(max, finalValue);
+      }
+
+      nativeInputValueSetter.call(input, finalValue);
       const event = new Event("input", {bubbles: true});
       input.dispatchEvent(event);
     };
@@ -176,13 +213,13 @@ const ATextInput = forwardRef(
                 setTimeout(() => {
                   setLongClickInterval(
                     setInterval(() => {
-                      incrementInput(-1);
+                      incrementInput(-1 * (step || 1));
                     }, 33)
                   );
                 }, 300)
               );
 
-              incrementInput(-1);
+              incrementInput(-1 * (step || 1));
             }}>
             <path d={chevronDown} />
           </svg>
@@ -194,12 +231,79 @@ const ATextInput = forwardRef(
       appendContent.push(<AIcon {...appendProps}>{appendIcon}</AIcon>);
     }
 
+    const validate = (testValue = value) => {
+      if (
+        rules ||
+        required ||
+        typeof min !== "undefined" ||
+        typeof max !== "undefined"
+      ) {
+        let workingRules = [];
+        if (rules) {
+          workingRules = [...rules];
+        }
+
+        if (typeof max !== "undefined") {
+          workingRules = [
+            {
+              test: (v) =>
+                v <= max ||
+                `${label ? label + " has a m" : "M"}aximum value of ${max}`,
+              level: "danger"
+            },
+            ...workingRules
+          ];
+        }
+
+        if (typeof min !== "undefined") {
+          workingRules = [
+            {
+              test: (v) =>
+                v >= min ||
+                `${label ? label + " has a m" : "M"}inimum value of ${min}`,
+              level: "danger"
+            },
+            ...workingRules
+          ];
+        }
+
+        if (required) {
+          workingRules = [
+            {
+              test: (v) => !!v || `${label ? label + " is r" : "R"}equired`,
+              level: "danger"
+            },
+            ...workingRules
+          ];
+        }
+
+        setWorkingValidationState("default");
+        setError(null);
+        for (let i = 0; i < workingRules.length; i++) {
+          const error = workingRules[i].test(testValue);
+          if (error !== true) {
+            setError(error);
+            setWorkingValidationState(workingRules[i].level || "danger");
+            return {
+              message: error,
+              level: workingRules[i].level || "danger"
+            };
+          }
+        }
+      }
+    };
+
+    const reset = () => {
+      setWorkingValidationState(validationState);
+      setError("");
+    };
+
     const inputBaseProps = {
       ...rest,
       ref: combinedRef,
       className: "a-text-input",
       clearable,
-      hint,
+      hint: error || hint,
       label,
       labelFor: `a-text-input_${textInputId}`,
       disabled,
@@ -207,7 +311,7 @@ const ATextInput = forwardRef(
       append: appendContent,
       prepend: prependIcon && <AIcon {...prependProps}>{prependIcon}</AIcon>,
       readOnly,
-      validationState,
+      validationState: workingValidationState,
       onClear: () => {
         const e = combinedRef.current.querySelector(".a-text-input__input");
         const nativeInputValueSetter = Object.getOwnPropertyDescriptor(
@@ -217,6 +321,7 @@ const ATextInput = forwardRef(
         nativeInputValueSetter.call(e, "");
         const event = new Event("input", {bubbles: true});
         e.dispatchEvent(event);
+        reset();
         onClear && onClear(e);
       }
     };
@@ -234,12 +339,19 @@ const ATextInput = forwardRef(
       className: "a-text-input__input",
       disabled,
       id: `a-text-input_${textInputId}`,
+      max,
+      maxLength,
+      min,
       name,
       onBlur: (e) => {
         setIsFocused(false);
+        validateOnBlur && validate(e.target.value);
         onBlur && onBlur(e);
       },
-      onChange,
+      onChange: (e) => {
+        !validateOnBlur && validate(e.target.value);
+        onChange && onChange(e);
+      },
       onClick,
       onFocus: (e) => {
         setIsFocused(true);
@@ -249,6 +361,7 @@ const ATextInput = forwardRef(
       onPaste,
       placeholder,
       readOnly,
+      step,
       type,
       value
     };
@@ -290,6 +403,18 @@ ATextInput.propTypes = {
    * Sets the label content.
    */
   label: PropTypes.node,
+  /**
+   * Sets the maximum value of a number type text input.
+   */
+  max: PropTypes.number,
+  /**
+   * Sets the maximum length of the text input value.
+   */
+  maxLength: PropTypes.number,
+  /**
+   * Sets the minimum value of a number type text input.
+   */
+  min: PropTypes.number,
   /**
    * The input's `name` attribute.
    */
@@ -343,9 +468,30 @@ ATextInput.propTypes = {
    */
   readOnly: PropTypes.bool,
   /**
+   * Toggles a default rule for required values.
+   */
+  required: PropTypes.bool,
+  /**
+   * Sets validation rules for the component.
+   */
+  rules: PropTypes.arrayOf(
+    PropTypes.shape({
+      test: PropTypes.func,
+      level: PropTypes.string
+    })
+  ),
+  /**
+   * Sets the increment/decrement value for number type text inputs.
+   */
+  step: PropTypes.number,
+  /**
    * Change the input type to take advantage of native behavior.
    */
   type: PropTypes.oneOf(["text", "password", "email", "number"]),
+  /**
+   * Sets the validation rules to evaluate on `blur` rather than on `change`.
+   */
+  validateOnBlur: PropTypes.bool,
   /**
    * Applies a validation state.
    */

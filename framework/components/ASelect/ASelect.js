@@ -1,7 +1,14 @@
 import PropTypes from "prop-types";
-import React, {forwardRef, useRef, useState} from "react";
+import React, {
+  forwardRef,
+  useContext,
+  useEffect,
+  useRef,
+  useState
+} from "react";
 
 import AInputBase from "../AInputBase";
+import AFormContext from "../AForm/AFormContext";
 import AIcon from "../AIcon";
 import {ADropdown, ADropdownMenu, ADropdownMenuItem} from "../ADropdown";
 import {keyCodes} from "../../utils/helpers";
@@ -25,6 +32,9 @@ const ASelect = forwardRef(
       onSelected,
       placeholder,
       readOnly,
+      required,
+      rules,
+      validateOnBlur,
       validationState,
       ...rest
     },
@@ -32,14 +42,31 @@ const ASelect = forwardRef(
   ) => {
     const dropdownMenuRef = useRef(null);
     const surfaceRef = useRef(null);
-
     const [selectId] = useState(selectCounter++);
-
     const [selectedItem, setSelectedItem] = useState(
       items.find((x) => x[itemSelected])
     );
     const [isFocused, setIsFocused] = useState(false);
     const [isOpen, setIsOpen] = useState(false);
+    const [error, setError] = useState("");
+    const [workingValidationState, setWorkingValidationState] = useState(
+      validationState
+    );
+
+    const {register} = useContext(AFormContext);
+    useEffect(() => {
+      setWorkingValidationState(validationState);
+    }, [validationState]);
+
+    useEffect(() => {
+      if (register) {
+        register(`a-select_${selectId}`, {
+          reset,
+          validate
+        });
+      }
+    }, [validationState, selectedItem, rules]); // eslint-disable-line react-hooks/exhaustive-deps
+
     let className = "a-select";
 
     if (propsClassName) {
@@ -51,7 +78,9 @@ const ASelect = forwardRef(
         if (typeof item === "string") {
           return item === selectedItem;
         } else if (typeof item === "object") {
-          return item[itemValue] === selectedItem[itemValue];
+          return selectedItem
+            ? item[itemValue] === selectedItem[itemValue]
+            : null;
         }
       });
     };
@@ -86,6 +115,56 @@ const ASelect = forwardRef(
       return newItem;
     };
 
+    const validate = (testValue = selectedItem) => {
+      if (rules || required) {
+        let workingRules = [];
+        if (rules) {
+          workingRules = [...rules];
+        }
+
+        if (required) {
+          workingRules = [
+            {
+              test: (v) => {
+                if (typeof testValue === "string") {
+                  return !!v || `${label ? label + " is r" : "R"}equired`;
+                }
+
+                if (typeof testValue === "object") {
+                  return (
+                    !!v[itemValue] || `${label ? label + " is r" : "R"}equired`
+                  );
+                }
+
+                return `${label ? label + " is r" : "R"}equired`;
+              },
+              level: "danger"
+            },
+            ...workingRules
+          ];
+        }
+
+        setWorkingValidationState("default");
+        setError(null);
+        for (let i = 0; i < workingRules.length; i++) {
+          const error = workingRules[i].test(testValue);
+          if (error !== true) {
+            setError(error);
+            setWorkingValidationState(workingRules[i].level || "danger");
+            return {
+              message: error,
+              level: workingRules[i].level || "danger"
+            };
+          }
+        }
+      }
+    };
+
+    const reset = () => {
+      setWorkingValidationState(validationState);
+      setError("");
+    };
+
     const chevronProps = {
       className: "a-select__chevron"
     };
@@ -107,13 +186,20 @@ const ASelect = forwardRef(
         setIsFocused(true);
       };
 
-      selectionProps.onBlur = () => {
+      selectionProps.onBlur = (e) => {
         setIsFocused(false);
+        validateOnBlur &&
+          !dropdownMenuRef.current.contains(e.relatedTarget) &&
+          validate(selectedItem);
       };
 
       if (!readOnly) {
         chevronProps.onClick = selectionProps.onClick = () => {
           setIsOpen(!isOpen);
+          if (!isOpen) {
+            reset();
+          }
+
           setTimeout(() => {
             const selectedIndex = getSelectedIndex();
             if (selectedIndex > -1) {
@@ -157,6 +243,7 @@ const ASelect = forwardRef(
 
     const selectItem = (item) => {
       setSelectedItem(item);
+      !validateOnBlur && validate(item);
       onSelected && onSelected(item);
     };
 
@@ -176,17 +263,22 @@ const ASelect = forwardRef(
         }
         focused={isFocused || isOpen}
         readOnly={readOnly}
-        validationState={validationState}
-        hint={hint}>
+        validationState={workingValidationState}
+        hint={error || hint}>
         <ADropdown style={{width: "100%"}}>
           <div {...selectionProps} className="a-select__selection">
-            {(selectedItem && selectedItem[itemText]) ||
-              selectedItem ||
-              placeholder}
+            {typeof selectedItem === "string"
+              ? selectedItem
+              : typeof selectedItem === "object"
+              ? selectedItem[itemText]
+              : placeholder}
           </div>
           <ADropdownMenu
             open={isOpen}
-            onClose={() => setIsOpen(false)}
+            onClose={() => {
+              setIsOpen(false);
+              surfaceRef.current.focus();
+            }}
             ref={dropdownMenuRef}
             role="listbox"
             className="a-select__menu-items">
@@ -292,6 +384,23 @@ ASelect.propTypes = {
    * Toggles the `read-only` state
    */
   readOnly: PropTypes.bool,
+  /**
+   * Toggles a default rule for required values.
+   */
+  required: PropTypes.bool,
+  /**
+   * Sets validation rules for the component.
+   */
+  rules: PropTypes.arrayOf(
+    PropTypes.shape({
+      test: PropTypes.func,
+      level: PropTypes.string
+    })
+  ),
+  /**
+   * Sets the validation rules to evaluate on `blur` rather than on `change`.
+   */
+  validateOnBlur: PropTypes.bool,
   /**
    * Applies a validation state.
    */

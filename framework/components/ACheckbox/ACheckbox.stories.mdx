@@ -87,11 +87,42 @@ The `ACheckbox` component inherits passed props.
 
 <Props of={ACheckbox} />
 
+## Validation
+
+<Preview>
+  <Story name="rules-1">
+    <YourComponent>
+      {() => {
+        const [checked, setChecked] = useState(false);
+        return (
+          <div>
+            <h3>Checkbox with Validation</h3>
+            <ACheckbox
+              checked={checked}
+              onClick={() => setChecked(!checked)}
+              required
+              rules={[
+                {
+                  test: (v) =>
+                    !v || "Your information is sold to third parties",
+                  level: "warning"
+                }
+              ]}>
+              I accept the terms.
+            </ACheckbox>
+          </div>
+        );
+      }}
+    </YourComponent>
+  </Story>
+</Preview>
+
 ## States
 
 <Preview>
   <Story name="states-1">
     <div className="d-flex flex-column">
+      <h3>Default Color</h3>
       <ACheckbox>Default</ACheckbox>
       <ACheckbox checked>Checked</ACheckbox>
       <ACheckbox indeterminate>Indeterminate</ACheckbox>
@@ -102,6 +133,57 @@ The `ACheckbox` component inherits passed props.
       <ACheckbox disabled indeterminate>
         Disabled and Indeterminate
       </ACheckbox>
+    </div>
+  </Story>
+  <Story name="states-2">
+    <div className="d-flex flex-column">
+      <h3>Warning State</h3>
+      <ACheckbox validationState="warning">Default</ACheckbox>
+      <ACheckbox validationState="warning" checked>
+        Checked
+      </ACheckbox>
+      <ACheckbox validationState="warning" indeterminate>
+        Indeterminate
+      </ACheckbox>
+      <ACheckbox validationState="warning" disabled>
+        Disabled
+      </ACheckbox>
+      <ACheckbox validationState="warning" disabled checked>
+        Disabled and Checked
+      </ACheckbox>
+      <ACheckbox validationState="warning" disabled indeterminate>
+        Disabled and Indeterminate
+      </ACheckbox>
+    </div>
+  </Story>
+  <Story name="states-3">
+    <div className="d-flex flex-column">
+      <h3>Danger State</h3>
+      <ACheckbox validationState="danger">Default</ACheckbox>
+      <ACheckbox validationState="danger" checked>
+        Checked
+      </ACheckbox>
+      <ACheckbox validationState="danger" indeterminate>
+        Indeterminate
+      </ACheckbox>
+      <ACheckbox validationState="danger" disabled>
+        Disabled
+      </ACheckbox>
+      <ACheckbox validationState="danger" disabled checked>
+        Disabled and Checked
+      </ACheckbox>
+      <ACheckbox validationState="danger" disabled indeterminate>
+        Disabled and Indeterminate
+      </ACheckbox>
+    </div>
+  </Story>
+</Preview>
+
+## Label wrap
+
+<Preview>
+  <Story name="wrap-1">
+    <div className="d-flex flex-column">
       <ACheckbox>Very long truncated text. {LoremIpsum}</ACheckbox>
       <ACheckbox wrap>Very long wrapping text. {LoremIpsum}</ACheckbox>
     </div>
