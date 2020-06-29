@@ -58,10 +58,6 @@ $input-transition: border-color $transition-duration--extra-fast
         box-shadow: $warning-box-shadow;
       }
     }
-
-    .a-input-base__hint {
-      color: map-deep-get($theme, "control", "warning-color");
-    }
   }
 
   &--danger {
@@ -82,10 +78,6 @@ $input-transition: border-color $transition-duration--extra-fast
         border: $border-width solid $color-error;
         box-shadow: $danger-box-shadow;
       }
-    }
-
-    .a-input-base__hint {
-      color: map-deep-get($theme, "control", "error-color");
     }
   }
 
@@ -169,15 +161,6 @@ $input-transition: border-color $transition-duration--extra-fast
     padding: 0 7px;
     align-self: stretch;
     cursor: pointer;
-  }
-
-  &__hint {
-    display: block;
-    font-style: oblique;
-    line-height: 16px;
-    margin: 2px 0 0 0;
-    font-size: $font-size--xs;
-    color: map-get($grey, "base");
   }
 }
 

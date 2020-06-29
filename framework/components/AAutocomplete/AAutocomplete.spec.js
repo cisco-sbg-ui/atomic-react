@@ -142,6 +142,24 @@ context("AAutocomplete", () => {
       .type("{esc}");
   });
 
+  it("validates", () => {
+    cy.get("#story--components-autocompletes--rules-1 .a-autocomplete__input")
+      .eq(0)
+      .type("aaa");
+    cy.get("#story--components-autocompletes--rules-1").click("top");
+    cy.get("#story--components-autocompletes--rules-1 .a-input-base__hint")
+      .eq(0)
+      .contains("Must have a capital letter");
+
+    cy.get("#story--components-autocompletes--rules-1 .a-autocomplete__input")
+      .eq(0)
+      .clear();
+    cy.get("#story--components-autocompletes--rules-1").click("top");
+    cy.get("#story--components-autocompletes--rules-1 .a-input-base__hint")
+      .eq(0)
+      .contains("Food Group is required");
+  });
+
   it("supports themes", () => {
     if (Cypress.env("snapshots") === "off") return;
 

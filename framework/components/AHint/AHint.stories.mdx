@@ -1,0 +1,46 @@
+import {Meta, Preview, Story, Props} from "@storybook/addon-docs/blocks";
+
+import AHint from "./AHint";
+
+<Meta title="Extend/Hint" component={AHint} />
+
+# Hint Component
+
+## Install
+
+Integrate with your build to [auto-import](?path=/docs/getting-started--page#integrating), or add an import in your component:
+
+```
+import AHint from "@cisco-ats/atomic-react/AHint";
+// or if you're able to treekshake node_modules
+import {AHint} from "@cisco-ats/atomic-react";
+```
+
+## Usage
+
+<Preview>
+  <Story name="usage-1">
+    <div>
+      <div>[Form Component]</div>
+      <AHint>Hint Text</AHint>
+    </div>
+  </Story>
+  <Story name="usage-2">
+    <div>
+      <div>[Form Component]</div>
+      <AHint validationState="warning">Warning Hint Text</AHint>
+    </div>
+  </Story>
+  <Story name="usage-3">
+    <div>
+      <div>[Form Component]</div>
+      <AHint validationState="danger">Danger Hint Text</AHint>
+    </div>
+  </Story>
+</Preview>
+
+## Hint Props
+
+The `AHint` component inherits passed props.
+
+<Props of={AHint} />

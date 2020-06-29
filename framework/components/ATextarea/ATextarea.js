@@ -1,7 +1,14 @@
 import PropTypes from "prop-types";
-import React, {forwardRef, useEffect, useRef, useState} from "react";
+import React, {
+  forwardRef,
+  useContext,
+  useEffect,
+  useRef,
+  useState
+} from "react";
 
 import AInputBase from "../AInputBase";
+import AFormContext from "../AForm/AFormContext";
 import {useCombinedRefs} from "../../utils/hooks";
 import "./ATextarea.scss";
 
@@ -23,7 +30,10 @@ const ATextarea = forwardRef(
       onPaste,
       placeholder,
       readOnly,
+      required,
+      rules,
       rows = 3,
+      validateOnBlur,
       validationState = "default",
       value,
       ...rest
@@ -34,6 +44,10 @@ const ATextarea = forwardRef(
     const combinedRef = useCombinedRefs(ref, textareaRef);
     const [isFocused, setIsFocused] = useState(false);
     const [textareaId] = useState(textareaCounter++);
+    const [error, setError] = useState("");
+    const [workingValidationState, setWorkingValidationState] = useState(
+      validationState
+    );
 
     useEffect(() => {
       if (autoGrow) {
@@ -48,6 +62,20 @@ const ATextarea = forwardRef(
       }
     }, [autoGrow]); // eslint-disable-line react-hooks/exhaustive-deps
 
+    const {register} = useContext(AFormContext);
+    useEffect(() => {
+      setWorkingValidationState(validationState);
+    }, [validationState]);
+
+    useEffect(() => {
+      if (register) {
+        register(`a-textarea_${textareaId}`, {
+          reset,
+          validate
+        });
+      }
+    }, [validationState, value, rules]); // eslint-disable-line react-hooks/exhaustive-deps
+
     const calculateInputHeight = () => {
       const input =
         combinedRef.current &&
@@ -60,17 +88,55 @@ const ATextarea = forwardRef(
       input.style.height = Math.max(minHeight, height) + "px";
     };
 
+    const validate = (testValue = value) => {
+      if (rules || required) {
+        let workingRules = [];
+        if (rules) {
+          workingRules = [...rules];
+        }
+
+        if (required) {
+          workingRules = [
+            {
+              test: (v) => !!v || `${label ? label + " is r" : "R"}equired`,
+              level: "danger"
+            },
+            ...workingRules
+          ];
+        }
+
+        setWorkingValidationState("default");
+        setError(null);
+        for (let i = 0; i < workingRules.length; i++) {
+          const error = workingRules[i].test(testValue);
+          if (error !== true) {
+            setError(error);
+            setWorkingValidationState(workingRules[i].level || "danger");
+            return {
+              message: error,
+              level: workingRules[i].level || "danger"
+            };
+          }
+        }
+      }
+    };
+
+    const reset = () => {
+      setWorkingValidationState(validationState);
+      setError("");
+    };
+
     const inputBaseProps = {
       ...rest,
       ref: combinedRef,
       className: "a-textarea",
       focused: isFocused,
-      hint,
+      hint: error || hint,
       label,
       labelFor: `a-textarea__field_${textareaId}`,
       disabled,
       readOnly,
-      validationState
+      validationState: workingValidationState
     };
 
     if (autoGrow) {
@@ -91,6 +157,7 @@ const ATextarea = forwardRef(
       value,
       onBlur: (e) => {
         setIsFocused(false);
+        validateOnBlur && validate(e.target.value);
         onBlur && onBlur(e);
       },
       onChange: (e) => {
@@ -98,6 +165,7 @@ const ATextarea = forwardRef(
           calculateInputHeight();
         }
 
+        !validateOnBlur && validate(e.target.value);
         propsOnChange && propsOnChange(e);
       },
       onFocus: (e) => {
@@ -170,9 +238,26 @@ ATextarea.propTypes = {
    */
   readOnly: PropTypes.bool,
   /**
+   * Toggles a default rule for required values.
+   */
+  required: PropTypes.bool,
+  /**
    * Sets the default number of rows for the textarea.
    */
   rows: PropTypes.number,
+  /**
+   * Sets validation rules for the component.
+   */
+  rules: PropTypes.arrayOf(
+    PropTypes.shape({
+      test: PropTypes.func,
+      level: PropTypes.string
+    })
+  ),
+  /**
+   * Sets the validation rules to evaluate on `blur` rather than on `change`.
+   */
+  validateOnBlur: PropTypes.bool,
   /**
    * Applies a validation state.
    */

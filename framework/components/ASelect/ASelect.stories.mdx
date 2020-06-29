@@ -155,6 +155,37 @@ The `ASelect` component inherits passed props.
 
 <Props of={ASelect} />
 
+## Validation
+
+<Preview>
+  <Story name="rules-1">
+    <YourComponent>
+      {() => {
+        const [role, setRole] = useState(null);
+        return (
+          <ASelect
+            items={[
+              {value: 0, text: ""},
+              {value: 1, text: "Read"},
+              {value: 2, text: "Write"},
+              {value: 3, text: "Admin"}
+            ]}
+            label="Role"
+            required
+            rules={[
+              {
+                test: (v) => v.value !== 3 || "Role is set to Admin",
+                level: "warning"
+              }
+            ]}
+            onSelected={(item) => setRole(item)}
+          />
+        );
+      }}
+    </YourComponent>
+  </Story>
+</Preview>
+
 ## Accessibility Notes
 
 In addition to inheriting all of the accessibility features of `ADropdown`,

@@ -2,6 +2,7 @@ import PropTypes from "prop-types";
 import React, {forwardRef} from "react";
 
 import AIcon from "../AIcon";
+import AHint from "../AHint";
 import {keyCodes} from "../../utils/helpers";
 import "./AInputBase.scss";
 
@@ -96,7 +97,13 @@ const AInputBase = forwardRef(
             </div>
           )}
         </div>
-        {hint && <div className="a-input-base__hint">{hint}</div>}
+        {hint && (
+          <AHint
+            className="a-input-base__hint"
+            validationState={validationState}>
+            {hint}
+          </AHint>
+        )}
       </div>
     );
   }

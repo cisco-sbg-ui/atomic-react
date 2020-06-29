@@ -144,6 +144,58 @@ The `AAutocomplete` component inherits passed props.
 
 <Props of={AAutocomplete} />
 
+## Validation
+
+<Preview>
+  <Story name="rules-1">
+    <div style={{minHeight: 220, minWidth: 250, marginRight: 20}}>
+      <h3>Autocomplete with Validation</h3>
+      <YourComponent>
+        {() => {
+          const items = [
+            "Bread, Cereal, Rice, and Pasta",
+            "Vegetables",
+            "Fruit",
+            "Milk, Yogurt, and Cheese",
+            "Meat, Poultry, Fish",
+            "Fats, Oils, and Sweets"
+          ];
+          const [value, setValue] = useState("");
+          const [filteredItems, setFilteredItems] = useState(items);
+          return (
+            <AAutocomplete
+              clearable
+              label="Food Group"
+              items={filteredItems}
+              placeholder="Pick a Food Group"
+              onSelected={(item) => {
+                setValue(item);
+              }}
+              required
+              rules={[
+                {
+                  test: (v) => /[A-Z]+/.test(v) || "Must have a capital letter",
+                  level: "warning"
+                }
+              ]}
+              value={value}
+              onChange={(e) => {
+                setFilteredItems(
+                  items.filter((x) =>
+                    x.toLowerCase().includes(e.target.value.toLowerCase())
+                  )
+                );
+                setValue(e.target.value);
+              }}
+              validateOnBlur
+            />
+          );
+        }}
+      </YourComponent>
+    </div>
+  </Story>
+</Preview>
+
 ## States
 
 <Preview>

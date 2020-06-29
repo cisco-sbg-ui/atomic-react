@@ -184,6 +184,82 @@ context("ATextInput", () => {
       .should("have.length", 2);
   });
 
+  it("supports maxLength", () => {
+    cy.get("#story--components-text-inputs--rules-1 .a-text-input__input")
+      .eq(0)
+      .clear()
+      .type("123456789012345678901234567890123456789012345678901")
+      .should(
+        "have.value",
+        "12345678901234567890123456789012345678901234567890"
+      );
+  });
+
+  it("validates", () => {
+    cy.get("#story--components-text-inputs--rules-1 .a-text-input__input")
+      .eq(0)
+      .clear();
+    cy.get("#story--components-text-inputs--rules-1 .a-input-base__hint")
+      .eq(0)
+      .contains("Name is required");
+    cy.get("#story--components-text-inputs--rules-1 .a-text-input__input")
+      .eq(0)
+      .type("1");
+    cy.get("#story--components-text-inputs--rules-1").click("left");
+    cy.get("#story--components-text-inputs--rules-1 .a-input-base__hint")
+      .eq(0)
+      .contains("Your name");
+
+    cy.get("#story--components-text-inputs--rules-1 .a-text-input__input")
+      .eq(2)
+      .type(1001);
+    cy.get("#story--components-text-inputs--rules-1 .a-input-base__hint")
+      .eq(2)
+      .contains("Favorite Number has a maximum value of 1000");
+
+    cy.get("#story--components-text-inputs--rules-1 .a-text-input__input")
+      .eq(2)
+      .clear()
+      .type(-1);
+    cy.get("#story--components-text-inputs--rules-1 .a-input-base__hint")
+      .eq(2)
+      .contains("Favorite Number has a minimum value of 0");
+
+    cy.get("#story--components-text-inputs--rules-1 .a-text-input__input")
+      .eq(2)
+      .clear()
+      .type("899");
+    cy.get(
+      "#story--components-text-inputs--rules-1 .a-text-input__spinner__up"
+    ).click();
+    cy.get("#story--components-text-inputs--rules-1 .a-text-input__input")
+      .eq(2)
+      .should("have.value", "999");
+    cy.get(
+      "#story--components-text-inputs--rules-1 .a-text-input__spinner__up"
+    ).click();
+    cy.get("#story--components-text-inputs--rules-1 .a-text-input__input")
+      .eq(2)
+      .should("have.value", "1000");
+
+    cy.get("#story--components-text-inputs--rules-1 .a-text-input__input")
+      .eq(2)
+      .clear()
+      .type("199");
+    cy.get(
+      "#story--components-text-inputs--rules-1 .a-text-input__spinner__down"
+    ).click();
+    cy.get("#story--components-text-inputs--rules-1 .a-text-input__input")
+      .eq(2)
+      .should("have.value", "99");
+    cy.get(
+      "#story--components-text-inputs--rules-1 .a-text-input__spinner__down"
+    ).click();
+    cy.get("#story--components-text-inputs--rules-1 .a-text-input__input")
+      .eq(2)
+      .should("have.value", "0");
+  });
+
   it("supports themes", () => {
     if (Cypress.env("snapshots") === "off") return;
 

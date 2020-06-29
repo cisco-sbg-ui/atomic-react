@@ -94,3 +94,37 @@ import {ATextarea} from "@cisco-ats/atomic-react";
 The `ATextarea` component inherits passed props.
 
 <Props of={ATextarea} />
+
+## Validation
+
+<Preview>
+  <Story name="rules-1">
+    <YourComponent>
+      {() => {
+        const [comments, setComments] = useState("");
+        return (
+          <div>
+            <h3>Required Field</h3>
+            <ATextarea
+              label="Comments"
+              onChange={(e) => {
+                setComments(e.target.value);
+              }}
+              value={comments}
+              required
+              rules={[
+                {
+                  test: (v) =>
+                    v.length < 10 || "Comments must be less than 10 characters",
+                  level: "danger"
+                }
+              ]}
+              validateOnBlur
+              hint="Keep it short."
+            />
+          </div>
+        );
+      }}
+    </YourComponent>
+  </Story>
+</Preview>

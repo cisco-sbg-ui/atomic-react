@@ -1,7 +1,18 @@
 import PropTypes from "prop-types";
-import React, {forwardRef} from "react";
+import React, {
+  forwardRef,
+  useContext,
+  useEffect,
+  useRef,
+  useState
+} from "react";
 
+import AFormContext from "../AForm/AFormContext";
+import AHint from "../AHint";
+import {useCombinedRefs} from "../../utils/hooks";
 import "./ASwitch.scss";
+
+let switchCounter = 0;
 
 const ASwitch = forwardRef(
   (
@@ -10,14 +21,82 @@ const ASwitch = forwardRef(
       children,
       className: propsClassName,
       disabled = false,
+      hint,
       onClick,
+      required,
+      rules,
+      validationState,
       value,
       wrap,
       ...rest
     },
     ref
   ) => {
+    const switchRef = useRef(null);
+    const combinedRef = useCombinedRefs(ref, switchRef);
+    const [switchId] = useState(switchCounter++);
+    const [error, setError] = useState("");
+    const [workingValidationState, setWorkingValidationState] = useState(
+      validationState
+    );
+
+    const {register} = useContext(AFormContext);
+    useEffect(() => {
+      setWorkingValidationState(validationState);
+    }, [validationState]);
+
+    useEffect(() => {
+      if (register) {
+        register(`a-switch_${switchId}`, {
+          reset,
+          validate
+        });
+      }
+    }, [validationState, checked, value, rules]); // eslint-disable-line react-hooks/exhaustive-deps
+
+    const validate = (testValue = checked) => {
+      if (rules || required) {
+        let workingRules = [];
+        if (rules) {
+          workingRules = [...rules];
+        }
+
+        if (required) {
+          workingRules = [
+            {
+              test: (v) => !!v || "Required",
+              level: "danger"
+            },
+            ...workingRules
+          ];
+        }
+
+        setWorkingValidationState("default");
+        setError(null);
+        for (let i = 0; i < workingRules.length; i++) {
+          const error = workingRules[i].test(testValue);
+          if (error !== true) {
+            setError(error);
+            setWorkingValidationState(workingRules[i].level || "danger");
+            return {
+              message: error,
+              level: workingRules[i].level || "danger"
+            };
+          }
+        }
+      }
+    };
+
+    const reset = () => {
+      setWorkingValidationState(validationState);
+      setError("");
+    };
+
     let className = "a-switch";
+
+    if (["danger", "warning"].includes(workingValidationState)) {
+      className += ` a-checkbox--${workingValidationState}`;
+    }
 
     if (disabled) {
       className += " a-switch--disabled";
@@ -33,26 +112,38 @@ const ASwitch = forwardRef(
     };
 
     return (
-      <label {...rest} ref={ref} className={className}>
-        <input
-          type="checkbox"
-          className="a-switch__input"
-          value={value}
-          aria-checked={checked}
-          checked={checked}
-          aria-disabled={disabled}
-          disabled={disabled}
-          onChange={() => {}}
-          onClick={onClick}
-          role="switch"
-          ref={(el) => el && (el.checked = checked)}
-        />
-        <span {...boxProps} />
-        <span
-          className={`a-switch__label${wrap ? " a-switch__label--wrap" : ""}`}>
-          {children}
-        </span>
-      </label>
+      <div {...rest} ref={combinedRef} className={className}>
+        <label className="a-switch__wrap">
+          <input
+            type="checkbox"
+            className="a-switch__input"
+            value={value}
+            aria-checked={checked}
+            checked={checked}
+            aria-disabled={disabled}
+            disabled={disabled}
+            onChange={() => {}}
+            onClick={(e) => {
+              validate(e.target.checked);
+              onClick && onClick(e);
+            }}
+            role="switch"
+            ref={(el) => el && (el.checked = checked)}
+          />
+          <span {...boxProps} />
+          <span
+            className={`a-switch__label${
+              wrap ? " a-switch__label--wrap" : ""
+            }`}>
+            {children}
+          </span>
+        </label>
+        {(error || hint) && (
+          <AHint validationState={workingValidationState}>
+            {error || hint}
+          </AHint>
+        )}
+      </div>
     );
   }
 );
@@ -67,9 +158,30 @@ ASwitch.propTypes = {
    */
   disabled: PropTypes.bool,
   /**
+   * Sets the hint content.
+   */
+  hint: PropTypes.node,
+  /**
    * A callback for handling the click event.
    */
   onClick: PropTypes.func,
+  /**
+   * Toggles a default rule for required values.
+   */
+  required: PropTypes.bool,
+  /**
+   * Sets validation rules for the component.
+   */
+  rules: PropTypes.arrayOf(
+    PropTypes.shape({
+      test: PropTypes.func,
+      level: PropTypes.string
+    })
+  ),
+  /**
+   * Applies a validation state.
+   */
+  validationState: PropTypes.oneOf(["default", "warning", "danger"]),
   /**
    * The input's value.
    */

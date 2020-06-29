@@ -105,6 +105,10 @@ ATab.propTypes = {
    */
   selected: PropTypes.bool,
   /**
+   * Supplies an identifier to the tab for the purpose of being leveraged by the developer in controlled mode. If absent, uncontrolled mode is assumed.
+   */
+  tabKey: PropTypes.string,
+  /**
    * If the `href` property is defined, the target can be set (ex: `_blank`, `_self`, `_parent`, `_top`)
    */
   target: PropTypes.string
