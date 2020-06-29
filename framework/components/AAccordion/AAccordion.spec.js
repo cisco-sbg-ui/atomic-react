@@ -1,6 +1,13 @@
 context("AAccordion", () => {
   before(() => {
     cy.visitInLightTheme("http://localhost:8081/components/accordion");
+
+    cy.injectAxe();
+  });
+
+  it("validates with axe", () => {
+    //cy.get(".a-button").eq(1).click();
+    cy.checkA11y();
   });
 
   it("has appropriate default state", () => {
