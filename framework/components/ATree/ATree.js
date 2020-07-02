@@ -13,7 +13,7 @@ const ATree = forwardRef(
       dense,
       expandOnClick,
       hoverable,
-      items,
+      items = [],
       onChange,
       ...rest
     },
@@ -191,7 +191,7 @@ const ATree = forwardRef(
 
     return (
       <div {...rest} ref={ref} className={className}>
-        {items.map((x, index) => makeNode(x, [index]))}
+        {items && items.map((x, index) => makeNode(x, [index]))}
       </div>
     );
   }
