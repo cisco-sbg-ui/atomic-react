@@ -58,7 +58,10 @@ AButtonGroup.propTypes = {
   /**
    * Sets an array of selected values.
    */
-  selectedValues: PropTypes.arrayOf(PropTypes.string)
+  selectedValues: PropTypes.oneOfType([
+    PropTypes.arrayOf(PropTypes.string),
+    PropTypes.arrayOf(PropTypes.number)
+  ])
 };
 
 AButtonGroup.displayName = "AButtonGroup";

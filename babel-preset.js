@@ -134,6 +134,10 @@ module.exports = function () {
               path: "@cisco-ats/atomic-react/lib/components/AMenu"
             },
             {
+              default: "APagination",
+              path: "@cisco-ats/atomic-react/lib/components/APagination"
+            },
+            {
               default: "APanels",
               members: [
                 "APanel",
