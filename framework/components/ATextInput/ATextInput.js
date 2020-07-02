@@ -50,6 +50,7 @@ const ATextInput = forwardRef(
       readOnly,
       required,
       rules,
+      spinner = true,
       step,
       type = "text",
       validateOnBlur,
@@ -166,7 +167,7 @@ const ATextInput = forwardRef(
       input.dispatchEvent(event);
     };
 
-    if (isNumberType && !disabled && !readOnly) {
+    if (isNumberType && !disabled && !readOnly && spinner) {
       appendContent.push(
         <div key="a-text-input__spinner" className="a-text-input__spinner">
           <svg
@@ -480,6 +481,10 @@ ATextInput.propTypes = {
       level: PropTypes.string
     })
   ),
+  /**
+   * Toggles the spinner for number type inputs.
+   */
+  spinner: PropTypes.bool,
   /**
    * Sets the increment/decrement value for number type text inputs.
    */
