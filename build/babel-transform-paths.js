@@ -10,6 +10,10 @@ function listener(path, file) {
     path.node.value = "../../../AAppContext";
   }
 
+  if (path.node.value === "../AApp/AAppContext") {
+    path.node.value = "../../../AAppContext";
+  }
+
   if (path.node.value === "./AAccordionContext") {
     path.node.value = join("../../../AAccordionContext");
   }

@@ -11,7 +11,6 @@ import "./APagination.scss";
 const APagination = forwardRef(
   (
     {
-      children,
       className: propsClassName,
       onNext,
       onPageChange,
@@ -106,7 +105,7 @@ const APagination = forwardRef(
               disabled={page === 1}
               tertiaryAlt
               icon
-              onClick={(e) => onPageChange(1)}
+              onClick={() => onPageChange(1)}
               aria-label="First">
               <AIcon left>first-page</AIcon>
             </AButton>

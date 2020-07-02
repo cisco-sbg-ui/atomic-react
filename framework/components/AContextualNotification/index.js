@@ -1,3 +1,1 @@
-import AContextualNotification from "./AContextualNotification";
-
-export default AContextualNotification;
+export {default} from "./AContextualNotification";
