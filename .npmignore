@@ -4,6 +4,7 @@ build/
 cypress/
 docs/
 fonts/
+lib-demo/
 
 .buildme
 .editorconfig
@@ -12,7 +13,9 @@ fonts/
 .prettierignore
 .prettierrc.js
 babel.config.js
+babel-preset-local.js
 rollup.config.js
+webpack.lib-demo.config.js
 
 *.spec.js
 *.stories.mdx
