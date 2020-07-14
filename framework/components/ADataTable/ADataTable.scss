@@ -1,0 +1,26 @@
+@import "../../styles";
+
+.a-data-table {
+  &__header {
+    &__sort {
+      display: none;
+      width: 10px;
+      opacity: 0.5;
+
+      &--active {
+        display: inline;
+        opacity: 1;
+      }
+    }
+
+    &--sortable {
+      cursor: pointer;
+    }
+
+    &:hover {
+      .a-data-table__header__sort {
+        display: inline;
+      }
+    }
+  }
+}
