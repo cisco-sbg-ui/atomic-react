@@ -4,8 +4,15 @@ import {Meta} from "@storybook/addon-docs/blocks";
 
 # Changelog
 
+## 2.1.1
+
+- Fixed an issue where `closeOnClick` was not working with `AMenu`. Fixed test.
+- Reduced the `z-index` of `AHeader` to appear under menus.
+- Fixed an issue with `ADataTable` where `undefined` would sneak into the class list of headers when `className` is `undefined`.
+
 ## 2.1.0
 
+- Changed the `module` entry of `package.json` to point to the `lib` build.
 - Modified `AMenuBase` to position the menu within the viewable area if opened near an edge.
 - Added `component` prop to `APanel`, allowing specification of the base component.
 - Fixed an issue where `ASelect` would crash if object items were used and no default was set.

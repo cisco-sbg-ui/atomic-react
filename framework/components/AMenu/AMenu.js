@@ -102,7 +102,7 @@ const AMenu = forwardRef(
         className={className}
         hoverable={hoverable}
         onClick={(e) => {
-          closeOnClick && closeHandler;
+          closeOnClick && closeHandler(e);
           onClick && onClick(e);
         }}
         onClose={onClose}
