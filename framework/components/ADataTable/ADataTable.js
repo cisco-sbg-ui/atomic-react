@@ -32,7 +32,7 @@ const ADataTable = forwardRef(
                   const headerProps = {
                     className: `a-data-table__header ${
                       x.sortable ? "a-data-table__header--sortable" : ""
-                    } ${x.className}`,
+                    } ${x.className || ""}`,
                     role: "columnheader",
                     scope: "col",
                     "aria-label": x.name

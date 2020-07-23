@@ -6,6 +6,9 @@ context("AMenu", () => {
   });
 
   it("opens and closes appropriately", () => {
+    const stub = cy.stub();
+    cy.on("window:alert", stub);
+
     cy.get(".a-menu").should("not.be.visible");
     cy.get("#story--components-menus--usage-1 .a-button").eq(0).click();
     cy.get(".a-menu")
@@ -14,13 +17,22 @@ context("AMenu", () => {
       .then(($el) => {
         Cypress.dom.isFocused($el);
       })
-      .click("top")
       .type("{esc}");
     cy.get(".a-menu").should("not.be.visible");
     cy.get("#story--components-menus--usage-1 .a-button")
       .eq(0)
       .then(($el) => {
         Cypress.dom.isFocused($el);
+      });
+
+    cy.get("#story--components-menus--usage-1 .a-button").eq(0).click();
+    cy.get(".a-menu")
+      .eq(0)
+      .find(".a-list-item")
+      .first()
+      .click()
+      .then(() => {
+        cy.get(".a-menu").should("not.be.visible");
       });
   });
 
@@ -47,7 +59,6 @@ context("AMenu", () => {
       .then(($el) => {
         Cypress.dom.isFocused($el);
       })
-      .click("top")
       .type("{downArrow}")
       .find(".a-list-item[tabindex]")
       .first()
@@ -66,7 +77,6 @@ context("AMenu", () => {
       .then(($el) => {
         Cypress.dom.isFocused($el);
       })
-      .click("top")
       .type("{upArrow}")
       .find(".a-list-item[tabindex]")
       .last()
