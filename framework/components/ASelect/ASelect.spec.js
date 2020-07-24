@@ -172,6 +172,16 @@ context("ASelect", () => {
     );
   });
 
+  it("supports dynamic items", () => {
+    cy.get("#story--components-selects--alt-1 .a-select__selection").contains(
+      "Bbb"
+    );
+    cy.get("#story--components-selects--alt-1 .a-button").click();
+    cy.get("#story--components-selects--alt-1 .a-select__selection").contains(
+      "333"
+    );
+  });
+
   it("supports themes", () => {
     if (Cypress.env("snapshots") === "off") return;
 

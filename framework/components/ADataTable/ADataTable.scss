@@ -3,12 +3,10 @@
 .a-data-table {
   &__header {
     &__sort {
-      display: none;
       width: 10px;
-      opacity: 0.5;
+      opacity: 0;
 
       &--active {
-        display: inline;
         opacity: 1;
       }
     }
@@ -18,9 +16,21 @@
     }
 
     &:hover {
-      .a-data-table__header__sort {
-        display: inline;
+      .a-data-table__header__sort:not(.a-data-table__header__sort--active) {
+        opacity: 0.5;
       }
     }
+  }
+
+  .text-start {
+    text-align: start;
+  }
+
+  .text-center {
+    text-align: center;
+  }
+
+  .text-end {
+    text-align: end;
   }
 }
