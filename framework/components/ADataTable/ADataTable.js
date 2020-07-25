@@ -15,10 +15,22 @@ const ADataTable = forwardRef(
 
     let sortedItems = items;
     if (sort) {
-      const sortDir = sort.direction === "asc" ? -1 : 1;
-      sortedItems.sort((a, b) =>
-        a[sort.key] <= b[sort.key] ? sortDir : -1 * sortDir
+      const sortDir = sort.direction === "desc" ? -1 : 1;
+      const targetHeader = Object.values(headers).find(
+        (x) => x.key === sort.key
       );
+
+      let sortFunc = (a, b) => (a === b ? 0 : a < b ? -1 : 1);
+
+      if (targetHeader && typeof targetHeader.sort === "function") {
+        sortFunc = targetHeader.sort;
+      }
+
+      if (!targetHeader || targetHeader.sort !== false) {
+        sortedItems.sort(
+          (a, b) => sortDir * sortFunc(a[sort.key], b[sort.key])
+        );
+      }
     }
 
     return (
@@ -32,7 +44,9 @@ const ADataTable = forwardRef(
                   const headerProps = {
                     className: `a-data-table__header ${
                       x.sortable ? "a-data-table__header--sortable" : ""
-                    } ${x.className || ""}`,
+                    } text-${x.align || "start"} ${x.className || ""}`
+                      .replace("  ", " ")
+                      .trim(),
                     role: "columnheader",
                     scope: "col",
                     "aria-label": x.name
@@ -75,10 +89,11 @@ const ADataTable = forwardRef(
 
                   return (
                     <th {...headerProps} key={`a-data-table_header_${i}`}>
-                      {x.name}
+                      {x.align !== "end" ? x.name : ""}
                       {x.sortable && (
                         <AIcon
-                          right
+                          left={x.align === "end"}
+                          right={x.align !== "end"}
                           className={`a-data-table__header__sort ${
                             sort && x.key === sort.key
                               ? "a-data-table__header__sort--active"
@@ -91,6 +106,7 @@ const ADataTable = forwardRef(
                             : "chevron-up"}
                         </AIcon>
                       )}
+                      {x.align === "end" ? x.name : ""}
                     </th>
                   );
                 })}
@@ -103,7 +119,9 @@ const ADataTable = forwardRef(
                 {headers.map((y, j) => (
                   <td
                     key={`a-data-table_cell_${j}`}
-                    className={y.cell?.className}>
+                    className={`text-${y.align || "start"} ${
+                      y.cell?.className || ""
+                    }`.trim()}>
                     {y.cell && y.cell.component
                       ? y.cell.component(x)
                       : x[y.key]}
@@ -131,7 +149,9 @@ ADataTable.propTypes = {
       name: PropTypes.string,
       key: PropTypes.string,
       className: PropTypes.string,
+      align: PropTypes.oneOf(["start", "center", "end"]),
       sortable: PropTypes.bool,
+      sort: PropTypes.oneOfType([PropTypes.func, PropTypes.bool]),
       cell: PropTypes.shape({
         className: PropTypes.string,
         component: PropTypes.func

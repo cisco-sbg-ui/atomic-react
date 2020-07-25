@@ -43,6 +43,9 @@ const ASelect = forwardRef(
     const dropdownMenuRef = useRef(null);
     const surfaceRef = useRef(null);
     const [selectId] = useState(selectCounter++);
+    const [originalSelectedItem, setOriginalSelectedItem] = useState(
+      items.find((x) => x[itemSelected])
+    );
     const [selectedItem, setSelectedItem] = useState(
       items.find((x) => x[itemSelected])
     );
@@ -57,6 +60,27 @@ const ASelect = forwardRef(
     useEffect(() => {
       setWorkingValidationState(validationState);
     }, [validationState]);
+
+    useEffect(() => {
+      const newSelectedItem = items.find((x) => x[itemSelected]);
+
+      if (
+        (typeof newSelectedItem === "string" &&
+          typeof originalSelectedItem === "object") ||
+        (typeof newSelectedItem === "object" &&
+          typeof originalSelectedItem === "string") ||
+        (typeof newSelectedItem === "string" &&
+          typeof originalSelectedItem === "string" &&
+          newSelectedItem !== originalSelectedItem) ||
+        (typeof newSelectedItem === "object" &&
+          typeof originalSelectedItem === "object" &&
+          (newSelectedItem[itemValue] !== originalSelectedItem[itemValue] ||
+            newSelectedItem[itemText] !== originalSelectedItem[itemText]))
+      ) {
+        setOriginalSelectedItem(newSelectedItem);
+        setSelectedItem(newSelectedItem);
+      }
+    }, [items]); // eslint-disable-line react-hooks/exhaustive-deps
 
     useEffect(() => {
       if (register) {

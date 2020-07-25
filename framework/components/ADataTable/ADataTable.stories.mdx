@@ -29,23 +29,32 @@ import {ADataTable} from "@cisco-ats/atomic-react";
           {
             name: "alpha",
             key: "a",
+            align: "end",
             className: "text-capitalize",
             sortable: true
           },
           {
-            name: "bravo",
+            name: "Bravo",
             key: "b",
-            className: "text-capitalize text-center",
+            align: "center",
             sortable: true,
-            cell: {
-              className: "text-center"
-            }
+            sort: false
           },
           {
-            name: "charlie",
-            className: "text-capitalize text-center",
+            name: "Charlie",
+            key: "c",
+            sortable: true,
+            sort: (a, b) =>
+              a.toUpperCase() === b.toUpperCase()
+                ? 0
+                : a.toUpperCase() > b.toUpperCase()
+                ? 1
+                : -1
+          },
+          {
+            name: "Delta",
+            align: "center",
             cell: {
-              className: "text-right",
               component: (item) => (
                 <a href="/" target="_blank">
                   Details
@@ -57,15 +66,18 @@ import {ADataTable} from "@cisco-ats/atomic-react";
         const items = [
           {
             a: 11.1,
-            b: 526
+            b: 526,
+            c: "aardvark"
           },
           {
             a: 8.9,
-            b: 611
+            b: 611,
+            c: "Argentina"
           },
           {
             a: 10.5,
-            b: 475
+            b: 475,
+            c: "Zanzibar"
           }
         ];
         return (
