@@ -123,8 +123,10 @@ const calculateMenuPosition = (
     window.getComputedStyle(combinedRef.current).marginTop
   );
 
-  const pageWidth = document.documentElement.clientWidth + window.pageXOffset;
-  const pageHeight = document.documentElement.clientHeight + window.pageYOffset;
+  const pageWidth =
+    document.documentElement.clientWidth + window.pageXOffset - wrapCoords.left;
+  const pageHeight =
+    document.documentElement.clientHeight + window.pageYOffset - wrapCoords.top;
 
   // Edge detection: max x
   if (baseLeft + menuCoords.width + marginLeft > pageWidth) {
