@@ -5,6 +5,16 @@ const localDeclarations = [];
 const declarations = [];
 const files = glob.sync("./framework/components/**/index.js");
 
+const getComponents = (data) => {
+  const components = [];
+  let matches = data.match(/([\{,][\s]?|  )([\w]+)/g);
+  console.log(matches);
+  components.push(...matches);
+  return components.map((x) => {
+    return x.replace("  ", "").replace(", ", "").replace("{", "");
+  });
+};
+
 files.forEach((x) => {
   const path = x.split("/");
   console.log(`Adding ${path[3]}`);
@@ -24,16 +34,12 @@ files.forEach((x) => {
 
   declarations.push({
     default: path[3] + "Exports",
-    members: Array.from(data.matchAll(/([\{,][\s]?|  )([\w]+)/g)).map(
-      (y) => y[y.length - 1]
-    ),
+    members: getComponents(data),
     path: `@cisco-ats/atomic-react/lib/components/${path[3]}`
   });
   localDeclarations.push({
     default: path[3] + "Exports",
-    members: Array.from(data.matchAll(/([\{,][\s]?|  )([\w]+)/g)).map(
-      (y) => y[y.length - 1]
-    ),
+    members: getComponents(data),
     path: `../lib/components/${path[3]}`
   });
 });
