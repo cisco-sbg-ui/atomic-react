@@ -3,38 +3,38 @@ const glob = require("glob");
 
 const localDeclarations = [];
 const declarations = [];
-const files = glob.sync("../atomic-react/framework/components/**/index.js");
+const files = glob.sync("./framework/components/**/index.js");
 
 files.forEach((x) => {
   const path = x.split("/");
-  console.log(`Adding ${path[4]}`);
+  console.log(`Adding ${path[3]}`);
   const data = fs.readFileSync(x, {encoding: "utf8", flag: "r"});
 
   if (data.includes("export {default} from")) {
     declarations.push({
-      default: path[4],
-      path: `@cisco-ats/atomic-react/lib/components/${path[4]}`
+      default: path[3],
+      path: `@cisco-ats/atomic-react/lib/components/${path[3]}`
     });
     localDeclarations.push({
-      default: path[4],
-      path: `../lib/components/${path[4]}`
+      default: path[3],
+      path: `../lib/components/${path[3]}`
     });
     return;
   }
 
   declarations.push({
-    default: path[4] + "Exports",
+    default: path[3] + "Exports",
     members: Array.from(data.matchAll(/([\{,][\s]?|  )([\w]+)/g)).map(
       (y) => y[y.length - 1]
     ),
-    path: `@cisco-ats/atomic-react/lib/components/${path[4]}`
+    path: `@cisco-ats/atomic-react/lib/components/${path[3]}`
   });
   localDeclarations.push({
-    default: path[4] + "Exports",
+    default: path[3] + "Exports",
     members: Array.from(data.matchAll(/([\{,][\s]?|  )([\w]+)/g)).map(
       (y) => y[y.length - 1]
     ),
-    path: `../lib/components/${path[4]}`
+    path: `../lib/components/${path[3]}`
   });
 });
 
