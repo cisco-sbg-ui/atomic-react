@@ -65,6 +65,10 @@ const ASelect = forwardRef(
       const newSelectedItem = items.find((x) => x[itemSelected]);
 
       if (
+        (!["string", "object"].includes(typeof originalSelectedItem) &&
+          ["string", "object"].includes(typeof newSelectedItem)) ||
+        (["string", "object"].includes(typeof originalSelectedItem) &&
+          !["string", "object"].includes(typeof newSelectedItem)) ||
         (typeof newSelectedItem === "string" &&
           typeof originalSelectedItem === "object") ||
         (typeof newSelectedItem === "object" &&

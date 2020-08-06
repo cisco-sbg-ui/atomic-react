@@ -28,6 +28,13 @@ function listener(path, file) {
     path.node.value = join("../../../AButtonGroupContext");
   }
 
+  if (
+    path.node.value === "../AForm/AFormContext" ||
+    path.node.value === "./AFormContext"
+  ) {
+    path.node.value = join("../../../AFormContext");
+  }
+
   if (path.node.value === "./ATabContext") {
     path.node.value = join("../../../ATabContext");
   }
