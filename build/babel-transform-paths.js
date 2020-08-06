@@ -6,11 +6,10 @@ module.exports = wrapListener(listener, "transform-paths");
 function listener(path, file) {
   if (!path.isLiteral()) return;
 
-  if (path.node.value === "./AAppContext") {
-    path.node.value = "../../../AAppContext";
-  }
-
-  if (path.node.value === "../AApp/AAppContext") {
+  if (
+    path.node.value === "./AAppContext" ||
+    path.node.value === "../AApp/AAppContext"
+  ) {
     path.node.value = "../../../AAppContext";
   }
 
@@ -22,7 +21,10 @@ function listener(path, file) {
     path.node.value = join("../../../AAccordionPanelContext");
   }
 
-  if (path.node.value === "./AButtonGroupContext") {
+  if (
+    path.node.value === "../AButtonGroup/AButtonGroupContext" ||
+    path.node.value === "./AButtonGroupContext"
+  ) {
     path.node.value = join("../../../AButtonGroupContext");
   }
 
