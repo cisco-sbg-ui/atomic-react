@@ -15,6 +15,7 @@ import ACheckbox from "./components/ACheckbox";
 import ACombobox from "./components/ACombobox";
 import AContextualNotification from "./components/AContextualNotification";
 import AContextualNotificationMenu from "./components/AContextualNotificationMenu";
+import ADataTable from "./components/ADataTable";
 import ADialog from "./components/ADialog";
 import ADivider from "./components/ADivider";
 import {
@@ -92,6 +93,7 @@ export {
   AContainer,
   AContextualNotification,
   AContextualNotificationMenu,
+  ADataTable,
   ADialog,
   ADivider,
   ADotLoader,
