@@ -9,3 +9,10 @@
 /useA*.js
 /_rollupPluginBabelHelpers*
 __diff_output__
+
+# Editor generated backup files #
+#################################
+*~
+*#
+#*
+.#*

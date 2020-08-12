@@ -154,6 +154,8 @@ const ATree = forwardRef(
         nodeProps["aria-expanded"] = Boolean(item.expanded);
       }
 
+      const chevronDirection = item.expanded ? "chevron-down" : "chevron-right";
+
       return (
         <div {...nodeProps}>
           <div
@@ -168,11 +170,11 @@ const ATree = forwardRef(
               <AButton
                 tertiaryAlt
                 icon
-                className="a-tree__chevron"
+                className={"a-tree__chevron " + chevronDirection}
                 onClick={expandHandler(path)}
                 style={{color: "currentColor"}}>
-                <AIcon size={10}>
-                  {item.expanded ? "chevron-down" : "chevron-right"}
+                <AIcon size={10} className={chevronDirection}>
+                  {chevronDirection}
                 </AIcon>
               </AButton>
             )}
