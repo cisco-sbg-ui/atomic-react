@@ -3,6 +3,7 @@ import React, {
   useCallback,
   useContext,
   useEffect,
+  useLayoutEffect,
   useRef
 } from "react";
 import ReactDOM from "react-dom";
@@ -27,7 +28,7 @@ const ADialog = forwardRef(
     },
     ref
   ) => {
-    useEffect(() => {
+    useLayoutEffect(() => {
       if (open) {
         launcherElement = document.activeElement;
       } else {
@@ -44,6 +45,7 @@ const ADialog = forwardRef(
       if (open) {
         combinedRef &&
           combinedRef.current &&
+          !combinedRef.current.contains(document.activeElement) &&
           combinedRef.current.focus({
             preventScroll: true
           });
