@@ -8,7 +8,6 @@ const files = glob.sync("./framework/components/**/index.js");
 const getComponents = (data) => {
   const components = [];
   let matches = data.match(/([\{,][\s]?|  )([\w]+)/g);
-  console.log(matches);
   components.push(...matches);
   return components.map((x) => {
     return x.replace("  ", "").replace(", ", "").replace("{", "");

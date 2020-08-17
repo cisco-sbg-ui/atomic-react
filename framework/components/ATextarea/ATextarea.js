@@ -157,7 +157,7 @@ const ATextarea = forwardRef(
       value,
       onBlur: (e) => {
         setIsFocused(false);
-        validateOnBlur && validate(e.target.value);
+        validate(e.target.value);
         onBlur && onBlur(e);
       },
       onChange: (e) => {
@@ -255,7 +255,7 @@ ATextarea.propTypes = {
     })
   ),
   /**
-   * Sets the validation rules to evaluate on `blur` rather than on `change`.
+   * Delays validation until the `blur` event.
    */
   validateOnBlur: PropTypes.bool,
   /**

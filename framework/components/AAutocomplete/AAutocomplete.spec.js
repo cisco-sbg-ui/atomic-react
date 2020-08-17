@@ -142,6 +142,17 @@ context("AAutocomplete", () => {
       .type("{esc}");
   });
 
+  it("validates on blur", () => {
+    cy.get("#story--components-autocompletes--rules-2 .a-autocomplete__input")
+      .eq(0)
+      .tab()
+      .tab({shift: true})
+      .tab();
+    cy.get("#story--components-autocompletes--rules-2 .a-input-base__hint")
+      .eq(0)
+      .contains("Food Group is required");
+  });
+
   it("validates", () => {
     cy.get("#story--components-autocompletes--rules-1 .a-autocomplete__input")
       .eq(0)

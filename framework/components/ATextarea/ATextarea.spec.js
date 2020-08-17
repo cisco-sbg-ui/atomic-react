@@ -59,19 +59,29 @@ context("ATextarea", () => {
       .should("have.attr", "style", "height: auto;");
   });
 
+  it("validates on blur", () => {
+    cy.get("#story--components-textareas--rules-1 .a-textarea__field")
+      .eq(0)
+      .click();
+    cy.tab();
+    cy.get("#story--components-textareas--rules-1 .a-input-base__hint")
+      .eq(0)
+      .contains("Comments is required");
+  });
+
   it("validates", () => {
     cy.get("#story--components-textareas--rules-1 .a-textarea__field")
       .eq(0)
       .type("123456789012");
-    cy.get("#story--components-textareas--rules-1").click("left");
+    cy.tab();
     cy.get("#story--components-textareas--rules-1 .a-input-base__hint")
       .eq(0)
       .contains("Comments must be less than 10 characters");
 
     cy.get("#story--components-textareas--rules-1 .a-textarea__field")
       .eq(0)
-      .clear();
-    cy.get("#story--components-textareas--rules-1").click("left");
+      .clear()
+      .tab();
     cy.get("#story--components-textareas--rules-1 .a-input-base__hint")
       .eq(0)
       .contains("Comments is required");

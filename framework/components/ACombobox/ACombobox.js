@@ -158,9 +158,7 @@ const ACombobox = forwardRef(
       id: `a-combobox_${comboboxId}`,
       onBlur: (e) => {
         setIsFocused(false);
-        validateOnBlur &&
-          !dropdownMenuRef.current.contains(e.relatedTarget) &&
-          validate(value);
+        !dropdownMenuRef.current.contains(e.relatedTarget) && validate(value);
       },
       onChange: (e) => {
         setIsOpen(items.length || noDataContent);
@@ -325,7 +323,7 @@ ACombobox.propTypes = {
     })
   ),
   /**
-   * Sets the validation rules to evaluate on `blur` rather than on `change`.
+   * Delays validation until the `blur` event.
    */
   validateOnBlur: PropTypes.bool,
   /**

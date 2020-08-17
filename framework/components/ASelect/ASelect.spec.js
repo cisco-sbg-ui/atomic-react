@@ -140,6 +140,17 @@ context("ASelect", () => {
       .type("{esc}");
   });
 
+  it("validates on blur", () => {
+    cy.get("#story--components-selects--rules-1 .a-select__selection")
+      .eq(0)
+      .tab()
+      .tab({shift: true})
+      .tab();
+    cy.get("#story--components-selects--rules-1 .a-input-base__hint")
+      .eq(0)
+      .contains("Role is required");
+  });
+
   it("validates", () => {
     cy.get("#story--components-selects--rules-1 .a-select__selection")
       .eq(0)

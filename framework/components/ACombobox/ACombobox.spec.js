@@ -129,6 +129,17 @@ context("ACombobox", () => {
       .type("{esc}");
   });
 
+  it("validates on blur", () => {
+    cy.get("#story--components-comboboxes--rules-2 .a-combobox__input")
+      .eq(0)
+      .tab()
+      .tab({shift: true})
+      .tab();
+    cy.get("#story--components-comboboxes--rules-2 .a-input-base__hint")
+      .eq(0)
+      .contains("Food Group is required");
+  });
+
   it("validates", () => {
     cy.get("#story--components-comboboxes--rules-1 .a-combobox__input")
       .eq(0)
