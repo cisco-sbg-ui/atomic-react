@@ -216,8 +216,7 @@ const ASelect = forwardRef(
 
       selectionProps.onBlur = (e) => {
         setIsFocused(false);
-        validateOnBlur &&
-          !dropdownMenuRef.current.contains(e.relatedTarget) &&
+        !dropdownMenuRef.current.contains(e.relatedTarget) &&
           validate(selectedItem);
       };
 
@@ -426,7 +425,7 @@ ASelect.propTypes = {
     })
   ),
   /**
-   * Sets the validation rules to evaluate on `blur` rather than on `change`.
+   * Delays validation until the `blur` event.
    */
   validateOnBlur: PropTypes.bool,
   /**

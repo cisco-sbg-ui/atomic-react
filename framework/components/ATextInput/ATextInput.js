@@ -346,7 +346,7 @@ const ATextInput = forwardRef(
       name,
       onBlur: (e) => {
         setIsFocused(false);
-        validateOnBlur && validate(e.target.value);
+        validate(e.target.value);
         onBlur && onBlur(e);
       },
       onChange: (e) => {
@@ -494,7 +494,7 @@ ATextInput.propTypes = {
    */
   type: PropTypes.oneOf(["text", "password", "email", "number"]),
   /**
-   * Sets the validation rules to evaluate on `blur` rather than on `change`.
+   * Delays validation until the `blur` event.
    */
   validateOnBlur: PropTypes.bool,
   /**

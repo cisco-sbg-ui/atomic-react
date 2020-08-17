@@ -184,6 +184,16 @@ context("ATextInput", () => {
       .should("have.length", 2);
   });
 
+  it("validates on blur", () => {
+    cy.get("#story--components-text-inputs--rules-1 .a-text-input__input")
+      .eq(0)
+      .click()
+      .tab();
+    cy.get("#story--components-text-inputs--rules-1 .a-input-base__hint")
+      .eq(0)
+      .contains("Name is required");
+  });
+
   it("supports maxLength", () => {
     cy.get("#story--components-text-inputs--rules-1 .a-text-input__input")
       .eq(0)
