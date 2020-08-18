@@ -1,4 +1,4 @@
-import {Meta, Preview, Story, Props} from "@storybook/addon-docs/blocks";
+import {Meta, Canvas, Story, ArgsTable} from "@storybook/addon-docs/blocks";
 import {useState} from "react";
 
 import ACheckbox from "../ACheckbox";
@@ -22,7 +22,7 @@ import {ATree} from "@cisco-ats/atomic-react";
 
 ## Usage
 
-<Preview>
+<Canvas>
   <Story name="usage-1">
     <div style={{maxWidth: 250}}>
       <YourComponent>
@@ -132,13 +132,13 @@ import {ATree} from "@cisco-ats/atomic-react";
       </YourComponent>
     </div>
   </Story>
-</Preview>
+</Canvas>
 
 ## Tree Props
 
 The `ATree` component inherits passed props.
 
-<Props of={ATree} />
+<ArgsTable of={ATree} />
 
 ## Accessibility Notes
 

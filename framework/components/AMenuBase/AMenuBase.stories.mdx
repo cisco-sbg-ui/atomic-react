@@ -1,4 +1,4 @@
-import {Meta, Preview, Story, Props} from "@storybook/addon-docs/blocks";
+import {Meta, Canvas, Story, ArgsTable} from "@storybook/addon-docs/blocks";
 import {useRef, useState} from "react";
 
 import YourComponent from "../../utils/storybook-function";
@@ -25,7 +25,7 @@ It is necessary for `AMenuBase` to be a descendant of `AApp` for mounting.
 
 ## Position
 
-<Preview>
+<Canvas>
   <Story name="position-1">
     <YourComponent>
       {() => {
@@ -213,17 +213,17 @@ It is necessary for `AMenuBase` to be a descendant of `AApp` for mounting.
       }}
     </YourComponent>
   </Story>
-</Preview>
+</Canvas>
 
 ## Menu Base Props
 
 The `AMenuBase` component inherits passed props.
 
-<Props of={AMenuBase} />
+<ArgsTable of={AMenuBase} />
 
 ## `onClose` Handling
 
-<Preview>
+<Canvas>
   <Story name="onclose-1">
     <YourComponent>
       {() => {
@@ -261,11 +261,11 @@ The `AMenuBase` component inherits passed props.
       }}
     </YourComponent>
   </Story>
-</Preview>
+</Canvas>
 
 ## Edge Detection
 
-<Preview>
+<Canvas>
   <Story name="edge-1">
     <YourComponent>
       {() => {
@@ -318,11 +318,11 @@ The `AMenuBase` component inherits passed props.
       }}
     </YourComponent>
   </Story>
-</Preview>
+</Canvas>
 
 ## Pointers
 
-<Preview>
+<Canvas>
   <Story name="pointers-1">
     <>
       <style
@@ -609,4 +609,4 @@ The `AMenuBase` component inherits passed props.
       </YourComponent>
     </>
   </Story>
-</Preview>
+</Canvas>

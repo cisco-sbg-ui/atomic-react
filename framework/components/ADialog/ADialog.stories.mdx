@@ -1,4 +1,4 @@
-import {Meta, Preview, Story, Props} from "@storybook/addon-docs/blocks";
+import {Meta, Canvas, Story, ArgsTable} from "@storybook/addon-docs/blocks";
 import {useState} from "react";
 
 import YourComponent from "../../utils/storybook-function";
@@ -33,7 +33,7 @@ It is necessary for `ADialog` to be a descendant of `AApp` for mounting.
 
 ## Usage
 
-<Preview>
+<Canvas>
   <Story name="usage-1">
     <div style={{minHeight: 500}}>
       <YourComponent>
@@ -80,17 +80,17 @@ It is necessary for `ADialog` to be a descendant of `AApp` for mounting.
       </YourComponent>
     </div>
   </Story>
-</Preview>
+</Canvas>
 
 ## Dialog Props
 
 The `ADialog` component inherits passed props to the dialog content wrapper.
 
-<Props of={ADialog} />
+<ArgsTable of={ADialog} />
 
 ## Autofocused Child
 
-<Preview>
+<Canvas>
   <Story name="autofocus-1">
     <div>
       <YourComponent>
@@ -125,7 +125,7 @@ The `ADialog` component inherits passed props to the dialog content wrapper.
       </YourComponent>
     </div>
   </Story>
-</Preview>
+</Canvas>
 
 ## Accessibility Notes
 

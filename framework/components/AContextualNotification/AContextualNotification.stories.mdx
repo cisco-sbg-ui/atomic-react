@@ -1,4 +1,4 @@
-import {Meta, Preview, Story, Props} from "@storybook/addon-docs/blocks";
+import {Meta, Canvas, Story, ArgsTable} from "@storybook/addon-docs/blocks";
 
 import AContextualNotification from "./AContextualNotification";
 
@@ -21,7 +21,7 @@ import {AContextualNotification} from "@cisco-ats/atomic-react";
 
 ## Usage
 
-<Preview>
+<Canvas>
   <Story name="usage-1">
     <>
       <AContextualNotification variant="success">
@@ -42,10 +42,10 @@ import {AContextualNotification} from "@cisco-ats/atomic-react";
       </AContextualNotification>
     </>
   </Story>
-</Preview>
+</Canvas>
 
 ## Contextual Notification Props
 
 The `AContextualNotification` component inherits passed props.
 
-<Props of={AContextualNotification} />
+<ArgsTable of={AContextualNotification} />

@@ -1,4 +1,4 @@
-import {Meta, Preview, Story, Props} from "@storybook/addon-docs/blocks";
+import {Meta, Canvas, Story, ArgsTable} from "@storybook/addon-docs/blocks";
 import {useState} from "react";
 
 import AButton from "../AButton";
@@ -21,7 +21,7 @@ import {ADropdown, ADropdownMenu, ADropdownMenuItem} from "@cisco-ats/atomic-rea
 
 ## Usage
 
-<Preview>
+<Canvas>
   <Story name="usage-1">
     <div style={{minHeight: 150}}>
       <YourComponent>
@@ -77,25 +77,25 @@ import {ADropdown, ADropdownMenu, ADropdownMenuItem} from "@cisco-ats/atomic-rea
       </YourComponent>
     </div>
   </Story>
-</Preview>
+</Canvas>
 
 ## Dropdown Props
 
 The `ADropdown` component inherits passed props.
 
-<Props of={ADropdown} />
+<ArgsTable of={ADropdown} />
 
 ## Dropdown Menu Props
 
 The `ADropdownMenu` component inherits passed props.
 
-<Props of={ADropdownMenu} />
+<ArgsTable of={ADropdownMenu} />
 
 ## Dropdown Menu Item Props
 
 The `ADropdownMenuItem` component inherits passed props.
 
-<Props of={ADropdownMenuItem} />
+<ArgsTable of={ADropdownMenuItem} />
 
 ## Router Integrations
 

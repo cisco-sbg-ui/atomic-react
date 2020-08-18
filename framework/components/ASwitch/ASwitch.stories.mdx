@@ -1,4 +1,4 @@
-import {Meta, Preview, Story, Props} from "@storybook/addon-docs/blocks";
+import {Meta, Canvas, Story, ArgsTable} from "@storybook/addon-docs/blocks";
 import {useState} from "react";
 
 import LoremIpsum from "../../utils/lorem-ipsum";
@@ -23,7 +23,7 @@ import {ASwitch} from "@cisco-ats/atomic-react";
 
 ## Usage
 
-<Preview>
+<Canvas>
   <Story name="usage-1">
     <YourComponent>
       {() => {
@@ -56,17 +56,17 @@ import {ASwitch} from "@cisco-ats/atomic-react";
       }}
     </YourComponent>
   </Story>
-</Preview>
+</Canvas>
 
 ## Switch Props
 
 The `ASwitch` component inherits passed props.
 
-<Props of={ASwitch} />
+<ArgsTable of={ASwitch} />
 
 ## Validation
 
-<Preview>
+<Canvas>
   <Story name="rules-1">
     <YourComponent>
       {() => {
@@ -91,11 +91,11 @@ The `ASwitch` component inherits passed props.
       }}
     </YourComponent>
   </Story>
-</Preview>
+</Canvas>
 
 ## States
 
-<Preview>
+<Canvas>
   <Story name="states-1">
     <div className="d-flex flex-column">
       <ASwitch>Default</ASwitch>
@@ -108,7 +108,7 @@ The `ASwitch` component inherits passed props.
       <ASwitch wrap>Very long wrapping text. {LoremIpsum}</ASwitch>
     </div>
   </Story>
-</Preview>
+</Canvas>
 
 ## Accessibility Notes
 

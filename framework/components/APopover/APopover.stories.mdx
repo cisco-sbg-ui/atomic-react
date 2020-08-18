@@ -1,4 +1,4 @@
-import {Meta, Preview, Story, Props} from "@storybook/addon-docs/blocks";
+import {Meta, Canvas, Story, ArgsTable} from "@storybook/addon-docs/blocks";
 import {useRef, useState} from "react";
 
 import YourComponent from "../../utils/storybook-function";
@@ -29,7 +29,7 @@ It is necessary for `APopover` to be a descendant of `AApp` for mounting.
 
 ## Usage
 
-<Preview>
+<Canvas>
   <Story name="usage-1">
     <YourComponent>
       {() => {
@@ -107,17 +107,17 @@ It is necessary for `APopover` to be a descendant of `AApp` for mounting.
       }}
     </YourComponent>
   </Story>
-</Preview>
+</Canvas>
 
 ## Popover Props
 
 The `APopover` component inherits passed props.
 
-<Props of={APopover} />
+<ArgsTable of={APopover} />
 
 ## Position
 
-<Preview>
+<Canvas>
   <Story name="position-1">
     <YourComponent>
       {() => {
@@ -329,11 +329,11 @@ The `APopover` component inherits passed props.
       }}
     </YourComponent>
   </Story>
-</Preview>
+</Canvas>
 
 ## `onClose` Handling
 
-<Preview>
+<Canvas>
   <Story name="onclose-1">
     <YourComponent>
       {() => {
@@ -389,7 +389,7 @@ The `APopover` component inherits passed props.
       }}
     </YourComponent>
   </Story>
-</Preview>
+</Canvas>
 
 ## Accessibility Notes
 

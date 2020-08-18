@@ -1,4 +1,4 @@
-import {Meta, Preview, Story, Props} from "@storybook/addon-docs/blocks";
+import {Meta, Canvas, Story, ArgsTable} from "@storybook/addon-docs/blocks";
 
 import AButton from "../AButton";
 import {AHeader, AHeaderLogo, AHeaderTitle, AHeaderNavigation} from "./";
@@ -31,7 +31,7 @@ import {
 
 ## Usage
 
-<Preview>
+<Canvas>
   <Story name="usage-1">
     <AHeader>
       <AHeaderLogo href="#cisco">
@@ -54,31 +54,31 @@ import {
       </AButton>
     </AHeader>
   </Story>
-</Preview>
+</Canvas>
 
 ## Header Props
 
 The `AHeader` component inherits passed props.
 
-<Props of={AHeader} />
+<ArgsTable of={AHeader} />
 
 ## Header Logo Props
 
 The `AHeaderLogo` component inherits passed props.
 
-<Props of={AHeaderLogo} />
+<ArgsTable of={AHeaderLogo} />
 
 ## Header Title Props
 
 The `AHeaderTitle` component inherits passed props.
 
-<Props of={AHeaderTitle} />
+<ArgsTable of={AHeaderTitle} />
 
 ## Header Navigation Props
 
 The `AHeaderNavigation` component inherits passed props.
 
-<Props of={AHeaderNavigation} />
+<ArgsTable of={AHeaderNavigation} />
 
 ## Accessibility Notes
 

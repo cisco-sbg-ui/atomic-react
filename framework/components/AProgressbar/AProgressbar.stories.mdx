@@ -1,4 +1,4 @@
-import {Meta, Preview, Story, Props} from "@storybook/addon-docs/blocks";
+import {Meta, Canvas, Story, ArgsTable} from "@storybook/addon-docs/blocks";
 import {useCallback, useState} from "react";
 
 import YourComponent from "../../utils/storybook-function";
@@ -21,7 +21,7 @@ import {AProgressbar} from "@cisco-ats/atomic-react";
 
 ## Usage
 
-<Preview>
+<Canvas>
   <Story name="usage-1">
     <YourComponent>
       {() => {
@@ -51,17 +51,17 @@ import {AProgressbar} from "@cisco-ats/atomic-react";
       }}
     </YourComponent>
   </Story>
-</Preview>
+</Canvas>
 
 ## Progressbar Props
 
 The `AProgressbar` component inherits passed props.
 
-<Props of={AProgressbar} />
+<ArgsTable of={AProgressbar} />
 
 ## States
 
-<Preview>
+<Canvas>
   <Story name="states-1">
     <div className="d-flex flex-column" style={{width: 300}}>
       Default: <AProgressbar percentage={50} />
@@ -84,7 +84,7 @@ The `AProgressbar` component inherits passed props.
       />
     </div>
   </Story>
-</Preview>
+</Canvas>
 
 ## Accessibility Notes
 

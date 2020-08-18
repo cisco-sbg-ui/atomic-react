@@ -1,4 +1,4 @@
-import {Meta, Preview, Story, Props} from "@storybook/addon-docs/blocks";
+import {Meta, Canvas, Story, ArgsTable} from "@storybook/addon-docs/blocks";
 
 import {ATheme, useATheme} from "./";
 import AButtonGroup from "../AButtonGroup";
@@ -31,7 +31,7 @@ import {useATheme} from "@cisco-ats/atomic-react/ATheme";
 
 ## Usage
 
-<Preview>
+<Canvas>
   <Story name="usage-1">
     <ATheme>
       <YourComponent>
@@ -57,8 +57,8 @@ import {useATheme} from "@cisco-ats/atomic-react/ATheme";
       </YourComponent>
     </ATheme>
   </Story>
-</Preview>
+</Canvas>
 
 ## Props
 
-<Props of={ATheme} />
+<ArgsTable of={ATheme} />

@@ -1,4 +1,4 @@
-import {Meta, Preview, Story, Props} from "@storybook/addon-docs/blocks";
+import {Meta, Canvas, Story, ArgsTable} from "@storybook/addon-docs/blocks";
 
 import ASimpleTable from "./ASimpleTable";
 
@@ -18,7 +18,7 @@ import {ASimpleTable} from "@cisco-ats/atomic-react";
 
 ## Usage
 
-<Preview>
+<Canvas>
   <Story name="usage-1">
     <ASimpleTable striped tight>
       <thead>
@@ -59,17 +59,17 @@ import {ASimpleTable} from "@cisco-ats/atomic-react";
       </tbody>
     </ASimpleTable>
   </Story>
-</Preview>
+</Canvas>
 
 ## Simple Table Props
 
 The `ASimpleTable` component inherits passed props.
 
-<Props of={ASimpleTable} />
+<ArgsTable of={ASimpleTable} />
 
 ## Tight
 
-<Preview>
+<Canvas>
   <Story name="tight-1">
     <div className="pr-4">
       <h3>Tight Off</h3>
@@ -156,11 +156,11 @@ The `ASimpleTable` component inherits passed props.
       </ASimpleTable>
     </>
   </Story>
-</Preview>
+</Canvas>
 
 ## Alt Links
 
-<Preview>
+<Canvas>
   <Story name="alt-links-1">
     <div className="pr-4">
       <h3>Regular Links</h3>
@@ -247,4 +247,4 @@ The `ASimpleTable` component inherits passed props.
       </ASimpleTable>
     </>
   </Story>
-</Preview>
+</Canvas>

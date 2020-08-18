@@ -1,8 +1,8 @@
 import {
   Meta,
-  Preview,
+  Canvas,
   Story,
-  Props,
+  ArgsTable,
   ColorPalette,
   ColorItem
 } from "@storybook/addon-docs/blocks";
@@ -29,7 +29,7 @@ import {AApp} from "@cisco-ats/atomic-react";
 
 The `AApp` component provides theming, typography, scrollbar stylings as well as other helpers.
 
-<Preview>
+<Canvas>
   <Story name="usage-1">
     <div
       className="mx-auto my-0 overflow-y-scroll"
@@ -54,15 +54,15 @@ The `AApp` component provides theming, typography, scrollbar stylings as well as
       </div>
     </div>
   </Story>
-</Preview>
+</Canvas>
 
 ## Props
 
-<Props of={AApp} />
+<ArgsTable of={AApp} />
 
 ## Typography
 
-<Preview>
+<Canvas>
   <Story name="typography-1">
     <div className="d-flex flex-wrap align-baseline">
       <div className="text-align-right pr-4" style={{flexBasis: "25%"}}>
@@ -159,11 +159,11 @@ The `AApp` component provides theming, typography, scrollbar stylings as well as
       </div>
     </div>
   </Story>
-</Preview>
+</Canvas>
 
 ## Lists
 
-<Preview>
+<Canvas>
   <Story name="lists-1">
     <div className="pr-3">
       <h2>List Ordered</h2>
@@ -233,7 +233,7 @@ The `AApp` component provides theming, typography, scrollbar stylings as well as
       </ul>
     </div>
   </Story>
-</Preview>
+</Canvas>
 
 ## Color Palette
 

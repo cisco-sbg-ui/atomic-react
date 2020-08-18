@@ -1,5 +1,4 @@
 import React from "react";
-import {addParameters} from "@storybook/client-api";
 import {DocsContainer} from "@storybook/addon-docs/blocks";
 
 import ThemeSwitcher from "./ThemeSwitcher";
@@ -103,8 +102,8 @@ const DocsContainerWrapper = ({children, context}) => {
 
 DocsContainerWrapper.displayName = "DocsContainerWrapper";
 
-addParameters({
+export const parameters = {
   docs: {
     container: DocsContainerWrapper
   }
-});
+};

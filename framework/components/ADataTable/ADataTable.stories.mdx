@@ -1,4 +1,4 @@
-import {Meta, Preview, Story, Props} from "@storybook/addon-docs/blocks";
+import {Meta, Canvas, Story, ArgsTable} from "@storybook/addon-docs/blocks";
 import {useState} from "react";
 
 import ADataTable from "./ADataTable";
@@ -20,7 +20,7 @@ import {ADataTable} from "@cisco-ats/atomic-react";
 
 ## Usage
 
-<Preview>
+<Canvas>
   <Story name="usage-1">
     <YourComponent>
       {() => {
@@ -95,10 +95,10 @@ import {ADataTable} from "@cisco-ats/atomic-react";
       }}
     </YourComponent>
   </Story>
-</Preview>
+</Canvas>
 
 ## Data Table Props
 
 The `ADataTable` component inherits passed props.
 
-<Props of={ADataTable} />
+<ArgsTable of={ADataTable} />
