@@ -1,4 +1,4 @@
-import {Meta, Preview, Story, Props} from "@storybook/addon-docs/blocks";
+import {Meta, Canvas, Story, ArgsTable} from "@storybook/addon-docs/blocks";
 import {useState} from "react";
 
 import AButton from "./AButton";
@@ -21,7 +21,7 @@ import {AButton} from "@cisco-ats/atomic-react";
 
 ## Usage
 
-<Preview>
+<Canvas>
   <Story name="usage-1">
     <YourComponent>
       {() => {
@@ -35,17 +35,17 @@ import {AButton} from "@cisco-ats/atomic-react";
       }}
     </YourComponent>
   </Story>
-</Preview>
+</Canvas>
 
 ## Button Props
 
 The `AButton` component inherits passed props.
 
-<Props of={AButton} />
+<ArgsTable of={AButton} />
 
 ## Button Style Variants
 
-<Preview>
+<Canvas>
   <Story name="variant-1">
     <>
       <p>
@@ -136,17 +136,17 @@ The `AButton` component inherits passed props.
       </p>
     </>
   </Story>
-</Preview>
+</Canvas>
 
 ## Link Buttons
 
 If the `href` property is used, the component will render as an HTML anchor.
 
-<Preview>
+<Canvas>
   <AButton secondary href="https://www.cisco.com">
     Launch Cisco.com
   </AButton>
-</Preview>
+</Canvas>
 
 ## Router Integrations
 

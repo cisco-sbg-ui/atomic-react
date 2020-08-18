@@ -1,4 +1,4 @@
-import {Meta, Preview, Story, Props} from "@storybook/addon-docs/blocks";
+import {Meta, Canvas, Story, ArgsTable} from "@storybook/addon-docs/blocks";
 
 import {
   ATimeline,
@@ -34,7 +34,7 @@ import {
 
 ## Usage
 
-<Preview>
+<Canvas>
   <Story name="usage-1">
     <ATimeline>
       <ATimelineItem time="2020-01-01 01:00:00 UTC">
@@ -74,35 +74,35 @@ import {
       </ATimelineItem>
     </ATimeline>
   </Story>
-</Preview>
+</Canvas>
 
 ## Timeline Props
 
 The `ATimeline` component inherits passed props.
 
-<Props of={ATimeline} />
+<ArgsTable of={ATimeline} />
 
 ## TimelineItem Props
 
 The `ATimelineItem` component inherits passed props.
 
-<Props of={ATimelineItem} />
+<ArgsTable of={ATimelineItem} />
 
 ## TimelineItemBody Props
 
 The `ATimelineItemBody` component inherits passed props.
 
-<Props of={ATimelineItemBody} />
+<ArgsTable of={ATimelineItemBody} />
 
 ## TimelineItemTitle Props
 
 The `ATimelineItemTitle` component inherits passed props.
 
-<Props of={ATimelineItemTitle} />
+<ArgsTable of={ATimelineItemTitle} />
 
 ## Centered Style
 
-<Preview>
+<Canvas>
   <Story name="centered-1">
     <div className="mb-1">
       <ATimeline centered>
@@ -144,4 +144,4 @@ The `ATimelineItemTitle` component inherits passed props.
       </ATimeline>
     </div>
   </Story>
-</Preview>
+</Canvas>

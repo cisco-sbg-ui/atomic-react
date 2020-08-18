@@ -1,4 +1,4 @@
-import {Meta, Preview, Story, Props} from "@storybook/addon-docs/blocks";
+import {Meta, Canvas, Story, ArgsTable} from "@storybook/addon-docs/blocks";
 
 import AIcon from "../AIcon";
 import APanel from "./APanel";
@@ -35,7 +35,7 @@ import {
 
 ## Usage
 
-<Preview>
+<Canvas>
   <Story name="usage-1">
     <APanel>
       <APanelHeader>
@@ -48,7 +48,7 @@ import {
       <APanelFooter>Use panels today!</APanelFooter>
     </APanel>
   </Story>
-</Preview>
+</Canvas>
 
 ## Props
 
@@ -56,15 +56,15 @@ All Panel components (`APanel`, `APanelHeader`, `APanelTitle`, `APanelBody`, `AP
 
 ### Panel Props
 
-<Props of={APanel} />
+<ArgsTable of={APanel} />
 
 ### Panel Title Props
 
-<Props of={APanelTitle} />
+<ArgsTable of={APanelTitle} />
 
 ## Panel Style Variants
 
-<Preview>
+<Canvas>
   <Story name="variants-1">
     <div style={{minWidth: 300}}>
       <APanel>
@@ -129,11 +129,11 @@ All Panel components (`APanel`, `APanelHeader`, `APanelTitle`, `APanelBody`, `AP
         }}></div>
     </div>
   </Story>
-</Preview>
+</Canvas>
 
 ## Panel Title Sizes
 
-<Preview>
+<Canvas>
   <Story name="title-1">
     <APanel>
       <APanelHeader>
@@ -158,4 +158,4 @@ All Panel components (`APanel`, `APanelHeader`, `APanelTitle`, `APanelBody`, `AP
       <APanelFooter>Use panels today!</APanelFooter>
     </APanel>
   </Story>
-</Preview>
+</Canvas>

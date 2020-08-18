@@ -1,4 +1,4 @@
-import {Meta, Preview, Story, Props} from "@storybook/addon-docs/blocks";
+import {Meta, Canvas, Story, ArgsTable} from "@storybook/addon-docs/blocks";
 import {useCallback, useEffect, useState} from "react";
 import algoliasearch from "algoliasearch";
 import debounce from "lodash.debounce";
@@ -22,7 +22,7 @@ import {AAutocomplete} from "@cisco-ats/atomic-react";
 
 ## Usage
 
-<Preview>
+<Canvas>
   <Story name="usage-1">
     <div style={{minHeight: 220, minWidth: 250, marginRight: 20}}>
       <h3>
@@ -136,17 +136,17 @@ import {AAutocomplete} from "@cisco-ats/atomic-react";
       </YourComponent>
     </div>
   </Story>
-</Preview>
+</Canvas>
 
 ## Autocomplete Props
 
 The `AAutocomplete` component inherits passed props.
 
-<Props of={AAutocomplete} />
+<ArgsTable of={AAutocomplete} />
 
 ## Validation
 
-<Preview>
+<Canvas>
   <Story name="rules-1">
     <div style={{minHeight: 220, minWidth: 250, marginRight: 20}}>
       <h3>Autocomplete with Postponed Validation</h3>
@@ -240,11 +240,11 @@ The `AAutocomplete` component inherits passed props.
       </YourComponent>
     </div>
   </Story>
-</Preview>
+</Canvas>
 
 ## States
 
-<Preview>
+<Canvas>
   <Story name="states-1">
     <div style={{minHeight: 220, minWidth: 250, marginRight: 20}}>
       <h3>Default Autocomplete</h3>
@@ -329,7 +329,7 @@ The `AAutocomplete` component inherits passed props.
       />
     </div>
   </Story>
-</Preview>
+</Canvas>
 
 ## Accessibility Notes
 

@@ -1,4 +1,4 @@
-import {Meta, Preview, Story, Props} from "@storybook/addon-docs/blocks";
+import {Meta, Canvas, Story, ArgsTable} from "@storybook/addon-docs/blocks";
 import {useState} from "react";
 
 import AButton from "../AButton";
@@ -23,7 +23,7 @@ import {AButtonGroup} from "@cisco-ats/atomic-react";
 
 ## Usage
 
-<Preview>
+<Canvas>
   <Story name="usage-1">
     <div style={{marginRight: 20}}>
       <h3>Button Group - Multiple</h3>
@@ -109,10 +109,10 @@ import {AButtonGroup} from "@cisco-ats/atomic-react";
       </YourComponent>
     </>
   </Story>
-</Preview>
+</Canvas>
 
 ## Button Group Props
 
 The `AButtonGroup` component inherits passed props.
 
-<Props of={AButtonGroup} />
+<ArgsTable of={AButtonGroup} />

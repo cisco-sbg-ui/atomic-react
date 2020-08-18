@@ -1,4 +1,4 @@
-import {Meta, Preview, Story, Props} from "@storybook/addon-docs/blocks";
+import {Meta, Canvas, Story, ArgsTable} from "@storybook/addon-docs/blocks";
 import {useState} from "react";
 
 import LoremIpsum from "../../utils/lorem-ipsum";
@@ -23,7 +23,7 @@ import {AAlert} from "@cisco-ats/atomic-react";
 
 ## Usage
 
-<Preview>
+<Canvas>
   <Story name="usage-1">
     <YourComponent>
       {() => {
@@ -70,13 +70,13 @@ import {AAlert} from "@cisco-ats/atomic-react";
       }}
     </YourComponent>
   </Story>
-</Preview>
+</Canvas>
 
 ## Alert Props
 
 The `AAlert` component inherits passed props.
 
-<Props of={AAlert} />
+<ArgsTable of={AAlert} />
 
 ## Accessibility Notes
 

@@ -1,4 +1,4 @@
-import {Meta, Preview, Story, Props} from "@storybook/addon-docs/blocks";
+import {Meta, Canvas, Story, ArgsTable} from "@storybook/addon-docs/blocks";
 import {useRef, useState} from "react";
 
 import YourComponent from "../../utils/storybook-function";
@@ -29,7 +29,7 @@ It is necessary for `AContextualNotificationMenu` to be a descendant of `AApp` f
 
 ## Usage
 
-<Preview>
+<Canvas>
   <Story name="usage-1">
     <YourComponent>
       {() => {
@@ -81,17 +81,17 @@ It is necessary for `AContextualNotificationMenu` to be a descendant of `AApp` f
       }}
     </YourComponent>
   </Story>
-</Preview>
+</Canvas>
 
 ## Contextual Notification Menu Props
 
 The `AContextualNotificationMenu` component inherits passed props.
 
-<Props of={AContextualNotificationMenu} />
+<ArgsTable of={AContextualNotificationMenu} />
 
 ## Variants
 
-<Preview>
+<Canvas>
   <Story name="variants-1">
     <YourComponent>
       {() => {
@@ -399,7 +399,7 @@ The `AContextualNotificationMenu` component inherits passed props.
       }}
     </YourComponent>
   </Story>
-</Preview>
+</Canvas>
 
 ## Accessibility Notes
 

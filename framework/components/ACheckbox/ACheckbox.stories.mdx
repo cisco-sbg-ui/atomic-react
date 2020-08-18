@@ -1,4 +1,4 @@
-import {Meta, Preview, Story, Props} from "@storybook/addon-docs/blocks";
+import {Meta, Canvas, Story, ArgsTable} from "@storybook/addon-docs/blocks";
 import {useState} from "react";
 
 import LoremIpsum from "../../utils/lorem-ipsum";
@@ -23,7 +23,7 @@ import {ACheckbox} from "@cisco-ats/atomic-react";
 
 ## Usage
 
-<Preview>
+<Canvas>
   <Story name="usage-1">
     <YourComponent>
       {() => {
@@ -79,17 +79,17 @@ import {ACheckbox} from "@cisco-ats/atomic-react";
       }}
     </YourComponent>
   </Story>
-</Preview>
+</Canvas>
 
 ## Checkbox Props
 
 The `ACheckbox` component inherits passed props.
 
-<Props of={ACheckbox} />
+<ArgsTable of={ACheckbox} />
 
 ## Validation
 
-<Preview>
+<Canvas>
   <Story name="rules-1">
     <YourComponent>
       {() => {
@@ -115,11 +115,11 @@ The `ACheckbox` component inherits passed props.
       }}
     </YourComponent>
   </Story>
-</Preview>
+</Canvas>
 
 ## States
 
-<Preview>
+<Canvas>
   <Story name="states-1">
     <div className="d-flex flex-column">
       <h3>Default Color</h3>
@@ -177,18 +177,18 @@ The `ACheckbox` component inherits passed props.
       </ACheckbox>
     </div>
   </Story>
-</Preview>
+</Canvas>
 
 ## Label wrap
 
-<Preview>
+<Canvas>
   <Story name="wrap-1">
     <div className="d-flex flex-column">
       <ACheckbox>Very long truncated text. {LoremIpsum}</ACheckbox>
       <ACheckbox wrap>Very long wrapping text. {LoremIpsum}</ACheckbox>
     </div>
   </Story>
-</Preview>
+</Canvas>
 
 ## Accessibility Notes
 

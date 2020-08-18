@@ -1,4 +1,4 @@
-import {Meta, Preview, Story, Props} from "@storybook/addon-docs/blocks";
+import {Meta, Canvas, Story, ArgsTable} from "@storybook/addon-docs/blocks";
 import {useState} from "react";
 
 import YourComponent from "../../utils/storybook-function";
@@ -20,7 +20,7 @@ import {ACombobox} from "@cisco-ats/atomic-react";
 
 ## Usage
 
-<Preview>
+<Canvas>
   <Story name="usage-1">
     <div style={{minHeight: 220, minWidth: 250, marginRight: 20}}>
       <h3>Combobox with Strings</h3>
@@ -156,17 +156,17 @@ import {ACombobox} from "@cisco-ats/atomic-react";
       />
     </div>
   </Story>
-</Preview>
+</Canvas>
 
 ## Combobox Props
 
 The `ACombobox` component inherits passed props.
 
-<Props of={ACombobox} />
+<ArgsTable of={ACombobox} />
 
 ## Validation
 
-<Preview>
+<Canvas>
   <Story name="rules-1">
     <div style={{minHeight: 220, minWidth: 250, marginRight: 20}}>
       <h3>Combobox with Postponed Validation</h3>
@@ -260,7 +260,7 @@ The `ACombobox` component inherits passed props.
       </YourComponent>
     </div>
   </Story>
-</Preview>
+</Canvas>
 
 ## Accessibility Notes
 

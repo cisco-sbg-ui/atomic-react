@@ -1,4 +1,4 @@
-import {Meta, Preview, Story, Props} from "@storybook/addon-docs/blocks";
+import {Meta, Canvas, Story, ArgsTable} from "@storybook/addon-docs/blocks";
 import {useState} from "react";
 
 import YourComponent from "../../utils/storybook-function";
@@ -22,7 +22,7 @@ import {ATabGroup, ATab, ATabHeading} from "@cisco-ats/atomic-react";
 
 ### Uncontrolled Mode
 
-<Preview>
+<Canvas>
   <Story name="usage-1">
     <ATabGroup>
       <ATab>One</ATab>
@@ -30,11 +30,11 @@ import {ATabGroup, ATab, ATabHeading} from "@cisco-ats/atomic-react";
       <ATab selected>Three</ATab>
     </ATabGroup>
   </Story>
-</Preview>
+</Canvas>
 
 ### Controlled Mode
 
-<Preview>
+<Canvas>
   <Story name="usage-2">
     <YourComponent>
       {() => {
@@ -56,25 +56,25 @@ import {ATabGroup, ATab, ATabHeading} from "@cisco-ats/atomic-react";
       }}
     </YourComponent>
   </Story>
-</Preview>
+</Canvas>
 
 ## Tab Group Props
 
 The `ATabGroup` component inherits passed props.
 
-<Props of={ATabGroup} />
+<ArgsTable of={ATabGroup} />
 
 ## Tab Props
 
 The `ATab` component inherits passed props.
 
-<Props of={ATab} />
+<ArgsTable of={ATab} />
 
 ## Links
 
 Tabs will render in the DOM as anchor tags if the `href` property is defined.
 
-<Preview>
+<Canvas>
   <Story name="links-1">
     <ATabGroup tall>
       <ATab selected>One</ATab>
@@ -84,13 +84,13 @@ Tabs will render in the DOM as anchor tags if the `href` property is defined.
       </ATab>
     </ATabGroup>
   </Story>
-</Preview>
+</Canvas>
 
 ## Display Variants
 
 ### Tall
 
-<Preview>
+<Canvas>
   <Story name="variants-1">
     <ATabGroup tall>
       <ATab>One</ATab>
@@ -98,11 +98,11 @@ Tabs will render in the DOM as anchor tags if the `href` property is defined.
       <ATab>Three</ATab>
     </ATabGroup>
   </Story>
-</Preview>
+</Canvas>
 
 ### Oversized
 
-<Preview>
+<Canvas>
   <Story name="variants-2">
     <ATabGroup oversized>
       <ATab>
@@ -119,7 +119,7 @@ Tabs will render in the DOM as anchor tags if the `href` property is defined.
       </ATab>
     </ATabGroup>
   </Story>
-</Preview>
+</Canvas>
 
 ## Router Integrations
 

@@ -1,4 +1,4 @@
-import {Meta, Preview, Story, Props} from "@storybook/addon-docs/blocks";
+import {Meta, Canvas, Story, ArgsTable} from "@storybook/addon-docs/blocks";
 import {useState} from "react";
 
 import YourComponent from "../../utils/storybook-function";
@@ -20,7 +20,7 @@ import {APagination} from "@cisco-ats/atomic-react";
 
 ## Usage
 
-<Preview>
+<Canvas>
   <Story name="usage-1">
     <YourComponent>
       {() => {
@@ -44,9 +44,9 @@ import {APagination} from "@cisco-ats/atomic-react";
       }}
     </YourComponent>
   </Story>
-</Preview>
+</Canvas>
 
-<Preview>
+<Canvas>
   <Story name="usage-2">
     <YourComponent>
       {() => {
@@ -70,9 +70,9 @@ import {APagination} from "@cisco-ats/atomic-react";
       }}
     </YourComponent>
   </Story>
-</Preview>
+</Canvas>
 
-<Preview>
+<Canvas>
   <Story name="usage-3">
     <YourComponent>
       {() => {
@@ -105,13 +105,13 @@ import {APagination} from "@cisco-ats/atomic-react";
       }}
     </YourComponent>
   </Story>
-</Preview>
+</Canvas>
 
 ## Pagination Props
 
 The `APagination` component inherits passed props.
 
-<Props of={APagination} />
+<ArgsTable of={APagination} />
 
 ## Accessibility Notes
 

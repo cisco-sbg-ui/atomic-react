@@ -1,4 +1,4 @@
-import {Meta, Preview, Story, Props} from "@storybook/addon-docs/blocks";
+import {Meta, Canvas, Story, ArgsTable} from "@storybook/addon-docs/blocks";
 
 import AFooter from "./AFooter";
 import AFooterLegal from "./AFooterLegal";
@@ -22,7 +22,7 @@ import {AFooter, AFooterLegal} from "@cisco-ats/atomic-react";
 
 ## Usage
 
-<Preview>
+<Canvas>
   <Story name="usage-1">
     <AFooter>
       <AFooterLegal>
@@ -33,7 +33,7 @@ import {AFooter, AFooterLegal} from "@cisco-ats/atomic-react";
       </AFooterLegal>
     </AFooter>
   </Story>
-</Preview>
+</Canvas>
 
 ## Props
 
@@ -41,11 +41,11 @@ All Footer components (`AFooter`, `AFooterLegal`) inherit passed props.
 
 ### Footer Props
 
-<Props of={AFooter} />
+<ArgsTable of={AFooter} />
 
 ### Footer Legal Props
 
-<Props of={AFooterLegal} />
+<ArgsTable of={AFooterLegal} />
 
 ## Accessibility Notes
 

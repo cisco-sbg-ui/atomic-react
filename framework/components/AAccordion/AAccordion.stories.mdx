@@ -1,4 +1,4 @@
-import {Meta, Preview, Story, Props} from "@storybook/addon-docs/blocks";
+import {Meta, Canvas, Story, ArgsTable} from "@storybook/addon-docs/blocks";
 import {useState} from "react";
 
 import AButton from "../AButton";
@@ -44,7 +44,7 @@ import {
 
 ## Usage
 
-<Preview>
+<Canvas>
   <Story name="usage-1">
     <YourComponent>
       {() => {
@@ -97,7 +97,7 @@ import {
       }}
     </YourComponent>
   </Story>
-</Preview>
+</Canvas>
 
 ## Props
 
@@ -105,27 +105,27 @@ All Accordion components (`AAccordion`, `AAccordionPanel`, `AAccordionHeader`, `
 
 ### Accordion Props
 
-<Props of={AAccordion} />
+<ArgsTable of={AAccordion} />
 
 ### AccordionPanel Props
 
-<Props of={AAccordionPanel} />
+<ArgsTable of={AAccordionPanel} />
 
 ### AccordionHeader Props
 
-<Props of={AAccordionHeader} />
+<ArgsTable of={AAccordionHeader} />
 
 ### AccordionHeaderTitle Props
 
-<Props of={AAccordionHeaderTitle} />
+<ArgsTable of={AAccordionHeaderTitle} />
 
 ### AccordionBody Props
 
-<Props of={AAccordionBody} />
+<ArgsTable of={AAccordionBody} />
 
 ## Alternative Icons
 
-<Preview>
+<Canvas>
   <Story name="icons-1">
     <AAccordion>
       <AAccordionPanel>
@@ -166,7 +166,7 @@ All Accordion components (`AAccordion`, `AAccordionPanel`, `AAccordionHeader`, `
       </AAccordionPanel>
     </AAccordion>
   </Story>
-</Preview>
+</Canvas>
 
 ## Accessibility Notes
 

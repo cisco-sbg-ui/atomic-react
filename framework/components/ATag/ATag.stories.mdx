@@ -1,4 +1,4 @@
-import {Meta, Preview, Story, Props} from "@storybook/addon-docs/blocks";
+import {Meta, Canvas, Story, ArgsTable} from "@storybook/addon-docs/blocks";
 import {useState} from "react";
 
 import YourComponent from "../../utils/storybook-function";
@@ -23,7 +23,7 @@ import {ATag} from "@cisco-ats/atomic-react";
 
 ## Usage
 
-<Preview>
+<Canvas>
   <Story name="usage-1">
     <div style={{minHeight: 120}}>
       <ATag>Simple Tag</ATag>
@@ -90,13 +90,13 @@ import {ATag} from "@cisco-ats/atomic-react";
       </YourComponent>
     </div>
   </Story>
-</Preview>
+</Canvas>
 
 ## Tag Props
 
 The `ATag` component inherits passed props.
 
-<Props of={ATag} />
+<ArgsTable of={ATag} />
 
 ## Router Integrations
 

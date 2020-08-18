@@ -1,4 +1,4 @@
-import {Meta, Preview, Story, Props} from "@storybook/addon-docs/blocks";
+import {Meta, Canvas, Story, ArgsTable} from "@storybook/addon-docs/blocks";
 import {useState} from "react";
 
 import LoremIpsum from "../../utils/lorem-ipsum";
@@ -23,7 +23,7 @@ import {ARadio} from "@cisco-ats/atomic-react";
 
 ## Usage
 
-<Preview>
+<Canvas>
   <Story name="usage-1">
     <YourComponent>
       {() => {
@@ -56,17 +56,17 @@ import {ARadio} from "@cisco-ats/atomic-react";
       }}
     </YourComponent>
   </Story>
-</Preview>
+</Canvas>
 
 ## Radio Props
 
 The `ARadio` component inherits passed props.
 
-<Props of={ARadio} />
+<ArgsTable of={ARadio} />
 
 ## States
 
-<Preview>
+<Canvas>
   <Story name="states-1">
     <div className="d-flex flex-column">
       <ARadio>Default</ARadio>
@@ -79,11 +79,11 @@ The `ARadio` component inherits passed props.
       <ARadio wrap>Very long wrapping text. {LoremIpsum}</ARadio>
     </div>
   </Story>
-</Preview>
+</Canvas>
 
 ## Radio Groups
 
-<Preview>
+<Canvas>
   <Story name="groups-1">
     <YourComponent>
       {() => {
@@ -107,7 +107,7 @@ The `ARadio` component inherits passed props.
       }}
     </YourComponent>
   </Story>
-</Preview>
+</Canvas>
 
 ## Accessibility Notes
 

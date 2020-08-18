@@ -1,4 +1,4 @@
-import {Meta, Preview, Story, Props} from "@storybook/addon-docs/blocks";
+import {Meta, Canvas, Story, ArgsTable} from "@storybook/addon-docs/blocks";
 
 import {ACiscoLoader, ADotLoader, APageLoader} from "./";
 
@@ -26,7 +26,7 @@ import {
 
 ## Usage
 
-<Preview>
+<Canvas>
   <Story name="usage-1">
     <ACiscoLoader />
   </Story>
@@ -36,25 +36,25 @@ import {
   <Story name="usage-3">
     <APageLoader size="small" />
   </Story>
-</Preview>
+</Canvas>
 
 ## Cisco Loader Props
 
 The `ACiscoLoader` component inherits passed props.
 
-<Props of={ACiscoLoader} />
+<ArgsTable of={ACiscoLoader} />
 
 ## Dot Loader Props
 
 The `ADotLoader` component inherits passed props.
 
-<Props of={ADotLoader} />
+<ArgsTable of={ADotLoader} />
 
 ## Page Loader Props
 
 The `APageLoader` component inherits passed props.
 
-<Props of={APageLoader} />
+<ArgsTable of={APageLoader} />
 
 ## Accessibility Notes
 

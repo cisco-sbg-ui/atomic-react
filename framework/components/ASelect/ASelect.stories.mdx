@@ -1,4 +1,4 @@
-import {Meta, Preview, Story, Props} from "@storybook/addon-docs/blocks";
+import {Meta, Canvas, Story, ArgsTable} from "@storybook/addon-docs/blocks";
 import {useState} from "react";
 
 import YourComponent from "../../utils/storybook-function";
@@ -21,7 +21,7 @@ import {ASelect} from "@cisco-ats/atomic-react";
 
 ## Usage
 
-<Preview>
+<Canvas>
   <Story name="usage-1">
     <div style={{minHeight: 220, minWidth: 250, marginRight: 20}}>
       <h3>Simple Select</h3>
@@ -148,17 +148,17 @@ import {ASelect} from "@cisco-ats/atomic-react";
       />
     </div>
   </Story>
-</Preview>
+</Canvas>
 
 ## Select Props
 
 The `ASelect` component inherits passed props.
 
-<Props of={ASelect} />
+<ArgsTable of={ASelect} />
 
 ## Validation
 
-<Preview>
+<Canvas>
   <Story name="rules-1">
     <YourComponent>
       {() => {
@@ -185,11 +185,11 @@ The `ASelect` component inherits passed props.
       }}
     </YourComponent>
   </Story>
-</Preview>
+</Canvas>
 
 ## Alternate Usage
 
-<Preview>
+<Canvas>
   <Story name="alt-1">
     <div style={{minHeight: 220, minWidth: 250, marginRight: 20}}>
       <h3>Dynamic Items</h3>
@@ -229,7 +229,7 @@ The `ASelect` component inherits passed props.
       </YourComponent>
     </div>
   </Story>
-</Preview>
+</Canvas>
 
 ## Accessibility Notes
 
