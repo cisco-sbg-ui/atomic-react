@@ -48,6 +48,10 @@ $checkbox-transition: box-shadow $transition-duration--extra-fast
       box-shadow: 0 0 2px 2px currentColor;
     }
 
+    &:disabled ~ .a-checkbox__box {
+      cursor: not-allowed;
+    }
+
     &:disabled ~ .a-checkbox__box:hover:after {
       box-shadow: none;
     }

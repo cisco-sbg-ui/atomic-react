@@ -5,14 +5,14 @@ $atomic-dusk: (
     "body-bg": transparent
   ),
   "alert": (
-    "bg": rgba($color-information, $alpha-4),
-    "border-color": rgba(map-get($status-blue, "wash-1"), $alpha-4),
-    "success-bg": rgba($color-good, $alpha-4),
-    "success-border-color": rgba(map-get($status-green, "wash-1"), $alpha-4),
-    "warning-bg": rgba($color-warning, $alpha-4),
-    "warning-border-color": rgba(map-get($status-orange, "wash-1"), $alpha-4),
-    "danger-bg": rgba(map-get($status-red, "burnt-1"), $alpha-4),
-    "danger-border-color": rgba(map-get($status-red, "wash-1"), $alpha-4)
+    "bg": map-get($status-blue, "burnt-4"),
+    "border-color": map-get($status-blue, "burnt-3"),
+    "success-bg": map-get($status-green, "burnt-4"),
+    "success-border-color": map-get($status-green, "burnt-3"),
+    "warning-bg": map-get($status-orange, "burnt-4"),
+    "warning-border-color": map-get($status-orange, "burnt-3"),
+    "danger-bg": map-get($status-red, "burnt-4"),
+    "danger-border-color": map-get($status-red, "burnt-3")
   ),
   "app": (
     "scrollbar": (
@@ -37,7 +37,7 @@ $atomic-dusk: (
     "color--selected": map-get($cisco-blue, "base"),
     "inverse-color": map-get($grey, "lighten-5"),
     "pg-bg": map-get($grey, "darken-7"),
-    "stroke-color": rgba(map-get($grey, "base"), $alpha-5),
+    "stroke-color": rgba(map-get($grey, "base"), $alpha-7),
     "box-shadow": 0 0 2px 2px rgba(map-get($cisco-blue, "wash-1"), 0.4),
     "outline": 1px solid map-get($cisco-blue, "wash-1")
   ),
@@ -51,7 +51,8 @@ $atomic-dusk: (
       "border--hover": map-get($cisco-blue, "base"),
       "border--focus": map-get($cisco-blue, "burnt-1"),
       "border--disabled": map-get($dusk, "1"),
-      "color--disabled": rgba(map-get($grey, "lighten-5"), $alpha-5)
+      "color--disabled": rgba(map-get($grey, "lighten-5"), $alpha-5),
+      "opacity--disabled": $alpha-8
     ),
     "secondary": (
       "bg--hover": rgba(map-get($cisco-blue, "burnt-3"), $alpha-5),
@@ -74,7 +75,7 @@ $atomic-dusk: (
       "color--active": map-get($cisco-blue, "base"),
       "color--focus": map-get($cisco-blue, "wash-1"),
       "color--disabled": lighten(map-get($dusk, "1"), 30%),
-      "opacity--disabled": $alpha-5
+      "opacity--disabled": $alpha-8
     ),
     "group": (
       "color": map-get($grey, "lighten-5")
@@ -110,6 +111,15 @@ $atomic-dusk: (
   ),
   "label": (
     "color": map-get($grey, "lighten-2")
+  ),
+  "link": (
+    "color": map-get($cisco-blue, "wash-1"),
+    "color--hover": map-get($cisco-blue, "wash-1"),
+    "color--active": map-get($cisco-blue, "base"),
+    "color--focus": map-get($cisco-blue, "wash-1"),
+    "color--visited": map-get($cisco-blue, "burnt-1"),
+    "color--disabled": map-get($cisco-blue, "wash-1"),
+    "opacity--disabled": $alpha-4
   ),
   "loader": (
     "background-color": map-get($dusk, "6")

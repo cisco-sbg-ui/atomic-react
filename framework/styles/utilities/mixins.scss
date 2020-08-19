@@ -29,7 +29,7 @@
 }
 
 // -----------------------------------------------------------------------------
-// Buttons
+// Sidebar
 // -----------------------------------------------------------------------------
 @mixin btn-icon() {
   display: inline-flex;
@@ -41,15 +41,6 @@
   &:hover {
     text-decoration: none;
   }
-}
-@mixin btn-size() {
-  @include text-truncate;
-  font-weight: $btn-font-weight;
-  line-height: $btn-line-height;
-  height: $btn-height;
-  padding: $btn-padding;
-  margin: $btn-margin;
-  min-width: $btn-min-width;
 }
 // -----------------------------------------------------------------------------
 // Lists
@@ -100,13 +91,6 @@
   flex-wrap: wrap;
 }
 // -----------------------------------------------------------------------------
-// Pagination
-// -----------------------------------------------------------------------------
-@mixin pagination-link($pagination-link-color, $pagination-link-decoration) {
-  color: $pagination-link-color;
-  text-decoration: $pagination-link-decoration;
-}
-// -----------------------------------------------------------------------------
 // Border-radius
 // -----------------------------------------------------------------------------
 @mixin border-radius($radius: $border-radius) {
@@ -148,55 +132,6 @@
   }
 }
 
-// -----------------------------------------------------------------------------
-// Buttons Color
-// -----------------------------------------------------------------------------
-@mixin btn-color(
-  $color,
-  $background,
-  $border,
-  $color-hover,
-  $background-hover,
-  $border-hover,
-  $color-focus,
-  $background-focus,
-  $border-focus,
-  $color-active,
-  $background-active,
-  $border-active,
-  $color-disabled,
-  $background-disabled,
-  $border-disabled,
-  $box-shadow
-) {
-  color: $color;
-  background-color: $background;
-  border-color: $border;
-  &:hover {
-    color: $color-hover;
-    background-color: $background-hover;
-    border-color: $border-hover;
-  }
-  &:focus {
-    color: $color-focus;
-    background-color: $background-focus;
-    border-color: $border-focus;
-    box-shadow: $box-shadow;
-  }
-  &:active {
-    color: $color-active;
-    background-color: $background-active;
-    border-color: $border-active;
-  }
-  &.disabled,
-  &:disabled {
-    box-shadow: none;
-    color: $color-disabled;
-    background-color: $background-disabled;
-    border-color: $border-disabled;
-    opacity: 0.5;
-  }
-}
 // -----------------------------------------------------------------------------
 // Tabs box-shadow
 // -----------------------------------------------------------------------------
