@@ -17,6 +17,11 @@ $table-cell-tight-padding-top-bottom: (
     $table-row-height-tight - $table-body-font-size
   ) / 2;
 
+// Pending `condensed` feature:
+//$table-row-height-condensed: 30px;
+//$table-row-selected-color: $color-category--blue--wash3; // dusk: $color-gray--dark5
+//$table-cell-condensed-padding-left-right: 10px;
+
 @include theme(a-simple-table) using ($theme) {
   background: map-deep-get($theme, "table", "bg");
 
@@ -120,7 +125,22 @@ $table-cell-tight-padding-top-bottom: (
       padding-bottom: $table-cell-tight-padding-top-bottom;
     }
   }
+  /*
+  &--condensed {
+    .tr {
+      height: $table-row-height-condensed;
+    }
 
+    th,
+    td {
+      padding-top: 0;
+      padding-right: $table-cell-condensed-padding-left-right;
+      padding-bottom: 0;
+      padding-left: $table-cell-condensed-padding-left-right;
+      vertical-align: middle;
+    }
+  }
+*/
   a {
     font-size: $table-link-font-size;
   }

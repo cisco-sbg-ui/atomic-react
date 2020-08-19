@@ -1,38 +1,20 @@
-.theme--default {
-  a {
-    color: map-deep-get($atomic-default, "base", "brand-color");
+@include themeElement(a) using ($theme) {
+  color: map-deep-get($theme, "link", "color");
 
-    &:hover,
-    &:focus {
-      color: map-deep-get($atomic-default, "base", "brand-color");
-    }
-
-    &:active {
-      color: map-deep-get($atomic-default, "base", "color--active");
-    }
-
-    &.disabled {
-      color: map-get($grey, "lighten-2");
-    }
+  &:hover {
+    color: map-deep-get($theme, "link", "color--hover");
   }
-}
 
-.theme--dusk {
-  a {
-    color: map-deep-get($atomic-dusk, "base", "brand-color");
+  &:focus {
+    color: map-deep-get($theme, "link", "color--focus");
+  }
 
-    &:hover,
-    &:focus {
-      color: map-deep-get($atomic-dusk, "base", "brand-color");
-    }
+  &:active {
+    color: map-deep-get($theme, "link", "color--active");
+  }
 
-    &:active {
-      color: map-deep-get($atomic-dusk, "base", "color--active");
-    }
-
-    &.disabled {
-      color: map-get($grey, "lighten-2");
-    }
+  &.disabled {
+    color: map-deep-get($theme, "link", "color--disabled");
   }
 }
 
@@ -49,7 +31,8 @@
   cursor: pointer;
 
   &:hover,
-  &:focus {
+  &:focus,
+  &:active {
     text-decoration: underline;
   }
 
