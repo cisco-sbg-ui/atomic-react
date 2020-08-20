@@ -81,6 +81,9 @@ $atomic-dusk: (
       "color": map-get($grey, "lighten-5")
     )
   ),
+  "checkbox": (
+    "label-color--disabled": rgba(map-get($grey, "lighten-5"), $alpha-4)
+  ),
   "color": (
     "warning--state-hover": map-get($status-orange, "wash-1"),
     "error--state-hover": map-get($status-red, "wash-1")
@@ -150,10 +153,12 @@ $atomic-dusk: (
     "border--disabled": map-get($grey, "lighten-2"),
     "border--enabled--active": map-get($cisco-blue, "burnt-1"),
     "box-bg--disabled": map-get($dusk, "1"),
-    "box-border--enabled--hover": map-get($grey, "base"),
+    "box-border--enabled--hover": map-get($grey, "lighten-1"),
     "fill--active--hover": map-get($cisco-blue, "base"),
+    "fill--checked--hover": map-get($cisco-blue, "base"),
     "fill--enabled": map-get($cisco-blue, "burnt-1"),
-    "opacity-disabled": $alpha-3
+    "label-color--disabled": rgba(map-get($grey, "lighten-5"), $alpha-4),
+    "opacity-disabled": $alpha-6
   ),
   "select": (
     "border-color--focus": map-get($cisco-blue, "burnt-1")
@@ -177,6 +182,7 @@ $atomic-dusk: (
     "circle--inner-box-shadow-checked-active": map-get($cisco-blue, "base"),
     "circle--inner-box-shadow-checked-active-hover":
       map-get($cisco-blue, "burnt-1"),
+    "label-color--disabled": rgba(map-get($grey, "lighten-5"), $alpha-4),
     "opacity-disabled": $alpha-3
   ),
   "table": (
@@ -200,7 +206,7 @@ $atomic-dusk: (
   ),
   "text-input": (
     "bg": transparent,
-    "color--disabled": rgba(map-get($grey, "base"), $alpha-5),
+    "color--disabled": rgba(map-get($grey, "lighten-5"), $alpha-4),
     "bg--disabled": rgba(map-get($dusk, "1"), $alpha-3),
     "border-color--disabled": transparent,
     "border-color--readonly": rgba(map-get($grey, "lighten-2"), $alpha-3),

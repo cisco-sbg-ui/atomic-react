@@ -85,6 +85,9 @@ $atomic-default: (
     "warning--state-hover": map-get($status-orange, "burnt-2"),
     "error--state-hover": map-get($status-red, "burnt-2")
   ),
+  "checkbox": (
+    "label-color--disabled": map-get($grey, "base")
+  ),
   "control": (
     "fill-color": $white,
     "fill-color--disabled": map-get($grey, "lighten-3"),
@@ -135,14 +138,16 @@ $atomic-default: (
   ),
   "radio": (
     "bg--disabled": $white,
-    "border--active--hover": map-get($cisco-blue, "base"),
-    "border--checked": map-get($grey, "darken-6"),
+    "border--active--hover": map-get($cisco-blue, "burnt-2"),
+    "border--checked": map-get($cisco-blue, "burnt-1"),
     "border--disabled": map-get($grey, "lighten-3"),
-    "border--enabled--active": map-get($grey, "lighten-2"),
+    "border--enabled--active": map-get($cisco-blue, "burnt-1"),
     "box-bg--disabled": $white,
     "box-border--enabled--hover": map-get($grey, "darken-4"),
-    "fill--active--hover": map-get($cisco-blue, "base"),
-    "fill--enabled": map-get($grey, "lighten-2"),
+    "fill--active--hover": map-get($cisco-blue, "burnt-2"),
+    "fill--checked--hover": map-get($cisco-blue, "base"),
+    "fill--enabled": map-get($cisco-blue, "burnt-1"),
+    "label-color--disabled": map-get($grey, "base"),
     "opacity-disabled": 1
   ),
   "select": (
@@ -152,12 +157,13 @@ $atomic-default: (
     "bg": map-get($grey, "darken-4"),
     "bg--checked": map-get($cisco-blue, "burnt-1"),
     "bg--disabled": map-get($grey, "lighten-2"),
-    "bg--disabled--checked": map-get($status-blue, "wash-2"),
+    "bg--disabled--checked": rgba(map-get($cisco-blue, "burnt-1"), $alpha-5),
     "circle-border-color": map-get($grey, "darken-4"),
     "circle-border-color--checked": map-get($cisco-blue, "burnt-1"),
     "circle-border-color--checked--hover": map-get($grey, "darken-4"),
     "circle-border-color--disabled": map-get($grey, "lighten-2"),
-    "circle-border-color--disabled--checked": map-get($status-blue, "wash-2"),
+    "circle-border-color--disabled--checked":
+      rgba(map-get($cisco-blue, "burnt-1"), $alpha-5),
     "circle--inner-border-active": map-get($grey, "darken-4"),
     "circle--inner-border-active-hover": map-get($cisco-blue, "burnt-1"),
     "circle--inner-border-checked-active": map-get($grey, "lighten-2"),
@@ -167,6 +173,7 @@ $atomic-default: (
     "circle--inner-box-shadow-checked-active": map-get($cisco-blue, "base"),
     "circle--inner-box-shadow-checked-active-hover":
       map-get($cisco-blue, "burnt-1"),
+    "label-color--disabled": map-get($grey, "base"),
     "opacity-disabled": 1
   ),
   "table": (

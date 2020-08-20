@@ -20,6 +20,10 @@ const ARadio = forwardRef(
   ) => {
     let className = "a-radio";
 
+    if (disabled) {
+      className += " a-radio--disabled";
+    }
+
     if (propsClassName) {
       className += ` ${propsClassName}`;
     }

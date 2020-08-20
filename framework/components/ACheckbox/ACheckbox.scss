@@ -22,9 +22,13 @@ $checkbox-transition: box-shadow $transition-duration--extra-fast
     }
   }
 
-  &__input {
-    &:disabled ~ .a-checkbox__box {
+  &--disabled {
+    .a-checkbox__box {
       color: map-deep-get($theme, "control", "stroke-color--disabled");
+    }
+
+    .a-checkbox__label {
+      color: map-deep-get($theme, "checkbox", "label-color--disabled");
     }
   }
 }
@@ -38,22 +42,10 @@ $checkbox-transition: box-shadow $transition-duration--extra-fast
     cursor: pointer;
   }
 
-  &--disabled .a-checkbox__wrap {
-    cursor: default;
-  }
-
   &__input {
     @include hidden-input;
     &:focus ~ .a-checkbox__box:after {
       box-shadow: 0 0 2px 2px currentColor;
-    }
-
-    &:disabled ~ .a-checkbox__box {
-      cursor: not-allowed;
-    }
-
-    &:disabled ~ .a-checkbox__box:hover:after {
-      box-shadow: none;
     }
   }
 
@@ -104,6 +96,22 @@ $checkbox-transition: box-shadow $transition-duration--extra-fast
   &__wrap .a-icon {
     width: $checkbox-icon-size;
     padding-left: $checkbox-icon-padding-left;
+  }
+
+  &--disabled {
+    .a-checkbox__wrap {
+      cursor: default;
+    }
+
+    .a-checkbox__box {
+      &:after {
+        pointer-events: none;
+      }
+
+      &:hover:after {
+        box-shadow: none;
+      }
+    }
   }
 }
 
