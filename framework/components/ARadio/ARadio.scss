@@ -40,6 +40,17 @@ $radio-transition: border-color $transition-duration--extra-fast
       box-shadow: map-deep-get($theme, "base", "box-shadow");
     }
 
+    &:enabled:checked ~ .a-radio__box {
+      &:after {
+        background-color: map-deep-get($theme, "radio", "border--checked");
+        border-color: map-deep-get($theme, "radio", "border--checked");
+      }
+      &:hover:after {
+        background-color: map-deep-get($theme, "radio", "fill--checked--hover");
+        border-color: map-deep-get($theme, "radio", "fill--checked--hover");
+      }
+    }
+
     &:enabled:active ~ .a-radio__box {
       &:after {
         border-color: map-deep-get($theme, "radio", "border--enabled--active");
@@ -50,11 +61,6 @@ $radio-transition: border-color $transition-duration--extra-fast
         border-color: map-deep-get($theme, "radio", "border--active--hover");
         background-color: map-deep-get($theme, "radio", "fill--active--hover");
       }
-    }
-
-    &:checked ~ .a-radio__box:after {
-      background-color: map-deep-get($theme, "base", "brand-color");
-      border-color: map-deep-get($theme, "base", "brand-color");
     }
 
     &:disabled ~ .a-radio__box {
@@ -69,6 +75,10 @@ $radio-transition: border-color $transition-duration--extra-fast
 
     &:disabled:checked ~ .a-radio__box:after {
       background-color: map-deep-get($theme, "control", "fill-color--disabled");
+    }
+
+    &:disabled ~ .a-radio__label {
+      color: map-deep-get($theme, "radio", "label-color--disabled");
     }
   }
 }
@@ -156,6 +166,10 @@ $radio-transition: border-color $transition-duration--extra-fast
   &__label--wrap {
     white-space: normal;
     overflow: visible;
+  }
+
+  &--disabled {
+    cursor: default;
   }
 }
 

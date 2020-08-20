@@ -151,6 +151,10 @@ $switch-after-transition: transform $transition-duration--fast
             map-deep-get($theme, "switch", "circle-border-color--disabled");
         }
       }
+
+      ~ .a-switch__label {
+        color: map-deep-get($theme, "switch", "label-color--disabled");
+      }
     }
 
     &:disabled:checked {
