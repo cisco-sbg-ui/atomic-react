@@ -42,7 +42,13 @@ const ARadio = forwardRef(
           role="radio"
           ref={(el) => el && (el.checked = checked)}
         />
-        <span className="a-radio__box" />
+        <span className="a-radio__box">
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14">
+            <circle className="a-radio__box__outer" r="7" cy="7" cx="7" />
+            <circle className="a-radio__box__inner" r="3" cy="7" cx="7" />
+            <circle className="a-radio__box__active" r="2.5" cy="7" cx="7" />
+          </svg>
+        </span>
         <span
           className={`a-radio__label${wrap ? " a-radio__label--wrap" : ""}`}>
           {children}
