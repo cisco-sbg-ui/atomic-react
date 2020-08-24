@@ -17,6 +17,7 @@ let textareaCounter = 0;
 const ATextarea = forwardRef(
   (
     {
+      autoFocus,
       autoGrow,
       className: propsClassName,
       disabled,
@@ -48,6 +49,20 @@ const ATextarea = forwardRef(
     const [workingValidationState, setWorkingValidationState] = useState(
       validationState
     );
+
+    useEffect(() => {
+      if (
+        !autoFocus ||
+        typeof document === "undefined" ||
+        !combinedRef ||
+        !combinedRef.current ||
+        document.activeElement ===
+          combinedRef.current.querySelector(".a-textarea__field")
+      )
+        return;
+
+      combinedRef.current.querySelector(".a-textarea__field").focus();
+    }, [autoFocus, combinedRef]);
 
     useEffect(() => {
       if (autoGrow) {
@@ -189,6 +204,10 @@ const ATextarea = forwardRef(
 );
 
 ATextarea.propTypes = {
+  /**
+   * Toggles whether the textarea auto-focuses on mount.
+   */
+  autoFocus: PropTypes.bool,
   /**
    * Toggles height resize behavior based on content length.
    */

@@ -23,6 +23,14 @@ context("ATextarea", () => {
       .matchImageSnapshot("a-textarea--dusk-1");
   });
 
+  it("has a working auto-focus", () => {
+    cy.get("#story--components-textareas--rules-1 .a-textarea__field").then(
+      ($el) => {
+        Cypress.dom.isFocused($el);
+      }
+    );
+  });
+
   it("auto-grows and auto-shrinks and toggles appropriately", () => {
     cy.get("#story--components-textareas--usage-1")
       .find(".a-textarea__field")
