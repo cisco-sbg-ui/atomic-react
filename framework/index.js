@@ -71,6 +71,7 @@ import {
   ATimelineItemTitle
 } from "./components/ATimeline";
 import {ATheme, useATheme} from "./components/ATheme";
+import AToast from "./components/AToast";
 import ATooltip from "./components/ATooltip";
 import ATree from "./components/ATree";
 
@@ -144,6 +145,7 @@ export {
   ATimelineItemBody,
   ATimelineItemTitle,
   ATheme,
+  AToast,
   ATooltip,
   ATree,
   useATheme

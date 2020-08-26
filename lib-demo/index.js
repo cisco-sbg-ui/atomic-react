@@ -90,6 +90,7 @@ const App = () => {
       <ATimelineItem />
       <ATimelineItemBody />
       <ATimelineItemTitle />
+      <AToast />
       <ATooltip anchorRef={buttonRef} />
       <ATree items={[]} />
     </AApp>
