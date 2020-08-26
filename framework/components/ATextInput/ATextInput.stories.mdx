@@ -134,7 +134,9 @@ The `ATextInput` component inherits passed props.
       {() => {
         const [email, setEmail] = useState("");
         const [value, setValue] = useState("");
-        const [favoriteNumber, setFavoriteNumber] = useState("");
+        const [favoriteNumber1, setFavoriteNumber1] = useState("");
+        const [favoriteNumber2, setFavoriteNumber2] = useState("");
+        const [favoriteNumber3, setFavoriteNumber3] = useState("");
         return (
           <div>
             <h3>Required Field</h3>
@@ -176,16 +178,34 @@ The `ATextInput` component inherits passed props.
               ]}
               hint="Your email address"
             />
-            <h3>Numeric Field</h3>
+            <h3>Numeric Fields</h3>
             <ATextInput
               type="number"
-              label="Favorite Number"
+              label="Favorite Number 0-1000"
               min={0}
               max={1000}
               step={100}
               required
-              value={favoriteNumber}
-              onChange={(e) => setFavoriteNumber(e.target.value)}
+              value={favoriteNumber1}
+              onChange={(e) => setFavoriteNumber1(e.target.value)}
+            />
+            <ATextInput
+              type="number"
+              label="A Positive Number"
+              min={0}
+              step={333}
+              required
+              value={favoriteNumber2}
+              onChange={(e) => setFavoriteNumber2(e.target.value)}
+            />
+            <ATextInput
+              type="number"
+              label="Less than 1000"
+              max={1000}
+              step={333}
+              required
+              value={favoriteNumber3}
+              onChange={(e) => setFavoriteNumber3(e.target.value)}
             />
           </div>
         );

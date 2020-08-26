@@ -225,7 +225,7 @@ context("ATextInput", () => {
       .type(1001);
     cy.get("#story--components-text-inputs--rules-1 .a-input-base__hint")
       .eq(2)
-      .contains("Favorite Number has a maximum value of 1000");
+      .contains("Favorite Number 0-1000 has a maximum value of 1000");
 
     cy.get("#story--components-text-inputs--rules-1 .a-text-input__input")
       .eq(2)
@@ -233,7 +233,7 @@ context("ATextInput", () => {
       .type(-1);
     cy.get("#story--components-text-inputs--rules-1 .a-input-base__hint")
       .eq(2)
-      .contains("Favorite Number has a minimum value of 0");
+      .contains("Favorite Number 0-1000 has a minimum value of 0");
 
     cy.get("#story--components-text-inputs--rules-1 .a-text-input__input")
       .eq(2)
@@ -241,13 +241,13 @@ context("ATextInput", () => {
       .type("899");
     cy.get(
       "#story--components-text-inputs--rules-1 .a-text-input__spinner__up"
-    ).click();
+    ).eq(0).click();
     cy.get("#story--components-text-inputs--rules-1 .a-text-input__input")
       .eq(2)
-      .should("have.value", "999");
+      .should("have.value", "900");
     cy.get(
       "#story--components-text-inputs--rules-1 .a-text-input__spinner__up"
-    ).click();
+    ).eq(0).click();
     cy.get("#story--components-text-inputs--rules-1 .a-text-input__input")
       .eq(2)
       .should("have.value", "1000");
@@ -258,15 +258,69 @@ context("ATextInput", () => {
       .type("199");
     cy.get(
       "#story--components-text-inputs--rules-1 .a-text-input__spinner__down"
-    ).click();
+    ).eq(0).click();
     cy.get("#story--components-text-inputs--rules-1 .a-text-input__input")
       .eq(2)
-      .should("have.value", "99");
+      .should("have.value", "100");
     cy.get(
       "#story--components-text-inputs--rules-1 .a-text-input__spinner__down"
-    ).click();
+    ).eq(0).click();
     cy.get("#story--components-text-inputs--rules-1 .a-text-input__input")
       .eq(2)
+      .should("have.value", "0");
+
+    cy.get("#story--components-text-inputs--rules-1 .a-text-input__input")
+      .eq(2)
+      .clear()
+      .type("5555");
+    cy.get(
+        "#story--components-text-inputs--rules-1 .a-text-input__spinner__up"
+      ).eq(0).click();
+    cy.get("#story--components-text-inputs--rules-1 .a-text-input__input")
+      .eq(2)
+      .should("have.value", "5555");
+    cy.get(
+      "#story--components-text-inputs--rules-1 .a-text-input__spinner__down"
+    ).eq(0).click();
+    cy.get("#story--components-text-inputs--rules-1 .a-text-input__input")
+      .eq(2)
+      .should("have.value", "1000");
+
+    cy.get("#story--components-text-inputs--rules-1 .a-text-input__input")
+      .eq(2)
+      .clear()
+      .type("-5555");
+    cy.get(
+        "#story--components-text-inputs--rules-1 .a-text-input__spinner__down"
+      ).eq(0).click();
+    cy.get("#story--components-text-inputs--rules-1 .a-text-input__input")
+      .eq(2)
+      .should("have.value", "-5555");
+    cy.get(
+      "#story--components-text-inputs--rules-1 .a-text-input__spinner__up"
+    ).eq(0).click();
+    cy.get("#story--components-text-inputs--rules-1 .a-text-input__input")
+      .eq(2)
+      .should("have.value", "0");
+
+    cy.get("#story--components-text-inputs--rules-1 .a-text-input__input")
+      .eq(4)
+      .type("999");
+    cy.get(
+      "#story--components-text-inputs--rules-1 .a-text-input__spinner__up"
+    ).eq(2).click();
+    cy.get("#story--components-text-inputs--rules-1 .a-text-input__input")
+      .eq(4)
+      .should("have.value", "999");
+
+    cy.get("#story--components-text-inputs--rules-1 .a-text-input__input")
+      .eq(3)
+      .type("0");
+    cy.get(
+      "#story--components-text-inputs--rules-1 .a-text-input__spinner__down"
+    ).eq(1).click();
+    cy.get("#story--components-text-inputs--rules-1 .a-text-input__input")
+      .eq(3)
       .should("have.value", "0");
   });
 

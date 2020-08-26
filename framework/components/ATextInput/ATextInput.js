@@ -153,13 +153,23 @@ const ATextInput = forwardRef(
         "value"
       ).set;
       const currentValue = parseFloat(nativeInputValueGetter.call(input));
-      let finalValue = isNaN(currentValue) ? amount : currentValue + amount;
-      if (typeof min !== "undefined") {
-        finalValue = Math.max(min, finalValue);
-      }
+      let finalValue = 0;
+      if (!isNaN(currentValue)) {
+        if (typeof min !== "undefined" && currentValue < min && Math.abs(currentValue + amount) < Math.abs(currentValue)) {
+          finalValue = min;
+        } else if (typeof max !== "undefined" && currentValue > max && Math.abs(currentValue + amount) < Math.abs(currentValue)) {
+          finalValue = max
+        } else {
+          finalValue = Math.ceil(currentValue / amount) * amount;
 
-      if (typeof min !== "undefined") {
-        finalValue = Math.min(max, finalValue);
+          if (finalValue === currentValue) finalValue += amount;
+
+          if ((typeof min !== "undefined" && finalValue < min) || (typeof max !== "undefined" && finalValue > max)) {
+            finalValue = currentValue
+          }
+        }
+      } else {
+        finalValue = amount;
       }
 
       nativeInputValueSetter.call(input, finalValue);
