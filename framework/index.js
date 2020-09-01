@@ -74,6 +74,7 @@ import {ATheme, useATheme} from "./components/ATheme";
 import AToast from "./components/AToast";
 import ATooltip from "./components/ATooltip";
 import ATree from "./components/ATree";
+import {useAToaster} from "./components/AToaster";
 
 export {
   AAccordion,
@@ -148,5 +149,6 @@ export {
   AToast,
   ATooltip,
   ATree,
-  useATheme
+  useATheme,
+  useAToaster
 };
