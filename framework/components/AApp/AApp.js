@@ -1,10 +1,19 @@
 import PropTypes from "prop-types";
-import React, {useRef, forwardRef} from "react";
+import React, {forwardRef, useContext, useRef, useState} from "react";
 
 import {ATheme} from "../ATheme";
 import AAppContext from "./AAppContext";
 import {useCombinedRefs} from "../../utils/hooks";
 import "./AApp.scss";
+
+const AToastPlate = () => {
+  const {toasts} = useContext(AAppContext);
+  return (
+    !toasts.length || (
+      <div className="a-toast-plate">{toasts.map((x) => x.component)}</div>
+    )
+  );
+};
 
 const AApp = forwardRef(
   (
@@ -19,6 +28,8 @@ const AApp = forwardRef(
     },
     ref
   ) => {
+    const [toasts, setToasts] = useState([]);
+
     let className = "a-app";
 
     if (animations) {
@@ -40,7 +51,9 @@ const AApp = forwardRef(
 
     const appContext = {
       appRef: combinedRef,
-      wrapRef
+      wrapRef,
+      toasts,
+      setToasts
     };
 
     return (
@@ -54,6 +67,7 @@ const AApp = forwardRef(
           <div ref={wrapRef} className={wrapClassName}>
             {children}
           </div>
+          <AToastPlate />
         </AAppContext.Provider>
       </ATheme>
     );

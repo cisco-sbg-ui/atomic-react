@@ -1,5 +1,15 @@
-import React, {useRef} from "react";
+import React, {useEffect, useRef} from "react";
 import ReactDOM from "react-dom";
+
+const ToasterComponent = () => {
+  const {addToast} = useAToaster();
+
+  useEffect(() => {
+    addToast({title: "info toast", children: "toaster notification"});
+  }, []);
+
+  return null;
+};
 
 const ThemedComponent = ({children}) => {
   const {currentTheme} = useATheme();
@@ -93,6 +103,7 @@ const App = () => {
       <AToast />
       <ATooltip anchorRef={buttonRef} />
       <ATree items={[]} />
+      <ToasterComponent />
     </AApp>
   );
 };
