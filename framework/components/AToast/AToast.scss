@@ -15,7 +15,7 @@ $toast-icon-font-size: $font-size;
   border-color: map-deep-get($theme, "control", "stroke-color");
 
   &--success .a-toast__icon {
-    color: $color-good
+    color: $color-good;
   }
 
   &--warning .a-toast__icon {
@@ -41,7 +41,7 @@ $toast-icon-font-size: $font-size;
   min-width: $toast-min-width;
   max-width: $toast-max-width;
   padding: $toast-padding;
-  align-items: start;
+  align-items: flex-start;
 
   &__body {
     margin: $toast-margin;
