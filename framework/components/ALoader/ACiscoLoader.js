@@ -1,6 +1,6 @@
 import React, {forwardRef} from "react";
 
-import "./ALoader.scss";
+import "./ACiscoLoader.scss";
 
 const ACiscoLoader = forwardRef(({className: propsClassName, ...rest}, ref) => {
   let className = "a-cisco-loader";
