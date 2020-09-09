@@ -2,6 +2,8 @@
 /node_modules/
 /lib/
 /A*.js
+/babel-preset.js
+/babel-preset-local.js
 /helpers*.js
 /hooks*.js
 /style-inject*.js
