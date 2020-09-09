@@ -50,6 +50,7 @@ const config = {
       preferConst: true
     }),
     postcss({
+      config: false,
       extract: false
     }),
     babel({
