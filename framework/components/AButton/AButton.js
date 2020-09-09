@@ -122,7 +122,7 @@ AButton.propTypes = {
    */
   secondary: PropTypes.bool,
   /**
-   * If the `href` property is defined, the target can be set (ex: `_blank`, `_self`, `_parent`, `_top`)
+   * If the `href` or `component` props is set, the target can be set (ex: `_blank`, `_self`, `_parent`, `_top`)
    */
   target: PropTypes.string,
   /**
