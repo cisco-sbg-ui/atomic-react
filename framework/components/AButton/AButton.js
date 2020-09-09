@@ -85,6 +85,7 @@ const AButton = forwardRef(
       TagName = component;
       props.disabled = disabled;
       props.value = value;
+      props.target = target;
     } else {
       props.disabled = disabled;
       props.type = type;

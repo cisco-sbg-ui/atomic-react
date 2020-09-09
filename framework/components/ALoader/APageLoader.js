@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
 import React, {forwardRef} from "react";
 
-import "./ALoader.scss";
+import "./APageLoader.scss";
 
 const APageLoader = forwardRef(
   ({className: propsClassName, size, ...rest}, ref) => {

@@ -76,47 +76,6 @@
 }
 
 // -----------------------------------------------------------------------------
-// Loading Indicators
-// -----------------------------------------------------------------------------
-// Page Level Loading Indicator
-@-webkit-keyframes dot-animation {
-  0%,
-  100%,
-  80% {
-    -webkit-transform: scale(0);
-  }
-  40% {
-    -webkit-transform: scale(1);
-  }
-}
-@keyframes dot-animation {
-  0%,
-  100%,
-  80% {
-    transform: scale(0);
-  }
-  40% {
-    transform: scale(1);
-  }
-}
-@-webkit-keyframes page-loader-animation {
-  0% {
-    -webkit-transform: rotate(0deg);
-  }
-  100% {
-    -webkit-transform: rotate(360deg);
-  }
-}
-@keyframes page-loader-animation {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
-}
-
-// -----------------------------------------------------------------------------
 // Motion Transitions
 // -----------------------------------------------------------------------------
 @keyframes fade-in {

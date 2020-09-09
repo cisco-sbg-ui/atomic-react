@@ -1,6 +1,6 @@
 import React, {forwardRef} from "react";
 
-import "./ALoader.scss";
+import "./ADotLoader.scss";
 
 const ADotLoader = forwardRef(({className: propsClassName, ...rest}, ref) => {
   let className = "a-loader";
