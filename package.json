@@ -10,6 +10,7 @@
     "build:cra": "rollup -c ./rollup.config.js",
     "build:storybook": "build-storybook -s .storybook/public -c .storybook -o docs --docs",
     "build": "npm run build:cra && npm run build:lib && npm run build:babel-preset && npm run build:storybook",
+    "cypress:install": "./node_modules/.bin/cypress install",
     "cypress:open": "cypress open --env snapshots=off",
     "cypress:run": "cypress run",
     "cypress:runUpdateSnapshots": "cypress run --env updateSnapshots=true",
