@@ -1,0 +1,17 @@
+language: node_js
+node_js:
+  - 12
+sudo: required
+cache:
+  npm: true
+  directories:
+    - "~/.npm"
+    - "~/.cache"
+install:
+  - npm ci --ignore-scripts --prefer-offline
+  - npm run cypress:install
+script:
+  - npm test
+#  - npm run updateSnapshots
+#after_success:
+#  - sh build/.travis-push.sh
