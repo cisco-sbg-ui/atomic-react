@@ -20,7 +20,7 @@ context("ATabs", () => {
   it("has appropriate roles", () => {
     cy.get("#story--components-tabs--usage-1 .a-tab-group")
       .eq(0)
-      .should("have.attr", "role", "tabslist");
+      .should("have.attr", "role", "tablist");
     cy.get("#story--components-tabs--usage-1 .a-tab-group__tab")
       .eq(0)
       .should("have.attr", "role", "tab")

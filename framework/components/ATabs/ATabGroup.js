@@ -26,7 +26,7 @@ const ATabGroup = forwardRef(
     };
 
     return (
-      <div {...rest} role="tabslist" ref={ref} className={className}>
+      <div {...rest} role="tablist" ref={ref} className={className}>
         <ATabContext.Provider value={tabContext}>
           {children}
         </ATabContext.Provider>
