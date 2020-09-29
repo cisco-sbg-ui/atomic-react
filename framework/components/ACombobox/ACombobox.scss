@@ -29,7 +29,7 @@
     align-self: stretch;
   }
 
-  &__menu-items {
+  &__menu-items.a-dropdown__menu {
     top: 100%;
     border-bottom-left-radius: $border-radius--sm;
     border-bottom-right-radius: $border-radius--sm;
@@ -41,7 +41,7 @@
     user-select: none;
     z-index: 999;
 
-    .a-combobox__menu-item {
+    .a-combobox__menu-item.a-dropdown__item {
       height: 28px;
       line-height: $line-height--lg;
       padding: 2px 0 0 0;
