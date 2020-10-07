@@ -3,10 +3,12 @@
 .a-data-table {
   &__header {
     &__sort {
-      width: 10px;
-      opacity: 0;
+      &.a-icon {
+        width: 10px;
+        opacity: 0;
+      }
 
-      &--active {
+      &--active.a-icon {
         opacity: 1;
       }
     }
@@ -16,7 +18,7 @@
     }
 
     &:hover {
-      .a-data-table__header__sort:not(.a-data-table__header__sort--active) {
+      .a-icon.a-data-table__header__sort:not(.a-icon.a-data-table__header__sort--active) {
         opacity: 0.5;
       }
     }
