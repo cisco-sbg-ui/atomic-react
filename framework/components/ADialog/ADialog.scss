@@ -1,30 +1,16 @@
 @import "../../styles";
 
-$modal-top: 0;
-$modal-right: 0;
-$modal-bottom: 0;
-$modal-left: 0;
-$modal-z-index: 1050;
-$modal-backdrop-top: 0;
-$modal-backdrop-right: 0;
-$modal-backdrop-bottom: 0;
-$modal-backdrop-left: 0;
-$modal-backdrop-bg: $black;
-$modal-backdrop-z-index: 0.5;
-$modal-backdrop-opacity: 0.5;
-$modal-z-index: 1040;
-
 .a-dialog-backdrop {
   display: none;
   position: fixed;
-  top: $modal-backdrop-top;
-  right: $modal-backdrop-right;
-  bottom: $modal-backdrop-bottom;
-  left: $modal-backdrop-left;
-  background-color: $modal-backdrop-bg;
-  opacity: $modal-backdrop-opacity;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: $black;
+  opacity: 0.5;
   pointer-events: initial;
-  z-index: $modal-z-index;
+  z-index: 8;
 
   &--active {
     display: block;
@@ -34,13 +20,13 @@ $modal-z-index: 1040;
 .a-dialog {
   display: none;
   position: fixed;
-  top: $modal-top;
-  right: $modal-right;
-  bottom: $modal-bottom;
-  left: $modal-left;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
   overflow-x: hidden;
   overflow-y: auto;
-  z-index: $modal-z-index;
+  z-index: 8;
 
   &--active {
     display: block;
