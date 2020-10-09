@@ -16,7 +16,7 @@ $tooltip-bg: map-get($grey, "darken-4");
   padding: rem(0.3125);
   border-radius: $border-radius--sm;
   box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.25);
-  z-index: 1;
+  z-index: 8;
 
   &--arrow.a-menu-base--top,
   &--arrow.a-menu-base--top-left,
