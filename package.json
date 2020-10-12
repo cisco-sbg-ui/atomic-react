@@ -16,7 +16,7 @@
     "cypress:runUpdateSnapshots": "cypress run --env updateSnapshots=true",
     "cypress:lib": "cypress run --config integrationFolder=lib-demo",
     "dev": "start-server-and-test start:ci http://localhost:8081 cypress:open",
-    "dev:lib": "webpack-dev-server --config webpack.lib-demo.config.js",
+    "dev:lib": "webpack serve --config webpack.lib-demo.config.js",
     "start": "npm run build:cra && npm run build:lib && npm run build:babel-preset && start-storybook -p 8081 -s .storybook/public --docs",
     "start:ci": "npm run build:cra && npm run build:lib && npm run build:babel-preset && start-storybook -p 8081 -s .storybook/public --docs --ci",
     "test:components": "eslint framework .storybook --max-warnings 0 && start-server-and-test start:ci http://localhost:8081 cypress:run",
@@ -76,7 +76,7 @@
     "start-server-and-test": "^1.11.5",
     "style-loader": "^2.0.0",
     "webpack": "^4.44.2",
-    "webpack-cli": "^3.3.12",
+    "webpack-cli": "^4.0.0",
     "webpack-dev-server": "^3.11.0"
   },
   "repository": {
