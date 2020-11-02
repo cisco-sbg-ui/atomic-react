@@ -1,6 +1,5 @@
 @import "../../styles";
 
-$context-margin: 10px;
 $context-padding: $base-padding-small;
 $context-border-left-width: 5px;
 $context-icon-margin: 2px 10px 0 0;
@@ -23,7 +22,7 @@ $context-arrow-left: 10%;
   min-height: 40px;
   border: $border-width solid transparent;
   border-left: $context-border-left-width solid transparent;
-  margin: $context-margin;
+  margin: 10px 0;
   padding: $context-padding;
   border-radius: $border-radius--sm;
   &__icon {

@@ -1,43 +1,38 @@
 context("AAccordion", () => {
   before(() => {
-    cy.visitInLightTheme(
-      "http://localhost:8081/iframe.html?id=components-accordions--usage-1&viewMode=docs"
-    );
+    cy.visitInLightTheme("http://localhost:8081/components/accordion");
   });
 
   it("has appropriate default state", () => {
-    cy.get("#story--components-accordions--usage-1 .a-accordion__card")
+    cy.get("#usage + .playground .a-accordion__card")
       .eq(0)
       .should("not.have.attr", "aria-expanded");
-    cy.get("#story--components-accordions--usage-1 .a-accordion__card")
+    cy.get("#usage + .playground .a-accordion__card")
       .eq(1)
       .should("have.attr", "aria-expanded", "true");
-    cy.get("#story--components-accordions--usage-1 .a-accordion__card")
+    cy.get("#usage + .playground .a-accordion__card")
       .eq(2)
       .should("have.attr", "aria-expanded", "false");
-    cy.get("#story--components-accordions--usage-1 .a-accordion__card")
+    cy.get("#usage + .playground .a-accordion__card")
       .eq(3)
       .should("have.attr", "aria-expanded", "true");
   });
 
   it("tabs appropriately", () => {
-    cy.get("#story--components-accordions--usage-1 .a-button")
-      .eq(0)
-      .focus()
-      .tab();
-    cy.get("#story--components-accordions--usage-1 .a-accordion__link")
+    cy.get("#usage + .playground .a-button").eq(0).focus().tab();
+    cy.get("#usage + .playground .a-accordion__link")
       .eq(1)
       .then(($el) => {
         Cypress.dom.isFocused($el);
       })
       .tab();
-    cy.get("#story--components-accordions--usage-1 .a-accordion__link")
+    cy.get("#usage + .playground .a-accordion__link")
       .eq(2)
       .then(($el) => {
         Cypress.dom.isFocused($el);
       })
       .tab();
-    cy.get("#story--components-accordions--usage-1 .a-button")
+    cy.get("#usage + .playground .a-button")
       .eq(1)
       .then(($el) => {
         Cypress.dom.isFocused($el);
@@ -45,7 +40,7 @@ context("AAccordion", () => {
   });
 
   it("supports alternative icons", () => {
-    cy.get("#story--components-accordions--icons-1 .a-accordion__link .a-icon")
+    cy.get("#alternative-icons + .playground .a-accordion__link .a-icon")
       .eq(1)
       .should("have.attr", "aria-label", "subtract icon")
       .click()
@@ -53,22 +48,22 @@ context("AAccordion", () => {
   });
 
   it("expands/collapses appropriately", () => {
-    cy.get("#story--components-accordions--usage-1 .a-accordion__card")
+    cy.get("#usage + .playground .a-accordion__card")
       .eq(1)
       .should("have.attr", "aria-expanded", "true")
       .find(".a-accordion__link")
       .should("have.attr", "role", "button")
       .click();
-    cy.get("#story--components-accordions--usage-1 .a-accordion__card")
+    cy.get("#usage + .playground .a-accordion__card")
       .eq(1)
       .should("have.attr", "aria-expanded", "false")
       .find(".a-accordion__link")
       .type("{enter}");
-    cy.get("#story--components-accordions--usage-1 .a-accordion__card")
+    cy.get("#usage + .playground .a-accordion__card")
       .eq(1)
       .find(".a-accordion__link")
       .type(" ");
-    cy.get("#story--components-accordions--usage-1 .a-accordion__card")
+    cy.get("#usage + .playground .a-accordion__card")
       .eq(1)
       .find(".a-accordion__link")
       .type(" ");
@@ -77,16 +72,10 @@ context("AAccordion", () => {
   it("supports themes", () => {
     if (Cypress.env("snapshots") === "off") return;
 
-    cy.get("#story--components-accordions--usage-1")
-      .parent()
-      .parent()
-      .matchImageSnapshot("a-accordion--usage-1");
+    cy.get("#usage + .playground .playground__preview").toMatchImageSnapshot();
 
-    cy.get(".a-button").eq(1).click();
+    cy.get(".a-switch__box").eq(0).click();
 
-    cy.get("#story--components-accordions--usage-1")
-      .parent()
-      .parent()
-      .matchImageSnapshot("a-accordion--dusk-1");
+    cy.get("#usage + .playground .playground__preview").toMatchImageSnapshot();
   });
 });

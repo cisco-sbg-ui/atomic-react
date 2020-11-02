@@ -1,0 +1,100 @@
+---
+name: Data Tables
+route: /components/data-table
+---
+
+import {Playground, Props} from "../../../docs";
+
+# Data Tables
+
+## Install
+
+Integrate with your build to [auto-import](?path=/docs/getting-started--page#integrating), or add an import in your component:
+
+```
+import ADataTable from "@cisco-ats/atomic-react/ADataTable";
+// or if you're able to treekshake node_modules
+import {ADataTable} from "@cisco-ats/atomic-react";
+```
+
+## Usage
+
+<Playground
+  code={`() => {
+  const [sort, setSort] = useState();
+  const headers = [
+    {
+      name: "alpha",
+      key: "a",
+      align: "end",
+      className: "text-capitalize",
+      sortable: true
+    },
+    {
+      name: "Bravo",
+      key: "b",
+      align: "center",
+      sortable: true,
+      sort: false
+    },
+    {
+      name: "Charlie",
+      key: "c",
+      sortable: true,
+      sort: (a, b) =>
+        a.toUpperCase() === b.toUpperCase()
+          ? 0
+          : a.toUpperCase() > b.toUpperCase()
+          ? 1
+          : -1
+    },
+    {
+      name: "Delta",
+      align: "center",
+      cell: {
+        component: (item) => (
+          <a href="/" target="_blank">
+            Details
+          </a>
+        )
+      }
+    }
+  ];
+  const items = [
+    {
+      a: 11.1,
+      b: 526,
+      c: "aardvark"
+    },
+    {
+      a: 8.9,
+      b: 611,
+      c: "Argentina"
+    },
+    {
+      a: 10.5,
+      b: 475,
+      c: "Zanzibar"
+    }
+  ];
+  return (
+    <ADataTable
+      striped
+      tight
+      headers={headers}
+      items={items}
+      className="mx-auto"
+      style={{maxWidth: 500}}
+      sort={sort}
+      onSort={(s) => setSort(s)}
+    />
+  );
+}
+`}
+/>
+
+## Data Table Props
+
+The `ADataTable` component inherits passed props.
+
+<Props of="ADataTable" />

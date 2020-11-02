@@ -1,10 +1,14 @@
 .github/
-.storybook/
+.cache/
+.nyc-output/
+.vercel/
 build/
+coverage/
 cypress/
 docs/
 fonts/
 lib-demo/
+public/
 
 .buildme
 .editorconfig
@@ -12,10 +16,14 @@ lib-demo/
 .gitignore
 .prettierignore
 .prettierrc.js
+.travis.yml
 babel.config.js
 babel-preset-local.js
+gatsby-config.js
+gatsby-node.js
 rollup.config.js
 webpack.lib-demo.config.js
 
+**/__image_snapshots__/
 *.spec.js
-*.stories.mdx
+*.mdx

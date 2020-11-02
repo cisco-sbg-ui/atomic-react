@@ -1,7 +1,5 @@
-import {addMatchImageSnapshotCommand} from "cypress-image-snapshot/command";
 import "cypress-wait-until";
-
-addMatchImageSnapshotCommand();
+import "cypress-plugin-snapshots/commands";
 
 Cypress.Commands.add("visitInLightTheme", function (url) {
   cy.visit(url, {

@@ -4,5 +4,5 @@
   "testFiles": "**/*.spec.js",
   "video": false,
   "viewportHeight": 720,
-  "viewportWidth": 1280
+  "viewportWidth": 1480
 }

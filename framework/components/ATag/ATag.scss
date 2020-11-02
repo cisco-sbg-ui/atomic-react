@@ -2,7 +2,6 @@
 
 $tag-height: 22px;
 $tag-font-size: $font-size--xs;
-$tag-line-height: $font-size--xxs;
 $tag-padding: 0 12px;
 $tag-border-radius: $border-radius--sm;
 $tag-icon-font-size: $font-size--xxs;
@@ -29,7 +28,7 @@ $tag-icon-font-size: $font-size--xxs;
   display: inline-flex;
   height: $tag-height;
   font-size: $tag-font-size;
-  line-height: $tag-line-height;
+  line-height: 22px;
   align-items: center;
   padding: $tag-padding;
   border-radius: $tag-border-radius;

@@ -12,11 +12,15 @@ const ATheme = forwardRef(
   ) => {
     let initialTheme = "default";
     if (persist) {
-      if (Object.prototype.hasOwnProperty.call(localStorage, LS_KEY)) {
+      if (
+        typeof localStorage !== "undefined" &&
+        Object.prototype.hasOwnProperty.call(localStorage, LS_KEY)
+      ) {
         initialTheme = localStorage.getItem(LS_KEY) === "dusk" && "dusk";
       } else if (["default", "dusk"].includes(defaultTheme)) {
         initialTheme = defaultTheme;
       } else if (
+        typeof window !== "undefined" &&
         window.matchMedia &&
         window.matchMedia("(prefers-color-scheme: dark)").matches
       ) {
@@ -32,7 +36,7 @@ const ATheme = forwardRef(
       currentTheme,
       setCurrentTheme: (theme) => {
         const newTheme = theme === "dusk" ? theme : "default";
-        persist && localStorage.setItem(LS_KEY, newTheme);
+        persist && localStorage?.setItem(LS_KEY, newTheme);
         setCurrentTheme(newTheme);
       }
     };

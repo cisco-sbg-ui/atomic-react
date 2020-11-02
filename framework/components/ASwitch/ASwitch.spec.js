@@ -1,8 +1,6 @@
 context("ASwitch", () => {
   before(() => {
-    cy.visitInLightTheme(
-      "http://localhost:8081/iframe.html?id=components-switches--usage-1&viewMode=docs"
-    );
+    cy.visitInLightTheme("http://localhost:8081/components/switch");
   });
 
   // TODO: Test interactability
@@ -10,28 +8,22 @@ context("ASwitch", () => {
   // TODO: Test accessibility
 
   it("validates", () => {
-    cy.get("#story--components-switches--rules-1 .a-switch__label").click();
-    cy.get("#story--components-switches--rules-1 .a-hint").contains(
+    cy.get("#validation + .playground .a-switch__label").click();
+    cy.get("#validation + .playground .a-hint").contains(
       "This feature is potentially unsafe"
     );
 
-    cy.get("#story--components-switches--rules-1 .a-switch__label").click();
-    cy.get("#story--components-switches--rules-1 .a-hint").contains("Required");
+    cy.get("#validation + .playground .a-switch__label").click();
+    cy.get("#validation + .playground .a-hint").contains("Required");
   });
 
   it("supports themes", () => {
     if (Cypress.env("snapshots") === "off") return;
 
-    cy.get("#story--components-switches--states-1")
-      .parent()
-      .parent()
-      .matchImageSnapshot("a-switch--states-1");
+    cy.get("#states + .playground .playground__preview").toMatchImageSnapshot();
 
-    cy.get(".a-button").eq(1).click();
+    cy.get(".a-switch__box").eq(0).click();
 
-    cy.get("#story--components-switches--states-1")
-      .parent()
-      .parent()
-      .matchImageSnapshot("a-switch--dusk-1");
+    cy.get("#states + .playground .playground__preview").toMatchImageSnapshot();
   });
 });

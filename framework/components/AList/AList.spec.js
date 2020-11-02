@@ -1,23 +1,15 @@
 context("AList", () => {
   before(() => {
-    cy.visitInLightTheme(
-      "http://localhost:8081/iframe.html?id=components-lists--usage-1&viewMode=docs"
-    );
+    cy.visitInLightTheme("http://localhost:8081/components/list");
   });
 
   it("supports themes", () => {
     if (Cypress.env("snapshots") === "off") return;
 
-    cy.get("#story--components-lists--usage-1")
-      .parent()
-      .parent()
-      .matchImageSnapshot("a-list--usage-1");
+    cy.get("#usage + .playground .playground__preview").toMatchImageSnapshot();
 
-    cy.get(".a-button").eq(1).click();
+    cy.get(".a-switch__box").eq(0).click();
 
-    cy.get("#story--components-lists--usage-1")
-      .parent()
-      .parent()
-      .matchImageSnapshot("a-list--dusk-1");
+    cy.get("#usage + .playground .playground__preview").toMatchImageSnapshot();
   });
 });

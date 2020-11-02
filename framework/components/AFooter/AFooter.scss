@@ -1,7 +1,6 @@
 @import "../../styles";
 
 $footer-min-height: 35px;
-$footer-max-height: 65px;
 $footer-padding: 10px 20px;
 $footer-font-size: $font-size--xs;
 
@@ -14,7 +13,6 @@ $footer-font-size: $font-size--xs;
 .a-footer {
   display: block;
   min-height: $footer-min-height;
-  max-height: $footer-max-height;
   padding: $footer-padding;
   font-size: $footer-font-size;
   border-top-width: $border-width;

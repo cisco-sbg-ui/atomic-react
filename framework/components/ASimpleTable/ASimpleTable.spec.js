@@ -1,8 +1,6 @@
 context("ASimpleTable", () => {
   before(() => {
-    cy.visitInLightTheme(
-      "http://localhost:8081/iframe.html?id=components-simple-tables--usage-1&viewMode=docs"
-    );
+    cy.visitInLightTheme("http://localhost:8081/components/simple-table");
   });
 
   // TODO: Test interactability
@@ -12,16 +10,10 @@ context("ASimpleTable", () => {
   it("supports themes", () => {
     if (Cypress.env("snapshots") === "off") return;
 
-    cy.get("#story--components-simple-tables--usage-1")
-      .parent()
-      .parent()
-      .matchImageSnapshot("a-simple-table--usage-1");
+    cy.get("#usage + .playground .playground__preview").toMatchImageSnapshot();
 
-    cy.get(".a-button").eq(1).click();
+    cy.get(".a-switch__box").eq(0).click();
 
-    cy.get("#story--components-simple-tables--usage-1")
-      .parent()
-      .parent()
-      .matchImageSnapshot("a-simple-table--dusk-1");
+    cy.get("#usage + .playground .playground__preview").toMatchImageSnapshot();
   });
 });

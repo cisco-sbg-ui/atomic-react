@@ -1,17 +1,15 @@
 context("ASelect", () => {
   before(() => {
-    cy.visitInLightTheme(
-      "http://localhost:8081/iframe.html?id=components-selects--usage-1&viewMode=docs"
-    );
+    cy.visitInLightTheme("http://localhost:8081/components/select");
   });
 
   it("has a label that works", () => {
-    cy.get("#story--components-selects--usage-1 .a-input-base__label")
+    cy.get("#usage + .playground .a-input-base__label")
       .eq(0)
       .click()
       .then(($el) => {
         const labelId = $el.attr("id");
-        cy.get("#story--components-selects--usage-1 .a-select__selection")
+        cy.get("#usage + .playground .a-select__selection")
           .eq(0)
           .then(($el2) => {
             Cypress.dom.isFocused($el2);
@@ -21,13 +19,11 @@ context("ASelect", () => {
   });
 
   it("opens and closes appropriately", () => {
-    cy.get("#story--components-selects--usage-1 .a-select__menu-items")
+    cy.get("#usage + .playground .a-select__menu-items")
       .eq(0)
       .should("not.be.visible");
-    cy.get("#story--components-selects--usage-1 .a-select__selection")
-      .eq(0)
-      .click();
-    cy.get("#story--components-selects--usage-1 .a-select__menu-items")
+    cy.get("#usage + .playground .a-select__selection").eq(0).click();
+    cy.get("#usage + .playground .a-select__menu-items")
       .eq(0)
       .should("be.visible")
       .type("{esc}")
@@ -39,24 +35,18 @@ context("ASelect", () => {
   });
 
   it("tabs appropriately", () => {
-    cy.get("#story--components-selects--usage-1 .a-select__selection")
-      .eq(0)
-      .focus()
-      .tab();
-    cy.get("#story--components-selects--usage-2 .a-select__selection")
+    cy.get("#usage + .playground .a-select__selection").eq(0).focus().tab();
+    cy.get("#usage + .playground .a-select__selection")
       .eq(0)
       .then(($el) => {
         Cypress.dom.isFocused($el);
       });
 
-    cy.get("#story--components-selects--usage-1 .a-select__selection")
-      .eq(0)
-      .click()
-      .tab();
-    cy.get("#story--components-selects--usage-1 .a-select__menu-items")
+    cy.get("#usage + .playground .a-select__selection").eq(0).click().tab();
+    cy.get("#usage + .playground .a-select__menu-items")
       .eq(0)
       .should("not.be.visible");
-    cy.get("#story--components-selects--usage-2 .a-select__selection")
+    cy.get("#usage + .playground .a-select__selection")
       .eq(0)
       .then(($el) => {
         Cypress.dom.isFocused($el);
@@ -64,7 +54,7 @@ context("ASelect", () => {
   });
 
   it("arrow-keys menus appropriately", () => {
-    cy.get("#story--components-selects--usage-1 .a-select__selection")
+    cy.get("#usage + .playground .a-select__selection")
       .eq(0)
       .click()
       .next()
@@ -84,7 +74,7 @@ context("ASelect", () => {
       })
       .type("{esc}");
 
-    cy.get("#story--components-selects--usage-1 .a-select__selection")
+    cy.get("#usage + .playground .a-select__selection")
       .eq(0)
       .click()
       .next()
@@ -103,7 +93,7 @@ context("ASelect", () => {
   });
 
   it("arrow-keys the surface appropriately", () => {
-    cy.get("#story--components-selects--usage-1 .a-select__selection")
+    cy.get("#usage + .playground .a-select__selection")
       .eq(0)
       .focus()
       .type("{downArrow}")
@@ -119,17 +109,15 @@ context("ASelect", () => {
   });
 
   it("has working selected prop", () => {
-    cy.get("#story--components-selects--usage-2 .a-select__selection")
+    cy.get("#usage + .playground .a-select__selection").eq(0).click();
+    cy.get("#usage + .playground .a-select__menu-item")
       .eq(0)
-      .click();
-    cy.get("#story--components-selects--usage-2 .a-select__menu-item")
-      .eq(2)
       .should("have.class", "a-select__menu-item--selected")
       .type("{esc}");
   });
 
   it("has appropriate role attributes", () => {
-    cy.get("#story--components-selects--usage-1 .a-select__selection")
+    cy.get("#usage + .playground .a-select__selection")
       .eq(0)
       .click()
       .next()
@@ -141,54 +129,40 @@ context("ASelect", () => {
   });
 
   it("validates on blur", () => {
-    cy.get("#story--components-selects--rules-1 .a-select__selection")
+    cy.get("#validation + .playground .a-select__selection")
       .eq(0)
       .tab()
       .tab({shift: true})
       .tab();
-    cy.get("#story--components-selects--rules-1 .a-input-base__hint")
+    cy.get("#validation + .playground .a-input-base__hint")
       .eq(0)
       .contains("Role is required");
   });
 
   it("validates", () => {
-    cy.get("#story--components-selects--rules-1 .a-select__selection")
-      .eq(0)
-      .click();
-    cy.get("#story--components-selects--rules-1 .a-select__menu-item")
-      .eq(0)
-      .click();
-    cy.get("#story--components-selects--rules-1 .a-input-base__hint")
+    cy.get("#validation + .playground .a-select__selection").eq(0).click();
+    cy.get("#validation + .playground .a-select__menu-item").eq(0).click();
+    cy.get("#validation + .playground .a-input-base__hint")
       .eq(0)
       .contains("Role is required");
 
-    cy.get("#story--components-selects--rules-1 .a-select__selection")
-      .eq(0)
-      .click();
-    cy.get("#story--components-selects--rules-1 .a-select__menu-item")
-      .eq(3)
-      .click();
-    cy.get("#story--components-selects--rules-1 .a-input-base__hint")
+    cy.get("#validation + .playground .a-select__selection").eq(0).click();
+    cy.get("#validation + .playground .a-select__menu-item").eq(3).click();
+    cy.get("#validation + .playground .a-input-base__hint")
       .eq(0)
       .contains("Role is set to Admin");
 
-    cy.get("#story--components-selects--rules-1 .a-select__selection")
-      .eq(0)
-      .click();
-    cy.get("#story--components-selects--rules-1 .a-select__menu-item")
-      .eq(1)
-      .click();
-    cy.get("#story--components-selects--rules-1 .a-input-base__hint").should(
-      "not.exist"
-    );
+    cy.get("#validation + .playground .a-select__selection").eq(0).click();
+    cy.get("#validation + .playground .a-select__menu-item").eq(1).click();
+    cy.get("#validation + .playground .a-input-base__hint").should("not.exist");
   });
 
   it("supports dynamic items", () => {
-    cy.get("#story--components-selects--alt-1 .a-select__selection").contains(
+    cy.get("#alternate-usage + .playground .a-select__selection").contains(
       "Bbb"
     );
-    cy.get("#story--components-selects--alt-1 .a-button").click();
-    cy.get("#story--components-selects--alt-1 .a-select__selection").contains(
+    cy.get("#alternate-usage + .playground .a-button").click();
+    cy.get("#alternate-usage + .playground .a-select__selection").contains(
       "333"
     );
   });
@@ -196,26 +170,18 @@ context("ASelect", () => {
   it("supports themes", () => {
     if (Cypress.env("snapshots") === "off") return;
 
-    cy.get("#story--components-selects--usage-1 .a-select__selection")
-      .first()
-      .click();
+    cy.get("#states + .playground .a-select__selection").first().click();
 
-    cy.get("#story--components-selects--usage-1")
-      .parent()
-      .parent()
-      .matchImageSnapshot("a-select--usage-1");
+    cy.get("#states + .playground .playground__preview").toMatchImageSnapshot();
 
-    cy.get(".a-button").eq(1).click();
+    cy.get(".a-switch__box").eq(0).click();
 
-    cy.get("#story--components-selects--usage-1 .a-select__selection")
+    cy.get("#states + .playground .a-select__selection")
       .first()
       .focus()
       .type("{downArrow}")
       .click();
 
-    cy.get("#story--components-selects--usage-1")
-      .parent()
-      .parent()
-      .matchImageSnapshot("a-select--dusk-1");
+    cy.get("#states + .playground .playground__preview").toMatchImageSnapshot();
   });
 });

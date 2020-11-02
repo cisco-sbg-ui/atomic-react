@@ -18,7 +18,7 @@
   font-size: $font-size--xs;
   color: map-get($grey, "base");
 
-  &__icon {
+  &__icon.a-icon {
     height: 14px;
     width: 14px;
   }

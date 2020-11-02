@@ -1,23 +1,15 @@
 context("AHint", () => {
   before(() => {
-    cy.visitInLightTheme(
-      "http://localhost:8081/iframe.html?id=extend-hint--usage-1&viewMode=docs"
-    );
+    cy.visitInLightTheme("http://localhost:8081/extend/hint");
   });
 
   it("supports themes", () => {
     if (Cypress.env("snapshots") === "off") return;
 
-    cy.get("#story--extend-hint--usage-1")
-      .parent()
-      .parent()
-      .matchImageSnapshot("a-hint--usage-1");
+    cy.get("#usage + .playground .playground__preview").toMatchImageSnapshot();
 
-    cy.get(".a-button").eq(1).click();
+    cy.get(".a-switch__box").eq(0).click();
 
-    cy.get("#story--extend-hint--usage-1")
-      .parent()
-      .parent()
-      .matchImageSnapshot("a-hint--dusk-1");
+    cy.get("#usage + .playground .playground__preview").toMatchImageSnapshot();
   });
 });

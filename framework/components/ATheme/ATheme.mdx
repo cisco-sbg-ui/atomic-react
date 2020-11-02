@@ -1,0 +1,61 @@
+---
+name: Themes
+route: /components/theme
+---
+
+import {Playground, Props} from "../../../docs";
+
+# Themes
+
+## Install
+
+Integrate with your build to [auto-import](?path=/docs/getting-started--page#integrating), or add an import in your component:
+
+```
+import {ATheme} from "@cisco-ats/atomic-react/ATheme";
+// or if you're able to treekshake node_modules
+import {ATheme} from "@cisco-ats/atomic-react";
+```
+
+`ATheme` is bundled with `AApp`. If you use `AApp`, `ATheme` is unnecessary.
+
+### Hook
+
+To access and modify the current theme, use the react hook provided:
+
+```
+import {useATheme} from "@cisco-ats/atomic-react/ATheme";
+```
+
+## Usage
+
+<Playground
+  noInline
+  code={`const ThemeSwitcher = () => {
+  const {currentTheme, setCurrentTheme} = useATheme();
+  return (
+    <div
+      style={{
+        padding: 20,
+        backgroundColor: currentTheme === "default" ? "#fff" : "#000"
+      }}>
+      <AButtonGroup
+        selectedValues={[currentTheme]}
+        onChange={(_, selectedValues) => setCurrentTheme(selectedValues[0])}>
+        <AButton value="default">Default</AButton>
+        <AButton value="dusk">Dusk</AButton>
+      </AButtonGroup>
+    </div>
+  );
+};
+render(
+  <ATheme>
+    <ThemeSwitcher />
+  </ATheme>
+);
+`}
+/>
+
+## Props
+
+<Props of="ATheme" />

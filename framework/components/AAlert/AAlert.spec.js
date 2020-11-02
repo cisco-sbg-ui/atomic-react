@@ -1,8 +1,6 @@
 context("AAlert", () => {
   before(() => {
-    cy.visitInLightTheme(
-      "http://localhost:8081/iframe.html?id=components-alerts--usage-1&viewMode=docs"
-    );
+    cy.visitInLightTheme("http://localhost:8081/components/alert");
   });
 
   // TODO: Test interactability
@@ -12,16 +10,10 @@ context("AAlert", () => {
   it("supports themes", () => {
     if (Cypress.env("snapshots") === "off") return;
 
-    cy.get("#story--components-alerts--usage-1")
-      .parent()
-      .parent()
-      .matchImageSnapshot("a-alert--usage-1");
+    cy.get("#usage + .playground .playground__preview").toMatchImageSnapshot();
 
-    cy.get(".a-button").eq(1).click();
+    cy.get(".a-switch__box").eq(0).click();
 
-    cy.get("#story--components-alerts--usage-1")
-      .parent()
-      .parent()
-      .matchImageSnapshot("a-alert--dusk-1");
+    cy.get("#usage + .playground .playground__preview").toMatchImageSnapshot();
   });
 });
