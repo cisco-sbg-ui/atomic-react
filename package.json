@@ -41,7 +41,7 @@
     "@rollup/plugin-json": "^4.1.0",
     "@rollup/plugin-node-resolve": "^9.0.0",
     "@storybook/addon-docs": "6.0.26",
-    "@storybook/react": "6.0.26",
+    "@storybook/react": "6.0.28",
     "algoliasearch": "^4.5.1",
     "babel-eslint": "^10.1.0",
     "babel-loader": "^8.1.0",
