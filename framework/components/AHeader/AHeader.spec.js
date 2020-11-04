@@ -10,6 +10,8 @@ context("AHeader", () => {
   // TODO: Test accessibility
 
   it("supports themes", () => {
+    if (Cypress.env("snapshots") === "off") return;
+
     cy.get("#story--components-headers--usage-1")
       .parent()
       .parent()

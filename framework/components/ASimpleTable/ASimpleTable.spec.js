@@ -10,6 +10,8 @@ context("ASimpleTable", () => {
   // TODO: Test accessibility
 
   it("supports themes", () => {
+    if (Cypress.env("snapshots") === "off") return;
+
     cy.get("#story--components-simple-tables--usage-1")
       .parent()
       .parent()
