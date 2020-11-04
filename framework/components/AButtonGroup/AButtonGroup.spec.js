@@ -8,6 +8,8 @@ context("AButtonGroup", () => {
   // TODO: Test interactability
 
   it("supports themes", () => {
+    if (Cypress.env("snapshots") === "off") return;
+
     cy.get("#story--components-button-groups--usage-1")
       .parent()
       .parent()

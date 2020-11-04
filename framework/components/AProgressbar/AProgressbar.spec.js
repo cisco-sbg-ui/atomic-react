@@ -16,6 +16,8 @@ context("AProgressbar", () => {
   });
 
   it("supports themes", () => {
+    if (Cypress.env("snapshots") === "off") return;
+
     cy.get(".a-app").invoke("removeClass", ".a-app--animated");
 
     cy.get("#story--components-progressbars--states-1")
