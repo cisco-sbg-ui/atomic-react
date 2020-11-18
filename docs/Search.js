@@ -4,13 +4,7 @@ import debounce from "lodash.debounce";
 import React, {useCallback, useEffect, useRef, useState} from "react";
 
 import AlgoliaLogo from "../framework/utils/algolia.svg";
-import {
-  AListItem,
-  AListItemAvatar,
-  AListItemContent,
-  AMenu,
-  ATextInput
-} from "../framework";
+import {AListItem, AMenu, ATextInput} from "../framework";
 
 const Search = () => {
   const client = algoliasearch(
@@ -25,15 +19,9 @@ const Search = () => {
       return;
     }
     setSearchRunning(true);
-    // Atomic behavior specifies 2 seconds before showing the loader.
-    let loadingTimeout = setTimeout(() => {
-      setLoading(true);
-    }, 2000);
     const {hits} = await index.search(term, {
       hitsPerPage: 5
     });
-    clearTimeout(loadingTimeout);
-    setLoading(false);
     setPreviousTerm(term);
     setItems(hits);
     setOpen(true);
@@ -42,7 +30,6 @@ const Search = () => {
 
   const inputRef = useRef(null);
   const [searchRunning, setSearchRunning] = useState(false);
-  const [loading, setLoading] = useState(false);
   const [previousTerm, setPreviousTerm] = useState();
   const [value, setValue] = useState("");
   const [items, setItems] = useState([]);
@@ -66,17 +53,18 @@ const Search = () => {
       <AMenu
         anchorRef={inputRef}
         open={open}
+        focusOnOpen={false}
         placement="bottom-left"
-        onClose={() => setOpen(false)}>
+        onClose={() => setOpen(false)}
+        style={{width: 285}}>
         {items.map((x, index) => (
-          <AListItem key={index} twoLine>
-            <AListItemAvatar>
-              <Link to={x.route}>{x.name}</Link>
-            </AListItemAvatar>
-            <AListItemContent>{x.excerpt}</AListItemContent>
+          <AListItem key={index} component={Link} to={x.route}>
+            {x.name}
           </AListItem>
         ))}
-        <AlgoliaLogo />
+        <AListItem twoLine className="pa-2 justify-end">
+          <AlgoliaLogo />
+        </AListItem>
       </AMenu>
     </>
   );

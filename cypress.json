@@ -1,6 +1,10 @@
 {
   "fixturesFolder": false,
   "integrationFolder": "framework",
+  "retries": {
+    "runMode": 2,
+    "openMode": 0
+  },
   "testFiles": "**/*.spec.js",
   "video": false,
   "viewportHeight": 720,

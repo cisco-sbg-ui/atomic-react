@@ -49,7 +49,7 @@ export default function Props({of}) {
       <tbody>
         {props.map((x, index) => (
           <tr key={index}>
-            <td>{x.name}</td>
+            <td className="text-no-wrap">{x.name}</td>
             <td>
               <p className="mt-0">{x.docblock}</p>
               {x.required ? (

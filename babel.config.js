@@ -1,17 +1,19 @@
+const nodeEnv = process.env.NODE_ENV;
 const env = process.env.BABEL_ENV;
 
 let config = {
   presets: ["babel-preset-gatsby"],
-  plugins: [
-    "@babel/plugin-proposal-class-properties",
-    [
-      "istanbul",
-      {
-        exclude: [".cache/*", "docs/*"]
-      }
-    ]
-  ]
+  plugins: ["@babel/plugin-proposal-class-properties"]
 };
+
+if (nodeEnv !== "production") {
+  config.plugins.push([
+    "istanbul",
+    {
+      exclude: [".cache/*", "docs/*"]
+    }
+  ]);
+}
 
 if (["cra"].includes(env)) {
   config = {

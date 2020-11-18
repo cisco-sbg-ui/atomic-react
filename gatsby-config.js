@@ -1,5 +1,4 @@
 const get = require("lodash/get");
-const merge = require("lodash/merge");
 const remarkSlug = require("remark-slug");
 
 const query = `
@@ -11,8 +10,18 @@ const query = `
         frontmatter {
           route
           name
+          components
         }
         excerpt(pruneLength: 5000)
+      }
+    }
+  }
+  allComponentMetadata {
+    nodes {
+      displayName
+      props {
+        docblock
+        name
       }
     }
   }
@@ -24,13 +33,32 @@ const settings = {attributesToSnippet: [`excerpt:20`]};
 const queries = [
   {
     query: query,
-    transformer: (gqlResponse) =>
-      get(gqlResponse, "data.allMdx.edges", []).map(({node}) => ({
-        objectID: node.id,
-        route: node.frontmatter.route,
-        name: node.frontmatter.name,
-        excerpt: node.excerpt
-      })),
+    transformer: (gqlResponse) => {
+      const allProps = get(gqlResponse, "data.allComponentMetadata.nodes", []);
+      const records = get(gqlResponse, "data.allMdx.edges", []).map(
+        ({node}) => {
+          let components = null;
+          let props = null;
+          if (node.frontmatter.components) {
+            components = node.frontmatter.components.split(",");
+            props = components.map((x) =>
+              allProps.find((y) => y.displayName === x)
+            );
+          }
+
+          return {
+            objectID: node.id,
+            route: node.frontmatter.route,
+            name: node.frontmatter.name,
+            components,
+            excerpt: node.excerpt,
+            props
+          };
+        }
+      );
+
+      return records;
+    },
     settings
   }
 ];

@@ -1,5 +1,5 @@
 import PropTypes from "prop-types";
-import React, {forwardRef, useState} from "react";
+import React, {forwardRef, useLayoutEffect, useState} from "react";
 
 import AThemeContext from "./AThemeContext";
 
@@ -10,27 +10,27 @@ const ATheme = forwardRef(
     {children, className: propsClassName, defaultTheme, persist, ...rest},
     ref
   ) => {
-    let initialTheme = "default";
-    if (persist) {
-      if (
-        typeof localStorage !== "undefined" &&
-        Object.prototype.hasOwnProperty.call(localStorage, LS_KEY)
-      ) {
-        initialTheme = localStorage.getItem(LS_KEY) === "dusk" && "dusk";
-      } else if (["default", "dusk"].includes(defaultTheme)) {
-        initialTheme = defaultTheme;
-      } else if (
-        typeof window !== "undefined" &&
-        window.matchMedia &&
-        window.matchMedia("(prefers-color-scheme: dark)").matches
-      ) {
+    const [currentTheme, setCurrentTheme] = useState("dusk");
+
+    useLayoutEffect(() => {
+      let initialTheme = "default";
+      if (persist) {
+        if (Object.prototype.hasOwnProperty.call(localStorage, LS_KEY)) {
+          initialTheme = localStorage.getItem(LS_KEY) === "dusk" && "dusk";
+        } else if (["default", "dusk"].includes(defaultTheme)) {
+          initialTheme = defaultTheme;
+        } else if (
+          window.matchMedia &&
+          window.matchMedia("(prefers-color-scheme: dark)").matches
+        ) {
+          initialTheme = "dusk";
+        }
+      } else if (defaultTheme === "dusk") {
         initialTheme = "dusk";
       }
-    } else if (defaultTheme === "dusk") {
-      initialTheme = "dusk";
-    }
 
-    const [currentTheme, setCurrentTheme] = useState(initialTheme);
+      setCurrentTheme(initialTheme);
+    }, []);
 
     const themeContext = {
       currentTheme,

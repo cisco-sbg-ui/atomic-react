@@ -6,7 +6,7 @@ import AIcon from "../framework/components/AIcon";
 import ATree from "../framework/components/ATree";
 import {useATheme} from "../framework/components/ATheme";
 
-//import Search from "./Search";
+import Search from "./Search";
 import ThemeSwitcher from "./ThemeSwitcher";
 
 const Sidebar = ({menus, currentDoc}) => {
@@ -78,7 +78,7 @@ const Sidebar = ({menus, currentDoc}) => {
             to:
               item.node.frontmatter.route +
               "#" +
-              heading.value.toLowerCase().replace(" ", "-")
+              heading.value.toLowerCase().replace(/ /g, "-")
           },
           content: heading.value
         }))
@@ -115,7 +115,9 @@ const Sidebar = ({menus, currentDoc}) => {
           <AIcon>github</AIcon>
         </AButton>
       </div>
-      <div className="px-3 pb-3">{/*<Search />*/}</div>
+      <div className="px-3 pb-3">
+        <Search />
+      </div>
       <ATree
         className="white--text"
         hoverable

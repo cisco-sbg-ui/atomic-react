@@ -4,11 +4,7 @@
 /coverage/
 /lib/
 /node_modules/
-/public/page-data/
-/public/static/
-/public/chunk-map.json
-/public/index.html
-/public/webpack.stats.json
+/public/
 
 /A*.js
 /babel-preset.js
