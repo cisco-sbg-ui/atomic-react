@@ -30,7 +30,7 @@ const ATheme = forwardRef(
       }
 
       setCurrentTheme(initialTheme);
-    }, []);
+    }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
     const themeContext = {
       currentTheme,

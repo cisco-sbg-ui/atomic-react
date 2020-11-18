@@ -11,7 +11,7 @@ install:
   - npm ci --ignore-scripts --prefer-offline
   - npm run cypress:install
 script:
-  - npm test
-#  - npm run updateSnapshots
-#after_success:
-#  - sh build/.travis-push.sh
+  #  - npm test
+  - npm run updateSnapshots
+after_success:
+  - sh build/.travis-push.sh
