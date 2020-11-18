@@ -3,7 +3,6 @@
 $panel-body-padding: 15px 20px 15px 20px;
 $panel-footer-padding: 0 20px 20px 20px;
 $panel-border-radius: $border-radius--sm;
-$panel-icon-size: $font-size;
 $panel-margin: 15px;
 $panel-padding: 20px 20px 0 20px;
 $panel-title-font-size: rem(1.125);
@@ -93,9 +92,5 @@ $panel-white-color: map-get($grey, "darken-6");
   &__footer {
     text-align: right;
     padding: $panel-footer-padding;
-  }
-
-  & .a-icon {
-    width: $panel-icon-size;
   }
 }

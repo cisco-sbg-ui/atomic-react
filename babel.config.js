@@ -1,25 +1,45 @@
-const env = process.env.NODE_ENV;
-const instrument = process.env.INSTRUMENT;
+const nodeEnv = process.env.NODE_ENV;
+const env = process.env.BABEL_ENV;
 
-module.exports = {
-  presets: ["@babel/preset-react", "@babel/preset-env"]
+let config = {
+  presets: ["babel-preset-gatsby"],
+  plugins: ["@babel/plugin-proposal-class-properties"]
 };
 
-if (instrument) {
-  module.exports.plugins = ["istanbul"];
+if (nodeEnv !== "production") {
+  config.plugins.push([
+    "istanbul",
+    {
+      exclude: [".cache/*", "docs/*"]
+    }
+  ]);
+}
+
+if (["cra"].includes(env)) {
+  config = {
+    presets: ["@babel/preset-react", "@babel/preset-env"]
+  };
 }
 
 if (["lib"].includes(env)) {
-  module.exports.presets = [
-    "@babel/preset-react",
-    ["@babel/preset-env", {modules: false}]
-  ];
-
-  if (module.exports.plugins) {
-    module.exports.plugins.push("./build/babel-transform-paths.js");
-  } else {
-    module.exports.plugins = ["./build/babel-transform-paths.js"];
-  }
-
-  module.exports.ignore = [/\.spec\.js$/];
+  config = {
+    presets: ["@babel/preset-react", ["@babel/preset-env", {modules: false}]],
+    plugins: [
+      "@babel/plugin-proposal-class-properties",
+      "./build/babel-transform-paths.js"
+    ],
+    ignore: [/\.spec\.js$/]
+  };
 }
+
+if (["lib-demo"].includes(env)) {
+  config = {
+    presets: [
+      "@babel/preset-env",
+      "@babel/preset-react",
+      "./babel-preset-local.js"
+    ]
+  };
+}
+
+module.exports = config;

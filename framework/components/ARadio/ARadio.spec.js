@@ -1,8 +1,6 @@
 context("ARadio", () => {
   before(() => {
-    cy.visitInLightTheme(
-      "http://localhost:8081/iframe.html?id=components-radio-buttons--usage-1&viewMode=docs"
-    );
+    cy.visitInLightTheme("http://localhost:8081/components/radio");
   });
 
   // TODO: Test interactability
@@ -12,16 +10,10 @@ context("ARadio", () => {
   it("supports themes", () => {
     if (Cypress.env("snapshots") === "off") return;
 
-    cy.get("#story--components-radio-buttons--states-1")
-      .parent()
-      .parent()
-      .matchImageSnapshot("a-radio-buttons--states-1");
+    cy.get("#states + .playground .playground__preview").toMatchImageSnapshot();
 
-    cy.get(".a-button").eq(1).click();
+    cy.get(".a-switch__box").eq(0).click();
 
-    cy.get("#story--components-radio-buttons--states-1")
-      .parent()
-      .parent()
-      .matchImageSnapshot("a-radio-buttons--dusk-1");
+    cy.get("#states + .playground .playground__preview").toMatchImageSnapshot();
   });
 });

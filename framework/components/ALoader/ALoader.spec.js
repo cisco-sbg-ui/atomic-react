@@ -1,8 +1,6 @@
 context("ALoader", () => {
   before(() => {
-    cy.visitInLightTheme(
-      "http://localhost:8081/iframe.html?id=components-loaders--usage-1&viewMode=docs"
-    );
+    cy.visitInLightTheme("http://localhost:8081/components/loader");
   });
 
   // TODO: Test accessibility

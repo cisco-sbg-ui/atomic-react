@@ -1,0 +1,45 @@
+---
+name: Hints
+route: /extend/hint
+components: AHint
+---
+
+import {Playground, Props} from "../../../docs";
+
+# Hint Component
+
+## Install
+
+Integrate with your build to [auto-import](?path=/docs/getting-started--page#integrating), or add an import in your component:
+
+```
+import AHint from "@cisco-ats/atomic-react/AHint";
+// or if you're able to treekshake node_modules
+import {AHint} from "@cisco-ats/atomic-react";
+```
+
+## Usage
+
+<Playground
+  code={`<>
+  <div>
+    <div>[Form Component]</div>
+    <AHint>Hint Text</AHint>
+  </div>
+  <div className="mt-4">
+    <div>[Form Component]</div>
+    <AHint validationState="warning">Warning Hint Text</AHint>
+  </div>
+  <div className="mt-4">
+    <div>[Form Component]</div>
+    <AHint validationState="danger">Danger Hint Text</AHint>
+  </div>
+</>
+`}
+/>
+
+## Hint Props
+
+The `AHint` component inherits passed props.
+
+<Props of="AHint" />

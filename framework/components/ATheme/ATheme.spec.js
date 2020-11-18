@@ -1,8 +1,6 @@
 context("ATheme", () => {
   before(() => {
-    cy.visitInLightTheme(
-      "http://localhost:8081/iframe.html?id=components-themes--usage-1&viewMode=docs"
-    );
+    cy.visitInLightTheme("http://localhost:8081/components/theme");
   });
 
   // TODO: Test interactability
@@ -12,16 +10,10 @@ context("ATheme", () => {
   it("supports themes", () => {
     if (Cypress.env("snapshots") === "off") return;
 
-    cy.get("#story--components-themes--usage-1")
-      .parent()
-      .parent()
-      .matchImageSnapshot("a-theme--usage-1");
+    cy.get("#usage + .playground .playground__preview").toMatchImageSnapshot();
 
-    cy.get("#story--components-themes--usage-1 .a-button").eq(1).click();
+    cy.get(".a-switch__box").eq(0).click();
 
-    cy.get("#story--components-themes--usage-1")
-      .parent()
-      .parent()
-      .matchImageSnapshot("a-theme--usage-2");
+    cy.get("#usage + .playground .playground__preview").toMatchImageSnapshot();
   });
 });

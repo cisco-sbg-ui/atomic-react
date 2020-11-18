@@ -1,8 +1,6 @@
 context("ACheckbox", () => {
   before(() => {
-    cy.visitInLightTheme(
-      "http://localhost:8081/iframe.html?id=components-checkboxes--usage-1&viewMode=docs"
-    );
+    cy.visitInLightTheme("http://localhost:8081/components/checkbox");
   });
 
   // TODO: Test interactability
@@ -10,35 +8,26 @@ context("ACheckbox", () => {
   // TODO: Test accessibility
 
   it("validates", () => {
-    cy.get("#story--components-checkboxes--rules-1 .a-checkbox__label").click();
-    cy.get("#story--components-checkboxes--rules-1 .a-hint").contains(
+    cy.get("#validation + .playground .a-checkbox__label").click();
+    cy.get("#validation + .playground .a-hint").contains(
       "Your information is sold to third parties"
     );
 
-    cy.get("#story--components-checkboxes--rules-1 .a-checkbox__label").click();
-    cy.get("#story--components-checkboxes--rules-1 .a-hint").contains(
-      "Required"
-    );
+    cy.get("#validation + .playground .a-checkbox__label").click();
+    cy.get("#validation + .playground .a-hint").contains("Required");
   });
 
   it("supports themes", () => {
     if (Cypress.env("snapshots") === "off") return;
 
-    cy.get("#story--components-checkboxes--states-1")
-      .parent()
-      .parent()
-      .matchImageSnapshot("a-checkbox--usage-1");
+    cy.get("#states + .playground .playground__preview").toMatchImageSnapshot();
 
-    cy.get("#story--components-checkboxes--wrap-1")
-      .parent()
-      .parent()
-      .matchImageSnapshot("a-checkbox--wrap-1");
+    cy.get(
+      "#label-wrap + .playground .playground__preview"
+    ).toMatchImageSnapshot();
 
-    cy.get(".a-button").eq(1).click();
+    cy.get(".a-switch__box").eq(0).click();
 
-    cy.get("#story--components-checkboxes--states-1")
-      .parent()
-      .parent()
-      .matchImageSnapshot("a-checkbox--dusk-1");
+    cy.get("#states + .playground .playground__preview").toMatchImageSnapshot();
   });
 });

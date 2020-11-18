@@ -1,15 +1,13 @@
 context("AInputBase", () => {
   before(() => {
-    cy.visitInLightTheme(
-      "http://localhost:8081/iframe.html?id=extend-input-base--usage-1&viewMode=docs"
-    );
+    cy.visitInLightTheme("http://localhost:8081/extend/input-base");
   });
 
   it("supports clearable", () => {
     const stub = cy.stub();
     cy.on("window:alert", stub);
 
-    cy.get("#story--extend-input-base--usage-1")
+    cy.get("#usage + .playground")
       .find(".a-input-base__clear")
       .eq(0)
       .should("have.attr", "role", "button")
@@ -28,7 +26,7 @@ context("AInputBase", () => {
       .tab()
       .tab();
 
-    cy.get("#story--extend-input-base--usage-1")
+    cy.get("#usage + .playground")
       .find(".a-input-base--warning .a-input-base__clear")
       .then(($el) => {
         Cypress.dom.isFocused($el);
@@ -38,16 +36,10 @@ context("AInputBase", () => {
   it("supports themes", () => {
     if (Cypress.env("snapshots") === "off") return;
 
-    cy.get("#story--extend-input-base--usage-1")
-      .parent()
-      .parent()
-      .matchImageSnapshot("a-input-base--usage-1");
+    cy.get("#usage + .playground .playground__preview").toMatchImageSnapshot();
 
-    cy.get(".a-button").eq(1).click();
+    cy.get(".a-switch__box").eq(0).click();
 
-    cy.get("#story--extend-input-base--usage-1")
-      .parent()
-      .parent()
-      .matchImageSnapshot("a-input-base--dusk-1");
+    cy.get("#usage + .playground .playground__preview").toMatchImageSnapshot();
   });
 });

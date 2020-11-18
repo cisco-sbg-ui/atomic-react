@@ -56,6 +56,7 @@ import {
   APanelFooter
 } from "./components/APanel";
 import APopover from "./components/APopover";
+import AProgressbar from "./components/AProgressbar";
 import ARadio from "./components/ARadio";
 import ASelect from "./components/ASelect";
 import ASimpleTable from "./components/ASimpleTable";
@@ -129,6 +130,7 @@ export {
   APanelBody,
   APanelFooter,
   APopover,
+  AProgressbar,
   ARadio,
   ARow,
   ASelect,

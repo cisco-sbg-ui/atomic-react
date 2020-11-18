@@ -1,16 +1,14 @@
 context("ADropdown", () => {
   before(() => {
-    cy.visitInLightTheme(
-      "http://localhost:8081/iframe.html?id=components-dropdowns--usage-1&viewMode=docs"
-    );
+    cy.visitInLightTheme("http://localhost:8081/components/dropdown");
   });
 
   it("opens and closes appropriately", () => {
-    cy.get("#story--components-dropdowns--usage-1 .a-dropdown__menu")
+    cy.get("#usage + .playground .a-dropdown__menu")
       .eq(0)
       .should("not.be.visible");
-    cy.get("#story--components-dropdowns--usage-1 .a-button").eq(0).click();
-    cy.get("#story--components-dropdowns--usage-1 .a-dropdown__menu")
+    cy.get("#usage + .playground .a-button").eq(0).click();
+    cy.get("#usage + .playground .a-dropdown__menu")
       .eq(0)
       .should("be.visible")
       .type("{esc}")
@@ -22,24 +20,18 @@ context("ADropdown", () => {
   });
 
   it("tabs appropriately", () => {
-    cy.get("#story--components-dropdowns--usage-1 .a-button")
-      .eq(0)
-      .focus()
-      .tab();
-    cy.get("#story--components-dropdowns--usage-1 .a-button")
+    cy.get("#usage + .playground .a-button").eq(0).focus().tab();
+    cy.get("#usage + .playground .a-button")
       .eq(1)
       .then(($el) => {
         Cypress.dom.isFocused($el);
       });
 
-    cy.get("#story--components-dropdowns--usage-1 .a-button")
-      .eq(0)
-      .click()
-      .tab();
-    cy.get("#story--components-dropdowns--usage-1 .a-dropdown__menu")
+    cy.get("#usage + .playground .a-button").eq(0).click().tab();
+    cy.get("#usage + .playground .a-dropdown__menu")
       .eq(0)
       .should("not.be.visible");
-    cy.get("#story--components-dropdowns--usage-1 .a-button")
+    cy.get("#usage + .playground .a-button")
       .eq(1)
       .then(($el) => {
         Cypress.dom.isFocused($el);
@@ -47,7 +39,7 @@ context("ADropdown", () => {
   });
 
   it("arrow-keys appropriately", () => {
-    cy.get("#story--components-dropdowns--usage-1 .a-button")
+    cy.get("#usage + .playground .a-button")
       .eq(0)
       .click()
       .next()
@@ -67,7 +59,7 @@ context("ADropdown", () => {
       })
       .type("{esc}");
 
-    cy.get("#story--components-dropdowns--usage-1 .a-button")
+    cy.get("#usage + .playground .a-button")
       .eq(0)
       .click()
       .next()
@@ -86,15 +78,15 @@ context("ADropdown", () => {
   });
 
   it("has working selected prop", () => {
-    cy.get("#story--components-dropdowns--usage-1 .a-button").eq(0).click();
-    cy.get("#story--components-dropdowns--usage-1 .a-dropdown__item")
+    cy.get("#usage + .playground .a-button").eq(0).click();
+    cy.get("#usage + .playground .a-dropdown__item")
       .eq(0)
       .should("have.class", "a-dropdown__item--state-selected")
       .type("{esc}");
   });
 
   it("has appropriate role attributes", () => {
-    cy.get("#story--components-dropdowns--usage-1 .a-button")
+    cy.get("#usage + .playground .a-button")
       .eq(0)
       .click()
       .next()
@@ -108,20 +100,14 @@ context("ADropdown", () => {
   it("supports themes", () => {
     if (Cypress.env("snapshots") === "off") return;
 
-    cy.get("#story--components-dropdowns--usage-1 .a-button").first().click();
+    cy.get("#usage + .playground .a-button").first().click();
 
-    cy.get("#story--components-dropdowns--usage-1")
-      .parent()
-      .parent()
-      .matchImageSnapshot("a-dropdown--usage-1");
+    cy.get("#usage + .playground .playground__preview").toMatchImageSnapshot();
 
-    cy.get(".a-button").eq(1).click();
+    cy.get(".a-switch__box").eq(0).click();
 
-    cy.get("#story--components-dropdowns--usage-1 .a-button").first().click();
+    cy.get("#usage + .playground .a-button").first().click();
 
-    cy.get("#story--components-dropdowns--usage-1")
-      .parent()
-      .parent()
-      .matchImageSnapshot("a-dropdown--dusk-1");
+    cy.get("#usage + .playground .playground__preview").toMatchImageSnapshot();
   });
 });

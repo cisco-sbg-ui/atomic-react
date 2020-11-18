@@ -1,23 +1,17 @@
 context("AContextualNotification", () => {
   before(() => {
     cy.visitInLightTheme(
-      "http://localhost:8081/iframe.html?id=components-contextual-notifications--usage-1&viewMode=docs"
+      "http://localhost:8081/components/contextual-notification"
     );
   });
 
   it("supports themes", () => {
     if (Cypress.env("snapshots") === "off") return;
 
-    cy.get("#story--components-contextual-notifications--usage-1")
-      .parent()
-      .parent()
-      .matchImageSnapshot("a-contextual-notification--usage-1");
+    cy.get("#usage + .playground .playground__preview").toMatchImageSnapshot();
 
-    cy.get(".a-button").eq(1).click();
+    cy.get(".a-switch__box").eq(0).click();
 
-    cy.get("#story--components-contextual-notifications--usage-1")
-      .parent()
-      .parent()
-      .matchImageSnapshot("a-contextual-notification--dusk-1");
+    cy.get("#usage + .playground .playground__preview").toMatchImageSnapshot();
   });
 });

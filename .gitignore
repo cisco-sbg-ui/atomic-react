@@ -1,6 +1,11 @@
-/docs/
-/node_modules/
+/.cache/
+/.vercel/
+/.nyc_output/
+/coverage/
 /lib/
+/node_modules/
+/public/
+
 /A*.js
 /babel-preset.js
 /babel-preset-local.js
@@ -10,8 +15,3 @@
 /index*.js
 /useA*.js
 /_rollupPluginBabelHelpers*
-__diff_output__
-
-.vercel
-.nyc_output
-coverage
