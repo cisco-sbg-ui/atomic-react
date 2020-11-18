@@ -32,4 +32,14 @@ if (["lib"].includes(env)) {
   };
 }
 
+if (["lib-demo"].includes(env)) {
+  config = {
+    presets: [
+      "@babel/preset-env",
+      "@babel/preset-react",
+      "./babel-preset-local.js"
+    ]
+  };
+}
+
 module.exports = config;

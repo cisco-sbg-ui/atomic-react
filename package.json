@@ -18,7 +18,7 @@
     "cypress:runUpdateSnapshots": "cypress run --env env=\"{'env': {'cypress-plugin-snapshots':{'updateSnapshots':true}}}\"",
     "cypress:lib": "cypress run --config integrationFolder=lib-demo",
     "dev": "cross-env WAIT_ON_TIMEOUT=600000 start-server-and-test start:ci http://localhost:8081 cypress:open",
-    "dev:lib": "webpack serve --config webpack.lib-demo.config.js",
+    "dev:lib": "cross-env BABEL_ENV=lib-demo webpack serve --config webpack.lib-demo.config.js",
     "start": "gatsby develop -p 8081",
     "test:lint": "eslint framework --max-warnings 0",
     "test:components": "cross-env WAIT_ON_TIMEOUT=600000 INSTRUMENT=true start-server-and-test start http://localhost:8081 cypress:run",
