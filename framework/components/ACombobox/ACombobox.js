@@ -61,6 +61,10 @@ const ACombobox = forwardRef(
     }, [validationState]);
 
     useEffect(() => {
+      if (isFocused && items.length) setIsOpen(true);
+    }, [items]); // eslint-disable-line react-hooks/exhaustive-deps
+
+    useEffect(() => {
       if (register) {
         register(`a-combobox_${comboboxId}`, {
           reset,

@@ -132,6 +132,7 @@ $input-transition: border-color $transition-duration--extra-fast
   &__prepend {
     display: inline-grid;
     align-items: center;
+    grid-auto-flow: column;
   }
 
   &__control {
@@ -143,6 +144,7 @@ $input-transition: border-color $transition-duration--extra-fast
   &__append {
     display: inline-grid;
     align-items: center;
+    grid-auto-flow: column;
   }
 
   &--disabled {
