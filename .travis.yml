@@ -14,5 +14,5 @@ script:
   - npm test
 #  - npm run updateSnapshots
 after_success:
-  - npx codecov
+  - npm run upload-coverage
 #  - sh build/.travis-push.sh

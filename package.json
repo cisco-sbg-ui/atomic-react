@@ -24,7 +24,8 @@
     "test:components": "cross-env WAIT_ON_TIMEOUT=600000 INSTRUMENT=true start-server-and-test start http://localhost:8081 cypress:run",
     "test:lib": "npm run build && npm run build:babel-preset && start-server-and-test dev:lib http://localhost:8080 cypress:lib",
     "test": "npm run test:lint && npm run test:components && npm run test:lib",
-    "updateSnapshots": "start-server-and-test start http://localhost:8081 cypress:runUpdateSnapshots"
+    "updateSnapshots": "start-server-and-test start http://localhost:8081 cypress:runUpdateSnapshots",
+    "upload-coverage": "codecov"
   },
   "peerDependencies": {
     "react": "^16.8.0",
@@ -53,6 +54,7 @@
     "babel-plugin-detective": "^2.0.0",
     "babel-plugin-istanbul": "6.0.0",
     "babel-preset-gatsby": "0.6.0",
+    "codecov": "3.8.1",
     "cross-env": "^7.0.2",
     "css-loader": "5.0.1",
     "cypress": "5.3.0",
