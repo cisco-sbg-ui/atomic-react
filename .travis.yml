@@ -13,5 +13,6 @@ install:
 script:
   - npm test
 #  - npm run updateSnapshots
-#after_success:
+after_success:
+  - npx codecov
 #  - sh build/.travis-push.sh
