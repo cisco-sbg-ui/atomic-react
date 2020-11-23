@@ -21,6 +21,8 @@ $table-cell-tight-padding-top-bottom: (
 //$table-row-height-condensed: 30px;
 //$table-row-selected-color: $color-category--blue--wash3; // dusk: $color-gray--dark5
 //$table-cell-condensed-padding-left-right: 10px;
+// New in 2.1.0
+// Dusk: $table-grouped-rows-header-bg: $color-blue7;
 
 @include theme(a-simple-table) using ($theme) {
   background: map-deep-get($theme, "table", "bg");
