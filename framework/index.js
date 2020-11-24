@@ -24,6 +24,7 @@ import {
   ADropdownMenu,
   ADropdownMenuItem
 } from "./components/ADropdown";
+import AFieldBase from "./components/AFieldBase";
 import {AFooter, AFooterLegal} from "./components/AFooter";
 import AForm from "./components/AForm";
 import {
@@ -61,6 +62,7 @@ import AProgressbar from "./components/AProgressbar";
 import ARadio from "./components/ARadio";
 import ASelect from "./components/ASelect";
 import ASimpleTable from "./components/ASimpleTable";
+import ASlider from "./components/ASlider";
 import ASwitch from "./components/ASwitch";
 import {ATabGroup, ATab, ATabHeading} from "./components/ATabs";
 import ATag from "./components/ATag";
@@ -105,6 +107,7 @@ export {
   ADropdown,
   ADropdownMenu,
   ADropdownMenuItem,
+  AFieldBase,
   AFooter,
   AFooterLegal,
   AForm,
@@ -137,6 +140,7 @@ export {
   ARow,
   ASelect,
   ASimpleTable,
+  ASlider,
   ASpacer,
   ASwitch,
   ATabGroup,

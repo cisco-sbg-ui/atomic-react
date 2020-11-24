@@ -153,6 +153,11 @@ $atomic-default: (
   "select": (
     "border-color--focus": map-get($cisco-blue, "base")
   ),
+  "slider": (
+    "opacity-disabled": 1,
+    "selection-bg-disabled": map-get($grey, "lighten-2"),
+    "handle-border-disabled": map-get($grey, "lighten-2")
+  ),
   "switch": (
     "bg": map-get($grey, "darken-4"),
     "bg--checked": map-get($cisco-blue, "burnt-1"),

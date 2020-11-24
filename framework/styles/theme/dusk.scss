@@ -163,6 +163,11 @@ $atomic-dusk: (
   "select": (
     "border-color--focus": map-get($cisco-blue, "burnt-1")
   ),
+  "slider": (
+    "opacity-disabled": $alpha-3,
+    "selection-bg-disabled": map-get($cisco-blue, "base"),
+    "handle-border-disabled": map-get($cisco-blue, "base")
+  ),
   "switch": (
     "bg": rgba(map-get($grey, "darken-4"), $alpha-8),
     "bg--checked": map-get($cisco-blue, "base"),

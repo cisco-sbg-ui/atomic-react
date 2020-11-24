@@ -34,12 +34,6 @@ $sidebar-bg-gray: $sidebar-bg;
 $sidebar__list-menu-icon-color: map-get($grey, "darken-5"); // #58585b;
 $sidebar__list-menu-bg: map-get($grey, "lighten-3"); // #dfdfdf;
 // -----------------------------------------------------------------------------
-// Slider
-// -----------------------------------------------------------------------------
-$slider-selection-bg-disabled: map-get($cisco-blue, "base"); // #049fd9;
-$slider-handle-border-disabled: map-get($cisco-blue, "base"); // #049fd9;
-$slider-opacity-disabled: $alpha-3;
-// -----------------------------------------------------------------------------
 // Steps / Wizard
 // -----------------------------------------------------------------------------
 $step-icon-bg-visited: transparent;

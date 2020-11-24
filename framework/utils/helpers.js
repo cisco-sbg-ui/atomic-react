@@ -1,3 +1,15 @@
+export const getRoundedBoundedClientRect = (el) => {
+  const rect = el.getBoundingClientRect();
+  return {
+    top: Math.round(rect.top),
+    left: Math.round(rect.left),
+    bottom: Math.round(rect.bottom),
+    right: Math.round(rect.right),
+    width: Math.round(rect.width),
+    height: Math.round(rect.height)
+  };
+};
+
 // KeyboardEvent.keyCode aliases
 export const keyCodes = Object.freeze({
   enter: 13,

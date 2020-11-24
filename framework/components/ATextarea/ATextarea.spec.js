@@ -60,7 +60,7 @@ context("ATextarea", () => {
   it("validates on blur", () => {
     cy.get("#validation + .playground .a-textarea__field").eq(0).click();
     cy.tab();
-    cy.get("#validation + .playground .a-input-base__hint")
+    cy.get("#validation + .playground .a-field-base__hint")
       .eq(0)
       .contains("Comments is required");
   });
@@ -70,12 +70,12 @@ context("ATextarea", () => {
       .eq(0)
       .type("123456789012");
     cy.tab();
-    cy.get("#validation + .playground .a-input-base__hint")
+    cy.get("#validation + .playground .a-field-base__hint")
       .eq(0)
       .contains("Comments must be less than 10 characters");
 
     cy.get("#validation + .playground .a-textarea__field").eq(0).clear().tab();
-    cy.get("#validation + .playground .a-input-base__hint")
+    cy.get("#validation + .playground .a-field-base__hint")
       .eq(0)
       .contains("Comments is required");
   });

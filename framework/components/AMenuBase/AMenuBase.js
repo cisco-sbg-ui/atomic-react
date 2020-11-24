@@ -10,19 +10,8 @@ import PropTypes from "prop-types";
 
 import AAppContext from "../AApp/AAppContext";
 import {useCombinedRefs} from "../../utils/hooks";
+import {getRoundedBoundedClientRect} from "../../utils/helpers";
 import "./AMenuBase.scss";
-
-const getRoundedBoundedClientRect = (el) => {
-  const rect = el.getBoundingClientRect();
-  return {
-    top: Math.round(rect.top),
-    left: Math.round(rect.left),
-    bottom: Math.round(rect.bottom),
-    right: Math.round(rect.right),
-    width: Math.round(rect.width),
-    height: Math.round(rect.height)
-  };
-};
 
 const calculateMenuPosition = (
   combinedRef,
