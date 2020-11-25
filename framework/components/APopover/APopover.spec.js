@@ -20,7 +20,7 @@ context("APopover", () => {
   });
 
   it("has working keyboard events", () => {
-    cy.get(".a-popover").should("not.be.visible");
+    cy.get(".a-popover").should("not.exist");
     cy.get("#usage + .playground .a-button").eq(0).click();
     cy.get(".a-popover")
       .eq(0)
@@ -29,7 +29,7 @@ context("APopover", () => {
         Cypress.dom.isFocused($el);
       })
       .type("{esc}");
-    cy.get(".a-popover").should("not.be.visible");
+    cy.get(".a-popover").should("not.exist");
     cy.get("#usage + .playground .a-button")
       .eq(0)
       .then(($el) => {
