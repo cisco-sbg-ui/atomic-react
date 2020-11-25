@@ -57,7 +57,7 @@
     "codecov": "3.8.1",
     "cross-env": "^7.0.2",
     "css-loader": "5.0.1",
-    "cypress": "5.3.0",
+    "cypress": "6.0.0",
     "cypress-plugin-snapshots": "1.4.4",
     "cypress-plugin-tab": "^1.0.5",
     "cypress-wait-until": "^1.7.1",
