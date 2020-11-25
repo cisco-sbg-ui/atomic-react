@@ -42,7 +42,8 @@ context("AMenu", () => {
         Cypress.dom.isFocused($el);
       });
 
-    cy.get("#usage + .playground .a-button").eq(0).click().wait(30).tab();
+    // Waiting for focus to shift to menu once it opens. Bug in cypress-plugin-tab for focusable/tabbable
+    cy.get("#usage + .playground .a-button").eq(0).click().wait(30).tab(); // eslint-disable-line cypress/no-unnecessary-waiting
     cy.get(".a-menu").should("not.exist");
     cy.get("#usage + .playground .a-button")
       .eq(0)
