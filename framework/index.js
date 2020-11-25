@@ -9,6 +9,7 @@ import AAlert from "./components/AAlert";
 import AApp from "./components/AApp";
 import AAutocomplete from "./components/AAutocomplete";
 import ABadge from "./components/ABadge";
+import ABreadcrumb from "./components/ABreadcrumb";
 import AButton from "./components/AButton";
 import AButtonGroup from "./components/AButtonGroup";
 import ACheckbox from "./components/ACheckbox";
@@ -87,6 +88,7 @@ export {
   AApp,
   AAutocomplete,
   ABadge,
+  ABreadcrumb,
   AButton,
   AButtonGroup,
   ACheckbox,

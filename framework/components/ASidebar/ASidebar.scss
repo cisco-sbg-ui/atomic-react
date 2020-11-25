@@ -34,7 +34,12 @@ $sidebar__list-menu-icon-color-gray: $base-icon-color;
   overflow-x: hidden;
   z-index: $sidebar-z-index;
   &__header {
-    @include clearfix;
+    &::after {
+      display: block;
+      content: "";
+      clear: both;
+    }
+
     padding: $sidebar__header-padding;
     line-height: $sidebar__header-line-height;
     display: flex;
@@ -47,7 +52,16 @@ $sidebar__list-menu-icon-color-gray: $base-icon-color;
     vertical-align: middle;
   }
   &__list-menu {
-    @include btn-icon();
+    display: inline-flex;
+    height: 30px;
+    width: 30px;
+    align-items: center;
+    justify-content: center;
+    background-color: transparent;
+    &:hover {
+      text-decoration: none;
+    }
+
     color: $sidebar__list-menu-color;
     background-color: $sidebar__list-menu-bg;
     border-radius: 30px;

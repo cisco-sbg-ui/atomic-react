@@ -39,7 +39,7 @@ $dropdown--state-active-transition: visibility 0s ease,
   position: relative;
 
   &__menu {
-    @include list--unstyled;
+    list-style: none;
     border-width: $border-width;
     border-style: solid;
     display: none;

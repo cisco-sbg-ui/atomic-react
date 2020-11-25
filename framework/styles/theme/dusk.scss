@@ -121,7 +121,7 @@ $atomic-dusk: (
     "color--active": map-get($cisco-blue, "base"),
     "color--focus": map-get($cisco-blue, "wash-1"),
     "color--visited": map-get($cisco-blue, "burnt-1"),
-    "color--disabled": map-get($cisco-blue, "wash-1"),
+    "color--disabled": map-get($grey, "lighten-5"),
     "opacity--disabled": $alpha-4
   ),
   "loader": (

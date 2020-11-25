@@ -59,11 +59,13 @@ $btn-group-icon-font-size: rem(1);
 
   > .a-button:not(:last-child),
   > .a-button-group:not(:last-child) > .a-button {
-    @include border-right-radius(0);
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
   }
   > .a-button:not(:first-child),
   > .a-button-group:not(:first-child) > .a-button {
-    @include border-left-radius(0);
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
   }
 
   .a-button + .a-button,

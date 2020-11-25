@@ -13,10 +13,16 @@ const types = {
   bool: () => "Boolean",
   node: () => "ReactNode",
   element: () => "ReactElement",
+  elementType: () => "ElementType",
   symbol: () => "Symbol",
   any: () => "Any",
   custom: () => "(custom validator)",
-  shape: () => "Shape",
+  shape: (value) =>
+    `Shape<{
+      ${Object.keys(value)
+        .map((x) => `${x}: ${getType(value[x])}`)
+        .join(", ")}
+  }>`,
   arrayOf: (value) => `Array[]<${getType(value)}>`,
   objectOf: (value) => `Object[#]<${getType(value)}>`,
   instanceOf: (value) => `${getType(value)}`,
