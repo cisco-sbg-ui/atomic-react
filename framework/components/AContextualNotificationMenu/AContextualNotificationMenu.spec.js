@@ -6,7 +6,7 @@ context("AContextualNotificationMenu", () => {
   });
 
   it("has working keyboard events", () => {
-    cy.get(".a-contextual-notification-menu").should("not.be.visible");
+    cy.get(".a-contextual-notification-menu").should("not.exist");
     cy.get("#usage + .playground .a-text-input__input").eq(0).type("mm");
     cy.get(".a-contextual-notification-menu")
       .eq(0)
@@ -15,7 +15,7 @@ context("AContextualNotificationMenu", () => {
         Cypress.dom.isFocused($el);
       })
       .type("{esc}");
-    cy.get(".a-contextual-notification-menu").should("not.be.visible");
+    cy.get(".a-contextual-notification-menu").should("not.exist");
     cy.get("#usage + .playground .a-button")
       .eq(0)
       .then(($el) => {

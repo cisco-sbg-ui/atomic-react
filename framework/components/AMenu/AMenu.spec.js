@@ -7,7 +7,7 @@ context("AMenu", () => {
     const stub = cy.stub();
     cy.on("window:alert", stub);
 
-    cy.get(".a-menu").should("not.be.visible");
+    cy.get(".a-menu").should("not.exist");
     cy.get("#usage + .playground .a-button").eq(0).click();
     cy.get(".a-menu")
       .eq(0)
@@ -16,7 +16,7 @@ context("AMenu", () => {
         Cypress.dom.isFocused($el);
       })
       .type("{esc}");
-    cy.get(".a-menu").should("not.be.visible");
+    cy.get(".a-menu").should("not.exist");
     cy.get("#usage + .playground .a-button")
       .eq(0)
       .then(($el) => {
@@ -30,7 +30,7 @@ context("AMenu", () => {
       .first()
       .click()
       .then(() => {
-        cy.get(".a-menu").should("not.be.visible");
+        cy.get(".a-menu").should("not.exist");
       });
   });
 
@@ -42,8 +42,9 @@ context("AMenu", () => {
         Cypress.dom.isFocused($el);
       });
 
-    cy.get("#usage + .playground .a-button").eq(0).click().tab();
-    cy.get(".a-menu").should("not.be.visible");
+    // Waiting for focus to shift to menu once it opens. Bug in cypress-plugin-tab for focusable/tabbable
+    cy.get("#usage + .playground .a-button").eq(0).click().wait(30).tab(); // eslint-disable-line cypress/no-unnecessary-waiting
+    cy.get(".a-menu").should("not.exist");
     cy.get("#usage + .playground .a-button")
       .eq(0)
       .then(($el) => {

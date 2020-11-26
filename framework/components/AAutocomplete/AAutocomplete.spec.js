@@ -21,10 +21,13 @@ context("AAutocomplete", () => {
   });
 
   it("opens and closes appropriately", () => {
-    cy.server();
-    cy.route("post", "https://nut7b5fgkt-dsn.algolia.net/**", giResponse).as(
-      "algolia"
-    );
+    cy.intercept("POST", "https://nut7b5fgkt", {
+      headers: {
+        "access-control-allow-origin": window.location.origin,
+        "Access-Control-Allow-Credentials": "true"
+      },
+      body: giResponse
+    }).as("algolia");
 
     cy.get("#usage + .playground .a-autocomplete__menu-items")
       .eq(0)
