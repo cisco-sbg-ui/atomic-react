@@ -45,7 +45,7 @@
     "@hot-loader/react-dom": "16.14.0",
     "@mdx-js/mdx": "1.6.21",
     "@mdx-js/react": "1.6.21",
-    "@rollup/plugin-commonjs": "^16.0.0",
+    "@rollup/plugin-commonjs": "^17.0.0",
     "@rollup/plugin-json": "^4.1.0",
     "@rollup/plugin-node-resolve": "^11.0.0",
     "algoliasearch": "^4.8.2",
