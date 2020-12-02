@@ -55,7 +55,7 @@
     "babel-plugin-istanbul": "6.0.0",
     "babel-preset-gatsby": "0.7.0",
     "codecov": "3.8.1",
-    "cross-env": "^7.0.2",
+    "cross-env": "^7.0.3",
     "css-loader": "5.0.1",
     "cypress": "6.0.1",
     "cypress-plugin-snapshots": "1.4.4",
