@@ -27,6 +27,12 @@ context("ASlider", () => {
       .click()
       .type("{rightArrow}");
     cy.get("#usage + .playground").should("contain", "Value: 3");
+    cy.get("#usage + .playground .a-slider__handle")
+      .click()
+      .type("{end}{leftArrow}");
+    cy.get("#usage + .playground").should("contain", "Value: 4");
+    cy.get("#usage + .playground .a-slider__handle").click().type("{home}");
+    cy.get("#usage + .playground").should("contain", "You must agree");
 
     cy.get("#range + .playground").should("contain", "Value: 0,1000");
     cy.get("#range + .playground .a-slider__handle")
@@ -59,9 +65,17 @@ context("ASlider", () => {
       .click()
       .type("{rightArrow}");
     cy.get("#range + .playground").should("contain", "Value: 15,1000");
+    cy.get("#range + .playground .a-slider__handle")
+      .eq(0)
+      .click()
+      .type("{end}");
+    cy.get("#range + .playground").should("contain", "Value: 1000,1000");
+    cy.get("#range + .playground .a-slider__handle")
+      .eq(0)
+      .click()
+      .type("{home}");
+    cy.get("#range + .playground").should("contain", "Value: 0, 1000");
   });
-
-  // TODO: Test accessibility
 
   it("supports themes", () => {
     if (Cypress.env("snapshots") === "off") return;
