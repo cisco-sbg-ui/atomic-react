@@ -11,37 +11,67 @@ $toast-icon-font-size: $font-size;
 
 @include theme(a-toast) using ($theme) {
   color: map-deep-get($theme, "base", "color");
-  background: map-deep-get($theme, "control", "fill-color");
-  border-color: map-deep-get($theme, "control", "stroke-color");
+  background-color: map-deep-get($theme, "control", "stroke-color");
+  padding: $toast-border-width;
 
-  &--success .a-toast__icon {
-    color: $color-good;
+  &__content {
+    background: map-deep-get($theme, "control", "fill-color");
   }
 
-  &--warning .a-toast__icon {
-    color: $color-warning;
+  &--success .a-toast {
+    &__content {
+      border: 1px solid $color-good;
+    }
+
+    &__icon {
+      color: $color-good;
+    }
   }
 
-  &--danger .a-toast__icon {
-    color: $color-error;
+  &--warning .a-toast {
+    &__content {
+      border: 1px solid $color-warning;
+    }
+
+    &__icon {
+      color: $color-warning;
+    }
   }
 
-  &--information .a-toast__icon {
-    color: $color-information;
+  &--danger .a-toast {
+    &__content {
+      border: 1px solid $color-error;
+    }
+
+    &__icon {
+      color: $color-error;
+    }
+  }
+
+  &--information .a-toast {
+    &__content {
+      border: 1px solid $color-information;
+    }
+
+    &__icon {
+      color: $color-information;
+    }
   }
 }
 
 .a-toast {
-  display: flex;
-  position: relative;
-  border-width: $toast-border-width;
-  border-style: solid;
   border-radius: $border-radius--sm;
-  min-height: $toast-min-height;
   min-width: $toast-min-width;
   max-width: $toast-max-width;
-  padding: $toast-padding;
-  align-items: flex-start;
+
+  &__content {
+    display: flex;
+    position: relative;
+    border-radius: $border-radius--xs;
+    min-height: $toast-min-height;
+    padding: $toast-padding;
+    align-items: flex-start;
+  }
 
   &__body {
     margin: $toast-margin;

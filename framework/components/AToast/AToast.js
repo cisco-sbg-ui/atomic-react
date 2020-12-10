@@ -52,23 +52,25 @@ const AToast = forwardRef(
 
     return (
       <div {...rest} ref={ref} className={className}>
-        <AIcon className="a-toast__icon" size={16}>
-          {icon}
-        </AIcon>
-        <div className="a-toast__body">
-          <div className="a-toast__title">{title}</div>
-          <div className="a-toast__message">{children}</div>
-        </div>
-        {dismissable && (
-          <AIcon
-            className="a-toast__close focus-box-shadow"
-            onClick={(e) => onClose && onClose(e)}
-            onKeyDown={dismissableKeyDownHandler}
-            size={10}
-            tabIndex={0}>
-            close
+        <div className="a-toast__content">
+          <AIcon className="a-toast__icon" size={16}>
+            {icon}
           </AIcon>
-        )}
+          <div className="a-toast__body">
+            <div className="a-toast__title">{title}</div>
+            <div className="a-toast__message">{children}</div>
+          </div>
+          {dismissable && (
+            <AIcon
+              className="a-toast__close focus-box-shadow"
+              onClick={(e) => onClose && onClose(e)}
+              onKeyDown={dismissableKeyDownHandler}
+              size={10}
+              tabIndex={0}>
+              close
+            </AIcon>
+          )}
+        </div>
       </div>
     );
   }
