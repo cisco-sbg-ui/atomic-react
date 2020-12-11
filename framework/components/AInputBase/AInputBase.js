@@ -2,7 +2,7 @@ import PropTypes from "prop-types";
 import React, {forwardRef} from "react";
 
 import AIcon from "../AIcon";
-import AHint from "../AHint";
+import AFieldBase from "../AFieldBase";
 import {keyCodes} from "../../utils/helpers";
 import "./AInputBase.scss";
 
@@ -62,16 +62,16 @@ const AInputBase = forwardRef(
     }
 
     return (
-      <div {...rest} ref={ref} className={className}>
-        {label && (
-          <label
-            id={labelId}
-            htmlFor={labelFor}
-            onClick={onClickLabel}
-            className="a-input-base__label">
-            {label}
-          </label>
-        )}
+      <AFieldBase
+        {...rest}
+        ref={ref}
+        className={className}
+        label={label}
+        labelId={labelId}
+        labelFor={labelFor}
+        onClickLabel={onClickLabel}
+        hint={hint}
+        validationState={validationState}>
         <div className="a-input-base__surface">
           {prepend && <div className="a-input-base__prepend">{prepend}</div>}
           <div className="a-input-base__control">{children}</div>
@@ -97,14 +97,7 @@ const AInputBase = forwardRef(
             </div>
           )}
         </div>
-        {hint && (
-          <AHint
-            className="a-input-base__hint"
-            validationState={validationState}>
-            {hint}
-          </AHint>
-        )}
-      </div>
+      </AFieldBase>
     );
   }
 );

@@ -4,7 +4,7 @@ context("ASelect", () => {
   });
 
   it("has a label that works", () => {
-    cy.get("#usage + .playground .a-input-base__label")
+    cy.get("#usage + .playground .a-field-base__label")
       .eq(0)
       .click()
       .then(($el) => {
@@ -134,7 +134,7 @@ context("ASelect", () => {
       .tab()
       .tab({shift: true})
       .tab();
-    cy.get("#validation + .playground .a-input-base__hint")
+    cy.get("#validation + .playground .a-field-base__hint")
       .eq(0)
       .contains("Role is required");
   });
@@ -142,19 +142,19 @@ context("ASelect", () => {
   it("validates", () => {
     cy.get("#validation + .playground .a-select__selection").eq(0).click();
     cy.get("#validation + .playground .a-select__menu-item").eq(0).click();
-    cy.get("#validation + .playground .a-input-base__hint")
+    cy.get("#validation + .playground .a-field-base__hint")
       .eq(0)
       .contains("Role is required");
 
     cy.get("#validation + .playground .a-select__selection").eq(0).click();
     cy.get("#validation + .playground .a-select__menu-item").eq(3).click();
-    cy.get("#validation + .playground .a-input-base__hint")
+    cy.get("#validation + .playground .a-field-base__hint")
       .eq(0)
       .contains("Role is set to Admin");
 
     cy.get("#validation + .playground .a-select__selection").eq(0).click();
     cy.get("#validation + .playground .a-select__menu-item").eq(1).click();
-    cy.get("#validation + .playground .a-input-base__hint").should("not.exist");
+    cy.get("#validation + .playground .a-field-base__hint").should("not.exist");
   });
 
   it("supports dynamic items", () => {

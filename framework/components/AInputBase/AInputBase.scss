@@ -6,10 +6,6 @@ $input-transition: border-color $transition-duration--extra-fast
     $transition-timing-function--standard;
 
 @include theme(a-input-base) using ($theme) {
-  &__label {
-    color: map-deep-get($theme, "label", "color");
-  }
-
   &__surface {
     background: map-deep-get($theme, "text-input", "bg");
     border-color: map-deep-get($theme, "base", "stroke-color");
@@ -106,17 +102,6 @@ $input-transition: border-color $transition-duration--extra-fast
 }
 
 .a-input-base {
-  position: relative;
-  display: inline-flex;
-  flex-direction: column;
-  width: 100%;
-
-  &__label {
-    display: block;
-    margin: 0;
-    font-size: $font-size--sm;
-  }
-
   &__surface {
     display: flex;
     box-sizing: border-box;

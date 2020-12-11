@@ -182,7 +182,7 @@ context("ATextInput", () => {
       .eq(0)
       .click()
       .tab();
-    cy.get("#validation + .playground .a-input-base__hint")
+    cy.get("#validation + .playground .a-field-base__hint")
       .eq(0)
       .contains("Name is required");
   });
@@ -200,17 +200,17 @@ context("ATextInput", () => {
 
   it("validates", () => {
     cy.get("#validation + .playground .a-text-input__input").eq(0).clear();
-    cy.get("#validation + .playground .a-input-base__hint")
+    cy.get("#validation + .playground .a-field-base__hint")
       .eq(0)
       .contains("Name is required");
     cy.get("#validation + .playground .a-text-input__input").eq(0).type("1");
     cy.get("#validation a").focus();
-    cy.get("#validation + .playground .a-input-base__hint")
+    cy.get("#validation + .playground .a-field-base__hint")
       .eq(0)
       .contains("Your name");
 
     cy.get("#validation + .playground .a-text-input__input").eq(2).type(1001);
-    cy.get("#validation + .playground .a-input-base__hint")
+    cy.get("#validation + .playground .a-field-base__hint")
       .eq(2)
       .contains("Favorite Number 0-1000 has a maximum value of 1000");
 
@@ -218,7 +218,7 @@ context("ATextInput", () => {
       .eq(2)
       .clear()
       .type(-1);
-    cy.get("#validation + .playground .a-input-base__hint")
+    cy.get("#validation + .playground .a-field-base__hint")
       .eq(2)
       .contains("Favorite Number 0-1000 has a minimum value of 0");
 

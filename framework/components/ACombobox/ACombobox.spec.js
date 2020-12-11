@@ -4,7 +4,7 @@ context("ACombobox", () => {
   });
 
   it("has a label that works", () => {
-    cy.get("#usage + .playground .a-input-base__label")
+    cy.get("#usage + .playground .a-field-base__label")
       .eq(0)
       .click()
       .then(($el) => {
@@ -111,7 +111,7 @@ context("ACombobox", () => {
       .tab()
       .tab({shift: true})
       .tab();
-    cy.get("#validation + .playground .a-input-base__hint")
+    cy.get("#validation + .playground .a-field-base__hint")
       .eq(0)
       .contains("Food Group is required");
     cy.get("#validation + .playground .a-switch__box").click();
@@ -120,13 +120,13 @@ context("ACombobox", () => {
   it("validates", () => {
     cy.get("#validation + .playground .a-combobox__input").eq(0).type("aaa");
     cy.get("#validation + .playground").click("top");
-    cy.get("#validation + .playground .a-input-base__hint")
+    cy.get("#validation + .playground .a-field-base__hint")
       .eq(0)
       .contains("Must have a capital letter");
 
     cy.get("#validation + .playground .a-combobox__input").eq(0).clear();
     cy.get("#validation + .playground").click("top");
-    cy.get("#validation + .playground .a-input-base__hint")
+    cy.get("#validation + .playground .a-field-base__hint")
       .eq(0)
       .contains("Food Group is required");
   });

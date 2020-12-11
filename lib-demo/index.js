@@ -47,6 +47,7 @@ const App = () => {
       <ADropdown />
       <ADropdownMenu />
       <ADropdownMenuItem />
+      <AFieldBase />
       <AFooter />
       <AFooterLegal />
       <AForm />
@@ -84,6 +85,7 @@ const App = () => {
       <ARadio />
       <ASelect />
       <ASimpleTable />
+      <ASlider />
       <ASwitch />
       <ATabGroup />
       <ATab />
