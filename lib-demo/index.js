@@ -47,6 +47,7 @@ const App = () => {
       <ADropdown />
       <ADropdownMenu />
       <ADropdownMenuItem />
+      <AFieldBase />
       <AFooter />
       <AFooterLegal />
       <AForm />
