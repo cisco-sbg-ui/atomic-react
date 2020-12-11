@@ -61,6 +61,7 @@ const useAToaster = () => {
           ...current,
           {
             id: id,
+            position: props.position || "bottom-right",
             component: (
               <AToasterToast
                 {...props}

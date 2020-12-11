@@ -8,10 +8,43 @@ import "./AApp.scss";
 
 const AToastPlate = () => {
   const {toasts} = useContext(AAppContext);
+
+  if (!toasts?.length) {
+    return null;
+  }
+
+  const components = toasts.reduce(
+    (toastsAcc, {position, component}) => {
+      if (!toastsAcc[position]) {
+        console.warn(
+          "The position prop for AToast can only be 'bottom-right' or 'top-center'."
+        );
+        return toastsAcc;
+      }
+      return {
+        ...toastsAcc,
+        [position]: [...toastsAcc[position], component]
+      };
+    },
+    {
+      "bottom-right": [],
+      "top-center": []
+    }
+  );
+
   return (
-    !toasts.length || (
-      <div className="a-toast-plate">{toasts.map((x) => x.component)}</div>
-    )
+    <>
+      {Object.entries(components).map(
+        ([position, components], index) =>
+          !!components.length && (
+            <div
+              className={`a-toast-plate a-toast-plate--${position}`}
+              key={index}>
+              {components}
+            </div>
+          )
+      )}
+    </>
   );
 };
 

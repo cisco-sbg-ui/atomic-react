@@ -5,14 +5,16 @@ $toast-min-width: 260px;
 $toast-max-width: 300px;
 $toast-padding: 10px 15px;
 $toast-margin: 0 10px;
-$toast-border-width: 5px;
+$toast-outer-border-width: 5px;
+$toast-inner-border-width: 1px;
+$toast-inner-border-left-width: 5px;
 $toast-title-font-weight: $font-weight-bold;
 $toast-icon-font-size: $font-size;
 
 @include theme(a-toast) using ($theme) {
   color: map-deep-get($theme, "base", "color");
   background-color: map-deep-get($theme, "control", "stroke-color");
-  padding: $toast-border-width;
+  padding: $toast-outer-border-width;
 
   &__content {
     background: map-deep-get($theme, "control", "fill-color");
@@ -20,7 +22,8 @@ $toast-icon-font-size: $font-size;
 
   &--success .a-toast {
     &__content {
-      border: 1px solid $color-good;
+      border: $toast-inner-border-width solid $color-good;
+      border-left-width: $toast-inner-border-left-width;
     }
 
     &__icon {
@@ -30,7 +33,8 @@ $toast-icon-font-size: $font-size;
 
   &--warning .a-toast {
     &__content {
-      border: 1px solid $color-warning;
+      border: $toast-inner-border-width solid $color-warning;
+      border-left-width: $toast-inner-border-left-width;
     }
 
     &__icon {
@@ -40,7 +44,8 @@ $toast-icon-font-size: $font-size;
 
   &--danger .a-toast {
     &__content {
-      border: 1px solid $color-error;
+      border: $toast-inner-border-width solid $color-error;
+      border-left-width: $toast-inner-border-left-width;
     }
 
     &__icon {
@@ -50,7 +55,8 @@ $toast-icon-font-size: $font-size;
 
   &--information .a-toast {
     &__content {
-      border: 1px solid $color-information;
+      border: $toast-inner-border-width solid $color-information;
+      border-left-width: $toast-inner-border-left-width;
     }
 
     &__icon {
@@ -62,7 +68,6 @@ $toast-icon-font-size: $font-size;
 .a-toast {
   border-radius: $border-radius--sm;
   min-width: $toast-min-width;
-  max-width: $toast-max-width;
 
   &__content {
     display: flex;
@@ -90,6 +95,23 @@ $toast-icon-font-size: $font-size;
 
   &__close {
     cursor: pointer;
+  }
+
+  &--bottom-right {
+    max-width: $toast-max-width;
+
+    & .a-toast__content {
+      min-height: $toast-min-height;
+    }
+  }
+
+  &--top-center {
+    max-width: calc(100vw - 20px);
+    width: $toast-max-width * 2;
+
+    & .a-toast__content {
+      min-height: unset;
+    }
   }
 }
 

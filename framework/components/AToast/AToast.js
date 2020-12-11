@@ -13,6 +13,7 @@ const AToast = forwardRef(
       dismissable = true,
       level = "info",
       onClose,
+      position = "bottom-right",
       title,
       ...rest
     },
@@ -25,7 +26,7 @@ const AToast = forwardRef(
       }
     };
 
-    let className = "a-toast";
+    let className = `a-toast a-toast--${position}`;
     let icon = "";
 
     switch (level) {
@@ -89,6 +90,10 @@ AToast.propTypes = {
    * A callback for handling the close event.
    */
   onClose: PropTypes.func,
+  /**
+   * Specifies the position of the toast.
+   */
+  position: PropTypes.oneOf(["bottom-right", "top-center"]),
   /**
    * Sets the title.
    */
