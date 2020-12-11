@@ -70,11 +70,8 @@ context("ASlider", () => {
       .click()
       .type("{end}");
     cy.get("#range + .playground").should("contain", "Value: 1000,1000");
-    cy.get("#range + .playground .a-slider__handle")
-      .eq(0)
-      .click()
-      .type("{home}");
-    cy.get("#range + .playground").should("contain", "Value: 0, 1000");
+    cy.get("#range + .playground .a-slider__handle").eq(0).type("{home}");
+    cy.get("#range + .playground").should("contain", "Value: 0,1000");
   });
 
   it("supports themes", () => {
