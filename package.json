@@ -73,7 +73,7 @@
     "gatsby-plugin-algolia": "0.16.1",
     "gatsby-plugin-mdx": "1.6.0",
     "gatsby-plugin-page-creator": "2.6.0",
-    "gatsby-plugin-react-helmet": "3.6.0",
+    "gatsby-plugin-react-helmet": "3.7.0",
     "gatsby-plugin-react-svg": "3.0.0",
     "gatsby-plugin-sass": "2.8.0",
     "gatsby-source-filesystem": "2.7.0",
