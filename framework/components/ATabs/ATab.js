@@ -1,8 +1,15 @@
 import PropTypes from "prop-types";
-import React, {forwardRef, useContext, useEffect, useState} from "react";
+import React, {
+  forwardRef,
+  useContext,
+  useEffect,
+  useRef,
+  useState
+} from "react";
 
 import ATabContext from "./ATabContext";
 import {keyCodes} from "../../utils/helpers";
+import {useCombinedRefs} from "../../utils/hooks";
 import "./ATabs.scss";
 
 let tabCounter = 1;
@@ -16,22 +23,30 @@ const ATab = forwardRef(
       href,
       onClick,
       onKeyDown,
+      onKeyUp,
       selected,
       tabKey,
       target,
+      style,
       ...rest
     },
     ref
   ) => {
+    const tabRef = useRef(null);
+    const combinedRef = useCombinedRefs(ref, tabRef);
     const [tabId, setTabId] = useState(null);
     const [isSelected, setIsSelected] = useState(null);
-    const {tabChanged, setTabChanged} = useContext(ATabContext);
+    const {tabChanged, setTabChanged, translateX, scrollToMe} = useContext(
+      ATabContext
+    );
     useEffect(() => {
       if (tabKey) return;
       if (!tabId) {
         const index = tabCounter++;
         setTabId(index);
-        if (selected) setTabChanged(index);
+        if (selected) {
+          setTabChanged(index);
+        }
       }
 
       setIsSelected(tabChanged === tabId);
@@ -44,6 +59,12 @@ const ATab = forwardRef(
         setIsSelected(false);
       }
     }, [selected, tabKey]); // eslint-disable-line react-hooks/exhaustive-deps
+
+    useEffect(() => {
+      if ((tabKey && selected) || isSelected) {
+        scrollToMe(combinedRef);
+      }
+    }, [selected, isSelected]); // eslint-disable-line react-hooks/exhaustive-deps
 
     let className = "a-tab-group__tab";
     if ((tabKey && selected) || isSelected) {
@@ -58,7 +79,7 @@ const ATab = forwardRef(
     const props = {
       ...rest,
       "aria-selected": Boolean((tabKey && selected) || isSelected),
-      ref,
+      ref: combinedRef,
       className,
       onClick: (e) => {
         !tabKey && setTabChanged(tabId);
@@ -73,8 +94,19 @@ const ATab = forwardRef(
           onKeyDown && onKeyDown(e);
         }
       },
+      onKeyUp: (e) => {
+        if ([keyCodes.tab].includes(e.keyCode)) {
+          scrollToMe(combinedRef);
+        }
+
+        onKeyUp && onKeyUp(e);
+      },
       role: "tab",
-      tabIndex: 0
+      tabIndex: 0,
+      style: {
+        ...style,
+        transform: `translateX(${translateX}px)`
+      }
     };
 
     if (href) {

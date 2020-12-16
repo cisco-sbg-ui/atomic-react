@@ -86,5 +86,5 @@
 // Tabs box-shadow
 // -----------------------------------------------------------------------------
 @mixin tab-bar($tab-bar-height, $tab-bar-color) {
-  box-shadow: inset 0 $tab-bar-height 0 0 $tab-bar-color;
+  box-shadow: inset 0 $tab-bar-height 0 -1px $tab-bar-color;
 }
