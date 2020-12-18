@@ -3,7 +3,7 @@
 $tabs-padding: 0;
 $tabs-margin: 10px 0 0;
 $tab-font-size: $font-size--sm;
-$tab-bottom-bar-height: -5px;
+$tab-bottom-bar-height: -6px;
 $tab-top-bar-height: 5px;
 $tab-min-width: 75px;
 $tab-padding-top: 0;
@@ -103,6 +103,26 @@ $tab-oversized-margin: 0;
   padding: $tabs-padding;
   list-style: none;
   background-color: transparent;
+  display: flex;
+
+  &__tab-wrapper {
+    display: flex;
+  }
+
+  &--scrolling {
+    .a-tab-group__tab-wrapper {
+      white-space: nowrap;
+      overflow: hidden;
+      padding: 0 1px;
+      display: block;
+    }
+  }
+
+  &__scroll-left,
+  &__scroll-right {
+    margin-top: -10px;
+    flex-shrink: 0;
+  }
 
   &__tab {
     display: inline-block;
@@ -157,5 +177,11 @@ $tab-oversized-margin: 0;
     margin: $tab-heading-margin;
     font-size: $tab-heading-font-size;
     display: block;
+  }
+}
+
+.a-app--animated .a-tab-group {
+  &__tab {
+    transition: transform $transition-duration--fast ease;
   }
 }

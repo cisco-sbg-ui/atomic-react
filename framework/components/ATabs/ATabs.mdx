@@ -66,6 +66,34 @@ The `ATab` component inherits passed props.
 
 <Props of="ATab" />
 
+## Scrolling
+
+<Playground
+  code={`<>
+  <ATabGroup scrolling className="mb-6">
+    <ATab>One</ATab>
+    <ATab>Two</ATab>
+    <ATab>Three</ATab>
+    <ATab>Four</ATab>
+    <ATab>Five</ATab>
+    <ATab>Six</ATab>
+    <ATab selected>Seven</ATab>
+    <ATab>Eight</ATab>
+    <ATab>Nine</ATab>
+    <ATab>Ten</ATab>
+    <ATab>Eleven</ATab>
+    <ATab>Twelve</ATab>
+  </ATabGroup>
+  <p>If tabs do not exceed the container width, scrolling buttons will not show.</p>
+  <ATabGroup scrolling>
+    <ATab selected>One</ATab>
+    <ATab>Two</ATab>
+    <ATab>Three</ATab>
+  </ATabGroup>
+</>
+`}
+/>
+
 ## Links
 
 Tabs will render in the DOM as anchor tags if the `href` property is defined.
@@ -97,20 +125,48 @@ Tabs will render in the DOM as anchor tags if the `href` property is defined.
 ### Oversized
 
 <Playground
-  code={`<ATabGroup oversized>
-  <ATab>
-    <ATabHeading>Heading One</ATabHeading>
-    Subtext One
-  </ATab>
-  <ATab>
-    <ATabHeading>Heading Two</ATabHeading>
-    Subtext Two
-  </ATab>
-  <ATab selected>
-    <ATabHeading>Heading Three</ATabHeading>
-    Subtext Three
-  </ATab>
-</ATabGroup>
+  code={`<>
+  <ATabGroup oversized>
+    <ATab>
+      <ATabHeading>Heading One</ATabHeading>
+      Subtext One
+    </ATab>
+    <ATab>
+      <ATabHeading>Heading Two</ATabHeading>
+      Subtext Two
+    </ATab>
+    <ATab selected>
+      <ATabHeading>Heading Three</ATabHeading>
+      Subtext Three
+    </ATab>
+  </ATabGroup>
+  <ATabGroup oversized scrolling>
+    <ATab>
+      <ATabHeading>Heading One</ATabHeading>
+      Subtext One
+    </ATab>
+    <ATab>
+      <ATabHeading>Heading Two</ATabHeading>
+      Subtext Two
+    </ATab>
+    <ATab selected>
+      <ATabHeading>Heading Three</ATabHeading>
+      Subtext Three
+    </ATab>
+    <ATab>
+      <ATabHeading>Heading Four</ATabHeading>
+      Subtext Four
+    </ATab>
+    <ATab>
+      <ATabHeading>Heading Five</ATabHeading>
+      Subtext Five
+    </ATab>
+    <ATab>
+      <ATabHeading>Heading Six</ATabHeading>
+      Subtext Six
+    </ATab>
+  </ATabGroup>
+</>
 `}
 />
 

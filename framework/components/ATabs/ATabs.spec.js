@@ -61,6 +61,45 @@ context("ATabs", () => {
       .should("have.attr", "aria-selected", "false");
   });
 
+  it("works as scrolling tabs", () => {
+    cy.get("#scrolling + .playground .a-tab-group")
+      .eq(1)
+      .find(".a-tab-group__scroll-right")
+      .should("not.exist");
+
+    cy.get("#scrolling + .playground .a-tab-group__scroll-left")
+      .eq(0)
+      .should("not.be.disabled");
+    cy.get("#scrolling + .playground .a-tab-group__scroll-right")
+      .eq(0)
+      .should("not.be.disabled");
+
+    cy.get("#scrolling + .playground .a-tab-group")
+      .eq(0)
+      .find(".a-tab-group__tab")
+      .eq(8)
+      .click();
+    cy.get("#scrolling + .playground .a-tab-group__scroll-right")
+      .eq(0)
+      .click()
+      .should("be.disabled");
+
+    cy.get("#scrolling + .playground .a-tab-group")
+      .eq(0)
+      .find(".a-tab-group__tab")
+      .eq(6)
+      .click();
+    cy.get("#scrolling + .playground .a-tab-group")
+      .eq(0)
+      .find(".a-tab-group__tab")
+      .eq(4)
+      .click();
+    cy.get("#scrolling + .playground .a-tab-group__scroll-left")
+      .eq(0)
+      .click()
+      .should("be.disabled");
+  });
+
   it("supports themes", () => {
     if (Cypress.env("snapshots") === "off") return;
 
