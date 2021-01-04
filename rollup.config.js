@@ -46,8 +46,7 @@ const config = {
   external: ["react", "react-dom"],
   plugins: [
     json({
-      compact: true,
-      preferConst: true
+      compact: true
     }),
     postcss({
       config: false,
