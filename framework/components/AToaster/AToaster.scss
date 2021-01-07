@@ -6,14 +6,14 @@
   position: fixed;
   z-index: 8;
 
-  &--top-center {
-    top: 10px;
-    left: 50%;
-    transform: translateX(-50%);
-  }
-
   &--bottom-right {
     bottom: 0;
     right: 10px;
+  }
+
+  &--top {
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
   }
 }

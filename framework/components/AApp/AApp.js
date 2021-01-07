@@ -14,31 +14,28 @@ const AToastPlate = () => {
   }
 
   const components = toasts.reduce(
-    (toastsAcc, {position, component}) => {
-      if (!toastsAcc[position]) {
-        console.warn(
-          "The position prop for AToast can only be 'bottom-right' or 'top-center'."
-        );
+    (toastsAcc, {placement, component}) => {
+      if (!toastsAcc[placement]) {
         return toastsAcc;
       }
       return {
         ...toastsAcc,
-        [position]: [...toastsAcc[position], component]
+        [placement]: [...toastsAcc[placement], component]
       };
     },
     {
       "bottom-right": [],
-      "top-center": []
+      top: []
     }
   );
 
   return (
     <>
       {Object.entries(components).map(
-        ([position, components], index) =>
+        ([placement, components], index) =>
           !!components.length && (
             <div
-              className={`a-toast-plate a-toast-plate--${position}`}
+              className={`a-toast-plate a-toast-plate--${placement}`}
               key={index}>
               {components}
             </div>
