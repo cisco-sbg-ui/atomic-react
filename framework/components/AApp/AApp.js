@@ -13,21 +13,18 @@ const AToastPlate = () => {
     return null;
   }
 
-  const components = toasts.reduce(
-    (toastsAcc, {placement, component}) => {
-      if (!toastsAcc[placement]) {
-        return toastsAcc;
-      }
-      return {
+  const components = toasts
+    .filter(({placement}) => ["bottom-right", "top"].includes(placement))
+    .reduce(
+      (toastsAcc, {placement, component}) => ({
         ...toastsAcc,
         [placement]: [...toastsAcc[placement], component]
-      };
-    },
-    {
-      "bottom-right": [],
-      top: []
-    }
-  );
+      }),
+      {
+        "bottom-right": [],
+        top: []
+      }
+    );
 
   return (
     <>
