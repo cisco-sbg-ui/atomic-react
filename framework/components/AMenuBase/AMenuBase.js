@@ -15,6 +15,7 @@ import "./AMenuBase.scss";
 
 const calculateMenuPosition = (
   combinedRef,
+  appRef,
   wrapRef,
   anchorRef,
   placement,
@@ -24,6 +25,7 @@ const calculateMenuPosition = (
 ) => {
   if (!combinedRef.current) return;
 
+  const appCoords = getRoundedBoundedClientRect(appRef.current);
   const wrapCoords = getRoundedBoundedClientRect(wrapRef.current);
   const anchorCoords = getRoundedBoundedClientRect(anchorRef.current);
   const menuCoords = getRoundedBoundedClientRect(combinedRef.current);
@@ -112,10 +114,17 @@ const calculateMenuPosition = (
     window.getComputedStyle(combinedRef.current).marginTop
   );
 
+  const xOffset = appRef.current.offsetParent.isSameNode(document.body)
+    ? window.pageXOffset
+    : wrapCoords.left - appCoords.left;
+  const yOffset = appRef.current.offsetParent.isSameNode(document.body)
+    ? window.pageYOffset
+    : wrapCoords.top - appCoords.top;
+
   const pageWidth =
-    document.documentElement.clientWidth + window.pageXOffset - wrapCoords.left;
+    document.documentElement.clientWidth + xOffset - wrapRef.current.offsetLeft;
   const pageHeight =
-    document.documentElement.clientHeight + window.pageYOffset - wrapCoords.top;
+    document.documentElement.clientHeight + yOffset - wrapRef.current.offsetTop;
 
   // Edge detection: max x
   if (baseLeft + menuCoords.width + marginLeft > pageWidth) {
@@ -123,8 +132,8 @@ const calculateMenuPosition = (
   }
 
   // Edge detection: min x
-  if (baseLeft + marginLeft < window.pageXOffset) {
-    baseLeft = window.pageXOffset - marginLeft;
+  if (baseLeft + marginLeft < xOffset) {
+    baseLeft = xOffset - marginLeft;
   }
 
   // Edge detection: max y
@@ -133,8 +142,8 @@ const calculateMenuPosition = (
   }
 
   // Edge detection: min y
-  else if (baseTop < window.pageYOffset) {
-    baseTop = window.pageYOffset - marginTop;
+  else if (baseTop < yOffset) {
+    baseTop = yOffset - marginTop;
   }
 
   setMenuLeft(Math.round(baseLeft));
@@ -219,6 +228,7 @@ const AMenuBase = forwardRef(
     useEffect(() => {
       calculateMenuPosition(
         combinedRef,
+        appRef,
         wrapRef,
         anchorRef,
         placement,
@@ -226,7 +236,7 @@ const AMenuBase = forwardRef(
         setMenuTop,
         setInvisible
       );
-    }, [open, anchorRef, combinedRef, placement, wrapRef]);
+    }, [open, anchorRef, combinedRef, placement, appRef, wrapRef]);
 
     useEffect(() => {
       calculatePointerPosition(
@@ -243,6 +253,7 @@ const AMenuBase = forwardRef(
       const screenChangeHandler = () => {
         calculateMenuPosition(
           combinedRef,
+          appRef,
           wrapRef,
           anchorRef,
           placement,
@@ -259,12 +270,13 @@ const AMenuBase = forwardRef(
         window.removeEventListener("resize", screenChangeHandler);
         window.removeEventListener("fullscreenchange", screenChangeHandler);
       };
-    }, [anchorRef, combinedRef, placement, wrapRef]);
+    }, [anchorRef, combinedRef, placement, appRef, wrapRef]);
 
     useEffect(() => {
       const screenChangeHandler = () => {
         calculateMenuPosition(
           combinedRef,
+          appRef,
           wrapRef,
           anchorRef,
           placement,
@@ -279,7 +291,7 @@ const AMenuBase = forwardRef(
       return () => {
         window.removeEventListener("resize", screenChangeHandler);
       };
-    }, [anchorRef, combinedRef, placement, wrapRef]);
+    }, [anchorRef, combinedRef, placement, appRef, wrapRef]);
 
     useEffect(() => {
       const clickOutsideHandler = (e) => {

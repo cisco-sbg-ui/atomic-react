@@ -11,6 +11,8 @@ import {ADropdown, ADropdownMenu, ADropdownMenuItem} from "../ADropdown";
 import AInputBase from "../AInputBase";
 import AFormContext from "../AForm/AFormContext";
 import AIcon from "../AIcon";
+import AMenu from "../AMenu";
+import {AListItem} from "../AList";
 import {useCombinedRefs} from "../../utils/hooks";
 import {keyCodes} from "../../utils/helpers";
 import "./ACombobox.scss";
@@ -36,6 +38,7 @@ const ACombobox = forwardRef(
       readOnly,
       required,
       rules,
+      useMenu,
       validateOnBlur,
       validationState,
       value,
@@ -45,6 +48,7 @@ const ACombobox = forwardRef(
   ) => {
     const comboboxRef = useRef(null);
     const dropdownMenuRef = useRef(null);
+    const inputBaseSurfaceRef = useRef(null);
     const combinedRef = useCombinedRefs(ref, comboboxRef);
 
     const [comboboxId] = useState(comboboxCounter++);
@@ -126,6 +130,7 @@ const ACombobox = forwardRef(
     const inputBaseProps = {
       ...rest,
       ref: combinedRef,
+      surfaceRef: inputBaseSurfaceRef,
       className: "a-combobox",
       clearable,
       disabled,
@@ -162,7 +167,7 @@ const ACombobox = forwardRef(
       id: `a-combobox_${comboboxId}`,
       onBlur: (e) => {
         setIsFocused(false);
-        !dropdownMenuRef.current.contains(e.relatedTarget) && validate(value);
+        !dropdownMenuRef?.current?.contains(e.relatedTarget) && validate(value);
       },
       onChange: (e) => {
         setIsOpen(items.length || noDataContent);
@@ -178,8 +183,8 @@ const ACombobox = forwardRef(
           e.preventDefault();
           setIsOpen(items.length || noDataContent);
           const menuItems = Array.from(
-            dropdownMenuRef.current.querySelectorAll(
-              ".a-dropdown__item[tabindex]"
+            dropdownMenuRef?.current?.querySelectorAll(
+              useMenu ? ".a-list-item[tabindex]" : ".a-dropdown__item[tabindex]"
             )
           );
           if (menuItems.length) {
@@ -189,8 +194,8 @@ const ACombobox = forwardRef(
           e.preventDefault();
           setIsOpen(items.length || noDataContent);
           const menuItems = Array.from(
-            dropdownMenuRef.current.querySelectorAll(
-              ".a-dropdown__item[tabindex]"
+            dropdownMenuRef?.current?.querySelectorAll(
+              useMenu ? ".a-list-item[tabindex]" : ".a-dropdown__item[tabindex]"
             )
           );
           if (menuItems.length) {
@@ -203,19 +208,34 @@ const ACombobox = forwardRef(
       value
     };
 
+    let WrapperComponent = ADropdown;
+    let MenuComponent = ADropdownMenu;
+    let ListItemComponent = ADropdownMenuItem;
+
+    const menuComponentProps = {
+      focusOnOpen: false,
+      open: Boolean((items.length || noDataContent) && isOpen),
+      onClose: () => setIsOpen(false),
+      role: "listbox",
+      className: "a-combobox__menu-items",
+      style: {width: inputBaseSurfaceRef?.current?.clientWidth + 2}
+    };
+
+    if (useMenu) {
+      WrapperComponent = "div";
+      MenuComponent = AMenu;
+      ListItemComponent = AListItem;
+
+      menuComponentProps.anchorRef = inputBaseSurfaceRef;
+    }
+
     return (
       <AInputBase {...inputBaseProps}>
-        <ADropdown style={{width: "100%"}}>
+        <WrapperComponent style={{width: "100%"}}>
           <input {...inputProps} />
-          <ADropdownMenu
-            focusOnOpen={false}
-            open={Boolean((items.length || noDataContent) && isOpen)}
-            onClose={() => setIsOpen(false)}
-            ref={dropdownMenuRef}
-            role="listbox"
-            className="a-combobox__menu-items">
+          <MenuComponent ref={dropdownMenuRef} {...menuComponentProps}>
             {!items.length && !!noDataContent && (
-              <ADropdownMenuItem>{noDataContent}</ADropdownMenuItem>
+              <ListItemComponent>{noDataContent}</ListItemComponent>
             )}
             {items.map((item, index) => {
               const itemProps = {
@@ -244,14 +264,14 @@ const ACombobox = forwardRef(
               }
 
               return (
-                <ADropdownMenuItem
+                <ListItemComponent
                   key={`a-combobox__menu-item_${index}`}
                   {...itemProps}
                 />
               );
             })}
-          </ADropdownMenu>
-        </ADropdown>
+          </MenuComponent>
+        </WrapperComponent>
       </AInputBase>
     );
   }
@@ -326,6 +346,10 @@ ACombobox.propTypes = {
       level: PropTypes.string
     })
   ),
+  /**
+   * Toggles using AMenu/ADropdown internally.
+   */
+  useMenu: PropTypes.bool,
   /**
    * Delays validation until the `blur` event.
    */

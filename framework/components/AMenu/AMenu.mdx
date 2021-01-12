@@ -165,7 +165,7 @@ navigate menu items, the `esc` key calls the `onClose` handler. Additionally, fo
 key the menu will request to be closed and set focus to the opener, which allows native `tab`
 key functionality to focus the next tab-focusable item.
 
-By default, `ADropdownMenuItem` components are assigned the [WAI-ARIA](https://www.w3.org/WAI/standards-guidelines/aria/) role of [menuitem](https://www.w3.org/TR/wai-aria/#menuitem).
-The `ADropdownMenuItem` `click` event handler is triggered both by the `click` event and by the `keyDown` event for the `Enter` key. This is followed up by a request to the `onClose` handler.
+By default, `AListItem` components are assigned the [WAI-ARIA](https://www.w3.org/WAI/standards-guidelines/aria/) role of [menuitem](https://www.w3.org/TR/wai-aria/#menuitem).
+The `AListItem` `click` event handler is triggered both by the `click` event and by the `keyDown` event for the `Enter` key. This is followed up by a request to the `onClose` handler.
 
 Remember to indicate that your anchor element has a menu via the `aria-haspopup` attribute. In addition, your anchor element should have a `tabindex` if it does not already.

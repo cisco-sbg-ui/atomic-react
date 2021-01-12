@@ -49,6 +49,13 @@
     }
   }
 
+  &__menu-item {
+    height: 28px;
+    line-height: $line-height--lg;
+    padding: 2px 0 0 0;
+    text-indent: 6px;
+  }
+
   &.a-input-base--clearable {
     .a-combobox__menu-items {
       right: -50px;

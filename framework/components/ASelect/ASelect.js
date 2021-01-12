@@ -11,6 +11,8 @@ import AInputBase from "../AInputBase";
 import AFormContext from "../AForm/AFormContext";
 import AIcon from "../AIcon";
 import {ADropdown, ADropdownMenu, ADropdownMenuItem} from "../ADropdown";
+import AMenu from "../AMenu";
+import {AListItem} from "../AList";
 import {keyCodes} from "../../utils/helpers";
 import "./ASelect.scss";
 
@@ -34,6 +36,7 @@ const ASelect = forwardRef(
       readOnly,
       required,
       rules,
+      useMenu,
       validateOnBlur,
       validationState,
       ...rest
@@ -41,6 +44,7 @@ const ASelect = forwardRef(
     ref
   ) => {
     const dropdownMenuRef = useRef(null);
+    const inputBaseSurfaceRef = useRef(null);
     const surfaceRef = useRef(null);
     const [selectId] = useState(selectCounter++);
     const [originalSelectedItem, setOriginalSelectedItem] = useState(
@@ -216,7 +220,7 @@ const ASelect = forwardRef(
 
       selectionProps.onBlur = (e) => {
         setIsFocused(false);
-        !dropdownMenuRef.current.contains(e.relatedTarget) &&
+        !dropdownMenuRef?.current?.contains(e.relatedTarget) &&
           validate(selectedItem);
       };
 
@@ -230,10 +234,13 @@ const ASelect = forwardRef(
           setTimeout(() => {
             const selectedIndex = getSelectedIndex();
             if (selectedIndex > -1) {
-              const dropdownItems = dropdownMenuRef.current.querySelectorAll(
-                ".a-dropdown__item"
+              const dropdownItems = dropdownMenuRef.current?.querySelectorAll(
+                useMenu ? ".a-list-item" : ".a-dropdown__item"
               );
-              dropdownItems[selectedIndex].focus();
+
+              if (dropdownItems && dropdownItems[selectedIndex]) {
+                dropdownItems[selectedIndex].focus();
+              }
             }
           }, WAIT_TO_FOCUS_ACTIVE_ITEM);
         };
@@ -250,7 +257,7 @@ const ASelect = forwardRef(
               const selectedIndex = getSelectedIndex();
               if (selectedIndex > -1) {
                 const dropdownItems = dropdownMenuRef.current.querySelectorAll(
-                  ".a-dropdown__item"
+                  useMenu ? ".a-list-item" : ".a-dropdown__item"
                 );
                 dropdownItems[selectedIndex].focus();
               }
@@ -274,10 +281,34 @@ const ASelect = forwardRef(
       onSelected && onSelected(item);
     };
 
+    let WrapperComponent = ADropdown;
+    let MenuComponent = ADropdownMenu;
+    let ListItemComponent = ADropdownMenuItem;
+
+    const menuComponentProps = {
+      open: isOpen,
+      onClose: () => {
+        setIsOpen(false);
+        surfaceRef.current.focus();
+      },
+      role: "listbox",
+      className: "a-select__menu-items",
+      style: {width: inputBaseSurfaceRef?.current?.clientWidth + 2}
+    };
+
+    if (useMenu) {
+      WrapperComponent = "div";
+      MenuComponent = AMenu;
+      ListItemComponent = AListItem;
+
+      menuComponentProps.anchorRef = inputBaseSurfaceRef;
+    }
+
     return (
       <AInputBase
         {...rest}
         ref={ref}
+        surfaceRef={inputBaseSurfaceRef}
         className={className}
         label={label}
         labelId={`a-select__label_${selectId}`}
@@ -292,23 +323,15 @@ const ASelect = forwardRef(
         readOnly={readOnly}
         validationState={workingValidationState}
         hint={error || hint}>
-        <ADropdown style={{width: "100%"}}>
-          <div {...selectionProps} className="a-select__selection">
+        <WrapperComponent className="a-select__selection-wrapper">
+          <div {...selectionProps}>
             {typeof selectedItem === "string"
               ? selectedItem
               : typeof selectedItem === "object"
               ? selectedItem[itemText]
               : placeholder}
           </div>
-          <ADropdownMenu
-            open={isOpen}
-            onClose={() => {
-              setIsOpen(false);
-              surfaceRef.current.focus();
-            }}
-            ref={dropdownMenuRef}
-            role="listbox"
-            className="a-select__menu-items">
+          <MenuComponent ref={dropdownMenuRef} {...menuComponentProps}>
             {items.map((item, index) => {
               const itemProps = {
                 value: null,
@@ -334,6 +357,9 @@ const ASelect = forwardRef(
                 itemProps.children = item[itemText];
                 if (item[itemDisabled]) {
                   itemProps["aria-disabled"] = true;
+                  itemProps.onClick = (e) => {
+                    e.stopPropagation();
+                  };
                 } else {
                   itemProps.onClick = () => {
                     selectItem(item);
@@ -350,14 +376,14 @@ const ASelect = forwardRef(
               }
 
               return (
-                <ADropdownMenuItem
+                <ListItemComponent
                   key={`a-select__menu-item_${index}`}
                   {...itemProps}
                 />
               );
             })}
-          </ADropdownMenu>
-        </ADropdown>
+          </MenuComponent>
+        </WrapperComponent>
       </AInputBase>
     );
   }
@@ -424,6 +450,10 @@ ASelect.propTypes = {
       level: PropTypes.string
     })
   ),
+  /**
+   * Toggles using AMenu/ADropdown internally.
+   */
+  useMenu: PropTypes.bool,
   /**
    * Delays validation until the `blur` event.
    */

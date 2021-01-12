@@ -12,6 +12,8 @@ import {ADropdown, ADropdownMenu, ADropdownMenuItem} from "../ADropdown";
 import AInputBase from "../AInputBase";
 import AFormContext from "../AForm/AFormContext";
 import AIcon from "../AIcon";
+import AMenu from "../AMenu";
+import {AListItem} from "../AList";
 import {useCombinedRefs} from "../../utils/hooks";
 import {keyCodes} from "../../utils/helpers";
 import "./AAutocomplete.scss";
@@ -38,6 +40,7 @@ const AAutocomplete = forwardRef(
       readOnly,
       required,
       rules,
+      useMenu,
       validateOnBlur,
       validationState,
       value,
@@ -47,6 +50,7 @@ const AAutocomplete = forwardRef(
   ) => {
     const autocompleteRef = useRef(null);
     const dropdownMenuRef = useRef(null);
+    const inputBaseSurfaceRef = useRef(null);
     const combinedRef = useCombinedRefs(ref, autocompleteRef);
 
     const [autocompleteId] = useState(autocompleteCounter++);
@@ -112,6 +116,7 @@ const AAutocomplete = forwardRef(
     const inputBaseProps = {
       ...rest,
       ref: combinedRef,
+      surfaceRef: inputBaseSurfaceRef,
       className: "a-autocomplete",
       clearable,
       disabled,
@@ -158,7 +163,7 @@ const AAutocomplete = forwardRef(
       id: `a-autocomplete_${autocompleteId}`,
       onBlur: (e) => {
         setIsFocused(false);
-        !dropdownMenuRef.current.contains(e.relatedTarget) && validate(value);
+        !dropdownMenuRef?.current?.contains(e.relatedTarget) && validate(value);
       },
       onChange: (e) => {
         setIsOpen(true);
@@ -173,8 +178,8 @@ const AAutocomplete = forwardRef(
           e.preventDefault();
           setIsOpen(true);
           const menuItems = Array.from(
-            dropdownMenuRef.current.querySelectorAll(
-              ".a-dropdown__item[tabindex]"
+            dropdownMenuRef?.current?.querySelectorAll(
+              useMenu ? ".a-list-item[tabindex]" : ".a-dropdown__item[tabindex]"
             )
           );
           if (menuItems.length) {
@@ -184,8 +189,8 @@ const AAutocomplete = forwardRef(
           e.preventDefault();
           setIsOpen(true);
           const menuItems = Array.from(
-            dropdownMenuRef.current.querySelectorAll(
-              ".a-dropdown__item[tabindex]"
+            dropdownMenuRef?.current?.querySelectorAll(
+              useMenu ? ".a-list-item[tabindex]" : ".a-dropdown__item[tabindex]"
             )
           );
           if (menuItems.length) {
@@ -198,23 +203,36 @@ const AAutocomplete = forwardRef(
       value
     };
 
+    let WrapperComponent = ADropdown;
+    let MenuComponent = ADropdownMenu;
+    let ListItemComponent = ADropdownMenuItem;
+
+    const menuComponentProps = {
+      focusOnOpen: false,
+      open: Boolean(
+        items && (items.length || (!items.length && noDataContent)) && isOpen
+      ),
+      onClose: () => setIsOpen(false),
+      role: "listbox",
+      className: "a-autocomplete__menu-items",
+      style: {width: inputBaseSurfaceRef?.current?.clientWidth + 2}
+    };
+
+    if (useMenu) {
+      WrapperComponent = "div";
+      MenuComponent = AMenu;
+      ListItemComponent = AListItem;
+
+      menuComponentProps.anchorRef = inputBaseSurfaceRef;
+    }
+
     return (
       <AInputBase {...inputBaseProps}>
-        <ADropdown style={{width: "100%"}}>
+        <WrapperComponent style={{width: "100%"}}>
           <input {...inputProps} />
-          <ADropdownMenu
-            focusOnOpen={false}
-            open={Boolean(
-              items &&
-                (items.length || (!items.length && noDataContent)) &&
-                isOpen
-            )}
-            onClose={() => setIsOpen(false)}
-            ref={dropdownMenuRef}
-            role="listbox"
-            className="a-autocomplete__menu-items">
+          <MenuComponent ref={dropdownMenuRef} {...menuComponentProps}>
             {items && !items.length && !!noDataContent && (
-              <ADropdownMenuItem>{noDataContent}</ADropdownMenuItem>
+              <ListItemComponent>{noDataContent}</ListItemComponent>
             )}
             {items &&
               items.map((item, index) => {
@@ -244,14 +262,14 @@ const AAutocomplete = forwardRef(
                 }
 
                 return (
-                  <ADropdownMenuItem
+                  <ListItemComponent
                     key={`a-autocomplete__menu-item_${index}`}
                     {...itemProps}
                   />
                 );
               })}
-          </ADropdownMenu>
-        </ADropdown>
+          </MenuComponent>
+        </WrapperComponent>
       </AInputBase>
     );
   }
@@ -330,6 +348,10 @@ AAutocomplete.propTypes = {
       level: PropTypes.string
     })
   ),
+  /**
+   * Toggles using AMenu/ADropdown internally.
+   */
+  useMenu: PropTypes.bool,
   /**
    * Delays validation until the `blur` event.
    */
