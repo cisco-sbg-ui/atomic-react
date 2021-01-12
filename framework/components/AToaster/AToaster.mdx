@@ -79,6 +79,37 @@ import {useAToaster} from "@cisco-ats/atomic-react";
           }}>
           Add Danger Toast w/No Timeout
         </AButton>
+        <AButton
+          className="d-flex mb-2"
+          onClick={() => {
+            addToast(
+              {
+                level: "warning",
+                title: "Warning Toast",
+                children: "This toast is presented in the top-center of the viewport",
+                dismissable: true,
+                placement: "top"
+              },
+            );
+          }}>
+          Add Top-Centered Warning Toast
+        </AButton>
+        <AButton
+          className="d-flex mb-2"
+          onClick={() => {
+            addToast(
+              {
+                level: "info",
+                title: "Incoming Maintenance",
+                children: "Server maintenance will begin in 10 minutes.",
+                dismissable: true,
+                placement: "top"
+              },
+              -1
+            );
+          }}>
+          Add Top-Centered Info Toast w/ No Timeout
+        </AButton>
       </p>
     </div>
   );

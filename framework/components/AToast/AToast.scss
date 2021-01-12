@@ -61,6 +61,23 @@ $toast-icon-font-size: $font-size;
   &__close {
     cursor: pointer;
   }
+
+  &--bottom-right {
+    max-width: $toast-max-width;
+
+    & .a-toast__content {
+      min-height: $toast-min-height;
+    }
+  }
+
+  &--top {
+    max-width: calc(100vw - 20px);
+    width: $toast-max-width * 2;
+
+    & .a-toast__content {
+      min-height: unset;
+    }
+  }
 }
 
 .a-app--animated .a-toast {
