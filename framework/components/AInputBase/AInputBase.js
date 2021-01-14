@@ -16,6 +16,7 @@ const AInputBase = forwardRef(
       disabled,
       focused,
       hint,
+      surfaceRef,
       label,
       labelFor,
       labelId,
@@ -72,7 +73,7 @@ const AInputBase = forwardRef(
         onClickLabel={onClickLabel}
         hint={hint}
         validationState={validationState}>
-        <div className="a-input-base__surface">
+        <div ref={surfaceRef} className="a-input-base__surface">
           {prepend && <div className="a-input-base__prepend">{prepend}</div>}
           <div className="a-input-base__control">{children}</div>
           {(append || clearable) && (
@@ -151,6 +152,13 @@ AInputBase.propTypes = {
    * Toggles the `readOnly` state.
    */
   readOnly: PropTypes.bool,
+  /**
+   * Sets the `ref` of the surface element.
+   */
+  surfaceRef: PropTypes.oneOfType([
+    PropTypes.func,
+    PropTypes.shape({current: PropTypes.any})
+  ]),
   /**
    * Applies a validation state.
    */

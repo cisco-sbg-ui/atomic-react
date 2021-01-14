@@ -228,6 +228,50 @@ The `AAutocomplete` component inherits passed props.
 </>`}
 />
 
+## useMenu
+
+<Playground
+  code={`() => {
+  const [role, setRole] = useState(null);
+  return (
+    <>
+      Using \`ADropdown\`, the menu is trapped.
+      <div style={{width:"100%", height: 100, overflowY:"hidden", border: "solid 1px #999"}} className="px-1 mb-4">
+        <AAutocomplete
+          label="Food Group"
+          items={[
+            "Bread, Cereal, Rice, and Pasta",
+            "Vegetables",
+            "Fruit",
+            "Milk, Yogurt, and Cheese",
+            "Meat, Poultry, Fish",
+            "Fats, Oils, and Sweets"
+          ]}
+          placeholder="Pick a Food Group"
+        />
+      </div>
+      Using \`AMenu\`, the menu is outside of the normal flow.
+      <div style={{width:"100%", height: 100, overflowY:"hidden", border: "solid 1px #999"}} className="px-1">
+        <AAutocomplete
+          label="Food Group"
+          items={[
+            "Bread, Cereal, Rice, and Pasta",
+            "Vegetables",
+            "Fruit",
+            "Milk, Yogurt, and Cheese",
+            "Meat, Poultry, Fish",
+            "Fats, Oils, and Sweets"
+          ]}
+          useMenu
+          placeholder="Pick a Food Group"
+        />
+      </div>
+    </>
+  );
+}
+`}
+/>
+
 ## Accessibility Notes
 
 `AAutocomplete` inherits the accessibility features of `ADropdown`.
