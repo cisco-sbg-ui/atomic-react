@@ -17,6 +17,7 @@ import ACombobox from "./components/ACombobox";
 import AContextualNotification from "./components/AContextualNotification";
 import AContextualNotificationMenu from "./components/AContextualNotificationMenu";
 import ADataTable from "./components/ADataTable";
+import ADatePicker from "./components/ADatePicker";
 import ADialog from "./components/ADialog";
 import ADivider from "./components/ADivider";
 import {
@@ -102,6 +103,7 @@ export {
   AContextualNotification,
   AContextualNotificationMenu,
   ADataTable,
+  ADatePicker,
   ADialog,
   ADivider,
   ADotLoader,

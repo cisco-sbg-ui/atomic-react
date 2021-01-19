@@ -1,0 +1,37 @@
+---
+name: Date Pickers
+route: /components/date-picker
+components: ADatePicker
+---
+
+import {Playground, Props} from "../../../docs";
+
+# Date Picker
+
+## Install
+
+Integrate with your build to [auto-import](?path=/docs/getting-started--page#integrating), or add an import in your component:
+
+```
+import ADatePicker from "@cisco-ats/atomic-react/ADatePicker";
+// or if you're able to treekshake node_modules
+import {ADatePicker} from "@cisco-ats/atomic-react";
+```
+
+## Usage
+
+<Playground
+  code={`() => {
+  const [date, setDate] = useState(new Date(2021, 0, 14));
+  return (
+    <ADatePicker value={date} onChange={(date) => setDate(date)} />
+  );
+}
+`}
+/>
+
+## Date Picker Props
+
+The `ADatePicker` component inherits passed props.
+
+<Props of="ADatePicker" />
