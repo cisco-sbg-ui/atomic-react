@@ -97,6 +97,10 @@ $atomic-default: (
     "warning-color": map-get($status-orange, "burnt-1"),
     "error-color": map-get($status-red, "base")
   ),
+  "date-picker": (
+    "header-border-color": map-get($grey, "lighten-3"),
+    "range-bg": map-get($grey, "lighten-5")
+  ),
   "divider": (
     "color-default": map-get($grey, "lighten-1"),
     "color-light": map-get($grey, "lighten-3"),

@@ -31,6 +31,7 @@ const types = {
 };
 
 const getType = (type) => {
+  if (type && typeof type === "string") return type;
   if (!type || !types[type.name]) return;
   return types[type.name](type.value) + (type.required ? " Required" : "");
 };
