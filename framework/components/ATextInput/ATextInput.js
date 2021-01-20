@@ -155,17 +155,28 @@ const ATextInput = forwardRef(
       const currentValue = parseFloat(nativeInputValueGetter.call(input));
       let finalValue = 0;
       if (!isNaN(currentValue)) {
-        if (typeof min !== "undefined" && currentValue < min && Math.abs(currentValue + amount) < Math.abs(currentValue)) {
+        if (
+          typeof min !== "undefined" &&
+          currentValue < min &&
+          Math.abs(currentValue + amount) < Math.abs(currentValue)
+        ) {
           finalValue = min;
-        } else if (typeof max !== "undefined" && currentValue > max && Math.abs(currentValue + amount) < Math.abs(currentValue)) {
-          finalValue = max
+        } else if (
+          typeof max !== "undefined" &&
+          currentValue > max &&
+          Math.abs(currentValue + amount) < Math.abs(currentValue)
+        ) {
+          finalValue = max;
         } else {
           finalValue = Math.ceil(currentValue / amount) * amount;
 
           if (finalValue === currentValue) finalValue += amount;
 
-          if ((typeof min !== "undefined" && finalValue < min) || (typeof max !== "undefined" && finalValue > max)) {
-            finalValue = currentValue
+          if (
+            (typeof min !== "undefined" && finalValue < min) ||
+            (typeof max !== "undefined" && finalValue > max)
+          ) {
+            finalValue = currentValue;
           }
         }
       } else {
@@ -387,7 +398,7 @@ const ATextInput = forwardRef(
 
 ATextInput.propTypes = {
   /**
-   * Appends an icon inside the text input. The value should be an [icon name](/?path=/docs/components-icons--page).
+   * Appends an icon inside the text input. The value should be an [icon name](/components/icon).
    */
   appendIcon: PropTypes.string,
   /**
@@ -471,7 +482,7 @@ ATextInput.propTypes = {
    */
   placeholder: PropTypes.string,
   /**
-   * Prepends an icon inside the text input. The value should be an [icon name](/?path=/docs/components-icons--page).
+   * Prepends an icon inside the text input. The value should be an [icon name](/components/icon).
    */
   prependIcon: PropTypes.string,
   /**
