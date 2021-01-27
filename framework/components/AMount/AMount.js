@@ -1,20 +1,34 @@
 import PropTypes from "prop-types";
-import React, {forwardRef, useContext, useRef} from "react";
+import React, {forwardRef, useRef, useState} from "react";
 
 import AAppContext from "../AApp/AAppContext";
+import {AToastPlate} from "../AToaster";
 import {useCombinedRefs} from "../../utils/hooks";
 
 const AMount = forwardRef(
-  ({children, className: propsClassName, component, ...rest}, ref) => {
-    const {toasts, setToasts} = useContext(AAppContext);
+  (
+    {
+      children,
+      className: propsClassName,
+      component,
+      wrapClassName: propsWrapClassName,
+      ...rest
+    },
+    ref
+  ) => {
     const newWrapRef = useRef(null);
     const newAppRef = useRef(null);
     const combinedRef = useCombinedRefs(ref, newAppRef);
+    const [toasts, setToasts] = useState([]);
 
     let className = "a-mount";
-
     if (propsClassName) {
       className += ` ${propsClassName}`;
+    }
+
+    let wrapClassName = "a-mount--wrap";
+    if (propsWrapClassName) {
+      wrapClassName += ` ${propsWrapClassName}`;
     }
 
     const TagName = component || "div";
@@ -29,9 +43,10 @@ const AMount = forwardRef(
     return (
       <TagName {...rest} ref={combinedRef} className={className}>
         <AAppContext.Provider value={appContext}>
-          <div ref={newWrapRef} className="a-mount--wrap">
+          <div ref={newWrapRef} className={wrapClassName}>
             {children}
           </div>
+          <AToastPlate />
         </AAppContext.Provider>
       </TagName>
     );
@@ -42,7 +57,11 @@ AMount.propTypes = {
   /**
    * Sets the base component.
    */
-  component: PropTypes.elementType
+  component: PropTypes.elementType,
+  /**
+   * Sets the class name for the wrapper container.
+   */
+  wrapClassName: PropTypes.string
 };
 
 AMount.displayName = "AMount";
