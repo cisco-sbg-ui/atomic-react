@@ -1,46 +1,9 @@
 import PropTypes from "prop-types";
-import React, {forwardRef, useContext, useRef, useState} from "react";
+import React, {forwardRef} from "react";
 
+import AMount from "../AMount";
 import {ATheme} from "../ATheme";
-import AAppContext from "./AAppContext";
-import {useCombinedRefs} from "../../utils/hooks";
 import "./AApp.scss";
-
-const AToastPlate = () => {
-  const {toasts} = useContext(AAppContext);
-
-  if (!toasts?.length) {
-    return null;
-  }
-
-  const components = toasts
-    .filter(({placement}) => ["bottom-right", "top"].includes(placement))
-    .reduce(
-      (toastsAcc, {placement, component}) => ({
-        ...toastsAcc,
-        [placement]: [...toastsAcc[placement], component]
-      }),
-      {
-        "bottom-right": [],
-        top: []
-      }
-    );
-
-  return (
-    <>
-      {Object.entries(components).map(
-        ([placement, components], index) =>
-          !!components.length && (
-            <div
-              className={`a-toast-plate a-toast-plate--${placement}`}
-              key={index}>
-              {components}
-            </div>
-          )
-      )}
-    </>
-  );
-};
 
 const AApp = forwardRef(
   (
@@ -55,8 +18,6 @@ const AApp = forwardRef(
     },
     ref
   ) => {
-    const [toasts, setToasts] = useState([]);
-
     let className = "a-app";
 
     if (animations) {
@@ -71,40 +32,20 @@ const AApp = forwardRef(
       className += ` ${propsClassName}`;
     }
 
-    let wrapClassName = "a-app--wrap";
-    const appRef = useRef(null);
-    const wrapRef = useRef(null);
-    const combinedRef = useCombinedRefs(ref, appRef);
-
-    const appContext = {
-      appRef: combinedRef,
-      wrapRef,
-      toasts,
-      setToasts
-    };
-
     return (
-      <ATheme
+      <AMount
         {...rest}
-        ref={combinedRef}
+        ref={ref}
         className={className}
+        component={ATheme}
+        wrapClassName="a-app--wrap"
         persist={persistTheme}
         defaultTheme={defaultTheme}>
-        <AAppContext.Provider value={appContext}>
-          <div ref={wrapRef} className={wrapClassName}>
-            {children}
-          </div>
-          <AToastPlate />
-        </AAppContext.Provider>
-      </ATheme>
+        {children}
+      </AMount>
     );
   }
 );
-
-AApp.defaultProps = {
-  animations: true,
-  scrollbars: true
-};
 
 AApp.propTypes = {
   /**

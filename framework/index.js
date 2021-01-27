@@ -80,7 +80,7 @@ import {ATheme, useATheme} from "./components/ATheme";
 import AToast from "./components/AToast";
 import ATooltip from "./components/ATooltip";
 import ATree from "./components/ATree";
-import {useAToaster} from "./components/AToaster";
+import {useAToaster, AToastPlate} from "./components/AToaster";
 
 export {
   AAccordion,
@@ -159,6 +159,7 @@ export {
   ATimelineItemTitle,
   ATheme,
   AToast,
+  AToastPlate,
   ATooltip,
   ATree,
   useATheme,
