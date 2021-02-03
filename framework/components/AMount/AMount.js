@@ -1,5 +1,5 @@
 import PropTypes from "prop-types";
-import React, {forwardRef, useRef, useState} from "react";
+import React, {forwardRef, useContext, useRef, useState} from "react";
 
 import AAppContext from "../AApp/AAppContext";
 import {AToastPlate} from "../AToaster";
@@ -19,7 +19,8 @@ const AMount = forwardRef(
     const newWrapRef = useRef(null);
     const newAppRef = useRef(null);
     const combinedRef = useCombinedRefs(ref, newAppRef);
-    const [toasts, setToasts] = useState([]);
+    const {toasts, setToasts} = useContext(AAppContext);
+    const [toasts2, setToasts2] = useState([]);
 
     let className = "a-mount";
     if (propsClassName) {
@@ -36,8 +37,8 @@ const AMount = forwardRef(
     const appContext = {
       appRef: combinedRef,
       wrapRef: newWrapRef,
-      toasts,
-      setToasts
+      toasts: toasts || toasts2,
+      setToasts: setToasts || setToasts2
     };
 
     return (

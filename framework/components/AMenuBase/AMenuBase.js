@@ -114,10 +114,10 @@ const calculateMenuPosition = (
     window.getComputedStyle(combinedRef.current).marginTop
   );
 
-  const xOffset = appRef.current.offsetParent.isSameNode(document.body)
+  const xOffset = appRef.current.offsetParent?.isSameNode(document.body)
     ? window.pageXOffset
     : wrapCoords.left - appCoords.left;
-  const yOffset = appRef.current.offsetParent.isSameNode(document.body)
+  const yOffset = appRef.current.offsetParent?.isSameNode(document.body)
     ? window.pageYOffset
     : wrapCoords.top - appCoords.top;
 
