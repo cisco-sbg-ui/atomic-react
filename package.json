@@ -1,6 +1,6 @@
 {
   "name": "@cisco-ats/atomic-react",
-  "version": "2.12.1",
+  "version": "2.12.2",
   "description": "",
   "main": "index.js",
   "module": "lib/index.js",
