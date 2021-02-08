@@ -74,6 +74,13 @@ const ASlider = forwardRef(
       }
     }, [validationState, value, rules]); // eslint-disable-line react-hooks/exhaustive-deps
 
+    const thumb1Position = Array.isArray(value)
+      ? (value[0] * 100) / (max - min)
+      : null;
+    const thumb2Position = Array.isArray(value)
+      ? (value[1] * 100) / (max - min)
+      : (value * 100) / (max - min);
+
     const roundToStep = (val) => {
       const realStep = (step * 100) / (max - min);
       var resto = floatSafeRemainder(val, realStep);
@@ -211,13 +218,6 @@ const ASlider = forwardRef(
       mouseUpHandler2,
       mouseMoveHandler2
     ]);
-
-    const thumb1Position = Array.isArray(value)
-      ? (value[0] * 100) / (max - min)
-      : null;
-    const thumb2Position = Array.isArray(value)
-      ? (value[1] * 100) / (max - min)
-      : (value * 100) / (max - min);
 
     const validate = (testValue = value) => {
       if (rules || required) {
