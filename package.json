@@ -48,7 +48,7 @@
     "@rollup/plugin-commonjs": "^17.1.0",
     "@rollup/plugin-json": "^4.1.0",
     "@rollup/plugin-node-resolve": "^11.1.1",
-    "algoliasearch": "^4.8.4",
+    "algoliasearch": "^4.8.5",
     "babel-eslint": "^10.1.0",
     "babel-loader": "^8.2.2",
     "babel-plugin-detective": "^2.0.0",
