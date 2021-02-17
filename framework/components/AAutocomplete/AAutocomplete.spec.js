@@ -151,6 +151,9 @@ context("AAutocomplete", () => {
     cy.get("#validation + .playground .a-field-base__hint")
       .eq(0)
       .contains("Food Group is required");
+
+    cy.get("#validation + .playground .a-input-base__clear").click();
+    cy.get("#validation + .playground .a-field-base__hint").should("not.exist");
   });
 
   it("supports themes", () => {
