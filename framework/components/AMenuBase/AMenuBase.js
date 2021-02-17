@@ -25,7 +25,6 @@ const calculateMenuPosition = (
 ) => {
   if (!combinedRef.current) return;
 
-  const appCoords = getRoundedBoundedClientRect(appRef.current);
   const wrapCoords = getRoundedBoundedClientRect(wrapRef.current);
   const anchorCoords = getRoundedBoundedClientRect(anchorRef.current);
   const menuCoords = getRoundedBoundedClientRect(combinedRef.current);
