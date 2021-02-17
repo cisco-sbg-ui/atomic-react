@@ -25,7 +25,6 @@ const calculateMenuPosition = (
 ) => {
   if (!combinedRef.current) return;
 
-  const appCoords = getRoundedBoundedClientRect(appRef.current);
   const wrapCoords = getRoundedBoundedClientRect(wrapRef.current);
   const anchorCoords = getRoundedBoundedClientRect(anchorRef.current);
   const menuCoords = getRoundedBoundedClientRect(combinedRef.current);
@@ -116,10 +115,10 @@ const calculateMenuPosition = (
 
   const xOffset = appRef.current.offsetParent?.isSameNode(document.body)
     ? window.pageXOffset
-    : wrapCoords.left - appCoords.left;
+    : wrapCoords.left;
   const yOffset = appRef.current.offsetParent?.isSameNode(document.body)
     ? window.pageYOffset
-    : wrapCoords.top - appCoords.top;
+    : wrapCoords.top;
 
   const pageWidth =
     document.documentElement.clientWidth + xOffset - wrapRef.current.offsetLeft;
