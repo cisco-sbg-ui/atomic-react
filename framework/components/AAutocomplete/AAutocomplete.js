@@ -215,7 +215,7 @@ const AAutocomplete = forwardRef(
       onClose: () => setIsOpen(false),
       role: "listbox",
       className: "a-autocomplete__menu-items",
-      style: {width: inputBaseSurfaceRef?.current?.clientWidth + 2}
+      style: {width: inputBaseSurfaceRef?.current?.clientWidth + 2 || "auto"}
     };
 
     if (useMenu) {

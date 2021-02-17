@@ -116,10 +116,10 @@ const calculateMenuPosition = (
 
   const xOffset = appRef.current.offsetParent?.isSameNode(document.body)
     ? window.pageXOffset
-    : wrapCoords.left - appCoords.left;
+    : wrapCoords.left;
   const yOffset = appRef.current.offsetParent?.isSameNode(document.body)
     ? window.pageYOffset
-    : wrapCoords.top - appCoords.top;
+    : wrapCoords.top;
 
   const pageWidth =
     document.documentElement.clientWidth + xOffset - wrapRef.current.offsetLeft;
