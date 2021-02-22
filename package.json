@@ -81,7 +81,7 @@
     "glob": "^7.1.6",
     "html-loader": "1.3.2",
     "html-webpack-plugin": "4.5.2",
-    "lodash": "4.17.20",
+    "lodash": "4.17.21",
     "lodash.debounce": "^4.0.8",
     "postcss": "^8.2.6",
     "prettier": "2.2.1",
