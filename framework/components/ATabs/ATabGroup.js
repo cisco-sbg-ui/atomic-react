@@ -10,7 +10,14 @@ import "./ATabs.scss";
 
 const ATabGroup = forwardRef(
   (
-    {className: propsClassName, children, oversized, scrolling, tall, ...rest},
+    {
+      className: propsClassName,
+      children = [],
+      oversized,
+      scrolling,
+      tall,
+      ...rest
+    },
     ref
   ) => {
     const [tabChanged, setTabChanged] = useState(false);
