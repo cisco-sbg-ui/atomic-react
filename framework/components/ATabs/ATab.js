@@ -63,7 +63,7 @@ const ATab = forwardRef(
           scrollToMe(combinedRef);
         });
       }
-    }, [selected, isSelected, combinedRef.current]); // eslint-disable-line react-hooks/exhaustive-deps
+    }, [selected, isSelected, combinedRef]); // eslint-disable-line react-hooks/exhaustive-deps
 
     let className = "a-tab-group__tab";
     if ((tabKey && selected) || isSelected) {

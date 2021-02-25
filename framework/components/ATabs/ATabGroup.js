@@ -36,7 +36,7 @@ const ATabGroup = forwardRef(
           (current) => -Math.max(Math.min(current, maxTranslateValue), 0)
         );
       }
-    }, [scrolling, combinedRef, combinedRef.current, children.length]);
+    }, [scrolling, combinedRef, children.length]);
 
     let className = "a-tab-group";
 
