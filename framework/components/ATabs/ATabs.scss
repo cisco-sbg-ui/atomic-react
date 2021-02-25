@@ -114,8 +114,17 @@ $tab-oversized-margin: 0;
       white-space: nowrap;
       overflow: hidden;
       padding: 0 1px;
-      display: block;
+      display: flex;
+      flex-wrap: nowrap;
     }
+
+    .a-tab-group__tab {
+      flex-shrink: 0;
+    }
+  }
+
+  &__tab-content {
+    display: flex;
   }
 
   &__scroll-left,
@@ -181,7 +190,7 @@ $tab-oversized-margin: 0;
 }
 
 .a-app--animated .a-tab-group {
-  &__tab {
+  &__tab-content {
     transition: transform $transition-duration--fast ease;
   }
 }
