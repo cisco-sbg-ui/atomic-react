@@ -5,38 +5,36 @@ route: /changelog
 
 # Changelog
 
-## 2.12.4
+## 2.12.4 (2021-02-26)
 
 - Refactor tab scrolling
+- Add dates to changelog
 
-## 2.12.3
+## 2.12.3 (2021-02-23)
 
 - Fix for the case where form components using `ADropdown` throw a console error before the `ref` is set
 - Fix for the case where `AMount` menu positions are incorrectly calculated.
 
-## 2.12.2
+## 2.12.2 (2021-02-04)
 
 Add icons:
 
 - `expand`
 - `collapse`
 
-## 2.12.1
+## 2.12.1 (2021-02-04)
 
 - Fix for the case where `AMount` is `position: fixed`
 - Fix for the case where `AMount`/`AToastPlate` has toasts that overlap with an ascendant toast plate
 
-## 2.12.0
+## 2.12.0 (2021-01-27)
 
 - Added, internally, `AToastPlate` to `AMount`
-
-## 2.11.0
-
 - Fixed links using old documentation routing
 - Fixed style specificity on `AAutocomplete` menu
 - Added note to nest `AMount` under `AApp`
 
-## 2.10.0
+## 2.10.0 (2021-01-20)
 
 - Added `ADatePicker` component.
 - Fixed screen bottom edge detection for `AMenuBase`
@@ -44,18 +42,18 @@ Add icons:
 - Added `useMenu` for `ASelect`, `ACombobox`, `AAutocomplete`
 - Deprecated `ADropdown`, `ADropdownMenu`, `ADropdownMenuItem`
 
-## 2.9.0
+## 2.9.0 (2021-01-12)
 
 - Added `placement` for `AToaster` service
 
-## 2.8.0
+## 2.8.0 (2021-01-04)
 
 - Removed `preferConst` from rollup build's json plugin
 - Added scrolling feature to `ATabGroup`
 - Added `ASlider` component
 - Added `AFieldBase` base component
 
-## 2.7.0
+## 2.7.0 (2020-12-03)
 
 - Added `ABreadcrumb` component
 - Updated to Atomic 2.1.0
@@ -96,7 +94,7 @@ Added the following icons:
 - `underline`
 - `would-have-dropped`
 
-## 2.6.0
+## 2.6.0 (2020-11-20)
 
 - Migrated documentation from Storybook to Gatsby
 - Modified `ATheme` for use in SSR
@@ -137,49 +135,49 @@ Added the following icons:
   - `target`
   - `verdict`
 
-## 2.5.7
+## 2.5.7 (2020-10-09)
 
 - Fixed the z-index values for `ATooltip` and `ADialog`
 
-## 2.5.6
+## 2.5.6 (2020-10-07)
 
 - Fixed the specificity of `ADataTable` sort icon styles
 
-## 2.5.5
+## 2.5.5 (2020-09-29)
 
 - Fixed the specificity of `ACombobox` dropdown styles
 
-## 2.5.4
+## 2.5.4 (2020-09-21)
 
 - Fixed the aria role of `ATabGroup`
 
-## 2.5.3
+## 2.5.3 (2020-09-18)
 
 Added the following icons:
 
 - `fatal`
 
-## 2.5.2
+## 2.5.2 (2020-09-09)
 
 - Fixed issue where `APageLoader` styles were not loading if `ADotLoader` wasn't also imported.
 - Fixed issue where `AButton` was not passing the `target` prop if the `component` prop wasn't also specified.
 
-## 2.5.1
+## 2.5.1 (2020-09-03)
 
 - Fixed a linting error with `AToast` scss
 - Fixed a specificity issue with `AHeaderTitle` scss
 
-## 2.5.0
+## 2.5.0 (2020-09-01)
 
 - Added `useAToaster` hook for Toaster service
 - Fixed a typo in docs
 
-## 2.4.0
+## 2.4.0 (2020-08-26)
 
 - Added `AToast` component
 - Fixed numeric step behavior in `ATextInput`
 
-## 2.3.0
+## 2.3.0 (2020-08-25)
 
 - Added `autoFocus` prop to `ATextarea`
 - Fixed `ARadio` off-center button issue
@@ -222,55 +220,55 @@ Updated the following icons:
 - `unlock`
 - `unsynced`
 
-## 2.2.9
+## 2.2.9 (2020-08-17)
 
 - Fixed `validateOnBlur` to not disable validation on `blur` if not present.
 
-## 2.2.8
+## 2.2.8 (2020-08-13)
 
 - Fixed maintaining the autofocus of a child element of `ADialog` on `open`.
 
-## 2.2.7
+## 2.2.7 (2020-08-11)
 
 - Added `sideEffects` to `package.json`, so `lib` build should be treeshake-able by bundlers.
 - Modified `ATextarea` to restrict resize to vertical only.
 
-## 2.2.6
+## 2.2.6 (2020-08-06)
 
 - Added `feedback` icon.
 
-## 2.2.5
+## 2.2.5 (2020-08-06)
 
 - Fixed reference from `AButton` to `AButtonGroupContext` for `lib` build.
 - Fixed reference from form fields to `AFormContext` for `lib` build.
 - Fixed `ASelect` selected item changing after being initialized without a selected item.
 
-## 2.2.4
+## 2.2.4 (2020-08-05)
 
 - Fixed babel preset generation on build server.
 
-## 2.2.2
+## 2.2.2 (2020-07-29)
 
 - Removed absolute positioning on the `ADialog` backdrop when active.
 - Adjusted edge detection for `AMenuBase` to account for the case where `.a-app--wrap` is scrolled.
 
-## 2.2.1
+## 2.2.1 (2020-07-28)
 
 - Added scrollbar styling to `AApp` container, whereas previously was only applying to children.
 
-## 2.2.0
+## 2.2.0 (2020-07-25)
 
 - Added `sort` member to `ADataTable` header objects to enable custom sorting.
 - Added `align` member to `ADataTable` header objects.
 - Fixed issue in `ASelect` where selected item did not update on change in `items`.
 
-## 2.1.1
+## 2.1.1 (2020-07-23)
 
 - Fixed an issue where `closeOnClick` was not working with `AMenu`. Fixed test.
 - Reduced the `z-index` of `AHeader` to appear under menus.
 - Fixed an issue with `ADataTable` where `undefined` would sneak into the class list of headers when `className` is `undefined`.
 
-## 2.1.0
+## 2.1.0 (2020-07-14)
 
 - Changed the `module` entry of `package.json` to point to the `lib` build.
 - Modified `AMenuBase` to position the menu within the viewable area if opened near an edge.
@@ -296,7 +294,7 @@ Added the following components:
 - `APopover`
 - `AProgressbar`
 
-## 2.0.0
+## 2.0.0 (2020-05-20)
 
 - Added test suite for `ADialog` and all other components that were missing one.
 - Docs now fully supports theme switching. Also applied an atomic facelift.
@@ -310,7 +308,7 @@ Added the following components:
 
 **Migration Guide**: If you experience any issues using `<AApp/>`, wrapping the children in `<AContainer/>` will fix most issues.
 
-## 1.11.0
+## 1.11.0 (2020-05-12)
 
 - Added full support for `number` type on `ATextInput`
 - Added support for alternative expand/collapse icons on `AAccordionHeaderTitle` via new `expandIcon` and `collapseIcon` props.
@@ -321,11 +319,11 @@ Added the following icons:
 - `arrow-bar-right`
 - `subtract`
 
-## 1.10.1
+## 1.10.1 (2020-05-11)
 
 - Fixed `AAccordion` issue where the default expanded state would be incorrect under certain circumstances.
 
-## 1.10.0
+## 1.10.0 (2020-05-10)
 
 - Refactored `ASelect`, `ATextInput`, `ACombobox`, `ATextarea` to use `AInputBase`
   - `ASelect` disabled state has style changes to make it consistent with other components.
@@ -346,7 +344,7 @@ Added the following icons:
 
 - `theme`
 
-## 1.9.0
+## 1.9.0 (2020-05-05)
 
 - Added `autoFocus` feature to `ATextInput`. Also added `onClick` handler to the input.
 - Added end to end testing for `ADropdown`, `ASelect`, `ACombobox`, `AAccordion`.
@@ -356,7 +354,7 @@ Added the following icons:
 - Documented the CSS helper classes fully.
 - Removed the `max-height` rule on `.a-accordion__body`.
 
-## 1.8.x
+## 1.8.0 (2020-04-29)
 
 - Added `disableGrammarly`, `autoGrow`, `value`, `onChange` to `ATextarea`
   and set the prop type for `rows` to be `number` instead of `string`
@@ -368,7 +366,7 @@ Added the following icons:
 - `disconnected`
 - `hourglass`
 
-## 1.7.x
+## 1.7.0 (2020-04-29)
 
 - Added end to end testing for `ATextInput`.
 
@@ -377,7 +375,7 @@ Added the following components:
 - `AContextNotification`
 - `ATimeline`
 
-## 1.6.x
+## 1.6.0-2 (2020-04-24)
 
 - Added the `number` type to the `PropTypes` of the `ATextInput` `type` prop.
 - Fixed accordion default collapsed state boolean logic.
@@ -388,7 +386,7 @@ Added the following components:
 
 - `ASwitch`
 
-## 1.5.x
+## 1.5.0-1 (2020-04-21)
 
 - Addressed linter issues (display names, `useEffect` dependencies)
 
@@ -402,7 +400,7 @@ Added the following components:
 - `ADotLoader`
 - `APageLoader`
 
-## 1.4.x
+## 1.4.0-1 (2020-04-16)
 
 - Changing tab `selected` prop to `false` should unselect the tab.
 - Preventing default "ghost" mousedown event in webkit browsers that resulted in `ADropdownMenu` closing prematurely.
@@ -414,7 +412,7 @@ Added the following components:
 - `ACombobox`
 - `AList`
 
-## 1.3.x
+## 1.3.0 (2020-04-13)
 
 - Fixed test font location.
 
@@ -422,7 +420,7 @@ Added the following components:
 
 - `ABadge`
 
-## 1.2.x
+## 1.2.0 (2020-04-09)
 
 - Moved `a-app--scrollbars` to parent node.
 - Added test font location.
@@ -432,7 +430,7 @@ Added the following components:
 
 - `ATree`
 
-## 1.1.x
+## 1.1.x (2020-04-06)
 
 - Fixed theme persistence formatting in local storage.
 - Fixed `AFooter` to use HTML `footer` element.
@@ -445,7 +443,7 @@ Added the following icons:
 - `null`
 - `query`
 
-## 1.0.x
+## 1.0.x (2020-03-27)
 
 - add color palette to Application page
 - add field labels to `ATextInput` and `ATextarea`
@@ -482,7 +480,7 @@ Added the following components:
 - Removed `AHeaderToolbar`, `AHeaderToolbarItem`, `AAccordionHeaderToolbar`, `AAccordionHeaderToolbarItem`
 - Input element style changed to fill container width (`ATextInput`, `ATextarea`, `ASelect`).
 
-## 0.2.x
+## 0.2.x (2020-03-16)
 
 - add Getting Started page
 - add Changelog page
