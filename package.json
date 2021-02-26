@@ -1,6 +1,6 @@
 {
   "name": "@cisco-ats/atomic-react",
-  "version": "2.12.3",
+  "version": "2.12.4",
   "description": "",
   "main": "index.js",
   "module": "lib/index.js",
@@ -22,7 +22,7 @@
     "start": "gatsby develop -p 8081",
     "test:lint": "eslint framework --max-warnings 0",
     "test:components": "cross-env WAIT_ON_TIMEOUT=600000 INSTRUMENT=true start-server-and-test start http://localhost:8081 cypress:run",
-    "test:lib": "npm run build && npm run build:babel-preset && start-server-and-test dev:lib http://localhost:8080 cypress:lib",
+    "test:lib": "npm run build && start-server-and-test dev:lib http://localhost:8080 cypress:lib",
     "test": "npm run test:lint && npm run test:components && npm run test:lib",
     "updateSnapshots": "start-server-and-test start http://localhost:8081 cypress:runUpdateSnapshots",
     "upload-coverage": "codecov"

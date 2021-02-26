@@ -1,5 +1,5 @@
 import PropTypes from "prop-types";
-import React, {forwardRef, useRef, useState} from "react";
+import React, {forwardRef, useEffect, useRef, useState} from "react";
 
 import AButton from "../AButton";
 import AIcon from "../AIcon";
@@ -10,14 +10,40 @@ import "./ATabs.scss";
 
 const ATabGroup = forwardRef(
   (
-    {className: propsClassName, children, oversized, scrolling, tall, ...rest},
+    {
+      className: propsClassName,
+      children = [],
+      oversized,
+      scrolling,
+      tall,
+      ...rest
+    },
     ref
   ) => {
     const [tabChanged, setTabChanged] = useState(false);
     const [translateX, setTranslateX] = useState(0);
+    const [showScrolling, setShowScrolling] = useState(false);
 
     const tabGroupRef = useRef(null);
     const combinedRef = useCombinedRefs(ref, tabGroupRef);
+
+    useEffect(() => {
+      if (scrolling && combinedRef && combinedRef.current) {
+        const wrapper = combinedRef.current.querySelector(
+          ".a-tab-group__tab-wrapper"
+        );
+        const content = combinedRef.current.querySelector(
+          ".a-tab-group__tab-content"
+        );
+
+        setShowScrolling(content.scrollWidth - wrapper.clientWidth + 1 > 0);
+
+        const maxTranslateValue = content.scrollWidth - wrapper.clientWidth + 1;
+        setTranslateX(
+          (current) => -Math.max(Math.min(current, maxTranslateValue), 0)
+        );
+      }
+    }, [scrolling, combinedRef, children.length]);
 
     let className = "a-tab-group";
 
@@ -36,27 +62,35 @@ const ATabGroup = forwardRef(
     }
 
     let maxTranslateValue = -1;
-    let showScrolling = false;
     if (scrolling && combinedRef && combinedRef.current) {
       const wrapper = combinedRef.current.querySelector(
         ".a-tab-group__tab-wrapper"
       );
-      maxTranslateValue = wrapper.scrollWidth - wrapper.clientWidth - 1;
-      showScrolling = scrolling && wrapper.scrollWidth > wrapper.clientWidth;
+      const content = combinedRef.current.querySelector(
+        ".a-tab-group__tab-content"
+      );
+
+      maxTranslateValue = content.scrollWidth - wrapper.clientWidth + 1;
     }
 
     const tabContext = {
       tabChanged,
       setTabChanged,
-      translateX,
       scrollToMe: (meRef) => {
         if (!scrolling) return;
 
         const tabWrapper = combinedRef.current.querySelector(
           ".a-tab-group__tab-wrapper"
         );
+        const contentWrapper = combinedRef.current.querySelector(
+          ".a-tab-group__tab-content"
+        );
+
+        const maxTranslateValue2 =
+          contentWrapper.scrollWidth - tabWrapper.clientWidth + 1;
 
         tabWrapper.scrollLeft = 0;
+        contentWrapper.scrollLeft = 0;
 
         const selectedTabBounds = getRoundedBoundedClientRect(meRef.current);
         const tabWrapperBounds = getRoundedBoundedClientRect(tabWrapper);
@@ -70,7 +104,7 @@ const ATabGroup = forwardRef(
         setTranslateX(
           (current) =>
             -Math.max(
-              Math.min(translateValue - 1 - current, maxTranslateValue),
+              Math.min(translateValue - 1 - current, maxTranslateValue2),
               0
             )
         );
@@ -113,9 +147,13 @@ const ATabGroup = forwardRef(
           </AButton>
         )}
         <div className="a-tab-group__tab-wrapper">
-          <ATabContext.Provider value={tabContext}>
-            {children}
-          </ATabContext.Provider>
+          <div
+            className="a-tab-group__tab-content"
+            style={{transform: `translateX(${translateX}px)`}}>
+            <ATabContext.Provider value={tabContext}>
+              {children}
+            </ATabContext.Provider>
+          </div>
         </div>
         {showScrolling && (
           <AButton
@@ -145,6 +183,7 @@ const ATabGroup = forwardRef(
                 translateValue - 1,
                 maxTranslateValue
               );
+
               setTranslateX(-finalTranslateValue);
             }}>
             <AIcon>chevron-right</AIcon>

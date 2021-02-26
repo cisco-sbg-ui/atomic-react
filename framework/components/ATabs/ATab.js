@@ -27,7 +27,6 @@ const ATab = forwardRef(
       selected,
       tabKey,
       target,
-      style,
       ...rest
     },
     ref
@@ -36,9 +35,7 @@ const ATab = forwardRef(
     const combinedRef = useCombinedRefs(ref, tabRef);
     const [tabId, setTabId] = useState(null);
     const [isSelected, setIsSelected] = useState(null);
-    const {tabChanged, setTabChanged, translateX, scrollToMe} = useContext(
-      ATabContext
-    );
+    const {tabChanged, setTabChanged, scrollToMe} = useContext(ATabContext);
     useEffect(() => {
       if (tabKey) return;
       if (!tabId) {
@@ -62,9 +59,11 @@ const ATab = forwardRef(
 
     useEffect(() => {
       if ((tabKey && selected) || isSelected) {
-        scrollToMe(combinedRef);
+        document.fonts.ready.then(() => {
+          scrollToMe(combinedRef);
+        });
       }
-    }, [selected, isSelected]); // eslint-disable-line react-hooks/exhaustive-deps
+    }, [selected, isSelected, combinedRef]); // eslint-disable-line react-hooks/exhaustive-deps
 
     let className = "a-tab-group__tab";
     if ((tabKey && selected) || isSelected) {
@@ -102,11 +101,7 @@ const ATab = forwardRef(
         onKeyUp && onKeyUp(e);
       },
       role: "tab",
-      tabIndex: 0,
-      style: {
-        ...style,
-        transform: `translateX(${translateX}px)`
-      }
+      tabIndex: 0
     };
 
     if (href) {
