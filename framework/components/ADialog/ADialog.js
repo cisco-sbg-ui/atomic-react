@@ -4,7 +4,8 @@ import React, {
   useContext,
   useEffect,
   useLayoutEffect,
-  useRef
+  useRef,
+  useState
 } from "react";
 import ReactDOM from "react-dom";
 import PropTypes from "prop-types";
@@ -13,8 +14,6 @@ import AAppContext from "../AApp/AAppContext";
 import {useCombinedRefs} from "../../utils/hooks";
 import {keyCodes} from "../../utils/helpers";
 import "./ADialog.scss";
-
-let launcherElement = null;
 
 const ADialog = forwardRef(
   (
@@ -28,13 +27,15 @@ const ADialog = forwardRef(
     },
     ref
   ) => {
+    const [launcherElement, setLauncherElement] = useState(null);
+
     useLayoutEffect(() => {
       if (open) {
-        launcherElement = document.activeElement;
+        setLauncherElement(document.activeElement);
       } else {
         launcherElement && launcherElement.focus();
       }
-    }, [open]);
+    }, [open]); // eslint-disable-line react-hooks/exhaustive-deps
 
     const {appRef} = useContext(AAppContext);
 
