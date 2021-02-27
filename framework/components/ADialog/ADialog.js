@@ -35,7 +35,7 @@ const ADialog = forwardRef(
       } else {
         launcherElement && launcherElement.focus();
       }
-    }, [open]);
+    }, [open]); // eslint-disable-line react-hooks/exhaustive-deps
 
     const {appRef} = useContext(AAppContext);
 
