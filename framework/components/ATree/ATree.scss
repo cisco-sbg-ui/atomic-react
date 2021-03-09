@@ -12,7 +12,7 @@
       background-color: map-deep-get($theme, "tree", "background-color--focus");
     }
 
-    > .a-button:focus {
+    > .a-tree__chevron.a-button:focus {
       box-shadow: none;
       overflow: visible;
 

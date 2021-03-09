@@ -343,17 +343,18 @@ const AMenuBase = forwardRef(
     }
 
     return (
-      open &&
-      appRef.current &&
-      ReactDOM.createPortal(
-        <div {...rest} ref={combinedRef} className={className} style={style}>
-          {pointer && (
-            <div className="a-menu-base__pointer" style={pointerStyle} />
-          )}
-          {children}
-        </div>,
-        appRef.current
-      )
+      (open &&
+        appRef.current &&
+        ReactDOM.createPortal(
+          <div {...rest} ref={combinedRef} className={className} style={style}>
+            {pointer && (
+              <div className="a-menu-base__pointer" style={pointerStyle} />
+            )}
+            {children}
+          </div>,
+          appRef.current
+        )) ||
+      null
     );
   }
 );

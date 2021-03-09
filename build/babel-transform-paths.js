@@ -14,37 +14,37 @@ function listener(path, file) {
   }
 
   if (path.node.value === "./AAccordionContext") {
-    path.node.value = join("../../../AAccordionContext");
+    path.node.value = "./../../../AAccordionContext";
   }
 
   if (path.node.value === "./AAccordionPanelContext") {
-    path.node.value = join("../../../AAccordionPanelContext");
+    path.node.value = "./../../../AAccordionPanelContext";
   }
 
   if (
     path.node.value === "../AButtonGroup/AButtonGroupContext" ||
     path.node.value === "./AButtonGroupContext"
   ) {
-    path.node.value = join("../../../AButtonGroupContext");
+    path.node.value = "./../../../AButtonGroupContext";
   }
 
   if (
     path.node.value === "../AForm/AFormContext" ||
     path.node.value === "./AFormContext"
   ) {
-    path.node.value = join("../../../AFormContext");
+    path.node.value = "./../../../AFormContext";
   }
 
   if (path.node.value === "./ATabContext") {
-    path.node.value = join("../../../ATabContext");
+    path.node.value = "./../../../ATabContext";
   }
 
   if (path.node.value === "./AThemeContext") {
-    path.node.value = join("../../../AThemeContext");
+    path.node.value = "./../../../AThemeContext";
   }
 
   if (path.node.value.endsWith(".scss") || path.node.value.endsWith(".json")) {
     const from = dirname(relative(file.opts.cwd, file.opts.filename));
-    path.node.value = join("../../../", from, path.node.value);
+    path.node.value = "./" + join("../../../", from, path.node.value);
   }
 }
