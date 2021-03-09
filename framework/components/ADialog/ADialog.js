@@ -92,23 +92,24 @@ const ADialog = forwardRef(
     };
 
     return (
-      open &&
-      appRef.current &&
-      ReactDOM.createPortal(
-        <>
-          <div className={backdropClassName} />
-          <div
-            {...rest}
-            role="document"
-            tabIndex={0}
-            ref={combinedRef}
-            className={className}
-            onClick={onClickHandler}>
-            {children}
-          </div>
-        </>,
-        appRef.current
-      )
+      (open &&
+        appRef.current &&
+        ReactDOM.createPortal(
+          <>
+            <div className={backdropClassName} />
+            <div
+              {...rest}
+              role="document"
+              tabIndex={0}
+              ref={combinedRef}
+              className={className}
+              onClick={onClickHandler}>
+              {children}
+            </div>
+          </>,
+          appRef.current
+        )) ||
+      null
     );
   }
 );
