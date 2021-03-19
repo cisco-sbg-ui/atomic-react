@@ -1,6 +1,7 @@
 import PropTypes from "prop-types";
-import React, {forwardRef, useLayoutEffect, useState} from "react";
+import React, {forwardRef, useState} from "react";
 
+import {useIsomorphicLayoutEffect} from "../../utils/hooks";
 import AThemeContext from "./AThemeContext";
 
 const LS_KEY = "persist-atomic-react-theme";
@@ -12,7 +13,7 @@ const ATheme = forwardRef(
   ) => {
     const [currentTheme, setCurrentTheme] = useState("dusk");
 
-    useLayoutEffect(() => {
+    useIsomorphicLayoutEffect(() => {
       let initialTheme = "default";
       if (persist) {
         if (Object.prototype.hasOwnProperty.call(localStorage, LS_KEY)) {

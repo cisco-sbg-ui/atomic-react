@@ -1,4 +1,4 @@
-import {useEffect, useRef} from "react";
+import {useEffect, useLayoutEffect, useRef} from "react";
 
 export const useCombinedRefs = (...refs) => {
   const targetRef = useRef();
@@ -17,3 +17,6 @@ export const useCombinedRefs = (...refs) => {
 
   return targetRef;
 };
+
+export const useIsomorphicLayoutEffect =
+  typeof window !== "undefined" ? useLayoutEffect : useEffect;

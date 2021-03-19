@@ -166,19 +166,9 @@ Add the ESLint plugin to your ESLint config:
 
 ## Getting Access to Artifactory
 
-(borrowed from [threatgrid/ats-integrations/README](https://github.com/threatgrid/ats-integrations))
-
 Use the artifactory instance at https://devhub.cisco.com/
 
-Devhub is the DMZ-hosted partial mirror of the internal npm repository [engci-maven](http://engci-maven.cisco.com).
-
-Submit the [request access form](https://engit.cisco.com/ci/#/request/question) with the following information:
-
-- **Service Offering:** DevHub
-- **Category:** Additional Access
-- **DevHub Team Name/Repository:** cisco-threat-response-npm - https://devhub.cisco.com/artifactory/cisco-threat-response-npm/
-
-Upon successful access to the repo, login to devhub (generate/retrieve your API key from your devhub profile):
+Use your CEC credentials to login to devhub and generate/retrieve your API key from your devhub profile. Then modify your `.npmrc` using the following commands:
 
 ```
 npm login --registry=https://devhub.cisco.com/artifactory/api/npm/cisco-threat-response-npm/ --scope=@cisco-ats
@@ -192,3 +182,5 @@ Afterwards, your `~/.npmrc` file will look something like:
 @cisco-ats:registry=https://devhub.cisco.com/artifactory/api/npm/cisco-threat-response-npm/
 //devhub.cisco.com/artifactory/api/npm/cisco-threat-response-npm/:_authToken=XXXxSOMExBIGxJWTxXXX
 ```
+
+...and you will be able to continue with the install command.
