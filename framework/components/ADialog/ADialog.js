@@ -3,7 +3,6 @@ import React, {
   useCallback,
   useContext,
   useEffect,
-  useLayoutEffect,
   useRef,
   useState
 } from "react";
@@ -11,7 +10,7 @@ import ReactDOM from "react-dom";
 import PropTypes from "prop-types";
 
 import AAppContext from "../AApp/AAppContext";
-import {useCombinedRefs} from "../../utils/hooks";
+import {useCombinedRefs, useIsomorphicLayoutEffect} from "../../utils/hooks";
 import {keyCodes} from "../../utils/helpers";
 import "./ADialog.scss";
 
@@ -29,7 +28,7 @@ const ADialog = forwardRef(
   ) => {
     const [launcherElement, setLauncherElement] = useState(null);
 
-    useLayoutEffect(() => {
+    useIsomorphicLayoutEffect(() => {
       if (open) {
         setLauncherElement(document.activeElement);
       } else {
