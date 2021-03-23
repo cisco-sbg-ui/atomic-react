@@ -25,7 +25,7 @@ export default function Layout({data}) {
         defer={false}>
         <link rel="shortcut icon" href="/favicon.ico" />
       </Helmet>
-      <AApp persistTheme>
+      <AApp persistTheme style={{minHeight: "100vh"}}>
         <HiddenFontSwatches />
         <AContainer fluid className="pa-0">
           <ARow noGutters>
