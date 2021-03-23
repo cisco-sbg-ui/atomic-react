@@ -1,4 +1,5 @@
 import React, {useEffect, useRef} from "react";
+import {useABreakpoint} from "../framework";
 
 const ToasterComponent = () => {
   const {addToast} = useAToaster();
@@ -23,8 +24,14 @@ const ThemedComponent = ({children}) => {
 
 const App = () => {
   const buttonRef = useRef(null);
+  const {xs, sm, md, lg, xl} = useABreakpoint();
   return (
     <AApp>
+      {xs && "Extra Small"}
+      {sm && "Small"}
+      {md && "Medium"}
+      {lg && "Large"}
+      {xl && "Extra Large"}
       <AAccordion>
         <AAccordionPanel>
           <AAccordionHeader />

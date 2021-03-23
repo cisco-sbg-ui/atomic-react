@@ -1,0 +1,37 @@
+---
+name: Breakpoint
+route: /services/breakpoint
+components: useABreakpoint
+---
+
+import {Playground, Props} from "../../../docs";
+
+# Breakpoint Service
+
+## Install
+
+Integrate with your build to [auto-import](/#integrating), or add an import in your component:
+
+```
+import {useABreakpoint} from "@cisco-ats/atomic-react/ABreakpoint";
+// or if you're able to treekshake node_modules
+import {useABreakpoint} from "@cisco-ats/atomic-react";
+```
+
+## Usage
+
+<Playground
+  code={`() => {
+  const {xs, sm, md, lg, xl} = useABreakpoint();
+  return (
+    <p>
+      {xs && "Extra Small"}
+      {sm && "Small"}
+      {md && "Medium"}
+      {lg && "Large"}
+      {xl && "Extra Large"}
+    </p>
+  );
+}
+`}
+/>
