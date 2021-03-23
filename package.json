@@ -92,7 +92,7 @@
     "react-is": "17.0.1",
     "react-live": "2.2.3",
     "remark-slug": "6.0.0",
-    "rollup": "2.42.2",
+    "rollup": "2.42.3",
     "rollup-plugin-babel": "4.4.0",
     "rollup-plugin-filesize": "9.1.1",
     "rollup-plugin-local-resolve": "1.0.7",
