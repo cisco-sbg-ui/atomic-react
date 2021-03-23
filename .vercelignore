@@ -1,0 +1,15 @@
+.cache/
+.github/
+.nyc_output/
+coverage/
+cypress/
+fonts/
+lib-demo/
+public/
+
+.buildme
+.travis.yml
+codecov.yml
+cypress.json
+README.md
+webpack.lib-demo.config.js
