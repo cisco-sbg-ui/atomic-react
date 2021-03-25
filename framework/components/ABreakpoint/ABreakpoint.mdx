@@ -22,14 +22,19 @@ import {useABreakpoint} from "@cisco-ats/atomic-react";
 
 <Playground
   code={`() => {
-  const {xs, sm, md, lg, xl} = useABreakpoint();
+  const breakpointHelper = useABreakpoint();
   return (
     <p>
-      {xs && "Extra Small"}
-      {sm && "Small"}
-      {md && "Medium"}
-      {lg && "Large"}
-      {xl && "Extra Large"}
+      {breakpointHelper.xs && "Extra Small"}
+      {breakpointHelper.sm && "Small"}
+      {breakpointHelper.md && "Medium"}
+      {breakpointHelper.lg && "Large"}
+      {breakpointHelper.xl && "Extra Large"}
+      <br />
+      Full Object:
+      <pre><code>
+      {JSON.stringify(breakpointHelper, null, 2)}
+      </code></pre>
     </p>
   );
 }
