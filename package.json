@@ -41,7 +41,7 @@
     "@babel/plugin-proposal-class-properties": "7.13.0",
     "@babel/preset-env": "7.13.12",
     "@babel/preset-react": "7.13.13",
-    "@cypress/code-coverage": "3.9.2",
+    "@cypress/code-coverage": "3.9.3",
     "@hot-loader/react-dom": "17.0.1",
     "@mdx-js/mdx": "1.6.22",
     "@mdx-js/react": "1.6.22",
