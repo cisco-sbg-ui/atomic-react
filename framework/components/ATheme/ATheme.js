@@ -12,6 +12,8 @@ const ATheme = forwardRef(
     ref
   ) => {
     const [currentTheme, setCurrentTheme] = useState("dusk");
+    const isDark = currentTheme === "dusk"
+    const isLight = currentTheme !== "dusk"
 
     useIsomorphicLayoutEffect(() => {
       let initialTheme = "default";
@@ -35,6 +37,8 @@ const ATheme = forwardRef(
 
     const themeContext = {
       currentTheme,
+      isDark,
+      isLight,
       setCurrentTheme: (theme) => {
         const newTheme = theme === "dusk" ? theme : "default";
         persist && localStorage?.setItem(LS_KEY, newTheme);
