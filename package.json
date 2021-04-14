@@ -72,7 +72,7 @@
     "gatsby": "3.2.1",
     "gatsby-plugin-algolia": "0.18.2",
     "gatsby-plugin-mdx": "2.3.0",
-    "gatsby-plugin-page-creator": "3.2.0",
+    "gatsby-plugin-page-creator": "3.3.0",
     "gatsby-plugin-react-helmet": "4.3.0",
     "gatsby-plugin-react-svg": "3.0.1",
     "gatsby-plugin-sass": "4.2.0",
@@ -102,7 +102,7 @@
     "sass-loader": "11.0.1",
     "start-server-and-test": "1.12.1",
     "style-loader": "2.0.0",
-    "webpack": "5.32.0",
+    "webpack": "5.33.2",
     "webpack-cli": "4.6.0",
     "webpack-dev-server": "3.11.2"
   },
