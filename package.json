@@ -28,9 +28,9 @@
     "upload-coverage": "codecov"
   },
   "peerDependencies": {
+    "prop-types": "^15.0.0",
     "react": "^16.8.0 || ^17.0.0",
-    "react-dom": "^16.8.0 || ^17.0.0",
-    "prop-types": "^15.0.0"
+    "react-dom": "^16.8.0 || ^17.0.0"
   },
   "dependencies": {
     "babel-plugin-auto-import": "1.1.0"
