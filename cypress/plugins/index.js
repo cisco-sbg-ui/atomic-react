@@ -1,6 +1,6 @@
 const {initPlugin} = require("cypress-plugin-snapshots/plugin");
 
-const screenWidth = 1480;
+const screenWidth = 1280;
 const screenHeight = 720;
 
 /**
