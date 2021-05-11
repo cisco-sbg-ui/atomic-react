@@ -21,7 +21,7 @@ context("AAutocomplete", () => {
   });
 
   it("opens and closes appropriately", () => {
-    cy.intercept("POST", "https://nut7b5fgkt", {
+    cy.intercept("POST", "https://nut7b5fgkt*.*.*/**", {
       headers: {
         "access-control-allow-origin": window.location.origin,
         "Access-Control-Allow-Credentials": "true"
