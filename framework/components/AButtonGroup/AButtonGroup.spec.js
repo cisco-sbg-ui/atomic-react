@@ -3,7 +3,20 @@ context("AButtonGroup", () => {
     cy.visitInLightTheme("http://localhost:8081/components/button-group");
   });
 
-  // TODO: Test interactability
+  it("validates", () => {
+    cy.get("#validation + .playground .a-button").contains("One").click();
+    cy.get("#validation + .playground .a-button").contains("Three").click();
+    cy.get("#validation + .playground .playground__preview").contains(
+      "Whatever you do"
+    );
+
+    cy.get("#validation + .playground .a-button").contains("One").click();
+    cy.get("#validation + .playground .a-button").contains("Two").click();
+    cy.get("#validation + .playground .a-button").contains("Three").click();
+    cy.get("#validation + .playground .playground__preview").contains(
+      "required"
+    );
+  });
 
   it("supports themes", () => {
     if (Cypress.env("snapshots") === "off") return;

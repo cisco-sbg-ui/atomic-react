@@ -10,7 +10,7 @@ $btn-group-icon-font-size: rem(1);
     border-left: $border-width solid transparent;
   }
 
-  > .a-button {
+  &__wrapper > .a-button {
     background-color: transparent;
     color: map-deep-get($theme, "button", "group", "color");
     box-shadow: none;
@@ -45,7 +45,7 @@ $btn-group-icon-font-size: rem(1);
 .a-button-group {
   position: relative;
   display: inline-flex;
-  align-items: center;
+  align-items: start;
   justify-content: center;
   vertical-align: top;
 
@@ -57,13 +57,13 @@ $btn-group-icon-font-size: rem(1);
     margin: $btn-group-button-margin;
   }
 
-  > .a-button:not(:last-child),
-  > .a-button-group:not(:last-child) > .a-button {
+  &__wrapper > .a-button:not(:last-child),
+  &__wrapper > .a-button-group:not(:last-child) > .a-button {
     border-top-right-radius: 0;
     border-bottom-right-radius: 0;
   }
-  > .a-button:not(:first-child),
-  > .a-button-group:not(:first-child) > .a-button {
+  &__wrapper > .a-button:not(:first-child),
+  &__wrapper > .a-button-group:not(:first-child) > .a-button {
     border-top-left-radius: 0;
     border-bottom-left-radius: 0;
   }
