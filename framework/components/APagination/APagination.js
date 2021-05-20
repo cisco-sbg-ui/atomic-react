@@ -12,6 +12,7 @@ const APagination = forwardRef(
   (
     {
       className: propsClassName,
+      localeFormatting,
       onNext,
       onPageChange,
       onPrevious,
@@ -52,6 +53,11 @@ const APagination = forwardRef(
     const content = () => {
       if (total && resultsPerPage) {
         const pages = Math.ceil(total / resultsPerPage);
+        const firstResultIndex = (page - 1) * resultsPerPage + 1;
+        const lastResultIndex = Math.min(
+          total,
+          (page - 1) * resultsPerPage + resultsPerPage
+        );
         return (
           <>
             <div className="a-pagination__results-per-page">
@@ -96,9 +102,14 @@ const APagination = forwardRef(
               per page
             </div>
             <div className="a-pagination__results">
-              {(page - 1) * resultsPerPage + 1}-
-              {Math.min(total, (page - 1) * resultsPerPage + resultsPerPage)} of{" "}
-              {total}
+              {localeFormatting
+                ? firstResultIndex.toLocaleString()
+                : firstResultIndex}
+              -
+              {localeFormatting
+                ? lastResultIndex.toLocaleString()
+                : lastResultIndex}{" "}
+              of {localeFormatting ? total.toLocaleString() : total}
             </div>
             <AButton
               className="a-pagination__first"
@@ -150,7 +161,7 @@ const APagination = forwardRef(
                 value={workingPage || ""}
                 type="number"
               />
-              /{pages}
+              /{localeFormatting ? pages.toLocaleString() : pages}
             </div>
             <AButton
               className="a-pagination__next"
@@ -210,7 +221,7 @@ const APagination = forwardRef(
                   onChange={(selectedValue) => onPageChange(selectedValue)}>
                   {startPages.map((x) => (
                     <AButton value={x} key={x}>
-                      {x}
+                      {localeFormatting ? x.toLocaleString() : x}
                     </AButton>
                   ))}
                 </AButtonGroup>
@@ -223,7 +234,7 @@ const APagination = forwardRef(
                 onChange={(selectedValue) => onPageChange(selectedValue)}>
                 {midPages.map((x) => (
                   <AButton value={x} key={x}>
-                    {x}
+                    {localeFormatting ? x.toLocaleString() : x}
                   </AButton>
                 ))}
               </AButtonGroup>
@@ -236,7 +247,7 @@ const APagination = forwardRef(
                   onChange={(selectedValue) => onPageChange(selectedValue)}>
                   {endPages.map((x) => (
                     <AButton value={x} key={x}>
-                      {x}
+                      {localeFormatting ? x.toLocaleString() : x}
                     </AButton>
                   ))}
                 </AButtonGroup>
@@ -286,6 +297,10 @@ const APagination = forwardRef(
 );
 
 APagination.propTypes = {
+  /**
+   * Sets numeric displays to be locale formatted.
+   */
+  localeFormatting: PropTypes.bool,
   /**
    * Handles the activation of the `Next` button when the number of pages isn't determined.
    */
