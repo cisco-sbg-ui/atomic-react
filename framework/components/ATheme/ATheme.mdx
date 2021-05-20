@@ -33,12 +33,13 @@ import {useATheme} from "@cisco-ats/atomic-react/ATheme";
 <Playground
   noInline
   code={`const ThemeSwitcher = () => {
-  const {currentTheme, setCurrentTheme} = useATheme();
+  const {currentTheme, setCurrentTheme, isDark, isLight} = useATheme();
   return (
     <div
       style={{
         padding: 20,
-        backgroundColor: currentTheme === "default" ? "#fff" : "#000"
+        backgroundColor: currentTheme === "default" ? "#eee" : "#000",
+        color: currentTheme === "default" ? "#000" : "#eee",
       }}>
       <AButtonGroup
         selectedValues={[currentTheme]}
@@ -46,6 +47,9 @@ import {useATheme} from "@cisco-ats/atomic-react/ATheme";
         <AButton value="default">Default</AButton>
         <AButton value="dusk">Dusk</AButton>
       </AButtonGroup>
+      <hr/>
+      <div>isDark: {isDark.toString()}</div>
+      <div>isLight: {isLight.toString()}</div>
     </div>
   );
 };
