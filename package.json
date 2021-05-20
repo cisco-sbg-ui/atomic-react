@@ -71,7 +71,7 @@
     "eslint-plugin-react-hooks": "4.2.0",
     "gatsby": "3.5.1",
     "gatsby-plugin-algolia": "0.20.0",
-    "gatsby-plugin-mdx": "2.4.0",
+    "gatsby-plugin-mdx": "2.5.1",
     "gatsby-plugin-page-creator": "3.5.0",
     "gatsby-plugin-react-helmet": "4.5.0",
     "gatsby-plugin-react-svg": "3.0.1",
