@@ -61,7 +61,7 @@
     "cypress-plugin-snapshots": "1.4.4",
     "cypress-plugin-tab": "1.0.5",
     "cypress-wait-until": "1.7.1",
-    "dotenv": "9.0.2",
+    "dotenv": "10.0.0",
     "eslint": "7.27.0",
     "eslint-config-prettier": "8.3.0",
     "eslint-plugin-cypress": "2.11.3",
