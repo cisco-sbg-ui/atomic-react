@@ -1,3 +1,5 @@
+@use "sass:math";
+
 @import "../../styles";
 @import "./mixins";
 
@@ -17,12 +19,12 @@
   @include make-row;
 
   &--dense {
-    margin-right: -$form-grid-gutter / 2;
-    margin-left: -$form-grid-gutter / 2;
+    margin-right: math.div(-$form-grid-gutter, 2);
+    margin-left: math.div(-$form-grid-gutter, 2);
 
     > .a-col,
     > [class*="a-col-"] {
-      padding: $form-grid-gutter / 2;
+      padding: math.div($form-grid-gutter, 2);
     }
   }
 }

@@ -1,3 +1,5 @@
+@use "sass:math";
+
 $font-family: CiscoSans, Arial, sans-serif !default;
 $font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas,
   "Liberation Mono", "Courier New", monospace !default;
@@ -93,15 +95,15 @@ $grid-gutter: $spacer * 5 !default;
 $form-grid-gutter: $spacer * 2 !default;
 $grid-gutter-width: 30px !default;
 
-$container-padding-x: $grid-gutter / 2 !default;
+$container-padding-x: math.div($grid-gutter, 2) !default;
 
 $grid-gutters: () !default;
 $grid-gutters: map-merge(
   (
-    "xs": $grid-gutter / 12,
-    "sm": $grid-gutter / 6,
-    "md": $grid-gutter / 3,
-    "lg": $grid-gutter * 2/3,
+    "xs": math.div($grid-gutter, 12),
+    "sm": math.div($grid-gutter, 6),
+    "md": math.div($grid-gutter, 3),
+    "lg": math.div($grid-gutter * 2, 3),
     "xl": $grid-gutter
   ),
   $grid-gutters
