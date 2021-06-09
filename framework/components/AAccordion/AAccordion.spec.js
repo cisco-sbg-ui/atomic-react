@@ -4,35 +4,35 @@ context("AAccordion", () => {
   });
 
   it("has appropriate default state", () => {
-    cy.get("#usage + .playground .a-accordion__card")
+    cy.get("#uncontrolled-usage + .playground .a-accordion__card")
       .eq(0)
       .should("not.have.attr", "aria-expanded");
-    cy.get("#usage + .playground .a-accordion__card")
+    cy.get("#uncontrolled-usage + .playground .a-accordion__card")
       .eq(1)
       .should("have.attr", "aria-expanded", "true");
-    cy.get("#usage + .playground .a-accordion__card")
+    cy.get("#uncontrolled-usage + .playground .a-accordion__card")
       .eq(2)
       .should("have.attr", "aria-expanded", "false");
-    cy.get("#usage + .playground .a-accordion__card")
+    cy.get("#uncontrolled-usage + .playground .a-accordion__card")
       .eq(3)
       .should("have.attr", "aria-expanded", "true");
   });
 
   it("tabs appropriately", () => {
-    cy.get("#usage + .playground .a-button").eq(0).focus().tab();
-    cy.get("#usage + .playground .a-accordion__link")
+    cy.get("#uncontrolled-usage + .playground .a-button").eq(0).focus().tab();
+    cy.get("#uncontrolled-usage + .playground .a-accordion__link")
       .eq(1)
       .then(($el) => {
         Cypress.dom.isFocused($el);
       })
       .tab();
-    cy.get("#usage + .playground .a-accordion__link")
+    cy.get("#uncontrolled-usage + .playground .a-accordion__link")
       .eq(2)
       .then(($el) => {
         Cypress.dom.isFocused($el);
       })
       .tab();
-    cy.get("#usage + .playground .a-button")
+    cy.get("#uncontrolled-usage + .playground .a-button")
       .eq(1)
       .then(($el) => {
         Cypress.dom.isFocused($el);
@@ -47,23 +47,45 @@ context("AAccordion", () => {
       .should("have.attr", "aria-label", "add icon");
   });
 
-  it("expands/collapses appropriately", () => {
-    cy.get("#usage + .playground .a-accordion__card")
+  it("expands/collapses appropriately uncontrolled", () => {
+    cy.get("#uncontrolled-usage + .playground .a-accordion__card")
       .eq(1)
       .should("have.attr", "aria-expanded", "true")
       .find(".a-accordion__link")
       .should("have.attr", "role", "button")
       .click();
-    cy.get("#usage + .playground .a-accordion__card")
+    cy.get("#uncontrolled-usage + .playground .a-accordion__card")
       .eq(1)
       .should("have.attr", "aria-expanded", "false")
       .find(".a-accordion__link")
       .type("{enter}");
-    cy.get("#usage + .playground .a-accordion__card")
+    cy.get("#uncontrolled-usage + .playground .a-accordion__card")
       .eq(1)
       .find(".a-accordion__link")
       .type(" ");
-    cy.get("#usage + .playground .a-accordion__card")
+    cy.get("#uncontrolled-usage + .playground .a-accordion__card")
+      .eq(1)
+      .find(".a-accordion__link")
+      .type(" ");
+  });
+
+  it("expands/collapses appropriately controlled", () => {
+    cy.get("#controlled-usage + .playground .a-accordion__card")
+      .eq(1)
+      .should("have.attr", "aria-expanded", "true")
+      .find(".a-accordion__link")
+      .should("have.attr", "role", "button")
+      .click();
+    cy.get("#controlled-usage + .playground .a-accordion__card")
+      .eq(1)
+      .should("have.attr", "aria-expanded", "false")
+      .find(".a-accordion__link")
+      .type("{enter}");
+    cy.get("#controlled-usage + .playground .a-accordion__card")
+      .eq(1)
+      .find(".a-accordion__link")
+      .type(" ");
+    cy.get("#controlled-usage + .playground .a-accordion__card")
       .eq(1)
       .find(".a-accordion__link")
       .type(" ");
@@ -72,10 +94,14 @@ context("AAccordion", () => {
   it("supports themes", () => {
     if (Cypress.env("snapshots") === "off") return;
 
-    cy.get("#usage + .playground .playground__preview").toMatchImageSnapshot();
+    cy.get(
+      "#uncontrolled-usage + .playground .playground__preview"
+    ).toMatchImageSnapshot();
 
     cy.get(".a-switch__box").eq(0).click();
 
-    cy.get("#usage + .playground .playground__preview").toMatchImageSnapshot();
+    cy.get(
+      "#uncontrolled-usage + .playground .playground__preview"
+    ).toMatchImageSnapshot();
   });
 });

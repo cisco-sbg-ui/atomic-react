@@ -24,7 +24,8 @@ const AAccordionHeaderTitle = forwardRef(
     },
     ref
   ) => {
-    const {panelId, setIsFocused, hasBody} = useContext(AAccordionPanelContext);
+    const {panelId, setIsFocused, hasBody, panelKey, isCollapsed, onToggle} =
+      useContext(AAccordionPanelContext);
     const {openedPanels, setOpenedPanels} = useContext(AAccordionContext);
 
     const togglePanel = () => {
@@ -33,6 +34,8 @@ const AAccordionHeaderTitle = forwardRef(
       } else {
         setOpenedPanels([...openedPanels, panelId]);
       }
+
+      onToggle && onToggle(panelKey);
     };
 
     const handleClick = (e) => {
@@ -65,9 +68,11 @@ const AAccordionHeaderTitle = forwardRef(
       className += ` ${propsClassName}`;
     }
 
-    const chevronIcon = !openedPanels.includes(panelId)
-      ? expandIcon
-      : collapseIcon;
+    const chevronIcon =
+      (panelKey && isCollapsed) ||
+      (!panelKey && !openedPanels.includes(panelId))
+        ? expandIcon
+        : collapseIcon;
 
     const props = {};
 

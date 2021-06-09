@@ -8,21 +8,32 @@ import "./AAccordion.scss";
 let accordionPanelCounter = 1;
 
 const AAccordionPanel = forwardRef(
-  ({children, className: propsClassName, collapsed = true, ...rest}, ref) => {
+  (
+    {
+      children,
+      className: propsClassName,
+      collapsed = true,
+      onToggle,
+      panelKey,
+      ...rest
+    },
+    ref
+  ) => {
     const [hasBody, setHasBody] = useState(false);
     const [panelId, setPanelId] = useState(null);
     const [isFocused, setIsFocused] = useState(false);
     const {openedPanels, setOpenedPanels} = useContext(AAccordionContext);
 
     useEffect(() => {
+      if (panelKey) return;
       if (!panelId) {
         const index = accordionPanelCounter++;
         setPanelId(index);
         if (!collapsed) setOpenedPanels((existing) => [...existing, index]);
       }
-    }, [panelId, collapsed, setOpenedPanels]);
+    }, [panelId, collapsed, setOpenedPanels, panelKey]);
 
-    const isCollapsed = !openedPanels.includes(panelId);
+    const isCollapsed = panelKey ? collapsed : !openedPanels.includes(panelId);
     let className = "a-accordion__card";
 
     if (isCollapsed) {
@@ -45,7 +56,10 @@ const AAccordionPanel = forwardRef(
       panelId,
       setIsFocused,
       hasBody,
-      setHasBody
+      setHasBody,
+      panelKey,
+      isCollapsed,
+      onToggle
     };
 
     const props = {};
@@ -63,15 +77,19 @@ const AAccordionPanel = forwardRef(
   }
 );
 
-AAccordionPanel.defaultProps = {
-  collapsed: true
-};
-
 AAccordionPanel.propTypes = {
   /**
    * Sets the default collapsed state.
    */
-  collapsed: PropTypes.bool
+  collapsed: PropTypes.bool,
+  /**
+   *
+   */
+  panelKey: PropTypes.string,
+  /**
+   * Handles the expand/collapse toggle event.
+   */
+  onToggle: PropTypes.func
 };
 
 AAccordionPanel.displayName = "AAccordionPanel";
