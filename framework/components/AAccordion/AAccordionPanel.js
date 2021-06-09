@@ -77,15 +77,19 @@ const AAccordionPanel = forwardRef(
   }
 );
 
-AAccordionPanel.defaultProps = {
-  collapsed: true
-};
-
 AAccordionPanel.propTypes = {
   /**
    * Sets the default collapsed state.
    */
-  collapsed: PropTypes.bool
+  collapsed: PropTypes.bool,
+  /**
+   *
+   */
+  panelKey: PropTypes.string,
+  /**
+   * Handles the expand/collapse toggle event.
+   */
+  onToggle: PropTypes.func
 };
 
 AAccordionPanel.displayName = "AAccordionPanel";
