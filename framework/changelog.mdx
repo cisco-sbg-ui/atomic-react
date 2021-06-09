@@ -5,6 +5,13 @@ route: /changelog
 
 # Changelog
 
+## 2.15.0 (2021-06-09)
+
+- Added controlled mode for `AAccordion`
+- Changed `AButtonGroup` styles to a) not line-break, and b) use `flex-start` instead of `start` to avoid postcss warnings
+- Updated `ATheme` docs to use `ADivider` instead of `hr` element
+- Fixed issue with `ASelect` using deprecated `ADropdown` internally where the menu `ref` is undefined
+
 ## 2.14.1 (2021-05-21)
 
 - Converted deprecated division operator in sass to use math function. **Requires sass 1.33**
@@ -320,7 +327,7 @@ Updated the following icons:
 - Fixed an issue where `ASelect` would crash if object items were used and no default was set.
 - Adjusted `ASimpleTable` styles to ease ability to override `vertical-align`.
 - Added a helper class for `vertical-align`.
-- Add controlled mode for `ATabs`.
+- Added controlled mode for `ATabs`.
 - Added `min`, `max`, `maxLength`, `required`, `rules`, `spinner`, `step`, `validateOnBlur` props to `ATextInput` component.
 - Added `required`, `rules`, `validateOnBlur` props to `ATextarea`, `ASelect`, `AAutocomplete` components.
 - Added `hint`, `required`, `rules`, `validationState` props to `ACheckbox`, `ASwitch`

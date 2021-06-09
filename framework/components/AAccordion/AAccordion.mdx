@@ -30,7 +30,7 @@ import {
 } from "@cisco-ats/atomic-react";
 ```
 
-## Usage
+## Uncontrolled Usage
 
 <Playground
   code={`() => {
@@ -78,6 +78,46 @@ import {
         </AAccordionHeader>
         <AAccordionBody>{LoremIpsum}</AAccordionBody>
       </AAccordionPanel>
+    </AAccordion>
+  );
+}
+`}
+/>
+
+## Controlled Usage
+
+<Playground
+  code={`() => {
+  const [panels, setPanels] = useState([{
+    name: "Panel 1",
+    content: LoremIpsum,
+    collapsed: true
+  },
+  {
+    name: "Panel 2",
+    content: LoremIpsum,
+    collapsed: false
+  },
+  {
+    name: "Panel 3",
+    content: LoremIpsum,
+    collapsed: true
+  }]);
+  return (
+    <AAccordion>
+      {panels.map((panel, index) => (
+        <AAccordionPanel key={index} collapsed={panel.collapsed} panelKey={index} onToggle={(panelKey) => setPanels(panels.map((panel, index) => {
+          if (panelKey === index) {
+            panel.collapsed = !panel.collapsed;
+          }
+          return panel;
+        }))}>
+          <AAccordionHeader>
+            <AAccordionHeaderTitle>{panel.name}</AAccordionHeaderTitle>
+          </AAccordionHeader>
+          <AAccordionBody>{panel.content}</AAccordionBody>
+        </AAccordionPanel>
+      ))}
     </AAccordion>
   );
 }

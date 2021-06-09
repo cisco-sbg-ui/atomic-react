@@ -56,9 +56,8 @@ const ASelect = forwardRef(
     const [isFocused, setIsFocused] = useState(false);
     const [isOpen, setIsOpen] = useState(false);
     const [error, setError] = useState("");
-    const [workingValidationState, setWorkingValidationState] = useState(
-      validationState
-    );
+    const [workingValidationState, setWorkingValidationState] =
+      useState(validationState);
 
     const {register} = useContext(AFormContext);
     useEffect(() => {
@@ -293,7 +292,11 @@ const ASelect = forwardRef(
       },
       role: "listbox",
       className: "a-select__menu-items",
-      style: {width: inputBaseSurfaceRef?.current?.clientWidth + 2 || "auto"}
+      style: {
+        width: inputBaseSurfaceRef?.current?.clientWidth
+          ? inputBaseSurfaceRef.current.clientWidth + 2
+          : "auto"
+      }
     };
 
     if (useMenu) {
