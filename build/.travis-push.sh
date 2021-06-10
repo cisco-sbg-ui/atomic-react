@@ -7,7 +7,7 @@ setup_git() {
 }
 
 commit_snapshots() {
-  git checkout feat/atomic-3
+  git checkout feat/support-react-native
   git add -A
   # Create a new commit with a custom build message
   # with "[skip ci]" to avoid a build loop
@@ -18,7 +18,7 @@ commit_snapshots() {
 push_files() {
   # Add new "origin" with access token in the git URL for authentication
   git remote set-url origin https://frattaro:${GH_TOKEN}@github.com/threatgrid/atomic-react > /dev/null 2>&1
-  git push origin feat/atomic-3 --quiet
+  git push origin feat/support-react-native --quiet
 }
 
 setup_git

@@ -20,11 +20,9 @@ context("ACombobox", () => {
   });
 
   it("opens and closes appropriately", () => {
-    cy.get("#usage + .playground .a-combobox__menu-items")
-      .eq(0)
-      .should("not.be.visible");
+    cy.get(".a-combobox__menu-items").should("not.exist");
     cy.get("#usage + .playground .a-combobox__chevron").eq(0).click();
-    cy.get("#usage + .playground .a-combobox__menu-items")
+    cy.get(".a-combobox__menu-items")
       .eq(0)
       .should("be.visible")
       .prev()
@@ -32,24 +30,18 @@ context("ACombobox", () => {
         Cypress.dom.isFocused($el);
       });
     cy.get("#usage + .playground .a-combobox__chevron").eq(0).click();
-    cy.get("#usage + .playground .a-combobox__menu-items")
-      .eq(0)
-      .should("not.be.visible");
+    cy.get(".a-combobox__menu-items").should("not.exist");
     cy.get("#usage + .playground .a-combobox__input").eq(0).type("{downArrow}");
-    cy.get("#usage + .playground .a-combobox__menu-items")
-      .eq(0)
-      .should("be.visible");
+    cy.get(".a-combobox__menu-items").eq(0).should("be.visible");
     cy.get("#usage + .playground .a-combobox__input").eq(0).type("mmmmm");
     cy.get("#usage + .playground .a-input-base__clear").click();
-    cy.get("#usage + .playground .a-combobox__menu-items")
-      .eq(0)
-      .should("not.be.visible");
+    cy.get(".a-combobox__menu-items").should("not.exist");
     cy.get("#usage + .playground .a-combobox__input").eq(0).type("{downArrow}");
   });
 
   it("tabs appropriately", () => {
     cy.get("#usage + .playground .a-combobox__input").eq(0).click().tab();
-    cy.get("#usage + .playground .a-combobox__menu-items")
+    cy.get(".a-combobox__menu-items")
       .eq(0)
       .find(".a-combobox__menu-item")
       .first()
@@ -61,7 +53,7 @@ context("ACombobox", () => {
 
   it("arrow-keys menus appropriately", () => {
     cy.get("#usage + .playground .a-combobox__input").eq(0).type("{downArrow}");
-    cy.get("#usage + .playground .a-combobox__menu-items")
+    cy.get(".a-combobox__menu-items")
       .eq(0)
       .find(".a-combobox__menu-item")
       .first()
@@ -76,7 +68,7 @@ context("ACombobox", () => {
       .type("{esc}");
 
     cy.get("#usage + .playground .a-combobox__input").eq(0).type("{upArrow}");
-    cy.get("#usage + .playground .a-combobox__menu-items")
+    cy.get(".a-combobox__menu-items")
       .eq(0)
       .find(".a-combobox__menu-item")
       .last()
@@ -101,7 +93,7 @@ context("ACombobox", () => {
 
   it("has appropriate role attributes", () => {
     cy.get("#usage + .playground .a-combobox__input").eq(0).click();
-    cy.get("#usage + .playground .a-combobox__menu-items")
+    cy.get(".a-combobox__menu-items")
       .eq(0)
       .should("have.attr", "role", "listbox")
       .find(".a-combobox__menu-item")

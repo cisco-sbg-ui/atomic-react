@@ -1,12 +1,12 @@
 @import "../../styles";
 
-.a-combobox {
-  .a-dropdown {
-    display: flex;
-    align-items: center;
-    align-self: stretch;
+@include theme(a-combobox) using ($theme) {
+  &__menu-items.a-menu {
+    border-color: map-deep-get($theme, "select", "border-color--focus");
   }
+}
 
+.a-combobox {
   &__input {
     background: transparent;
     box-sizing: border-box;
@@ -29,28 +29,8 @@
     align-self: stretch;
   }
 
-  &__menu-items.a-dropdown__menu {
-    top: 100%;
-    border-bottom-left-radius: $border-radius--sm;
-    border-bottom-right-radius: $border-radius--sm;
-    cursor: pointer;
-    left: -1px;
-    margin: 0;
-    overflow: auto;
-    right: -25px;
-    user-select: none;
-    z-index: 999;
-
-    .a-combobox__menu-item.a-dropdown__item {
-      height: 28px;
-      line-height: $line-height--lg;
-      padding: 2px 0 0 0;
-      text-indent: 6px;
-    }
-  }
-
-  &__menu-item {
-    height: 28px;
+  &__menu-item.a-list-item {
+    min-height: 28px;
     line-height: $line-height--lg;
     padding: 2px 0 0 0;
     text-indent: 6px;

@@ -10,7 +10,6 @@ import React, {
 import AInputBase from "../AInputBase";
 import AFormContext from "../AForm/AFormContext";
 import AIcon from "../AIcon";
-import {ADropdown, ADropdownMenu, ADropdownMenuItem} from "../ADropdown";
 import AMenu from "../AMenu";
 import {AListItem} from "../AList";
 import {keyCodes} from "../../utils/helpers";
@@ -28,6 +27,7 @@ const ASelect = forwardRef(
       hint,
       itemDisabled = "disabled",
       itemSelected = "selected",
+      itemTemplate,
       itemText = "text",
       itemValue = "value",
       items = [],
@@ -38,14 +38,13 @@ const ASelect = forwardRef(
       readOnly,
       required,
       rules,
-      useMenu,
       validateOnBlur,
       validationState,
       ...rest
     },
     ref
   ) => {
-    const dropdownMenuRef = useRef(null);
+    const menuRef = useRef(null);
     const inputBaseSurfaceRef = useRef(null);
     const surfaceRef = useRef(null);
     const [selectId] = useState(selectCounter++);
@@ -221,8 +220,7 @@ const ASelect = forwardRef(
 
       selectionProps.onBlur = (e) => {
         setIsFocused(false);
-        !dropdownMenuRef?.current?.contains(e.relatedTarget) &&
-          validate(selectedItem);
+        !menuRef.current?.contains(e.relatedTarget) && validate(selectedItem);
       };
 
       if (!readOnly) {
@@ -235,15 +233,9 @@ const ASelect = forwardRef(
           setTimeout(() => {
             const selectedIndex = getSelectedIndex();
             if (selectedIndex > -1) {
-              const dropdownItems = dropdownMenuRef.current?.querySelectorAll(
-                useMenu
-                  ? "a-select__menu-items__wrapper .a-list-item"
-                  : "a-select__menu-items__wrapper .a-dropdown__item"
-              );
-
-              if (dropdownItems && dropdownItems[selectedIndex]) {
-                dropdownItems[selectedIndex].focus();
-              }
+              menuRef.current
+                ?.querySelectorAll("a-select__menu-items__wrapper .a-list-item")
+                [selectedIndex]?.focus();
             }
           }, WAIT_TO_FOCUS_ACTIVE_ITEM);
         };
@@ -259,12 +251,11 @@ const ASelect = forwardRef(
             setTimeout(() => {
               const selectedIndex = getSelectedIndex();
               if (selectedIndex > -1) {
-                const dropdownItems = dropdownMenuRef.current.querySelectorAll(
-                  useMenu
-                    ? "a-select__menu-items__wrapper .a-list-item"
-                    : "a-select__menu-items__wrapper .a-dropdown__item"
-                );
-                dropdownItems[selectedIndex].focus();
+                menuRef.current
+                  .querySelectorAll(
+                    "a-select__menu-items__wrapper .a-list-item"
+                  )
+                  [selectedIndex]?.focus();
               }
             }, WAIT_TO_FOCUS_ACTIVE_ITEM);
           } else if (e.keyCode === keyCodes.up) {
@@ -286,33 +277,22 @@ const ASelect = forwardRef(
       onSelected && onSelected(item);
     };
 
-    let WrapperComponent = ADropdown;
-    let MenuComponent = ADropdownMenu;
-    let ListItemComponent = ADropdownMenuItem;
-
     const menuComponentProps = {
-      open: isOpen,
+      anchorRef: inputBaseSurfaceRef,
+      className: "a-select__menu-items",
+      closeOnClick: false,
       onClose: () => {
         setIsOpen(false);
         surfaceRef.current.focus();
       },
+      open: isOpen,
       role: "listbox",
-      className: "a-select__menu-items",
       style: {
         width: inputBaseSurfaceRef?.current?.clientWidth
           ? inputBaseSurfaceRef.current.clientWidth + 2
           : "auto"
       }
     };
-
-    if (useMenu) {
-      WrapperComponent = "div";
-      MenuComponent = AMenu;
-      ListItemComponent = AListItem;
-
-      menuComponentProps.anchorRef = inputBaseSurfaceRef;
-      menuComponentProps.closeOnClick = false;
-    }
 
     return (
       <AInputBase
@@ -333,7 +313,7 @@ const ASelect = forwardRef(
         readOnly={readOnly}
         validationState={workingValidationState}
         hint={error || hint}>
-        <WrapperComponent className="a-select__selection-wrapper">
+        <div className="a-select__selection-wrapper">
           <div {...selectionProps}>
             {typeof selectedItem === "string"
               ? selectedItem
@@ -341,7 +321,7 @@ const ASelect = forwardRef(
               ? selectedItem[itemText]
               : placeholder}
           </div>
-          <MenuComponent ref={dropdownMenuRef} {...menuComponentProps}>
+          <AMenu ref={menuRef} {...menuComponentProps}>
             {prependContent}
             <div className="a-select__menu-items__wrapper">
               {items.map((item, index) => {
@@ -386,22 +366,28 @@ const ASelect = forwardRef(
                     selectedItem &&
                     item[itemValue] === selectedItem[itemValue]
                   ) {
+                    itemProps.selected = true;
                     itemProps.className += " a-select__menu-item--selected";
                     itemProps["aria-selected"] = true;
                   }
                 }
 
+                const MenuItemComponent = itemTemplate
+                  ? itemTemplate
+                  : AListItem;
                 return (
-                  <ListItemComponent
+                  <MenuItemComponent
                     key={`a-select__menu-item_${index}`}
                     {...itemProps}
+                    item={item}
+                    index={index}
                   />
                 );
               })}
             </div>
             {appendContent}
-          </MenuComponent>
-        </WrapperComponent>
+          </AMenu>
+        </div>
       </AInputBase>
     );
   }
@@ -428,6 +414,10 @@ ASelect.propTypes = {
    * The property name of the value indicating a selected option when `items` is an array of objects.
    */
   itemSelected: PropTypes.string,
+  /**
+   * Sets a React component to use when rendering menu items. The component will be sent the following props: `item`, `index`, `aria-disabled`, `aria-selected`, `children`, `className`, `onClick`, `role`, `selected`, `value`.
+   */
+  itemTemplate: PropTypes.elementType,
   /**
    * The property name of the option text when `items` is an array of objects.
    */
@@ -476,10 +466,6 @@ ASelect.propTypes = {
       level: PropTypes.string
     })
   ),
-  /**
-   * Toggles using AMenu/ADropdown internally.
-   */
-  useMenu: PropTypes.bool,
   /**
    * Delays validation until the `blur` event.
    */

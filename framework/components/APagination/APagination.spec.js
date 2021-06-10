@@ -31,7 +31,7 @@ context("APagination", () => {
     );
     cy.get("#usage-2 + .playground .a-button-group .a-button")
       .eq(0)
-      .should("have.class", "a-button--state-selected");
+      .should("have.class", "a-button--selected");
     cy.get("#usage-2 + .playground .a-pagination__next").click();
     cy.get("#usage-2 + .playground").contains("Page 2");
     cy.get("#usage-2 + .playground .a-pagination__previous").should(
@@ -40,7 +40,7 @@ context("APagination", () => {
     );
     cy.get("#usage-2 + .playground .a-button-group .a-button")
       .eq(1)
-      .should("have.class", "a-button--state-selected");
+      .should("have.class", "a-button--selected");
     cy.get("#usage-2 + .playground .a-pagination__next")
       .click()
       .click()
@@ -52,7 +52,7 @@ context("APagination", () => {
     cy.get("#usage-2 + .playground .a-button-group .a-button").last().click();
     cy.get("#usage-2 + .playground .a-button-group .a-button")
       .last()
-      .should("have.class", "a-button--state-selected");
+      .should("have.class", "a-button--selected");
     cy.get("#usage-2 + .playground .a-button-group").should("have.length", 2);
     cy.get("#usage-2 + .playground .a-pagination__next").should(
       "have.attr",
@@ -61,7 +61,7 @@ context("APagination", () => {
 
     cy.get("#usage-2 + .playground .a-pagination__previous").click();
     cy.get(
-      "#usage-2 + .playground .a-button-group .a-button--state-selected"
+      "#usage-2 + .playground .a-button-group .a-button--selected"
     ).contains("14");
   });
 

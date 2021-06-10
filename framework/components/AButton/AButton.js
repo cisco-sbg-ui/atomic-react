@@ -46,7 +46,7 @@ const AButton = forwardRef(
     }
 
     if (selectedValues && selectedValues.includes(value)) {
-      className += " a-button--state-selected";
+      className += " a-button--selected";
     }
 
     if (icon) {

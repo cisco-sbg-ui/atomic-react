@@ -13,9 +13,7 @@ import {Playground, Props} from "../../../docs";
 Integrate with your build to [auto-import](/#integrating), or add an import in your component:
 
 ```
-import ABreadcrumb from "@cisco-ats/atomic-react/ABreadcrumb";
-// or if you're able to treekshake node_modules
-import {ABreadcrumb} from "@cisco-ats/atomic-react";
+import {ABreadcrumb} from "@advthreat/atomic-react";
 ```
 
 ## Usage
@@ -52,6 +50,7 @@ The `ABreadcrumb` component inherits passed props.
 <Playground
   code={`<ABreadcrumb
   item={(item) => {
+    const buttonRef = useRef(null);
     const [open, setOpen] = useState(false);
     const {options, ...props} = item;
     if (!options) {
@@ -62,21 +61,21 @@ The `ABreadcrumb` component inherits passed props.
       );
     }
     return (
-      <ADropdown>
+      <>
         <a {...item.contentProps}>
           {item.content}
         </a>
-        <AButton tertiaryAlt icon className="pa-0" onClick={() => setOpen(!open)}>
+        <AButton ref={buttonRef} tertiaryAlt icon className="pa-0" onClick={() => setOpen(!open)}>
           <AIcon left right size={10}>{open ? "chevron-up" : "chevron-down"}</AIcon>
         </AButton>
-        <ADropdownMenu open={open}>
+        <AMenu anchorRef={buttonRef} open={open}>
           {options.map((x, index) => (
-            <ADropdownMenuItem key={index} href={x.href}>
+            <AListItem key={index} href={x.href}>
               {x.content}
-            </ADropdownMenuItem>
+            </AListItem>
           ))}
-        </ADropdownMenu>
-      </ADropdown>
+        </AMenu>
+      </>
     );
   }}
   items={[{

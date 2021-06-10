@@ -1,29 +1,26 @@
 {
-  "name": "@cisco-ats/atomic-react",
-  "version": "2.16.0",
+  "name": "@advthreat/atomic-react",
+  "version": "3.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "lib/index.js",
   "module": "lib/index.js",
   "scripts": {
     "build:babel-preset": "node build/generate-babel-preset.js",
-    "build:lib": "cross-env BABEL_ENV=lib babel framework --out-dir lib",
-    "build:cra": "cross-env BABEL_ENV=cra rollup -c ./rollup.config.js",
+    "build:lib": "cross-env BABEL_ENV=lib babel framework --out-dir lib --copy-files",
     "build:docs": "gatsby build",
-    "build": "npm run build:cra && npm run build:lib && npm run build:babel-preset",
+    "build": "npm run build:lib && npm run build:babel-preset",
     "vercel-build": "npm run build:docs",
     "coverage-report": "npx nyc report --reporter=text-summary",
     "cypress:install": "./node_modules/.bin/cypress install",
     "cypress:open": "cypress open --env snapshots=off",
     "cypress:run": "cypress run --env type=actual",
     "cypress:runUpdateSnapshots": "cypress run --env type=base",
-    "cypress:lib": "cypress run --config integrationFolder=lib-demo",
     "dev": "cross-env WAIT_ON_TIMEOUT=600000 start-server-and-test start http://localhost:8081 cypress:open",
-    "dev:lib": "cross-env BABEL_ENV=lib-demo webpack serve --config webpack.lib-demo.config.js",
+    "publish-package": "rimraf lib && npm ci && npm run build && npm publish",
     "start": "gatsby develop -p 8081",
     "test:lint": "eslint framework --max-warnings 0",
     "test:components": "cross-env WAIT_ON_TIMEOUT=600000 INSTRUMENT=true start-server-and-test start http://localhost:8081 cypress:run",
-    "test:lib": "npm run build && start-server-and-test dev:lib http://localhost:8080 cypress:lib",
-    "test": "npm run test:lint && npm run test:components && npm run test:lib",
+    "test": "npm run test:lint && npm run test:components",
     "updateSnapshots": "start-server-and-test start http://localhost:8081 cypress:runUpdateSnapshots",
     "upload-coverage": "codecov"
   },
@@ -45,18 +42,13 @@
     "@hot-loader/react-dom": "17.0.1",
     "@mdx-js/mdx": "1.6.22",
     "@mdx-js/react": "1.6.22",
-    "@rollup/plugin-commonjs": "19.0.1",
-    "@rollup/plugin-json": "4.1.0",
-    "@rollup/plugin-node-resolve": "13.0.2",
     "algoliasearch": "4.10.3",
     "babel-eslint": "10.1.0",
-    "babel-loader": "8.2.2",
     "babel-plugin-detective": "2.0.0",
     "babel-plugin-istanbul": "6.0.0",
     "babel-preset-gatsby": "1.10.0",
     "codecov": "3.8.3",
     "cross-env": "7.0.3",
-    "css-loader": "6.2.0",
     "cypress": "8.0.0",
     "cypress-plugin-tab": "1.0.5",
     "cypress-visual-regression": "1.5.8",
@@ -79,11 +71,8 @@
     "gatsby-source-filesystem": "3.9.0",
     "gatsby-transformer-react-docgen": "6.10.0",
     "glob": "7.1.7",
-    "html-loader": "2.1.2",
-    "html-webpack-plugin": "5.3.2",
     "lodash": "4.17.21",
     "lodash.debounce": "4.0.8",
-    "postcss": "8.3.6",
     "prettier": "2.3.2",
     "prop-types": "15.7.2",
     "react": "17.0.2",
@@ -92,31 +81,24 @@
     "react-is": "17.0.2",
     "react-live": "2.2.3",
     "remark-slug": "6.1.0",
-    "rollup": "2.53.3",
-    "rollup-plugin-babel": "4.4.0",
-    "rollup-plugin-filesize": "9.1.1",
-    "rollup-plugin-local-resolve": "1.0.7",
-    "rollup-plugin-peer-deps-external": "2.2.4",
-    "rollup-plugin-postcss": "4.0.0",
+    "rimraf": "3.0.2",
     "sass": "1.35.2",
-    "sass-loader": "12.1.0",
-    "start-server-and-test": "1.13.0",
-    "style-loader": "3.1.0",
-    "webpack": "5.45.1",
-    "webpack-cli": "4.7.2",
-    "webpack-dev-server": "3.11.2"
+    "start-server-and-test": "1.13.0"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/threatgrid/atomic-react.git"
+    "url": "git+https://github.com/advthreat/atomic-react.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/threatgrid/atomic-react/issues"
+    "url": "https://github.com/advthreat/atomic-react/issues"
   },
-  "homepage": "https://github.com/threatgrid/atomic-react#readme",
+  "homepage": "https://atomic-react.vercel.app",
   "sideEffects": [
     "**/*.scss"
-  ]
+  ],
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/advthreat"
+  }
 }

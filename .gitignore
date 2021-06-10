@@ -8,12 +8,5 @@
 /node_modules/
 /public/
 
-/A*.js
 /babel-preset.js
 /babel-preset-local.js
-/helpers*.js
-/hooks*.js
-/style-inject*.js
-/index*.js
-/useA*.js
-/_rollupPluginBabelHelpers*
