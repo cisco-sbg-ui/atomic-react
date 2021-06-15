@@ -98,7 +98,7 @@
     "rollup-plugin-local-resolve": "1.0.7",
     "rollup-plugin-peer-deps-external": "2.2.4",
     "rollup-plugin-postcss": "4.0.0",
-    "sass": "1.34.1",
+    "sass": "1.35.0",
     "sass-loader": "12.1.0",
     "start-server-and-test": "1.12.5",
     "style-loader": "2.0.0",
