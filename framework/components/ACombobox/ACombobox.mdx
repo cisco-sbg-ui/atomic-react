@@ -191,6 +191,52 @@ The `ACombobox` component inherits passed props.
 `}
 />
 
+## Prepend/Append Content
+
+`useMenu` may be required to achieve appropriate functionality for the appended/prepended content.
+
+<Playground
+  code={`() => {
+  const items = [
+    "Bread, Cereal, Rice, and Pasta",
+    "Vegetables",
+    "Fruit",
+    "Milk, Yogurt, and Cheese",
+    "Meat, Poultry, Fish",
+    "Fats, Oils, and Sweets"
+  ];
+  const [value, setValue] = useState("");
+  const [filteredItems, setFilteredItems] = useState(items);
+  const [validateOnBlur, setValidateOnBlur] = useState(true);
+  return (
+    <div style={{minHeight: 220, minWidth: 250, marginRight: 20}}>
+      <ACombobox
+        prependContent={<AListItem twoLine className="my-1 mx-2">Advertisement</AListItem>}
+        appendContent={<><ADivider className="ma-0" /><AListItem><AIcon size={12} left>add</AIcon>Add Role</AListItem></>}
+        useMenu
+        clearable
+        label="Food Group"
+        items={filteredItems}
+        placeholder="Pick a Food Group"
+        onSelected={(item) => {
+          setValue(item);
+        }}
+        value={value}
+        onChange={(e) => {
+          setFilteredItems(
+            items.filter((x) =>
+              x.toLowerCase().includes(e.target.value.toLowerCase())
+            )
+          );
+          setValue(e.target.value);
+        }}
+      />
+    </div>
+  );
+}
+`}
+/>
+
 ## useMenu
 
 <Playground
