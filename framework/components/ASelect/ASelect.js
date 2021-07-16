@@ -22,6 +22,7 @@ const WAIT_TO_FOCUS_ACTIVE_ITEM = 50;
 const ASelect = forwardRef(
   (
     {
+      appendContent,
       className: propsClassName,
       disabled,
       hint,
@@ -33,6 +34,7 @@ const ASelect = forwardRef(
       label,
       onSelected,
       placeholder,
+      prependContent,
       readOnly,
       required,
       rules,
@@ -234,7 +236,9 @@ const ASelect = forwardRef(
             const selectedIndex = getSelectedIndex();
             if (selectedIndex > -1) {
               const dropdownItems = dropdownMenuRef.current?.querySelectorAll(
-                useMenu ? ".a-list-item" : ".a-dropdown__item"
+                useMenu
+                  ? "a-select__menu-items__wrapper .a-list-item"
+                  : "a-select__menu-items__wrapper .a-dropdown__item"
               );
 
               if (dropdownItems && dropdownItems[selectedIndex]) {
@@ -256,7 +260,9 @@ const ASelect = forwardRef(
               const selectedIndex = getSelectedIndex();
               if (selectedIndex > -1) {
                 const dropdownItems = dropdownMenuRef.current.querySelectorAll(
-                  useMenu ? ".a-list-item" : ".a-dropdown__item"
+                  useMenu
+                    ? "a-select__menu-items__wrapper .a-list-item"
+                    : "a-select__menu-items__wrapper .a-dropdown__item"
                 );
                 dropdownItems[selectedIndex].focus();
               }
@@ -305,6 +311,7 @@ const ASelect = forwardRef(
       ListItemComponent = AListItem;
 
       menuComponentProps.anchorRef = inputBaseSurfaceRef;
+      menuComponentProps.closeOnClick = false;
     }
 
     return (
@@ -335,56 +342,64 @@ const ASelect = forwardRef(
               : placeholder}
           </div>
           <MenuComponent ref={dropdownMenuRef} {...menuComponentProps}>
-            {items.map((item, index) => {
-              const itemProps = {
-                value: null,
-                children: null,
-                className: "a-select__menu-item",
-                role: "option",
-                "aria-selected": false
-              };
-
-              if (typeof item === "string") {
-                itemProps.value = item;
-                itemProps.children = item;
-                itemProps.onClick = () => {
-                  selectItem(item);
+            {prependContent}
+            <div className="a-select__menu-items__wrapper">
+              {items.map((item, index) => {
+                const itemProps = {
+                  value: null,
+                  children: null,
+                  className: "a-select__menu-item",
+                  role: "option",
+                  "aria-selected": false
                 };
 
-                if (item === selectedItem) {
-                  itemProps.className += " a-select__menu-item--selected";
-                  itemProps["aria-selected"] = true;
-                }
-              } else if (typeof item === "object") {
-                itemProps.value = item[itemValue];
-                itemProps.children = item[itemText];
-                if (item[itemDisabled]) {
-                  itemProps["aria-disabled"] = true;
-                  itemProps.onClick = (e) => {
-                    e.stopPropagation();
-                  };
-                } else {
+                if (typeof item === "string") {
+                  itemProps.value = item;
+                  itemProps.children = item;
                   itemProps.onClick = () => {
+                    setIsOpen(false);
+                    surfaceRef.current.focus();
                     selectItem(item);
                   };
+
+                  if (item === selectedItem) {
+                    itemProps.className += " a-select__menu-item--selected";
+                    itemProps["aria-selected"] = true;
+                  }
+                } else if (typeof item === "object") {
+                  itemProps.value = item[itemValue];
+                  itemProps.children = item[itemText];
+                  if (item[itemDisabled]) {
+                    itemProps["aria-disabled"] = true;
+                    itemProps.onClick = (e) => {
+                      e.stopPropagation();
+                    };
+                  } else {
+                    itemProps.onClick = () => {
+                      setIsOpen(false);
+                      surfaceRef.current.focus();
+                      selectItem(item);
+                    };
+                  }
+
+                  if (
+                    selectedItem &&
+                    item[itemValue] === selectedItem[itemValue]
+                  ) {
+                    itemProps.className += " a-select__menu-item--selected";
+                    itemProps["aria-selected"] = true;
+                  }
                 }
 
-                if (
-                  selectedItem &&
-                  item[itemValue] === selectedItem[itemValue]
-                ) {
-                  itemProps.className += " a-select__menu-item--selected";
-                  itemProps["aria-selected"] = true;
-                }
-              }
-
-              return (
-                <ListItemComponent
-                  key={`a-select__menu-item_${index}`}
-                  {...itemProps}
-                />
-              );
-            })}
+                return (
+                  <ListItemComponent
+                    key={`a-select__menu-item_${index}`}
+                    {...itemProps}
+                  />
+                );
+              })}
+            </div>
+            {appendContent}
           </MenuComponent>
         </WrapperComponent>
       </AInputBase>
@@ -393,6 +408,10 @@ const ASelect = forwardRef(
 );
 
 ASelect.propTypes = {
+  /**
+   * Sets the content to append to the dropdown list.
+   */
+  appendContent: PropTypes.node,
   /**
    * Toggles the disabled state.
    */
@@ -436,6 +455,10 @@ ASelect.propTypes = {
    * Sets the text when no option is selected.
    */
   placeholder: PropTypes.string,
+  /**
+   * Sets the content to prepend to the dropdown list.
+   */
+  prependContent: PropTypes.node,
   /**
    * Toggles the `read-only` state
    */

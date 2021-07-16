@@ -207,6 +207,31 @@ The `ASelect` component inherits passed props.
 `}
 />
 
+## Prepend/Append Content
+
+`useMenu` may be required to achieve appropriate functionality for the appended/prepended content.
+
+<Playground
+  code={`() => {
+  const [role, setRole] = useState(null);
+  return (
+    <ASelect
+      useMenu
+      prependContent={<AListItem twoLine className="my-1 mx-2"><ATextInput prependIcon="search" /></AListItem>}
+      appendContent={<><ADivider className="ma-0" /><AListItem><AIcon size={12} left>add</AIcon>Add Role</AListItem></>}
+      items={[
+        {value: 1, text: "Read"},
+        {value: 2, text: "Write"},
+        {value: 3, text: "Admin"}
+      ]}
+      label="Role"
+      onSelected={(item) => setRole(item)}
+    />
+  );
+}
+`}
+/>
+
 ## useMenu
 
 <Playground

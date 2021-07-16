@@ -31,7 +31,8 @@ context("ASelect", () => {
       .prev()
       .then(($el) => {
         Cypress.dom.isFocused($el);
-      });
+      })
+      .type(" ");
   });
 
   it("tabs appropriately", () => {
