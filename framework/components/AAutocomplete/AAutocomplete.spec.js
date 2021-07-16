@@ -20,6 +20,35 @@ context("AAutocomplete", () => {
       });
   });
 
+  it("shows a no-data message", () => {
+    cy.intercept("POST", "https://nut7b5fgkt*.*.*/**", {
+      headers: {
+        "access-control-allow-origin": window.location.origin,
+        "Access-Control-Allow-Credentials": "true"
+      },
+      body: {
+        hits: [],
+        nbHits: 0,
+        page: 0,
+        nbPages: 1,
+        hitsPerPage: 5,
+        exhaustiveNbHits: true,
+        query: "asdfadsfadsfasdf",
+        params: "query=gi&hitsPerPage=5",
+        processingTimeMS: 1
+      }
+    }).as("algolia");
+
+    cy.get("#usage + .playground .a-autocomplete__input")
+      .eq(0)
+      .type("asdf")
+      .wait("@algolia");
+    cy.get("#usage + .playground .a-autocomplete__menu-items")
+      .eq(0)
+      .should("be.visible");
+    cy.get("#usage + .playground .a-autocomplete__input").eq(0).clear();
+  });
+
   it("opens and closes appropriately", () => {
     cy.intercept("POST", "https://nut7b5fgkt*.*.*/**", {
       headers: {
