@@ -50,6 +50,19 @@ context("AAutocomplete", () => {
     cy.get("#usage + .playground .a-autocomplete__menu-items")
       .eq(0)
       .should("not.be.visible");
+
+    cy.get("#usage + .playground .a-autocomplete__input").type("{downArrow}");
+    cy.get("#usage + .playground .a-autocomplete__menu-item").eq(0).click();
+    cy.get("#usage + .playground .a-autocomplete__menu-items")
+      .eq(0)
+      .should("not.be.visible");
+    cy.get("#usage + .playground .a-autocomplete__input")
+      .clear()
+      .type("gi")
+      .type("{downArrow}");
+    cy.get("#usage + .playground .a-autocomplete__menu-item")
+      .eq(0)
+      .type("{esc}");
   });
 
   it("tabs appropriately", () => {

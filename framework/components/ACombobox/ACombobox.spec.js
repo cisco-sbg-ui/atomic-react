@@ -39,6 +39,12 @@ context("ACombobox", () => {
     cy.get("#usage + .playground .a-combobox__menu-items")
       .eq(0)
       .should("be.visible");
+    cy.get("#usage + .playground .a-combobox__input").eq(0).type("mmmmm");
+    cy.get("#usage + .playground .a-input-base__clear").click();
+    cy.get("#usage + .playground .a-combobox__menu-items")
+      .eq(0)
+      .should("not.be.visible");
+    cy.get("#usage + .playground .a-combobox__input").eq(0).type("{downArrow}");
   });
 
   it("tabs appropriately", () => {
