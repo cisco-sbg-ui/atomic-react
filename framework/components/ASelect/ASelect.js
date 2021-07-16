@@ -226,7 +226,7 @@ const ASelect = forwardRef(
       };
 
       if (!readOnly) {
-        chevronProps.onClick = selectionProps.onClick = (e) => {
+        chevronProps.onClick = selectionProps.onClick = () => {
           setIsOpen(!isOpen);
           if (!isOpen) {
             reset();
