@@ -47,6 +47,9 @@ context("AAutocomplete", () => {
       .eq(0)
       .should("be.visible");
     cy.get("#usage + .playground .a-autocomplete__input").eq(0).clear();
+    cy.get("#usage + .playground .a-autocomplete__menu-items .a-dropdown__item")
+      .eq(0)
+      .click();
   });
 
   it("opens and closes appropriately", () => {
