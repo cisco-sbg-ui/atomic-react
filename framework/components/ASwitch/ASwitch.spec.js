@@ -20,10 +20,14 @@ context("ASwitch", () => {
   it("supports themes", () => {
     if (Cypress.env("snapshots") === "off") return;
 
-    cy.get("#states + .playground .playground__preview").toMatchImageSnapshot();
+    cy.get("#states + .playground .playground__preview").compareSnapshot(
+      "Switch 1"
+    );
 
     cy.get(".a-switch__box").eq(0).click();
 
-    cy.get("#states + .playground .playground__preview").toMatchImageSnapshot();
+    cy.get("#states + .playground .playground__preview").compareSnapshot(
+      "Switch 2"
+    );
   });
 });

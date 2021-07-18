@@ -29,36 +29,36 @@ context("AContextualNotificationMenu", () => {
     if (Cypress.env("snapshots") === "off") return;
 
     cy.get("#variants + .playground .a-button").eq(0).click({force: true});
-    cy.get(
-      "#variants + .playground .playground__preview"
-    ).toMatchImageSnapshot();
+    cy.get("#variants + .playground .playground__preview").compareSnapshot(
+      "Contextual Notification Menu 1"
+    );
 
     cy.get("#variants + .playground").click("bottomLeft", {
       force: true
     });
 
     cy.get("#variants + .playground .a-button").eq(1).click({force: true});
-    cy.get(
-      "#variants + .playground .playground__preview"
-    ).toMatchImageSnapshot();
+    cy.get("#variants + .playground .playground__preview").compareSnapshot(
+      "Contextual Notification Menu 2"
+    );
 
     cy.get("#variants + .playground").click("bottomLeft", {
       force: true
     });
 
     cy.get("#variants + .playground .a-button").eq(2).click({force: true});
-    cy.get(
-      "#variants + .playground .playground__preview"
-    ).toMatchImageSnapshot();
+    cy.get("#variants + .playground .playground__preview").compareSnapshot(
+      "Contextual Notification Menu 3"
+    );
 
     cy.get("#variants + .playground").click("bottomLeft", {
       force: true
     });
 
     cy.get("#variants + .playground .a-button").eq(3).click({force: true});
-    cy.get(
-      "#variants + .playground .playground__preview"
-    ).toMatchImageSnapshot();
+    cy.get("#variants + .playground .playground__preview").compareSnapshot(
+      "Contextual Notification Menu 4"
+    );
     cy.get("#variants + .playground").click("bottomLeft", {
       force: true
     });
@@ -66,33 +66,33 @@ context("AContextualNotificationMenu", () => {
     cy.get(".a-switch__box").eq(0).click();
 
     cy.get("#variants + .playground .a-button").eq(0).click({force: true});
-    cy.get(
-      "#variants + .playground .playground__preview"
-    ).toMatchImageSnapshot();
+    cy.get("#variants + .playground .playground__preview").compareSnapshot(
+      "Contextual Notification Menu 5"
+    );
     cy.get("#variants + .playground").click("bottomLeft", {
       force: true
     });
 
     cy.get("#variants + .playground .a-button").eq(1).click({force: true});
-    cy.get(
-      "#variants + .playground .playground__preview"
-    ).toMatchImageSnapshot();
+    cy.get("#variants + .playground .playground__preview").compareSnapshot(
+      "Contextual Notification Menu 6"
+    );
     cy.get("#variants + .playground").click("bottomLeft", {
       force: true
     });
 
     cy.get("#variants + .playground .a-button").eq(2).click({force: true});
-    cy.get(
-      "#variants + .playground .playground__preview"
-    ).toMatchImageSnapshot();
+    cy.get("#variants + .playground .playground__preview").compareSnapshot(
+      "Contextual Notification Menu 7"
+    );
     cy.get("#variants + .playground").click("bottomLeft", {
       force: true
     });
 
     cy.get("#variants + .playground .a-button").eq(3).click({force: true});
-    cy.get(
-      "#variants + .playground .playground__preview"
-    ).toMatchImageSnapshot();
+    cy.get("#variants + .playground .playground__preview").compareSnapshot(
+      "Contextual Notification Menu 8"
+    );
     cy.get("#variants + .playground").click("bottomLeft", {
       force: true
     });

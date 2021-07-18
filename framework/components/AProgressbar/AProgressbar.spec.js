@@ -18,10 +18,14 @@ context("AProgressbar", () => {
 
     cy.get(".a-app").invoke("removeClass", ".a-app--animated");
 
-    cy.get("#states + .playground .playground__preview").toMatchImageSnapshot();
+    cy.get("#states + .playground .playground__preview").compareSnapshot(
+      "Progressbar 1"
+    );
 
     cy.get(".a-switch__box").eq(0).click();
 
-    cy.get("#states + .playground .playground__preview").toMatchImageSnapshot();
+    cy.get("#states + .playground .playground__preview").compareSnapshot(
+      "Progressbar 2"
+    );
   });
 });

@@ -1,4 +1,4 @@
-const {initPlugin} = require("cypress-plugin-snapshots/plugin");
+const getCompareSnapshotsPlugin = require("cypress-visual-regression/dist/plugin");
 
 const screenWidth = 1280;
 const screenHeight = 720;
@@ -12,7 +12,7 @@ module.exports = (on, config) => {
   require("@cypress/code-coverage/task")(on, config);
   on("file:preprocessor", require("@cypress/code-coverage/use-babelrc"));
 
-  initPlugin(on, config);
+  getCompareSnapshotsPlugin(on, config);
 
   on("before:browser:launch", (browser, launchOptions) => {
     if (browser.name === "chrome" && browser.isHeadless) {

@@ -96,12 +96,12 @@ context("AAccordion", () => {
 
     cy.get(
       "#uncontrolled-usage + .playground .playground__preview"
-    ).toMatchImageSnapshot();
+    ).compareSnapshot("Accordion 1");
 
     cy.get(".a-switch__box").eq(0).click();
 
     cy.get(
       "#uncontrolled-usage + .playground .playground__preview"
-    ).toMatchImageSnapshot();
+    ).compareSnapshot("Accordion 2");
   });
 });

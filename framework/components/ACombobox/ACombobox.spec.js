@@ -144,7 +144,9 @@ context("ACombobox", () => {
       .first()
       .type("{downArrow}");
 
-    cy.get("#states + .playground .playground__preview").toMatchImageSnapshot();
+    cy.get("#states + .playground .playground__preview").compareSnapshot(
+      "Combobox 1"
+    );
 
     cy.get(".a-switch__box").eq(0).click();
 
@@ -152,6 +154,8 @@ context("ACombobox", () => {
       .first()
       .type("{downArrow}");
 
-    cy.get("#states + .playground .playground__preview").toMatchImageSnapshot();
+    cy.get("#states + .playground .playground__preview").compareSnapshot(
+      "Combobox 2"
+    );
   });
 });
