@@ -2,6 +2,8 @@
 /.vercel/
 /.nyc_output/
 /coverage/
+/cypress/snapshots/actual/
+/cypress/snapshots/diff/
 /lib/
 /node_modules/
 /public/

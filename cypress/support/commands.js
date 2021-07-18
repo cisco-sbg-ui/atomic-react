@@ -1,5 +1,7 @@
 import "cypress-wait-until";
-import "cypress-plugin-snapshots/commands";
+import compareSnapshotCommand from "cypress-visual-regression/dist/command";
+
+compareSnapshotCommand();
 
 Cypress.Commands.add("visitInLightTheme", function (url) {
   cy.visit(url, {

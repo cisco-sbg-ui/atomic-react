@@ -209,14 +209,18 @@ context("AAutocomplete", () => {
       .type("{downArrow}")
       .type("{downArrow}");
 
-    cy.get("#usage + .playground .playground__preview").toMatchImageSnapshot();
+    cy.get("#usage + .playground .playground__preview").compareSnapshot(
+      "Autocomplete 1"
+    );
 
     cy.get("#states + .playground .a-autocomplete__input")
       .first()
       .type("{downArrow}")
       .type("{downArrow}");
 
-    cy.get("#states + .playground .playground__preview").toMatchImageSnapshot();
+    cy.get("#states + .playground .playground__preview").compareSnapshot(
+      "Autocomplete 2"
+    );
 
     cy.get(".a-switch__box").eq(0).click();
 
@@ -225,6 +229,8 @@ context("AAutocomplete", () => {
       .type("{downArrow}")
       .type("{downArrow}");
 
-    cy.get("#states + .playground .playground__preview").toMatchImageSnapshot();
+    cy.get("#states + .playground .playground__preview").compareSnapshot(
+      "Autocomplete 3"
+    );
   });
 });

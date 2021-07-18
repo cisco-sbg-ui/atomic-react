@@ -33,9 +33,9 @@ context("AMenuBase", () => {
     cy.get("#position + .playground .a-button").eq(10).click();
     cy.get("#position + .playground .a-button").eq(11).click();
 
-    cy.get(
-      "#position + .playground .playground__preview"
-    ).toMatchImageSnapshot();
+    cy.get("#position + .playground .playground__preview").compareSnapshot(
+      "MenuBase 1"
+    );
 
     cy.get("#position + .playground .a-button").eq(0).click({force: true});
     cy.get("#position + .playground .a-button").eq(1).click({force: true});
@@ -55,7 +55,7 @@ context("AMenuBase", () => {
 
     cy.get(
       "#edge-detection + .playground .playground__preview"
-    ).toMatchImageSnapshot();
+    ).compareSnapshot("MenuBase 2");
 
     cy.get("#edge-detection + .playground .a-button")
       .eq(0)
@@ -77,8 +77,8 @@ context("AMenuBase", () => {
     cy.get("#pointers + .playground .a-button").eq(10).click();
     cy.get("#pointers + .playground .a-button").eq(11).click();
 
-    cy.get(
-      "#pointers + .playground .playground__preview"
-    ).toMatchImageSnapshot();
+    cy.get("#pointers + .playground .playground__preview").compareSnapshot(
+      "MenuBase 3"
+    );
   });
 });

@@ -105,20 +105,24 @@ context("ATabs", () => {
 
     cy.get(
       "#uncontrolled-mode + .playground .playground__preview"
-    ).toMatchImageSnapshot();
+    ).compareSnapshot("Tabs 1");
 
-    cy.get("#tall + .playground .playground__preview").toMatchImageSnapshot();
+    cy.get("#tall + .playground .playground__preview").compareSnapshot(
+      "Tabs 2"
+    );
 
-    cy.get(
-      "#oversized + .playground .playground__preview"
-    ).toMatchImageSnapshot();
+    cy.get("#oversized + .playground .playground__preview").compareSnapshot(
+      "Tabs 3"
+    );
 
     cy.get(".a-switch__box").eq(0).click();
 
-    cy.get("#tall + .playground .playground__preview").toMatchImageSnapshot();
+    cy.get("#tall + .playground .playground__preview").compareSnapshot(
+      "Tabs 4"
+    );
 
-    cy.get(
-      "#oversized + .playground .playground__preview"
-    ).toMatchImageSnapshot();
+    cy.get("#oversized + .playground .playground__preview").compareSnapshot(
+      "Tabs 5"
+    );
   });
 });

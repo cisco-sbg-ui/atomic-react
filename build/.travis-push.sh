@@ -7,7 +7,7 @@ setup_git() {
 }
 
 commit_snapshots() {
-  git checkout build/add-travis
+  git checkout test/visual-regression
   git add -A
   # Create a new commit with a custom build message
   # with "[skip ci]" to avoid a build loop
@@ -18,7 +18,7 @@ commit_snapshots() {
 push_files() {
   # Add new "origin" with access token in the git URL for authentication
   git remote set-url origin https://frattaro:${GH_TOKEN}@github.com/threatgrid/atomic-react > /dev/null 2>&1
-  git push origin build/add-travis --quiet
+  git push origin test/visual-regression --quiet
 }
 
 setup_git

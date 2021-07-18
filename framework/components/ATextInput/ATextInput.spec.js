@@ -310,14 +310,18 @@ context("ATextInput", () => {
   it("supports themes", () => {
     if (Cypress.env("snapshots") === "off") return;
 
-    cy.get("#states + .playground .playground__preview").toMatchImageSnapshot();
+    cy.get("#states + .playground .playground__preview").compareSnapshot(
+      "Text Input 1"
+    );
 
-    cy.get(
-      "#numeric-input + .playground .playground__preview"
-    ).toMatchImageSnapshot();
+    cy.get("#numeric-input + .playground .playground__preview").compareSnapshot(
+      "Text Input 2"
+    );
 
     cy.get(".a-switch__box").eq(0).click();
 
-    cy.get("#states + .playground .playground__preview").toMatchImageSnapshot();
+    cy.get("#states + .playground .playground__preview").compareSnapshot(
+      "Text Input 3"
+    );
   });
 });

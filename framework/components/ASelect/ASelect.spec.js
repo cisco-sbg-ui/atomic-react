@@ -173,7 +173,9 @@ context("ASelect", () => {
 
     cy.get("#states + .playground .a-select__selection").first().click();
 
-    cy.get("#states + .playground .playground__preview").toMatchImageSnapshot();
+    cy.get("#states + .playground .playground__preview").compareSnapshot(
+      "Select 1"
+    );
 
     cy.get(".a-switch__box").eq(0).click();
 
@@ -183,6 +185,8 @@ context("ASelect", () => {
       .type("{downArrow}")
       .click();
 
-    cy.get("#states + .playground .playground__preview").toMatchImageSnapshot();
+    cy.get("#states + .playground .playground__preview").compareSnapshot(
+      "Select 2"
+    );
   });
 });

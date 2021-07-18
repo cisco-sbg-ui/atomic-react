@@ -5,7 +5,9 @@
     "runMode": 2,
     "openMode": 0
   },
+  "screenshotsFolder": "./cypress/snapshots/actual",
   "testFiles": "**/*.spec.js",
+  "trashAssetsBeforeRuns": true,
   "video": false,
   "viewportHeight": 720,
   "viewportWidth": 1480

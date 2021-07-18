@@ -102,12 +102,16 @@ context("ADropdown", () => {
 
     cy.get("#usage + .playground .a-button").first().click();
 
-    cy.get("#usage + .playground .playground__preview").toMatchImageSnapshot();
+    cy.get("#usage + .playground .playground__preview").compareSnapshot(
+      "Dropdown 1"
+    );
 
     cy.get(".a-switch__box").eq(0).click();
 
     cy.get("#usage + .playground .a-button").first().click();
 
-    cy.get("#usage + .playground .playground__preview").toMatchImageSnapshot();
+    cy.get("#usage + .playground .playground__preview").compareSnapshot(
+      "Dropdown 2"
+    );
   });
 });
