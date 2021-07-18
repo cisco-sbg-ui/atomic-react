@@ -1,15 +1,5 @@
 @import "../../styles";
 
-$panel-body-padding: 15px 20px 15px 20px;
-$panel-footer-padding: 0 20px 20px 20px;
-$panel-border-radius: $border-radius--sm;
-$panel-margin: 15px;
-$panel-padding: 20px 20px 0 20px;
-$panel-title-font-size: rem(1.125);
-$panel-title-font-size-small: $font-size--sm;
-$panel-white-bg: $white;
-$panel-white-color: map-get($grey, "darken-6");
-
 @include theme(a-panel) using ($theme) {
   background: map-deep-get($theme, "panel", "bg");
   border-color: map-deep-get($theme, "base", "stroke-color");
@@ -20,8 +10,8 @@ $panel-white-color: map-get($grey, "darken-6");
   }
 
   &--color-white {
-    background: $panel-white-bg;
-    color: $panel-white-color;
+    background: $white;
+    color: map-get($grey, "darken-7");
   }
 
   &--type-dialog {
@@ -40,11 +30,11 @@ $panel-white-color: map-get($grey, "darken-6");
 .a-panel {
   border-width: $border-width;
   border-style: solid;
-  border-radius: $panel-border-radius;
+  border-radius: $border-radius--sm;
   height: auto;
   display: block;
   position: relative;
-  margin: $panel-margin;
+  margin: 15px;
   overflow: hidden;
 
   &--color-gray {
@@ -73,24 +63,24 @@ $panel-white-color: map-get($grey, "darken-6");
 
   &__header {
     display: flex;
-    padding: $panel-padding;
+    padding: 20px 20px 0 20px;
   }
 
   &__title {
-    font-size: $panel-title-font-size;
+    font-size: rem(1.125);
     text-align: left;
     @include flex-fluid;
     &--size-small {
-      font-size: $panel-title-font-size-small;
+      font-size: $font-size--sm;
     }
   }
 
   &__body {
-    padding: $panel-body-padding;
+    padding: 15px 20px 15px 20px;
   }
 
   &__footer {
     text-align: right;
-    padding: $panel-footer-padding;
+    padding: 0 20px 20px 20px;
   }
 }

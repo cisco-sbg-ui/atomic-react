@@ -1,9 +1,3 @@
-$blockquote-spacing: $spacing;
-$blockquote-cite-color: map-get($grey, "base");
-$code-font-size: 87.5% !default;
-$code-padding: 2px 4px;
-$pre-padding: 10px;
-
 @mixin theme-app($theme) {
   background-color: map-deep-get($theme, "base", "bg");
   color: map-deep-get($theme, "base", "color");
@@ -20,6 +14,7 @@ $pre-padding: 10px;
 .a-app {
   -webkit-text-size-adjust: 100%;
   -ms-text-size-adjust: 100%;
+  text-size-adjust: 100%;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   font-size: $font-size--sm;
@@ -113,11 +108,11 @@ $pre-padding: 10px;
 
   blockquote {
     margin: 0;
-    padding: $blockquote-spacing;
+    padding: $spacing;
 
     & cite {
       display: block;
-      color: $blockquote-cite-color;
+      color: map-get($grey, "darken-2");
       font-style: italic;
 
       &:before {
@@ -135,19 +130,19 @@ $pre-padding: 10px;
 
   code,
   pre {
-    font-size: $code-font-size;
+    font-size: 87.5%;
     border-radius: $border-radius--sm;
   }
 
   code {
     word-break: break-word;
-    padding: $code-padding;
+    padding: 2px 4px;
   }
 
   pre {
     display: block;
     margin: 0;
-    padding: $pre-padding;
+    padding: 10px;
     border: 0;
 
     code {

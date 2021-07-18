@@ -9,11 +9,11 @@ $btn-card-padding: 20px;
 $btn-card-title-margin-bottom: 10px;
 $btn-card-font-size: $font-size--md;
 $btn-card-bar-height: -5px;
-$btn-card-body-color: $color-gray--medium1;
-$btn-card-body-color--selected: $base-color;
+$btn-card-body-color: $color-gray--dark3;
+$btn-card-body-color--selected: $color-gray--dark1;
 $btn-card-border-color--disabled: $color-gray--light1;
-$btn-card-title-color--disabled: $color-gray--medium3;
-$btn-card-body-color--disabled: $color-gray--medium3;
+$btn-card-title-color--disabled: $base-color--disabled;
+$btn-card-body-color--disabled: $base-color--disabled;
 $btn-card-box-shadow--selected: 0 0 2px 2px rgba(0, 131, 179, 0.4),
   inset 0 -5px 0 0 $base-color--selected;
 
