@@ -31,7 +31,7 @@ $atomic-default: (
   "base": (
     "bg": $white,
     "brand-color": map-get($cisco-blue, "base"),
-    "color": map-get($grey, "darken-6"),
+    "color": map-get($grey, "darken-7"),
     "color--active": map-get($cisco-blue, "burnt-2"),
     "color--hover": map-get($cisco-blue, "base"),
     "color--selected": map-get($cisco-blue, "burnt-1"),
@@ -78,7 +78,7 @@ $atomic-default: (
       "opacity--disabled": $alpha-5
     ),
     "group": (
-      "color": map-get($grey, "darken-5")
+      "color": map-get($grey, "darken-7")
     )
   ),
   "color": (
@@ -86,7 +86,7 @@ $atomic-default: (
     "error--state-hover": map-get($status-red, "burnt-2")
   ),
   "checkbox": (
-    "label-color--disabled": map-get($grey, "base")
+    "label-color--disabled": map-get($grey, "darken-2")
   ),
   "control": (
     "fill-color": $white,
@@ -110,14 +110,15 @@ $atomic-default: (
     "box-shadow": 2px 2px 4px 0 rgba(map-get($grey, "lighten-3"), 0.5)
   ),
   "footer": (
-    "border-color": map-get($grey, "lighten-5")
+    "border-color": map-get($grey, "lighten-5"),
+    "color": map-get($grey, "darken-7")
   ),
   "header": (
     "bg-color": $white,
     "icon-color": map-get($grey, "darken-5")
   ),
   "label": (
-    "color": map-get($grey, "darken-3")
+    "color": map-get($grey, "darken-4")
   ),
   "link": (
     "color": map-get($cisco-blue, "burnt-2"),
@@ -125,7 +126,7 @@ $atomic-default: (
     "color--active": map-get($cisco-blue, "burnt-3"),
     "color--focus": map-get($cisco-blue, "burnt-2"),
     "color--visited": map-get($cisco-blue, "burnt-3"),
-    "color--disabled": map-get($grey, "base"),
+    "color--disabled": map-get($grey, "darken-2"),
     "opacity--disabled": 1
   ),
   "loader": (
@@ -151,7 +152,7 @@ $atomic-default: (
     "fill--active--hover": map-get($cisco-blue, "burnt-2"),
     "fill--checked--hover": map-get($cisco-blue, "base"),
     "fill--enabled": map-get($cisco-blue, "burnt-1"),
-    "label-color--disabled": map-get($grey, "base"),
+    "label-color--disabled": map-get($grey, "darken-2"),
     "opacity-disabled": 1
   ),
   "select": (
@@ -182,12 +183,12 @@ $atomic-default: (
     "circle--inner-box-shadow-checked-active": map-get($cisco-blue, "base"),
     "circle--inner-box-shadow-checked-active-hover":
       map-get($cisco-blue, "burnt-1"),
-    "label-color--disabled": map-get($grey, "base"),
+    "label-color--disabled": map-get($grey, "darken-2"),
     "opacity-disabled": 1
   ),
   "table": (
     "bg": transparent,
-    "header-color": map-get($grey, "darken-2"),
+    "header-color": map-get($grey, "darken-4"),
     "row-hover-color": map-get($grey, "lighten-3"),
     "row-stripe-color": map-get($grey, "lighten-6")
   ),
@@ -201,7 +202,7 @@ $atomic-default: (
   ),
   "text-input": (
     "bg": $white,
-    "color--disabled": map-get($grey, "base"),
+    "color--disabled": map-get($grey, "darken-2"),
     "bg--disabled": map-get($grey, "lighten-5"),
     "border-color--disabled": map-get($grey, "lighten-5"),
     "border-color--readonly": map-get($grey, "lighten-2"),

@@ -222,6 +222,16 @@ $dark-cool-grey: (
   "wash-3": #d9dadb
 );
 
+$secure-blue: (
+  "1": #06144d,
+  "2": #0d274d,
+  "3": #1e4471
+);
+
+$secure-green: (
+  "1": #6abf4b
+);
+
 $colors: (
   "black": (
     "base": $black
@@ -249,5 +259,7 @@ $colors: (
   "berry": $berry,
   "dark-blue": $dark-blue,
   "magenta": $magenta,
-  "dark-cool-grey": $dark-cool-grey
+  "dark-cool-grey": $dark-cool-grey,
+  "secure-blue": $secure-blue,
+  "secure-green": $secure-green
 );

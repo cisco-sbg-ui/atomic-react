@@ -14,7 +14,7 @@ context("ATheme", () => {
       "Theme 1"
     );
 
-    cy.get(".a-switch__box").eq(0).click();
+    cy.get("#usage + .playground .playground__preview .a-button").eq(1).click();
 
     cy.get("#usage + .playground .playground__preview").compareSnapshot(
       "Theme 2"

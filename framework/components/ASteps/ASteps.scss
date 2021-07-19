@@ -20,7 +20,7 @@ $step-content-width: 100%;
 $step-content-margin: 12px 0 0 0;
 $step-label-font-size: $font-size--sm;
 $step-title-padding: 0 10px 0 0;
-$step-hint-color: map-get($grey, "base");
+$step-hint-color: map-get($grey, "darken-2");
 $step-hint-font-size: 13px;
 $step-hint-line-height: 20px;
 $step-line-width: calc(100% - 44px);
@@ -163,6 +163,38 @@ $step-line-color: map-get($grey, "lighten-2");
         left: $step-line-vertical-left;
         top: $step-line-vertical-top;
         background-color: $step-line-color;
+      }
+    }
+  }
+
+  &--type-expanded {
+    margin: 0;
+    width: 100%;
+    min-width: $steps-min-width;
+    max-width: $steps-max-width;
+    display: flex;
+    flex: 1 1 auto;
+    flex-direction: column;
+    text-align: left;
+    padding: 0;
+    box-shadow: $default-box-shadow;
+
+    .step {
+      border: $base-border-width solid $control-stroke-color;
+      &:before {
+        display: none;
+      }
+
+      &.visited {
+        &:after {
+          display: none;
+        }
+      }
+
+      &:last-child {
+        &:after {
+          display: none;
+        }
       }
     }
   }
