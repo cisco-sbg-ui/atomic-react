@@ -106,9 +106,6 @@ $atomic-default: (
     "color-light": map-get($grey, "lighten-3"),
     "color-lighter": map-get($grey, "lighten-5")
   ),
-  "dropdown": (
-    "box-shadow": 2px 2px 4px 0 rgba(map-get($grey, "lighten-3"), 0.5)
-  ),
   "footer": (
     "border-color": map-get($grey, "lighten-5"),
     "color": map-get($grey, "darken-7")

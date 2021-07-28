@@ -4,15 +4,14 @@ $select-height: 28px;
 $select-padding: 6px;
 
 @include theme(a-select) using ($theme) {
-  &__menu-items {
-    background-color: map-deep-get($theme, "control", "fill-color");
+  &__menu-items.a-menu {
     border-color: map-deep-get($theme, "select", "border-color--focus");
   }
 
   &__menu-item {
     &--selected {
       &::after {
-        border-color: map-deep-get($theme, "select", "border-color--focus");
+        color: map-deep-get($theme, "base", "inverse-color");
       }
 
       &:focus {
@@ -26,16 +25,6 @@ $select-padding: 6px;
           border-color: $white;
         }
       }
-    }
-
-    &:hover {
-      color: $white;
-      background-color: map-deep-get($theme, "base", "color--hover");
-    }
-
-    &--active,
-    &:active {
-      background-color: map-deep-get($theme, "select", "border-color--focus");
     }
 
     &[aria-disabled] {
@@ -74,13 +63,6 @@ $select-padding: 6px;
     align-self: stretch;
   }
 
-  .a-dropdown {
-    width: 100%;
-    align-self: stretch;
-    display: flex;
-    align-items: center;
-  }
-
   &.a-input-base--readonly {
     .a-select__selection,
     .a-select__chevron {
@@ -89,46 +71,33 @@ $select-padding: 6px;
   }
 }
 
-.a-select__menu-items {
-  border-bottom-left-radius: $border-radius--sm;
-  border-bottom-right-radius: $border-radius--sm;
-  cursor: pointer;
-  left: -1px;
-  margin: 0;
-  overflow: auto;
-  right: -25px;
-  top: $select-height - 2px;
-  user-select: none;
-  z-index: 999;
+.a-list-item.a-select__menu-item {
+  min-height: $select-height;
+  line-height: $line-height--lg;
+  padding: 2px 0 0 0;
+  text-indent: $select-padding;
+  vertical-align: top;
 
-  .a-select__menu-item {
-    min-height: $select-height;
-    line-height: $line-height--lg;
-    padding: 2px 0 0 0;
-    text-indent: $select-padding;
-    vertical-align: top;
+  &::after {
+    content: "";
+    border-style: solid;
+    display: none;
+    height: rem(0.75);
+    position: absolute;
+    width: rem(0.3125);
+    border-width: 0 rem(0.125) rem(0.125) 0;
+    transform: rotate(45deg);
+    top: $select-padding;
+    right: 8px;
+  }
 
+  &--selected {
     &::after {
-      content: "";
-      border-style: solid;
-      display: none;
-      height: rem(0.75);
-      position: absolute;
-      width: rem(0.3125);
-      border-width: 0 rem(0.125) rem(0.125) 0;
-      transform: rotate(45deg);
-      top: $select-padding;
-      right: 8px;
+      display: block;
     }
+  }
 
-    &--selected {
-      &::after {
-        display: block;
-      }
-    }
-
-    &[aria-disabled] {
-      cursor: default;
-    }
+  &[aria-disabled] {
+    cursor: default;
   }
 }

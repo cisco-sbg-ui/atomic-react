@@ -7,13 +7,9 @@ route: /
 
 ## Install
 
-The package is available on [Cisco's Artifactory package registry](https://devhub.cisco.com/artifactory/webapp/#/home). See information below about [accessing Artifactory](#getting-access-to-artifactory).
+The package is available publicly on GitHub Packages. `npm login` with the scope `@advthreat`. ([Read more here.](https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-npm-registry))
 
-```
-  npm install @cisco-ats/atomic-react
-```
-
-If you're implementing a library, place the package entry in the `peerDependencies` section of your `package.json`.
+`npm i @advthreat/atomic-react`
 
 <br />
 
@@ -21,18 +17,17 @@ If you're implementing a library, place the package entry in the `peerDependenci
 
 If your website has a content security policy, in order for the fonts to load an entry will need to be added:
 
-`font-src https://cdn.security.cisco.com`
+`font-src https://brand-assets.security.cisco.com`
 
 <br />
 
-## Integrating
+## Sass Required
 
-At this point, you can start importing components (e.g. `import AButton from "@cisco-ats/atomic-react/AButton"`) and using them.
-Alternatively, integrating the atomic-react `lib` with your build will give you control over the sass and automatically import the components you use for you. [`create-react-app` users can also use the atomic-react `lib`](#integration-with-create-react-app-cra).
+The components import sass modules. The dart-sass (`sass` package) must be installed and integrated into your bundler.
 
 <br />
 
-### Add the Babel Preset
+### Optional Babel Preset and ESLint Config
 
 The Babel preset **automatically imports** components. Add the following to your Babel configuration:
 
@@ -41,18 +36,14 @@ The Babel preset **automatically imports** components. Add the following to your
   "presets": [
     "@babel/preset-env",
     "@babel/preset-react",
-+    "@cisco-ats/atomic-react/babel-preset"
++    "@advthreat/atomic-react/babel-preset"
   ]
 }
 ```
 
-### ESLint plugin
-
 Without import statements, ESLint will complain about your source code. The atomic-react ESLint plugin will take care of that. First install the ESLint plugin:
 
-```
-npm i -D @cisco-ats/eslint-plugin-atomic-react
-```
+`npm i -D @advthreat/eslint-config-atomic-react`
 
 Then add the following to your ESLint configuration:
 
@@ -61,124 +52,16 @@ Then add the following to your ESLint configuration:
   "extends": [
     "eslint:recommended",
     "plugin:react/recommended",
-+    "plugin:@cisco-ats/eslint-config-atomic-react/recommended"
++    "@advthreat/eslint-config-atomic-react"
   ],
   ...
 }
 ```
 
-### Support (Dart) Sass
+To use the babel preset and eslint config with `create-react-app`, use `craco`.
 
-The `lib` build gives you control over the sass, so you'll need to support it if you don't. First install:
+For usage with `next`, use `next-transpile-modules`
 
-```
-# Webpack
-npm i -D sass sass-loader css-loader style-loader
-# Rollup
-npm i -D sass rollup-plugin-postcss
-```
+## Contributions
 
-For webpack, add to your config:
-
-```diff
-module.exports = {
-  module: {
-    rules: [
-      ...,
-+      {
-+        test: /\.s(a|c)ss$/,
-+        use: [
-+          "style-loader",
-+          "css-loader",
-+          {
-+            loader: "sass-loader",
-+            options: {
-+              implementation: require("sass"),
-+            },
-+          },
-+        ],
-+      }
-    ]
-  }
-}
-```
-
-Or for Rollup, add to your config:
-
-```diff
-+import postcss from "rollup-plugin-postcss";
-
-const config = {
-  plugins: [
-    ...,
-+    postcss()
-  ]
-};
-
-export default config;
-```
-
-## Integration with `create-react-app` (CRA)
-
-You can use the atomic-react `lib` with auto-import and sass support in `create-react-app` applications as well.
-
-Start by installing the libraries necessary to modify the CRA build and support sass:
-
-```
-npm i -D customize-cra react-app-rewired sass @cisco-ats/eslint-plugin-atomic-react
-```
-
-Add a `config-overrides.js` file to the root of your directory:
-
-```
-const {override, addBabelPreset} = require("customize-cra");
-
-module.exports = override(
-  addBabelPreset("@cisco-ats/atomic-react/babel-preset")
-);
-```
-
-Make adjustments to your `package.json`:
-
-```diff
-{
-  "scripts": {
--    "start": "react-scripts start",
-+    "start": "react-app-rewired start",
--    "build": "react-scripts build",
-+    "build": "react-app-rewired build",
--    "test": "react-scripts test",
-+    "test": "react-app-rewired test",
-  },
-  ...
-}
-```
-
-Add the ESLint plugin to your ESLint config:
-
-```diff
-{
--  "extends": ["react-app"],
-+  "extends": ["react-app", "@cisco-ats/eslint-config-atomic-react"],
-  ...
-}
-```
-
-## Getting Access to Artifactory
-
-Use your CEC credentials to login to (requires VPN) https://engci-maven.cisco.com/ and generate/retrieve your API key from your profile. Then modify your `.npmrc` using the following commands:
-
-```
-npm login --registry=https://devhub.cisco.com/artifactory/api/npm/cisco-threat-response-npm/ --scope=@cisco-ats
-Username: <YOUR_CISCO_USERNAME>
-Password: <YOUR_DEVHUB_API_KEY>
-```
-
-Afterwards, your `~/.npmrc` file will look something like:
-
-```
-@cisco-ats:registry=https://devhub.cisco.com/artifactory/api/npm/cisco-threat-response-npm/
-//devhub.cisco.com/artifactory/api/npm/cisco-threat-response-npm/:_authToken=XXXxSOMExBIGxJWTxXXX
-```
-
-...and you will be able to continue with the install command.
+See more information in [the repository readme](https://www.github.com/advthreat/atomic-react#readme).

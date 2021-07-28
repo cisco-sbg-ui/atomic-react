@@ -110,7 +110,7 @@ const Sidebar = ({menus, currentDoc}) => {
           className="white--text"
           icon
           tertiaryAlt
-          href="https://www.github.com/threatgrid/atomic-react"
+          href="https://www.github.com/advthreat/atomic-react"
           target="_blank">
           <AIcon>github</AIcon>
         </AButton>

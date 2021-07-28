@@ -16,7 +16,7 @@ $btn-group-icon-font-size: rem(1);
     box-shadow: none;
     border: $border-width solid map-deep-get($theme, "base", "stroke-color");
 
-    &--state-selected {
+    &--selected {
       border: $border-width solid
         map-deep-get($theme, "base", "color--selected");
       background-color: map-deep-get($theme, "base", "color--selected");

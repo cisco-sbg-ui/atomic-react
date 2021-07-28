@@ -22,20 +22,19 @@ const AListItem = forwardRef(
     },
     ref
   ) => {
-    const [roleValue, setRoleValue] = useState(null);
+    const [roleValue, setRoleValue] = useState(role);
     const listItemRef = useRef(null);
     const combinedRef = useCombinedRefs(ref, listItemRef);
 
     useEffect(() => {
       if (
         !role &&
-        !roleValue &&
         combinedRef.current &&
         combinedRef.current.closest(".a-menu") !== null
       ) {
         setRoleValue("menuitem");
       }
-    }, [role, combinedRef, roleValue]);
+    }, [role, combinedRef, setRoleValue]);
 
     let className = "a-list-item";
 
@@ -44,7 +43,7 @@ const AListItem = forwardRef(
     }
 
     if (selected) {
-      className += " a-list-item--state-selected";
+      className += " a-list-item--selected";
     }
 
     if (propsClassName) {

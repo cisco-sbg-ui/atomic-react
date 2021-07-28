@@ -15,16 +15,9 @@ if (nodeEnv !== "production") {
   ]);
 }
 
-if (["cra"].includes(env)) {
-  config = {
-    presets: ["@babel/preset-react", "@babel/preset-env"]
-  };
-}
-
 if (["lib"].includes(env)) {
   config = {
     presets: ["@babel/preset-react", ["@babel/preset-env", {modules: false}]],
-    plugins: ["./build/babel-transform-paths.js"],
     ignore: [/\.spec\.js$/]
   };
 }
