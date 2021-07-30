@@ -50,6 +50,3 @@ jobs:
           CYBRIC_API_KEY: ${{ secrets.CYBRIC_API_KEY }}
       - name: Upload Coverage
         run: npm run upload-coverage
-        if: ${{ github.actor != 'dependabot[bot]' }}
-        env:
-          CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
