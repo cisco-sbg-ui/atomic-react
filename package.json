@@ -94,7 +94,7 @@
   "bugs": {
     "url": "https://github.com/threatgrid/atomic-react/issues"
   },
-  "homepage": "https://atomic-react.vercel.app",
+  "homepage": "https://atomic-react.security.cisco.com",
   "sideEffects": [
     "**/*.scss"
   ],
