@@ -12,13 +12,12 @@ route: /changelog
 - Switched package hosting from Cisco's Artifactory to GitHub Packages
 - Package is now a public package
 - The `ADropdown` component is now obsolete and removed. Use `AMenu`. `ASelect`, `ACombobox`, and `AAutocomplete` now solely use `AMenu` internally, and their `useMenu` prop is obsoleted
-- Per-component imports (ex: `import ADivider from "@advthreat/atomic-react/ADivider"`) have been removed. Use `import {ADivider} from "@advthreat/atomic-react"`
+- Per-component imports (ex: `import ADivider from "@threatgrid/atomic-react/ADivider"`) have been removed. Use `import {ADivider} from "@threatgrid/atomic-react"`
 - Fonts are now hosted from `https://brand-assets.security.cisco.com/`
 - `--state-selected` modifier has been standardized to `--selected`
 
 **Other changes**:
 
-- Migrated source control from github.com/threatgrid to github.com/advthreat
 - Updated styles to match atomic 3.0.0
 - Added `appendContent` and `prependContent` to `AAutocomplete`, `ACombobox`, and `ASelect` to allow for content to be prepended/appended to the menu items
 - Added `itemTemplate` to `AAutocomplete`, `ACombobox`, and `ASelect` to allow for custom menu items
