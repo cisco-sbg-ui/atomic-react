@@ -25,17 +25,4 @@ See the [Atomic contribution page](http://ux-document-lnx/~designer/sbg-ux/compo
 
 ### Component Development
 
-#### Getting Access
-
-Contact Maribell Buchanan via Webex Teams to request write access for your group to https://github.com/threatgrid/atomic-react
-
-#### Toolset
-
-- The components themselves are standard functional components with sass styles.
-- The documentation is a Gatsby site, which Cypress runs against for testing including screenshot diff testing.
-- The Prettier/ESLint/Editorconfig settings are expected to be respected.
-- Pull requests run tests on Travis that subsequently send coverage data to codecov.io, which will run checks assuring coverage is achieved. Pull requests require a code review.
-
-#### Contact
-
 Feel free to reach out to Anton Frattaroli via Webex Teams to discuss contributions.

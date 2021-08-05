@@ -1,5 +1,5 @@
 {
-  "name": "@threatgrid/atomic-react",
+  "name": "@cisco-sbg-ui/atomic-react",
   "version": "3.0.0",
   "description": "",
   "main": "lib/index.js",
@@ -87,18 +87,18 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/threatgrid/atomic-react.git"
+    "url": "git+https://github.com/cisco-sbg-ui/atomic-react.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/threatgrid/atomic-react/issues"
+    "url": "https://github.com/cisco-sbg-ui/atomic-react/issues"
   },
   "homepage": "https://atomic-react.security.cisco.com",
   "sideEffects": [
     "**/*.scss"
   ],
   "publishConfig": {
-    "registry": "https://npm.pkg.github.com/threatgrid"
+    "registry": "https://npm.pkg.github.com/cisco-sbg-ui"
   }
 }
