@@ -7,9 +7,9 @@ route: /
 
 ## Install
 
-The package is available publicly on GitHub Packages. `npm login` with the scope `@advthreat`. ([Read more here.](https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-npm-registry))
+The package is available publicly on GitHub Packages. `npm login` with the scope `@cisco-sbg-ui`. ([Read more here.](https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-npm-registry))
 
-`npm i @advthreat/atomic-react`
+`npm i @cisco-sbg-ui/atomic-react`
 
 <br />
 
@@ -36,14 +36,14 @@ The Babel preset **automatically imports** components. Add the following to your
   "presets": [
     "@babel/preset-env",
     "@babel/preset-react",
-+    "@advthreat/atomic-react/babel-preset"
++    "@cisco-sbg-ui/atomic-react/babel-preset"
   ]
 }
 ```
 
 Without import statements, ESLint will complain about your source code. The atomic-react ESLint plugin will take care of that. First install the ESLint plugin:
 
-`npm i -D @advthreat/eslint-config-atomic-react`
+`npm i -D @cisco-sbg-ui/eslint-config-atomic-react`
 
 Then add the following to your ESLint configuration:
 
@@ -52,7 +52,7 @@ Then add the following to your ESLint configuration:
   "extends": [
     "eslint:recommended",
     "plugin:react/recommended",
-+    "@advthreat/eslint-config-atomic-react"
++    "@cisco-sbg-ui/eslint-config-atomic-react"
   ],
   ...
 }
@@ -64,4 +64,4 @@ For usage with `next`, use `next-transpile-modules`
 
 ## Contributions
 
-See more information in [the repository readme](https://www.github.com/advthreat/atomic-react#readme).
+See more information in [the repository readme](https://www.github.com/cisco-sbg-ui/atomic-react#readme).
