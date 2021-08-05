@@ -63,11 +63,11 @@
     "eslint-plugin-react-hooks": "4.2.0",
     "gatsby": "3.10.2",
     "gatsby-plugin-algolia": "0.22.0",
-    "gatsby-plugin-mdx": "2.10.1",
+    "gatsby-plugin-mdx": "2.11.0",
     "gatsby-plugin-page-creator": "3.10.0",
     "gatsby-plugin-react-helmet": "4.11.0",
     "gatsby-plugin-react-svg": "3.0.1",
-    "gatsby-plugin-sass": "4.10.0",
+    "gatsby-plugin-sass": "4.11.0",
     "gatsby-source-filesystem": "3.10.0",
     "gatsby-transformer-react-docgen": "6.11.0",
     "glob": "7.1.7",
@@ -82,7 +82,7 @@
     "react-live": "2.2.3",
     "remark-slug": "6.1.0",
     "rimraf": "3.0.2",
-    "sass": "1.36.0",
+    "sass": "1.37.5",
     "start-server-and-test": "1.13.1"
   },
   "repository": {
