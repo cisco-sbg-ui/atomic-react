@@ -4,12 +4,6 @@ route: /components/icon
 components: AIcon
 ---
 
-import {Playground, Props} from "../../../docs";
-
-import AIcon from "./AIcon";
-import Icons from "./icons.json";
-import {AList, AListItem, AListItemAvatar, AListItemTitle} from "../AList";
-
 # Icons
 
 ## Install
@@ -41,20 +35,7 @@ The `AIcon` component inherits passed props.
 
 ## Gallery
 
-<AList className="flex-row flex-wrap mb-8">
-  {Object.keys(Icons).map((x) => (
-    <AListItem
-      name={x}
-      key={x}
-      className="flex-grow-0"
-      style={{flexBasis: "33.33%"}}>
-      <AListItemAvatar style={{minWidth: 24}}>
-        <AIcon>{x}</AIcon>
-      </AListItemAvatar>
-      <AListItemTitle>{x}</AListItemTitle>
-    </AListItem>
-  ))}
-</AList>
+<IconGallery />
 
 ## Accessibility Notes
 

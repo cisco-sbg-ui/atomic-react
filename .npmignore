@@ -1,5 +1,6 @@
 .github/
 .cache/
+.next/
 .nyc-output/
 .vercel/
 build/
@@ -16,8 +17,7 @@ public/
 .travis.yml
 babel.config.js
 babel-preset-local.js
-gatsby-config.js
-gatsby-node.js
+next.config.js
 
 *.spec.js
 *.mdx

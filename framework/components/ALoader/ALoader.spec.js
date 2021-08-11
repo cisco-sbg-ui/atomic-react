@@ -1,6 +1,6 @@
 context("ALoader", () => {
   before(() => {
-    cy.visitInLightTheme("http://localhost:8081/components/loader");
+    cy.visitInLightTheme("http://localhost:3000/components/loader");
   });
 
   // TODO: Test accessibility

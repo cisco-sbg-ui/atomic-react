@@ -2,7 +2,7 @@ import giResponse from "./algolia.gi.fixture.json";
 
 context("AAutocomplete", () => {
   before(() => {
-    cy.visitInLightTheme("http://localhost:8081/components/autocomplete");
+    cy.visitInLightTheme("http://localhost:3000/components/autocomplete");
   });
 
   it("has a label that works", () => {

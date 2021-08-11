@@ -1,6 +1,6 @@
 context("AToast", () => {
   before(() => {
-    cy.visitInLightTheme("http://localhost:8081/components/toast");
+    cy.visitInLightTheme("http://localhost:3000/components/toast");
   });
 
   // TODO: Test interactability

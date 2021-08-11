@@ -9,14 +9,9 @@
     "prettier"
   ],
   "parserOptions": {
-    "ecmaVersion": 2020,
-    "ecmaFeatures": {
-      "jsx": true
-    },
     "babelOptions": {
-      "presets": ["babel-preset-gatsby"]
+      "configFile": "./babel-lib.config.js"
     },
-    "requireConfigFile": false,
     "sourceType": "module"
   },
   "parser": "@babel/eslint-parser",
@@ -26,9 +21,9 @@
   },
   "globals": {
     "module": true,
+    "process": true,
     "require": true,
     "Buffer": true,
-    "process": true,
     "__dirname": true
   },
   "plugins": ["flowtype", "react-hooks"],

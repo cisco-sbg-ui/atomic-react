@@ -1,6 +1,6 @@
 context("AProgressbar", () => {
   before(() => {
-    cy.visitInLightTheme("http://localhost:8081/components/progressbar");
+    cy.visitInLightTheme("http://localhost:3000/components/progressbar");
   });
 
   // TODO: Test accessibility

@@ -1,7 +1,7 @@
 context("AContextualNotification", () => {
   before(() => {
     cy.visitInLightTheme(
-      "http://localhost:8081/components/contextual-notification"
+      "http://localhost:3000/components/contextual-notification"
     );
   });
 

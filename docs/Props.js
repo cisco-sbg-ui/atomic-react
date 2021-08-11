@@ -1,6 +1,6 @@
 import React, {useContext} from "react";
 
-import ASimpleTable from "../framework/components/ASimpleTable";
+import {ASimpleTable} from "../framework";
 import PropsContext from "./PropsContext";
 
 const types = {
@@ -38,9 +38,9 @@ const getType = (type) => {
 
 export default function Props({of}) {
   const allProps = useContext(PropsContext);
-  const props = allProps.find((x) => x.displayName === of)?.props || [];
+  const props = allProps.find((x) => x.displayName === of)?.props || {};
 
-  if (!props.length) {
+  if (!Object.keys(props).length) {
     return <p className="mb-8">No props are defined for this component.</p>;
   }
 
@@ -54,12 +54,12 @@ export default function Props({of}) {
         </tr>
       </thead>
       <tbody>
-        {props.map((x, index) => (
+        {Object.keys(props).map((x, index) => (
           <tr key={index}>
-            <td className="text-no-wrap">{x.name}</td>
+            <td className="text-no-wrap">{x}</td>
             <td>
-              <p className="mt-0">{x.docblock}</p>
-              {x.required ? (
+              <p className="mt-0">{props[x].description}</p>
+              {props[x].required ? (
                 <>
                   <br />
                   <span className="status-red" style={{fontStyle: "italic"}}>
@@ -71,11 +71,11 @@ export default function Props({of}) {
               )}
               <br />
               <span style={{fontStyle: "italic", fontWeight: 500}}>
-                {getType(x.type)}
+                {getType(props[x].type)}
               </span>
             </td>
             <td>
-              {x.defaultValue?.value || (
+              {props[x].defaultValue?.value || (
                 <span style={{fontStyle: "italic"}}>null</span>
               )}
             </td>

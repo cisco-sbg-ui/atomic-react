@@ -1,6 +1,6 @@
 context("AToaster", () => {
   before(() => {
-    cy.visitInLightTheme("http://localhost:8081/services/toaster");
+    cy.visitInLightTheme("http://localhost:3000/services/toaster");
   });
 
   it("works", () => {

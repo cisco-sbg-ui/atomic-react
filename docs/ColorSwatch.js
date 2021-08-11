@@ -1,6 +1,6 @@
 import React from "react";
 
-import {AList, AListItem} from "../framework/components/AList";
+import {AList, AListItem} from "../framework";
 
 const hexToRgb = (hex) => {
   // Expand shorthand form (e.g. "03F") to full form (e.g. "0033FF")
@@ -29,10 +29,11 @@ const colorIsLight = (r, g, b) => {
 const ColorSwatch = ({title, colors}) => {
   return (
     <AList className="mx-3 my-3" style={{width: 200}}>
-      {Object.keys(colors).map((x) => {
+      {Object.keys(colors).map((x, index) => {
         const rgb = hexToRgb(colors[x]);
         return (
           <AListItem
+            key={index}
             className={
               colorIsLight(rgb.r, rgb.g, rgb.b) ? "black--text" : "white--text"
             }

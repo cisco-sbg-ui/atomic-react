@@ -1,6 +1,6 @@
 context("ARadio", () => {
   before(() => {
-    cy.visitInLightTheme("http://localhost:8081/components/radio");
+    cy.visitInLightTheme("http://localhost:3000/components/radio");
   });
 
   // TODO: Test interactability

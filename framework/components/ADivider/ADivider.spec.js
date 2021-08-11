@@ -1,6 +1,6 @@
 context("ADivider", () => {
   before(() => {
-    cy.visitInLightTheme("http://localhost:8081/components/divider");
+    cy.visitInLightTheme("http://localhost:3000/components/divider");
   });
 
   // TODO: Test accessibility

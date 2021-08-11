@@ -1,6 +1,6 @@
 context("AMenu", () => {
   before(() => {
-    cy.visitInLightTheme("http://localhost:8081/components/menu");
+    cy.visitInLightTheme("http://localhost:3000/components/menu");
   });
 
   it("opens and closes appropriately", () => {
