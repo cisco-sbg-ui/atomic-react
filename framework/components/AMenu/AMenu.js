@@ -33,7 +33,7 @@ const AMenu = forwardRef(
     useEffect(() => {
       if (open && focusOnOpen) {
         setTimeout(() => {
-          combinedRef.current.focus();
+          combinedRef.current?.focus();
         }, 0);
       }
     }, [open, combinedRef, focusOnOpen]);
