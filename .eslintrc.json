@@ -17,6 +17,7 @@
     "module": true,
     "require": true,
     "Buffer": true,
+    "process": true,
     "__dirname": true
   },
   "plugins": ["react-hooks"],
