@@ -24,6 +24,7 @@ const ATextarea = forwardRef(
       disableGrammarly,
       hint,
       label,
+      maxLength,
       onBlur,
       onChange: propsOnChange,
       onFocus,
@@ -46,9 +47,8 @@ const ATextarea = forwardRef(
     const [isFocused, setIsFocused] = useState(false);
     const [textareaId] = useState(textareaCounter++);
     const [error, setError] = useState("");
-    const [workingValidationState, setWorkingValidationState] = useState(
-      validationState
-    );
+    const [workingValidationState, setWorkingValidationState] =
+      useState(validationState);
 
     useEffect(() => {
       if (
@@ -166,6 +166,7 @@ const ATextarea = forwardRef(
       className: "a-textarea__field",
       id: `a-textarea__field_${textareaId}`,
       disabled,
+      maxLength,
       placeholder,
       readOnly,
       rows,
@@ -228,6 +229,10 @@ ATextarea.propTypes = {
    * Sets the label content.
    */
   label: PropTypes.node,
+  /**
+   * Sets the maximum length of the textarea value.
+   */
+  maxLength: PropTypes.number,
   /**
    * Handles the `blur` event
    */
