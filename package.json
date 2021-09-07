@@ -1,6 +1,6 @@
 {
   "name": "@cisco-sbg-ui/atomic-react",
-  "version": "3.0.3",
+  "version": "3.0.4",
   "description": "",
   "main": "lib/index.js",
   "module": "lib/index.js",
@@ -16,7 +16,7 @@
     "cypress:run": "cypress run --env type=actual",
     "cypress:runUpdateSnapshots": "cypress run --env type=base",
     "dev": "cross-env WAIT_ON_TIMEOUT=600000 start-server-and-test start http://localhost:8081 cypress:open",
-    "publish-package": "rimraf lib && npm ci && npm run build && npm publish",
+    "publish-package": "rimraf lib && npm ci && npm run build && npm publish && vercel --prod",
     "start": "gatsby develop -p 8081",
     "test:lint": "eslint framework --max-warnings 0",
     "test:components": "cross-env WAIT_ON_TIMEOUT=600000 INSTRUMENT=true start-server-and-test start http://localhost:8081 cypress:run",
