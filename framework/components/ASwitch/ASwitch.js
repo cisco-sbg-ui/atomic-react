@@ -7,7 +7,7 @@ import React, {
   useState
 } from "react";
 
-import AFormContext from "../AForm/AFormContext";
+import {AFormContext} from "../AForm";
 import AHint from "../AHint";
 import {useCombinedRefs} from "../../utils/hooks";
 import "./ASwitch.scss";
@@ -36,9 +36,8 @@ const ASwitch = forwardRef(
     const combinedRef = useCombinedRefs(ref, switchRef);
     const [switchId] = useState(switchCounter++);
     const [error, setError] = useState("");
-    const [workingValidationState, setWorkingValidationState] = useState(
-      validationState
-    );
+    const [workingValidationState, setWorkingValidationState] =
+      useState(validationState);
 
     const {register} = useContext(AFormContext);
     useEffect(() => {

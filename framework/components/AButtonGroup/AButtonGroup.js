@@ -2,7 +2,7 @@ import PropTypes from "prop-types";
 import React, {forwardRef, useContext, useEffect, useState} from "react";
 
 import AFieldBase from "../AFieldBase";
-import AFormContext from "../AForm/AFormContext";
+import {AFormContext} from "../AForm";
 import AButtonGroupContext from "./AButtonGroupContext";
 import "./AButtonGroup.scss";
 
@@ -27,9 +27,8 @@ const AButtonGroup = forwardRef(
   ) => {
     const [buttonGroupId] = useState(buttonGroupCounter++);
     const [error, setError] = useState("");
-    const [workingValidationState, setWorkingValidationState] = useState(
-      validationState
-    );
+    const [workingValidationState, setWorkingValidationState] =
+      useState(validationState);
 
     const {register} = useContext(AFormContext);
     useEffect(() => {

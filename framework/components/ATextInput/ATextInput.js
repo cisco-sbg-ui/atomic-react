@@ -8,7 +8,7 @@ import React, {
 } from "react";
 
 import AInputBase from "../AInputBase";
-import AFormContext from "../AForm/AFormContext";
+import {AFormContext} from "../AForm";
 import AIcon from "../AIcon";
 import {useCombinedRefs} from "../../utils/hooks";
 import {keyCodes} from "../../utils/helpers";
@@ -66,9 +66,8 @@ const ATextInput = forwardRef(
     const [longClickTimeout, setLongClickTimeout] = useState(null);
     const [longClickInterval, setLongClickInterval] = useState(null);
     const [error, setError] = useState("");
-    const [workingValidationState, setWorkingValidationState] = useState(
-      validationState
-    );
+    const [workingValidationState, setWorkingValidationState] =
+      useState(validationState);
     const combinedRef = useCombinedRefs(ref, textInputRef);
     useEffect(() => {
       if (

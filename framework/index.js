@@ -22,7 +22,7 @@ import ADialog from "./components/ADialog";
 import ADivider from "./components/ADivider";
 import AFieldBase from "./components/AFieldBase";
 import {AFooter, AFooterLegal} from "./components/AFooter";
-import AForm from "./components/AForm";
+import {AForm, AFormContext} from "./components/AForm";
 import {
   AHeader,
   AHeaderLogo,
@@ -107,6 +107,7 @@ export {
   AFooter,
   AFooterLegal,
   AForm,
+  AFormContext,
   AHeader,
   AHeaderLogo,
   AHeaderTitle,

@@ -10,7 +10,7 @@ $btn-group-icon-font-size: rem(1);
     border-left: $border-width solid transparent;
   }
 
-  &__wrapper > .a-button {
+  &__wrapper > .a-button--primary.a-button {
     background-color: transparent;
     color: map-deep-get($theme, "button", "group", "color");
     box-shadow: none;

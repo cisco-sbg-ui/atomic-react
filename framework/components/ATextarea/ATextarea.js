@@ -8,7 +8,7 @@ import React, {
 } from "react";
 
 import AInputBase from "../AInputBase";
-import AFormContext from "../AForm/AFormContext";
+import {AFormContext} from "../AForm";
 import {useCombinedRefs} from "../../utils/hooks";
 import "./ATextarea.scss";
 

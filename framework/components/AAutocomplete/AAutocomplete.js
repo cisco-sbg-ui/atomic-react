@@ -9,7 +9,7 @@ import React, {
 
 import {ADotLoader} from "../ALoader";
 import AInputBase from "../AInputBase";
-import AFormContext from "../AForm/AFormContext";
+import {AFormContext} from "../AForm";
 import AIcon from "../AIcon";
 import AMenu from "../AMenu";
 import {AListItem} from "../AList";
