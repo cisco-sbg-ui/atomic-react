@@ -82,7 +82,7 @@
     "react-live": "2.3.0",
     "remark-slug": "6.1.0",
     "rimraf": "3.0.2",
-    "sass": "1.39.0",
+    "sass": "1.41.0",
     "start-server-and-test": "1.14.0"
   },
   "repository": {
