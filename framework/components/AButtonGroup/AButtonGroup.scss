@@ -6,7 +6,7 @@ $btn-group-type-iconic-padding: 0;
 $btn-group-icon-font-size: rem(1);
 
 @include theme(a-button-group) using ($theme) {
-  .a-button + .a-button {
+  .a-button + .a-button--primary.a-button {
     border-left: $border-width solid transparent;
   }
 
