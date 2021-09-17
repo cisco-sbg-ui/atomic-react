@@ -30,7 +30,7 @@ const AButtonGroup = forwardRef(
     const [workingValidationState, setWorkingValidationState] =
       useState(validationState);
 
-    const {register} = useContext(AFormContext);
+    const {register, unregister} = useContext(AFormContext);
     useEffect(() => {
       setWorkingValidationState(validationState);
     }, [validationState]);
@@ -43,6 +43,14 @@ const AButtonGroup = forwardRef(
         });
       }
     }, [validationState, selectedValues, rules]); // eslint-disable-line react-hooks/exhaustive-deps
+
+    useEffect(() => {
+      if (unregister) {
+        return () => {
+          return unregister(`a-button-group_${buttonGroupId}`);
+        };
+      }
+    }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
     const validate = (testValue = selectedValues) => {
       if (rules || required) {

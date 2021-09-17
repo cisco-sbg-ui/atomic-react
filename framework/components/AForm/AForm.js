@@ -28,6 +28,12 @@ const AForm = forwardRef(({children}, ref) => {
         currentFields[id] = field;
         return currentFields;
       });
+    },
+    unregister: (id) => {
+      setFields((currentFields) => {
+        delete currentFields[id];
+        return currentFields;
+      });
     }
   };
 

@@ -59,7 +59,7 @@ const ASlider = forwardRef(
     const [workingValidationState, setWorkingValidationState] =
       useState(validationState);
 
-    const {register} = useContext(AFormContext);
+    const {register, unregister} = useContext(AFormContext);
     useEffect(() => {
       setWorkingValidationState(validationState);
     }, [validationState]);
@@ -72,6 +72,14 @@ const ASlider = forwardRef(
         });
       }
     }, [validationState, value, rules]); // eslint-disable-line react-hooks/exhaustive-deps
+
+    useEffect(() => {
+      if (unregister) {
+        return () => {
+          return unregister(`a-slider_${sliderId}`);
+        };
+      }
+    }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
     const thumb1Position = Array.isArray(value)
       ? (value[0] * 100) / (max - min)

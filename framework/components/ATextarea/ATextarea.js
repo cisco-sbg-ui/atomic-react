@@ -77,7 +77,7 @@ const ATextarea = forwardRef(
       }
     }, [autoGrow]); // eslint-disable-line react-hooks/exhaustive-deps
 
-    const {register} = useContext(AFormContext);
+    const {register, unregister} = useContext(AFormContext);
     useEffect(() => {
       setWorkingValidationState(validationState);
     }, [validationState]);
@@ -90,6 +90,14 @@ const ATextarea = forwardRef(
         });
       }
     }, [validationState, value, rules]); // eslint-disable-line react-hooks/exhaustive-deps
+
+    useEffect(() => {
+      if (unregister) {
+        return () => {
+          return unregister(`a-textarea_${textareaId}`);
+        };
+      }
+    }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
     const calculateInputHeight = () => {
       const input =

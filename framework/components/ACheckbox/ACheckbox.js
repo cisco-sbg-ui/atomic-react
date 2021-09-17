@@ -51,7 +51,7 @@ const ACheckbox = forwardRef(
     const [workingValidationState, setWorkingValidationState] =
       useState(validationState);
 
-    const {register} = useContext(AFormContext);
+    const {register, unregister} = useContext(AFormContext);
     useEffect(() => {
       setWorkingValidationState(validationState);
     }, [validationState]);
@@ -64,6 +64,14 @@ const ACheckbox = forwardRef(
         });
       }
     }, [validationState, checked, value, rules]); // eslint-disable-line react-hooks/exhaustive-deps
+
+    useEffect(() => {
+      if (unregister) {
+        return () => {
+          return unregister(`a-checkbox_${checkboxId}`);
+        };
+      }
+    }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
     const validate = (testValue = checked) => {
       if (rules || required) {

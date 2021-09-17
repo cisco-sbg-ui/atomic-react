@@ -82,7 +82,7 @@ const ATextInput = forwardRef(
 
       combinedRef.current.querySelector(".a-text-input__input").focus();
     }, [autoFocus, combinedRef]);
-    const {register} = useContext(AFormContext);
+    const {register, unregister} = useContext(AFormContext);
     useEffect(() => {
       setWorkingValidationState(validationState);
     }, [validationState]);
@@ -95,6 +95,14 @@ const ATextInput = forwardRef(
         });
       }
     }, [validationState, value, rules]); // eslint-disable-line react-hooks/exhaustive-deps
+
+    useEffect(() => {
+      if (unregister) {
+        return () => {
+          return unregister(`a-text-input_${textInputId}`);
+        };
+      }
+    }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
     const prependProps = {
       className: "a-text-input__prepend-icon"
