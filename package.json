@@ -46,7 +46,7 @@
     "babel-eslint": "10.1.0",
     "babel-plugin-detective": "2.0.0",
     "babel-plugin-istanbul": "6.0.0",
-    "babel-preset-gatsby": "1.13.0",
+    "babel-preset-gatsby": "1.14.0",
     "codecov": "3.8.3",
     "cross-env": "7.0.3",
     "cypress": "8.4.1",
