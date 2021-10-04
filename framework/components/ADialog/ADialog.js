@@ -20,7 +20,7 @@ const ADialog = forwardRef(
       children,
       className: propsClassName,
       onClickOutside,
-      onClick,
+      onMouseDown,
       open,
       ...rest
     },
@@ -55,7 +55,7 @@ const ADialog = forwardRef(
     const keyDownEscHandler = useCallback(
       (e) => {
         if (e.keyCode === keyCodes.esc) {
-          onClickOutside();
+          onClickOutside && onClickOutside();
         }
       },
       [onClickOutside]
@@ -82,14 +82,6 @@ const ADialog = forwardRef(
       className += ` ${propsClassName}`;
     }
 
-    const onClickHandler = (e) => {
-      if (onClickOutside && e.currentTarget === e.target) {
-        onClickOutside(e);
-      }
-
-      onClick && onClick(e);
-    };
-
     return (
       (open &&
         appRef.current &&
@@ -102,7 +94,13 @@ const ADialog = forwardRef(
               tabIndex={0}
               ref={combinedRef}
               className={className}
-              onClick={onClickHandler}>
+              onMouseDown={(e) => {
+                if (onClickOutside && e.currentTarget === e.target) {
+                  onClickOutside(e);
+                }
+
+                onMouseDown && onMouseDown(e);
+              }}>
               {children}
             </div>
           </>,

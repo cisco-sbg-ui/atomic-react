@@ -214,7 +214,10 @@ const AAutocomplete = forwardRef(
         items && (items.length || (!items.length && noDataContent)) && isOpen
       ),
       role: "listbox",
-      style: {width: inputBaseSurfaceRef?.current?.clientWidth + 2 || "auto"}
+      style: {
+        minWidth: "max-content",
+        width: inputBaseSurfaceRef?.current?.clientWidth + 2 || "auto"
+      }
     };
 
     return (
