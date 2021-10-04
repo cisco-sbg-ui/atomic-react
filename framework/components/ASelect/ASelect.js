@@ -296,6 +296,7 @@ const ASelect = forwardRef(
       open: isOpen,
       role: "listbox",
       style: {
+        minWidth: "max-content",
         width: inputBaseSurfaceRef?.current?.clientWidth
           ? inputBaseSurfaceRef.current.clientWidth + 2
           : "auto"

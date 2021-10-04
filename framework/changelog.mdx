@@ -5,6 +5,11 @@ route: /changelog
 
 # Changelog
 
+## 3.1.2 (2021-10-03)
+
+- Fixed `ADialog` for the case when you start a click on the content and finish the click on the overlay, it shouldn't trigger the close event
+- Set `AAutocomplete`, `ACombobox`, `ASelect` menu min-width to be `max-content` and for `ASelect` add right padding to account for checkmark
+
 ## 3.1.1 (2021-09-16)
 
 - Unregister fields from `AForm` on unmount
