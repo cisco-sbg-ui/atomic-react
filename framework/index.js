@@ -60,6 +60,7 @@ import ARadio from "./components/ARadio";
 import ASelect from "./components/ASelect";
 import ASimpleTable from "./components/ASimpleTable";
 import ASlider from "./components/ASlider";
+import ASteps from "./components/ASteps";
 import ASwitch from "./components/ASwitch";
 import {ATabGroup, ATab, ATabHeading} from "./components/ATabs";
 import ATag from "./components/ATag";
@@ -140,6 +141,7 @@ export {
   ASimpleTable,
   ASlider,
   ASpacer,
+  ASteps,
   ASwitch,
   ATabGroup,
   ATab,

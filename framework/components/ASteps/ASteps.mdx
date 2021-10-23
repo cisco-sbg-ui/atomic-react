@@ -1,0 +1,120 @@
+---
+name: Steps
+route: /components/steps
+components: ASteps
+---
+
+import {Playground, Props} from "../../../docs";
+
+# Steps
+
+## Install
+
+Integrate with your build to [auto-import](/#integrating), or add an import in your component:
+
+```
+import {ASteps, ADivider, AButton} from "@cisco-sbg-ui/atomic-react";
+```
+
+## Horizontal Steps
+
+<Playground
+  code={`() => {
+    const [active, setActive] = useState(1);
+    const data = [
+      {
+        title: "Active. Long Title.",
+        description:
+          "Description of title. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+      },
+      {
+        title: "Title",
+        description:
+          "Description of title. Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+      },
+      {
+        title: "Default",
+        description:
+          "Description of title. Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+      }
+    ];
+    const localeFormatting = true;
+    return (
+      <div>
+        <div style={{border: "solid 2px #333"}} className="my-2 pa-2">
+          {active > data.length ? 'Completed': 'Step ' + active}
+        </div>
+        <h3>Steps with locale formatting</h3>
+        <ASteps active={active} data={data} localeFormatting={localeFormatting}/>
+        <ADivider/>
+      
+        <h3>Steps with icon:</h3>
+        <ASteps active={active} data={data} showIconOnSisited={true}/>
+        <AButton onClick={() => active > 1 && setActive(active - 1)}>
+          Previous
+        </AButton>
+        <AButton onClick={() => active <= data.length && setActive(active + 1)}>
+          Next
+        </AButton>
+      </div>
+    );
+  }`}
+/>
+
+## Vertical Steps with locale formatting
+
+<Playground
+  code={`() => {
+    const [active, setActive] = useState(3);
+    const data = [
+      {
+        title: "Success. Long Title.",
+        description:
+          "Description of title. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+      },
+      {
+        title: "Title",
+        description:
+          "Description of title. Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+      },
+      {
+        title: "Active. Long Title.",
+        description:
+          "Description of title. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+      },
+      {
+        title: "Default",
+        description:
+          "Description of title. Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+      }
+    ];
+    const localeFormatting = true;
+    return (
+      <div>
+        <h3>Vertical steps with showIconOnSisited</h3>
+        <div style={{border: "solid 2px #333"}} className="my-2 pa-2">
+          {active > data.length ? "Completed" : "Step " + active}
+        </div>
+        <ASteps
+          active={active}
+          data={data}
+          orientation={"vertical"}
+          showIconOnSisited={true}
+          localeFormatting={localeFormatting}
+        />
+        <AButton onClick={() => active > 1 && setActive(active - 1)}>
+          Previous
+        </AButton>
+        <AButton onClick={() => active <= data.length && setActive(active + 1)}>
+          Next
+        </AButton>
+      </div>
+    );
+  }`}
+/>
+
+## Steps Props
+
+The `ASteps` component inherits passed props.
+
+<Props of="ASteps" />
