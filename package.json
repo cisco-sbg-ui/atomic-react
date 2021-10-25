@@ -80,7 +80,7 @@
     "react-helmet": "6.1.0",
     "react-is": "17.0.2",
     "react-live": "2.3.0",
-    "remark-slug": "6.1.0",
+    "remark-slug": "7.0.1",
     "rimraf": "3.0.2",
     "sass": "1.43.3",
     "start-server-and-test": "1.14.0"
