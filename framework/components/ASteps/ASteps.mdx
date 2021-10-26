@@ -13,10 +13,63 @@ import {Playground, Props} from "../../../docs";
 Integrate with your build to [auto-import](/#integrating), or add an import in your component:
 
 ```
-import {ASteps, ADivider, AButton} from "@cisco-sbg-ui/atomic-react";
+import {ASteps, AStep, AButton, AStepTitle, AStepDescription} from "@cisco-sbg-ui/atomic-react";
 ```
 
 ## Horizontal Steps
+
+<Playground
+  code={`() => {
+    const [active, setActive] = useState(1);
+    const steps = 3;
+    return (
+      <div>
+        <div style={{border: "solid 2px #333"}} className="my-2 pa-2">
+          {active > steps ? "Completed" : "Step " + active}
+        </div>
+        <h3>Steps</h3>
+        <ASteps>
+          <AStep stepNumber={1} active={active === 1} visited={active > 1}>
+            <AStepTitle title={"Title"} />
+            <AStepDescription
+              description={
+                "Description of title. Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+              }
+            />
+          </AStep>
+          <AStep
+            stepNumber={2}
+            active={active === 2}
+            visited={active > 2}
+            disabled={true}>
+            <AStepTitle title={"Title"} />
+            <AStepDescription
+              description={
+                "Description of title. Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+              }
+            />
+          </AStep>
+          <AStep stepNumber={3} active={active === 3} visited={active > 3}>
+            <AStepTitle title={"Title"} />
+            <AStepDescription
+              description={
+                "Description of title. Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+              }
+            />
+          </AStep>
+        </ASteps>
+        <AButton onClick={() => active > 1 && setActive(active - 1)}>
+          Previous
+        </AButton>
+        <AButton onClick={() => active <= steps && setActive(active + 1)}>
+          Next
+        </AButton>
+      </div>
+    );
+  }`}
+/>
+
+## Steps used with json data
 
 <Playground
   code={`() => {
@@ -38,18 +91,28 @@ import {ASteps, ADivider, AButton} from "@cisco-sbg-ui/atomic-react";
           "Description of title. Lorem ipsum dolor sit amet, consectetur adipiscing elit."
       }
     ];
-    const localeFormatting = true;
     return (
       <div>
         <div style={{border: "solid 2px #333"}} className="my-2 pa-2">
-          {active > data.length ? 'Completed': 'Step ' + active}
+          {active > data.length ? "Completed" : "Step " + active}
         </div>
-        <h3>Steps with locale formatting</h3>
-        <ASteps active={active} data={data} localeFormatting={localeFormatting}/>
-        <ADivider/>
-      
         <h3>Steps with icon:</h3>
-        <ASteps active={active} data={data} showIconOnSisited={true}/>
+        <ASteps>
+          {data.map((item, index) => {
+            const stepNumber = index + 1;
+            return (
+              <AStep
+                stepNumber={stepNumber}
+                active={active === stepNumber}
+                visited={active > stepNumber}
+                disabled={stepNumber === 2}
+                showIconOnSisited={true}>
+                <AStepTitle title={item.title} />
+                <AStepDescription description={item.description} />
+              </AStep>
+            );
+          })}
+        </ASteps>
         <AButton onClick={() => active > 1 && setActive(active - 1)}>
           Previous
         </AButton>
@@ -65,10 +128,10 @@ import {ASteps, ADivider, AButton} from "@cisco-sbg-ui/atomic-react";
 
 <Playground
   code={`() => {
-    const [active, setActive] = useState(3);
+    const [active, setActive] = useState(1);
     const data = [
       {
-        title: "Success. Long Title.",
+        title: "Active. Long Title.",
         description:
           "Description of title. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
       },
@@ -78,30 +141,33 @@ import {ASteps, ADivider, AButton} from "@cisco-sbg-ui/atomic-react";
           "Description of title. Lorem ipsum dolor sit amet, consectetur adipiscing elit."
       },
       {
-        title: "Active. Long Title.",
-        description:
-          "Description of title. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
-      },
-      {
         title: "Default",
         description:
           "Description of title. Lorem ipsum dolor sit amet, consectetur adipiscing elit."
       }
     ];
-    const localeFormatting = true;
     return (
       <div>
-        <h3>Vertical steps with showIconOnSisited</h3>
         <div style={{border: "solid 2px #333"}} className="my-2 pa-2">
           {active > data.length ? "Completed" : "Step " + active}
         </div>
-        <ASteps
-          active={active}
-          data={data}
-          orientation={"vertical"}
-          showIconOnSisited={true}
-          localeFormatting={localeFormatting}
-        />
+        <h3>Steps with icon:</h3>
+        <ASteps orientation="vertical">
+          {data.map((item, index) => {
+            const stepNumber = index + 1;
+            return (
+              <AStep
+                stepNumber={stepNumber}
+                active={active === stepNumber}
+                visited={active > stepNumber}
+                disabled={stepNumber === 2}
+                showIconOnSisited={true}>
+                <AStepTitle title={item.title} />
+                <AStepDescription description={item.description} />
+              </AStep>
+            );
+          })}
+        </ASteps>
         <AButton onClick={() => active > 1 && setActive(active - 1)}>
           Previous
         </AButton>
@@ -118,3 +184,7 @@ import {ASteps, ADivider, AButton} from "@cisco-sbg-ui/atomic-react";
 The `ASteps` component inherits passed props.
 
 <Props of="ASteps" />
+
+## Step Props
+
+<Props of="AStep" />
