@@ -1,0 +1,40 @@
+---
+name: Button Card
+route: /components/buttonCard
+components: AButtonCard
+---
+
+import {Playground, Props} from "../../../docs";
+
+# Buttons
+
+## Install
+
+Integrate with your build to [auto-import](/#integrating), or add an import in your component:
+
+```
+import AButton from "@cisco-ats/atomic-react/AButtonCard";
+// or if you're able to treekshake node_modules
+import {AButtonCard} from "@cisco-ats/atomic-react";
+```
+
+<Playground
+  fullWidthPreview
+  code={`<div className="d-flex">
+  <div>
+    <p>
+      <AButtonCard>Primary</AButtonCard>
+    </p>
+</div>
+</div>
+`}/>
+
+
+## Router Integrations
+
+Set the `component` property to your router's link type, for example:
+
+```
+// With react-router:
+<AButtonCard component={RouterLink} to="/">Title</AButtonCard>
+```

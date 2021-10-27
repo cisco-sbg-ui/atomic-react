@@ -11,6 +11,7 @@ import AAutocomplete from "./components/AAutocomplete";
 import ABadge from "./components/ABadge";
 import ABreadcrumb from "./components/ABreadcrumb";
 import AButton from "./components/AButton";
+import AButtonCard from "./components/AButtonCard";
 import AButtonGroup from "./components/AButtonGroup";
 import ACheckbox from "./components/ACheckbox";
 import ACombobox from "./components/ACombobox";
@@ -95,6 +96,7 @@ export {
   ABadge,
   ABreadcrumb,
   AButton,
+  AButtonCard,
   AButtonGroup,
   ACheckbox,
   ACiscoLoader,
