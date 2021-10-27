@@ -1,5 +1,65 @@
-@import "../../styles";
+@import "../../styles/index.scss";
 
+@include theme(a-steps) using ($theme) {
+  $step-icon-color: map-deep-get($theme, "steps", "step-icon-color");
+  $step-icon-color-visited: map-deep-get(
+    $theme,
+    "steps",
+    "step-icon-color-visited"
+  );
+  $step-icon-border-color: map-deep-get(
+    $theme,
+    "steps",
+    "step-icon-border-color"
+  );
+  $step-icon-bg: map-deep-get($theme, "steps", "step-icon-bg");
+  $step-icon-bg-visited: map-deep-get($theme, "steps", "step-icon-bg-visite");
+  $step-line-color: map-deep-get($theme, "steps", "step-line-color");
+
+  .a-step {
+    &__icon {
+      background: $step-icon-bg;
+      color: $step-icon-color;
+      border: $border-width solid $step-icon-border-color;
+    }
+
+    &__title {
+      background: map-get($theme, "base", "bg");
+    }
+    &.active {
+      .a-step__icon {
+        background: map-get($theme, "base", "color--selected");
+        color: map-get($theme, "base", "inverse-color");
+        border: $border-width solid map-get($theme, "base", "color--selected");
+      }
+    }
+    &.visited {
+      .a-step__icon {
+        background: $step-icon-bg-visited;
+        color: $step-icon-color-visited;
+      }
+    }
+    &:before {
+      background: $step-line-color;
+    }
+  }
+  &--orientation-vertical {
+    .a-step {
+      &:after {
+        background-color: $step-line-color;
+      }
+    }
+  }
+
+  &--type-expanded {
+    .a-step {
+      border: map-get($theme, "base", "border-width") solid
+        map-get($theme, "control", "stroke-color");
+    }
+  }
+}
+
+$steps-min-width: 0;
 $steps-max-width: 1000px;
 $steps-max-width-vertical: 300px;
 $steps-padding: 20px 0;
@@ -10,11 +70,6 @@ $step-icon-max-width: 24px;
 $step-icon-height: 24px;
 $step-icon-line-height: $line-height--lg;
 $step-icon-font-size: $font-size--xs;
-$step-icon-color: map-get($grey, "darken-4");
-$step-icon-color-visited: map-get($grey, "darken-4");
-$step-icon-border-color: map-get($grey, "lighten-2");
-$step-icon-bg: $base-inverse-color;
-$step-icon-bg-visited: $base-inverse-color;
 $step-icon-margin: 10px;
 $step-content-width: 100%;
 $step-content-margin: 12px 0 0 0;
@@ -34,9 +89,7 @@ $step-line-top: 22px;
 $step-line-vertical-top: 44px;
 $step-line-left: 44px;
 $step-line-vertical-left: 22px;
-$step-line-color: map-get($grey, "lighten-2");
-
-.steps {
+.a-steps {
   display: flex;
   flex: 1;
   align-items: top;
@@ -45,7 +98,7 @@ $step-line-color: map-get($grey, "lighten-2");
   margin: $steps-margin;
   padding: $steps-padding;
   text-align: center;
-  .step {
+  .a-step {
     position: relative;
     display: inline-flex;
     flex: 1;
@@ -56,9 +109,6 @@ $step-line-color: map-get($grey, "lighten-2");
       height: $step-icon-height;
       line-height: $step-icon-line-height;
       font-size: $step-icon-font-size;
-      background: $step-icon-bg;
-      color: $step-icon-color;
-      border: $border-width solid $step-icon-border-color;
       margin: $step-icon-margin;
       position: relative;
       display: inline-flex;
@@ -76,11 +126,10 @@ $step-line-color: map-get($grey, "lighten-2");
       margin: $step-content-margin;
     }
     &__label {
-      color: $base-color;
+      color: map-get($grey, "darken-4");
       font-size: $step-label-font-size;
     }
     &__title {
-      background: $base-bg;
       padding: $step-title-padding;
     }
     &__hint {
@@ -89,18 +138,8 @@ $step-line-color: map-get($grey, "lighten-2");
       line-height: $step-hint-line-height;
     }
 
-    &.active {
-      .step__icon {
-        background: $base-color--selected;
-        color: $base-inverse-color;
-        border: $border-width solid $base-color--selected;
-      }
-    }
-
     &.visited {
-      .step__icon {
-        background: $step-icon-bg-visited;
-        color: $step-icon-color-visited;
+      .a-step__icon {
         border: $border-width solid $color-good;
       }
     }
@@ -123,7 +162,6 @@ $step-line-color: map-get($grey, "lighten-2");
       // This variable will be switched to "$step-line-height" next release;
       height: $step-line-heigth;
       left: $step-line-left;
-      background: $step-line-color;
       z-index: -1;
     }
   }
@@ -132,9 +170,9 @@ $step-line-color: map-get($grey, "lighten-2");
     flex-direction: column;
     max-width: $steps-max-width-vertical;
     text-align: left;
-    .step {
+    .a-step {
       display: flex;
-      .step__icon {
+      .a-step__icon {
         flex: 1;
       }
       &__content {
@@ -162,7 +200,6 @@ $step-line-color: map-get($grey, "lighten-2");
         height: $step-line-vertical-heigth;
         left: $step-line-vertical-left;
         top: $step-line-vertical-top;
-        background-color: $step-line-color;
       }
     }
   }
@@ -179,8 +216,7 @@ $step-line-color: map-get($grey, "lighten-2");
     padding: 0;
     box-shadow: $default-box-shadow;
 
-    .step {
-      border: $base-border-width solid $control-stroke-color;
+    .a-step {
       &:before {
         display: none;
       }

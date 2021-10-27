@@ -160,6 +160,14 @@ $atomic-default: (
     "selection-bg-disabled": map-get($grey, "lighten-2"),
     "handle-border-disabled": map-get($grey, "lighten-2")
   ),
+  "steps": (
+    "step-icon-bg-visited": transparent,
+    "step-icon-color-visited": map-get($grey, "lighten-5"),
+    "step-icon-bg": transparent,
+    "step-icon-color": map-get($grey, "lighten-5"),
+    "step-icon-border-color": rgba(map-get($grey, "lighten-2"), $alpha-3),
+    "step-line-color": rgba(map-get($grey, "lighten-2"), $alpha-3)
+  ),
   "switch": (
     "bg": map-get($grey, "darken-4"),
     "bg--checked": map-get($cisco-blue, "burnt-1"),

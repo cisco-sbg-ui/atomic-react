@@ -4,12 +4,12 @@ import AIcon from "../AIcon";
 import "./ASteps.scss";
 
 const AStepTitle = forwardRef(
-  ({className: propsClassName, children, ...rest}, ref) => {
-    const containerClassName = " step__label";
+  ({className: propsClassName = "", children, ...rest}, ref) => {
+    const containerClassName = " a-step__label";
     const className = propsClassName + containerClassName;
     return (
       <div {...rest} ref={ref} className={className}>
-        <span className="step__title">{children}</span>
+        <span className="a-step__title">{children}</span>
       </div>
     );
   }
@@ -24,8 +24,8 @@ AStepTitle.propTypes = {
 AStepTitle.displayName = "AStepTitle";
 
 const AStepDescription = forwardRef(
-  ({className: propsClassName, children, ...rest}, ref) => {
-    const containerClassName = " step__hint";
+  ({className: propsClassName = "", children, ...rest}, ref) => {
+    const containerClassName = " a-step__hint";
     const className = propsClassName + containerClassName;
 
     return (
@@ -47,7 +47,7 @@ AStepDescription.displayName = "AStepDescription";
 const AStep = forwardRef(
   (
     {
-      className: propsClassName,
+      className: propsClassName = "",
       active,
       visited,
       disabled,
@@ -58,7 +58,7 @@ const AStep = forwardRef(
     },
     ref
   ) => {
-    const stepClassNamePrefix = " step";
+    const stepClassNamePrefix = " a-step";
     let className = propsClassName + stepClassNamePrefix;
     if (disabled) {
       className += ` disabled`;
@@ -73,8 +73,8 @@ const AStep = forwardRef(
 
     return (
       <div {...rest} ref={ref} className={className}>
-        <div className="step__icon">
-          {visited && showIconOnSisited ? (
+        <div className="a-step__icon">
+          {!disabled && visited && showIconOnSisited ? (
             <AIcon size={15} className="icon-checkmark">
               checkmark
             </AIcon>
@@ -82,7 +82,7 @@ const AStep = forwardRef(
             stepNumber
           )}
         </div>
-        <div className="step__content">{children}</div>
+        <div className="a-step__content">{children}</div>
       </div>
     );
   }
@@ -118,12 +118,17 @@ AStep.displayName = "AStep";
 
 const ASteps = forwardRef(
   (
-    {className: propsClassName, children, orientation = "horizontal", ...rest},
+    {
+      className: propsClassName = "",
+      children,
+      orientation = "horizontal",
+      ...rest
+    },
     ref
   ) => {
-    let className = "steps";
+    let className = "a-steps";
     if (orientation === "vertical") {
-      className += " steps--orientation-vertical";
+      className += " a-steps--orientation-vertical";
     }
     if (propsClassName) {
       className += ` ${propsClassName}`;

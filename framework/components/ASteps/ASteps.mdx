@@ -161,9 +161,9 @@ import {ASteps, AStep, AStepTitle, AStepDescription, AButton} from "@cisco-sbg-u
                 disabled={stepNumber === 2}
                 showIconOnSisited={true}>
                 <AStepTitle>
-                  <h1>{item.title}</h1>
+                  {item.title}
                 </AStepTitle>
-                <AStepDescription><span>{item.description}</span></AStepDescription>
+                <AStepDescription>{item.description}</AStepDescription>
               </AStep>
             );
           })}
