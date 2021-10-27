@@ -1,16 +1,15 @@
 import PropTypes from "prop-types";
 import React, {forwardRef} from "react";
 import AIcon from "../AIcon";
-// import ADivider from "../ADivider";
 import "./ASteps.scss";
 
 const AStepTitle = forwardRef(
-  ({className: propsClassName, title, ...rest}, ref) => {
+  ({className: propsClassName, children, ...rest}, ref) => {
     const containerClassName = " step__label";
     const className = propsClassName + containerClassName;
     return (
       <div {...rest} ref={ref} className={className}>
-        <span className="step__title">{title}</span>
+        <span className="step__title">{children}</span>
       </div>
     );
   }
@@ -18,24 +17,20 @@ const AStepTitle = forwardRef(
 
 AStepTitle.propTypes = {
   /**
-   * Sets numeric displays to be locale formatted.
+   * String representing class names to be passed to component container
    */
-  className: PropTypes.bool,
-  /**
-   * Set active step.
-   */
-  title: PropTypes.number
+  className: PropTypes.bool
 };
 AStepTitle.displayName = "AStepTitle";
 
 const AStepDescription = forwardRef(
-  ({className: propsClassName, description, ...rest}, ref) => {
+  ({className: propsClassName, children, ...rest}, ref) => {
     const containerClassName = " step__hint";
     const className = propsClassName + containerClassName;
 
     return (
       <div {...rest} ref={ref} className={className}>
-        {description}
+        {children}
       </div>
     );
   }
@@ -43,13 +38,9 @@ const AStepDescription = forwardRef(
 
 AStepDescription.propTypes = {
   /**
-   * Sets numeric displays to be locale formatted.
+   * String representing class names to be passed to component container
    */
-  className: PropTypes.bool,
-  /**
-   * Set active step.
-   */
-  description: PropTypes.number
+  className: PropTypes.bool
 };
 AStepDescription.displayName = "AStepDescription";
 
@@ -99,10 +90,6 @@ const AStep = forwardRef(
 
 AStep.propTypes = {
   /**
-   * Sets numeric displays to be locale formatted.
-   */
-  localeFormatting: PropTypes.bool,
-  /**
    * Mark step as active.
    */
   active: PropTypes.bool,
@@ -123,14 +110,17 @@ AStep.propTypes = {
    */
   className: PropTypes.string,
   /**
-   * Set number.
+   * Step number.
    */
-  stepNumber: PropTypes.bool
+  stepNumber: PropTypes.number
 };
 AStep.displayName = "AStep";
 
 const ASteps = forwardRef(
-  ({className: propsClassName, children, orientation, ...rest}, ref) => {
+  (
+    {className: propsClassName, children, orientation = "horizontal", ...rest},
+    ref
+  ) => {
     let className = "steps";
     if (orientation === "vertical") {
       className += " steps--orientation-vertical";

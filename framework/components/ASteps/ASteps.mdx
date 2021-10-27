@@ -13,7 +13,7 @@ import {Playground, Props} from "../../../docs";
 Integrate with your build to [auto-import](/#integrating), or add an import in your component:
 
 ```
-import {ASteps, AStep, AButton, AStepTitle, AStepDescription} from "@cisco-sbg-ui/atomic-react";
+import {ASteps, AStep, AStepTitle, AStepDescription, AButton} from "@cisco-sbg-ui/atomic-react";
 ```
 
 ## Horizontal Steps
@@ -30,32 +30,26 @@ import {ASteps, AStep, AButton, AStepTitle, AStepDescription} from "@cisco-sbg-u
         <h3>Steps</h3>
         <ASteps>
           <AStep stepNumber={1} active={active === 1} visited={active > 1}>
-            <AStepTitle title={"Title"} />
-            <AStepDescription
-              description={
-                "Description of title. Lorem ipsum dolor sit amet, consectetur adipiscing elit."
-              }
-            />
+            <AStepTitle>Title </AStepTitle>
+            <AStepDescription>
+              Description of title. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+            </AStepDescription>
           </AStep>
           <AStep
             stepNumber={2}
             active={active === 2}
             visited={active > 2}
             disabled={true}>
-            <AStepTitle title={"Title"} />
-            <AStepDescription
-              description={
-                "Description of title. Lorem ipsum dolor sit amet, consectetur adipiscing elit."
-              }
-            />
+            <AStepTitle>Title</AStepTitle>
+            <AStepDescription>
+              Description of title. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+            </AStepDescription>
           </AStep>
           <AStep stepNumber={3} active={active === 3} visited={active > 3}>
-            <AStepTitle title={"Title"} />
-            <AStepDescription
-              description={
-                "Description of title. Lorem ipsum dolor sit amet, consectetur adipiscing elit."
-              }
-            />
+            <AStepTitle>Title</AStepTitle>
+            <AStepDescription>
+                Description of title. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+            </AStepDescription>
           </AStep>
         </ASteps>
         <AButton onClick={() => active > 1 && setActive(active - 1)}>
@@ -102,14 +96,17 @@ import {ASteps, AStep, AButton, AStepTitle, AStepDescription} from "@cisco-sbg-u
             const stepNumber = index + 1;
             return (
               <AStep
+                key={stepNumber}
                 stepNumber={stepNumber}
                 active={active === stepNumber}
                 visited={active > stepNumber}
                 disabled={stepNumber === 2}
                 showIconOnSisited={true}>
-                <AStepTitle title={item.title} />
-                <AStepDescription description={item.description} />
-              </AStep>
+               <AStepTitle>
+                  {item.title}
+                </AStepTitle>
+                <AStepDescription>{item.description}</AStepDescription>
+               </AStep>
             );
           })}
         </ASteps>
@@ -124,7 +121,7 @@ import {ASteps, AStep, AButton, AStepTitle, AStepDescription} from "@cisco-sbg-u
   }`}
 />
 
-## Vertical Steps with locale formatting
+## Vertical Steps with icon
 
 <Playground
   code={`() => {
@@ -151,19 +148,22 @@ import {ASteps, AStep, AButton, AStepTitle, AStepDescription} from "@cisco-sbg-u
         <div style={{border: "solid 2px #333"}} className="my-2 pa-2">
           {active > data.length ? "Completed" : "Step " + active}
         </div>
-        <h3>Steps with icon:</h3>
+        <h3>Vertical steps with icon:</h3>
         <ASteps orientation="vertical">
           {data.map((item, index) => {
             const stepNumber = index + 1;
             return (
               <AStep
+                key={stepNumber}
                 stepNumber={stepNumber}
                 active={active === stepNumber}
                 visited={active > stepNumber}
                 disabled={stepNumber === 2}
                 showIconOnSisited={true}>
-                <AStepTitle title={item.title} />
-                <AStepDescription description={item.description} />
+                <AStepTitle>
+                  <h1>{item.title}</h1>
+                </AStepTitle>
+                <AStepDescription><span>{item.description}</span></AStepDescription>
               </AStep>
             );
           })}
@@ -188,3 +188,11 @@ The `ASteps` component inherits passed props.
 ## Step Props
 
 <Props of="AStep" />
+
+## Step Title Props
+
+<Props of="AStepTitle" />
+
+## Step Description Props
+
+<Props of="AStepDescription" />
