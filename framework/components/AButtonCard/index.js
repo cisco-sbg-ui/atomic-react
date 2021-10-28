@@ -1,2 +1,3 @@
-export {default} from "./AButtonCard";
+import {AButtonCard, AButtonCardTitle, AButtonCardBody} from "./AButtonCard";
+export {AButtonCard, AButtonCardTitle, AButtonCardBody};
 

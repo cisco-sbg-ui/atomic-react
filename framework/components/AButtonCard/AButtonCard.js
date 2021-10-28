@@ -1,8 +1,52 @@
 import PropTypes from "prop-types";
-import React, {forwardRef, useContext} from "react";
+import React, {forwardRef} from "react";
 
-import AButtonGroupContext from "../AButtonGroup/AButtonGroupContext";
 import "./AButtonCard.scss";
+
+const AButtonCardTitle = forwardRef((
+  {className: propsClassName = "", children, ...rest}, ref) => {
+    const containerClassName = " a-button-card__title";
+    const className = propsClassName + containerClassName;
+
+    return (
+      <div {...rest} ref={ref} className={className}>
+        {children}
+      </div>
+    );
+  }
+);
+
+AButtonCardTitle.propTypes = {
+  /**
+   * String representing class names to be passed to component container
+   */
+  className: PropTypes.bool
+};
+
+AButtonCardTitle.displayName = "AButtonCardTitle";
+
+const AButtonCardBody = forwardRef((
+  {className: propsClassName = "", children, ...rest}, ref) => {
+    const containerClassName = " a-button-card__body";
+    const className = propsClassName + containerClassName;
+
+    return (
+      <div {...rest} ref={ref} className={className}>
+        {children}
+      </div>
+    );
+  }
+);
+
+AButtonCardBody.propTypes = {
+  /**
+   * String representing class names to be passed to component container
+   */
+  className: PropTypes.bool
+};
+
+AButtonCardBody.displayName = "AButtonCardBody";
+
 
 const AButtonCard = forwardRef(
   (
@@ -11,9 +55,7 @@ const AButtonCard = forwardRef(
       className: propsClassName,
       component,
       disabled,
-      description,
       href,
-      onClick,
       selected,
       target,
       type = "button",
@@ -22,8 +64,6 @@ const AButtonCard = forwardRef(
     },
     ref
   ) => {
-    const {selectedValues, toggleValue} = useContext(AButtonGroupContext);
-
     let className = "a-button-card focus-box-shadow a-button-card--";
 
     if (selected) {
@@ -31,12 +71,9 @@ const AButtonCard = forwardRef(
     }
 
     if (disabled) {
-      className += " disabled";
+      className += "disabled";
     }
 
-    if (selectedValues && selectedValues.includes(value)) {
-      className += " a-button--state-selected";
-    }
 
     if (propsClassName) {
       className += ` ${propsClassName}`;
@@ -46,14 +83,7 @@ const AButtonCard = forwardRef(
     const props = {
       ...rest,
       ref,
-      className,
-      onClick: (e) => {
-        if (toggleValue) {
-          toggleValue(value);
-        }
-
-        onClick && onClick(e);
-      }
+      className
     };
 
     if (href || component) {
@@ -97,10 +127,6 @@ AButtonCard.propTypes = {
   /**
    * Signifies an icon-only button.
    */
-  description: PropTypes.string,
-  /**
-   * Signifies the button's description.
-   */
   default: PropTypes.bool,
   /**
    * Toggles the `secondary` style variant.
@@ -109,10 +135,8 @@ AButtonCard.propTypes = {
   /**
    * If the `href` or `component` props is set, the target can be set (ex: `_blank`, `_self`, `_parent`, `_top`)
    */
-
-  type: PropTypes.oneOf(["button", "submit", "reset"])
 };
 
 AButtonCard.displayName = "AButtonCard";
 
-export default AButtonCard;
+export {AButtonCard, AButtonCardTitle, AButtonCardBody};

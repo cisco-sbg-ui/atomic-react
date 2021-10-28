@@ -15,7 +15,7 @@ Integrate with your build to [auto-import](/#integrating), or add an import in y
 ```
 import AButton from "@cisco-ats/atomic-react/AButtonCard";
 // or if you're able to treekshake node_modules
-import {AButtonCard} from "@cisco-ats/atomic-react";
+import {AButtonCard, AButtonCardTitle, AButtonCardBody} from "@cisco-ats/atomic-react";
 ```
 
 <Playground
@@ -23,7 +23,22 @@ import {AButtonCard} from "@cisco-ats/atomic-react";
   code={`<div className="d-flex">
   <div>
     <p>
-      <AButtonCard>Primary</AButtonCard>
+      <AButtonCard>
+        <AButtonCardTitle>Title</AButtonCardTitle>
+        <AButtonCardBody>Description of events goes here</AButtonCardBody>
+      </AButtonCard>
+    </p>
+    <p>
+      <AButtonCard selected>
+        <AButtonCardTitle>Title</AButtonCardTitle>
+        <AButtonCardBody>Description of events goes here</AButtonCardBody>
+      </AButtonCard>
+    </p>
+    <p>
+      <AButtonCard disabled>
+        <AButtonCardTitle>Title</AButtonCardTitle>
+        <AButtonCardBody>Description of events goes here</AButtonCardBody>
+      </AButtonCard>
     </p>
 </div>
 </div>
