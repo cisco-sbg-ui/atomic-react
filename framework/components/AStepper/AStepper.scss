@@ -1,52 +1,43 @@
 @import "../../styles/index.scss";
 
 @include theme(a-steps) using ($theme) {
-  $step-icon-color: map-deep-get($theme, "steps", "step-icon-color");
-  $step-icon-color-visited: map-deep-get(
-    $theme,
-    "steps",
-    "step-icon-color-visited"
-  );
-  $step-icon-border-color: map-deep-get(
-    $theme,
-    "steps",
-    "step-icon-border-color"
-  );
-  $step-icon-bg: map-deep-get($theme, "steps", "step-icon-bg");
-  $step-icon-bg-visited: map-deep-get($theme, "steps", "step-icon-bg-visite");
-  $step-line-color: map-deep-get($theme, "steps", "step-line-color");
-
   .a-step {
     &__icon {
-      background: $step-icon-bg;
-      color: $step-icon-color;
-      border: $border-width solid $step-icon-border-color;
+      background: map-deep-get($theme, "steps", "step-icon-bg");
+      color: map-deep-get($theme, "steps", "step-icon-color");
+      border: $border-width solid
+        map-deep-get($theme, "steps", "step-icon-border-color");
     }
 
     &__title {
       background: map-get($theme, "base", "bg");
     }
-    &.active {
+    &__active {
       .a-step__icon {
         background: map-get($theme, "base", "color--selected");
         color: map-get($theme, "base", "inverse-color");
         border: $border-width solid map-get($theme, "base", "color--selected");
       }
     }
-    &.visited {
+    &__visited {
       .a-step__icon {
-        background: $step-icon-bg-visited;
-        color: $step-icon-color-visited;
+        background: map-deep-get($theme, "steps", "step-icon-bg-visite");
+        color: map-deep-get($theme, "steps", "step-icon-color-visited");
+      }
+      .a-step__divider {
+        background-color: $color-good;
+        border: 0px;
+        height: 1px;
       }
     }
     &:before {
-      background: $step-line-color;
+      background: map-deep-get($theme, "steps", "step-line-color");
     }
   }
   &--orientation-vertical {
     .a-step {
       &:after {
-        background-color: $step-line-color;
+        background-color: map-deep-get($theme, "steps", "step-line-color");
       }
     }
   }
@@ -116,7 +107,7 @@ $step-line-vertical-left: 22px;
       justify-content: center;
       border-radius: 50%;
       z-index: 1;
-      .icon-checkmark {
+      &__checkmark {
         color: $color-good;
       }
     }
@@ -128,6 +119,11 @@ $step-line-vertical-left: 22px;
     &__label {
       color: map-get($grey, "darken-4");
       font-size: $step-label-font-size;
+      display: flex;
+      align-items: center;
+    }
+    &__divider {
+      flex-grow: 1;
     }
     &__title {
       padding: $step-title-padding;
@@ -138,12 +134,12 @@ $step-line-vertical-left: 22px;
       line-height: $step-hint-line-height;
     }
 
-    &.visited {
+    &__visited {
       .a-step__icon {
         border: $border-width solid $color-good;
       }
     }
-    &.visited {
+    &__visited {
       &:before {
         background: $color-good;
       }
@@ -172,6 +168,9 @@ $step-line-vertical-left: 22px;
     text-align: left;
     .a-step {
       display: flex;
+      &__divider {
+        display: none;
+      }
       .a-step__icon {
         flex: 1;
       }
@@ -182,8 +181,8 @@ $step-line-vertical-left: 22px;
       &:before {
         display: none;
       }
-      &.visited {
-        &:after {
+      &__visited {
+        &.a-step:after {
           background: $color-good;
         }
       }
@@ -221,7 +220,7 @@ $step-line-vertical-left: 22px;
         display: none;
       }
 
-      &.visited {
+      &__visited {
         &:after {
           display: none;
         }

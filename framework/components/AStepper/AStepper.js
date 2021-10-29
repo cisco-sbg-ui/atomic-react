@@ -3,7 +3,7 @@ import React, {forwardRef} from "react";
 
 import AIcon from "../AIcon";
 
-import "./ASteps.scss";
+import "./AStepper.scss";
 
 const AStepTitle = forwardRef(
   ({className: propsClassName = "", children, ...rest}, ref) => {
@@ -53,7 +53,7 @@ const AStep = forwardRef(
       active,
       visited,
       disabled,
-      showIconOnSisited,
+      showIconOnVisited,
       stepNumber,
       children,
       ...rest
@@ -62,21 +62,22 @@ const AStep = forwardRef(
   ) => {
     let className = `a-step ${propsClassName}`.trim();
     if (disabled) {
-      className += ` disabled`;
+      className += ` a-step__disabled`;
     } else {
       if (visited) {
-        className += ` visited`;
+        className += ` a-step__visited`;
       }
       if (active) {
-        className += ` active`;
+        className += ` a-step__active`;
       }
     }
+    className = className.trim();
 
     return (
       <div {...rest} ref={ref} className={className}>
         <div className="a-step__icon">
-          {!disabled && visited && showIconOnSisited ? (
-            <AIcon size={15} className="icon-checkmark">
+          {!disabled && visited && showIconOnVisited ? (
+            <AIcon size={15} className="a-step__icon__checkmark">
               checkmark
             </AIcon>
           ) : (
@@ -105,7 +106,7 @@ AStep.propTypes = {
   /**
    * Show 'marked' icon on visited steps
    */
-  showIconOnSisited: PropTypes.bool,
+  showIconOnVisited: PropTypes.bool,
   /**
    * String representing class names to be passed to component container
    */
@@ -117,18 +118,10 @@ AStep.propTypes = {
 };
 AStep.displayName = "AStep";
 
-const ASteps = forwardRef(
-  (
-    {
-      className: propsClassName = "",
-      children,
-      orientation = "horizontal",
-      ...rest
-    },
-    ref
-  ) => {
+const AStepper = forwardRef(
+  ({className: propsClassName = "", children, vertical, ...rest}, ref) => {
     let className = "a-steps";
-    if (orientation === "vertical") {
+    if (vertical) {
       className += " a-steps--orientation-vertical";
     }
     if (propsClassName) {
@@ -143,19 +136,19 @@ const ASteps = forwardRef(
   }
 );
 
-ASteps.propTypes = {
+AStepper.propTypes = {
   /**
-   *  Steps orientation - horizontal | vertical
+   *  When true, stepper orientation will be vertical
    */
-  orientation: PropTypes.string,
+  vertical: PropTypes.bool,
   /**
    * String representing class names to be passed to component container
    */
   className: PropTypes.string
 };
 
-ASteps.displayName = "ASteps";
+AStepper.displayName = "AStepper";
 
-// export default ASteps;
+// export default AStepper;
 
-export {ASteps, AStep, AStepTitle, AStepDescription};
+export {AStepper, AStep, AStepTitle, AStepDescription};

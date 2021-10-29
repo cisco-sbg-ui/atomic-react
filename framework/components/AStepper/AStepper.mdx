@@ -1,24 +1,25 @@
 ---
-name: Steps
-route: /components/steps
-components: ASteps
+name: Stepper
+route: /components/stepper
+components: AStepper
 ---
 
 import {Playground, Props} from "../../../docs";
 
-# Steps
+# Stepper
 
 ## Install
 
 Integrate with your build to [auto-import](/#integrating), or add an import in your component:
 
 ```
-import {ASteps, AStep, AStepTitle, AStepDescription} from "@cisco-sbg-ui/atomic-react";
+import {AStepper, AStep, AStepTitle, AStepDescription} from "@cisco-sbg-ui/atomic-react";
 ```
 
-## Horizontal Steps
+## Horizontal Stepper
 
 <Playground
+  fullWidthPreview
   code={`() => {
     const [active, setActive] = useState(1);
     const steps = 3;
@@ -27,8 +28,8 @@ import {ASteps, AStep, AStepTitle, AStepDescription} from "@cisco-sbg-ui/atomic-
         <div style={{border: "solid 2px #333"}} className="my-2 pa-2">
           {active > steps ? "Completed" : "Step " + active}
         </div>
-        <h3>Steps</h3>
-        <ASteps>
+        <h3>Stepper</h3>
+        <AStepper>
           <AStep stepNumber={1} active={active === 1} visited={active > 1}>
             <AStepTitle>Title </AStepTitle>
             <AStepDescription>
@@ -51,7 +52,7 @@ import {ASteps, AStep, AStepTitle, AStepDescription} from "@cisco-sbg-ui/atomic-
                 Description of title. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
             </AStepDescription>
           </AStep>
-        </ASteps>
+        </AStepper>
         <AButton onClick={() => active > 1 && setActive(active - 1)}>
           Previous
         </AButton>
@@ -63,9 +64,10 @@ import {ASteps, AStep, AStepTitle, AStepDescription} from "@cisco-sbg-ui/atomic-
   }`}
 />
 
-## Steps used with json data
+## Stepper used with json data
 
 <Playground
+  fullWidthPreview
   code={`() => {
     const [active, setActive] = useState(1);
     const data = [
@@ -90,8 +92,8 @@ import {ASteps, AStep, AStepTitle, AStepDescription} from "@cisco-sbg-ui/atomic-
         <div style={{border: "solid 2px #333"}} className="my-2 pa-2">
           {active > data.length ? "Completed" : "Step " + active}
         </div>
-        <h3>Steps with icon:</h3>
-        <ASteps>
+        <h3>Stepper with icon:</h3>
+        <AStepper>
           {data.map((item, index) => {
             const stepNumber = index + 1;
             return (
@@ -101,7 +103,7 @@ import {ASteps, AStep, AStepTitle, AStepDescription} from "@cisco-sbg-ui/atomic-
                 active={active === stepNumber}
                 visited={active > stepNumber}
                 disabled={stepNumber === 2}
-                showIconOnSisited={true}>
+                showIconOnVisited={true}>
                <AStepTitle>
                   {item.title}
                 </AStepTitle>
@@ -109,7 +111,7 @@ import {ASteps, AStep, AStepTitle, AStepDescription} from "@cisco-sbg-ui/atomic-
                </AStep>
             );
           })}
-        </ASteps>
+        </AStepper>
         <AButton onClick={() => active > 1 && setActive(active - 1)}>
           Previous
         </AButton>
@@ -121,7 +123,7 @@ import {ASteps, AStep, AStepTitle, AStepDescription} from "@cisco-sbg-ui/atomic-
   }`}
 />
 
-## Vertical Steps with icon
+## Vertical Stepper with icon
 
 <Playground
   code={`() => {
@@ -149,7 +151,7 @@ import {ASteps, AStep, AStepTitle, AStepDescription} from "@cisco-sbg-ui/atomic-
           {active > data.length ? "Completed" : "Step " + active}
         </div>
         <h3>Vertical steps with icon:</h3>
-        <ASteps orientation="vertical">
+        <AStepper vertical={true}>
           {data.map((item, index) => {
             const stepNumber = index + 1;
             return (
@@ -159,7 +161,7 @@ import {ASteps, AStep, AStepTitle, AStepDescription} from "@cisco-sbg-ui/atomic-
                 active={active === stepNumber}
                 visited={active > stepNumber}
                 disabled={stepNumber === 2}
-                showIconOnSisited={true}>
+                showIconOnVisited={true}>
                 <AStepTitle>
                   {item.title}
                 </AStepTitle>
@@ -167,7 +169,7 @@ import {ASteps, AStep, AStepTitle, AStepDescription} from "@cisco-sbg-ui/atomic-
               </AStep>
             );
           })}
-        </ASteps>
+        </AStepper>
         <AButton onClick={() => active > 1 && setActive(active - 1)}>
           Previous
         </AButton>
@@ -179,20 +181,18 @@ import {ASteps, AStep, AStepTitle, AStepDescription} from "@cisco-sbg-ui/atomic-
   }`}
 />
 
-## Steps Props
+## Stepper Props
 
-The `ASteps` component inherits passed props.
+The `AStepper` component inherits passed props.
 
-<Props of="ASteps" />
+<Props of="AStepper" />
 
 ## Step Props
 
 <Props of="AStep" />
 
-## Step Title Props
+## Footer
 
-<Props of="AStepTitle" />
-
-## Step Description Props
-
-<Props of="AStepDescription" />
+<AFooter>
+  <AFooterLegal>*className prop is available on all components.</AFooterLegal>
+</AFooter>
