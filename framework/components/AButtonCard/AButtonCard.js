@@ -3,8 +3,8 @@ import React, {forwardRef} from "react";
 
 import "./AButtonCard.scss";
 
-const AButtonCardTitle = forwardRef((
-  {className: propsClassName = "", children, ...rest}, ref) => {
+const AButtonCardTitle = forwardRef(
+  ({className: propsClassName = "", children, ...rest}, ref) => {
     const containerClassName = " a-button-card__title";
     const className = propsClassName + containerClassName;
 
@@ -25,8 +25,8 @@ AButtonCardTitle.propTypes = {
 
 AButtonCardTitle.displayName = "AButtonCardTitle";
 
-const AButtonCardBody = forwardRef((
-  {className: propsClassName = "", children, ...rest}, ref) => {
+const AButtonCardBody = forwardRef(
+  ({className: propsClassName = "", children, ...rest}, ref) => {
     const containerClassName = " a-button-card__body";
     const className = propsClassName + containerClassName;
 
@@ -46,7 +46,6 @@ AButtonCardBody.propTypes = {
 };
 
 AButtonCardBody.displayName = "AButtonCardBody";
-
 
 const AButtonCard = forwardRef(
   (
@@ -73,7 +72,6 @@ const AButtonCard = forwardRef(
     if (disabled) {
       className += "disabled";
     }
-
 
     if (propsClassName) {
       className += ` ${propsClassName}`;
@@ -122,19 +120,13 @@ AButtonCard.propTypes = {
   disabled: PropTypes.bool,
   /**
    * If specified, the component will render as an HTML link.
+   * If the `href` or `component` props is set, the target can be set (ex: `_blank`, `_self`, `_parent`, `_top`)
    */
   href: PropTypes.string,
   /**
-   * Signifies an icon-only button.
+   * Toggles the `selected` style variant.
    */
-  default: PropTypes.bool,
-  /**
-   * Toggles the `secondary` style variant.
-   */
-  selected: PropTypes.bool,
-  /**
-   * If the `href` or `component` props is set, the target can be set (ex: `_blank`, `_self`, `_parent`, `_top`)
-   */
+  selected: PropTypes.bool
 };
 
 AButtonCard.displayName = "AButtonCard";

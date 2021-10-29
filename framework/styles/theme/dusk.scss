@@ -81,6 +81,12 @@ $atomic-dusk: (
       "color": map-get($grey, "lighten-5")
     )
   ),
+  "btn-card": (
+    "body-color": map-get($grey, "lighten-2"),
+    "border-color--disabled": rgba(map-get($grey, "base"), $alpha-5),
+    "title-color--disabled": rgba(map-get($grey, "lighten-5"), $alpha-3),
+    "body-color--disabled": rgba(map-get($grey, "lighten-2"), $alpha-3)
+  ),
   "checkbox": (
     "label-color--disabled": rgba(map-get($grey, "lighten-5"), $alpha-4)
   ),
