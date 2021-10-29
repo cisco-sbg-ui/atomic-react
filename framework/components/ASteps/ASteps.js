@@ -59,8 +59,7 @@ const AStep = forwardRef(
     },
     ref
   ) => {
-    const stepClassNamePrefix = " a-step";
-    let className = propsClassName + stepClassNamePrefix;
+    let className = `a-step ${propsClassName}`.trim();
     if (disabled) {
       className += ` disabled`;
     } else {
