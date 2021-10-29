@@ -22,7 +22,7 @@ files.forEach((x) => {
   if (data.includes("export {default} from")) {
     declarations.push({
       default: path[3],
-      path: `@cisco-ats/atomic-react/lib/components/${path[3]}`
+      path: `@cisco-sbg-ui/atomic-react/lib/components/${path[3]}`
     });
     localDeclarations.push({
       default: path[3],
@@ -34,7 +34,7 @@ files.forEach((x) => {
   declarations.push({
     default: path[3] + "Exports",
     members: getComponents(data),
-    path: `@cisco-ats/atomic-react/lib/components/${path[3]}`
+    path: `@cisco-sbg-ui/atomic-react/lib/components/${path[3]}`
   });
   localDeclarations.push({
     default: path[3] + "Exports",

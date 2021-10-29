@@ -13,9 +13,7 @@ import {Playground, Props} from "../../../docs";
 Integrate with your build to [auto-import](/#integrating), or add an import in your component:
 
 ```
-import APagination from "@cisco-ats/atomic-react/APagination";
-// or if you're able to treekshake node_modules
-import {APagination} from "@cisco-ats/atomic-react";
+import {APagination} from "@cisco-sbg-ui/atomic-react";
 ```
 
 ## Usage 1
@@ -105,6 +103,45 @@ import {APagination} from "@cisco-ats/atomic-react";
 The `APagination` component inherits passed props.
 
 <Props of="APagination" />
+
+## Locale formatting
+
+<Playground
+  code={`() => {
+  const [currentPage2, setCurrentPage2] = useState(1);
+  const [currentPage3, setCurrentPage3] = useState(1000);
+  const [resultsPerPage3, setResultsPerPage3] = useState(5);
+  return (
+    <>
+    <div>
+      <APagination
+        localeFormatting
+        onPageChange={(value) => {
+          setCurrentPage2(value);
+        }}
+        page={currentPage2}
+        showText={false}
+        total={1500}
+      />
+    </div>
+    <ADivider />
+    <div>
+      <APagination
+        localeFormatting
+        onPageChange={(value) => {
+          setCurrentPage3(value);
+        }}
+        onResultsPerPageChange={(value) => setResultsPerPage3(value)}
+        page={currentPage3}
+        resultsPerPage={resultsPerPage3}
+        total={14500}
+      />
+    </div>
+    </>
+  );
+}
+`}
+/>
 
 ## Accessibility Notes
 

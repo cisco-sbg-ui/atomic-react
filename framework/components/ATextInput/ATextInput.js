@@ -8,7 +8,7 @@ import React, {
 } from "react";
 
 import AInputBase from "../AInputBase";
-import AFormContext from "../AForm/AFormContext";
+import {AFormContext} from "../AForm";
 import AIcon from "../AIcon";
 import {useCombinedRefs} from "../../utils/hooks";
 import {keyCodes} from "../../utils/helpers";
@@ -66,9 +66,8 @@ const ATextInput = forwardRef(
     const [longClickTimeout, setLongClickTimeout] = useState(null);
     const [longClickInterval, setLongClickInterval] = useState(null);
     const [error, setError] = useState("");
-    const [workingValidationState, setWorkingValidationState] = useState(
-      validationState
-    );
+    const [workingValidationState, setWorkingValidationState] =
+      useState(validationState);
     const combinedRef = useCombinedRefs(ref, textInputRef);
     useEffect(() => {
       if (
@@ -83,7 +82,7 @@ const ATextInput = forwardRef(
 
       combinedRef.current.querySelector(".a-text-input__input").focus();
     }, [autoFocus, combinedRef]);
-    const {register} = useContext(AFormContext);
+    const {register, unregister} = useContext(AFormContext);
     useEffect(() => {
       setWorkingValidationState(validationState);
     }, [validationState]);
@@ -96,6 +95,14 @@ const ATextInput = forwardRef(
         });
       }
     }, [validationState, value, rules]); // eslint-disable-line react-hooks/exhaustive-deps
+
+    useEffect(() => {
+      if (unregister) {
+        return () => {
+          return unregister(`a-text-input_${textInputId}`);
+        };
+      }
+    }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
     const prependProps = {
       className: "a-text-input__prepend-icon"

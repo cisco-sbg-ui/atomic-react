@@ -8,7 +8,7 @@ import React, {
 } from "react";
 
 import AInputBase from "../AInputBase";
-import AFormContext from "../AForm/AFormContext";
+import {AFormContext} from "../AForm";
 import {useCombinedRefs} from "../../utils/hooks";
 import "./ATextarea.scss";
 
@@ -24,6 +24,7 @@ const ATextarea = forwardRef(
       disableGrammarly,
       hint,
       label,
+      maxLength,
       onBlur,
       onChange: propsOnChange,
       onFocus,
@@ -46,9 +47,8 @@ const ATextarea = forwardRef(
     const [isFocused, setIsFocused] = useState(false);
     const [textareaId] = useState(textareaCounter++);
     const [error, setError] = useState("");
-    const [workingValidationState, setWorkingValidationState] = useState(
-      validationState
-    );
+    const [workingValidationState, setWorkingValidationState] =
+      useState(validationState);
 
     useEffect(() => {
       if (
@@ -77,7 +77,7 @@ const ATextarea = forwardRef(
       }
     }, [autoGrow]); // eslint-disable-line react-hooks/exhaustive-deps
 
-    const {register} = useContext(AFormContext);
+    const {register, unregister} = useContext(AFormContext);
     useEffect(() => {
       setWorkingValidationState(validationState);
     }, [validationState]);
@@ -90,6 +90,14 @@ const ATextarea = forwardRef(
         });
       }
     }, [validationState, value, rules]); // eslint-disable-line react-hooks/exhaustive-deps
+
+    useEffect(() => {
+      if (unregister) {
+        return () => {
+          return unregister(`a-textarea_${textareaId}`);
+        };
+      }
+    }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
     const calculateInputHeight = () => {
       const input =
@@ -166,6 +174,7 @@ const ATextarea = forwardRef(
       className: "a-textarea__field",
       id: `a-textarea__field_${textareaId}`,
       disabled,
+      maxLength,
       placeholder,
       readOnly,
       rows,
@@ -228,6 +237,10 @@ ATextarea.propTypes = {
    * Sets the label content.
    */
   label: PropTypes.node,
+  /**
+   * Sets the maximum length of the textarea value.
+   */
+  maxLength: PropTypes.number,
   /**
    * Handles the `blur` event
    */

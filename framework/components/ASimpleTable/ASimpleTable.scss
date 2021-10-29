@@ -1,3 +1,5 @@
+@use "sass:math";
+
 @import "../../styles";
 
 $table__top-pane--padding-bottom: 8px;
@@ -12,10 +14,14 @@ $table-header-line-height: 15px;
 $table-body-font-size: 13px;
 $table-body-line-height: 16.5px;
 $table-link-font-size: rem(0.8125);
-$table-cell-padding-top-bottom: ($table-row-height - $table-body-font-size) / 2;
-$table-cell-tight-padding-top-bottom: (
-    $table-row-height-tight - $table-body-font-size
-  ) / 2;
+$table-cell-padding-top-bottom: math.div(
+  $table-row-height - $table-body-font-size,
+  2
+);
+$table-cell-tight-padding-top-bottom: math.div(
+  $table-row-height-tight - $table-body-font-size,
+  2
+);
 
 // Pending `condensed` feature:
 //$table-row-height-condensed: 30px;
@@ -93,7 +99,6 @@ $table-cell-tight-padding-top-bottom: (
   th {
     font-weight: normal;
     text-align: left;
-    text-align: inherit;
     font-size: $table-header-font-size;
     font-weight: bold;
     line-height: $table-header-line-height;

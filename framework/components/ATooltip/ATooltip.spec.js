@@ -24,9 +24,9 @@ context("ATooltip", () => {
 
     cy.get("#pointer + .playground .a-button").eq(1).click();
 
-    cy.get(
-      "#pointer + .playground .playground__preview"
-    ).toMatchImageSnapshot();
+    cy.get("#pointer + .playground .playground__preview").compareSnapshot(
+      "Tooltip 1"
+    );
 
     cy.get("#position + .playground .a-button").eq(0).click({force: true});
     cy.get("#position + .playground .a-button").eq(1).click({force: true});
@@ -41,18 +41,18 @@ context("ATooltip", () => {
     cy.get("#position + .playground .a-button").eq(10).click({force: true});
     cy.get("#position + .playground .a-button").eq(11).click({force: true});
 
-    cy.get(
-      "#position + .playground .playground__preview"
-    ).toMatchImageSnapshot();
+    cy.get("#position + .playground .playground__preview").compareSnapshot(
+      "Tooltip 2"
+    );
 
     cy.get(".a-switch__box").eq(0).click();
 
-    cy.get(
-      "#pointer + .playground .playground__preview"
-    ).toMatchImageSnapshot();
+    cy.get("#pointer + .playground .playground__preview").compareSnapshot(
+      "Tooltip 3"
+    );
 
-    cy.get(
-      "#position + .playground .playground__preview"
-    ).toMatchImageSnapshot();
+    cy.get("#position + .playground .playground__preview").compareSnapshot(
+      "Tooltip 4"
+    );
   });
 });

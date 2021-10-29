@@ -7,7 +7,7 @@ import React, {
   useState
 } from "react";
 
-import AFormContext from "../AForm/AFormContext";
+import {AFormContext} from "../AForm";
 import AHint from "../AHint";
 import {isStockColor, isValidColor} from "../../utils/helpers";
 import {useCombinedRefs} from "../../utils/hooks";
@@ -48,11 +48,10 @@ const ACheckbox = forwardRef(
     const combinedRef = useCombinedRefs(ref, checkboxRef);
     const [checkboxId] = useState(checkboxCounter++);
     const [error, setError] = useState("");
-    const [workingValidationState, setWorkingValidationState] = useState(
-      validationState
-    );
+    const [workingValidationState, setWorkingValidationState] =
+      useState(validationState);
 
-    const {register} = useContext(AFormContext);
+    const {register, unregister} = useContext(AFormContext);
     useEffect(() => {
       setWorkingValidationState(validationState);
     }, [validationState]);
@@ -65,6 +64,14 @@ const ACheckbox = forwardRef(
         });
       }
     }, [validationState, checked, value, rules]); // eslint-disable-line react-hooks/exhaustive-deps
+
+    useEffect(() => {
+      if (unregister) {
+        return () => {
+          return unregister(`a-checkbox_${checkboxId}`);
+        };
+      }
+    }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
     const validate = (testValue = checked) => {
       if (rules || required) {

@@ -1,0 +1,52 @@
+name: CI
+
+on: push
+
+jobs:
+  test:
+    name: CI
+
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: read
+
+    steps:
+      - name: Checkout Source
+        uses: actions/checkout@v2
+      - name: Setup Node
+        uses: actions/setup-node@v1
+        with:
+          node-version: 14
+      - name: Configure AWS
+        uses: aws-actions/configure-aws-credentials@v1
+        if: ${{ github.actor != 'dependabot[bot]' }}
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: us-east-1
+      - name: NPM Install
+        run: npm ci --ignore-scripts --prefer-offline
+      - name: Run Cypress Postinstall Script
+        run: npm run cypress:install
+      - name: Build
+        run: npm run build
+      - name: Test
+        run: npm test
+      - name: Build Source Tarball
+        run: bash scripts/build-tar.sh
+        if: ${{ github.actor != 'dependabot[bot]' }}
+      - name: Send Tarball to ZeroNorth
+        run: bash scripts/build.sh
+        if: ${{ github.actor != 'dependabot[bot]' }}
+        env:
+          TRAVIS_BRANCH: ${{ github.ref }}
+          TRAVIS_PULL_REQUEST: ${{ github.event_name == 'pull_request' && 'true' || 'false' }}
+          TRAVIS_BUILD_NUMBER: ${{ github.run_number }}
+          TRAVIS_COMMIT: ${{ github.sha }}
+          TRAVIS_TAG: ${{ env.GITHUB_TAG }}
+          DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
+          DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
+          CYBRIC_API_KEY: ${{ secrets.CYBRIC_API_KEY }}
+      - name: Upload Coverage
+        run: npm run upload-coverage

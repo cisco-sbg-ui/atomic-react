@@ -2,7 +2,8 @@
   "extends": [
     "eslint:recommended",
     "plugin:react/recommended",
-    "plugin:cypress/recommended"
+    "plugin:cypress/recommended",
+    "prettier"
   ],
   "parserOptions": {
     "sourceType": "module"
@@ -16,6 +17,7 @@
     "module": true,
     "require": true,
     "Buffer": true,
+    "process": true,
     "__dirname": true
   },
   "plugins": ["react-hooks"],

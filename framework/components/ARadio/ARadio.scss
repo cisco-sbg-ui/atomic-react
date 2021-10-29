@@ -1,3 +1,5 @@
+@use "sass:math";
+
 @import "../../styles";
 
 $radio-border--enabled: map-get($grey, "lighten-2");
@@ -114,7 +116,7 @@ $radio-transition: stroke $transition-duration--extra-fast
 
 .a-radio {
   display: flex;
-  padding: ($radio-padding / 2) $radio-padding;
+  padding: math.div($radio-padding, 2) $radio-padding;
   position: relative;
   cursor: pointer;
 

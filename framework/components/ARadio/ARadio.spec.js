@@ -10,10 +10,14 @@ context("ARadio", () => {
   it("supports themes", () => {
     if (Cypress.env("snapshots") === "off") return;
 
-    cy.get("#states + .playground .playground__preview").toMatchImageSnapshot();
+    cy.get("#states + .playground .playground__preview").compareSnapshot(
+      "Radio 1"
+    );
 
     cy.get(".a-switch__box").eq(0).click();
 
-    cy.get("#states + .playground .playground__preview").toMatchImageSnapshot();
+    cy.get("#states + .playground .playground__preview").compareSnapshot(
+      "Radio 2"
+    );
   });
 });

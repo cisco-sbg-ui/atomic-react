@@ -20,14 +20,18 @@ context("ACheckbox", () => {
   it("supports themes", () => {
     if (Cypress.env("snapshots") === "off") return;
 
-    cy.get("#states + .playground .playground__preview").toMatchImageSnapshot();
+    cy.get("#states + .playground .playground__preview").compareSnapshot(
+      "Checkbox 1"
+    );
 
-    cy.get(
-      "#label-wrap + .playground .playground__preview"
-    ).toMatchImageSnapshot();
+    cy.get("#label-wrap + .playground .playground__preview").compareSnapshot(
+      "Checkbox 2"
+    );
 
     cy.get(".a-switch__box").eq(0).click();
 
-    cy.get("#states + .playground .playground__preview").toMatchImageSnapshot();
+    cy.get("#states + .playground .playground__preview").compareSnapshot(
+      "Checkbox 3"
+    );
   });
 });

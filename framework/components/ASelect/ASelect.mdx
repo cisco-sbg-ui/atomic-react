@@ -13,9 +13,7 @@ import {Playground, Props} from "../../../docs";
 Integrate with your build to [auto-import](/#integrating), or add an import in your component:
 
 ```
-import ASelect from "@cisco-ats/atomic-react/ASelect";
-// or if you're able to treekshake node_modules
-import {ASelect} from "@cisco-ats/atomic-react";
+import {ASelect} from "@cisco-sbg-ui/atomic-react";
 ```
 
 ## Usage
@@ -25,7 +23,7 @@ import {ASelect} from "@cisco-ats/atomic-react";
   const items = [
     {id: 1, name: "Bread, Cereal, Rice, and Pasta"},
     {id: 2, name: "Vegetables"},
-    {id: 3, name: "Fruit"},
+    {id: 3, name: "Fruit", selected: true},
     {id: 4, name: "Milk, Yogurt, and Cheese"},
     {id: 5, name: "Meat, Poultry, Fish", disabled: true},
     {id: 6, name: "Fats, Oils, and Sweets"}
@@ -207,43 +205,56 @@ The `ASelect` component inherits passed props.
 `}
 />
 
-## useMenu
+## Prepend/Append Content
 
 <Playground
   code={`() => {
   const [role, setRole] = useState(null);
   return (
-    <>
-      Using \`ADropdown\`, the menu is trapped.
-      <div style={{width:"100%", height: 100, overflowY:"hidden", border: "solid 1px #999"}} className="px-1 mb-4">
-        <ASelect
-          placeholder="without useMenu"
-          items={[
-            {value: 0, text: ""},
-            {value: 1, text: "Read"},
-            {value: 2, text: "Write"},
-            {value: 3, text: "Admin"}
-          ]}
-          label="Role"
-          onSelected={(item) => setRole(item)}
-        />
-      </div>
-      Using \`AMenu\`, the menu is outside of the normal flow.
-      <div style={{width:"100%", height: 100, overflowY:"hidden", border: "solid 1px #999"}} className="px-1">
-        <ASelect
-          placeholder="with useMenu"
-          items={[
-            {value: 0, text: ""},
-            {value: 1, text: "Read"},
-            {value: 2, text: "Write"},
-            {value: 3, text: "Admin"}
-          ]}
-          useMenu
-          label="Role"
-          onSelected={(item) => setRole(item)}
-        />
-      </div>
-    </>
+    <ASelect
+      prependContent={<AListItem twoLine className="my-1 mx-2"><ATextInput prependIcon="search" /></AListItem>}
+      appendContent={<><ADivider className="ma-0" /><AListItem><AIcon size={12} left>add</AIcon>Add Role</AListItem></>}
+      items={[
+        {value: 1, text: "Read"},
+        {value: 2, text: "Write"},
+        {value: 3, text: "Admin"}
+      ]}
+      label="Role"
+      onSelected={(item) => setRole(item)}
+    />
+  );
+}
+`}
+/>
+
+## Menu Item Templates
+
+<Playground
+  code={`() => {
+  const [role, setRole] = useState(null);
+  const {isDark} = useATheme();
+  return (
+    <ASelect
+      itemTemplate={({className, index, item, onClick, ...rest}) => (
+          <AListItem {...rest} twoLine className={className + (isDark ? " white--text" : " grey--darken-7--text")} style={{backgroundColor: "transparent"}}>
+            <AListItemContent onClick={onClick}>
+              <AListItemTitle>{item.text}</AListItemTitle>
+              <AListItemSubtitle>Created Date: {item.createdDate}</AListItemSubtitle>
+            </AListItemContent>
+            <AListItemAction>
+              <AButton icon tertiary><AIcon>edit</AIcon></AButton>
+            </AListItemAction>
+          </AListItem>
+        )
+      }
+      items={[
+        {value: 1, text: "Read", createdDate: "June 26, 2021"},
+        {value: 2, text: "Write", createdDate: "June 25, 2021"},
+        {value: 3, text: "Admin", createdDate: "June 24, 2021"}
+      ]}
+      label="Role"
+      onSelected={(item) => setRole(item)}
+    />
   );
 }
 `}
@@ -251,11 +262,11 @@ The `ASelect` component inherits passed props.
 
 ## Accessibility Notes
 
-In addition to inheriting all of the accessibility features of `ADropdown`,
+In addition to inheriting all of the accessibility features of `AMenu`,
 the `ASelect` surface (the box with chevron) will select and focus previous/next items
 on `up` or `down` keys for the `keydown` event.
 
-Unlike the `ADropdown` component, opening the menu will focus the selected item if one exists.
+Unlike the `AMenu` component, opening the menu will focus the selected item if one exists.
 
 Because the HTML `select` element is not used, the surface uses the
 [aria-labelledby](https://www.w3.org/TR/wai-aria/#aria-labelledby) attribute to refer to the

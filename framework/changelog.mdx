@@ -5,9 +5,89 @@ route: /changelog
 
 # Changelog
 
+## 3.1.2 (2021-10-03)
+
+- Fixed `ADialog` for the case when you start a click on the content and finish the click on the overlay, it shouldn't trigger the close event
+- Set `AAutocomplete`, `ACombobox`, `ASelect` menu min-width to be `max-content` and for `ASelect` add right padding to account for checkmark
+
+## 3.1.1 (2021-09-16)
+
+- Unregister fields from `AForm` on unmount
+
+## 3.1.0 (2021-09-15)
+
+- Expose `AFormContext` for custom component validation
+- Increase specificity of some `AButtonGroup` styles
+
+## 3.0.5 (2021-09-09)
+
+- Fix `crashy` icon
+
+## 3.0.4 (2021-09-07)
+
+- Add `crashy` icon
+
+## 3.0.3 (2021-09-02)
+
+- Add `maxLength` property to `ATextarea`
+
+## 3.0.2 (2021-08-16)
+
+- Fixed null `ref` issue with `AMenu` occurring during jest-enzyme testing
+
+## 3.0.1 (2021-08-05)
+
+**BREAKING CHANGES**:
+
+- Switched package hosting from Cisco's Artifactory to GitHub Packages
+- Package is now a public package
+- The `ADropdown` component is now obsolete and removed. Use `AMenu`. `ASelect`, `ACombobox`, and `AAutocomplete` now solely use `AMenu` internally, and their `useMenu` prop is obsoleted
+- Per-component imports (ex: `import ADivider from "@cisco-sbg-ui/atomic-react/ADivider"`) have been removed. Use `import {ADivider} from "@cisco-sbg-ui/atomic-react"`
+- Fonts are now hosted from `https://brand-assets.security.cisco.com/`
+- `--state-selected` modifier has been standardized to `--selected`
+
+**Other changes**:
+
+- Updated styles to match atomic 3.0.0
+- Added `appendContent` and `prependContent` to `AAutocomplete`, `ACombobox`, and `ASelect` to allow for content to be prepended/appended to the menu items
+- Added `itemTemplate` to `AAutocomplete`, `ACombobox`, and `ASelect` to allow for custom menu items
+- Added Cisco Secure colors
+- Added new icon `diverge`
+- Fixed a null `ref` issue with `ATabGroup`
+- Fixed an `ASelect` race condition triggered by opening and closing the menu in less than 50 milliseconds
+- Fixed `AListItem` `role` prop to display custom value when in `AMenu`
+- Fixed scrollbar corner color
+- Docs: updated README, including a section on contributions
+- Docs: updated `Getting Started`
+- Docs: fixed initial state of `ASelect` usage example
+
+## 2.15.0 (2021-06-09)
+
+- Added controlled mode for `AAccordion`
+- Changed `AButtonGroup` styles to a) not line-break, and b) use `flex-start` instead of `start` to avoid postcss warnings
+- Updated `ATheme` docs to use `ADivider` instead of `hr` element
+- Fixed issue with `ASelect` using deprecated `ADropdown` internally where the menu `ref` is undefined
+
+## 2.14.1 (2021-05-21)
+
+- Converted deprecated division operator in sass to use math function. **Requires sass 1.33**
+
+## 2.14.0 (2021-05-20)
+
+- Added the `localeFormatting` prop to `APagination`
+- Added field capabilities (label, hint, validation) to `AButtonGroup`
+
+## 2.13.4 (2021-05-19)
+
+- Added the `isDark` boolean to useATheme hook
+
+## 2.13.3 (2021-04-02)
+
+- Added the `created`, `registered`, `unregistered` icons
+
 ## 2.13.2 (2021-03-26)
 
-- Added the `decive-hookup` and `serverless` icons
+- Added the `device-hookup` and `serverless` icons
 
 ## 2.13.1 (2021-03-25)
 
@@ -303,7 +383,7 @@ Updated the following icons:
 - Fixed an issue where `ASelect` would crash if object items were used and no default was set.
 - Adjusted `ASimpleTable` styles to ease ability to override `vertical-align`.
 - Added a helper class for `vertical-align`.
-- Add controlled mode for `ATabs`.
+- Added controlled mode for `ATabs`.
 - Added `min`, `max`, `maxLength`, `required`, `rules`, `spinner`, `step`, `validateOnBlur` props to `ATextInput` component.
 - Added `required`, `rules`, `validateOnBlur` props to `ATextarea`, `ASelect`, `AAutocomplete` components.
 - Added `hint`, `required`, `rules`, `validationState` props to `ACheckbox`, `ASwitch`

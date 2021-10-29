@@ -13,9 +13,7 @@ import {Playground, Props, ColorSwatch} from "../../../docs";
 Integrate with your build to [auto-import](/#integrating), or add an import in your component:
 
 ```
-import AApp from "@cisco-ats/atomic-react/AApp";
-// or if you're able to treekshake node_modules
-import {AApp} from "@cisco-ats/atomic-react";
+import {AApp} from "@cisco-sbg-ui/atomic-react";
 ```
 
 ## Usage
@@ -508,6 +506,20 @@ Apply color overrides using helper classes:
     title="white"
     colors={{
       base: "#ffffff"
+    }}
+  />
+  <ColorSwatch
+    title="secure-blue"
+    colors={{
+      "1": "#06144d",
+      "2": "#0d274d",
+      "3": "#1e4471"
+    }}
+  />
+  <ColorSwatch
+    title="secure-green"
+    colors={{
+      "1": "#6abf4b"
     }}
   />
 </div>

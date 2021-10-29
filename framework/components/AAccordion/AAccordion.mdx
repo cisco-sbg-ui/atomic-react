@@ -19,21 +19,14 @@ import {
   AAccordionHeader,
   AAccordionHeaderTitle,
   AAccordionBody
-} from "@cisco-ats/atomic-react/AAccordion";
-// or if you're able to treekshake node_modules
-import {
-  AAccordion,
-  AAccordionPanel,
-  AAccordionHeader,
-  AAccordionHeaderTitle,
-  AAccordionBody
-} from "@cisco-ats/atomic-react";
+} from "@cisco-sbg-ui/atomic-react";
 ```
 
-## Usage
+## Uncontrolled Usage
 
 <Playground
   code={`() => {
+  const buttonRef = useRef(null);
   const [active, setActive] = useState(false);
   return (
     <AAccordion bordered>
@@ -42,17 +35,12 @@ import {
           <AAccordionHeaderTitle chevron={false}>
             Accordion Item 1
           </AAccordionHeaderTitle>
-          <ADropdown>
-            <AButton icon tertiaryAlt onClick={() => setActive(!active)}>
-              <AIcon>ellipsis-horizontal</AIcon>
-            </AButton>
-            <ADropdownMenu
-              open={active}
-              onClose={() => setActive(false)}
-              style={{top: 27, right: 0}}>
-              <ADropdownMenuItem>See More</ADropdownMenuItem>
-            </ADropdownMenu>
-          </ADropdown>
+          <AButton ref={buttonRef} icon tertiaryAlt onClick={() => setActive(!active)}>
+            <AIcon>ellipsis-horizontal</AIcon>
+          </AButton>
+          <AMenu anchorRef={buttonRef} open={active} onClose={() => setActive(false)}>
+            <AListItem>See More</AListItem>
+          </AMenu>
         </AAccordionHeader>
       </AAccordionPanel>
       <AAccordionPanel collapsed={false}>
@@ -78,6 +66,46 @@ import {
         </AAccordionHeader>
         <AAccordionBody>{LoremIpsum}</AAccordionBody>
       </AAccordionPanel>
+    </AAccordion>
+  );
+}
+`}
+/>
+
+## Controlled Usage
+
+<Playground
+  code={`() => {
+  const [panels, setPanels] = useState([{
+    name: "Panel 1",
+    content: LoremIpsum,
+    collapsed: true
+  },
+  {
+    name: "Panel 2",
+    content: LoremIpsum,
+    collapsed: false
+  },
+  {
+    name: "Panel 3",
+    content: LoremIpsum,
+    collapsed: true
+  }]);
+  return (
+    <AAccordion>
+      {panels.map((panel, index) => (
+        <AAccordionPanel key={index} collapsed={panel.collapsed} panelKey={index} onToggle={(panelKey) => setPanels(panels.map((panel, index) => {
+          if (panelKey === index) {
+            panel.collapsed = !panel.collapsed;
+          }
+          return panel;
+        }))}>
+          <AAccordionHeader>
+            <AAccordionHeaderTitle>{panel.name}</AAccordionHeaderTitle>
+          </AAccordionHeader>
+          <AAccordionBody>{panel.content}</AAccordionBody>
+        </AAccordionPanel>
+      ))}
     </AAccordion>
   );
 }

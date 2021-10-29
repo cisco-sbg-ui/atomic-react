@@ -7,9 +7,8 @@ import React, {
   useState
 } from "react";
 
-import {ADropdown, ADropdownMenu, ADropdownMenuItem} from "../ADropdown";
 import AInputBase from "../AInputBase";
-import AFormContext from "../AForm/AFormContext";
+import {AFormContext} from "../AForm";
 import AIcon from "../AIcon";
 import AMenu from "../AMenu";
 import {AListItem} from "../AList";
@@ -22,10 +21,12 @@ let comboboxCounter = 0;
 const ACombobox = forwardRef(
   (
     {
+      appendContent,
       className: propsClassName,
       clearable,
       disabled,
       hint,
+      itemTemplate,
       itemText = "text",
       itemValue = "value",
       items = [],
@@ -35,10 +36,10 @@ const ACombobox = forwardRef(
       onClear,
       onSelected,
       placeholder,
+      prependContent,
       readOnly,
       required,
       rules,
-      useMenu,
       validateOnBlur,
       validationState,
       value,
@@ -47,7 +48,7 @@ const ACombobox = forwardRef(
     ref
   ) => {
     const comboboxRef = useRef(null);
-    const dropdownMenuRef = useRef(null);
+    const menuRef = useRef(null);
     const inputBaseSurfaceRef = useRef(null);
     const combinedRef = useCombinedRefs(ref, comboboxRef);
 
@@ -55,11 +56,10 @@ const ACombobox = forwardRef(
     const [isFocused, setIsFocused] = useState(false);
     const [isOpen, setIsOpen] = useState(false);
     const [error, setError] = useState("");
-    const [workingValidationState, setWorkingValidationState] = useState(
-      validationState
-    );
+    const [workingValidationState, setWorkingValidationState] =
+      useState(validationState);
 
-    const {register} = useContext(AFormContext);
+    const {register, unregister} = useContext(AFormContext);
     useEffect(() => {
       setWorkingValidationState(validationState);
     }, [validationState]);
@@ -76,6 +76,14 @@ const ACombobox = forwardRef(
         });
       }
     }, [validationState, value, rules]); // eslint-disable-line react-hooks/exhaustive-deps
+
+    useEffect(() => {
+      if (unregister) {
+        return () => {
+          return unregister(`a-combobox_${comboboxId}`);
+        };
+      }
+    }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
     const validate = (testValue = value) => {
       if (rules || required) {
@@ -167,7 +175,7 @@ const ACombobox = forwardRef(
       id: `a-combobox_${comboboxId}`,
       onBlur: (e) => {
         setIsFocused(false);
-        !dropdownMenuRef?.current?.contains(e.relatedTarget) && validate(value);
+        !menuRef.current?.contains(e.relatedTarget) && validate(value);
       },
       onChange: (e) => {
         setIsOpen(items.length || noDataContent);
@@ -182,25 +190,18 @@ const ACombobox = forwardRef(
         if (e.keyCode === keyCodes.up) {
           e.preventDefault();
           setIsOpen(items.length || noDataContent);
-          const menuItems = Array.from(
-            dropdownMenuRef?.current?.querySelectorAll(
-              useMenu ? ".a-list-item[tabindex]" : ".a-dropdown__item[tabindex]"
-            )
+          const menuItems = menuRef.current?.querySelectorAll(
+            ".a-combobox__menu-items__wrapper .a-list-item[tabindex]"
           );
-          if (menuItems.length) {
-            menuItems[menuItems.length - 1].focus();
-          }
+          menuItems && menuItems[menuItems.length - 1]?.focus();
         } else if (e.keyCode === keyCodes.down) {
           e.preventDefault();
           setIsOpen(items.length || noDataContent);
-          const menuItems = Array.from(
-            dropdownMenuRef?.current?.querySelectorAll(
-              useMenu ? ".a-list-item[tabindex]" : ".a-dropdown__item[tabindex]"
-            )
-          );
-          if (menuItems.length) {
-            menuItems[0].focus();
-          }
+          menuRef.current
+            ?.querySelectorAll(
+              ".a-combobox__menu-items__wrapper .a-list-item[tabindex]"
+            )[0]
+            ?.focus();
         }
       },
       placeholder,
@@ -208,34 +209,28 @@ const ACombobox = forwardRef(
       value
     };
 
-    let WrapperComponent = ADropdown;
-    let MenuComponent = ADropdownMenu;
-    let ListItemComponent = ADropdownMenuItem;
-
     const menuComponentProps = {
-      focusOnOpen: false,
-      open: Boolean((items.length || noDataContent) && isOpen),
-      onClose: () => setIsOpen(false),
-      role: "listbox",
+      anchorRef: inputBaseSurfaceRef,
       className: "a-combobox__menu-items",
-      style: {width: inputBaseSurfaceRef?.current?.clientWidth + 2 || "auto"}
+      closeOnClick: false,
+      focusOnOpen: false,
+      onClose: () => setIsOpen(false),
+      open: Boolean((items.length || noDataContent) && isOpen),
+      role: "listbox",
+      style: {
+        minWidth: "max-content",
+        width: inputBaseSurfaceRef?.current?.clientWidth + 2 || "auto"
+      }
     };
-
-    if (useMenu) {
-      WrapperComponent = "div";
-      MenuComponent = AMenu;
-      ListItemComponent = AListItem;
-
-      menuComponentProps.anchorRef = inputBaseSurfaceRef;
-    }
 
     return (
       <AInputBase {...inputBaseProps}>
-        <WrapperComponent style={{width: "100%"}}>
-          <input {...inputProps} />
-          <MenuComponent ref={dropdownMenuRef} {...menuComponentProps}>
+        <input {...inputProps} />
+        <AMenu ref={menuRef} {...menuComponentProps}>
+          {prependContent}
+          <div className="a-combobox__menu-items__wrapper">
             {!items.length && !!noDataContent && (
-              <ListItemComponent>{noDataContent}</ListItemComponent>
+              <AListItem>{noDataContent}</AListItem>
             )}
             {items.map((item, index) => {
               const itemProps = {
@@ -246,6 +241,7 @@ const ACombobox = forwardRef(
                 "aria-selected": false,
                 onClick: () => {
                   validate(typeof item === "string" ? item : item[itemValue]);
+                  setIsOpen(false);
                   onSelected && onSelected(item);
                   setTimeout(() => {
                     combinedRef.current
@@ -263,21 +259,29 @@ const ACombobox = forwardRef(
                 itemProps.children = item[itemText];
               }
 
+              const MenuItemComponent = itemTemplate ? itemTemplate : AListItem;
               return (
-                <ListItemComponent
+                <MenuItemComponent
                   key={`a-combobox__menu-item_${index}`}
                   {...itemProps}
+                  item={item}
+                  index={index}
                 />
               );
             })}
-          </MenuComponent>
-        </WrapperComponent>
+          </div>
+          {appendContent}
+        </AMenu>
       </AInputBase>
     );
   }
 );
 
 ACombobox.propTypes = {
+  /**
+   * Sets the content to append to the dropdown list.
+   */
+  appendContent: PropTypes.node,
   /**
    * Toggles whether to display a clearable icon.
    */
@@ -290,6 +294,10 @@ ACombobox.propTypes = {
    * Sets the hint content.
    */
   hint: PropTypes.node,
+  /**
+   * Sets a React component to use when rendering menu items. The component will be sent the following props: `item`, `index`, `aria-selected`, `children`, `className`, `onClick`, `role`, `value`.
+   */
+  itemTemplate: PropTypes.elementType,
   /**
    * The property name of the option text when `items` is an array of objects.
    */
@@ -330,6 +338,10 @@ ACombobox.propTypes = {
    */
   placeholder: PropTypes.string,
   /**
+   * Sets the content to prepend to the dropdown list.
+   */
+  prependContent: PropTypes.node,
+  /**
    * Toggles the `readOnly` state.
    */
   readOnly: PropTypes.bool,
@@ -346,10 +358,6 @@ ACombobox.propTypes = {
       level: PropTypes.string
     })
   ),
-  /**
-   * Toggles using AMenu/ADropdown internally.
-   */
-  useMenu: PropTypes.bool,
   /**
    * Delays validation until the `blur` event.
    */

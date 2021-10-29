@@ -13,9 +13,7 @@ import {Playground, Props} from "../../../docs";
 Integrate with your build to [auto-import](/#integrating), or add an import in your component:
 
 ```
-import {ATheme} from "@cisco-ats/atomic-react/ATheme";
-// or if you're able to treekshake node_modules
-import {ATheme} from "@cisco-ats/atomic-react";
+import {ATheme} from "@cisco-sbg-ui/atomic-react";
 ```
 
 `ATheme` is bundled with `AApp`. If you use `AApp`, `ATheme` is unnecessary.
@@ -25,7 +23,7 @@ import {ATheme} from "@cisco-ats/atomic-react";
 To access and modify the current theme, use the react hook provided:
 
 ```
-import {useATheme} from "@cisco-ats/atomic-react/ATheme";
+import {useATheme} from "@cisco-sbg-ui/atomic-react";
 ```
 
 ## Usage
@@ -33,12 +31,13 @@ import {useATheme} from "@cisco-ats/atomic-react/ATheme";
 <Playground
   noInline
   code={`const ThemeSwitcher = () => {
-  const {currentTheme, setCurrentTheme} = useATheme();
+  const {currentTheme, setCurrentTheme, isDark, isLight} = useATheme();
   return (
     <div
       style={{
         padding: 20,
-        backgroundColor: currentTheme === "default" ? "#fff" : "#000"
+        backgroundColor: currentTheme === "default" ? "#eee" : "#000",
+        color: currentTheme === "default" ? "#000" : "#eee",
       }}>
       <AButtonGroup
         selectedValues={[currentTheme]}
@@ -46,6 +45,9 @@ import {useATheme} from "@cisco-ats/atomic-react/ATheme";
         <AButton value="default">Default</AButton>
         <AButton value="dusk">Dusk</AButton>
       </AButtonGroup>
+      <ADivider />
+      <div>isDark: {isDark.toString()}</div>
+      <div>isLight: {isLight.toString()}</div>
     </div>
   );
 };

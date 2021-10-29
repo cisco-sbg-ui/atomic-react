@@ -9,7 +9,7 @@ import React, {
 } from "react";
 
 import AAppContext from "../AApp/AAppContext";
-import AFormContext from "../AForm/AFormContext";
+import {AFormContext} from "../AForm";
 import AFieldBase from "../AFieldBase";
 
 import {useCombinedRefs} from "../../utils/hooks";
@@ -56,11 +56,10 @@ const ASlider = forwardRef(
     const [offset2, setOffset2] = useState(0);
     const [isDown2, setIsDown2] = useState(false);
     const [error, setError] = useState("");
-    const [workingValidationState, setWorkingValidationState] = useState(
-      validationState
-    );
+    const [workingValidationState, setWorkingValidationState] =
+      useState(validationState);
 
-    const {register} = useContext(AFormContext);
+    const {register, unregister} = useContext(AFormContext);
     useEffect(() => {
       setWorkingValidationState(validationState);
     }, [validationState]);
@@ -73,6 +72,14 @@ const ASlider = forwardRef(
         });
       }
     }, [validationState, value, rules]); // eslint-disable-line react-hooks/exhaustive-deps
+
+    useEffect(() => {
+      if (unregister) {
+        return () => {
+          return unregister(`a-slider_${sliderId}`);
+        };
+      }
+    }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
     const thumb1Position = Array.isArray(value)
       ? (value[0] * 100) / (max - min)

@@ -112,11 +112,9 @@ $atomic-dusk: (
     "color-light": rgba(map-get($grey, "lighten-3"), $alpha-3),
     "color-lighter": rgba(map-get($grey, "lighten-3"), $alpha-15)
   ),
-  "dropdown": (
-    "box-shadow": 2px 2px 4px 0 rgba($black, $alpha-5)
-  ),
   "footer": (
-    "border-color": rgba(map-get($grey, "lighten-5"), $alpha-2)
+    "border-color": rgba(map-get($grey, "lighten-5"), $alpha-2),
+    "color": map-get($grey, "lighten-3")
   ),
   "header": (
     "bg-color": map-get($dusk, "4"),

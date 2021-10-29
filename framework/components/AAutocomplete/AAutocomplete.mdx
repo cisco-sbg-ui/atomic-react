@@ -13,9 +13,7 @@ import {Playground, Props} from "../../../docs";
 Integrate with your build to [auto-import](/#integrating), or add an import in your component:
 
 ```
-import AAutocomplete from "@cisco-ats/atomic-react/AAutocomplete";
-// or if you're able to treekshake node_modules
-import {AAutocomplete} from "@cisco-ats/atomic-react";
+import {AAutocomplete} from "@cisco-sbg-ui/atomic-react";
 ```
 
 ## Usage
@@ -186,6 +184,7 @@ The `AAutocomplete` component inherits passed props.
         label="Food Group"
         placeholder="Pick a Food Group"
         hint="Hint: Default"
+        items={["Bread, Cereal, Rice, and Pasta", "Vegetables", "Fruit", "Milk, Yogurt, and Cheese", "Meat, Poultry, Fish", "Fats, Oils, and Sweets"]}
       />
     </div>
   </div>
@@ -196,6 +195,7 @@ The `AAutocomplete` component inherits passed props.
       label="Food Group"
       placeholder="Pick a Food Group"
       hint="Hint: Disabled"
+      items={["Bread, Cereal, Rice, and Pasta", "Vegetables", "Fruit", "Milk, Yogurt, and Cheese", "Meat, Poultry, Fish", "Fats, Oils, and Sweets"]}
     />
   </div>
   <div style={{minHeight: 220, minWidth: 250, marginRight: 20}}>
@@ -205,6 +205,7 @@ The `AAutocomplete` component inherits passed props.
       label="Food Group"
       placeholder="Pick a Food Group"
       hint="Hint: Read-only"
+      items={["Bread, Cereal, Rice, and Pasta", "Vegetables", "Fruit", "Milk, Yogurt, and Cheese", "Meat, Poultry, Fish", "Fats, Oils, and Sweets"]}
     />
   </div>
   <div style={{minHeight: 220, minWidth: 250, marginRight: 20}}>
@@ -214,6 +215,7 @@ The `AAutocomplete` component inherits passed props.
       placeholder="Pick a Food Group"
       hint="Hint: Warning"
       validationState="warning"
+      items={["Bread, Cereal, Rice, and Pasta", "Vegetables", "Fruit", "Milk, Yogurt, and Cheese", "Meat, Poultry, Fish", "Fats, Oils, and Sweets"]}
     />
   </div>
   <div style={{minHeight: 220, minWidth: 250, marginRight: 20}}>
@@ -223,50 +225,103 @@ The `AAutocomplete` component inherits passed props.
       placeholder="Pick a Food Group"
       hint="Hint: Danger"
       validationState="danger"
+      items={["Bread, Cereal, Rice, and Pasta", "Vegetables", "Fruit", "Milk, Yogurt, and Cheese", "Meat, Poultry, Fish", "Fats, Oils, and Sweets"]}
     />
   </div>
 </>`}
 />
 
-## useMenu
+## Prepend/Append Content
 
 <Playground
   code={`() => {
-  const [role, setRole] = useState(null);
+  const items = [
+    "Bread, Cereal, Rice, and Pasta",
+    "Vegetables",
+    "Fruit",
+    "Milk, Yogurt, and Cheese",
+    "Meat, Poultry, Fish",
+    "Fats, Oils, and Sweets"
+  ];
+  const [value, setValue] = useState("");
+  const [filteredItems, setFilteredItems] = useState(items);
   return (
-    <>
-      Using \`ADropdown\`, the menu is trapped.
-      <div style={{width:"100%", height: 100, overflowY:"hidden", border: "solid 1px #999"}} className="px-1 mb-4">
-        <AAutocomplete
-          label="Food Group"
-          items={[
-            "Bread, Cereal, Rice, and Pasta",
-            "Vegetables",
-            "Fruit",
-            "Milk, Yogurt, and Cheese",
-            "Meat, Poultry, Fish",
-            "Fats, Oils, and Sweets"
-          ]}
-          placeholder="Pick a Food Group"
-        />
-      </div>
-      Using \`AMenu\`, the menu is outside of the normal flow.
-      <div style={{width:"100%", height: 100, overflowY:"hidden", border: "solid 1px #999"}} className="px-1">
-        <AAutocomplete
-          label="Food Group"
-          items={[
-            "Bread, Cereal, Rice, and Pasta",
-            "Vegetables",
-            "Fruit",
-            "Milk, Yogurt, and Cheese",
-            "Meat, Poultry, Fish",
-            "Fats, Oils, and Sweets"
-          ]}
-          useMenu
-          placeholder="Pick a Food Group"
-        />
-      </div>
-    </>
+    <div style={{minHeight: 220, minWidth: 250, marginRight: 20}}>
+      <AAutocomplete
+        prependContent={<AListItem twoLine className="my-1 mx-2">Advertisement</AListItem>}
+        appendContent={<><ADivider className="ma-0" /><AListItem><AIcon size={12} left>add</AIcon>Add Role</AListItem></>}
+        clearable
+        label="Food Group"
+        items={filteredItems}
+        placeholder="Pick a Food Group"
+        onSelected={(item) => {
+          setValue(item);
+        }}
+        value={value}
+        onChange={(e) => {
+          setFilteredItems(
+            items.filter((x) =>
+              x.toLowerCase().includes(e.target.value.toLowerCase())
+            )
+          );
+          setValue(e.target.value);
+        }}
+      />
+    </div>
+  );
+}
+`}
+/>
+
+## Menu Item Templates
+
+<Playground
+  code={`() => {
+  const items = [
+    {id: 1, name: "Bread, Cereal, Rice, and Pasta", healthy: true},
+    {id: 2, name: "Vegetables", healthy: true},
+    {id: 3, name: "Fruit", selected: true, healthy: true},
+    {id: 4, name: "Milk, Yogurt, and Cheese", healthy: true},
+    {id: 5, name: "Meat, Poultry, Fish", disabled: true, healthy: true},
+    {id: 6, name: "Fats, Oils, and Sweets", healthy: false}
+  ];
+  const [value, setValue] = useState("");
+  const [filteredItems, setFilteredItems] = useState(items);
+  const {isDark} = useATheme();
+  return (
+    <div style={{minHeight: 220, minWidth: 250, marginRight: 20}}>
+      <AAutocomplete
+        itemTemplate={({className, index, item, onClick, ...rest}) => (
+          <AListItem {...rest} twoLine className={className + (isDark ? " white--text" : " grey--darken-7--text")} style={{backgroundColor: "transparent"}}>
+            <AListItemContent onClick={onClick}>
+              <AListItemTitle>{item.name}</AListItemTitle>
+              <AListItemSubtitle>Healthy? {item.healthy ? "Yes" : "No"}</AListItemSubtitle>
+            </AListItemContent>
+            <AListItemAction>
+              <AButton icon tertiary><AIcon>edit</AIcon></AButton>
+            </AListItemAction>
+          </AListItem>
+        )}
+        clearable
+        label="Food Group"
+        itemText="name"
+        itemValue="id"
+        items={filteredItems}
+        placeholder="Pick a Food Group"
+        onSelected={(item) => {
+          setValue(item.name);
+        }}
+        value={value}
+        onChange={(e) => {
+          setFilteredItems(
+            items.filter((x) =>
+              x.name.toLowerCase().includes(e.target.value.toLowerCase())
+            )
+          );
+          setValue(e.target.value);
+        }}
+      />
+    </div>
   );
 }
 `}
@@ -274,6 +329,6 @@ The `AAutocomplete` component inherits passed props.
 
 ## Accessibility Notes
 
-`AAutocomplete` inherits the accessibility features of `ADropdown`.
+`AAutocomplete` inherits the accessibility features of `AMenu`.
 
 The `AAutocomplete` component will select and focus previous/next items on `up` or `down` keys for the `keydown` event.

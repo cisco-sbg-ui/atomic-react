@@ -3,6 +3,8 @@ $scrollbar-track-width: 15px;
 $scrollbar-thumb-border-radius: 8px;
 
 .theme--default.a-app--scrollbars {
+  &::-webkit-scrollbar-corner,
+  & ::-webkit-scrollbar-corner,
   &::-webkit-scrollbar-track,
   & ::-webkit-scrollbar-track {
     background: map-deep-get($atomic-default, "app", "scrollbar", "track-bg");
@@ -22,6 +24,8 @@ $scrollbar-thumb-border-radius: 8px;
 }
 
 .theme--dusk.a-app--scrollbars {
+  &::-webkit-scrollbar-corner,
+  & ::-webkit-scrollbar-corner,
   &::-webkit-scrollbar-track,
   & ::-webkit-scrollbar-track {
     background: map-deep-get($atomic-dusk, "app", "scrollbar", "track-bg");

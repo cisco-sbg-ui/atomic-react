@@ -20,8 +20,36 @@ context("AAutocomplete", () => {
       });
   });
 
+  it("shows a no-data message", () => {
+    cy.intercept("POST", "https://nut7b5fgkt*.*.*/**", {
+      headers: {
+        "access-control-allow-origin": window.location.origin,
+        "Access-Control-Allow-Credentials": "true"
+      },
+      body: {
+        hits: [],
+        nbHits: 0,
+        page: 0,
+        nbPages: 1,
+        hitsPerPage: 5,
+        exhaustiveNbHits: true,
+        query: "asdfadsfadsfasdf",
+        params: "query=gi&hitsPerPage=5",
+        processingTimeMS: 1
+      }
+    }).as("algolia");
+
+    cy.get("#usage + .playground .a-autocomplete__input")
+      .eq(0)
+      .type("asdf")
+      .wait("@algolia");
+    cy.get(".a-autocomplete__menu-items").eq(0).should("be.visible");
+    cy.get("#usage + .playground .a-autocomplete__input").eq(0).clear();
+    cy.get(".a-autocomplete__menu-items .a-list-item").eq(0).type("{esc}");
+  });
+
   it("opens and closes appropriately", () => {
-    cy.intercept("POST", "https://nut7b5fgkt", {
+    cy.intercept("POST", "https://nut7b5fgkt*.*.*/**", {
       headers: {
         "access-control-allow-origin": window.location.origin,
         "Access-Control-Allow-Credentials": "true"
@@ -29,27 +57,35 @@ context("AAutocomplete", () => {
       body: giResponse
     }).as("algolia");
 
-    cy.get("#usage + .playground .a-autocomplete__menu-items")
-      .eq(0)
-      .should("not.be.visible");
+    cy.get(".a-autocomplete__menu-items").should("not.exist");
     cy.get("#usage + .playground .a-autocomplete__input")
       .eq(0)
       .type("gi")
       .wait("@algolia");
-    cy.get("#usage + .playground .a-autocomplete__menu-items")
+    cy.get(".a-autocomplete__menu-items").eq(0).should("be.visible");
+    cy.get("#usage + .playground .a-autocomplete__input")
       .eq(0)
-      .should("be.visible")
-      .prev()
       .then(($el) => {
         Cypress.dom.isFocused($el);
       })
       .type("{downArrow}");
-    cy.get("#usage + .playground .a-autocomplete__menu-item")
+    cy.get(".a-autocomplete__menu-items .a-autocomplete__menu-item")
       .eq(0)
       .type("{esc}");
-    cy.get("#usage + .playground .a-autocomplete__menu-items")
+    cy.get(".a-autocomplete__menu-items").should("not.exist");
+
+    cy.get("#usage + .playground .a-autocomplete__input").type("{downArrow}");
+    cy.get(".a-autocomplete__menu-items .a-autocomplete__menu-item")
       .eq(0)
-      .should("not.be.visible");
+      .click();
+    cy.get(".a-autocomplete__menu-items").should("not.exist");
+    cy.get("#usage + .playground .a-autocomplete__input")
+      .clear()
+      .type("gi")
+      .type("{downArrow}");
+    cy.get(".a-autocomplete__menu-items .a-autocomplete__menu-item")
+      .eq(0)
+      .type("{esc}");
   });
 
   it("tabs appropriately", () => {
@@ -57,9 +93,7 @@ context("AAutocomplete", () => {
       .eq(0)
       .type("{downArrow}")
       .tab();
-    cy.get("#usage + .playground .a-autocomplete__menu-items")
-      .eq(0)
-      .find(".a-autocomplete__menu-item")
+    cy.get(".a-autocomplete__menu-items .a-autocomplete__menu-item")
       .first()
       .then(($el) => {
         Cypress.dom.isFocused($el);
@@ -77,9 +111,7 @@ context("AAutocomplete", () => {
       .eq(0)
       .type("{downArrow}")
       .type("{downArrow}");
-    cy.get("#usage + .playground .a-autocomplete__menu-items")
-      .eq(0)
-      .find(".a-autocomplete__menu-item")
+    cy.get(".a-autocomplete__menu-items .a-autocomplete__menu-item")
       .first()
       .then(($el) => {
         Cypress.dom.isFocused($el);
@@ -94,9 +126,7 @@ context("AAutocomplete", () => {
     cy.get("#usage + .playground .a-autocomplete__input")
       .eq(0)
       .type("{upArrow}");
-    cy.get("#usage + .playground .a-autocomplete__menu-items")
-      .eq(0)
-      .find(".a-autocomplete__menu-item")
+    cy.get(".a-autocomplete__menu-items .a-autocomplete__menu-item")
       .last()
       .then(($el) => {
         Cypress.dom.isFocused($el);
@@ -115,7 +145,7 @@ context("AAutocomplete", () => {
     cy.get("#usage + .playground .a-autocomplete__input")
       .eq(0)
       .type("{downArrow}");
-    cy.get("#usage + .playground .a-autocomplete__menu-items")
+    cy.get(".a-autocomplete__menu-items")
       .eq(0)
       .should("have.attr", "role", "listbox")
       .find(".a-autocomplete__menu-item")
@@ -164,14 +194,18 @@ context("AAutocomplete", () => {
       .type("{downArrow}")
       .type("{downArrow}");
 
-    cy.get("#usage + .playground .playground__preview").toMatchImageSnapshot();
+    cy.get("#usage + .playground .playground__preview").compareSnapshot(
+      "Autocomplete 1"
+    );
 
     cy.get("#states + .playground .a-autocomplete__input")
       .first()
       .type("{downArrow}")
       .type("{downArrow}");
 
-    cy.get("#states + .playground .playground__preview").toMatchImageSnapshot();
+    cy.get("#states + .playground .playground__preview").compareSnapshot(
+      "Autocomplete 2"
+    );
 
     cy.get(".a-switch__box").eq(0).click();
 
@@ -180,6 +214,8 @@ context("AAutocomplete", () => {
       .type("{downArrow}")
       .type("{downArrow}");
 
-    cy.get("#states + .playground .playground__preview").toMatchImageSnapshot();
+    cy.get("#states + .playground .playground__preview").compareSnapshot(
+      "Autocomplete 3"
+    );
   });
 });

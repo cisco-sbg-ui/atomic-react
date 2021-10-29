@@ -13,9 +13,7 @@ import {Playground, Props} from "../../../docs";
 Integrate with your build to [auto-import](/#integrating), or add an import in your component:
 
 ```
-import ATag from "@cisco-ats/atomic-react/ATag";
-// or if you're able to treekshake node_modules
-import {ATag} from "@cisco-ats/atomic-react";
+import {ATag} from "@cisco-sbg-ui/atomic-react";
 ```
 
 ## Usage
@@ -24,6 +22,7 @@ import {ATag} from "@cisco-ats/atomic-react";
   code={`() => {
   const [selectedOption, setSelectedOption] = useState("Option 1");
   const [active, setActive] = useState(false);
+  const tagRef = useRef(null);
   return (
     <div style={{minHeight: 120}}>
       <ATag>Simple Tag</ATag>
@@ -44,40 +43,40 @@ import {ATag} from "@cisco-ats/atomic-react";
       </ATag>
       <ATag
         className="ma-1 grape white--text"
+        ref={tagRef}
         onClick={() => setActive(!active)}>
         {selectedOption} Tag
         <AIcon right className="cursor-pointer">
           chevron-down
         </AIcon>
       </ATag>
-      <ADropdown>
-        <ADropdownMenu
-          open={active}
-          onClose={() => setActive(false)}
-          style={{right: 5}}>
-          <ADropdownMenuItem
-            onClick={() => {
-              setSelectedOption("Option 1");
-              setActive(!active);
-            }}>
-            Option 1
-          </ADropdownMenuItem>
-          <ADropdownMenuItem
-            onClick={() => {
-              setSelectedOption("Option 2");
-              setActive(!active);
-            }}>
-            Option 2
-          </ADropdownMenuItem>
-          <ADropdownMenuItem
-            onClick={() => {
-              setSelectedOption("Option 3");
-              setActive(!active);
-            }}>
-            Option 3
-          </ADropdownMenuItem>
-        </ADropdownMenu>
-      </ADropdown>
+      <AMenu
+        anchorRef={tagRef}
+        open={active}
+        onClose={() => setActive(false)}
+        style={{right: 5}}>
+        <AListItem
+          onClick={() => {
+            setSelectedOption("Option 1");
+            setActive(!active);
+          }}>
+          Option 1
+        </AListItem>
+        <AListItem
+          onClick={() => {
+            setSelectedOption("Option 2");
+            setActive(!active);
+          }}>
+          Option 2
+        </AListItem>
+        <AListItem
+          onClick={() => {
+            setSelectedOption("Option 3");
+            setActive(!active);
+          }}>
+          Option 3
+        </AListItem>
+      </AMenu>
     </div>
   );
 }

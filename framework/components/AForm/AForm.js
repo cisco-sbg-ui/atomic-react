@@ -1,7 +1,7 @@
 import React, {forwardRef, useImperativeHandle, useRef, useState} from "react";
 
 import {useCombinedRefs} from "../../utils/hooks";
-import AFormContext from "./AFormContext";
+import {AFormContext} from "../AForm";
 
 const AForm = forwardRef(({children}, ref) => {
   const formRef = useRef(null);
@@ -26,6 +26,12 @@ const AForm = forwardRef(({children}, ref) => {
     register: (id, field) => {
       setFields((currentFields) => {
         currentFields[id] = field;
+        return currentFields;
+      });
+    },
+    unregister: (id) => {
+      setFields((currentFields) => {
+        delete currentFields[id];
         return currentFields;
       });
     }

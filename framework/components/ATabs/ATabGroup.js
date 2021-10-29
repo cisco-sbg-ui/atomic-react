@@ -77,7 +77,7 @@ const ATabGroup = forwardRef(
       tabChanged,
       setTabChanged,
       scrollToMe: (meRef) => {
-        if (!scrolling) return;
+        if (!scrolling || !combinedRef.current) return;
 
         const tabWrapper = combinedRef.current.querySelector(
           ".a-tab-group__tab-wrapper"
