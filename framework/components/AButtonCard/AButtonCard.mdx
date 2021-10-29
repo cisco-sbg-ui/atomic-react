@@ -18,6 +18,35 @@ import AButtonCard from "@cisco-ats/atomic-react/AButtonCard";
 import {AButtonCard, AButtonCardTitle, AButtonCardBody} from "@cisco-ats/atomic-react";
 ```
 
+## Usage
+
+<Playground
+  code={`() => {
+  const [count, setCount] = useState(0);
+  return (
+    <div>
+      <AButtonCard onClick={() => setCount(count + 1)}>
+      <AButtonCardTitle>Click Me</AButtonCardTitle>
+       <AButtonCardBody>Button has been clicked {count} times</AButtonCardBody>
+</AButtonCard>
+    </div>
+  );
+}
+`}
+/>
+
+
+## Link ButtonCard
+
+If the `href` property is used, the component will render as an HTML anchor.
+
+<Playground
+  code={`<AButtonCard href="https://www.cisco.com">
+  <AButtonCardTitle>Click Here</AButtonCardTitle>
+  <AButtonCardBody>To Launch Cisco.com </AButtonCardBody>
+</AButtonCard>`}
+/>
+
 <Playground
   fullWidthPreview
   code={`<div className="d-flex">
