@@ -7,8 +7,7 @@ import "./ASteps.scss";
 
 const AStepTitle = forwardRef(
   ({className: propsClassName = "", children, ...rest}, ref) => {
-    const containerClassName = " a-step__label";
-    const className = propsClassName + containerClassName;
+    const className = `a-step__label ${propsClassName}`.trim();
     return (
       <div {...rest} ref={ref} className={className}>
         <span className="a-step__title">{children}</span>
