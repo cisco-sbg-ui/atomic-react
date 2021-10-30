@@ -16,17 +16,6 @@ $sidebar-bg-gray: $sidebar-bg;
 $sidebar__list-menu-icon-color: map-get($grey, "darken-5"); // #58585b;
 $sidebar__list-menu-bg: map-get($grey, "lighten-3"); // #dfdfdf;
 // -----------------------------------------------------------------------------
-// Steps / Wizard
-// -----------------------------------------------------------------------------
-$step-icon-bg-visited: transparent;
-$step-icon-color-visited: map-get($grey, "lighten-5"); // #f2f2f2;
-$step-icon-bg: transparent;
-$step-icon-color: map-get($grey, "lighten-5"); // #f2f2f2;
-$step-icon-border-color: rgba(map-get($grey, "lighten-2"), $alpha-3);
-// (#c6c7ca, 30%);
-$step-line-color: rgba(map-get($grey, "lighten-2"), $alpha-3);
-// (#c6c7ca, 30%);
-// -----------------------------------------------------------------------------
 // Universal Time Code
 // -----------------------------------------------------------------------------
 $utc-color: $base-color;
