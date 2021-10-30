@@ -21,7 +21,7 @@ AStepTitle.propTypes = {
   /**
    * String representing class names to be passed to component container
    */
-  className: PropTypes.bool
+  className: PropTypes.string
 };
 AStepTitle.displayName = "AStepTitle";
 
@@ -42,7 +42,7 @@ AStepDescription.propTypes = {
   /**
    * String representing class names to be passed to component container
    */
-  className: PropTypes.bool
+  className: PropTypes.string
 };
 AStepDescription.displayName = "AStepDescription";
 

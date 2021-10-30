@@ -28,6 +28,26 @@ context("AStepper", () => {
       .and("equal", "a-step");
   });
 
+  //stepper-used-with-json-data
+  it("should add optional class", () => {
+    cy.get("#stepper-used-with-json-data + .playground .a-steps").should(
+      "have.class",
+      "AStepper"
+    );
+    cy.get("#stepper-used-with-json-data + .playground .a-step").should(
+      "have.class",
+      "AStep"
+    );
+    cy.get("#stepper-used-with-json-data + .playground .a-step__label").should(
+      "have.class",
+      "AStepTitle"
+    );
+    cy.get("#stepper-used-with-json-data + .playground .a-step__hint").should(
+      "have.class",
+      "AStepDescription"
+    );
+  });
+
   //vertical-stepper-with-icon
   it("should display vertical stepper with icon", () => {
     cy.get("#vertical-stepper-with-icon + .playground .a-steps").should(

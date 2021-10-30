@@ -102,7 +102,7 @@ import {AStepper, AStep, AStepTitle, AStepDescription} from "@cisco-sbg-ui/atomi
           {active > data.length ? "Completed" : "Step " + active}
         </div>
         <h3>Stepper with icon:</h3>
-        <AStepper>
+        <AStepper className="AStepper">
           {data.map((item, index) => {
             const stepNumber = index + 1;
             return (
@@ -112,11 +112,12 @@ import {AStepper, AStep, AStepTitle, AStepDescription} from "@cisco-sbg-ui/atomi
                 active={active === stepNumber}
                 visited={active > stepNumber}
                 disabled={stepNumber === 2}
+                className="AStep"
                 showIconOnVisited={true}>
-               <AStepTitle>
+               <AStepTitle className="AStepTitle">
                   {item.title}
                 </AStepTitle>
-                <AStepDescription>{item.description}</AStepDescription>
+                <AStepDescription className="AStepDescription">{item.description}</AStepDescription>
                </AStep>
             );
           })}
