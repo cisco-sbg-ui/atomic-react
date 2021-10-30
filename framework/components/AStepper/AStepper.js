@@ -71,7 +71,6 @@ const AStep = forwardRef(
         className += ` a-step__active`;
       }
     }
-    className = className.trim();
 
     return (
       <div {...rest} ref={ref} className={className}>

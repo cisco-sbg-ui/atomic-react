@@ -21,7 +21,7 @@ import {AStepper, AStep, AStepTitle, AStepDescription} from "@cisco-sbg-ui/atomi
 <Playground
   fullWidthPreview
   code={`() => {
-    const [active, setActive] = useState(1);
+    const [active, setActive] = useState(3);
     const steps = 3;
     return (
       <div>
@@ -50,6 +50,15 @@ import {AStepper, AStep, AStepTitle, AStepDescription} from "@cisco-sbg-ui/atomi
             <AStepTitle>Title</AStepTitle>
             <AStepDescription>
                 Description of title. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+            </AStepDescription>
+          </AStep>
+          <AStep
+            stepNumber={4}
+            active={active === 4}
+            visited={active > 4}>
+            <AStepTitle>Title</AStepTitle>
+            <AStepDescription>
+              Description of title. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
             </AStepDescription>
           </AStep>
         </AStepper>
@@ -127,7 +136,7 @@ import {AStepper, AStep, AStepTitle, AStepDescription} from "@cisco-sbg-ui/atomi
 
 <Playground
   code={`() => {
-    const [active, setActive] = useState(1);
+    const [active, setActive] = useState(2);
     const data = [
       {
         title: "Active. Long Title.",
@@ -160,7 +169,7 @@ import {AStepper, AStep, AStepTitle, AStepDescription} from "@cisco-sbg-ui/atomi
                 stepNumber={stepNumber}
                 active={active === stepNumber}
                 visited={active > stepNumber}
-                disabled={stepNumber === 2}
+                disabled={stepNumber === 3}
                 showIconOnVisited={true}>
                 <AStepTitle>
                   {item.title}

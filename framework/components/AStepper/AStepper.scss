@@ -19,9 +19,14 @@
         border: $border-width solid map-get($theme, "base", "color--selected");
       }
     }
+    &__divider {
+      border: 0px;
+      height: 1px;
+      background-color: map-deep-get($theme, "steps", "step-line-color");
+    }
     &__visited {
       .a-step__icon {
-        background: map-deep-get($theme, "steps", "step-icon-bg-visite");
+        background: map-deep-get($theme, "steps", "step-icon-bg-visited");
         color: map-deep-get($theme, "steps", "step-icon-color-visited");
       }
       .a-step__divider {

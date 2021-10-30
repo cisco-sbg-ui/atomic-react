@@ -1,0 +1,45 @@
+context("AStepper", () => {
+  before(() => {
+    cy.visitInLightTheme("http://localhost:8081/components/stepper");
+  });
+
+  it("has appropriate default state", () => {
+    cy.get("#horizontal-stepper + .playground .a-steps").should(
+      "not.have.class",
+      "a-steps--orientation-vertical"
+    );
+    cy.get("#horizontal-stepper + .playground .a-step")
+      .should("have.attr", "class")
+      .and("equal", "a-step a-step__visited");
+    cy.get("#horizontal-stepper + .playground .a-step")
+      .should("have.attr", "class")
+      .and("equal", "a-step a-step__visited");
+    cy.get("#horizontal-stepper + .playground .a-step")
+      .eq(1)
+      .should("have.attr", "class")
+      .and("equal", "a-step a-step__disabled");
+    cy.get("#horizontal-stepper + .playground .a-step")
+      .eq(2)
+      .should("have.attr", "class")
+      .and("equal", "a-step a-step__active");
+    cy.get("#horizontal-stepper + .playground .a-step")
+      .eq(3)
+      .should("have.attr", "class")
+      .and("equal", "a-step");
+  });
+
+  //vertical-stepper-with-icon
+  it("should display vertical stepper with icon", () => {
+    cy.get("#vertical-stepper-with-icon + .playground .a-steps").should(
+      "have.class",
+      "a-steps--orientation-vertical"
+    );
+    cy.get(
+      "#vertical-stepper-with-icon + .playground .a-steps--orientation-vertical"
+    )
+      .get(".a-step")
+      .eq(0)
+      .get(".a-step__icon__checkmark")
+      .should("be.visible");
+  });
+});
