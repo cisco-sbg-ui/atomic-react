@@ -4,7 +4,7 @@
   .a-step {
     &__icon {
       background: map-deep-get($theme, "base", "inverse-color");
-      color: map-deep-get($theme, "steps", "step-icon-color");
+      color: initial; // map-deep-get($theme, "steps", "step-icon-color");
       border: $border-width solid
         map-deep-get($theme, "steps", "step-icon-border-color");
     }
