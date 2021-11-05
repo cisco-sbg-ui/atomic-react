@@ -3,7 +3,7 @@
 @include theme(a-steps) using ($theme) {
   .a-step {
     &__icon {
-      background: map-deep-get($theme, "steps", "step-icon-bg");
+      background: map-deep-get($theme, "base", "inverse-color");
       color: map-deep-get($theme, "steps", "step-icon-color");
       border: $border-width solid
         map-deep-get($theme, "steps", "step-icon-border-color");
@@ -26,8 +26,8 @@
     }
     &__visited {
       .a-step__icon {
-        background: map-deep-get($theme, "steps", "step-icon-bg-visited");
-        color: map-deep-get($theme, "steps", "step-icon-color-visited");
+        background: map-deep-get($theme, "base", "inverse-color");
+        color: initial; //map-deep-get($theme, "steps", "step-icon-color-visited");
       }
       .a-step__divider {
         background-color: $color-good;
@@ -149,11 +149,6 @@ $step-line-vertical-left: 22px;
         background: $color-good;
       }
     }
-    &:last-child {
-      &:before {
-        display: none;
-      }
-    }
     &:before {
       top: $step-line-top;
       display: block;
@@ -164,6 +159,11 @@ $step-line-vertical-left: 22px;
       height: $step-line-heigth;
       left: $step-line-left;
       z-index: -1;
+    }
+    &:last-child {
+      .a-step__divider {
+        display: none;
+      }
     }
   }
   &--orientation-vertical {

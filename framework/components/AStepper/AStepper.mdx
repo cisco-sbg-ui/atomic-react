@@ -22,7 +22,7 @@ import {AStepper, AStep, AStepTitle, AStepDescription} from "@cisco-sbg-ui/atomi
   fullWidthPreview
   code={`() => {
     const [active, setActive] = useState(3);
-    const steps = 3;
+    const steps = 4;
     return (
       <div>
         <div style={{border: "solid 2px #333"}} className="my-2 pa-2">
@@ -201,8 +201,3 @@ The `AStepper` component inherits passed props.
 
 <Props of="AStep" />
 
-## Footer
-
-<AFooter>
-  <AFooterLegal>*className prop is available on all components.</AFooterLegal>
-</AFooter>
