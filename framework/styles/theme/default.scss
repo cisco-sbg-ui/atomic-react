@@ -161,8 +161,6 @@ $atomic-default: (
     "handle-border-disabled": map-get($grey, "lighten-2")
   ),
   "steps": (
-    "step-icon-color-visited": map-get($grey, "lighten-5"),
-    "step-icon-color": map-get($grey, "darken-4"),
     "step-icon-border-color": map-get($grey, "lighten-2"),
     "step-line-color": map-get($grey, "lighten-2")
   ),

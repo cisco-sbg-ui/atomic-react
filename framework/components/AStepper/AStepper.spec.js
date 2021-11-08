@@ -62,4 +62,16 @@ context("AStepper", () => {
       .get(".a-step__icon__checkmark")
       .should("be.visible");
   });
+
+  it("supports themes", () => {
+    if (Cypress.env("snapshots") === "off") return;
+
+    cy.get("#horizontal-stepper + .playground .a-steps").compareSnapshot(
+      "Horizontal_stepper"
+    );
+
+    cy.get(
+      "#vertical-stepper-with-icon + .playground .a-steps--orientation-vertical"
+    ).compareSnapshot("Vertical_stepper_with_icon");
+  });
 });

@@ -171,8 +171,6 @@ $atomic-dusk: (
     "handle-border-disabled": map-get($cisco-blue, "base")
   ),
   "steps": (
-    "step-icon-color-visited": map-get($grey, "lighten-5"),
-    "step-icon-color": map-get($grey, "lighten-5"),
     "step-icon-border-color": rgba(map-get($grey, "lighten-2"), $alpha-3),
     "step-line-color": rgba(map-get($grey, "lighten-2"), $alpha-3)
   ),
