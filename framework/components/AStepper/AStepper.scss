@@ -6,10 +6,6 @@
       border: $border-width solid
         map-deep-get($theme, "steps", "step-icon-border-color");
     }
-
-    &__title {
-      background: map-get($theme, "base", "bg");
-    }
     &__active {
       .a-step__icon {
         background: map-get($theme, "base", "color--selected");
@@ -131,6 +127,9 @@ $step-line-vertical-left: 22px;
       color: $step-hint-color;
       font-size: $step-hint-font-size;
       line-height: $step-hint-line-height;
+    }
+    &__disabled {
+      color: map-get($grey, "darken-4");
     }
 
     &__visited {
