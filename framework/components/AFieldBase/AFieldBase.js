@@ -32,6 +32,7 @@ const AFieldBase = forwardRef(
     return (
       <div {...rest} ref={ref} className={className}>
         {label && (
+          // eslint-disable-next-line jsx-a11y/no-noninteractive-element-interactions, jsx-a11y/click-events-have-key-events
           <label
             id={labelId}
             htmlFor={labelFor}

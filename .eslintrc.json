@@ -1,11 +1,21 @@
 {
   "extends": [
     "eslint:recommended",
-    "plugin:react/recommended",
     "plugin:cypress/recommended",
+    "plugin:import/recommended",
+    "plugin:jsx-a11y/recommended",
+    "plugin:react/recommended",
     "prettier"
   ],
   "parserOptions": {
+    "ecmaVersion": 2020,
+    "ecmaFeatures": {
+      "jsx": true
+    },
+    "babelOptions": {
+      "presets": ["babel-preset-gatsby"]
+    },
+    "requireConfigFile": false,
     "sourceType": "module"
   },
   "parser": "@babel/eslint-parser",

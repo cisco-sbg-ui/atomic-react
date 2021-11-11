@@ -156,11 +156,13 @@ const ATree = forwardRef(
 
       return (
         <div {...nodeProps}>
+          {/* eslint-disable jsx-a11y/click-events-have-key-events, jsx-a11y/no-static-element-interactions */}
           <div
             className={rootClassName}
             onMouseEnter={hoverHandler(true, path)}
             onMouseLeave={hoverHandler(false, path)}
             onClick={rootInteractionHandler(path)}>
+            {/* eslint-enable jsx-a11y/click-events-have-key-events, jsx-a11y/no-static-element-interactions */}
             {path.slice(1).map((x, index) => (
               <div key={`a-tree__level_${index}`} className="a-tree__level" />
             ))}

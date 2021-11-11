@@ -1,4 +1,7 @@
+const nodeEnv = process.env.NODE_ENV;
+
 const path = require("path");
+
 exports.createPages = async ({graphql, actions, reporter}) => {
   const {createPage} = actions;
   const result = await graphql(`
@@ -37,6 +40,17 @@ exports.onCreateWebpackConfig = ({stage, actions}) => {
         alias: {
           "react-dom": "@hot-loader/react-dom"
         }
+      }
+    });
+  }
+};
+
+exports.onCreateBabelConfig = ({actions}) => {
+  if (nodeEnv !== "production") {
+    actions.setBabelPlugin({
+      name: "babel-plugin-istanbul",
+      options: {
+        exclude: [".cache/*", "docs/*"]
       }
     });
   }
