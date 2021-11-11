@@ -14,19 +14,12 @@
       }
     }
     &__divider {
-      border: 0px;
-      height: 1px;
       background-color: map-deep-get($theme, "steps", "step-line-color");
     }
     &__visited {
       .a-step__divider {
         background-color: $color-good;
-        border: 0px;
-        height: 1px;
       }
-    }
-    &:before {
-      background: map-deep-get($theme, "steps", "step-line-color");
     }
   }
   &--orientation-vertical {
@@ -36,18 +29,9 @@
       }
     }
   }
-
-  &--type-expanded {
-    .a-step {
-      border: map-get($theme, "base", "border-width") solid
-        map-get($theme, "control", "stroke-color");
-    }
-  }
 }
 
 $steps-min-width: 0;
-$steps-max-width: 1000px;
-$steps-max-width-vertical: 300px;
 $steps-padding: 20px 0;
 $steps-margin: 0 auto 20px;
 $step-icon-width: 24px;
@@ -64,23 +48,15 @@ $step-title-padding: 0 10px 0 0;
 $step-hint-color: map-get($grey, "darken-2");
 $step-hint-font-size: 13px;
 $step-hint-line-height: 20px;
-$step-line-width: calc(100% - 44px);
 $step-line-vertical-width: 1px;
-$step-line-heigth: 1px;
 $step-line-vertical-heigth: calc(100% - 40px);
 // These variables will be used in next release in _sidebar.scss
-$step-line-height: 1px;
 $step-line-vertical-height: calc(100% - 40px);
-$step-line-top: 22px;
-$step-line-vertical-top: 44px;
-$step-line-left: 44px;
-$step-line-vertical-left: 22px;
 .a-steps {
   display: flex;
   flex: 1;
   align-items: top;
   justify-content: space-around;
-  max-width: $steps-max-width;
   margin: $steps-margin;
   padding: $steps-padding;
   text-align: center;
@@ -119,6 +95,8 @@ $step-line-vertical-left: 22px;
     }
     &__divider {
       flex-grow: 1;
+      border: 0px;
+      height: 1px;
     }
     &__title {
       padding: $step-title-padding;
@@ -137,22 +115,6 @@ $step-line-vertical-left: 22px;
         border: $border-width solid $color-good;
       }
     }
-    &__visited {
-      &:before {
-        background: $color-good;
-      }
-    }
-    &:before {
-      top: $step-line-top;
-      display: block;
-      position: absolute;
-      content: "";
-      width: $step-line-width;
-      // This variable will be switched to "$step-line-height" next release;
-      height: $step-line-heigth;
-      left: $step-line-left;
-      z-index: -1;
-    }
     &:last-child {
       .a-step__divider {
         display: none;
@@ -162,7 +124,6 @@ $step-line-vertical-left: 22px;
   &--orientation-vertical {
     display: flex;
     flex-direction: column;
-    max-width: $steps-max-width-vertical;
     text-align: left;
     .a-step {
       display: flex;
@@ -175,9 +136,6 @@ $step-line-vertical-left: 22px;
       &__content {
         flex: 2;
         align-self: center;
-      }
-      &:before {
-        display: none;
       }
       &__visited {
         &.a-step:after {
@@ -195,39 +153,8 @@ $step-line-vertical-left: 22px;
         width: $step-line-vertical-width;
         // This variable will be switched to "$step-line-vertical-height" next release;
         height: $step-line-vertical-heigth;
-        left: $step-line-vertical-left;
-        top: $step-line-vertical-top;
-      }
-    }
-  }
-
-  &--type-expanded {
-    margin: 0;
-    width: 100%;
-    min-width: $steps-min-width;
-    max-width: $steps-max-width;
-    display: flex;
-    flex: 1 1 auto;
-    flex-direction: column;
-    text-align: left;
-    padding: 0;
-    box-shadow: $default-box-shadow;
-
-    .a-step {
-      &:before {
-        display: none;
-      }
-
-      &__visited {
-        &:after {
-          display: none;
-        }
-      }
-
-      &:last-child {
-        &:after {
-          display: none;
-        }
+        left: 22px;
+        top: 44px;
       }
     }
   }
