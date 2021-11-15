@@ -163,7 +163,6 @@ const ACheckbox = forwardRef(
               validate(e.target.checked);
               onClick && onClick(e);
             }}
-            role="checkbox"
             ref={(el) =>
               el &&
               ((el.indeterminate = indeterminate) || (el.checked = checked))

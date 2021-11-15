@@ -50,7 +50,7 @@ const AAlert = forwardRef(
     }
 
     return (
-      <div {...rest} role="alert" tabIndex={0} ref={ref} className={className}>
+      <div {...rest} role="alert" ref={ref} className={className}>
         <AIcon className="a-alert__icon" size={16}>
           {icon}
         </AIcon>

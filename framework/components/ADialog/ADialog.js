@@ -88,6 +88,7 @@ const ADialog = forwardRef(
         ReactDOM.createPortal(
           <>
             <div className={backdropClassName} />
+            {/* eslint-disable jsx-a11y/no-noninteractive-element-interactions, jsx-a11y/no-noninteractive-tabindex */}
             <div
               {...rest}
               role="document"
@@ -103,6 +104,7 @@ const ADialog = forwardRef(
               }}>
               {children}
             </div>
+            {/* eslint-enable jsx-a11y/no-noninteractive-element-interactions, jsx-a11y/no-noninteractive-tabindex */}
           </>,
           appRef.current
         )) ||

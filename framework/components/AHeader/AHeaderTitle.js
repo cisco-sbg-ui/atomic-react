@@ -11,7 +11,7 @@ const AHeaderTitle = forwardRef(
     }
 
     return (
-      <div {...rest} tabIndex="0" ref={ref} className={className}>
+      <div {...rest} ref={ref} className={className}>
         {children}
       </div>
     );
