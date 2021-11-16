@@ -31,47 +31,26 @@
   }
 }
 
-$steps-min-width: 0;
-$steps-padding: 20px 0;
-$steps-margin: 0 auto 20px;
-$step-icon-width: 24px;
-$step-icon-min-width: 24px;
-$step-icon-max-width: 24px;
-$step-icon-height: 24px;
-$step-icon-line-height: $line-height--lg;
-$step-icon-font-size: $font-size--xs;
-$step-icon-margin: 10px;
-$step-content-width: 100%;
-$step-content-margin: 12px 0 0 0;
-$step-label-font-size: $font-size--sm;
-$step-title-padding: 0 10px 0 0;
-$step-hint-color: map-get($grey, "darken-2");
-$step-hint-font-size: 13px;
-$step-hint-line-height: 20px;
-$step-line-vertical-width: 1px;
-$step-line-vertical-heigth: calc(100% - 40px);
-// These variables will be used in next release in _sidebar.scss
-$step-line-vertical-height: calc(100% - 40px);
 .a-steps {
   display: flex;
   flex: 1;
   align-items: top;
   justify-content: space-around;
-  margin: $steps-margin;
-  padding: $steps-padding;
+  margin: 0 auto 20px;
+  padding: 20px 0;
   text-align: center;
   .a-step {
     position: relative;
     display: inline-flex;
     flex: 1;
     &__icon {
-      width: $step-icon-width;
-      min-width: $step-icon-min-width;
-      max-width: $step-icon-max-width;
-      height: $step-icon-height;
-      line-height: $step-icon-line-height;
-      font-size: $step-icon-font-size;
-      margin: $step-icon-margin;
+      width: 24px;
+      min-width: 24px;
+      max-width: 24px;
+      height: 24px;
+      line-height: $line-height--lg;
+      font-size: $font-size--xs;
+      margin: 10px;
       position: relative;
       display: inline-flex;
       align-items: center;
@@ -83,13 +62,13 @@ $step-line-vertical-height: calc(100% - 40px);
       }
     }
     &__content {
-      width: $step-content-width;
+      width: 100%;
       text-align: left;
-      margin: $step-content-margin;
+      margin: 12px 0 0 0;
     }
     &__label {
       color: map-get($grey, "darken-4");
-      font-size: $step-label-font-size;
+      font-size: $font-size--sm;
       display: flex;
       align-items: center;
     }
@@ -99,12 +78,12 @@ $step-line-vertical-height: calc(100% - 40px);
       height: 1px;
     }
     &__title {
-      padding: $step-title-padding;
+      padding: 0 10px 0 0;
     }
     &__hint {
-      color: $step-hint-color;
-      font-size: $step-hint-font-size;
-      line-height: $step-hint-line-height;
+      color: map-get($grey, "darken-2");
+      font-size: 13px;
+      line-height: 20px;
     }
     &__disabled {
       color: map-get($grey, "darken-4");
@@ -150,9 +129,8 @@ $step-line-vertical-height: calc(100% - 40px);
       &:after {
         content: "";
         position: absolute;
-        width: $step-line-vertical-width;
-        // This variable will be switched to "$step-line-vertical-height" next release;
-        height: $step-line-vertical-heigth;
+        width: 1px;
+        height: calc(100% - 40px);
         left: 22px;
         top: 44px;
       }
