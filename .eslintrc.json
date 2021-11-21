@@ -2,7 +2,6 @@
   "extends": [
     "eslint:recommended",
     "plugin:cypress/recommended",
-    "plugin:flowtype/recommended",
     "plugin:import/recommended",
     "plugin:jsx-a11y/recommended",
     "plugin:react/recommended",
@@ -26,7 +25,7 @@
     "Buffer": true,
     "__dirname": true
   },
-  "plugins": ["flowtype", "react-hooks"],
+  "plugins": ["react-hooks"],
   "rules": {
     "no-console": 0,
     "no-debugger": "error",
