@@ -2,7 +2,14 @@
   "presets": ["next/babel"],
   "env": {
     "development": {
-      "plugins": ["istanbul"]
+      "plugins": [
+        [
+          "istanbul",
+          {
+            "exclude": ["docs/*", "pages/*"]
+          }
+        ]
+      ]
     }
   }
 }
