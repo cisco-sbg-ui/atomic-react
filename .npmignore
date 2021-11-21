@@ -1,5 +1,4 @@
 .github/
-.cache/
 .next/
 .nyc-output/
 .vercel/
@@ -7,17 +6,24 @@ build/
 coverage/
 cypress/
 docs/
+framework/
+pages/
 public/
+scripts/
+styles/
 
 .editorconfig
 .eslintrc.json
 .gitignore
 .prettierignore
 .prettierrc.js
-.travis.yml
-babel.config.js
+.vercelignore
+babel-lib.config.js
 babel-preset-local.js
+codecov.yml
+cypress.json
 next.config.js
+vercel.json
 
 *.spec.js
 *.mdx

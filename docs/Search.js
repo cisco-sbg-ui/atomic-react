@@ -45,6 +45,7 @@ const Search = () => {
         clearable={value.length > 0}
         prependIcon="search"
         value={value}
+        label="Search"
         onChange={(e) => {
           setValue(e.target.value);
         }}

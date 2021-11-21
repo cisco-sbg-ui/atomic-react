@@ -28,15 +28,5 @@ jobs:
         run: npm run build
       - name: Test
         run: npm test
-      - name: Echo workspace
-        run: echo ${{ github.workspace }}
-      - name: Run ZeroNorth
-        run: bash scripts/build.sh
-        if: ${{ github.ref == 'refs/heads/master' }}
-        env:
-          CYBRIC_API_KEY: ${{ secrets.CYBRIC_API_KEY }}
-          DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
-          DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
-          GITHUB_WORKSPACE: ${{ github.workspace }}
       - name: Upload Coverage
         run: npm run upload-coverage
