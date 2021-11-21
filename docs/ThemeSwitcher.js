@@ -1,7 +1,6 @@
 import React from "react";
 
-import ASwitch from "../framework/components/ASwitch";
-import {useATheme} from "../framework/components/ATheme";
+import {ASwitch, useATheme} from "../framework";
 
 const ThemeSwitcher = () => {
   const {currentTheme, setCurrentTheme} = useATheme();

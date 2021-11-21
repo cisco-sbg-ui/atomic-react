@@ -12,10 +12,6 @@ jobs:
       contents: write
 
     steps:
-      - name: Echo head_ref
-        run: echo ${{ github.head_ref }}
-      - name: Echo ref
-        run: echo ${{ github.ref }}
       - name: Checkout Source
         uses: actions/checkout@v2
         with:
@@ -28,6 +24,8 @@ jobs:
         run: npm ci --ignore-scripts --prefer-offline
       - name: Run Cypress Postinstall Script
         run: npm run cypress:install
+      - name: Run ESBuild Postinstall Script
+        run: npm run esbuild:install
       - name: Build
         run: npm run build
       - name: Update Snapshots

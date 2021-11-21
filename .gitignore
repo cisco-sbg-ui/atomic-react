@@ -1,4 +1,5 @@
 /.cache/
+/.next/
 /.vercel/
 /.nyc_output/
 /coverage/
@@ -6,7 +7,6 @@
 /cypress/snapshots/diff/
 /lib/
 /node_modules/
-/public/
 
 /babel-preset.js
 /babel-preset-local.js

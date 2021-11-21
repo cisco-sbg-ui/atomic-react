@@ -1,6 +1,6 @@
 context("ADatePicker", () => {
   before(() => {
-    cy.visitInLightTheme("http://localhost:8081/components/date-picker");
+    cy.visitInLightTheme("http://localhost:3000/components/date-picker");
   });
 
   it("navigates properly", () => {

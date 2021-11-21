@@ -17,7 +17,7 @@ Cypress.Commands.add("visitInLightTheme", function (url) {
   cy.waitForFonts();
 });
 
-Cypress.Commands.add("isCovered", function (selector, done) {
+Cypress.Commands.add("isCovered", function (selector) {
   cy.once("fail", (err) => {
     expect(err.message).to.include("`cy.click()` failed because this element");
     expect(err.message).to.include("is being covered by another element");

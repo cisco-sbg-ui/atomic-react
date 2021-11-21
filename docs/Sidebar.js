@@ -1,13 +1,18 @@
 import React, {useEffect, useRef, useState} from "react";
-import {Link} from "gatsby";
+import Link from "next/link";
 
-import AButton from "../framework/components/AButton";
-import AIcon from "../framework/components/AIcon";
-import ATree from "../framework/components/ATree";
-import {useATheme} from "../framework/components/ATheme";
+import {AButton, AIcon, ATree, useATheme} from "../framework";
 
 import Search from "./Search";
 import ThemeSwitcher from "./ThemeSwitcher";
+
+const CustomLink = ({children, href, ...rest}) => {
+  return (
+    <Link href={href} passHref>
+      <a {...rest}>{children}</a>
+    </Link>
+  );
+};
 
 const Sidebar = ({menus, currentDoc}) => {
   const [items, setItems] = useState([]);
@@ -23,64 +28,61 @@ const Sidebar = ({menus, currentDoc}) => {
     const newItems = [
       {
         content: "Getting Started",
-        contentComponent: Link,
+        contentComponent: CustomLink,
         contentProps: {
-          to: "/"
+          href: "/"
         },
-        active: "/" === currentDoc.frontmatter.route
+        active: "/" === currentDoc.route
       },
       {
         content: "Changelog",
-        contentComponent: Link,
+        contentComponent: CustomLink,
         contentProps: {
-          to: "/changelog"
+          href: "/changelog"
         },
-        active: "/changelog" === currentDoc.frontmatter.route
+        active: "/changelog" === currentDoc.route
       },
       {
         content: "Components",
         items: [],
-        expanded: currentDoc.frontmatter.route.startsWith("/components/")
+        expanded: currentDoc.route.startsWith("/components/")
       },
       {
         content: "Extend",
         items: [],
-        expanded: currentDoc.frontmatter.route.startsWith("/extend/")
+        expanded: currentDoc.route?.startsWith("/extend/")
       },
       {
         content: "Services",
         items: [],
-        expanded: currentDoc.frontmatter.route.startsWith("/services/")
+        expanded: currentDoc.route?.startsWith("/services/")
       }
     ];
 
     menus?.forEach((item) => {
-      const bucketIndex = item.node.frontmatter.route.startsWith("/components/")
+      const bucketIndex = item.route.startsWith("/components/")
         ? 2
-        : item.node.frontmatter.route.startsWith("/extend/")
+        : item.route.startsWith("/extend/")
         ? 3
-        : item.node.frontmatter.route.startsWith("/services/")
+        : item.route.startsWith("/services/")
         ? 4
         : null;
       if (!bucketIndex) return;
 
       newItems[bucketIndex].items.push({
-        content: item.node.frontmatter.name,
-        contentComponent: Link,
+        content: item.name,
+        contentComponent: CustomLink,
         contentProps: {
-          to: item.node.frontmatter.route
+          href: item.route
         },
-        active: item.node.frontmatter.route === currentDoc.frontmatter.route,
-        expanded: item.node.frontmatter.route === currentDoc.frontmatter.route,
-        items: item.node.headings?.map((heading) => ({
-          contentComponent: Link,
+        active: item.route === currentDoc.route,
+        expanded: item.route === currentDoc.route,
+        items: item.headings.map((heading) => ({
+          contentComponent: CustomLink,
           contentProps: {
-            to:
-              item.node.frontmatter.route +
-              "#" +
-              heading.value.toLowerCase().replace(/ /g, "-")
+            href: item.route + "#" + heading.toLowerCase().replace(/ /g, "-")
           },
-          content: heading.value
+          content: heading
         }))
       });
     });

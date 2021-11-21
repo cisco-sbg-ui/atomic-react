@@ -1,9 +1,8 @@
 import algoliasearch from "algoliasearch";
-import {Link} from "gatsby";
+import Link from "next/link";
 import debounce from "lodash.debounce";
 import React, {useCallback, useEffect, useRef, useState} from "react";
 
-import AlgoliaLogo from "../framework/utils/algolia.svg";
 import {AListItem, AMenu, ATextInput} from "../framework";
 
 const Search = () => {
@@ -34,10 +33,10 @@ const Search = () => {
   const [value, setValue] = useState("");
   const [items, setItems] = useState([]);
   const [open, setOpen] = useState(false);
-  const onChange = useCallback(debounce(searchCallback, 350), []);
+  const onChange = useCallback(debounce(searchCallback, 350), []); // eslint-disable-line react-hooks/exhaustive-deps
   useEffect(() => {
     onChange(value);
-  }, [value]);
+  }, [value]); // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
     <>
@@ -58,13 +57,10 @@ const Search = () => {
         onClose={() => setOpen(false)}
         style={{width: 285}}>
         {items.map((x, index) => (
-          <AListItem key={index} component={Link} to={x.route}>
-            {x.name}
-          </AListItem>
+          <Link key={index} href={x.route} passHref>
+            <AListItem>{x.name}</AListItem>
+          </Link>
         ))}
-        <AListItem twoLine className="pa-2 justify-end">
-          <AlgoliaLogo />
-        </AListItem>
       </AMenu>
     </>
   );

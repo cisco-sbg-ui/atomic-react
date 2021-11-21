@@ -4,9 +4,8 @@ import React, {useCallback, useEffect, useRef, useState} from "react";
 import {LiveProvider, LiveEditor, LiveError, LivePreview} from "react-live";
 
 import * as AtomicReactComponents from "../framework";
-import {AList} from "../framework/components/AList";
+import {AList} from "../framework";
 import LoremIpsum from "../framework/utils/lorem-ipsum";
-import AlgoliaLogo from "../framework/utils/algolia.svg";
 
 const scope = {
   ...AtomicReactComponents,
@@ -16,8 +15,7 @@ const scope = {
   useRef,
   useState,
   algoliasearch,
-  debounce,
-  AlgoliaLogo
+  debounce
 };
 
 const Playground = ({code, fullWidthPreview, noInline}) => {

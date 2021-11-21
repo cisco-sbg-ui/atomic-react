@@ -1,6 +1,6 @@
 context("AStepper", () => {
   before(() => {
-    cy.visitInLightTheme("http://localhost:8081/components/stepper");
+    cy.visitInLightTheme("http://localhost:3000/components/stepper");
   });
 
   it("has appropriate default state", () => {

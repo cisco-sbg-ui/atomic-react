@@ -4,8 +4,6 @@ route: /components/accordion
 components: AAccordion, AAccordionPanel, AAccordionHeader, AAccordionHeaderTitle, AAccordionBody
 ---
 
-import {Playground, Props} from "../../../docs";
-
 # Accordions
 
 ## Install
@@ -94,8 +92,8 @@ import {
   return (
     <AAccordion>
       {panels.map((panel, index) => (
-        <AAccordionPanel key={index} collapsed={panel.collapsed} panelKey={index} onToggle={(panelKey) => setPanels(panels.map((panel, index) => {
-          if (panelKey === index) {
+        <AAccordionPanel key={index} collapsed={panel.collapsed} panelKey={index.toString()} onToggle={(panelKey) => setPanels(panels.map((panel, index) => {
+          if (panelKey === index.toString()) {
             panel.collapsed = !panel.collapsed;
           }
           return panel;

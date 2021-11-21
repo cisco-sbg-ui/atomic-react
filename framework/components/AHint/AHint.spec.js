@@ -1,6 +1,6 @@
 context("AHint", () => {
   before(() => {
-    cy.visitInLightTheme("http://localhost:8081/extend/hint");
+    cy.visitInLightTheme("http://localhost:3000/extend/hint");
   });
 
   it("supports themes", () => {

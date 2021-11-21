@@ -1,6 +1,6 @@
 context("ASlider", () => {
   before(() => {
-    cy.visitInLightTheme("http://localhost:8081/components/slider");
+    cy.visitInLightTheme("http://localhost:3000/components/slider");
   });
 
   it("has working keyboard controls", () => {

@@ -1,6 +1,6 @@
 context("ATag", () => {
   before(() => {
-    cy.visitInLightTheme("http://localhost:8081/components/tag");
+    cy.visitInLightTheme("http://localhost:3000/components/tag");
   });
 
   // TODO: Test interactability

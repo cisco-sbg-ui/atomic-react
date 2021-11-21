@@ -1,6 +1,6 @@
 context("AList", () => {
   before(() => {
-    cy.visitInLightTheme("http://localhost:8081/components/list");
+    cy.visitInLightTheme("http://localhost:3000/components/list");
   });
 
   it("supports themes", () => {

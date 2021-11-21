@@ -1,6 +1,6 @@
 context("AAlert", () => {
   before(() => {
-    cy.visitInLightTheme("http://localhost:8081/components/alert");
+    cy.visitInLightTheme("http://localhost:3000/components/alert");
   });
 
   // TODO: Test interactability

@@ -1,6 +1,6 @@
 context("ATabs", () => {
   before(() => {
-    cy.visitInLightTheme("http://localhost:8081/components/tab");
+    cy.visitInLightTheme("http://localhost:3000/components/tab");
   });
 
   it("tabs appropriately", () => {
