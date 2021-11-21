@@ -113,7 +113,8 @@ const Sidebar = ({menus, currentDoc}) => {
           icon
           tertiaryAlt
           href="https://www.github.com/cisco-sbg-ui/atomic-react"
-          target="_blank">
+          target="_blank"
+          rel="noopener noreferrer">
           <AIcon>github</AIcon>
         </AButton>
       </div>

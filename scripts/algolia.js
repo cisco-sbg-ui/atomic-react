@@ -52,11 +52,15 @@ const updateAlgolia = async () => {
     };
   });
 
-  const {ALGOLIA_APP_ID, ALGOLIA_ADMIN_KEY, ALGOLIA_INDEX_NAME} = process.env;
-  const algoliaClient = algoliasearch(ALGOLIA_APP_ID, ALGOLIA_ADMIN_KEY);
-  const algoliaIndex = algoliaClient.initIndex(ALGOLIA_INDEX_NAME);
-  const response = await algoliaIndex.replaceAllObjects(algoliaObjects);
-  console.log(`Algolia updated: ${response.objectIDs.length} objects.`);
+  try {
+    const {ALGOLIA_APP_ID, ALGOLIA_ADMIN_KEY, ALGOLIA_INDEX_NAME} = process.env;
+    const algoliaClient = algoliasearch(ALGOLIA_APP_ID, ALGOLIA_ADMIN_KEY);
+    const algoliaIndex = algoliaClient.initIndex(ALGOLIA_INDEX_NAME);
+    const response = await algoliaIndex.replaceAllObjects(algoliaObjects);
+    console.log(`Algolia updated: ${response.objectIDs.length} objects.`);
+  } catch (err) {
+    console.log(err);
+  }
 };
 
 updateAlgolia();
