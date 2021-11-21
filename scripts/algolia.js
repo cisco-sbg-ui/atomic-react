@@ -32,7 +32,7 @@ const updateAlgolia = async () => {
       route: data.route,
       name: data.name,
       components,
-      excerpt:
+      excerpt: (
         removeMd(
           content
             .replace(/<Playground(.+?)\r?\n`}\r?\n\/>/gs, "")
@@ -49,6 +49,7 @@ const updateAlgolia = async () => {
             )
             .filter(Boolean)
             .join(" ") || ""
+      ).substr(0, 5000)
     };
   });
 
