@@ -1,11 +1,13 @@
-.cache/
 .github/
+.next/
 .nyc_output/
+build/
 coverage/
 cypress/
-public/
+lib/
+scripts/
 
-.travis.yml
+babel-lib.config.js
 codecov.yml
 cypress.json
 README.md
