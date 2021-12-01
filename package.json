@@ -6,7 +6,7 @@
   "module": "lib/index.js",
   "scripts": {
     "build:babel-preset": "node build/generate-babel-preset.js",
-    "build:lib": "babel --config-file ./babel-lib.config.js framework --out-dir lib --copy-files",
+    "build:lib": "babel --no-babelrc --config-file ./babel-lib.config.js framework --out-dir lib --copy-files",
     "build:docs": "next build",
     "build": "npm run build:lib && npm run build:babel-preset",
     "vercel-build": "npm run build:docs",
@@ -55,6 +55,7 @@
     "dotenv": "10.0.0",
     "eslint": "8.3.0",
     "eslint-config-prettier": "8.3.0",
+    "eslint-plugin-anti-trojan-source": "1.0.6",
     "eslint-plugin-cypress": "2.12.1",
     "eslint-plugin-import": "2.25.3",
     "eslint-plugin-jsx-a11y": "6.5.1",

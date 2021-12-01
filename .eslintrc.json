@@ -25,13 +25,14 @@
     "Buffer": true,
     "__dirname": true
   },
-  "plugins": ["react-hooks"],
+  "plugins": ["react-hooks", "anti-trojan-source"],
   "rules": {
     "no-console": 0,
     "no-debugger": "error",
     "react-hooks/rules-of-hooks": "warn",
     "react-hooks/exhaustive-deps": "warn",
-    "react/prop-types": "off"
+    "react/prop-types": "off",
+    "anti-trojan-source/no-bidi": "error"
   },
   "settings": {
     "react": {
