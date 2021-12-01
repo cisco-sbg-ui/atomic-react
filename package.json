@@ -41,7 +41,7 @@
     "@babel/plugin-proposal-class-properties": "7.16.0",
     "@babel/preset-env": "7.16.4",
     "@babel/preset-react": "7.16.0",
-    "@cypress/code-coverage": "3.9.11",
+    "@cypress/code-coverage": "3.9.12",
     "@mdx-js/mdx": "1.6.22",
     "@mdx-js/react": "1.6.22",
     "algoliasearch": "4.11.0",
