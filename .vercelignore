@@ -7,7 +7,6 @@ cypress/
 lib/
 scripts/
 
-babel-lib.config.js
 codecov.yml
 cypress.json
 README.md
