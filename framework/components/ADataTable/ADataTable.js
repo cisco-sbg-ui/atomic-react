@@ -146,14 +146,23 @@ ADataTable.propTypes = {
    */
   headers: PropTypes.arrayOf(
     PropTypes.shape({
+      /** The text to be displayed in the header column */
       name: PropTypes.string,
+      /** Unique identifier used to assist in table sorting */
       key: PropTypes.string,
+      /** CSS class used to style the header column */
       className: PropTypes.string,
+      /** The alignment of the header column text content */
       align: PropTypes.oneOf(["start", "center", "end"]),
+      /** Determinees if the column can be sorted by the user */
       sortable: PropTypes.bool,
+      /** Sorting function for the column data */
       sort: PropTypes.oneOfType([PropTypes.func, PropTypes.bool]),
+      /** Object that refers to the column's associated data table cells, i.e., <td /> elements */
       cell: PropTypes.shape({
+        /** Class to be added to each table data element */
         className: PropTypes.string,
+        /** Custom component to be rendered for each table data item */
         component: PropTypes.func
       })
     })
