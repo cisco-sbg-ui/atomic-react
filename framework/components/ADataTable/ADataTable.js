@@ -89,7 +89,7 @@ const ADataTable = forwardRef(
 
                   return (
                     <th {...headerProps} key={`a-data-table_header_${i}`}>
-                      {x.align !== "end" ? x.name : ""}
+                      {x.align !== "end" && x.name}
                       {x.sortable && (
                         <AIcon
                           left={x.align === "end"}
@@ -106,7 +106,7 @@ const ADataTable = forwardRef(
                             : "chevron-up"}
                         </AIcon>
                       )}
-                      {x.align === "end" ? x.name : ""}
+                      {x.align === "end" && x.name}
                     </th>
                   );
                 })}
