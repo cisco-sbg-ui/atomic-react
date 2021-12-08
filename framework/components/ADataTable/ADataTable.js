@@ -148,7 +148,7 @@ ADataTable.propTypes = {
     PropTypes.shape({
       /** The text to be displayed in the header column */
       name: PropTypes.string,
-      /** Unique identifier used to assist in table sorting */
+      /** The unique identifier to associate a column with subsequent row data */
       key: PropTypes.string,
       /** CSS class used to style the header column */
       className: PropTypes.string,
