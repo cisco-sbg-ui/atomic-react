@@ -1,6 +1,6 @@
 import _ from "lodash";
 import PropTypes from "prop-types";
-import React, {forwardRef, useEffect, useMemo, useRef, useState} from "react";
+import React, {forwardRef, useMemo, useRef, useState} from "react";
 
 import AIcon from "../AIcon";
 import ASimpleTable from "../ASimpleTable";
