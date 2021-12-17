@@ -1,0 +1,202 @@
+---
+name: FeatureDiscovery
+route: /components/featurediscovery
+components: AFeatureDiscovery
+---
+
+# Feature Discovery
+
+## Install
+
+Integrate with your build to [auto-import](/#integrating), or add an import in your component:
+
+```
+import {AFeatureDiscovery} from "@cisco-sbg-ui/atomic-react";
+```
+
+It is necessary for `AFeatureDiscovery` to be a descendant of `AApp` for mounting.
+
+## Usage
+
+<Playground
+  code={`(props) => {
+      const [open, setOpen] = useState(false);
+      const [currentStep, setCurrentStep] = useState(0);
+      return (
+        <>
+          <AButton onClick={() => setOpen(true)} aria-haspopup="true">
+            Start Tour
+          </AButton>
+          <ATabGroup>
+            <ATab id="target-1">One</ATab>
+            <ATab className="target-2">Two</ATab>
+            <ATab id="target-3" selected>
+              Three
+            </ATab>
+          </ATabGroup>
+          <AFeatureDiscovery
+            open={open}
+            currentStep={currentStep}
+            steps={[
+              {
+                content: <div>Welcome to the tour!</div>,
+                placement: "center"
+              },
+              {
+                targetSelector: "#target-1",
+                placement: "right-top",
+                content: <div>Target dom elements!</div>
+              },
+              {
+                targetSelector: ".target-2",
+                placement: "bottom",
+                content: <div>You can target button, tab, div...</div>
+              },
+              {
+                targetSelector: "#target-3",
+                placement: "top",
+                content: <div>Configure pop-over placement!</div>
+              }
+            ]}
+            onNext={() => setCurrentStep(currentStep + 1)}
+            onPrev={() => setCurrentStep(currentStep - 1)}
+            onClose={() => {
+              setOpen(false);
+              setCurrentStep(0);
+            }}
+          />
+        </>
+      );
+    }`
+  }
+/>
+
+## Feature Discovery Props
+
+The `AFeatureDiscovery` component inherits passed props.
+
+<Props of="AFeatureDiscovery" />
+
+## Custom tooltip component
+
+<Playground
+  code={`(props) => {
+    const [open, setOpen] = useState(false);
+    const [currentStep, setCurrentStep] = useState(0);
+    const component=({step, isLastStep}) => {
+              const onNext = () => setCurrentStep(currentStep + 1);
+              const onClose = () => {
+                setOpen(false);
+                setCurrentStep(0);
+              };
+              return (
+                <div style={{padding: "20px", backgroundColor: "#fff"}}>
+                  {step.content && (
+                    <div style={{padding: "20px", color: "black"}}>
+                      {step.content}
+                    </div>
+                  )}
+                  <div style={{padding: "20px"}}>
+                    <AButton onClick={isLastStep ? onClose : onNext} secondary>
+                      {isLastStep ? "Close" : "Next"}
+                    </AButton>
+                  </div>
+                </div>
+              );
+            };
+    return (
+      <div>
+        <div  style={{minHeight: 400}}>
+          <AButton onClick={() => setOpen(true)}>Start Tour</AButton>
+          <ATabGroup>
+            <ATab id="target-4">One</ATab>
+            <ATab className="target-5">Two</ATab>
+            <ATab id="target-6" selected>
+              Three
+            </ATab>
+          </ATabGroup>
+          <AFeatureDiscovery
+            open={open}
+            currentStep={currentStep}
+            steps={[
+              {
+                content: <div>Welcome to the tour!</div>,
+                placement: "center"
+              },
+              {
+                targetSelector: "#target-4",
+                placement: "right-top",
+                content: <div>Target dom elements!</div>
+              },
+              {
+                targetSelector: ".target-5",
+                placement: "bottom",
+                content: <div>You can target button, tab, div...</div>
+              },
+              {
+                targetSelector: "#target-6",
+                placement: "top",
+                content: <div>Configure pop-over placement!</div>
+              }
+            ]}
+          >
+            {component}
+          </AFeatureDiscovery>
+        </div>
+      </div>
+      );
+    }`
+  }
+/>
+
+## Custom scrolling example
+
+<Playground
+  code={`(props) => {
+      const [open, setOpen] = useState(false);
+      const [currentStep, setCurrentStep] = useState(0);
+      return (
+        <>
+          <AButton onClick={() => setOpen(true)} aria-haspopup="true">
+            Start Tour
+          </AButton>
+          <ATabGroup>
+            <ATab id="target-7">One</ATab>
+            <ATab className="target-8">Two</ATab>
+            <ATab id="target-9" selected>
+              Three
+            </ATab>
+          </ATabGroup>
+          <AFeatureDiscovery
+            open={open}
+            currentStep={currentStep}
+            steps={[
+              {
+                targetSelector: "#target-7",
+                placement: "right-top",
+                content: <div>Target dom elements!</div>
+              },
+              {
+                targetSelector: ".target-2",
+                placement: "bottom",
+                content: <div>You can target button, tab, div...</div>
+              },
+              {
+                targetSelector: "#target-9",
+                placement: "top",
+                content: <div>Configure pop-over placement!</div>
+              }
+            ]}
+            onNext={() => setCurrentStep(currentStep + 1)}
+            onPrev={() => setCurrentStep(currentStep - 1)}
+            onClose={() => {
+              setOpen(false);
+              setCurrentStep(0);
+            }}
+          />
+        </>
+      );
+   }`
+  }
+/>
+

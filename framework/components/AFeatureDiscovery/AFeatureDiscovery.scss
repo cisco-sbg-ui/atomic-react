@@ -1,0 +1,77 @@
+@import "../../styles";
+
+$bold: 600;
+
+.a-feature-discovery-backdrop {
+  display: none;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: $black;
+  opacity: 0.5;
+  pointer-events: initial;
+  z-index: 8;
+  min-height: 100vh;
+  overflow: hidden;
+
+  &--active {
+    display: block;
+  }
+  ~ .a-dialog-backdrop--active {
+    display: none;
+  }
+}
+
+@include theme(a-feature-discovery) using ($theme) {
+  width: auto;
+  border: none;
+  .a-tour-tooltip {
+    background-color: map-deep-get($theme, "control", "fill-color");
+  }
+  &--active {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+.a-tour-tooltip {
+  width: 450px;
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .a-container {
+    padding: 0;
+  }
+
+  .a-tour-header {
+    font-weight: $bold;
+    margin-bottom: 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .a-tour-body div {
+    margin-bottom: 12px;
+
+    &.subtitle {
+      font-weight: $bold;
+    }
+  }
+
+  .a-tour-footer {
+    .right-buttons {
+      display: flex;
+      justify-content: flex-end;
+    }
+
+    .a-button + .a-button {
+      margin-left: 8px;
+    }
+  }
+}
