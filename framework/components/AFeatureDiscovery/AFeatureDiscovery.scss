@@ -48,7 +48,7 @@ $bold: 600;
     padding: 0;
   }
 
-  .a-tour-header {
+  .a-tour-tooltip__header {
     font-weight: $bold;
     margin-bottom: 12px;
     display: flex;
@@ -56,7 +56,7 @@ $bold: 600;
     align-items: center;
   }
 
-  .a-tour-body div {
+  .a-tour-tooltip__body div {
     margin-bottom: 12px;
 
     &.subtitle {
@@ -64,8 +64,8 @@ $bold: 600;
     }
   }
 
-  .a-tour-footer {
-    .right-buttons {
+  .a-tour-tooltip__footer {
+    &__right-buttons {
       display: flex;
       justify-content: flex-end;
     }

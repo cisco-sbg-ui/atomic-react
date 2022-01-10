@@ -1,8 +1,10 @@
 import React, {useEffect, useState} from "react";
 
+import {getRoundedBoundedClientRect} from "../../../utils/helpers";
+
 const ATargetHighlight = ({targetRef, padding = 10}) => {
   const calcStyles = (padding, targetRef) => {
-    const elementRect = targetRef.current.getBoundingClientRect();
+    const elementRect = getRoundedBoundedClientRect(targetRef.current);
     return {
       height: Math.round(elementRect.height + padding * 2),
       left: Math.round(elementRect.left - padding),

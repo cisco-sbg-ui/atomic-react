@@ -119,7 +119,7 @@ const AFeatureDiscovery = forwardRef(
         10
       );
 
-      () => clearTimeouts();
+      return () => clearTimeouts();
       // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [targetRef.current, disableScrollIntoView, open]);
 

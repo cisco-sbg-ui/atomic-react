@@ -1,8 +1,7 @@
 import React, {useEffect, useRef, forwardRef} from "react";
 
-import APopover from "../../APopover";
+import AMenu from "../../AMenu";
 import ATourTooltip from "./ATourTooltip";
-
 import ADialog from "../../ADialog";
 
 const ATourStep = forwardRef(({
@@ -51,7 +50,7 @@ const ATourStep = forwardRef(({
   }
 
   return (
-    <APopover
+    <AMenu
       {...rest}
       ref={ref}
       role={role}
@@ -62,7 +61,7 @@ const ATourStep = forwardRef(({
       type="dialog"
       tabIndex={-1}>
       {tooltipComponent}
-    </APopover>
+    </AMenu>
   );
 });
 

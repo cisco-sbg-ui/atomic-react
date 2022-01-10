@@ -105,6 +105,7 @@ export {
   ADialog,
   ADivider,
   ADotLoader,
+  AFeatureDiscovery,
   AFieldBase,
   AFooter,
   AFooterLegal,
@@ -164,6 +165,5 @@ export {
   ATree,
   useABreakpoint,
   useATheme,
-  useAToaster,
-  AFeatureDiscovery
+  useAToaster
 };

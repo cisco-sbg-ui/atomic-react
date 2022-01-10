@@ -22,7 +22,7 @@ context("AFeatureDiscovery", () => {
   it("Next moves tour to next step", () => {
     cy.get("#usage + .playground .a-button").eq(0).click();
     cy.findByText("Next").click();
-    cy.get(".a-app .a-popover").should("exist");
+    cy.get(".a-app .a-menu").should("exist");
     cy.get(".a-menu-base--right-top").should("exist");
     cy.findByText("Next").click({force: true});
     cy.get(".a-menu-base--bottom").should("exist");
@@ -41,7 +41,7 @@ context("AFeatureDiscovery", () => {
   it("custom tooltip component", () => {
     cy.get("#custom-tooltip-component + .playground .a-button").eq(0).click();
     cy.findByText("Next").click();
-    cy.get(".a-app .a-popover").should("exist");
+    cy.get(".a-app .a-menu").should("exist");
     cy.get(".a-menu-base--right-top").should("exist");
     cy.findByText("Next").click({force: true});
     cy.get(".a-menu-base--bottom").should("exist");
@@ -67,7 +67,7 @@ context("AFeatureDiscovery", () => {
         expect(highlightDim.left).to.gte(targetDim.left - 10);
       })
     });
-    cy.get(".a-app .a-popover .a-button--tertiary-alt").eq(0).click({force: true});
+    cy.get(".a-app .a-menu .a-button--tertiary-alt").eq(0).click({force: true});
   });
 
   it("supports themes", () => {
@@ -78,13 +78,13 @@ context("AFeatureDiscovery", () => {
     cy.waitUntil(() => cy
     .window()
     .then(window => window.scrollY === 0));
-    cy.get(".a-app .a-popover").should("be.visible");
+    cy.get(".a-app .a-menu").should("be.visible");
     cy.compareSnapshot(
       "Feature Discovery 1", {
         capture: 'viewport'
       }
     );
-    cy.get(".a-app .a-popover .a-button--tertiary-alt").eq(0).click({force: true});
+    cy.get(".a-app .a-menu .a-button--tertiary-alt").eq(0).click({force: true});
 
     cy.get(".a-switch__box").eq(0).click();
 
@@ -93,10 +93,10 @@ context("AFeatureDiscovery", () => {
     cy.waitUntil(() => cy
     .window()
     .then(window => window.scrollY === 0));
-    cy.get(".a-app .a-popover").should("be.visible");
+    cy.get(".a-app .a-menu").should("be.visible");
     cy.compareSnapshot(
       "Feature Discovery 2", {capture: 'viewport'}
     );
-    cy.get(".a-app .a-popover .a-button--tertiary-alt").eq(0).click({force: true});
+    cy.get(".a-app .a-menu .a-button--tertiary-alt").eq(0).click({force: true});
   });
 });
