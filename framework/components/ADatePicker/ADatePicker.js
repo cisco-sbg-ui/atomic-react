@@ -20,26 +20,57 @@ const fullMonthNames = [
   "December"
 ];
 
+const sortDates = (dates) => dates.sort((a, b) => Date.parse(a) - Date.parse(b));
+
+const isOuterBound = (date, range) => {
+  return (
+    sortDates(range)
+    .some(d =>
+      d instanceof Date &&
+      d.getFullYear() === date.getFullYear() &&
+      d.getMonth() === date.getMonth() &&
+      d.getDate() === date.getDate()
+    )
+  )
+};
+
+const isDateBetween = (date, range) => {
+  const [lowerBound, upperBound] = range;
+  return Date.parse(date) > Date.parse(lowerBound) && Date.parse(date) < Date.parse(upperBound);
+};
+
 const ADatePicker = forwardRef(
   ({className: propsClassName, onChange, value = new Date(), ...rest}, ref) => {
-    const [viewDate, setViewDate] = useState(value);
+    const isRange = Array.isArray(value);
+    const [viewDate, setViewDate] = useState(() => {
+      if (isRange && value.length > 0 && !value.every(d => d instanceof Date)) {
+        return new Date();
+      }
+
+      if (isRange) {
+        const [lowerBound, upperBound] = sortDates(value);
+        return upperBound || lowerBound;
+      }
+
+      return value;
+    });
     let className = "a-date-picker";
 
     if (propsClassName) {
       className += ` ${propsClassName}`;
     }
-
-    let firstDate = new Date(
+    const firstCalendarDate = new Date(
       viewDate.getFullYear(),
       viewDate.getMonth(),
       viewDate.getDate() - viewDate.getDay()
     );
+
     while (
-      firstDate.getFullYear() >= viewDate.getFullYear() &&
-      firstDate.getMonth() >= viewDate.getMonth() &&
-      firstDate.getDate() > 1
+      firstCalendarDate.getFullYear() >= viewDate.getFullYear() &&
+      firstCalendarDate.getMonth() >= viewDate.getMonth() &&
+      firstCalendarDate.getDate() > 1
     ) {
-      firstDate.setDate(firstDate.getDate() - 7);
+      firstCalendarDate.setDate(firstCalendarDate.getDate() - 7);
     }
 
     return (
@@ -104,13 +135,17 @@ const ADatePicker = forwardRef(
           </thead>
           <tbody>
             {[...Array(6)].map((x, i) => {
-              const sunday = new Date(+firstDate);
+              const sunday = new Date(+firstCalendarDate);
               sunday.setDate(sunday.getDate() + i * 7);
               return (
                 <tr key={i}>
                   {[...Array(7)].map((y, j) => {
                     const thisDate = new Date(+sunday);
                     thisDate.setDate(thisDate.getDate() + j);
+                    const isSelected = isRange ? isOuterBound(thisDate, value) : thisDate.getFullYear() === value.getFullYear() &&
+                    thisDate.getMonth() === value.getMonth() &&
+                    thisDate.getDate() === value.getDate();
+                    const isBetween = isRange && isDateBetween(thisDate, value);
                     return (
                       <td
                         key={j}
@@ -119,12 +154,10 @@ const ADatePicker = forwardRef(
                             ? " disabled"
                             : ""
                         }${
-                          thisDate.getFullYear() === value.getFullYear() &&
-                          thisDate.getMonth() === value.getMonth() &&
-                          thisDate.getDate() === value.getDate()
+                          isSelected
                             ? " selected"
                             : ""
-                        }`}>
+                        }${isBetween ? " between" : ""}`}>
                         {thisDate.getMonth() !== viewDate.getMonth() ? (
                           thisDate.getDate()
                         ) : (
@@ -156,9 +189,12 @@ ADatePicker.propTypes = {
    */
   onChange: PropTypes.func,
   /**
-   * Sets the date selected.
+   * Sets the date(s) selected.
    */
-  value: PropTypes.instanceOf(Date)
+  value: PropTypes.oneOfType([
+    PropTypes.instanceOf(Date),
+    PropTypes.array,
+  ])
 };
 
 ADatePicker.displayName = "ADatePicker";
