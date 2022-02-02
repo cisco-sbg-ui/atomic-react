@@ -41,19 +41,16 @@ const TableHeader = (props) => <th role='columnheader' {...props} />;
 const TableRow = (props) => <tr role='row' {...props} />;
 const TableCell = (props) => <td role='cell' {...props} />;
 const uniqueRowId = Symbol('uuid');
+let rowId = 0;
+const TableHeader = (props) => <th role='columnheader' className='a-data-table__header' {...props} />;
+const TableRow = (props) => <tr role='row' className='a-data-table__row' {...props} />;
+const TableCell = (props) => <td role='cell' className='a-data-table__cell' {...props} />;
 
 const ADataTable = forwardRef(
   ({className: propsClassName, expandable, headers, items: propsItems, onSort, sort, ...rest}, ref) => {
     const uniqueIdRef = useRef(_.uniqueId('a-data-table-'));
     const [expandedRows, setExpandedRows] = useState({});
-    const uniqueTableId = uniqueIdRef.current;
-    const ExpandableComponent = expandable?.component;
-    const items = useMemo(() => {
-      return propsItems.map(item => ({
-        ...item,
-        [uniqueRowId]: _.uniqueId(`${uniqueTableId}-`),
-      }))
-    }, [propsItems]); // eslint-disable-line react-hooks/exhaustive-deps
+    const ExpandableComponent = useMemo(() => expandable?.component, [expandable]);
     let className = 'a-data-table';
     if (ExpandableComponent) {
       className += '--expandable'
@@ -186,17 +183,17 @@ const ADataTable = forwardRef(
                   const rowContent = (
                     <TableRow
                       data-expandable-row={hasExpandedRowContent}
-                      key={uuid}
+                      key={rowId++}
                       key={key}
                     >
                       {ExpandableComponent && (
                         <TableCell>
                           {hasExpandedRowContent && (
                             <button
-                              aria-expanded={expandedRows[uuid] ? true : false}
-                              aria-controls={uuid}
+                              aria-expanded={expandedRows[id] ? true : false}
+                              aria-controls={id}
                               className="a-data-table--expandable__cell__btn"
-                              onClick={toggleRow(uuid)}
+                              onClick={toggleRow(id)}
                             >
                               <AIcon size={12}>
                                 {expandedRows[uuid]
