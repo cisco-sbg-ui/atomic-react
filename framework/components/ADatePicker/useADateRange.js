@@ -1,20 +1,23 @@
 import { useCallback, useState } from "react";
+import { sortDates } from "./helpers";
 
 /**
- * Sequencing logic for setting an incoming date relative to an existing date range
- * Flow: first date -> second date -> first date -> second date -> (etc.)
+ * Sequencing logic for setting an incoming date relative to an existing date range.
+ * It has no opinion on if the second selection must be larger than the first selection.
+ * 
+ * Flow: first date selection -> second date selection -> first date selection -> second date selection -> (etc.)
  * @param {Array.<Date|null>} oldRange - Tuple with starting date and ending date
  * @param {Date} incomingDate - The next date to sequence
  * @returns tuple the newly set date range
  */
 export const stepSequencer = (existingRange, nextDate) => {
-  const [startingDate, endingDate] = existingRange;
-  const isRangeEmpty = !startingDate && !endingDate;
-  const shouldResetRange = startingDate && endingDate;
+  const [rangeStartDate, rangeEndDate] = existingRange;
+  const isRangeEmpty = !rangeStartDate && !rangeEndDate;
+  const shouldResetRange = rangeStartDate && rangeEndDate;
 
   return isRangeEmpty || shouldResetRange ?
     [nextDate, null] :
-    [startingDate, nextDate];
+    sortDates([rangeStartDate, nextDate]);
 };
 
 /**

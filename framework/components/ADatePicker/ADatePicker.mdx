@@ -26,7 +26,7 @@ import {ADatePicker} from "@cisco-sbg-ui/atomic-react";
 `}
 />
 
-## Range
+## Date Range
 
 <Playground
   code={`() => {
@@ -38,11 +38,11 @@ import {ADatePicker} from "@cisco-sbg-ui/atomic-react";
 `}
 />
 
-### Initial Range Date
+### Initial Range
 
 <Playground
   code={`() => {
-  const { value, onChange, } = useADateRange([new Date(), new Date(2022, 3, 5)]);
+  const { value, onChange, } = useADateRange([new Date(2022, 2, 28), new Date(2022, 3, 5)]);
   return (
     <ADatePicker value={value} onChange={onChange} />
   );

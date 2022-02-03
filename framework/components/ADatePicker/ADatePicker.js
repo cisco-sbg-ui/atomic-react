@@ -1,8 +1,13 @@
 import PropTypes from "prop-types";
-import React, {forwardRef, useState} from "react";
+import React, {forwardRef, useMemo, useState} from "react";
 
 import AButton from "../AButton";
 import AIcon from "../AIcon";
+import {
+  isDateBetweenRange,
+  isDateTipOfRange,
+  isSameDate,
+  sortDates } from "./helpers";
 import "./ADatePicker.scss";
 
 const fullMonthNames = [
@@ -20,57 +25,47 @@ const fullMonthNames = [
   "December"
 ];
 
-const sortDates = (dates) => dates.sort((a, b) => Date.parse(a) - Date.parse(b));
+const getInitialCalendarSelection = (value) => {
+  const isRange = Array.isArray(value);
 
-const isOuterBound = (date, range) => {
-  return (
-    sortDates(range)
-    .some(d =>
-      d instanceof Date &&
-      d.getFullYear() === date.getFullYear() &&
-      d.getMonth() === date.getMonth() &&
-      d.getDate() === date.getDate()
-    )
-  )
-};
+  if (!isRange) {
+    return value;
+  }
 
-const isDateBetween = (date, range) => {
-  const [lowerBound, upperBound] = range;
-  return Date.parse(date) > Date.parse(lowerBound) && Date.parse(date) < Date.parse(upperBound);
-};
+  // If range has a Date object, use the latest one
+  // to initialize the calendar UI
+  const dates = value.filter(d => d instanceof Date);
+  if (!dates.length) {
+    return new Date();
+  }
+  return sortDates(dates)[dates.length - 1];
+}
 
 const ADatePicker = forwardRef(
   ({className: propsClassName, onChange, value = new Date(), ...rest}, ref) => {
     const isRange = Array.isArray(value);
-    const [viewDate, setViewDate] = useState(() => {
-      if (isRange && value.length > 0 && !value.every(d => d instanceof Date)) {
-        return new Date();
+    const [calendarDate, setCalendarDate] = useState(() => getInitialCalendarSelection(value));
+    const firstCalendarDate = useMemo(() => {
+      let currDate = new Date(
+        calendarDate.getFullYear(),
+        calendarDate.getMonth(),
+        calendarDate.getDate() - calendarDate.getDay()
+      );
+
+      while (
+        currDate.getFullYear() >= calendarDate.getFullYear() &&
+        currDate.getMonth() >= calendarDate.getMonth() &&
+        currDate.getDate() > 1
+      ) {
+        currDate.setDate(currDate.getDate() - 7);
       }
 
-      if (isRange) {
-        const [lowerBound, upperBound] = sortDates(value);
-        return upperBound || lowerBound;
-      }
-
-      return value;
-    });
+      return currDate;
+    }, [calendarDate]);
     let className = "a-date-picker";
 
     if (propsClassName) {
       className += ` ${propsClassName}`;
-    }
-    const firstCalendarDate = new Date(
-      viewDate.getFullYear(),
-      viewDate.getMonth(),
-      viewDate.getDate() - viewDate.getDay()
-    );
-
-    while (
-      firstCalendarDate.getFullYear() >= viewDate.getFullYear() &&
-      firstCalendarDate.getMonth() >= viewDate.getMonth() &&
-      firstCalendarDate.getDate() > 1
-    ) {
-      firstCalendarDate.setDate(firstCalendarDate.getDate() - 7);
     }
 
     return (
@@ -81,8 +76,8 @@ const ADatePicker = forwardRef(
             icon
             className="a-date-picker__prev"
             onClick={() => {
-              setViewDate(
-                new Date(viewDate.getFullYear(), viewDate.getMonth() - 1, 1)
+              setCalendarDate(
+                new Date(calendarDate.getFullYear(), calendarDate.getMonth() - 1, 1)
               );
             }}>
             <AIcon size={13.6}>chevron-left</AIcon>
@@ -92,18 +87,18 @@ const ADatePicker = forwardRef(
             icon
             className="a-date-picker__next"
             onClick={() => {
-              setViewDate(
-                new Date(viewDate.getFullYear(), viewDate.getMonth() + 1, 1)
+              setCalendarDate(
+                new Date(calendarDate.getFullYear(), calendarDate.getMonth() + 1, 1)
               );
             }}>
             <AIcon size={13.6}>chevron-right</AIcon>
           </AButton>
           <div className="a-date-picker__title">
             <span className="a-date-picker__month">
-              {fullMonthNames[viewDate.getMonth()]}
+              {fullMonthNames[calendarDate.getMonth()]}
             </span>{" "}
             <span className="a-date-picker__year">
-              {viewDate.getFullYear()}
+              {calendarDate.getFullYear()}
             </span>
           </div>
         </div>
@@ -140,34 +135,31 @@ const ADatePicker = forwardRef(
               return (
                 <tr key={i}>
                   {[...Array(7)].map((y, j) => {
-                    const thisDate = new Date(+sunday);
-                    thisDate.setDate(thisDate.getDate() + j);
-                    const isSelected = isRange ? isOuterBound(thisDate, value) : thisDate.getFullYear() === value.getFullYear() &&
-                    thisDate.getMonth() === value.getMonth() &&
-                    thisDate.getDate() === value.getDate();
-                    const isBetween = isRange && isDateBetween(thisDate, value);
+                    const currWeekDay = new Date(+sunday);
+                    currWeekDay.setDate(currWeekDay.getDate() + j);
+                    const isDisabled = currWeekDay.getMonth() !== calendarDate.getMonth();
+                    const isSelected = isRange ?
+                      isDateTipOfRange(currWeekDay, value) :
+                      isSameDate(currWeekDay, value);
+                    const isBetweenRange = isRange && isDateBetweenRange(currWeekDay, value);
                     return (
                       <td
                         key={j}
-                        className={`a-date-picker__day${
-                          thisDate.getMonth() !== viewDate.getMonth()
-                            ? " disabled"
-                            : ""
-                        }${
-                          isSelected
-                            ? " selected"
-                            : ""
-                        }${isBetween ? " between" : ""}`}>
-                        {thisDate.getMonth() !== viewDate.getMonth() ? (
-                          thisDate.getDate()
+                        className={`a-date-picker__day
+                          ${isDisabled ? " disabled" : ""}
+                          ${isSelected ? " selected" : ""}
+                          ${isBetweenRange ? " between" : ""}`}
+                      >
+                        {isDisabled ? (
+                          currWeekDay.getDate()
                         ) : (
                           <button
                             type="button"
                             className="a-date-picker__day__label"
                             onClick={() => {
-                              onChange && onChange(thisDate);
+                              onChange && onChange(currWeekDay);
                             }}>
-                            {thisDate.getDate()}
+                            {currWeekDay.getDate()}
                           </button>
                         )}
                       </td>
@@ -183,6 +175,24 @@ const ADatePicker = forwardRef(
   }
 );
 
+const isValidDateTuple = (range) => {
+  const isArray = Array.isArray(range);
+  const isValidTypes = isArray && range.every(value => value instanceof Date || value === null);
+  const isValidLength = isValidTypes && range.length <= 2;
+  return isArray && isValidDateTuple && isValidLength;
+};
+
+function rangeTupleValidator(propValue, key, componentName) {
+  if (!isValidDateTuple(propValue)) {
+    throw new Error(
+      "Invalid prop 'value' supplied to '" + componentName + "'. "
+      + "When using a range, pass a tuple indicting a start and end "
+      + "date, or 'null' if empty."   
+    )
+  }
+  return null;
+}
+
 ADatePicker.propTypes = {
   /**
    * Handles the `change` event for when a date is selected.
@@ -193,7 +203,7 @@ ADatePicker.propTypes = {
    */
   value: PropTypes.oneOfType([
     PropTypes.instanceOf(Date),
-    PropTypes.array,
+    PropTypes.arrayOf(rangeTupleValidator),
   ])
 };
 
