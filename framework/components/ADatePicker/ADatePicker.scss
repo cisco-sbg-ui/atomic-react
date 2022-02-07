@@ -71,6 +71,12 @@ $date-picker-day-border-radius: 2px;
       }
     }
 
+    &.between {
+      .a-date-picker__day__label {
+        background-color: map-deep-get($theme, "date-picker", "range-bg");
+      }
+    }
+
     &:hover {
       .a-date-picker__day__label {
         background-color: map-deep-get($theme, "base", "color--hover");
@@ -83,12 +89,6 @@ $date-picker-day-border-radius: 2px;
         background-color: map-deep-get($theme, "base", "color--active");
         color: map-deep-get($theme, "base", "inverse-color");
       }
-    }
-  }
-
-  &__range {
-    .a-date-picker__day__label {
-      background-color: map-deep-get($theme, "date-picker", "range-bg");
     }
   }
 }
