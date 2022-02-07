@@ -1,5 +1,6 @@
 import "cypress-wait-until";
 import compareSnapshotCommand from "cypress-visual-regression/dist/command";
+import '@testing-library/cypress/add-commands';
 
 compareSnapshotCommand();
 

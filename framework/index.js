@@ -78,6 +78,7 @@ import ATooltip from "./components/ATooltip";
 import ATree from "./components/ATree";
 import {useABreakpoint} from "./components/ABreakpoint";
 import {useAToaster, AToastPlate} from "./components/AToaster";
+import AFeatureDiscovery from "./components/AFeatureDiscovery";
 
 export {
   AAccordion,
@@ -104,6 +105,7 @@ export {
   ADialog,
   ADivider,
   ADotLoader,
+  AFeatureDiscovery,
   AFieldBase,
   AFooter,
   AFooterLegal,
