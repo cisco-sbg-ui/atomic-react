@@ -61,10 +61,9 @@ $btn-transition: color $transition-duration--extra-fast
   }
 
   &--secondary {
-    color: map-deep-get($theme, "base", "brand-color");
+    color: map-deep-get($theme, "button", "secondary", "color");
     background-color: transparent;
     border-color: map-deep-get($theme, "button", "secondary", "border");
-    //box-shadow: map-deep-get($theme, "base", "box-shadow")
 
     &:hover {
       color: map-deep-get($theme, "button", "secondary", "color--hover");
