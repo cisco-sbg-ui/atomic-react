@@ -43,39 +43,52 @@ $atomic-dusk: (
   ),
   "button": (
     "primary": (
-      "bg": map-get($cisco-blue, "burnt-1"),
-      "bg--hover": map-get($cisco-blue, "base"),
-      "bg--focus": map-get($cisco-blue, "burnt-1"),
-      "bg--disabled": map-get($dusk, "1"),
-      "border": map-get($cisco-blue, "burnt-1"),
-      "border--hover": map-get($cisco-blue, "base"),
-      "border--focus": map-get($cisco-blue, "burnt-1"),
-      "border--disabled": map-get($dusk, "1"),
-      "color--disabled": rgba(map-get($grey, "lighten-5"), $alpha-5),
-      "opacity--disabled": $alpha-8
+      "bg": map-get($cisco-blue, "burnt-2"),
+      "bg--active": map-get($cisco-blue, "base"),
+      "bg--hover": map-get($indigo-blue, "base"),
+      "bg--focus": map-get($indigo-blue, "base"),
+      "bg--disabled": map-get($indigo-blue, "burnt-1"),
+      "border": map-get($cisco-blue, "burnt-2"),
+      "border--active": map-get($indigo-blue, "base"),
+      "border--hover": map-get($indigo-blue, "base"),
+      "border--focus": map-get($cisco-blue, "burnt-2"),
+      "border--disabled": map-get($indigo-blue, "burnt-1"),
+      "color": map-get($grey, "lighten-5"),
+      "color--disabled": map-get($grey, "lighten-5"),
+      "opacity--disabled": calc($alpha-6 + .06)
     ),
     "secondary": (
-      "bg--hover": rgba(map-get($cisco-blue, "burnt-3"), $alpha-5),
-      "bg--active": rgba(map-get($cisco-blue, "burnt-3"), $alpha-5),
+      "bg--hover": map-get($status-blue, "burnt-4"),
+      "bg--active": map-get($status-blue, "burnt-4"),
       "bg--focus": rgba(map-get($cisco-blue, "burnt-3"), $alpha-5),
-      "border": map-get($cisco-blue, "burnt-1"),
-      "border--hover": map-get($cisco-blue, "wash-1"),
-      "border--active": map-get($cisco-blue, "burnt-2"),
-      "border--focus": map-get($cisco-blue, "burnt-1"),
-      "border--disabled": lighten(rgba(map-get($dusk, "1"), $alpha-5), 30%),
+      "border": map-get($cisco-blue, "burnt-2"),
+      "border--hover": map-get($indigo-blue, "base"),
+      "border--active": map-get($indigo-blue, "base"),
+      "border--focus": map-get($cisco-blue, "burnt-2"),
+      "border--disabled": map-get($indigo-blue, "base"),
+      "color": map-get($cisco-blue, "wash-1"),
       "color--hover": map-get($cisco-blue, "wash-1"),
-      "color--active": map-get($cisco-blue, "base"),
+      "color--active": map-get($cisco-blue, "wash-1"),
       "color--focus": map-get($cisco-blue, "wash-1"),
-      "color--disabled": lighten(map-get($dusk, "1"), 30%)
+      "color--disabled": map-get($cisco-blue, "wash-1")
     ),
     "tertiary": (
-      "bg--hover": rgba(map-get($cisco-blue, "burnt-3"), $alpha-5),
-      "bg--active": rgba(map-get($cisco-blue, "burnt-3"), $alpha-5),
+      "bg--hover": map-get($status-blue, "burnt-4"),
+      "bg--active": map-get($status-blue, "burnt-4"),
+      "border--focus": map-get($cisco-blue, "wash-1"),
+      "color": map-get($cisco-blue, "wash-1"),
       "color--hover": map-get($cisco-blue, "wash-1"),
-      "color--active": map-get($cisco-blue, "base"),
+      "color--active": map-get($cisco-blue, "wash-1"),
       "color--focus": map-get($cisco-blue, "wash-1"),
-      "color--disabled": lighten(map-get($dusk, "1"), 30%),
-      "opacity--disabled": $alpha-8
+      "color--disabled": map-get($cisco-blue, "wash-1"),
+      "opacity--disabled": $alpha-8,
+      "alt": (
+        "bg": transparent,
+        "bg--active": map-get($cisco-blue, "wash-4"),
+        "color": map-get($grey, "lighten-6"),
+        "color--active": map-get($cisco-blue, "wash-1"),
+        "opacity--disabled": $alpha-6
+      )
     ),
     "group": (
       "color": map-get($grey, "lighten-5")
