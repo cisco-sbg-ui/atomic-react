@@ -162,7 +162,7 @@ $btn-transition: color $transition-duration--extra-fast
   }
 
   &.a-button--tertiary-alt {
-    color: map-deep-get($theme, "base", "color");
+    color: map-get($theme, "button", "tertiary", "alt", "color");
 
     &:hover {
       color: map-deep-get($theme, "button", "tertiary", "color--hover");
@@ -173,7 +173,8 @@ $btn-transition: color $transition-duration--extra-fast
     }
 
     &:active {
-      color: map-deep-get($theme, "base", "color--active");
+      background-color: map-get($theme, "button", "tertiary", "alt", "bg--active");
+      color: map-get($theme, "button", "tertiary", "alt", "color--active");
     }
 
     &.disabled,

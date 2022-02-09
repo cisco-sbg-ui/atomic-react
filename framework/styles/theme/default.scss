@@ -81,7 +81,14 @@ $atomic-default: (
       "color--active": map-get($indigo-blue, "base"),
       "color--focus": map-get($cisco-blue, "burnt-2"),
       "color--disabled": map-get($indigo-blue, "burnt-1"),
-      "opacity--disabled": $alpha-5
+      "opacity--disabled": $alpha-5,
+      "alt": (
+        "bg": transparent,
+        "bg--active": map-get($cisco-blue, "wash-3"),
+        "color": map-get($grey, "darken-7"),
+        "color--active": map-get($indigo-blue, "base"),
+        "opacity--disabled": $alpha-6
+      )
     ),
     "group": (
       "color": map-get($grey, "darken-7")
