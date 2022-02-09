@@ -44,10 +44,12 @@ $atomic-default: (
   "button": (
     "primary": (
       "bg": map-get($cisco-blue, "burnt-2"),
+      "bg--active": map-get($indigo-blue, "base"),
       "bg--hover": map-get($indigo-blue, "base"),
       "bg--focus": map-get($cisco-blue, "burnt-2"),
       "bg--disabled": map-get($indigo-blue, "burnt-1"),
       "border": map-get($cisco-blue, "burnt-2"),
+      "border--active": map-get($indigo-blue, "base"),
       "border--hover": map-get($indigo-blue, "base"),
       "border--focus": map-get($cisco-blue, "burnt-2"),
       "border--disabled": map-get($indigo-blue, "burnt-1"),
