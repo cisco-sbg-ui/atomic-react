@@ -75,10 +75,12 @@ $atomic-default: (
     "tertiary": (
       "bg--hover": map-get($cisco-blue, "wash-3"),
       "bg--active": map-get($cisco-blue, "wash-3"),
-      "color--hover": map-get($cisco-blue, "burnt-1"),
-      "color--active": map-get($cisco-blue, "burnt-2"),
-      "color--focus": map-get($cisco-blue, "burnt-1"),
-      "color--disabled": map-get($cisco-blue, "base"),
+      "border--focus": map-get($cisco-blue, "burnt-2"),
+      "color": map-get($cisco-blue, "burnt-2"),
+      "color--hover": map-get($indigo-blue, "base"),
+      "color--active": map-get($indigo-blue, "base"),
+      "color--focus": map-get($cisco-blue, "burnt-2"),
+      "color--disabled": map-get($indigo-blue, "burnt-1"),
       "opacity--disabled": $alpha-5
     ),
     "group": (

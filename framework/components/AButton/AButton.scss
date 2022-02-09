@@ -130,7 +130,7 @@ $btn-transition: color $transition-duration--extra-fast
   }
 
   &--tertiary {
-    color: map-deep-get($theme, "base", "brand-color");
+    color: map-deep-get($theme, "button", "tertiary", "color");
 
     &:hover {
       color: map-deep-get($theme, "button", "tertiary", "color--hover");
@@ -140,6 +140,7 @@ $btn-transition: color $transition-duration--extra-fast
     &:focus {
       color: map-deep-get($theme, "button", "tertiary", "color--focus");
       box-shadow: map-deep-get($theme, "base", "box-shadow");
+      border-color: map-deep-get($theme, "button", "tertiary", "border--focus");
     }
 
     &:active {
