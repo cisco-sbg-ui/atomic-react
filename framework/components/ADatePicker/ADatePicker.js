@@ -39,7 +39,9 @@ const getInitialCalendarSelection = (value) => {
     return new Date();
   }
   return sortDates(dates)[dates.length - 1];
-}
+};
+
+const ICON_SIZE = 10;
 
 const ADatePicker = forwardRef(
   ({className: propsClassName, onChange, value = new Date(), ...rest}, ref) => {
@@ -80,18 +82,7 @@ const ADatePicker = forwardRef(
                 new Date(calendarDate.getFullYear(), calendarDate.getMonth() - 1, 1)
               );
             }}>
-            <AIcon size={13.6}>chevron-left</AIcon>
-          </AButton>
-          <AButton
-            tertiaryAlt
-            icon
-            className="a-date-picker__next"
-            onClick={() => {
-              setCalendarDate(
-                new Date(calendarDate.getFullYear(), calendarDate.getMonth() + 1, 1)
-              );
-            }}>
-            <AIcon size={13.6}>chevron-right</AIcon>
+            <AIcon size={ICON_SIZE}>chevron-left</AIcon>
           </AButton>
           <div className="a-date-picker__title">
             <span className="a-date-picker__month">
@@ -101,6 +92,17 @@ const ADatePicker = forwardRef(
               {calendarDate.getFullYear()}
             </span>
           </div>
+          <AButton
+            tertiaryAlt
+            icon
+            className="a-date-picker__next"
+            onClick={() => {
+              setCalendarDate(
+                new Date(calendarDate.getFullYear(), calendarDate.getMonth() + 1, 1)
+              );
+            }}>
+            <AIcon size={ICON_SIZE}>chevron-right</AIcon>
+          </AButton>
         </div>
         <table className="a-date-picker__calendar">
           <thead>

@@ -3,7 +3,7 @@
 @import "../../styles";
 
 $date-picker-height: 100%;
-$date-picker-min-height: 240px;
+$date-picker-min-height: 260px;
 $date-picker-width: 275px;
 $date-picker-max-width: 275px;
 $date-picker-z-index: 1;
@@ -23,21 +23,28 @@ $date-picker-calendar-min-width: 245px;
 $date-picker-calendar-font-size: $font-size--sm;
 $date-picker-calendar-margin: 10px 15px;
 $date-picker-calendar-disabled-opacity: 0.35;
-$date-picker-day-width: math.div($date-picker-calendar-width, 7);
+$date-picker-day-width: 30px;
 $date-picker-day-padding-top: math.div($base-padding-small-top, 2);
 $date-picker-day-padding-bottom: math.div($base-padding-small-bottom, 2);
 $date-picker-day-border-radius: 2px;
 
 @include theme(a-date-picker) using ($theme) {
   background-color: map-deep-get($theme, "control", "fill-color");
-  border: $border-width solid map-deep-get($theme, "control", "stroke-color");
+  border: $border-width solid map-deep-get($theme, "base", "stroke-color");
   &__header {
+    padding: 4px 15px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
     border-bottom: $border-width solid
       map-deep-get($theme, "date-picker", "header-border-color");
   }
 
   &__prev,
   &__next {
+    & span {
+      font-size: $font-size--xxs;
+    }
     &:hover {
       & span {
         color: map-deep-get($theme, "base", "color--hover");
@@ -108,8 +115,6 @@ $date-picker-day-border-radius: 2px;
 
   &__prev,
   &__next {
-    position: absolute;
-    top: 4px;
     padding: 6px;
     & span {
       display: block;
@@ -159,6 +164,7 @@ $date-picker-day-border-radius: 2px;
   &__week {
     text-align: center;
     font-weight: normal;
+    font-size: $font-size--xs;
   }
 
   &__day {
