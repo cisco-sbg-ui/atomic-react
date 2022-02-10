@@ -8,6 +8,8 @@ import ATextInput from "../ATextInput";
 import AIcon from "../AIcon";
 import "./APagination.scss";
 
+const ICON_SIZE = 10;
+
 const APagination = forwardRef(
   (
     {
@@ -118,7 +120,7 @@ const APagination = forwardRef(
               icon
               onClick={() => onPageChange(1)}
               aria-label="First">
-              <AIcon left>first-page</AIcon>
+              <AIcon size={ICON_SIZE}>first-page</AIcon>
             </AButton>
             <AButton
               className="a-pagination__previous"
@@ -127,7 +129,7 @@ const APagination = forwardRef(
               icon
               onClick={() => onPageChange(page - 1)}
               aria-label="Previous">
-              <AIcon left>chevron-left</AIcon>
+              <AIcon left={showText} size={ICON_SIZE}>chevron-left</AIcon>
             </AButton>
             <div className="a-pagination__page-selection">
               <ATextInput
@@ -170,7 +172,7 @@ const APagination = forwardRef(
               icon
               onClick={() => onPageChange(page + 1)}
               aria-label="Next">
-              <AIcon right>chevron-right</AIcon>
+              <AIcon right={showText} size={ICON_SIZE}>chevron-right</AIcon>
             </AButton>
             <AButton
               className="a-pagination__last"
@@ -179,7 +181,7 @@ const APagination = forwardRef(
               icon
               onClick={() => onPageChange(pages)}
               aria-label="Last">
-              <AIcon right>last-page</AIcon>
+              <AIcon right={showText} size={ICON_SIZE}>last-page</AIcon>
             </AButton>
           </>
         );
@@ -211,7 +213,7 @@ const APagination = forwardRef(
               icon={!showText}
               onClick={() => onPageChange(page - 1)}
               aria-label="Previous">
-              <AIcon left>chevron-left</AIcon>
+              <AIcon left={showText} size={ICON_SIZE}>chevron-left</AIcon>
               {showText && "Previous"}
             </AButton>
             {!!startPages.length && (
@@ -262,7 +264,7 @@ const APagination = forwardRef(
               onClick={() => onPageChange(page + 1)}
               aria-label="Next">
               {showText && "Next"}
-              <AIcon right>chevron-right</AIcon>
+              <AIcon right={showText} size={ICON_SIZE}>chevron-right</AIcon>
             </AButton>
           </>
         );
@@ -275,14 +277,14 @@ const APagination = forwardRef(
             disabled={!onPrevious}
             onClick={(e) => onPrevious(e)}
             aria-label="Previous">
-            <AIcon left>chevron-left</AIcon>Previous
+            <AIcon left size={ICON_SIZE}>chevron-left</AIcon>Previous
           </AButton>
           <AButton
             className="a-pagination__next"
             disabled={!onNext}
             onClick={(e) => onNext(e)}
             aria-label="Next">
-            Next<AIcon right>chevron-right</AIcon>
+            Next<AIcon right size={ICON_SIZE}>chevron-right</AIcon>
           </AButton>
         </>
       );
