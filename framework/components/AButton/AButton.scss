@@ -17,27 +17,27 @@ $btn-transition: color $transition-duration--extra-fast
 
 @include theme(a-button) using ($theme) {
   &--primary {
-    color: map-deep-get($theme, "base", "inverse-color");
+    color: map-deep-get($theme, "button", "primary", "color");
     background-color: map-deep-get($theme, "button", "primary", "bg");
     border-color: map-deep-get($theme, "button", "primary", "border");
 
     &:hover {
-      color: map-deep-get($theme, "base", "inverse-color");
+      color: map-deep-get($theme, "button", "primary", "color");
       background-color: map-deep-get($theme, "button", "primary", "bg--hover");
       border-color: map-deep-get($theme, "button", "primary", "border--hover");
     }
 
     &:focus {
-      color: map-deep-get($theme, "base", "inverse-color");
+      color: map-deep-get($theme, "button", "primary", "color");
       background-color: map-deep-get($theme, "button", "primary", "bg--focus");
       border-color: map-deep-get($theme, "button", "primary", "border--focus");
       box-shadow: map-deep-get($theme, "base", "box-shadow");
     }
 
     &:active {
-      color: map-deep-get($theme, "base", "inverse-color");
-      background-color: map-deep-get($theme, "base", "color--active");
-      border-color: map-deep-get($theme, "base", "color--active");
+      color: map-deep-get($theme, "button", "primary", "color");
+      background-color: map-deep-get($theme, "button", "primary", "bg--active");
+      border-color: map-deep-get($theme, "button", "primary", "border--active");
     }
 
     &.disabled,
@@ -61,10 +61,9 @@ $btn-transition: color $transition-duration--extra-fast
   }
 
   &--secondary {
-    color: map-deep-get($theme, "base", "brand-color");
+    color: map-deep-get($theme, "button", "secondary", "color");
     background-color: transparent;
     border-color: map-deep-get($theme, "button", "secondary", "border");
-    //box-shadow: map-deep-get($theme, "base", "box-shadow")
 
     &:hover {
       color: map-deep-get($theme, "button", "secondary", "color--hover");
@@ -131,7 +130,7 @@ $btn-transition: color $transition-duration--extra-fast
   }
 
   &--tertiary {
-    color: map-deep-get($theme, "base", "brand-color");
+    color: map-deep-get($theme, "button", "tertiary", "color");
 
     &:hover {
       color: map-deep-get($theme, "button", "tertiary", "color--hover");
@@ -141,6 +140,7 @@ $btn-transition: color $transition-duration--extra-fast
     &:focus {
       color: map-deep-get($theme, "button", "tertiary", "color--focus");
       box-shadow: map-deep-get($theme, "base", "box-shadow");
+      border-color: map-deep-get($theme, "button", "tertiary", "border--focus");
     }
 
     &:active {
@@ -162,7 +162,7 @@ $btn-transition: color $transition-duration--extra-fast
   }
 
   &.a-button--tertiary-alt {
-    color: map-deep-get($theme, "base", "color");
+    color: map-get($theme, "button", "tertiary", "alt", "color");
 
     &:hover {
       color: map-deep-get($theme, "button", "tertiary", "color--hover");
@@ -173,7 +173,8 @@ $btn-transition: color $transition-duration--extra-fast
     }
 
     &:active {
-      color: map-deep-get($theme, "base", "color--active");
+      background-color: map-get($theme, "button", "tertiary", "alt", "bg--active");
+      color: map-get($theme, "button", "tertiary", "alt", "color--active");
     }
 
     &.disabled,
