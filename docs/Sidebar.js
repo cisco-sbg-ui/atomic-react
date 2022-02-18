@@ -14,6 +14,20 @@ const CustomLink = ({children, href, ...rest}) => {
   );
 };
 
+const GitHubIcon = (props) => (
+  <AButton
+    className="white--text"
+    icon
+    tertiaryAlt
+    href="https://www.github.com/cisco-sbg-ui/atomic-react"
+    target="_blank"
+    rel="noopener noreferrer"
+    {...props}
+    >
+    <AIcon>github</AIcon>
+  </AButton>
+)
+
 const Sidebar = ({menus, currentDoc}) => {
   const [items, setItems] = useState([]);
   const currentDocRef = useRef();
@@ -100,23 +114,17 @@ const Sidebar = ({menus, currentDoc}) => {
         height: "100%",
         width: 330
       }}>
-      <h1>
-        <AIcon size={60} className="pl-4 pr-3 vertical-align-center">
-          cisco
-        </AIcon>
-        Atomic-React
-      </h1>
+      <div style={{display: 'flex', padding: '0 15px'}}>
+        <h1 style={{flex: '1'}}>
+          <AIcon size={60} className="pr-3 vertical-align-center">
+            cisco
+          </AIcon>
+          Atomic-React
+        </h1>
+        <GitHubIcon />
+      </div>
       <div className="d-flex align-center px-3 py-2">
         <ThemeSwitcher />
-        <AButton
-          className="white--text"
-          icon
-          tertiaryAlt
-          href="https://www.github.com/cisco-sbg-ui/atomic-react"
-          target="_blank"
-          rel="noopener noreferrer">
-          <AIcon>github</AIcon>
-        </AButton>
       </div>
       <div className="px-3 pb-3">
         <Search />
