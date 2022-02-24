@@ -74,7 +74,7 @@ context("AStepper", () => {
       "#vertical-stepper-with-icon + .playground .a-steps--orientation-vertical"
     ).compareSnapshot("Vertical_stepper_with_icon");
 
-    cy.get(".a-switch__box").eq(0).click();
+    cy.get("[data-testid='enable-dusk-theme']").eq(0).click();
 
     cy.get("#horizontal-stepper + .playground .a-steps").compareSnapshot(
       "Horizontal_stepper_dusk"

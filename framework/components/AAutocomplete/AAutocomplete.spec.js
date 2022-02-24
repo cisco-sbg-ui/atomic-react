@@ -207,7 +207,7 @@ context("AAutocomplete", () => {
       "Autocomplete 2"
     );
 
-    cy.get(".a-switch__box").eq(0).click();
+    cy.get("[data-testid='enable-dusk-theme']").eq(0).click();
 
     cy.get("#states + .playground .a-autocomplete__input")
       .first()

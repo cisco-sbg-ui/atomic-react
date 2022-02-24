@@ -19,7 +19,7 @@ const ATheme = forwardRef(
       let initialTheme = "default";
       if (persist) {
         if (Object.prototype.hasOwnProperty.call(localStorage, LS_KEY)) {
-          initialTheme = localStorage.getItem(LS_KEY) === "dusk" && "dusk";
+          initialTheme = localStorage.getItem(LS_KEY) === "dusk" ? "dusk" : "default";
         } else if (["default", "dusk"].includes(defaultTheme)) {
           initialTheme = defaultTheme;
         } else if (
@@ -36,12 +36,15 @@ const ATheme = forwardRef(
     }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
     const themeContext = {
+      persist,
       currentTheme,
       isDark,
       isLight,
       setCurrentTheme: (theme) => {
         const newTheme = theme === "dusk" ? theme : "default";
-        persist && localStorage?.setItem(LS_KEY, newTheme);
+        if (persist) {
+          localStorage?.setItem(LS_KEY, newTheme);
+        }
         setCurrentTheme(newTheme);
       }
     };

@@ -115,7 +115,7 @@ context("ATabs", () => {
       "Tabs 3"
     );
 
-    cy.get(".a-switch__box").eq(0).click();
+    cy.get("[data-testid='enable-dusk-theme']").eq(0).click();
 
     cy.get("#tall + .playground .playground__preview").compareSnapshot(
       "Tabs 4"

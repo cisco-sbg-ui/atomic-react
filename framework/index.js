@@ -62,6 +62,7 @@ import ASimpleTable from "./components/ASimpleTable";
 import ASlider from "./components/ASlider";
 import {AStepper, AStep, AStepTitle, AStepDescription} from "./components/AStepper";
 import ASwitch from "./components/ASwitch";
+import {AAutoTheme, useAAutoTheme} from './components/AAutoTheme';
 import {ATabGroup, ATab, ATabHeading} from "./components/ATabs";
 import ATag from "./components/ATag";
 import ATextarea from "./components/ATextarea";
@@ -146,6 +147,7 @@ export {
   AStepTitle,
   AStepDescription,
   ASwitch,
+  AAutoTheme,
   ATabGroup,
   ATab,
   ATabHeading,
@@ -163,6 +165,7 @@ export {
   ATree,
   useABreakpoint,
   useADateRange,
+  useAAutoTheme,
   useATheme,
   useAToaster
 };

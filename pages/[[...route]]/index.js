@@ -4,7 +4,7 @@ import {serialize} from "next-mdx-remote/serialize";
 import {MDXRemote} from "next-mdx-remote";
 import React from "react";
 
-import {AApp, ACol, AContainer, ARow} from "../../framework";
+import {AApp, AAutoTheme, ACol, AContainer, ARow} from "../../framework";
 import HiddenFontSwatches from "../../docs/HiddenFontSwatches";
 import Sidebar from "../../docs/Sidebar";
 import PropsContext from "../../docs/PropsContext";
@@ -29,19 +29,21 @@ export default function TestPage({currentDoc, menus, propsInfo}) {
         <link rel="shortcut icon" href="/favicon.ico" />
       </Head>
       <AApp persistTheme style={{minHeight: "100vh"}}>
-        <HiddenFontSwatches />
-        <AContainer fluid className="pa-0">
-          <ARow noGutters>
-            <ACol style={{maxWidth: 330}}>
-              <Sidebar currentDoc={currentDoc} menus={menus} />
-            </ACol>
-            <ACol className="pa-8" style={{maxWidth: "calc(100vw - 347px)"}}>
-              <PropsContext.Provider value={propsInfo}>
-                <MDXRemote {...currentDoc.source} components={components} />
-              </PropsContext.Provider>
-            </ACol>
-          </ARow>
-        </AContainer>
+        <AAutoTheme>
+          <HiddenFontSwatches />
+          <AContainer fluid className="pa-0">
+            <ARow noGutters>
+              <ACol style={{maxWidth: 330}}>
+                <Sidebar currentDoc={currentDoc} menus={menus} />
+              </ACol>
+              <ACol className="pa-8" style={{maxWidth: "calc(100vw - 347px)"}}>
+                <PropsContext.Provider value={propsInfo}>
+                  <MDXRemote {...currentDoc.source} components={components} />
+                </PropsContext.Provider>
+              </ACol>
+            </ARow>
+          </AContainer>
+        </AAutoTheme>
       </AApp>
     </>
   );

@@ -63,7 +63,7 @@ context("AContextualNotificationMenu", () => {
       force: true
     });
 
-    cy.get(".a-switch__box").eq(0).click();
+    cy.get("[data-testid='enable-dusk-theme']").eq(0).click();
 
     cy.get("#variants + .playground .a-button").eq(0).click({force: true});
     cy.get("#variants + .playground .playground__preview").compareSnapshot(
