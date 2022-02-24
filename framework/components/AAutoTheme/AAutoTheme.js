@@ -21,17 +21,6 @@ const AAutoTheme = (props) => {
         }
       });
 
-    useIsomorphicLayoutEffect(() => {
-      if (persist && localStorage.getItem(persistKey) === "enabled") {
-        setIsEnabled(true);
-        return;
-      }
-      if (persist && localStorage.getItem(persistKey) === "disabled") {
-        setIsEnabled(false);
-        return;
-      }
-    }, []);
-
     const enable = useCallback(() => {
       setIsEnabled(true);
       prevSelectedTheme.current = currentTheme;
@@ -39,7 +28,7 @@ const AAutoTheme = (props) => {
       if (persist) {
         localStorage.setItem(persistKey, "enabled");
       }
-    }, [currentTheme, matches, persist, setCurrentTheme, setIsEnabled])
+    }, [currentTheme, matches, persist, setCurrentTheme, setIsEnabled]);
 
     const disable = useCallback(() => {
       setIsEnabled(false);
@@ -47,16 +36,27 @@ const AAutoTheme = (props) => {
       if (persist) {
         localStorage.setItem(persistKey, "disabled");
       }
-    }, [setCurrentTheme, setIsEnabled, persist])
+    }, [setCurrentTheme, setIsEnabled, persist]);
+
+    useIsomorphicLayoutEffect(() => {
+      if (persist && localStorage.getItem(persistKey) === "enabled") {
+        enable();
+        return;
+      }
+      if (persist && localStorage.getItem(persistKey) === "disabled") {
+        disable();
+        return;
+      }
+    }, []);
 
     const ctx = useMemo(() => ({
         enabled: isEnabled,
         enable,
         disable,
         toggle: () => {
-          setIsEnabled(prev => prev ? disable() : enable())
+          isEnabled ? disable() : enable();
         }
-    }), [isEnabled, setIsEnabled, enable, disable])
+    }), [isEnabled, enable, disable]);
 
     return (
         <AAutoThemeContext.Provider value={ctx}>
