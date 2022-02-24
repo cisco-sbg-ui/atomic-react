@@ -75,6 +75,8 @@ render(
 `}
 />
 
+### Automatic System Theme Detection
+
 <Playground
   noInline
   code={`const ThemeSwitcher = () => {
@@ -112,7 +114,39 @@ render(
 };
 render(
   <ATheme>
-    <AAutoTheme defaultEnabled={true}>
+    <AAutoTheme>
+      <ThemeSwitcher />
+    </AAutoTheme>
+  </ATheme>
+);
+`}
+/>
+
+<Playground
+  noInline
+  code={`const ThemeSwitcher = () => {
+  const {currentTheme} = useATheme();
+  const autoTheme = useAAutoTheme();
+  return (
+    <div
+      style={{
+        padding: 20,
+        backgroundColor: currentTheme === "default" ? "#eee" : "#000",
+        color: currentTheme === "default" ? "#000" : "#eee",
+      }}>
+      <ASwitch
+        checked={autoTheme.enabled}
+        onClick={autoTheme.toggle}>
+        Match System Theme
+      </ASwitch>
+      <ADivider />
+      <div><code>autoTheme.enabled</code>: {autoTheme.enabled.toString()}</div>
+    </div>
+  );
+};
+render(
+  <ATheme>
+    <AAutoTheme>
       <ThemeSwitcher />
     </AAutoTheme>
   </ATheme>
