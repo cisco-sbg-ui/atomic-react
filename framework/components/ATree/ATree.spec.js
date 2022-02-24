@@ -14,7 +14,7 @@ context("ATree", () => {
       "Tree 1"
     );
 
-    cy.get(".a-switch__box").eq(0).click();
+    cy.get("[data-testid='enable-dusk-theme']").eq(0).click();
 
     cy.get("#usage + .playground .playground__preview").compareSnapshot(
       "Tree 2"

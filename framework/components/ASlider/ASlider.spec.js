@@ -81,7 +81,7 @@ context("ASlider", () => {
       "Slider 1"
     );
 
-    cy.get(".a-switch__box").eq(0).click();
+    cy.get("[data-testid='enable-dusk-theme']").eq(0).click();
 
     cy.get("#states + .playground .playground__preview").compareSnapshot(
       "Slider 2"

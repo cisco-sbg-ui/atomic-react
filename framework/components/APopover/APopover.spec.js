@@ -116,7 +116,7 @@ context("APopover", () => {
     );
     cy.get(".a-popover .a-button").eq(0).click({force: true});
 
-    cy.get(".a-switch__box").eq(0).click();
+    cy.get("[data-testid='enable-dusk-theme']").eq(0).click();
     cy.get("#position + .playground").scrollIntoView();
 
     cy.get("#position + .playground .a-button").eq(0).click({force: true});

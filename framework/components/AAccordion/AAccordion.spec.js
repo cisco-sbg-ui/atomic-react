@@ -98,7 +98,7 @@ context("AAccordion", () => {
       "#uncontrolled-usage + .playground .playground__preview"
     ).compareSnapshot("Accordion 1");
 
-    cy.get(".a-switch__box").eq(0).click();
+    cy.get("[data-testid='enable-dusk-theme']").eq(0).click();
 
     cy.get(
       "#uncontrolled-usage + .playground .playground__preview"

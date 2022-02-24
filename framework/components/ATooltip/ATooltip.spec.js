@@ -45,7 +45,7 @@ context("ATooltip", () => {
       "Tooltip 2"
     );
 
-    cy.get(".a-switch__box").eq(0).click();
+    cy.get("[data-testid='enable-dusk-theme']").eq(0).click();
 
     cy.get("#pointer + .playground .playground__preview").compareSnapshot(
       "Tooltip 3"
