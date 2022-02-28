@@ -1,38 +1,27 @@
 context("AAutoTheme", () => {
-    before(() => {
-        cy
-            .visit("localhost:3000/components/theme", {
-                onBeforeLoad(win) {
-                cy.stub(win, "matchMedia")
-                    .withArgs("(prefers-color-scheme: dark)")
-                    .returns({
-                    matches: true
-                    });
-                }
-            })
-            .then(() => {
-                window.localStorage.setItem('atomic-react-auto-theme', "enabled");
-            });
-    });
-  
-    it("supports automatic themes", () => {
-      if (Cypress.env("snapshots") === "off") return;
-  
-      cy.get("#usage ~ .playground .playground__preview").eq(2).compareSnapshot(
-        "Theme 1"
-      );
-  
-      cy.get("#usage ~ .playground .playground__preview .a-switch").eq(0).click();
-  
-      cy.get("#usage ~ .playground .playground__preview").eq(2).compareSnapshot(
-        "Theme 2"
-      );
-      
-      cy.get("#usage ~ .playground .playground__preview .a-switch").eq(0).click();
+  it("persists automatic themes", () => {
+    if (Cypress.env("snapshots") === "off") return;
 
-      cy.get("#usage ~ .playground .playground__preview").eq(2).compareSnapshot(
-        "Theme 1"
-      );
+    cy.visitInLightTheme("http://localhost:3000/components/theme");
+
+    cy.get(".root-sidebar .a-switch").compareSnapshot(
+      "AutoTheme 1"
+    );
+
+    cy.get(".root-sidebar .a-switch__box").eq(0).click();
+
+    cy.visit("localhost:3000/components/theme", {
+      onBeforeLoad(win) {
+        cy.stub(win, "matchMedia")
+            .withArgs("(prefers-color-scheme: dark)")
+            .returns({
+              matches: true
+            });
+      }
     });
-  });
-  
+
+    cy.get(".root-sidebar .a-switch").compareSnapshot(
+      "AutoTheme 2"
+    );
+    });
+})
