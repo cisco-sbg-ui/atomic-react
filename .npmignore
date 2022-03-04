@@ -6,7 +6,6 @@ build/
 coverage/
 cypress/
 docs/
-framework/
 pages/
 public/
 scripts/
