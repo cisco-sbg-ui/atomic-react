@@ -19,7 +19,7 @@ const ThemeSwitcher = () => {
             setCurrentTheme(value);
           }}
         >
-          <AButton style={{color: 'white'}} disabled={autoTheme.enabled} value='default'>Light</AButton>
+          <AButton data-testid="enable-default-theme" style={{color: 'white'}} disabled={autoTheme.enabled} value='default'>Light</AButton>
           <AButton data-testid="enable-dusk-theme" style={{color: 'white'}} disabled={autoTheme.enabled} value='dusk'>Dusk</AButton>
         </AButtonGroup>
       </div>
