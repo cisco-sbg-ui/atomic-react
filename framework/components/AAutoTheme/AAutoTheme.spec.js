@@ -23,5 +23,25 @@ context("AAutoTheme", () => {
     cy.get(".root-sidebar .a-switch").compareSnapshot(
       "AutoTheme 2"
     );
-    });
+
+    // Turn auto theming off - when the automatic theming is disabled,
+    // it should keep whatever theme the automatic theme was set to
+    cy.get(".root-sidebar .a-switch__box").eq(0).click();
+    cy.get(".root-sidebar .a-switch").compareSnapshot(
+      "AutoTheme 2"
+    );
+
+   // Switch back to light theme
+    cy.get("[data-testid='enable-default-theme']").eq(0).click();
+    cy.get(".root-sidebar .a-switch").compareSnapshot(
+      "AutoTheme 1"
+    );
+
+    // When re-enabling automatic theming, it should match the user agent
+    // style sheet (in this cae it is dark mode);
+    cy.get(".root-sidebar .a-switch__box").eq(0).click();
+    cy.get(".root-sidebar .a-switch").compareSnapshot(
+      "AutoTheme 2"
+    );
+  });
 })

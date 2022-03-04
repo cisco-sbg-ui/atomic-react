@@ -1,14 +1,14 @@
-export const sortDates = (dates) => {
+const sortDates = (dates) => {
     return dates.sort((a, b) => Date.parse(a) - Date.parse(b));
 };
 
-export const isSameDate = (a, b) => {
+const isSameDate = (a, b) => {
     return a.getFullYear() === b.getFullYear() &&
         a.getMonth() === b.getMonth() &&
         a.getDate() === b.getDate()
 };
 
-export const isDateTipOfRange = (date, range) => {
+const isDateTipOfRange = (date, range) => {
     const [rangeStartDate, rangeEndDate] = range;
 
     if (
@@ -21,8 +21,15 @@ export const isDateTipOfRange = (date, range) => {
     return false;
 };
 
-export const isDateBetweenRange = (date, range) => {
+const isDateBetweenRange = (date, range) => {
     const [rangeStartDate, rangeEndDate] = range;
     return Date.parse(date) > Date.parse(rangeStartDate) &&
         Date.parse(date) < Date.parse(rangeEndDate);
 };
+
+export {
+    sortDates,
+    isSameDate,
+    isDateTipOfRange,
+    isDateBetweenRange
+}

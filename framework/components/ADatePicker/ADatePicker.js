@@ -25,28 +25,26 @@ const fullMonthNames = [
   "December"
 ];
 
-const getInitialCalendarSelection = (value) => {
-  const isRange = Array.isArray(value);
-
-  if (!isRange) {
-    return value;
-  }
-
-  // If range has a Date object, use the latest one
-  // to initialize the calendar UI
-  const dates = value.filter(d => d instanceof Date);
-  if (!dates.length) {
-    return new Date();
-  }
-  return sortDates(dates)[dates.length - 1];
-};
-
 const ICON_SIZE = 10;
 
 const ADatePicker = forwardRef(
   ({className: propsClassName, onChange, value = new Date(), ...rest}, ref) => {
     const isRange = Array.isArray(value);
-    const [calendarDate, setCalendarDate] = useState(() => getInitialCalendarSelection(value));
+    const [calendarDate, setCalendarDate] = useState(() => {
+      const isRange = Array.isArray(value);
+
+      if (!isRange) {
+        return value;
+      }
+    
+      // If range has a Date object, use the latest one
+      // to initialize the calendar UI
+      const dates = value.filter(d => d instanceof Date);
+      if (!dates.length) {
+        return new Date();
+      }
+      return sortDates(dates)[dates.length - 1];
+    });
     const firstCalendarDate = useMemo(() => {
       let currDate = new Date(
         calendarDate.getFullYear(),
