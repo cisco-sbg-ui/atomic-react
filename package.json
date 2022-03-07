@@ -41,7 +41,7 @@
     "@babel/preset-env": "7.16.11",
     "@babel/preset-react": "7.16.7",
     "@cypress/code-coverage": "3.9.12",
-    "algoliasearch": "4.12.1",
+    "algoliasearch": "4.12.2",
     "babel-plugin-istanbul": "6.1.1",
     "codecov": "3.8.3",
     "cross-env": "7.0.3",
