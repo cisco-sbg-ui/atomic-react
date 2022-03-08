@@ -29,6 +29,7 @@ $date-picker-day-padding-bottom: math.div($base-padding-small-bottom, 2);
 $date-picker-day-border-radius: 2px;
 
 @include theme(a-date-picker) using ($theme) {
+  color: map-deep-get($theme, "base", "color");
   background-color: map-deep-get($theme, "control", "fill-color");
   border: $border-width solid map-deep-get($theme, "base", "stroke-color");
   &__header {
@@ -64,8 +65,8 @@ $date-picker-day-border-radius: 2px;
 
   &__day {
     &__label {
+      color: inherit;
       background-color: transparent;
-      color: map-deep-get($theme, "base", "color");
       &:focus {
         box-shadow: map-deep-get($theme, "base", "box-shadow");
       }
