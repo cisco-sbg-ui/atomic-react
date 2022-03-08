@@ -145,11 +145,7 @@ const ADatePicker = forwardRef(
                     return (
                       <td
                         key={j}
-                        className={`a-date-picker__day
-                          ${isDisabled ? " disabled" : ""}
-                          ${isSelected ? " selected" : ""}
-                          ${isBetweenRange ? " between" : ""}`}
-                      >
+                        className={`a-date-picker__day${isDisabled ? " disabled" : ""}${isSelected ? " selected" : ""}${isBetweenRange ? " between" : ""}`}>
                         {isDisabled ? (
                           currWeekDay.getDate()
                         ) : (
