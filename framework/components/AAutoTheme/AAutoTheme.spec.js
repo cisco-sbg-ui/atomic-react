@@ -28,7 +28,7 @@ context("AAutoTheme", () => {
     // it should keep whatever theme the automatic theme was set to
     cy.get(".root-sidebar .a-switch__box").eq(0).click();
     cy.get(".root-sidebar .a-switch").compareSnapshot(
-      "AutoTheme 2"
+      "AutoTheme 3"
     );
 
    // Switch back to light theme
