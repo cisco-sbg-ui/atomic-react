@@ -17,6 +17,20 @@ Cypress.Commands.add("visitInLightTheme", function (url) {
   cy.waitForFonts();
 });
 
+Cypress.Commands.add("visitInDarkTheme", function (url) {
+  cy.visit(url, {
+    onBeforeLoad(win) {
+      cy.stub(win, "matchMedia")
+        .withArgs("(prefers-color-scheme: dark)")
+        .returns({
+          matches: true
+        });
+    }
+  });
+
+  cy.waitForFonts();
+});
+
 Cypress.Commands.add("isCovered", function (selector) {
   cy.once("fail", (err) => {
     expect(err.message).to.include("`cy.click()` failed because this element");
