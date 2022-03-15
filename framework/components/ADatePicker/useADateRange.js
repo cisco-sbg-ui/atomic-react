@@ -24,8 +24,22 @@ export const stepSequencer = (existingRange, nextDate) => {
  * Hook for storing date range state. Currently uses a step sequence, but has
  * room for flexibility in the future.
  */
-const useADateRange = (initialRange = [null, null]) => {
+const useADateRange = (initialRange = [null, null], config = {}) => {
+  const { maxDays = null } = config;
   const [range, setRange] = useState(initialRange);
+  const [firstSelection, secondSelection] = range;
+  let minDate, maxDate;
+  if (maxDays && firstSelection && !secondSelection) {
+    minDate = new Date();
+    minDate.setDate(firstSelection.getDate() - parseInt(maxDays));
+
+    maxDate = new Date();
+    maxDate.setDate(firstSelection.getDate() + (parseInt(maxDays) - 1));
+  }
+  if (maxDays && firstSelection && secondSelection) {
+    minDate = null;
+    maxDate = null;
+  }
 
   const onChange = useCallback((incomingDate) => {
     setRange(oldRange => stepSequencer(oldRange, incomingDate));
@@ -34,7 +48,8 @@ const useADateRange = (initialRange = [null, null]) => {
   return {
     value: range,
     onChange,
+    minDate,
+    maxDate,
   };
 };
-
 export default useADateRange;
