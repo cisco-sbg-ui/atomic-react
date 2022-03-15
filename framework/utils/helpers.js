@@ -10,6 +10,20 @@ export const getRoundedBoundedClientRect = (el) => {
   };
 };
 
+export const handleMultipleRefs = (...refs) => {
+  const callbackRef = (incomingRef) => {
+    refs.forEach((ref) => {
+      if (typeof ref === "function") {
+        ref(incomingRef);
+        return;
+      }
+
+      ref.current = incomingRef;
+    });
+  };
+  return callbackRef;
+};
+
 // KeyboardEvent.keyCode aliases
 export const keyCodes = Object.freeze({
   enter: 13,
