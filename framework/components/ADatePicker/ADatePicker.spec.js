@@ -29,7 +29,7 @@ context("ADatePicker", () => {
     );
   });
 
-  const rangeSelector = "#initial-range + .playground .a-date-picker";
+  const rangeSelector = "#date-range-with-initial-range + .playground .a-date-picker";
 
   it("selects the two outer bounds of a date range", () => {
     cy.get(`${rangeSelector} .a-date-picker__day`).eq(7).click();
