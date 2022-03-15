@@ -31,6 +31,15 @@ const ADatePicker = forwardRef(
   ({className: propsClassName, onChange, value = new Date(), minDate, maxDate, ...rest}, ref) => {
     const hasMinDate = minDate instanceof Date;
     const hasMaxDate = maxDate instanceof Date;
+    // Because date comparisons in this widget are ...
+    // ... only concerned with the day, reset the ...
+    // ... time to midnight for equal comparisons
+    if (hasMinDate) {
+      minDate.setHours(0, 0, 0, 0);
+    }
+    if (hasMaxDate) {
+      maxDate.setHours(0, 0, 0, 0);
+    }
     const isRange = Array.isArray(value);
     const [calendarDate, setCalendarDate] = useState(() => {
       const isRange = Array.isArray(value);

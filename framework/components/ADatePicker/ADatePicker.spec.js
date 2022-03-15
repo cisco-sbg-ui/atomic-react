@@ -67,6 +67,12 @@ context("ADatePicker", () => {
     cy.get(`${rangeSelector} .a-date-picker__day.selected`).contains("5");
   });
 
+  const minAndMaxDateSelector = "#with-minimum-and-maximum-dates + .playground .a-date-picker";
+
+  it("restricts date day selections", () => {
+    cy.get(`${minAndMaxDateSelector} .a-date-picker__day:not(.disabled)`).should("have.length", 3);
+  });
+
   const maxDaysSelector = "#date-range-with-maximum-days + .playground .a-date-picker";
 
   it("only allows a maximum number of days to be selected in a range", () => {

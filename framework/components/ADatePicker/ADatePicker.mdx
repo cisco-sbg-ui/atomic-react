@@ -26,6 +26,23 @@ import {ADatePicker} from "@cisco-sbg-ui/atomic-react";
 `}
 />
 
+### With Minimum and Maximum Dates
+
+<Playground
+  code={`() => {
+  const yesterday = new Date();
+  const today = new Date(2022, 2, 15);
+  const tomorrow = new Date();
+  tomorrow.setDate(today.getDate() + 1);
+  yesterday.setDate(today.getDate() - 1);
+  const [date, setDate] = useState(today);
+  return (
+    <ADatePicker value={date} onChange={(date) => setDate(date)} minDate={yesterday} maxDate={tomorrow}/>
+  );
+}
+`}
+/>
+
 ## Date Range
 
 <Playground
