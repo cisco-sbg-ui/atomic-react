@@ -28,7 +28,9 @@ const fullMonthNames = [
 const ICON_SIZE = 10;
 
 const ADatePicker = forwardRef(
-  ({className: propsClassName, onChange, value = new Date(), ...rest}, ref) => {
+  ({className: propsClassName, onChange, value = new Date(), minDate, maxDate, ...rest}, ref) => {
+    const hasMinDate = minDate instanceof Date;
+    const hasMaxDate = maxDate instanceof Date;
     const isRange = Array.isArray(value);
     const [calendarDate, setCalendarDate] = useState(() => {
       const isRange = Array.isArray(value);
@@ -137,7 +139,9 @@ const ADatePicker = forwardRef(
                   {[...Array(7)].map((y, j) => {
                     const currWeekDay = new Date(+sunday);
                     currWeekDay.setDate(currWeekDay.getDate() + j);
-                    const isDisabled = currWeekDay.getMonth() !== calendarDate.getMonth();
+                    const isBeforeMinDate = hasMinDate && Date.parse(currWeekDay) < Date.parse(minDate);
+                    const isPastMaxDate = hasMaxDate && Date.parse(currWeekDay) > Date.parse(maxDate);
+                    const isDisabled = currWeekDay.getMonth() !== calendarDate.getMonth() || isBeforeMinDate || isPastMaxDate;
                     const isSelected = isRange ?
                       isDateTipOfRange(currWeekDay, value) :
                       isSameDate(currWeekDay, value);
@@ -205,8 +209,16 @@ ADatePicker.propTypes = {
    */
   value: PropTypes.oneOfType([
     PropTypes.instanceOf(Date),
-    PropTypes.arrayOf(rangeTupleValidator),
-  ])
+    PropTypes.arrayOf(rangeTupleValidator)
+  ]),
+  /**
+   * The minimum date allowed for selection
+   */
+  minDate: PropTypes.instanceOf(Date),
+  /**
+   * The maximum date allowed for selection
+   */
+  maxDate: PropTypes.instanceOf(Date)
 };
 
 ADatePicker.displayName = "ADatePicker";
