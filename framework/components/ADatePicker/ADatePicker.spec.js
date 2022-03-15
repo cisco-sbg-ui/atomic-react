@@ -66,4 +66,23 @@ context("ADatePicker", () => {
     cy.get(rangeSelector).contains("April");
     cy.get(`${rangeSelector} .a-date-picker__day.selected`).contains("5");
   });
+
+  const maxDaysSelector = "#date-range-with-maximum-days + .playground .a-date-picker";
+
+  it("only allows a maximum number of days to be selected in a range", () => {
+    // Select March 14, 2022
+    cy.get(`${maxDaysSelector} .a-date-picker__day`).eq(15).click();
+
+    // Two days before and after March 14 should be enabled
+    cy.get(`${maxDaysSelector} .a-date-picker__day:not(.disabled)`).should("have.length", 5);
+  });
+
+  it("only allows a maximum number of days to be selected in a range", () => {
+    // Select March 16, 2022
+    cy.get(`${maxDaysSelector} .a-date-picker__day`).eq(17).click();
+
+    // All days in March should go back to being selectable
+    cy.get(`${maxDaysSelector} .a-date-picker__day:not(.disabled)`).should("have.length", 31);
+  });
+  
 });
