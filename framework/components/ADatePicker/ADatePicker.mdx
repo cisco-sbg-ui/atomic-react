@@ -38,17 +38,45 @@ import {ADatePicker} from "@cisco-sbg-ui/atomic-react";
 `}
 />
 
-### Initial Range
+### Date Range with Initial Range
 
 <Playground
   code={`() => {
   const { value, onChange, } = useADateRange([new Date(2022, 2, 28), new Date(2022, 3, 5)]);
+  const [firstSelection, secondSelection] = value;
+  // You can destructure the values from useADateRange to use ...
+  // ... the date picker's range value in your component
   return (
-    <ADatePicker value={value} onChange={onChange} />
+    <>
+      <ADatePicker value={value} onChange={onChange} />
+        <p aria-live="polite">
+          Selected range: <i>{firstSelection && firstSelection.toLocaleDateString()} - {secondSelection && secondSelection.toLocaleDateString()}</i>
+        </p>
+    </>
   );
 }
 `}
 />
+
+### Date Range with Maximum Days
+<Playground
+  code={`() => {
+  const { value, ...datePickerProps } = useADateRange({maxDays: 3});
+  const [firstSelection, secondSelection] = value;
+  // Alternatively, you can spread out the remaining values ...
+  // ... to be passed to the date picker
+  return (
+    <>
+      <ADatePicker value={value} {...datePickerProps} />
+      <p aria-live="polite">
+        Selected range: <i>{firstSelection && firstSelection.toLocaleDateString()} - {secondSelection && secondSelection.toLocaleDateString()}</i>
+      </p>
+    </>
+  );
+}
+`}
+/>
+
 
 ## Date Picker Props
 
