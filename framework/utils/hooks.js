@@ -35,6 +35,22 @@ export const useCount = (initialCount = 0) => {
   };
 };
 
+/**
+ * Creates an instance of an IntersectionObserver
+ * to be used between renders
+ * @see https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API
+ */
+export const useIntersectionObserver = (cb, opts = {root: null}) => {
+  const observer = useRef(new IntersectionObserver(cb, opts));
+
+  useEffect(() => {
+    observer.current = new IntersectionObserver(cb, opts);
+
+    return () => observer.current.disconnect();
+  }, []);
+  return observer.current;
+};
+
 export const useIsomorphicLayoutEffect =
   typeof window !== "undefined" ? useLayoutEffect : useEffect;
 
@@ -75,4 +91,70 @@ export const useMediaQuery = (config) => {
     matches,
     mediaQueryList: mediaQueryList.current
   };
+};
+
+/**
+ * Tracks the presence of a DOM node
+ * given configuration options supplied
+ * to an Intersection Observer
+ * @see https://developer.mozilla.org/en-US/docs/Web/API/IntersectionObserver/IntersectionObserver#parameters
+ */
+export const useOnScreen = (config) => {
+  const {cache, onEnter, onExit, ...observerConfig} = config;
+  const o = useRef();
+  const intersectionCount = useCount();
+  const [isOnScreen, setIsOnScreen] = useState(
+    intersectionCount.getCount() > 0
+  );
+
+  const handleIntersection = (entry) => {
+    intersectionCount.increment();
+    setIsOnScreen(true);
+    if (typeof onEnter === "function") {
+      onEnter(entry);
+    }
+  };
+
+  const handleTargetExit = (entry) => {
+    setIsOnScreen(false);
+    if (typeof onExit === "function") {
+      onExit(entry);
+    }
+  };
+
+  const observer = useIntersectionObserver(
+    ([entry]) => {
+      const {isIntersecting, target} = entry;
+      const hasIntersectedOnce = intersectionCount.getCount() > 0;
+      if (cache && hasIntersectedOnce) {
+        observer.unobserve(target);
+        return;
+      }
+
+      isIntersecting ? handleIntersection(entry) : handleTargetExit(entry);
+    },
+    {...observerConfig}
+  );
+
+  const callbackRef = (incomingRef) => {
+    if (!incomingRef) {
+      observer.unobserve(o.current);
+      return;
+    }
+
+    o.current = incomingRef;
+    observer.observe(incomingRef);
+  };
+
+  const targetProps = {
+    ref: callbackRef
+  };
+
+  const target = {
+    onScreenCount: intersectionCount.getCount(),
+    isOnScreen,
+    getTargetProps: () => targetProps
+  };
+
+  return target;
 };
