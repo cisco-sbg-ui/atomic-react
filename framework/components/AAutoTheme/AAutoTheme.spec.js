@@ -19,11 +19,11 @@ context("AAutoTheme", () => {
 
     // Switch back to light theme
     cy.get("[data-testid='enable-default-theme']").eq(0).click();
-    cy.get("body").compareSnapshot("AutoTheme 1");
+    cy.get("body").compareSnapshot("AutoTheme 4");
 
     // When re-enabling automatic theming, it should match the user agent
     // style sheet (in this cae it is dark mode);
     cy.get(".root-sidebar .a-switch__box").eq(0).click();
-    cy.get("body").compareSnapshot("AutoTheme 2");
+    cy.get("body").compareSnapshot("AutoTheme 5");
   });
 });
