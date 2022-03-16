@@ -91,4 +91,14 @@ context("ADatePicker", () => {
     cy.get(`${maxDaysSelector} .a-date-picker__day:not(.disabled)`).should("have.length", 31);
   });
   
+  it("allows a maximum number of days to be selected in previous subsequent months", () => {
+    // Select January 14, 2022
+    cy.get(`${maxDaysSelector} .a-date-picker__prev`).click();
+    cy.get(`${maxDaysSelector} .a-date-picker__prev`).click();
+    cy.get(`${maxDaysSelector} .a-date-picker__day`).eq(20).click();
+
+    // Two days before and after January 14 should be enabled
+    cy.get(`${maxDaysSelector} .a-date-picker__day:not(.disabled)`).should("have.length", 5);    
+  });
+
 });

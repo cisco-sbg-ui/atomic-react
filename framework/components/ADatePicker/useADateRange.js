@@ -39,11 +39,11 @@ const useADateRange = (config) => {
   const [firstSelection, secondSelection] = range;
   let minDate, maxDate;
   if (maxDays && firstSelection && !secondSelection) {
-    minDate = new Date();
+    minDate = new Date(firstSelection);
     // Offset by 1 since one date is already selected
     minDate.setDate(firstSelection.getDate() - (parseInt(maxDays) - 1));
 
-    maxDate = new Date();
+    maxDate = new Date(firstSelection);
     // Offset by 1 since one date is already selected
     maxDate.setDate(firstSelection.getDate() + (parseInt(maxDays) - 1));
   }
