@@ -40,15 +40,64 @@ export const useCount = (initialCount = 0) => {
  * to be used between renders
  * @see https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API
  */
-export const useIntersectionObserver = (cb, opts = {root: null}) => {
-  const observer = useRef(new IntersectionObserver(cb, opts));
+const defaultConfig = {
+  triggerOnce: false
+};
+export const useIntersectionObserver = (cb, config = defaultConfig) => {
+  const {triggerOnce = false, ...opts} = config;
+  const intersectionCount = useRef(0);
+  const targetRef = useRef();
+  const observerRef = useRef();
 
-  useEffect(() => {
-    observer.current = new IntersectionObserver(cb, opts);
+  const isTargetBeingObserved = targetRef.current && observerRef.current;
 
-    return () => observer.current.disconnect();
-  }, []);
-  return observer.current;
+  const handleChange = ([entry]) => {
+    if (triggerOnce && intersectionCount.current === 1) {
+      return;
+    }
+    if (entry.isIntersecting) {
+      intersectionCount.current += 1;
+    }
+    if (typeof cb === "function") {
+      cb({inView: entry.isIntersecting});
+    }
+  };
+
+  const resetObserver = () => {
+    if (isTargetBeingObserved) {
+      observerRef.current.unobserve(targetRef.current);
+      observerRef.current.disconnect();
+    }
+
+    observerRef.current = new IntersectionObserver(handleChange, opts);
+  };
+
+  const observeNode = (node) => {
+    if (targetRef.current !== node) {
+      intersectionCount.current = 0;
+    }
+    targetRef.current = node;
+    observerRef.current = new IntersectionObserver(handleChange, opts);
+    observerRef.current.observe(node);
+  };
+
+  const unobserveNode = (node) => {
+    if (!isTargetBeingObserved) {
+      return;
+    }
+
+    // Disconnect observer since we will just be creating a new
+    // one each mount
+    observerRef.current.unobserve(node);
+    observerRef.current.disconnect();
+  };
+
+  const callbackRef = (node) => {
+    resetObserver(observerRef.current);
+    node ? observeNode(node) : unobserveNode(targetRef.current);
+  };
+
+  return callbackRef;
 };
 
 export const useIsomorphicLayoutEffect =
