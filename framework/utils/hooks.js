@@ -1,4 +1,4 @@
-import {useCallback, useEffect, useLayoutEffect, useRef, useState} from "react";
+import {useCallback, useMemo, useEffect, useLayoutEffect, useRef, useState} from "react";
 
 export const useCombinedRefs = (...refs) => {
   const targetRef = useRef();
@@ -35,6 +35,13 @@ export const useCount = (initialCount = 0) => {
   };
 };
 
+const isValidThreshold = (threshold) => {
+  if (!threshold || threshold < 1 && threshold > 0) {
+    return true;
+  }
+  return false;
+};
+
 /**
  * Creates an instance of an IntersectionObserver
  * to be used between renders
@@ -45,6 +52,20 @@ const defaultConfig = {
 };
 export const useIntersectionObserver = (cb, config = defaultConfig) => {
   const {triggerOnce = false, ...opts} = config;
+  const validatedThreshold = useMemo(() => {
+    const isValid = isValidThreshold(opts.threshold);
+    if (!isValid) {
+      console.warn('Invalid threshold used for intersection observer. Please ues "null" or a number between 0 and 1. Using default threshold value "null" instead.');
+      return null;
+    }
+    return opts.threshold;
+  }, [opts?.threshold]);
+  const observerConfig = useMemo(() => {
+    return {
+      ...opts,
+      threshold: validatedThreshold
+    };
+  }, [opts]);
   const intersectionCount = useRef(0);
   const targetRef = useRef();
   const observerRef = useRef();
@@ -69,7 +90,8 @@ export const useIntersectionObserver = (cb, config = defaultConfig) => {
       observerRef.current.disconnect();
     }
 
-    observerRef.current = new IntersectionObserver(handleChange, opts);
+    console.log('creating with new: ', opts);
+    observerRef.current = new IntersectionObserver(handleChange, observerConfig);
   };
 
   const observeNode = (node) => {
@@ -77,7 +99,8 @@ export const useIntersectionObserver = (cb, config = defaultConfig) => {
       intersectionCount.current = 0;
     }
     targetRef.current = node;
-    observerRef.current = new IntersectionObserver(handleChange, opts);
+    console.log("creating with new: ", opts);
+    observerRef.current = new IntersectionObserver(handleChange, observerConfig);
     observerRef.current.observe(node);
   };
 
