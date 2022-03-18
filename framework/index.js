@@ -31,6 +31,7 @@ import {
 } from "./components/AHeader";
 import AHint from "./components/AHint";
 import AIcon from "./components/AIcon";
+import AInView from "./components/AInView";
 import AInputBase from "./components/AInputBase";
 import {AContainer, ARow, ACol, ASpacer} from "./components/ALayout";
 import {
@@ -116,6 +117,7 @@ export {
   AHeaderNavigation,
   AHint,
   AIcon,
+  AInView,
   AInputBase,
   AList,
   AListItem,
