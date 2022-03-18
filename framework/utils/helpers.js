@@ -10,15 +10,26 @@ export const getRoundedBoundedClientRect = (el) => {
   };
 };
 
+/**
+ * The `ref` prop in React takes either an
+ * instance of a React Ref (which returns a
+ * mutable object), or a callback function,
+ * but _not_ both. This utility makes it possible
+ * to pass _both_ types of `ref` values by
+ * delegating the incoming DOM node each type of
+ * `ref` values.
+ * @example using two separate refs
+ * <input ref={handleMultipleRefs(someRefCallback, someRefInstance)} />
+ */
 export const handleMultipleRefs = (...refs) => {
-  const callbackRef = (incomingRef) => {
+  const callbackRef = (node) => {
     refs.forEach((ref) => {
+      if (!ref) return;
       if (typeof ref === "function") {
-        ref(incomingRef);
+        ref(node);
         return;
       }
-
-      ref.current = incomingRef;
+      ref.current = node;
     });
   };
   return callbackRef;
