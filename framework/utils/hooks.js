@@ -89,8 +89,6 @@ export const useIntersectionObserver = (cb, config = defaultConfig) => {
       observerRef.current.unobserve(targetRef.current);
       observerRef.current.disconnect();
     }
-
-    console.log('creating with new: ', opts);
     observerRef.current = new IntersectionObserver(handleChange, observerConfig);
   };
 
@@ -99,7 +97,6 @@ export const useIntersectionObserver = (cb, config = defaultConfig) => {
       intersectionCount.current = 0;
     }
     targetRef.current = node;
-    console.log("creating with new: ", opts);
     observerRef.current = new IntersectionObserver(handleChange, observerConfig);
     observerRef.current.observe(node);
   };
