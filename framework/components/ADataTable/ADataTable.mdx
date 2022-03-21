@@ -100,12 +100,12 @@ import {ADataTable} from "@cisco-sbg-ui/atomic-react";
   // This is a mock API used to hide pagination implementation details
   // for this example
   const randomColors = mockImport('randomColors');
-  
+  const MAX_ITEMS = 100;
   const InfiniteScrollDemo = () => {
     const [isLoading, setIsLoading] = useState(true);
     const [items, setItems] = useState([]);
     useEffect(() => {
-      randomColors.get().then(colors => {
+      randomColors.get(10).then(colors => {
         setItems(colors);
         setIsLoading(false);
       });
@@ -113,15 +113,15 @@ import {ADataTable} from "@cisco-sbg-ui/atomic-react";
     return (
       <>
         <ADataTable
-          stripped
+          striped
           tight
           maxHeight='300px'
           onScrollToEnd={() => {
-            if (items.length === 100) {
+            if (items.length >= MAX_ITEMS) {
               return;
             }
             setIsLoading(true);
-            randomColors.get().then(nextColors => {
+            randomColors.get(10).then(nextColors => {
               setItems(prevItems => [...prevItems, ...nextColors]);
               setIsLoading(false);
             });
@@ -155,43 +155,7 @@ import {ADataTable} from "@cisco-sbg-ui/atomic-react";
     )
   };
   render(<InfiniteScrollDemo />);
-  
-  // Mock modules
-  function mockImport(moduleName) {
-    const modules = {
-      randomColors: () => {
-        const getHex = (num) => num.toString(16).padStart(2, '0');
-        const getRandomRgb = () => {
-          const r = Math.floor(Math.random() * 256);
-          const g = Math.floor(Math.random() * 256);
-          const b = Math.floor(Math.random() * 256);
-          return {r, g, b};
-        };
-        const rgbToHex = ({r, g, b}) => {
-          const rHex = getHex(r), gHex = getHex(g), bHex = getHex(b);
-          return '#' + rHex + gHex + bHex;
-        };
-        const generateRandomColors = () => {
-          const empty = [...new Array(25)].fill('');
-          return empty.map(() => {
-            const rgb = getRandomRgb();
-            const hex = rgbToHex(rgb);
-            return {
-              ...rgb,
-              hex,
-            };
-          });
-        };
-        const get = () => {
-          return new Promise((resolve) => {
-            setTimeout(() => resolve(generateRandomColors()), 1000);
-          })
-        };
-        return { get };
-      },
-    };
-    return modules[moduleName]()
-  }`}
+`}
 />
 
 ## Data Table Props
