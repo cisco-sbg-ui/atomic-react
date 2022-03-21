@@ -65,7 +65,7 @@ export const useIntersectionObserver = (cb, config = defaultConfig) => {
       ...opts,
       threshold: validatedThreshold
     };
-  }, [opts]);
+  }, [opts, validatedThreshold]);
   const intersectionCount = useRef(0);
   const targetRef = useRef();
   const observerRef = useRef();

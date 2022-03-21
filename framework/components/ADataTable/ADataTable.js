@@ -1,17 +1,16 @@
 import PropTypes from "prop-types";
-import React, {forwardRef, useLayoutEffect, useRef} from "react";
+import React, {forwardRef, useRef} from "react";
 
 import AInView from '../AInView';
 import AIcon from "../AIcon";
 import ASimpleTable from "../ASimpleTable";
 import "./ADataTable.scss";
-import { handleMultipleRefs } from "../../utils/helpers";
 
 /**
  * Used inside ADataTable to enable proper styling
  * for infinite scrolling
  */
-const TableWrapper = React.forwardRef(({ shouldWrap, maxHeight, style, children, ...rest }, ref) => {
+const ADataTableWrapper = React.forwardRef(({ shouldWrap, maxHeight, style, children, ...rest }, ref) => {
   return shouldWrap ?
   <div
     ref={ref}
@@ -27,8 +26,10 @@ const TableWrapper = React.forwardRef(({ shouldWrap, maxHeight, style, children,
     children;
 });
 
+ADataTableWrapper.displayName = 'ADataTableWrapper'
+
 const ADataTable = forwardRef(
-  ({className: propsClassName, headers, items, maxHeight, onSort, sort, onScrollToEnd, lastRowRef, ...rest}, ref) => {
+  ({className: propsClassName, headers, items, maxHeight, onSort, sort, onScrollToEnd, ...rest}, ref) => {
     const tableWrapperRef = useRef();
     let className = "a-data-table";
 
@@ -58,7 +59,7 @@ const ADataTable = forwardRef(
     return (
       headers &&
       items && (
-        <TableWrapper ref={tableWrapperRef} shouldWrap={typeof onScrollToEnd === 'function' || maxHeight} maxHeight={maxHeight}>
+        <ADataTableWrapper ref={tableWrapperRef} shouldWrap={typeof onScrollToEnd === 'function' || maxHeight} maxHeight={maxHeight}>
           <ASimpleTable {...rest} ref={ref} className={className}>
             {headers && (
               <thead>
@@ -183,7 +184,7 @@ const ADataTable = forwardRef(
               })}
             </tbody>
           </ASimpleTable>
-        </TableWrapper>
+        </ADataTableWrapper>
       )
     );
   }
