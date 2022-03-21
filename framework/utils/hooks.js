@@ -80,7 +80,7 @@ export const useIntersectionObserver = (cb, config = defaultConfig) => {
       intersectionCount.current += 1;
     }
     if (typeof cb === "function") {
-      cb({inView: entry.isIntersecting});
+      cb({inView: entry.isIntersecting, entry, });
     }
   };
 
@@ -118,6 +118,26 @@ export const useIntersectionObserver = (cb, config = defaultConfig) => {
   };
 
   return callbackRef;
+};
+
+/**
+ * An implementation of the useIntersectionObserver
+ * that is pre-configured for infinite scrolling in
+ * a list.
+ */
+export const useInfiniteScroll = (config) => {
+  const {onScroll, ...observerConfig} = config;
+  const scrollTriggerRef = useIntersectionObserver(({inView,entry}) => {
+    if (!inView) {
+      return;
+    }
+    onScroll(entry);
+  }, {
+    triggerOnce: true,
+    ...observerConfig,
+  });
+
+  return scrollTriggerRef;
 };
 
 export const useIsomorphicLayoutEffect =
