@@ -1,3 +1,1 @@
-import AInView from './AInView';
-
-export default AInView;
+export {default} from './AInView';
