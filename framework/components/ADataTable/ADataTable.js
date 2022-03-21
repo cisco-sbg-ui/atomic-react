@@ -1,12 +1,35 @@
 import PropTypes from "prop-types";
-import React, {forwardRef} from "react";
+import React, {forwardRef, useLayoutEffect, useRef} from "react";
 
+import AInView from '../AInView';
 import AIcon from "../AIcon";
 import ASimpleTable from "../ASimpleTable";
 import "./ADataTable.scss";
+import { handleMultipleRefs } from "../../utils/helpers";
+
+/**
+ * Used inside ADataTable to enable proper styling
+ * for infinite scrolling
+ */
+const TableWrapper = React.forwardRef(({ shouldWrap, maxHeight, style, children, ...rest }, ref) => {
+  return shouldWrap ?
+  <div
+    ref={ref}
+    data-testid='table-wrapper'
+    style={{
+      ...style,
+      overflowY: 'scroll',
+      maxHeight,
+    }}
+    {...rest}>
+      {children}
+    </div> :
+    children;
+});
 
 const ADataTable = forwardRef(
-  ({className: propsClassName, headers, items, onSort, sort, ...rest}, ref) => {
+  ({className: propsClassName, headers, items, maxHeight, onSort, sort, onScrollToEnd, lastRowRef, ...rest}, ref) => {
+    const tableWrapperRef = useRef();
     let className = "a-data-table";
 
     if (propsClassName) {
@@ -32,105 +55,135 @@ const ADataTable = forwardRef(
         );
       }
     }
-
     return (
       headers &&
       items && (
-        <ASimpleTable {...rest} ref={ref} className={className}>
-          {headers && (
-            <thead>
-              <tr>
-                {headers.map((x, i) => {
-                  const headerProps = {
-                    className: `a-data-table__header ${
-                      x.sortable ? "a-data-table__header--sortable" : ""
-                    } text-${x.align || "start"} ${x.className || ""}`
-                      .replace("  ", " ")
-                      .trim(),
-                    role: "columnheader",
-                    scope: "col",
-                    "aria-label": x.name
-                  };
+        <TableWrapper ref={tableWrapperRef} shouldWrap={typeof onScrollToEnd === 'function' || maxHeight} maxHeight={maxHeight}>
+          <ASimpleTable {...rest} ref={ref} className={className}>
+            {headers && (
+              <thead>
+                <tr>
+                  {headers.map((x, i) => {
+                    const headerProps = {
+                      className: `a-data-table__header ${
+                        x.sortable ? "a-data-table__header--sortable" : ""
+                      } text-${x.align || "start"} ${x.className || ""}`
+                        .replace("  ", " ")
+                        .trim(),
+                      role: "columnheader",
+                      scope: "col",
+                      "aria-label": x.name
+                    };
 
-                  if (x.sortable) {
-                    if (!sort || x.key !== sort.key) {
-                      headerProps["aria-label"] +=
-                        ": Not sorted. Activate to sort ascending.";
-                      headerProps["aria-sort"] = "none";
-                    } else if (sort && sort.direction === "asc") {
-                      headerProps["aria-label"] +=
-                        ": Sorted ascending. Activate to sort descending.";
-                      headerProps["aria-sort"] = "ascending";
-                    } else {
-                      headerProps["aria-label"] +=
-                        ": Sorted descending. Activate to remove sorting.";
-                      headerProps["aria-sort"] = "descending";
+                    if (x.sortable) {
+                      if (!sort || x.key !== sort.key) {
+                        headerProps["aria-label"] +=
+                          ": Not sorted. Activate to sort ascending.";
+                        headerProps["aria-sort"] = "none";
+                      } else if (sort && sort.direction === "asc") {
+                        headerProps["aria-label"] +=
+                          ": Sorted ascending. Activate to sort descending.";
+                        headerProps["aria-sort"] = "ascending";
+                      } else {
+                        headerProps["aria-label"] +=
+                          ": Sorted descending. Activate to remove sorting.";
+                        headerProps["aria-sort"] = "descending";
+                      }
+
+                      headerProps.onClick = () => {
+                        onSort &&
+                          onSort(
+                            sort &&
+                              sort.key === x.key &&
+                              sort.direction === "desc"
+                              ? null
+                              : {
+                                  key: x.key,
+                                  direction:
+                                    sort &&
+                                    x.key === sort.key &&
+                                    sort.direction === "asc"
+                                      ? "desc"
+                                      : "asc"
+                                }
+                          );
+                      };
                     }
 
-                    headerProps.onClick = () => {
-                      onSort &&
-                        onSort(
-                          sort &&
-                            sort.key === x.key &&
+                    return (
+                      <th {...headerProps} key={`a-data-table_header_${i}`}>
+                        {x.align !== "end" ? x.name : ""}
+                        {x.sortable && (
+                          <AIcon
+                            left={x.align === "end"}
+                            right={x.align !== "end"}
+                            className={`a-data-table__header__sort ${
+                              sort && x.key === sort.key
+                                ? "a-data-table__header__sort--active"
+                                : ""
+                            }`}>
+                            {sort &&
+                            x.key === sort.key &&
                             sort.direction === "desc"
-                            ? null
-                            : {
-                                key: x.key,
-                                direction:
-                                  sort &&
-                                  x.key === sort.key &&
-                                  sort.direction === "asc"
-                                    ? "desc"
-                                    : "asc"
-                              }
-                        );
-                    };
-                  }
-
-                  return (
-                    <th {...headerProps} key={`a-data-table_header_${i}`}>
-                      {x.align !== "end" ? x.name : ""}
-                      {x.sortable && (
-                        <AIcon
-                          left={x.align === "end"}
-                          right={x.align !== "end"}
-                          className={`a-data-table__header__sort ${
-                            sort && x.key === sort.key
-                              ? "a-data-table__header__sort--active"
-                              : ""
-                          }`}>
-                          {sort &&
-                          x.key === sort.key &&
-                          sort.direction === "desc"
-                            ? "chevron-down"
-                            : "chevron-up"}
-                        </AIcon>
-                      )}
-                      {x.align === "end" ? x.name : ""}
-                    </th>
-                  );
-                })}
-              </tr>
-            </thead>
-          )}
-          <tbody>
-            {sortedItems.map((x, i) => (
-              <tr key={`a-data-table_row_${i}`}>
-                {headers.map((y, j) => (
-                  <td
-                    key={`a-data-table_cell_${j}`}
-                    className={`text-${y.align || "start"} ${
-                      y.cell?.className || ""
-                    }`.trim()}>
-                    {y.cell && y.cell.component
-                      ? y.cell.component(x)
-                      : x[y.key]}
-                  </td>
-                ))}
-              </tr>
-            ))}
-          </tbody>
-        </ASimpleTable>
+                              ? "chevron-down"
+                              : "chevron-up"}
+                          </AIcon>
+                        )}
+                        {x.align === "end" ? x.name : ""}
+                      </th>
+                    );
+                  })}
+                </tr>
+              </thead>
+            )}
+            <tbody>
+              {sortedItems.map((x, i) => {
+                const isLastRow = i == items.length - 1;
+                const isInfiniteScrollTarget = isLastRow && typeof onScrollToEnd === 'function';
+                return isInfiniteScrollTarget ? (
+                  <AInView
+                    key={`a-data-table_row_${i}`}
+                    root={tableWrapperRef.current}
+                    triggerOnce={true}
+                    onChange={({inView,entry}) => {
+                      if (inView) {
+                        onScrollToEnd(entry);
+                      }
+                    }}
+                  >
+                    <tr>
+                      {headers.map((y, j) => (
+                        <td
+                          key={`a-data-table_cell_${j}`}
+                          className={`text-${y.align || "start"} ${
+                            y.cell?.className || ""
+                          }`.trim()}>
+                          {y.cell && y.cell.component
+                            ? y.cell.component(x)
+                            : x[y.key]}
+                        </td>
+                      ))}
+                    </tr>
+                  </AInView>
+                ) : (
+                  <tr key={`a-data-table_row_${i}`}>
+                    {headers.map((y, j) => (
+                      <td
+                        key={`a-data-table_cell_${j}`}
+                        className={`text-${y.align || "start"} ${
+                          y.cell?.className || ""
+                        }`.trim()}>
+                        {y.cell && y.cell.component
+                          ? y.cell.component(x)
+                          : x[y.key]}
+                      </td>
+                    ))}
+                  </tr>
+                );
+              })}
+            </tbody>
+          </ASimpleTable>
+        </TableWrapper>
       )
     );
   }
