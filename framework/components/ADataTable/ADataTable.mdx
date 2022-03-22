@@ -126,6 +126,7 @@ import {ADataTable} from "@cisco-sbg-ui/atomic-react";
           striped
           tight
           maxHeight='300px'
+          aria-live="polite"
           onScrollToEnd={(entry) => {
             if (items.length >= MAX_ITEMS) {
               return;
