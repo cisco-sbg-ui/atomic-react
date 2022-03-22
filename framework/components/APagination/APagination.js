@@ -188,20 +188,42 @@ const APagination = forwardRef(
       }
 
       if (total) {
-        const startPages = page > 6 ? [1, 2, 3] : [];
-        const midPages = [4, 5, 6].includes(page)
-          ? Array.from(Array(page + 2), (_, x) => x + 1).filter(
-              (x) => x > 0 && x <= total
-            )
-          : [total - 3, total - 4, total - 5].includes(page)
-          ? Array.from(
-              Array(total - (page - 3)),
-              (_, x) => page - 2 + x
-            ).filter((x) => x > 0 && x <= total)
-          : Array.from(Array(5), (_, x) => page - 2 + x).filter(
-              (x) => x > 0 && x <= total
-            );
-        const endPages = page < total - 5 ? [total - 2, total - 1, total] : [];
+        // PADDING is what to show around the current page.
+        // If on page 50 of 100 pages, show 48, 49, 50, 51, 52
+        const PADDING = 2;
+
+        // START_END_LENGTH is how much of the beginning to show
+        // If you're on page 50 of 100, show 1, 2, 3 in the start section
+        // and 98, 99, 100 in the end section.
+        const START_END_LENGTH = 1 + PADDING;
+
+        let start = page - PADDING;
+        let end = page + PADDING;
+
+        let startPages = [];
+        let endPages = [];
+
+        if (page <= 1 + PADDING + START_END_LENGTH) {
+          start = 1;
+        } else {
+          startPages = Array.from(Array(START_END_LENGTH), (_, x) => x + 1);
+          start = page - PADDING;
+        }
+
+        if (total - PADDING - START_END_LENGTH <= page) {
+          end = total;
+        } else {
+          endPages = Array.from(
+            Array(START_END_LENGTH),
+            (_, x) => total - x
+          ).reverse();
+          end = page + PADDING;
+        }
+
+        const midPages = Array.from(
+          Array(end - start + 1),
+          (_, x) => x + start
+        );
 
         return (
           <>
