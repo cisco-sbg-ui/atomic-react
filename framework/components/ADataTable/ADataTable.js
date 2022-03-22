@@ -217,6 +217,10 @@ ADataTable.propTypes = {
    */
   items: PropTypes.arrayOf(PropTypes.object),
   /**
+   * Called when the user reaches the bottom of the data table.
+   */
+  onScrollToEnd: PropTypes.func,
+  /**
    * Handles the `sort` event.
    */
   onSort: PropTypes.func,
