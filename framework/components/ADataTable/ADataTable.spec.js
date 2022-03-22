@@ -4,6 +4,7 @@ context("ADataTable", () => {
   });
 
   const basicUsageSelector = `#basic + .playground`;
+  const infiniteScrollSelector = '#infinite-scrolling + .playground';
 
   it("sorts normally", () => {
     cy.get(`${basicUsageSelector} td`).eq(0).contains(11.1);
@@ -44,6 +45,15 @@ context("ADataTable", () => {
     cy.get(`${basicUsageSelector} td`).eq(2).contains("aardvark");
   });
 
+  it("allows events to be fired when the last row is on the screen", () => {
+    cy.get(`${infiniteScrollSelector} tr`).should("have.length", 26);
+    cy.get(`${infiniteScrollSelector} div[data-testid="table-wrapper"]`).scrollTo('bottom');
+    // Disable this eslint rule since the demo uses an arbitrary delay
+    // to mimic a delay from an HTTP request
+    cy.wait(1000); // eslint-disable-line cypress/no-unnecessary-waiting
+    cy.get(`${infiniteScrollSelector} tr`).should("have.length", 51);
+  });
+
   it("aligns correctly", () => {
     if (Cypress.env("snapshots") === "off") return;
 
@@ -51,4 +61,5 @@ context("ADataTable", () => {
       "DataTable 1"
     );
   });
+
 });
