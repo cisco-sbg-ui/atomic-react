@@ -207,7 +207,6 @@ const APagination = forwardRef(
           start = 1;
         } else {
           startPages = Array.from(Array(START_END_LENGTH), (_, x) => x + 1);
-          start = page - PADDING;
         }
 
         if (total - PADDING - START_END_LENGTH <= page) {
@@ -217,7 +216,6 @@ const APagination = forwardRef(
             Array(START_END_LENGTH),
             (_, x) => total - x
           ).reverse();
-          end = page + PADDING;
         }
 
         const midPages = Array.from(
