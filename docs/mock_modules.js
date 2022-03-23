@@ -1,3 +1,14 @@
+/**
+ * These are modules that can be used inside of documentation
+ * to provide more enriching examples. The purpose of keeping
+ * these functions in this file is to abstract away unnecessary
+ * implementation details for setting up an example in an effort
+ * to focus more on the component's usage itself.
+ * 
+ * @example using the randomColors in documentation
+ * const randomColors = mockImport('randomColors');
+ * randomColors.get().then(randomColors => // use random colors);
+ */
 const modules = {
   randomColors: (function() {
     const getHex = (num) => num.toString(16).padStart(2, '0');
@@ -35,7 +46,7 @@ const modules = {
 function mockImport(moduleName) {
   const requestedModule = modules[moduleName];
   if (!requestedModule) {
-    throw new Error(`Mock module "${moduleName}" was not found in Playground editor`);
+    throw new Error(`Mock module "${moduleName}" was not found.`);
   }
   return requestedModule;
 }

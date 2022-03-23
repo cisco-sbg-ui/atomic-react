@@ -97,23 +97,29 @@ import {ADataTable} from "@cisco-sbg-ui/atomic-react";
 <Playground
   noInline
   code={`
-  // This is a mock API used to hide pagination implementation details
-  // for this example
+  // This is a mock API used to hide pagination
+  // implementation details for this example
   const randomColors = mockImport('randomColors');
+  
   // Used to cap the table to 125 items. In a real
   // use-case, the API will probably determine if
   // the data is exhausted.
   const MAX_ITEMS = 125;
+  
   // So that we don't block the footer from being accessible,
   // the infinite scrolling should be capped as well
   const INFINITE_SCROLL_MAX = 75;
+  
   const InfiniteScrollDemo = () => {
     const [isLoading, setIsLoading] = useState(true);
-    const [canLoadMore, setCanLoadMore] = useState(false);
+    const [showLoadMore, setShowLoadMore] = useState(false);
     const [items, setItems] = useState([]);
     const addNextItems = (nextItems) => {
       setItems(prevItems => [...prevItems, ...nextItems]);
     }
+    
+    // Initially load the table with
+    // random colors
     useEffect(() => {
       randomColors.get(25).then(colors => {
         addNextItems(colors);
@@ -131,10 +137,15 @@ import {ADataTable} from "@cisco-sbg-ui/atomic-react";
             if (items.length >= MAX_ITEMS) {
               return;
             }
+            
+            // Although the user won't be able to infinitely scroll,
+            // we still want to enable them to fetch more content
             if (items.length >= INFINITE_SCROLL_MAX && items.length < MAX_ITEMS) {
-              setCanLoadMore(true);
+              setShowLoadMore(true);
               return;
             }
+            
+            // Fetch next colors for infinite scrolling functionality
             setIsLoading(true);
             randomColors.get(25).then(nextColors => {
               addNextItems(nextColors);
@@ -165,11 +176,16 @@ import {ADataTable} from "@cisco-sbg-ui/atomic-react";
             }
           ]}
         />
-        {canLoadMore && (
+        {isLoading && (
+          <div style={{display: 'flex', justifyContent: 'center', marginTop: '10px' }}>
+              <ADotLoader />
+          </div>
+        )}
+        {showLoadMore && (
           <div style={{display: 'flex', justifyContent: 'center', marginTop: '10px' }}>
             <AButton
               onClick={() => {
-                setCanLoadMore(false);
+                setShowLoadMore(false);
                 setIsLoading(true);
                 randomColors.get(25).then(nextColors => {
                   addNextItems(nextColors);
@@ -177,11 +193,10 @@ import {ADataTable} from "@cisco-sbg-ui/atomic-react";
                 })
               }}
             >
-            Load More
+              Load More
             </AButton>
           </div>
         )}
-        {isLoading && <ADotLoader />}
       </>
     )
   };
@@ -197,4 +212,4 @@ The `ADataTable` component inherits passed props.
 
 ## Accessibility Notes
 
-When using infinite scroll within the `ADataTable`, it is highly recommended to also render a button to explicitly load more content. This is to enable content underneath the table to be accessible for keyboard users. One possible implementation is to use infinite scroll for items leading up to a certain range, then request that the user explicitly load more items after a certain number of items are infinitely scrolled.
+When using infinite scroll within the `ADataTable`, it is recommended to set a maxinumum infinite scrolling threshold in your implementation so that screen readers and keyboard users can also have a good user experience. To continue loading more content after reaching the target threshold, you can use the "Load More" pattern by rendering a button that will then begin to explicitly load more table content with the user's consent.
