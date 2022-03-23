@@ -32,6 +32,7 @@ const ASelect = forwardRef(
       itemValue = "value",
       items = [],
       label,
+      maxHeight,
       onSelected,
       placeholder,
       prependContent,
@@ -242,7 +243,7 @@ const ASelect = forwardRef(
             const selectedIndex = getSelectedIndex();
             if (selectedIndex > -1) {
               menuRef.current
-                ?.querySelectorAll("a-select__menu-items__wrapper .a-list-item")
+                ?.querySelectorAll(".a-select__menu-items__wrapper .a-list-item")
                 [selectedIndex]?.focus();
             }
           }, WAIT_TO_FOCUS_ACTIVE_ITEM);
@@ -261,7 +262,7 @@ const ASelect = forwardRef(
               if (selectedIndex > -1) {
                 menuRef.current
                   .querySelectorAll(
-                    "a-select__menu-items__wrapper .a-list-item"
+                    ".a-select__menu-items__wrapper .a-list-item"
                   )
                   [selectedIndex]?.focus();
               }
@@ -332,7 +333,7 @@ const ASelect = forwardRef(
           </div>
           <AMenu ref={menuRef} {...menuComponentProps}>
             {prependContent}
-            <div className="a-select__menu-items__wrapper">
+            <div className="a-select__menu-items__wrapper" style={{maxHeight}}>
               {items.map((item, index) => {
                 const itemProps = {
                   value: null,
@@ -446,6 +447,12 @@ ASelect.propTypes = {
    * Sets the label content.
    */
   label: PropTypes.node,
+  /**
+   * Sets the max-height of the select dropdown
+   * in the case of many dropdown options needing
+   * overflow styling
+   */
+  maxHeight: PropTypes.string,
   /**
    * Handles the `selected` event.
    */
