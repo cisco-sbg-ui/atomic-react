@@ -39,7 +39,7 @@ import {AInView} from "@cisco-sbg-ui/atomic-react";
                     Status: {onScreen ? 'On Screen' : 'Off Screen'}<AIcon right={true} size="small">{onScreen ? 'checkmark' : 'close'}</AIcon>
                     <ADivider />
                 </div>
-                <div ref={scrollContainer} style={containerStyling}>
+                <div ref={scrollContainer} style={containerStyling} data-testid="scroll-container">
                     <div style={{height: '500px'}}>
                         <AInView
                             root={scrollContainer.current}
@@ -63,7 +63,7 @@ import {AInView} from "@cisco-sbg-ui/atomic-react";
   const wait = (t = 1000) =>
     new Promise((resolve) => setTimeout(() => resolve('Success'), t));
   return (
-    <div style={{overflowY: 'scroll', maxHeight: '300px'}}>
+    <div style={{overflowY: 'scroll', maxHeight: '300px'}} data-testid="scroll-container">
         <div style={{position: 'relative'}}>
             <p>Scroll down to lazyily call an asychronous function when the card enters the view.</p>
             <ADivider role="presentation" style={{height: '500px'}} />
