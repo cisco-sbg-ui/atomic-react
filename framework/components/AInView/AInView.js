@@ -3,18 +3,12 @@ import React from "react";
 import { handleMultipleRefs } from '../../utils/helpers';
 import { useIntersectionObserver } from '../../utils/hooks';
 
-const defaultProps = {
-    onChange: () => {},
-    triggerOnce: false,
-    children: <></>,
-}
-
 /**
  * Keeps track of a child component's visibility
  * in the screen. The child component _must_ accept
  * a forward ref.
  */
-const AInView = (props = defaultProps) => {
+const AInView = (props) => {
     const {onChange,triggerOnce,children, ...observerConfig} = props;
     const ref = useIntersectionObserver(onChange, {
       triggerOnce,
