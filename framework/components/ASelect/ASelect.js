@@ -233,10 +233,12 @@ const ASelect = forwardRef(
 
       if (!readOnly) {
         chevronProps.onClick = selectionProps.onClick = () => {
-          setIsOpen(!isOpen);
-          if (!isOpen) {
-            reset();
-          }
+          setIsOpen(prevIsOpen => {
+            if (!prevIsOpen) {
+              reset();
+            }
+            return !prevIsOpen;
+          });
 
           setTimeout(() => {
             const selectedIndex = getSelectedIndex();
@@ -255,7 +257,7 @@ const ASelect = forwardRef(
         selectionProps.onKeyDown = (e) => {
           if ([keyCodes.enter, keyCodes.space].includes(e.keyCode)) {
             e.preventDefault();
-            setIsOpen(!isOpen);
+            setIsOpen(prevIsOpen => !prevIsOpen);
             setTimeout(() => {
               const selectedIndex = getSelectedIndex();
               if (selectedIndex > -1) {
