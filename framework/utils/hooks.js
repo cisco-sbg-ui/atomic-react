@@ -19,7 +19,7 @@ export const useCombinedRefs = (...refs) => {
 };
 
 const isValidThreshold = (threshold) => {
-  if (!threshold || threshold < 1 && threshold > 0) {
+  if (!threshold || (threshold < 1 && threshold > 0)) {
     return true;
   }
   return false;
@@ -27,33 +27,38 @@ const isValidThreshold = (threshold) => {
 
 /**
  * Creates an instance of an IntersectionObserver
- * to be used between renders
+ * to be used between renders.
+ * @returns callback ref to be passed to a React element
  * @see https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API
+ * @see https://reactjs.org/docs/refs-and-the-dom.html#callback-refs
  */
 const defaultConfig = {
   triggerOnce: false
 };
 export const useIntersectionObserver = (cb, config = defaultConfig) => {
   const {triggerOnce = false, ...opts} = config;
+  // Prevent runtime errors associated with passing
+  // invalid threshold values to the intersection
+  // observer
   const validatedThreshold = useMemo(() => {
     const isValid = isValidThreshold(opts.threshold);
     if (!isValid) {
-      console.warn('Invalid threshold used for intersection observer. Please ues "null" or a number between 0 and 1. Using default threshold value "null" instead.');
-      return null;
+      console.warn('Invalid threshold passed for intersection observer; must be between 0 and 1. Defaulting to 0.');
+      return 0;
     }
     return opts.threshold;
   }, [opts?.threshold]);
+
   const observerConfig = useMemo(() => {
     return {
       ...opts,
       threshold: validatedThreshold
     };
   }, [opts, validatedThreshold]);
-  const intersectionCount = useRef(0);
-  const targetRef = useRef();
-  const observerRef = useRef();
 
-  const isTargetBeingObserved = targetRef.current && observerRef.current;
+  const intersectionCount = useRef(0);
+  const observedNodeRef = useRef();
+  const observerRef = useRef();
 
   const handleChange = ([entry]) => {
     if (triggerOnce && intersectionCount.current === 1) {
@@ -67,37 +72,29 @@ export const useIntersectionObserver = (cb, config = defaultConfig) => {
     }
   };
 
-  const resetObserver = () => {
-    if (isTargetBeingObserved) {
-      observerRef.current.unobserve(targetRef.current);
-      observerRef.current.disconnect();
-    }
-    observerRef.current = new IntersectionObserver(handleChange, observerConfig);
-  };
-
-  const observeNode = (node) => {
-    if (targetRef.current !== node) {
-      intersectionCount.current = 0;
-    }
-    targetRef.current = node;
-    observerRef.current = new IntersectionObserver(handleChange, observerConfig);
-    observerRef.current.observe(node);
-  };
-
-  const unobserveNode = (node) => {
-    if (!isTargetBeingObserved) {
+  const unobserveTrackedRef = () => {
+    if (!observedNodeRef.current) {
       return;
     }
-
-    // Disconnect observer since we will just be creating a new
-    // one each mount
-    observerRef.current.unobserve(node);
+    observerRef.current.unobserve(observedNodeRef.current);
     observerRef.current.disconnect();
   };
-
+  const observeNode = (node) => {
+    // Stay in sync with the DOM node reference
+    // on the screen
+    if (node !== observedNodeRef.current) {
+      intersectionCount.current = 0;
+    }
+    observerRef.current = new IntersectionObserver(
+      handleChange,
+      observerConfig
+    );
+    observedNodeRef.current = node;
+    observerRef.current.observe(node);
+  }
+  
   const callbackRef = (node) => {
-    resetObserver(observerRef.current);
-    node ? observeNode(node) : unobserveNode(targetRef.current);
+    node ? observeNode(node) : unobserveTrackedRef();
   };
 
   return callbackRef;
