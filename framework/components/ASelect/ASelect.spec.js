@@ -18,9 +18,13 @@ context("ASelect", () => {
       });
   });
 
-  it("allows overflow styling", () => {
+  it("allows overflow styling on the dropdown menu", () => {
     const playground = "#many-dropdown-options + .playground";
-    cy.get(`${playground} .a-select__selection`).eq(0).click()
+    cy.get(`${playground} .a-select__selection`).eq(0).click();
+    cy.get(".a-select__menu-items__wrapper").should(
+      "have.class",
+      "overflow-y-scroll"
+    );
     cy.get(".a-select__menu-items")
       .find(".a-select__menu-item")
       .should("have.length", 100)
