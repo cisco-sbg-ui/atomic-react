@@ -18,6 +18,22 @@ context("ASelect", () => {
       });
   });
 
+  it("allows overflow styling", () => {
+    const playground = "#many-dropdown-options + .playground";
+    cy.get(`${playground} .a-select__selection`).eq(0).click()
+    cy.get(".a-select__menu-items")
+      .find(".a-select__menu-item")
+      .should("have.length", 100)
+      .first()
+      .should("be.visible")
+      .parent()
+      .find(".a-select__menu-item")
+      .last()
+      .should("not.be.visible")
+      .parent()
+      .click();
+  });
+
   it("opens and closes appropriately", () => {
     cy.get(".a-select__menu-items").should("not.exist");
     cy.get("#usage + .playground .a-select__selection").eq(0).click();
