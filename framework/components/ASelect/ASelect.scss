@@ -43,8 +43,9 @@ $select-padding: 6px;
 .a-select {
   &__menu-items {
     &__wrapper {
-      max-height: 300px;
-      overflow-y: scroll;
+      &--condensed {
+        overflow-y: scroll;
+      }
     }
   }
 
