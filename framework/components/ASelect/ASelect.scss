@@ -41,15 +41,7 @@ $select-padding: 6px;
 }
 
 .a-select {
-  &__menu-items {
-    &__wrapper {
-      &--condensed {
-        overflow-y: scroll;
-      }
-    }
-  }
-
-  &__selection-wrapper {
+    &__selection-wrapper {
     width: 100%;
     height: 100%;
     display: inline-flex;
