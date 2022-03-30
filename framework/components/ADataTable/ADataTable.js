@@ -11,22 +11,26 @@ import "./ADataTable.scss";
  * for infinite scrolling
  */
 const ADataTableWrapper = React.forwardRef(({ shouldWrap, maxHeight, style, children, ...rest }, ref) => {
-  return shouldWrap ?
-  <div
-    ref={ref}
-    data-testid='table-wrapper'
-    style={{
-      ...style,
-      overflowY: 'scroll',
-      maxHeight,
-    }}
-    {...rest}>
-      {children}
-    </div> :
-    children;
+  if (!shouldWrap) {
+    return children;
+  }
+
+  return (
+      <div
+        ref={ref}
+        data-testid="table-wrapper"
+        style={{
+          ...style,
+          overflowY: "scroll",
+          maxHeight
+        }}
+        {...rest}>
+        {children}
+      </div>
+  );
 });
 
-ADataTableWrapper.displayName = 'ADataTableWrapper'
+ADataTableWrapper.displayName = 'ADataTableWrapper';
 
 const ADataTable = forwardRef(
   ({className: propsClassName, headers, items, maxHeight, onSort, sort, onScrollToEnd, ...rest}, ref) => {
@@ -141,33 +145,9 @@ const ADataTable = forwardRef(
               {sortedItems.map((x, i) => {
                 const isLastRow = i == items.length - 1;
                 const isInfiniteScrollTarget = isLastRow && typeof onScrollToEnd === 'function';
-                return isInfiniteScrollTarget ? (
-                  <AInView
-                    key={`a-data-table_row_${i}`}
-                    root={tableWrapperRef.current}
-                    triggerOnce={true}
-                    onChange={({inView,entry}) => {
-                      if (inView) {
-                        onScrollToEnd(entry);
-                      }
-                    }}
-                  >
-                    <tr>
-                      {headers.map((y, j) => (
-                        <td
-                          key={`a-data-table_cell_${j}`}
-                          className={`text-${y.align || "start"} ${
-                            y.cell?.className || ""
-                          }`.trim()}>
-                          {y.cell && y.cell.component
-                            ? y.cell.component(x)
-                            : x[y.key]}
-                        </td>
-                      ))}
-                    </tr>
-                  </AInView>
-                ) : (
-                  <tr key={`a-data-table_row_${i}`}>
+                const key = `a-data-table_row_${i}`;
+                const rowContent = (
+                  <tr key={key}>
                     {headers.map((y, j) => (
                       <td
                         key={`a-data-table_cell_${j}`}
@@ -180,6 +160,23 @@ const ADataTable = forwardRef(
                       </td>
                     ))}
                   </tr>
+                );
+
+                if (!isInfiniteScrollTarget) {
+                  return rowContent;
+                }
+
+                return (
+                  <AInView
+                    key={key}
+                    triggerOnce
+                    onChange={({inView, entry}) => {
+                      if (inView) {
+                        onScrollToEnd(entry);
+                      }
+                    }}>
+                    {rowContent}
+                  </AInView>
                 );
               })}
             </tbody>
