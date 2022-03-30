@@ -60,129 +60,132 @@ const ADataTable = forwardRef(
         );
       }
     }
+    if (!headers || !items) {
+      return null;
+    }
     return (
-      headers &&
-      items && (
-        <ADataTableWrapper ref={tableWrapperRef} shouldWrap={typeof onScrollToEnd === 'function' || maxHeight} maxHeight={maxHeight}>
-          <ASimpleTable {...rest} ref={ref} className={className}>
-            {headers && (
-              <thead>
-                <tr>
-                  {headers.map((x, i) => {
-                    const headerProps = {
-                      className: `a-data-table__header ${
-                        x.sortable ? "a-data-table__header--sortable" : ""
-                      } text-${x.align || "start"} ${x.className || ""}`
-                        .replace("  ", " ")
-                        .trim(),
-                      role: "columnheader",
-                      scope: "col",
-                      "aria-label": x.name
-                    };
+      <ADataTableWrapper
+        ref={tableWrapperRef}
+        shouldWrap={typeof onScrollToEnd === 'function' || maxHeight}
+        maxHeight={maxHeight}>
+        <ASimpleTable {...rest} ref={ref} className={className}>
+          {headers && (
+            <thead>
+              <tr>
+                {headers.map((x, i) => {
+                  const headerProps = {
+                    className: `a-data-table__header ${
+                      x.sortable ? "a-data-table__header--sortable" : ""
+                    } text-${x.align || "start"} ${x.className || ""}`
+                      .replace("  ", " ")
+                      .trim(),
+                    role: "columnheader",
+                    scope: "col",
+                    "aria-label": x.name
+                  };
 
-                    if (x.sortable) {
-                      if (!sort || x.key !== sort.key) {
-                        headerProps["aria-label"] +=
-                          ": Not sorted. Activate to sort ascending.";
-                        headerProps["aria-sort"] = "none";
-                      } else if (sort && sort.direction === "asc") {
-                        headerProps["aria-label"] +=
-                          ": Sorted ascending. Activate to sort descending.";
-                        headerProps["aria-sort"] = "ascending";
-                      } else {
-                        headerProps["aria-label"] +=
-                          ": Sorted descending. Activate to remove sorting.";
-                        headerProps["aria-sort"] = "descending";
-                      }
-
-                      headerProps.onClick = () => {
-                        onSort &&
-                          onSort(
-                            sort &&
-                              sort.key === x.key &&
-                              sort.direction === "desc"
-                              ? null
-                              : {
-                                  key: x.key,
-                                  direction:
-                                    sort &&
-                                    x.key === sort.key &&
-                                    sort.direction === "asc"
-                                      ? "desc"
-                                      : "asc"
-                                }
-                          );
-                      };
+                  if (x.sortable) {
+                    if (!sort || x.key !== sort.key) {
+                      headerProps["aria-label"] +=
+                        ": Not sorted. Activate to sort ascending.";
+                      headerProps["aria-sort"] = "none";
+                    } else if (sort && sort.direction === "asc") {
+                      headerProps["aria-label"] +=
+                        ": Sorted ascending. Activate to sort descending.";
+                      headerProps["aria-sort"] = "ascending";
+                    } else {
+                      headerProps["aria-label"] +=
+                        ": Sorted descending. Activate to remove sorting.";
+                      headerProps["aria-sort"] = "descending";
                     }
 
-                    return (
-                      <th {...headerProps} key={`a-data-table_header_${i}`}>
-                        {x.align !== "end" ? x.name : ""}
-                        {x.sortable && (
-                          <AIcon
-                            left={x.align === "end"}
-                            right={x.align !== "end"}
-                            className={`a-data-table__header__sort ${
-                              sort && x.key === sort.key
-                                ? "a-data-table__header__sort--active"
-                                : ""
-                            }`}>
-                            {sort &&
-                            x.key === sort.key &&
+                    headerProps.onClick = () => {
+                      onSort &&
+                        onSort(
+                          sort &&
+                            sort.key === x.key &&
                             sort.direction === "desc"
-                              ? "chevron-down"
-                              : "chevron-up"}
-                          </AIcon>
-                        )}
-                        {x.align === "end" ? x.name : ""}
-                      </th>
-                    );
-                  })}
+                            ? null
+                            : {
+                                key: x.key,
+                                direction:
+                                  sort &&
+                                  x.key === sort.key &&
+                                  sort.direction === "asc"
+                                    ? "desc"
+                                    : "asc"
+                              }
+                        );
+                    };
+                  }
+
+                  return (
+                    <th {...headerProps} key={`a-data-table_header_${i}`}>
+                      {x.align !== "end" ? x.name : ""}
+                      {x.sortable && (
+                        <AIcon
+                          left={x.align === "end"}
+                          right={x.align !== "end"}
+                          className={`a-data-table__header__sort ${
+                            sort && x.key === sort.key
+                              ? "a-data-table__header__sort--active"
+                              : ""
+                          }`}>
+                          {sort &&
+                          x.key === sort.key &&
+                          sort.direction === "desc"
+                            ? "chevron-down"
+                            : "chevron-up"}
+                        </AIcon>
+                      )}
+                      {x.align === "end" ? x.name : ""}
+                    </th>
+                  );
+                })}
+              </tr>
+            </thead>
+          )}
+          <tbody>
+            {sortedItems.map((x, i) => {
+              const isLastRow = i == items.length - 1;
+              const isInfiniteScrollTarget = isLastRow && typeof onScrollToEnd === 'function';
+              const key = `a-data-table_row_${i}`;
+              const rowContent = (
+                <tr key={key}>
+                  {headers.map((y, j) => (
+                    <td
+                      key={`a-data-table_cell_${j}`}
+                      className={`text-${y.align || "start"} ${
+                        y.cell?.className || ""
+                      }`.trim()}>
+                      {y.cell && y.cell.component
+                        ? y.cell.component(x)
+                        : x[y.key]}
+                    </td>
+                  ))}
                 </tr>
-              </thead>
-            )}
-            <tbody>
-              {sortedItems.map((x, i) => {
-                const isLastRow = i == items.length - 1;
-                const isInfiniteScrollTarget = isLastRow && typeof onScrollToEnd === 'function';
-                const key = `a-data-table_row_${i}`;
-                const rowContent = (
-                  <tr key={key}>
-                    {headers.map((y, j) => (
-                      <td
-                        key={`a-data-table_cell_${j}`}
-                        className={`text-${y.align || "start"} ${
-                          y.cell?.className || ""
-                        }`.trim()}>
-                        {y.cell && y.cell.component
-                          ? y.cell.component(x)
-                          : x[y.key]}
-                      </td>
-                    ))}
-                  </tr>
-                );
+              );
 
-                if (!isInfiniteScrollTarget) {
-                  return rowContent;
-                }
+              if (!isInfiniteScrollTarget) {
+                return rowContent;
+              }
 
-                return (
-                  <AInView
-                    key={key}
-                    triggerOnce
-                    onChange={({inView, entry}) => {
-                      if (inView) {
-                        onScrollToEnd(entry);
-                      }
-                    }}>
-                    {rowContent}
-                  </AInView>
-                );
-              })}
-            </tbody>
-          </ASimpleTable>
-        </ADataTableWrapper>
-      )
+              return (
+                <AInView
+                  key={key}
+                  triggerOnce
+                  onChange={({inView, entry}) => {
+                    if (inView) {
+                      onScrollToEnd(entry);
+                    }
+                  }}>
+                  {rowContent}
+                </AInView>
+              );
+            })}
+          </tbody>
+        </ASimpleTable>
+      </ADataTableWrapper>
     );
   }
 );
