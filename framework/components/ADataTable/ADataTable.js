@@ -60,10 +60,7 @@ const ADataTable = forwardRef(
         );
       }
     }
-    if (!headers || !items) {
-      return null;
-    }
-    return (
+    return headers && items && (
       <ADataTableWrapper
         ref={tableWrapperRef}
         shouldWrap={typeof onScrollToEnd === 'function' || maxHeight}
@@ -211,11 +208,11 @@ ADataTable.propTypes = {
         component: PropTypes.func
       })
     })
-  ),
+  ).isRequired,
   /**
    * Sets the table data.
    */
-  items: PropTypes.arrayOf(PropTypes.object),
+  items: PropTypes.arrayOf(PropTypes.object).isRequired,
   /**
    * Called when the user reaches the bottom of the data table.
    */
