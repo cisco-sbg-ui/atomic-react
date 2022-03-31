@@ -1,12 +1,40 @@
 import PropTypes from "prop-types";
-import React, {forwardRef} from "react";
+import React, {forwardRef, useRef} from "react";
 
+import AInView from '../AInView';
 import AIcon from "../AIcon";
 import ASimpleTable from "../ASimpleTable";
 import "./ADataTable.scss";
 
+/**
+ * Used inside ADataTable to enable proper styling
+ * for infinite scrolling
+ */
+const ADataTableWrapper = React.forwardRef(({ shouldWrap, maxHeight, style, children, ...rest }, ref) => {
+  if (!shouldWrap) {
+    return children;
+  }
+
+  return (
+      <div
+        ref={ref}
+        data-testid="table-wrapper"
+        style={{
+          ...style,
+          overflowY: "scroll",
+          maxHeight
+        }}
+        {...rest}>
+        {children}
+      </div>
+  );
+});
+
+ADataTableWrapper.displayName = 'ADataTableWrapper';
+
 const ADataTable = forwardRef(
-  ({className: propsClassName, headers, items, onSort, sort, ...rest}, ref) => {
+  ({className: propsClassName, headers, items, maxHeight, onSort, sort, onScrollToEnd, ...rest}, ref) => {
+    const tableWrapperRef = useRef();
     let className = "a-data-table";
 
     if (propsClassName) {
@@ -32,10 +60,11 @@ const ADataTable = forwardRef(
         );
       }
     }
-
-    return (
-      headers &&
-      items && (
+    return headers && items && (
+      <ADataTableWrapper
+        ref={tableWrapperRef}
+        shouldWrap={typeof onScrollToEnd === 'function' || maxHeight}
+        maxHeight={maxHeight}>
         <ASimpleTable {...rest} ref={ref} className={className}>
           {headers && (
             <thead>
@@ -114,24 +143,46 @@ const ADataTable = forwardRef(
             </thead>
           )}
           <tbody>
-            {sortedItems.map((x, i) => (
-              <tr key={`a-data-table_row_${i}`}>
-                {headers.map((y, j) => (
-                  <td
-                    key={`a-data-table_cell_${j}`}
-                    className={`text-${y.align || "start"} ${
-                      y.cell?.className || ""
-                    }`.trim()}>
-                    {y.cell && y.cell.component
-                      ? y.cell.component(x)
-                      : x[y.key]}
-                  </td>
-                ))}
-              </tr>
-            ))}
+            {sortedItems.map((x, i) => {
+              const isLastRow = i == items.length - 1;
+              const isInfiniteScrollTarget = isLastRow && typeof onScrollToEnd === 'function';
+              const key = `a-data-table_row_${i}`;
+              const rowContent = (
+                <tr key={key}>
+                  {headers.map((y, j) => (
+                    <td
+                      key={`a-data-table_cell_${j}`}
+                      className={`text-${y.align || "start"} ${
+                        y.cell?.className || ""
+                      }`.trim()}>
+                      {y.cell && y.cell.component
+                        ? y.cell.component(x)
+                        : x[y.key]}
+                    </td>
+                  ))}
+                </tr>
+              );
+
+              if (!isInfiniteScrollTarget) {
+                return rowContent;
+              }
+
+              return (
+                <AInView
+                  key={key}
+                  triggerOnce
+                  onChange={({inView, entry}) => {
+                    if (inView) {
+                      onScrollToEnd(entry);
+                    }
+                  }}>
+                  {rowContent}
+                </AInView>
+              );
+            })}
           </tbody>
         </ASimpleTable>
-      )
+      </ADataTableWrapper>
     );
   }
 );
@@ -157,11 +208,15 @@ ADataTable.propTypes = {
         component: PropTypes.func
       })
     })
-  ),
+  ).isRequired,
   /**
    * Sets the table data.
    */
-  items: PropTypes.arrayOf(PropTypes.object),
+  items: PropTypes.arrayOf(PropTypes.object).isRequired,
+  /**
+   * Called when the user reaches the bottom of the data table.
+   */
+  onScrollToEnd: PropTypes.func,
   /**
    * Handles the `sort` event.
    */

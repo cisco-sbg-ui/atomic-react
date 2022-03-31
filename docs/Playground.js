@@ -6,6 +6,7 @@ import {LiveProvider, LiveEditor, LiveError, LivePreview} from "react-live";
 import * as AtomicReactComponents from "../framework";
 import {AList} from "../framework";
 import LoremIpsum from "../framework/utils/lorem-ipsum";
+import mockImport from "./mock_modules";
 
 const scope = {
   ...AtomicReactComponents,
@@ -15,7 +16,8 @@ const scope = {
   useRef,
   useState,
   algoliasearch,
-  debounce
+  debounce,
+  mockImport
 };
 
 const Playground = ({code, fullWidthPreview, noInline}) => {
