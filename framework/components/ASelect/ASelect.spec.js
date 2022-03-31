@@ -18,6 +18,26 @@ context("ASelect", () => {
       });
   });
 
+  it("allows overflow styling on the dropdown menu", () => {
+    const playground = "#many-dropdown-options + .playground";
+    cy.get(`${playground} .a-select__selection`).eq(0).click();
+    cy.get(".a-select__menu-items__wrapper").should(
+      "have.class",
+      "overflow-y-scroll"
+    );
+    cy.get(".a-select__menu-items")
+      .find(".a-select__menu-item")
+      .should("have.length", 100)
+      .first()
+      .should("be.visible")
+      .parent()
+      .find(".a-select__menu-item")
+      .last()
+      .should("not.be.visible")
+      .parent()
+      .click();
+  });
+
   it("opens and closes appropriately", () => {
     cy.get(".a-select__menu-items").should("not.exist");
     cy.get("#usage + .playground .a-select__selection").eq(0).click();
@@ -48,61 +68,24 @@ context("ASelect", () => {
       });
   });
 
-  it("arrow-keys menus appropriately", () => {
-    cy.get("#usage + .playground .a-select__selection").eq(0).click();
-    cy.get(".a-select__menu-items")
-      .then(($el) => {
-        Cypress.dom.isFocused($el);
-      })
-      .type("{downArrow}")
-      .find(".a-select__menu-item")
-      .first()
-      .then(($el) => {
-        Cypress.dom.isFocused($el);
-      })
-      .type("{downArrow}")
-      .next()
-      .then(($el) => {
-        Cypress.dom.isFocused($el);
-      })
-      .type("{esc}");
-
-    cy.get("#usage + .playground .a-select__selection").eq(0).click();
-    cy.get(".a-select__menu-items")
-      .type("{upArrow}")
-      .find(".a-select__menu-item")
-      .last()
-      .then(($el) => {
-        Cypress.dom.isFocused($el);
-      })
-      .type("{upArrow}")
-      .prev()
-      .then(($el) => {
-        Cypress.dom.isFocused($el);
-      })
-      .type("{esc}");
-  });
-
-  it("arrow-keys the surface appropriately", () => {
+  it("arrow-keys the dropdown selections appropriately", () => {
     cy.get("#usage + .playground .a-select__selection")
       .eq(0)
       .focus()
       .type("{downArrow}")
-      .contains("Milk")
-      .parent()
-      .type("{upArrow}")
-      .contains("Fruit")
-      .parent()
-      .type("{downArrow}{downArrow}")
       .contains("Fats")
       .parent()
-      .type("{upArrow}");
+      .type("{upArrow}")
+      .contains("Milk")
+      .parent()
+      .type("{downArrow}{downArrow}")
+      .contains("Bread")
   });
 
   it("has working selected prop", () => {
     cy.get("#usage + .playground .a-select__selection").eq(0).click();
     cy.get(".a-select__menu-items .a-select__menu-item")
-      .eq(3)
+      .eq(0)
       .should("have.class", "a-select__menu-item--selected")
       .type("{esc}");
   });

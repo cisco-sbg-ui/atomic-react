@@ -16,7 +16,6 @@ import {keyCodes} from "../../utils/helpers";
 import "./ASelect.scss";
 
 let selectCounter = 0;
-const WAIT_TO_FOCUS_ACTIVE_ITEM = 50;
 
 const ASelect = forwardRef(
   (
@@ -32,6 +31,7 @@ const ASelect = forwardRef(
       itemValue = "value",
       items = [],
       label,
+      maxHeight,
       onSelected,
       placeholder,
       prependContent,
@@ -47,6 +47,7 @@ const ASelect = forwardRef(
     const menuRef = useRef(null);
     const inputBaseSurfaceRef = useRef(null);
     const surfaceRef = useRef(null);
+    const selectedItemRef = useRef(null);
     const [selectId] = useState(selectCounter++);
     const [originalSelectedItem, setOriginalSelectedItem] = useState(
       items.find((x) => x[itemSelected])
@@ -64,6 +65,12 @@ const ASelect = forwardRef(
     useEffect(() => {
       setWorkingValidationState(validationState);
     }, [validationState]);
+
+    useEffect(() => {
+      if (isOpen && selectedItemRef.current) {
+        selectedItemRef.current.focus();
+      }
+    }, [isOpen]);
 
     useEffect(() => {
       const newSelectedItem = items.find((x) => x[itemSelected]);
@@ -237,15 +244,6 @@ const ASelect = forwardRef(
           if (!isOpen) {
             reset();
           }
-
-          setTimeout(() => {
-            const selectedIndex = getSelectedIndex();
-            if (selectedIndex > -1) {
-              menuRef.current
-                ?.querySelectorAll("a-select__menu-items__wrapper .a-list-item")
-                [selectedIndex]?.focus();
-            }
-          }, WAIT_TO_FOCUS_ACTIVE_ITEM);
         };
 
         if (isOpen) {
@@ -256,16 +254,6 @@ const ASelect = forwardRef(
           if ([keyCodes.enter, keyCodes.space].includes(e.keyCode)) {
             e.preventDefault();
             setIsOpen(!isOpen);
-            setTimeout(() => {
-              const selectedIndex = getSelectedIndex();
-              if (selectedIndex > -1) {
-                menuRef.current
-                  .querySelectorAll(
-                    "a-select__menu-items__wrapper .a-list-item"
-                  )
-                  [selectedIndex]?.focus();
-              }
-            }, WAIT_TO_FOCUS_ACTIVE_ITEM);
           } else if (e.keyCode === keyCodes.up) {
             e.preventDefault();
             const newItem = getPreviousItem(getSelectedIndex());
@@ -289,6 +277,10 @@ const ASelect = forwardRef(
       anchorRef: inputBaseSurfaceRef,
       className: "a-select__menu-items",
       closeOnClick: false,
+      // Menu should not receive focus
+      // so that the selected item can
+      // be focused instead
+      focusOnOpen: selectedItem ? false : true,
       onClose: () => {
         setIsOpen(false);
         surfaceRef.current.focus();
@@ -332,7 +324,9 @@ const ASelect = forwardRef(
           </div>
           <AMenu ref={menuRef} {...menuComponentProps}>
             {prependContent}
-            <div className="a-select__menu-items__wrapper">
+            <div
+              className={`a-select__menu-items__wrapper${maxHeight ? " overflow-y-scroll" : ""}`}
+              style={{maxHeight}}>
               {items.map((item, index) => {
                 const itemProps = {
                   value: null,
@@ -354,6 +348,7 @@ const ASelect = forwardRef(
                   if (item === selectedItem) {
                     itemProps.className += " a-select__menu-item--selected";
                     itemProps["aria-selected"] = true;
+                    itemProps.ref = selectedItemRef;
                   }
                 } else if (typeof item === "object") {
                   itemProps.value = item[itemValue];
@@ -378,6 +373,7 @@ const ASelect = forwardRef(
                     itemProps.selected = true;
                     itemProps.className += " a-select__menu-item--selected";
                     itemProps["aria-selected"] = true;
+                    itemProps.ref = selectedItemRef;
                   }
                 }
 
@@ -446,6 +442,12 @@ ASelect.propTypes = {
    * Sets the label content.
    */
   label: PropTypes.node,
+  /**
+   * Sets the max-height of the select dropdown
+   * in the case of many dropdown options needing
+   * overflow styling
+   */
+  maxHeight: PropTypes.string,
   /**
    * Handles the `selected` event.
    */
