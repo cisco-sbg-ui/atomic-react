@@ -38,6 +38,16 @@ context("ASelect", () => {
       .click();
   });
 
+  it("allows a style to be passed to the dropdown user interface", () => {
+    const playground = "#menu-item-templates + .playground";
+    cy.get(`${playground} .a-select__selection`).eq(0).click();
+    cy.get("div[role='listbox']").should(
+      "have.class",
+      "custom-dropdown-class"
+    );
+    cy.get(`${playground} .a-select__selection`).eq(0).click();
+  });
+
   it("opens and closes appropriately", () => {
     cy.get(".a-select__menu-items").should("not.exist");
     cy.get("#usage + .playground .a-select__selection").eq(0).click();
