@@ -30,14 +30,12 @@ import {ADatePicker} from "@cisco-sbg-ui/atomic-react";
 
 <Playground
   code={`() => {
-  const yesterday = new Date();
-  const today = new Date(2022, 2, 15);
-  const tomorrow = new Date();
-  tomorrow.setDate(today.getDate() + 1);
-  yesterday.setDate(today.getDate() - 1);
-  const [date, setDate] = useState(today);
+  const earliestDay = new Date(2022, 2, 13);
+  const latestDay = new Date(earliestDay);
+  latestDay.setDate(earliestDay.getDate() + 13);
+  const [date, setDate] = useState(earliestDay);
   return (
-    <ADatePicker value={date} onChange={(date) => setDate(date)} minDate={yesterday} maxDate={tomorrow}/>
+    <ADatePicker value={date} onChange={(date) => setDate(date)} minDate={earliestDay} maxDate={latestDay}/>
   );
 }
 `}

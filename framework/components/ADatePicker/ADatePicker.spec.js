@@ -70,7 +70,7 @@ context("ADatePicker", () => {
   const minAndMaxDateSelector = "#with-minimum-and-maximum-dates + .playground .a-date-picker";
 
   it("restricts date day selections", () => {
-    cy.get(`${minAndMaxDateSelector} .a-date-picker__day:not(.disabled)`).should("have.length", 3);
+    cy.get(`${minAndMaxDateSelector} .a-date-picker__day:not(.disabled)`).should("have.length", 14);
   });
 
   const maxDaysSelector = "#date-range-with-maximum-days + .playground .a-date-picker";
