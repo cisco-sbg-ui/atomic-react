@@ -22,6 +22,8 @@ const ASelect = forwardRef(
     {
       appendContent,
       className: propsClassName,
+      dropdownClassName,
+      dropdownStyle,
       disabled,
       hint,
       itemDisabled = "disabled",
@@ -273,9 +275,14 @@ const ASelect = forwardRef(
       onSelected && onSelected(item);
     };
 
+    let menuClassName = 'a-select__menu-items';
+    if (dropdownClassName) {
+      menuClassName += ` ${dropdownClassName}`;
+    }
+
     const menuComponentProps = {
       anchorRef: inputBaseSurfaceRef,
-      className: "a-select__menu-items",
+      className: menuClassName,
       closeOnClick: false,
       // Menu should not receive focus
       // so that the selected item can
@@ -291,7 +298,8 @@ const ASelect = forwardRef(
         minWidth: "max-content",
         width: inputBaseSurfaceRef?.current?.clientWidth
           ? inputBaseSurfaceRef.current.clientWidth + 2
-          : "auto"
+          : "auto",
+          ...dropdownStyle,
       }
     };
 
@@ -407,6 +415,17 @@ ASelect.propTypes = {
    * Toggles the disabled state.
    */
   disabled: PropTypes.bool,
+  /**
+   * Because ASelect uses an AMenu, the dropdown interface
+   * is mounted outside of the application area. To style
+   * this portion of ASelect, a class can be provided.
+   */
+  dropdownClassName: PropTypes.string,
+  /**
+   * Similar to the dropdownClassName prop, this can be used
+   * to pass a style object to the dropdown interface
+   */
+  dropdownStyle: PropTypes.object,
   /**
    * Sets the hint content.
    */
