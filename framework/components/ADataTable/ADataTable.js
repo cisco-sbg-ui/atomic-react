@@ -214,7 +214,7 @@ ADataTable.propTypes = {
    */
   items: PropTypes.arrayOf(PropTypes.object).isRequired,
   /**
-   * Called when the user reaches the bottom of the data table.
+   * Called when the user reaches the bottom of the data table for the first time.
    */
   onScrollToEnd: PropTypes.func,
   /**
