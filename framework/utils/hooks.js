@@ -19,7 +19,10 @@ export const useCombinedRefs = (...refs) => {
 };
 
 const isValidThreshold = (threshold) => {
-  if (!threshold || (threshold < 1 && threshold > 0)) {
+  // A threshold does not have to be passed; the native
+  // Intersection Observer API also takes "null" as a valid
+  // parameter
+  if (!threshold || (threshold <= 1 && threshold >= 0)) {
     return true;
   }
   return false;
