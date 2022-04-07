@@ -80,7 +80,7 @@ context("ADatePicker", () => {
     cy.get(`${minAndMaxDateSelector} .a-date-picker__day:not(.disabled)`).should("have.length", 14);
   });
 
-  const maxDaysSelector = "#date-range-with-maximum-days + .playground .a-date-picker";
+  const maxDaysSelector = "#date-range-with-maximum-days ~ .playground .a-date-picker";
 
   it("only allows a maximum number of days to be selected in a range", () => {
     // Select March 14, 2022
