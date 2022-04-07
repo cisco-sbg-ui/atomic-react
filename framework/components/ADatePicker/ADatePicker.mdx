@@ -35,7 +35,11 @@ import {ADatePicker} from "@cisco-sbg-ui/atomic-react";
   latestDay.setDate(earliestDay.getDate() + 13);
   const [date, setDate] = useState(earliestDay);
   return (
-    <ADatePicker value={date} onChange={(date) => setDate(date)} minDate={earliestDay} maxDate={latestDay}/>
+    <ADatePicker
+      value={date}
+      onChange={(date) => setDate(date)}
+      minDate={earliestDay}
+      maxDate={latestDay}/>
   );
 }
 `}
@@ -43,11 +47,38 @@ import {ADatePicker} from "@cisco-sbg-ui/atomic-react";
 
 ## Date Range
 
+For date ranges, pass an array indicating the two dates to be selected. `ADatePicker` will determine which come first or second relative to the range itself.
+
 <Playground
   code={`() => {
-  const { value, onChange, } = useADateRange();
+    const [value, setValue] = useState([]);
+    const getNextRange = (nextDate) => {
+      setValue(prevRange => {
+        const isFull = prevRange.length === 2;
+        return isFull ?
+          [nextDate] :
+          prevRange.concat(nextDate);
+      })
+    }
+    return (
+      <>
+        <ADatePicker value={value} onChange={getNextRange} />
+        <AButton className='mt-2' onClick={() => setValue([])}>Clear</AButton>
+      </>
+    )
+  }`}
+/>
+
+To prevent having to duplicate date range sequencing logic across your application (like in the previous example), you can leverage `useADateRange`, which will return the props to pass to `ADatePicker`.
+
+<Playground
+  code={`() => {
+  const { value, onChange, setValue, } = useADateRange();
   return (
-    <ADatePicker value={value} onChange={onChange} />
+      <>
+        <ADatePicker value={value} onChange={onChange} />
+        <AButton className='mt-2' onClick={() => setValue([])}>Clear</AButton>
+      </>
   );
 }
 `}
@@ -57,16 +88,15 @@ import {ADatePicker} from "@cisco-sbg-ui/atomic-react";
 
 <Playground
   code={`() => {
-  const { value, onChange, } = useADateRange([new Date(2022, 2, 28), new Date(2022, 3, 5)]);
-  const [firstSelection, secondSelection] = value;
-  // You can destructure the values from useADateRange to use ...
-  // ... the date picker's range value in your component
+  const { value, onChange, setValue, } = useADateRange([new Date(2022, 2, 28), new Date(2022, 3, 5)]);
+  const [start, end] = value;
   return (
     <>
       <ADatePicker value={value} onChange={onChange} />
         <p aria-live="polite">
-          Selected range: <i>{firstSelection && firstSelection.toLocaleDateString()} - {secondSelection && secondSelection.toLocaleDateString()}</i>
+          Selected range: <i>{start && start.toLocaleDateString()} - {end && end.toLocaleDateString()}</i>
         </p>
+        <AButton onClick={() => setValue([])}>Clear</AButton>
     </>
   );
 }
@@ -74,20 +104,25 @@ import {ADatePicker} from "@cisco-sbg-ui/atomic-react";
 />
 
 ### Date Range with Maximum Days
+
+To limit the length of an arbitrary range to a certain number of days, configure `useADateRange` with a `maxDays` option. Be sure to pass the `minDate` and `maxDate` props to `ADatePicker`.
+
 <Playground
   code={`() => {
-  const { value, ...datePickerProps } = useADateRange({
+  const {value, onChange, minDate, maxDate} = useADateRange({
     initialRange: [new Date(2022, 2, 14), new Date(2022, 2, 16)],
     maxDays: 3
   });
-  const [firstSelection, secondSelection] = value;
-  // Alternatively, you can spread out the remaining values ...
-  // ... to be passed to the date picker
+  const [start, end] = value;
   return (
     <>
-      <ADatePicker value={value} {...datePickerProps} />
+      <ADatePicker
+        value={value}
+        onChange={onChange}
+        minDate={minDate}
+        maxDate={maxDate}/>
       <p aria-live="polite">
-        Selected range: <i>{firstSelection && firstSelection.toLocaleDateString()} - {secondSelection && secondSelection.toLocaleDateString()}</i>
+        Selected range: <i>{start && start.toLocaleDateString()} - {end && end.toLocaleDateString()}</i>
       </p>
     </>
   );
