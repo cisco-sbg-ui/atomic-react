@@ -22,7 +22,7 @@ const isDateTipOfRange = (date, range) => {
 };
 
 const isDateBetweenRange = (date, range) => {
-    const [rangeStartDate, rangeEndDate] = range;
+    const [rangeStartDate, rangeEndDate] = sortDates(range);
     return Date.parse(date) > Date.parse(rangeStartDate) &&
         Date.parse(date) < Date.parse(rangeEndDate);
 };
