@@ -46,18 +46,25 @@ context("ADatePicker", () => {
   });
 
   it("selects a range between two months", () => {
-    // Pick a month in current calendar selection UI
+    // Pick a day in current month (April)
     cy.get(`${rangeSelector} .a-date-picker__day`).eq(30).click();
 
-    // Navigate to next calendar month, pick a date, and ensure
-    // the range has now been set
+    // Navigate to next calendar month (May) and pick a date
     cy.get(`${rangeSelector} .a-date-picker__next`).click();
     cy.get(`${rangeSelector} .a-date-picker__day`).eq(10).click();
     cy.get(`${rangeSelector} .a-date-picker__day.between:not(.disabled)`).should("have.length", 10);
 
-    // Navigate back to previous month and ensure range is still set
+    // Navigate back to previous month (April) to ensure range is still persisting
     cy.get(`${rangeSelector} .a-date-picker__prev`).click();
     cy.get(`${rangeSelector} .a-date-picker__day.between:not(.disabled)`).should("have.length", 4);
+  });
+
+  it("allows the date range to be controlled", () => {
+    // April has 30 days
+    cy.get("#date-range-with-initial-range + .playground button")
+      .last()
+      .click();
+    cy.get(`${rangeSelector} .a-date-picker__day:not(.disabled)`).should("have.length", 30);
   });
 
   it("displays the upper range bound when an initial range is supplied", () => {
@@ -100,5 +107,4 @@ context("ADatePicker", () => {
     // Two days before and after January 14 should be enabled
     cy.get(`${maxDaysSelector} .a-date-picker__day:not(.disabled)`).should("have.length", 5);    
   });
-
 });
