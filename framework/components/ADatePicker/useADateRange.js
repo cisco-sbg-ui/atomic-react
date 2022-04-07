@@ -53,9 +53,10 @@ const useADateRange = (config) => {
 
   return {
     value: range,
+    setValue: setRange,
     onChange,
     minDate,
-    maxDate,
+    maxDate
   };
 };
 export default useADateRange;
