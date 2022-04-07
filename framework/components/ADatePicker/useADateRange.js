@@ -1,29 +1,24 @@
 import { useCallback, useState } from "react";
-import { sortDates } from "./helpers";
 
 /**
- * Sequencing logic for setting an incoming date relative to an existing date range.
- * It has no opinion on if the second selection must be larger than the first selection.
+ * Sequencing logic for adding a new date to a range of
+ * dates.
  * 
- * Flow: first date selection -> second date selection -> first date selection -> second date selection -> (etc.)
- * @param {Array.<Date|null>} oldRange - Tuple with starting date and ending date
+ * Flow: first date selection -> second date selection ->
+ * first date selection -> second date selection -> (etc.)
+ * @param {Array.<Date|null>} existingRange - Tuple with starting date and ending date
  * @param {Date} incomingDate - The next date to sequence
- * @returns tuple the newly set date range
+ * @returns next range sequence
  */
-export const stepSequencer = (existingRange, nextDate) => {
-  const [rangeStartDate, rangeEndDate] = existingRange;
-  const isRangeEmpty = !rangeStartDate && !rangeEndDate;
-  const shouldResetRange = rangeStartDate && rangeEndDate;
-
-  return isRangeEmpty || shouldResetRange ?
-    [nextDate, null] :
-    sortDates([rangeStartDate, nextDate]);
+const rangeSequencer = (existingRange, incomingDate) => {
+  const isFull = existingRange.length === 2;
+  // If range is filled, reset with
+  // a new start date
+  return isFull ?
+    [incomingDate] :
+    existingRange.concat(incomingDate);
 };
 
-/**
- * Hook for storing date range state. Currently uses a step sequence, but has
- * room for flexibility in the future.
- */
 const useADateRange = (config) => {
   // Support older version hook config
   let initialRange;
@@ -53,7 +48,7 @@ const useADateRange = (config) => {
   }
 
   const onChange = useCallback((incomingDate) => {
-    setRange(oldRange => stepSequencer(oldRange, incomingDate));
+    setRange(oldRange => rangeSequencer(oldRange, incomingDate));
   }, [setRange]);
 
   return {
