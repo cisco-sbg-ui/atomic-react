@@ -41,6 +41,8 @@
     "@babel/preset-env": "7.16.11",
     "@babel/preset-react": "7.16.7",
     "@cypress/code-coverage": "3.9.12",
+    "@cypress/react": "^5.12.4",
+    "@cypress/webpack-dev-server": "^1.8.4",
     "algoliasearch": "4.13.0",
     "babel-plugin-istanbul": "6.1.1",
     "codecov": "3.8.3",
@@ -61,6 +63,7 @@
     "eslint-plugin-react-hooks": "4.3.0",
     "glob": "7.2.0",
     "gray-matter": "4.0.3",
+    "html-webpack-plugin": "^5.5.0",
     "lodash.debounce": "4.0.8",
     "next": "12.1.0",
     "next-mdx-remote": "3.0.8",
@@ -74,7 +77,9 @@
     "remove-markdown": "0.3.0",
     "rimraf": "3.0.2",
     "sass": "1.49.9",
-    "start-server-and-test": "1.14.0"
+    "start-server-and-test": "1.14.0",
+    "webpack": "^5.72.0",
+    "webpack-dev-server": "^3.11.3"
   },
   "repository": {
     "type": "git",

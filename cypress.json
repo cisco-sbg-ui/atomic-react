@@ -1,4 +1,8 @@
 {
+  "component": {
+    "componentFolder": "framework",
+    "testFiles": "**/*.ct.js"
+  },
   "fixturesFolder": false,
   "integrationFolder": "framework",
   "retries": {
