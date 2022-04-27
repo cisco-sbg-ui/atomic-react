@@ -29,6 +29,10 @@ context("ADatePicker", () => {
     );
   });
 
+  it("allows custom styling", () => {
+    cy.get(".custom-class").should("exist");
+  });
+
   const rangeSelector = "#date-range-with-initial-range + .playground .a-date-picker";
 
   it("selects the two outer bounds of a date range", () => {

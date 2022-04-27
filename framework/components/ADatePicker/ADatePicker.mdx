@@ -20,7 +20,7 @@ import {ADatePicker} from "@cisco-sbg-ui/atomic-react";
   code={`() => {
   const [date, setDate] = useState(new Date(2021, 0, 14));
   return (
-    <ADatePicker value={date} onChange={(date) => setDate(date)} />
+    <ADatePicker className="custom-class" value={date} onChange={(date) => setDate(date)} />
   );
 }
 `}
