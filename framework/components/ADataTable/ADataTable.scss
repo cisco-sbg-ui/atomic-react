@@ -4,14 +4,14 @@ $hidden-table-col-width: 30px;
 
 @include theme(a-data-table) using ($theme) {
   &--expandable {
-    & .a-data-table__row {
+    .a-data-table__row {
       &[data-expandable-row="true"] {
-        & .a-data-table__cell:nth-last-child(2) {
+        .a-data-table__cell:nth-last-child(2) {
           border-right-color: map-deep-get($theme, "control", "stroke-color");
         }
       }
   
-      & .a-data-table__cell[data-expandable-content] {
+      .a-data-table__cell[data-expandable-content] {
         border-color: map-deep-get($theme, "control", "stroke-color");
         background: map-deep-get($theme, "table", "row-hover-color");
       }

@@ -200,7 +200,9 @@ import {ADataTable} from "@cisco-sbg-ui/atomic-react";
       </>
     )
   };
-  render(<InfiniteScrollDemo />);
+  render(<InfiniteScrollDemo />);`}
+/>
+
 ## Expandable Rows
 
 <Playground
@@ -217,7 +219,7 @@ import {ADataTable} from "@cisco-sbg-ui/atomic-react";
     {
       name: "Bravo",
       key: "b",
-      align: "center",
+      align: "start",
       sortable: true,
       sort: false
     },
@@ -267,7 +269,7 @@ import {ADataTable} from "@cisco-sbg-ui/atomic-react";
         Additional information about {props.a} and {props.b}.
       </p>
     )
-  }
+  };
   return (
     <ADataTable
       striped
