@@ -1,8 +1,7 @@
-import _ from "lodash";
 import PropTypes from "prop-types";
 import React, {forwardRef, useMemo, useRef, useCallback, useState} from "react";
 
-import AInView from '../AInView';
+import AInView from "../AInView";
 import AIcon from "../AIcon";
 import ASimpleTable from "../ASimpleTable";
 import "./ADataTable.scss";
@@ -31,7 +30,7 @@ const ADataTableWrapper = React.forwardRef(({ shouldWrap, maxHeight, style, chil
   );
 });
 
-ADataTableWrapper.displayName = 'ADataTableWrapper';
+ADataTableWrapper.displayName = "ADataTableWrapper";
 
 const TableHeader = React.forwardRef(({className, ...rest}, ref) => (
   <th
@@ -41,6 +40,7 @@ const TableHeader = React.forwardRef(({className, ...rest}, ref) => (
     {...rest}
   />
 ));
+TableHeader.displayName = "TableHeader";
 const TableRow = React.forwardRef(({className, ...rest}, ref) => (
   <tr
     ref={ref}
@@ -49,6 +49,7 @@ const TableRow = React.forwardRef(({className, ...rest}, ref) => (
     {...rest}
   />
 ));
+TableRow.displayName = "TableRow";
 const TableCell = React.forwardRef(({className, ...rest}, ref) => (
   <td
     ref={ref}
@@ -57,6 +58,7 @@ const TableCell = React.forwardRef(({className, ...rest}, ref) => (
     {...rest}
   />
 ));
+TableCell.displayName = "TableCell";
 
 const ADataTable = forwardRef(
   ({className: propsClassName, expandable, headers, maxHeight, items, onSort, onScrollToEnd, sort, ...rest}, ref) => {
