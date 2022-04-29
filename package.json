@@ -47,7 +47,7 @@
     "cross-env": "7.0.3",
     "cypress": "9.4.1",
     "cypress-plugin-tab": "1.0.5",
-    "cypress-visual-regression": "1.6.3",
+    "cypress-visual-regression": "1.7.0",
     "cypress-wait-until": "1.7.2",
     "dotenv": "16.0.0",
     "eslint": "8.12.0",
