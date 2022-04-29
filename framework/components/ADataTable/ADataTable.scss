@@ -1,6 +1,6 @@
 @import "../../styles";
 
-$hidden-table-col-width: 30px;
+$hidden-table-col-width: 45px;
 
 @include theme(a-data-table) using ($theme) {
   &--expandable {
@@ -139,6 +139,7 @@ $hidden-table-col-width: 30px;
         }
   
         & .a-data-table__cell__btn--expand {
+          cursor: pointer;
           display: flex;
           align-items: center;
           justify-content: center;
