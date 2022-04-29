@@ -77,7 +77,7 @@ const ADataTable = forwardRef(
       }
     }, [setExpandedRows]);
 
-    let sortedItems = items;
+    const sortedItems = useMemo(() => [...items], [items]);
     if (sort) {
       const sortDir = sort.direction === "desc" ? -1 : 1;
       const targetHeader = Object.values(headers).find(
@@ -166,24 +166,16 @@ const ADataTable = forwardRef(
                       <TableHeader
                         {...headerProps}
                         key={`a-data-table_header_${i}`}>
-                        {x.align !== "end" && x.name}
+                        {x.align !== "end" ? x.name : ""}
                         {x.sortable && (
                           <AIcon
                             left={x.align === "end"}
                             right={x.align !== "end"}
-                            className={`a-data-table__header__sort ${
-                              sort && x.key === sort.key
-                                ? "a-data-table__header__sort--active"
-                                : ""
-                            }`}>
-                            {sort &&
-                            x.key === sort.key &&
-                            sort.direction === "desc"
-                              ? "chevron-down"
-                              : "chevron-up"}
+                            className={`a-data-table__header__sort ${sort && x.key === sort.key ? "a-data-table__header__sort--active" : ""}`}>
+                            {sort && x.key === sort.key && sort.direction === "desc" ? "chevron-down" : "chevron-up"}
                           </AIcon>
                         )}
-                        {x.align === "end" && x.name}
+                        {x.align === "end" ? x.name : ""}
                       </TableHeader>
                     );
                   })}
@@ -198,8 +190,7 @@ const ADataTable = forwardRef(
                 const key = `a-data-table_row_${i}`;
                 const id = `a-data-table_row_${i}`;
                 const isLastRow = i == items.length - 1;
-                const isInfiniteScrollTarget =
-                  isLastRow && typeof onScrollToEnd === "function";
+                const isInfiniteScrollTarget = isLastRow && typeof onScrollToEnd === "function";
                 const hasExpandedRowContent =
                   ExpandableComponent &&
                   (typeof expandable.isRowExpandable === "function"
