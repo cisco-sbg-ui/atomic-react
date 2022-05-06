@@ -1,25 +1,28 @@
 import { useCallback, useState } from "react";
+import { sortDates } from "./helpers";
 
 /**
  * Sequencing logic for adding a new date to a range of
  * dates.
- * 
+ *
  * Flow: first date selection -> second date selection ->
  * first date selection -> second date selection -> (etc.)
  * @param {Array.<Date|null>} existingRange - Tuple with starting date and ending date
  * @param {Date} incomingDate - The next date to sequence
  * @returns next range sequence
  */
-const rangeSequencer = (existingRange, incomingDate) => {
-  const isFull = existingRange.length === 2;
-  // If range is filled, reset with
-  // a new start date
-  return isFull ?
-    [incomingDate] :
-    existingRange.concat(incomingDate);
+export const getStackedRange = (existingRange, nextDate) => {
+  const [startDate, endDate] = existingRange;
+  const isEmpty = !startDate && !endDate;
+  const isFull = startDate instanceof Date && endDate instanceof Date;
+
+  return isEmpty || isFull ?
+    [nextDate, null] :
+    sortDates([startDate, nextDate]);
 };
 
-const useADateRange = (config) => {
+
+const useADateRange = (config = {}) => {
   // Support older version hook config
   let initialRange;
   let maxDays;
@@ -31,24 +34,24 @@ const useADateRange = (config) => {
     maxDays = config?.maxDays || null;
   }
   const [range, setRange] = useState(initialRange);
-  const [firstSelection, secondSelection] = range;
+  const [startDate, endDate] = range;
   let minDate, maxDate;
-  if (maxDays && firstSelection && !secondSelection) {
-    minDate = new Date(firstSelection);
+  if (maxDays && startDate && !endDate) {
+    minDate = new Date(startDate);
     // Offset by 1 since one date is already selected
-    minDate.setDate(firstSelection.getDate() - (parseInt(maxDays) - 1));
+    minDate.setDate(startDate.getDate() - (parseInt(maxDays) - 1));
 
-    maxDate = new Date(firstSelection);
+    maxDate = new Date(startDate);
     // Offset by 1 since one date is already selected
-    maxDate.setDate(firstSelection.getDate() + (parseInt(maxDays) - 1));
+    maxDate.setDate(startDate.getDate() + (parseInt(maxDays) - 1));
   }
-  if (maxDays && firstSelection && secondSelection) {
+  if (maxDays && startDate && endDate) {
     minDate = null;
     maxDate = null;
   }
 
-  const onChange = useCallback((incomingDate) => {
-    setRange(oldRange => rangeSequencer(oldRange, incomingDate));
+  const onChange = useCallback(date => {
+    setRange(oldRange => getStackedRange(oldRange, date));
   }, [setRange]);
 
   return {
