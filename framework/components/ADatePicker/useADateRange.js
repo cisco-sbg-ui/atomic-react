@@ -8,7 +8,7 @@ import { sortDates } from "./helpers";
  * Flow: first date selection -> second date selection ->
  * first date selection -> second date selection -> (etc.)
  * @param {Array.<Date|null>} existingRange - Tuple with starting date and ending date
- * @param {Date} incomingDate - The next date to sequence
+ * @param {Date} nextDate - The next date to sequence
  * @returns next range sequence
  */
 export const getStackedRange = (existingRange, nextDate) => {
