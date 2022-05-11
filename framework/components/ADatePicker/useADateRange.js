@@ -12,10 +12,10 @@ import { sortDates } from "./helpers";
  */
 export const stepSequencer = (existingRange, nextDate) => {
   const [rangeStartDate, rangeEndDate] = existingRange;
-  const isRangeEmpty = !rangeStartDate && !rangeEndDate;
-  const shouldResetRange = rangeStartDate && rangeEndDate;
+  const isEmpty = !rangeStartDate && !rangeEndDate;
+  const isFull = rangeStartDate && rangeEndDate;
 
-  return isRangeEmpty || shouldResetRange ?
+  return isEmpty || isFull ?
     [nextDate, null] :
     sortDates([rangeStartDate, nextDate]);
 };
