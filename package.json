@@ -83,7 +83,7 @@
     "sass": "1.49.9",
     "start-server-and-test": "1.14.0",
     "webpack": "^5.72.0",
-    "webpack-dev-server": "^3.11.3"
+    "webpack-dev-server": "^4.9.0"
   },
   "repository": {
     "type": "git",
