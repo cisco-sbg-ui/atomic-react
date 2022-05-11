@@ -1,4 +1,5 @@
 const getCompareSnapshotsPlugin = require("cypress-visual-regression/dist/plugin");
+const injectDevServer = require("@cypress/react/plugins/next");
 
 const screenWidth = 1280;
 const screenHeight = 720;
@@ -9,6 +10,9 @@ const screenHeight = 720;
  * `config` is the resolved Cypress config
  */
 module.exports = (on, config) => {
+  if (config.testingType === 'component') {
+    injectDevServer(on, config);
+  }
   require("@cypress/code-coverage/task")(on, config);
   on("file:preprocessor", require("@cypress/code-coverage/use-babelrc"));
 

@@ -1,23 +1,11 @@
 {
   "extends": [
-    "eslint:recommended",
     "plugin:cypress/recommended",
     "plugin:import/recommended",
     "plugin:jsx-a11y/recommended",
-    "plugin:react/recommended",
+    "next",
     "prettier"
   ],
-  "parserOptions": {
-    "babelOptions": {
-      "configFile": "./babel-lib.config.js"
-    },
-    "sourceType": "module"
-  },
-  "parser": "@babel/eslint-parser",
-  "env": {
-    "es6": true,
-    "browser": true
-  },
   "globals": {
     "module": true,
     "process": true,
@@ -25,18 +13,5 @@
     "Buffer": true,
     "__dirname": true
   },
-  "plugins": ["react-hooks", "anti-trojan-source"],
-  "rules": {
-    "no-console": 0,
-    "no-debugger": "error",
-    "react-hooks/rules-of-hooks": "warn",
-    "react-hooks/exhaustive-deps": "warn",
-    "react/prop-types": "off",
-    "anti-trojan-source/no-bidi": "error"
-  },
-  "settings": {
-    "react": {
-      "version": "detect"
-    }
-  }
+  "plugins": ["anti-trojan-source"]
 }
