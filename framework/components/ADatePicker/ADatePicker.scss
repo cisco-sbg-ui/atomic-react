@@ -79,6 +79,8 @@ $date-picker-day-border-radius: 2px;
       }
       &--selected {
         background-color: map-deep-get($theme, "base", "color--selected");
+      }
+      &--selected:not(&--highlighted) {
         color: map-deep-get($theme, "base", "inverse-color");
       }
       &--highlighted {
