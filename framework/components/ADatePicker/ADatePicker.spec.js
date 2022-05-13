@@ -61,6 +61,40 @@ context("ADatePicker", () => {
     cy.get(`${rangeSelector} .a-date-picker__day__btn--highlighted:not(:disabled)`).should("have.length", 4);
   });
 
+  it("persists highlighting of a range between two months", () => {
+    // Select April 26, 2022
+    cy.get(`${rangeSelector} .a-date-picker__day`).eq(30).click();
+
+    // Navigate to next calendar month (May), pick a date, and ensure
+    // the range has now been set
+    cy.get(`${rangeSelector} .a-date-picker__next`).click();
+    cy.get(`${rangeSelector} .a-date-picker__day`).eq(10).click();
+    cy.get(`${rangeSelector} .a-date-picker__day__btn--highlighted:not(:disabled)`).should("have.length", 10);
+
+    // Navigate back to previous month (April) and ensure range is still set
+    cy.get(`${rangeSelector} .a-date-picker__prev`).click();
+    cy.get(`${rangeSelector} .a-date-picker__day__btn--selected`).should("have.length", 1);
+    cy.get(`${rangeSelector} .a-date-picker__day__btn--highlighted:not(:disabled)`).should("have.length", 4);
+
+    // Ensure that the days selected in May that are visible in the April calendar
+    // UI have highlighting to identify they are part of the range
+    cy.get(`${rangeSelector} .a-date-picker__day__btn--highlighted:disabled`).should("have.length", 7);
+  });
+
+  it("highlights the hypothetical range that would be created after choosing the first range date selection when hovering dates", () => {
+    // Select April 26, 2022
+    cy.get(`${rangeSelector} .a-date-picker__day`).eq(30).click();
+
+    // "Hover" April 30, 2022
+    // https://github.com/cypress-io/cypress/issues/10#issuecomment-615947224
+    cy.get(`${rangeSelector} .a-date-picker__day`).eq(34).rightclick();
+
+    // Although April 30, 2022 was not explicity clicked, the hypothetical
+    // range should be styled
+    cy.get(`${rangeSelector} .a-date-picker__day__btn--highlighted`).should("have.length", 3);
+    cy.get(`${rangeSelector} .a-date-picker__day__btn--selected`).should("have.length", 2);
+  });
+
   it("displays the upper range bound when an initial range is supplied", () => {
     // Revisit to reset state of calendar
     cy.visitInLightTheme("http://localhost:3000/components/date-picker");
