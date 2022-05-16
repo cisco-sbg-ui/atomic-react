@@ -92,7 +92,6 @@ context("ADatePicker", () => {
     // Although April 30, 2022 was not explicity clicked, the hypothetical
     // range should be styled
     cy.get(`${rangeSelector} .a-date-picker__day__btn--highlighted`).should("have.length", 3);
-    cy.get(`${rangeSelector} .a-date-picker__day__btn--selected`).should("have.length", 2);
   });
 
   it("displays the upper range bound when an initial range is supplied", () => {
