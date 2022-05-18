@@ -125,7 +125,8 @@ $atomic-default: (
   ),
   "header": (
     "bg-color": $white,
-    "icon-color": map-get($grey, "darken-5")
+    "icon-color": map-get($grey, "darken-5"),
+    "control-text-color": map-get($grey, "darken-5")
   ),
   "label": (
     "color": map-get($grey, "darken-4")
