@@ -63,17 +63,20 @@ import {ADataTable} from "@cisco-sbg-ui/atomic-react";
     {
       a: 11.1,
       b: 526,
-      c: "aardvark"
+      c: "aardvark",
+      rowId:"123"
     },
     {
       a: 8.9,
       b: 611,
-      c: "Argentina"
+      c: "Argentina",
+      rowId:"abc"
     },
     {
       a: 10.5,
       b: 475,
-      c: "Zanzibar"
+      c: "Zanzibar",
+      rowId:"stas"
     }
   ];
   return (
@@ -86,6 +89,9 @@ import {ADataTable} from "@cisco-sbg-ui/atomic-react";
       style={{maxWidth: 500}}
       sort={sort}
       onSort={(s) => setSort(s)}
+      selectable
+      onRowSelected={(toggledId,selectedRowIds)=>{console.log(toggledId,selectedRowIds)}}
+      selectedRowIds={["stas"]}
     />
   );
 }
