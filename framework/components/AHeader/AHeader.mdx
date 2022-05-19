@@ -1,7 +1,7 @@
 ---
 name: Headers
 route: /components/header
-components: AHeader, AHeaderLogo, AHeaderTitle, AHeaderNavigation
+components: AHeader, AHeaderLogo, AHeaderTitle, AHeaderNavigation, AHeaderSubtitle,
 ---
 
 # Headers
@@ -15,7 +15,8 @@ import {
   AHeader,
   AHeaderLogo,
   AHeaderTitle,
-  AHeaderNavigation
+  AHeaderNavigation,
+  AHeaderSubtitle,
 } from "@cisco-sbg-ui/atomic-react";
 ```
 
@@ -27,7 +28,10 @@ import {
   <AHeaderLogo href="#cisco">
     <AIcon>cisco</AIcon>
   </AHeaderLogo>
-  <AHeaderTitle>Product Name</AHeaderTitle>
+  <AHeaderTitle>
+    Product Name
+    <AHeaderSubtitle>Subtitle</AHeaderSubtitle>
+  </AHeaderTitle>
   <AHeaderNavigation>
     <ATabGroup tall>
       <ATab selected>Demo Tab</ATab>

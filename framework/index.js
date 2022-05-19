@@ -27,7 +27,8 @@ import {
   AHeader,
   AHeaderLogo,
   AHeaderTitle,
-  AHeaderNavigation
+  AHeaderNavigation,
+  AHeaderSubtitle
 } from "./components/AHeader";
 import AHint from "./components/AHint";
 import AIcon from "./components/AIcon";
@@ -61,9 +62,14 @@ import ARadio from "./components/ARadio";
 import ASelect from "./components/ASelect";
 import ASimpleTable from "./components/ASimpleTable";
 import ASlider from "./components/ASlider";
-import {AStepper, AStep, AStepTitle, AStepDescription} from "./components/AStepper";
+import {
+  AStepper,
+  AStep,
+  AStepTitle,
+  AStepDescription
+} from "./components/AStepper";
 import ASwitch from "./components/ASwitch";
-import {AAutoTheme, useAAutoTheme} from './components/AAutoTheme';
+import {AAutoTheme, useAAutoTheme} from "./components/AAutoTheme";
 import {ATabGroup, ATab, ATabHeading} from "./components/ATabs";
 import ATag from "./components/ATag";
 import ATextarea from "./components/ATextarea";
@@ -114,6 +120,7 @@ export {
   AHeader,
   AHeaderLogo,
   AHeaderTitle,
+  AHeaderSubtitle,
   AHeaderNavigation,
   AHint,
   AIcon,
