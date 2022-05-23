@@ -97,7 +97,7 @@ const AMenu = forwardRef(
         e.preventDefault();
         const next = getNext();
         next && next.focus();
-      } else if (e.key.length === 1 && e.key.match(/[a-zA-Z]/)) {
+      } else if (e.key.length === 1 && e.key.match(/[a-zA-Z0-9]/)) {
         e.preventDefault();
         typedValue += e.key;
         focusOnFirstItemThatStartsWith(typedValue);
