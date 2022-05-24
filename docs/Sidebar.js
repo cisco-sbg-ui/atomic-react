@@ -23,10 +23,10 @@ const GitHubIcon = (props) => (
     target="_blank"
     rel="noopener noreferrer"
     {...props}
-    >
+  >
     <AIcon>github</AIcon>
   </AButton>
-)
+);
 
 const Sidebar = ({menus, currentDoc}) => {
   const [items, setItems] = useState([]);
@@ -106,16 +106,17 @@ const Sidebar = ({menus, currentDoc}) => {
 
   return (
     <div
-      className={`root-sidebar white--text overflow-y-scroll py-3${
+      className={`root-sidebar overflow-y-scroll py-3${
         currentTheme === "dusk" ? " grey--darken-6" : " cisco-blue"
       }`}
       style={{
         position: "fixed",
         height: "100%",
         width: 330
-      }}>
-      <div style={{display: 'flex', padding: '0 15px'}}>
-        <h1 style={{flex: '1'}}>
+      }}
+    >
+      <div className="white--text" style={{display: "flex", padding: "0 15px"}}>
+        <h1 style={{flex: "1"}}>
           <AIcon size={60} className="pr-3 vertical-align-center">
             cisco
           </AIcon>
@@ -123,7 +124,7 @@ const Sidebar = ({menus, currentDoc}) => {
         </h1>
         <GitHubIcon />
       </div>
-      <div className="d-flex align-center px-3 py-2">
+      <div className="white--text d-flex align-center px-3 py-2">
         <ThemeSwitcher />
       </div>
       <div className="px-3 pb-3">
