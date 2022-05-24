@@ -15,7 +15,7 @@ Atomic-React is a React library that implements UI components according to the [
 
 ## Questions
 
-Consult [the documentation](https://atomic-react.security.cisco.com). For additional help and support, please reach out to Anton Frattaroli on Webex Teams, or file an issue in this repository.
+Consult [the documentation](https://atomic-react.security.cisco.com). For additional help and support, please reach out to Brennan Arvo on Webex Teams, or file an issue in this repository.
 
 ## Contributing
 
@@ -25,4 +25,4 @@ See the [Atomic contribution page](http://ux-document-lnx/~designer/sbg-ux/compo
 
 ### Component Development
 
-Feel free to reach out to Anton Frattaroli via Webex Teams to discuss contributions.
+Feel free to reach out to Brennan Arvo via Webex Teams to discuss contributions.
