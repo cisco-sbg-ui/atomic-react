@@ -39,7 +39,7 @@
     "babel-plugin-auto-import": "1.1.0"
   },
   "devDependencies": {
-    "@babel/cli": "7.17.6",
+    "@babel/cli": "7.17.10",
     "@babel/core": "7.17.5",
     "@babel/eslint-parser": "7.17.0",
     "@babel/preset-env": "7.16.11",
@@ -47,7 +47,7 @@
     "@cypress/code-coverage": "3.9.12",
     "@cypress/react": "^5.12.4",
     "@cypress/webpack-dev-server": "^1.8.4",
-    "algoliasearch": "4.13.0",
+    "algoliasearch": "4.13.1",
     "babel-plugin-istanbul": "6.1.1",
     "codecov": "3.8.3",
     "cross-env": "7.0.3",
