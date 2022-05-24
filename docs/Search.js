@@ -45,7 +45,7 @@ const Search = () => {
         clearable={value.length > 0}
         prependIcon="search"
         value={value}
-        label="Search"
+        label={<span className='white--text'>Search</span>}
         onChange={(e) => {
           setValue(e.target.value);
         }}
