@@ -45,7 +45,7 @@
     "@babel/preset-env": "7.16.11",
     "@babel/preset-react": "7.16.7",
     "@cypress/code-coverage": "3.9.12",
-    "@cypress/react": "^5.12.4",
+    "@cypress/react": "^5.12.5",
     "@cypress/webpack-dev-server": "^1.8.4",
     "algoliasearch": "4.13.1",
     "babel-plugin-istanbul": "6.1.1",
