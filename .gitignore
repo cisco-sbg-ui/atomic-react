@@ -10,3 +10,5 @@
 
 /babel-preset.js
 /babel-preset-local.js
+
+*.sublime-*
