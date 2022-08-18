@@ -28,5 +28,5 @@ jobs:
         run: npm run build
       - name: Test
         run: npm test
-      - name: Upload Coverage
-        run: npm run upload-coverage
+      # - name: Upload Coverage
+      #   run: npm run upload-coverage
