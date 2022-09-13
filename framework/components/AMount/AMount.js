@@ -22,6 +22,13 @@ const AMount = forwardRef(
     const {toasts, setToasts} = useContext(AAppContext);
     const [toasts2, setToasts2] = useState([]);
 
+    useLayoutEffect(() => {
+      if (!window.__AAppMountEl && combinedRef.current) {
+        window.__AAppMountEl = combinedRef;
+      }
+      return () => (window.__AAppMountEl = null);
+    });
+
     let className = "a-mount";
     if (propsClassName) {
       className += ` ${propsClassName}`;

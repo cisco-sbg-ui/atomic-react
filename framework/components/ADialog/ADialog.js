@@ -36,7 +36,7 @@ const ADialog = forwardRef(
       }
     }, [open]); // eslint-disable-line react-hooks/exhaustive-deps
 
-    const {appRef} = useContext(AAppContext);
+    const {appRef = window.__AAppMountEl} = useContext(AAppContext);
 
     const dialogRef = useRef(null);
     const combinedRef = useCombinedRefs(ref, dialogRef);

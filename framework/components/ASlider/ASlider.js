@@ -50,7 +50,7 @@ const ASlider = forwardRef(
     const sliderRef = useRef(null);
     const combinedRef = useCombinedRefs(ref, sliderRef);
     const [sliderId] = useState(sliderCounter++);
-    const {appRef} = useContext(AAppContext);
+    const {appRef = window.__AAppMountEl} = useContext(AAppContext);
     const [offset1, setOffset1] = useState(0);
     const [isDown1, setIsDown1] = useState(false);
     const [offset2, setOffset2] = useState(0);
