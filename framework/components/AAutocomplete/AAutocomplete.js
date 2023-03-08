@@ -26,6 +26,7 @@ const AAutocomplete = forwardRef(
       className: propsClassName,
       clearable,
       disabled,
+      enableMenuOnFocus = false,
       hint,
       itemTemplate,
       itemText = "text",
@@ -180,6 +181,7 @@ const AAutocomplete = forwardRef(
       },
       onFocus: () => {
         setIsFocused(true);
+        enableMenuOnFocus && setIsOpen(true);
       },
       onKeyDown: (e) => {
         if (e.keyCode === keyCodes.up) {
@@ -286,6 +288,10 @@ AAutocomplete.propTypes = {
    * Toggles whether to display a clearable icon.
    */
   clearable: PropTypes.bool,
+  /***
+   * allow initial menu open when on focus
+   */
+  enableMenuOnFocus: PropTypes.bool,
   /**
    * Toggles the disabled state.
    */
