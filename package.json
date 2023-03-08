@@ -44,7 +44,7 @@
     "@babel/eslint-parser": "7.17.0",
     "@babel/preset-env": "7.18.2",
     "@babel/preset-react": "7.17.12",
-    "@cypress/code-coverage": "3.9.12",
+    "@cypress/code-coverage": "3.10.0",
     "@cypress/react": "^5.12.5",
     "@cypress/webpack-dev-server": "^1.8.4",
     "algoliasearch": "4.13.1",
