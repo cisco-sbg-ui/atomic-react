@@ -27,8 +27,7 @@
     "test:lint": "eslint cypress docs framework pages --max-warnings 0",
     "test:components": "cross-env WAIT_ON_TIMEOUT=600000 INSTRUMENT=true start-server-and-test dev http://localhost:3000 cypress:run",
     "test": "npm run test:lint && npm run test:components",
-    "updateSnapshots": "start-server-and-test dev http://localhost:3000 cypress:runUpdateSnapshots",
-    "upload-coverage": "codecov"
+    "updateSnapshots": "start-server-and-test dev http://localhost:3000 cypress:runUpdateSnapshots"
   },
   "peerDependencies": {
     "prop-types": "^15.0.0",
