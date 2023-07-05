@@ -1,5 +1,6 @@
 import PropTypes from "prop-types";
 import React, {forwardRef, useEffect, useRef} from "react";
+import debounce from "lodash.debounce";
 
 import {keyCodes} from "../../utils/helpers";
 import {useCombinedRefs} from "../../utils/hooks";
@@ -29,6 +30,7 @@ const AMenu = forwardRef(
   ) => {
     const menuRef = useRef(null);
     const combinedRef = useCombinedRefs(ref, menuRef);
+    let typedValue = "";
 
     useEffect(() => {
       if (open && focusOnOpen) {
@@ -65,6 +67,20 @@ const AMenu = forwardRef(
       onClose && onClose(e);
     };
 
+    const focusOnFirstItemThatStartsWith = debounce((startsWith) => {
+      const items = Array.from(
+        combinedRef.current.querySelectorAll(".a-list-item[tabindex]")
+      );
+
+      const newItem = items.find((item) =>
+        item.outerText.toLowerCase().startsWith(startsWith.toLowerCase())
+      );
+      if (newItem) {
+        newItem.focus();
+      }
+      typedValue = "";
+    }, 500);
+
     const keyDownHandler = (e) => {
       if (onClose && e.keyCode === keyCodes.esc) {
         e.preventDefault();
@@ -81,6 +97,10 @@ const AMenu = forwardRef(
         e.preventDefault();
         const next = getNext();
         next && next.focus();
+      } else if (e.key.length === 1 && e.key.match(/[a-zA-Z0-9]/)) {
+        e.preventDefault();
+        typedValue += e.key;
+        focusOnFirstItemThatStartsWith(typedValue);
       }
     };
 
