@@ -28,12 +28,22 @@ const fullMonthNames = [
 const ICON_SIZE = 10;
 
 const ADatePicker = forwardRef(
-  ({className: propsClassName, onChange, value = new Date(), minDate, maxDate, ...rest}, ref) => {
+  ({
+    className: propsClassName,
+    onChange,
+    // In the case of a date range, it is assumed
+    // the passed value is represented as [startDate, endDate]
+    value = new Date(),
+    minDate,
+    maxDate,
+    ...rest
+  }, ref) => {
     const hasMinDate = minDate instanceof Date;
     const hasMaxDate = maxDate instanceof Date;
-    // Because date comparisons in this widget are ...
-    // ... only concerned with the day, reset the ...
-    // ... time to midnight for equal comparisons
+    const [hoveredDate, setHoveredDate] = useState(null);
+    // Because date comparisons in this widget are
+    // only concerned with the day, reset the
+    // time to midnight for equal comparisons
     if (hasMinDate) {
       minDate.setHours(0, 0, 0, 0);
     }
@@ -41,38 +51,42 @@ const ADatePicker = forwardRef(
       maxDate.setHours(0, 0, 0, 0);
     }
     const isRange = Array.isArray(value);
-    const [calendarDate, setCalendarDate] = useState(() => {
-      const isRange = Array.isArray(value);
-
+    const startDate = isRange && value[0];
+    const endDate = isRange && value[1];
+    // Picker date refers to the month/year combo
+    // that is shown in the UI
+    const [pickerDate, setPickerDate] = useState(() => {
       if (!isRange) {
         return value;
       }
     
-      // If range has a Date object, use the latest one
-      // to initialize the calendar UI
+      // If the supplied range is empty, i.e., [null, null] default
+      // picker to current date
       const dates = value.filter(d => d instanceof Date);
       if (!dates.length) {
         return new Date();
       }
+      // Use the ending date to determine which month to
+      // display in the calendar
       return sortDates(dates)[dates.length - 1];
     });
-    const firstCalendarDate = useMemo(() => {
+    const firstPickerDate = useMemo(() => {
       let currDate = new Date(
-        calendarDate.getFullYear(),
-        calendarDate.getMonth(),
-        calendarDate.getDate() - calendarDate.getDay()
+        pickerDate.getFullYear(),
+        pickerDate.getMonth(),
+        pickerDate.getDate() - pickerDate.getDay()
       );
 
       while (
-        currDate.getFullYear() >= calendarDate.getFullYear() &&
-        currDate.getMonth() >= calendarDate.getMonth() &&
+        currDate.getFullYear() >= pickerDate.getFullYear() &&
+        currDate.getMonth() >= pickerDate.getMonth() &&
         currDate.getDate() > 1
       ) {
         currDate.setDate(currDate.getDate() - 7);
       }
 
       return currDate;
-    }, [calendarDate]);
+    }, [pickerDate]);
     let className = "a-date-picker";
 
     if (propsClassName) {
@@ -86,30 +100,30 @@ const ADatePicker = forwardRef(
             tertiaryAlt
             icon
             className="a-date-picker__prev"
-            onClick={() => {
-              setCalendarDate(
-                new Date(calendarDate.getFullYear(), calendarDate.getMonth() - 1, 1)
-              );
-            }}>
+            onClick={() =>
+              setPickerDate(
+                new Date(pickerDate.getFullYear(), pickerDate.getMonth() - 1, 1)
+              )
+            }>
             <AIcon size={ICON_SIZE}>chevron-left</AIcon>
           </AButton>
           <div className="a-date-picker__title">
             <span className="a-date-picker__month">
-              {fullMonthNames[calendarDate.getMonth()]}
+              {fullMonthNames[pickerDate.getMonth()]}
             </span>{" "}
             <span className="a-date-picker__year">
-              {calendarDate.getFullYear()}
+              {pickerDate.getFullYear()}
             </span>
           </div>
           <AButton
             tertiaryAlt
             icon
             className="a-date-picker__next"
-            onClick={() => {
-              setCalendarDate(
-                new Date(calendarDate.getFullYear(), calendarDate.getMonth() + 1, 1)
-              );
-            }}>
+            onClick={() =>
+              setPickerDate(
+                new Date(pickerDate.getFullYear(), pickerDate.getMonth() + 1, 1)
+              )
+            }>
             <AIcon size={ICON_SIZE}>chevron-right</AIcon>
           </AButton>
         </div>
@@ -141,36 +155,80 @@ const ADatePicker = forwardRef(
           </thead>
           <tbody>
             {[...Array(6)].map((x, i) => {
-              const sunday = new Date(+firstCalendarDate);
+              const sunday = new Date(+firstPickerDate);
               sunday.setDate(sunday.getDate() + i * 7);
               return (
                 <tr key={i}>
                   {[...Array(7)].map((y, j) => {
                     const currWeekDay = new Date(+sunday);
                     currWeekDay.setDate(currWeekDay.getDate() + j);
-                    const isBeforeMinDate = hasMinDate && Date.parse(currWeekDay) < Date.parse(minDate);
-                    const isPastMaxDate = hasMaxDate && Date.parse(currWeekDay) > Date.parse(maxDate);
-                    const isDisabled = currWeekDay.getMonth() !== calendarDate.getMonth() || isBeforeMinDate || isPastMaxDate;
-                    const isSelected = isRange ?
-                      isDateTipOfRange(currWeekDay, value) :
-                      isSameDate(currWeekDay, value);
-                    const isBetweenRange = isRange && isDateBetweenRange(currWeekDay, value);
+
+                    // Helpers for determining style classes
+                    const isDayOutsideMonth =
+                      currWeekDay.getMonth() !== pickerDate.getMonth();
+                    const isDayBeforeMinDate =
+                      hasMinDate &&
+                      Date.parse(currWeekDay) < Date.parse(minDate);
+                    const isDayPastMaxDate =
+                      hasMaxDate &&
+                      Date.parse(currWeekDay) > Date.parse(maxDate);
+                    const isDayWithinRange =
+                      isRange && isDateBetweenRange(currWeekDay, value);
+                    const canDayBecomeEndDate =
+                      !endDate &&
+                      hoveredDate &&
+                      !isDayOutsideMonth &&
+                      ((Date.parse(currWeekDay) < Date.parse(startDate) &&
+                        Date.parse(currWeekDay) > Date.parse(hoveredDate)) ||
+                        (Date.parse(currWeekDay) > Date.parse(startDate) &&
+                          Date.parse(currWeekDay) < Date.parse(hoveredDate)));
+
+                    // Stylistic states the calendar day can be in
+                    const isSelected = isRange
+                      ? isDateTipOfRange(currWeekDay, value)
+                      : isSameDate(currWeekDay, value);
+                    const isDaySelectedInAnotherMonth =
+                      isRange &&
+                      isDayOutsideMonth &&
+                      (isDayWithinRange || isSelected);
+                    const isHighlighted =
+                      !isDayBeforeMinDate &&
+                      !isDayPastMaxDate &&
+                      (isDayWithinRange ||
+                        canDayBecomeEndDate ||
+                        isDaySelectedInAnotherMonth);
+                    const isDisabled =
+                      currWeekDay.getMonth() !== pickerDate.getMonth() ||
+                      isDayBeforeMinDate ||
+                      isDayPastMaxDate;
+
+                    const baseBtnClassName = "a-date-picker__day__btn";
+                    let btnClassName = baseBtnClassName;
+                    if (isSelected) {
+                      btnClassName += ` ${baseBtnClassName}--selected`;
+                    }
+                    if (isHighlighted) {
+                      btnClassName += ` ${baseBtnClassName}--highlighted`;
+                    }
+                    if (isDisabled) {
+                      btnClassName += ` ${baseBtnClassName}--disabled`;
+                    }
+
                     return (
                       <td
+                        onMouseEnter={() => setHoveredDate(currWeekDay)}
+                        onMouseLeave={() => setHoveredDate(null)}
                         key={j}
-                        className={`a-date-picker__day${isDisabled ? " disabled" : ""}${isSelected ? " selected" : ""}${isBetweenRange ? " between" : ""}`}>
-                        {isDisabled ? (
-                          currWeekDay.getDate()
-                        ) : (
-                          <button
-                            type="button"
-                            className="a-date-picker__day__label"
-                            onClick={() => {
-                              onChange && onChange(currWeekDay);
-                            }}>
-                            {currWeekDay.getDate()}
-                          </button>
-                        )}
+                        className="a-date-picker__day">
+                        <button
+                          type="button"
+                          disabled={isDisabled}
+                          className={btnClassName}
+                          onClick={() => {
+                            onChange && onChange(currWeekDay);
+                          }}>
+                          {currWeekDay.getDate()}
+                        </button>
                       </td>
                     );
                   })}
