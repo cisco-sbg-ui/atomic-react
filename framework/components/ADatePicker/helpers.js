@@ -9,22 +9,16 @@ const isSameDate = (a, b) => {
 };
 
 const isDateTipOfRange = (date, range) => {
-    const [rangeStartDate, rangeEndDate] = range;
-
-    if (
-        rangeStartDate instanceof Date && isSameDate(date, rangeStartDate) ||
-        rangeEndDate instanceof Date && isSameDate(date, rangeEndDate)
-    ) {
-        return true;
-    }
-
-    return false;
+    const [startDate, endDate] = range;
+    return startDate instanceof Date && isSameDate(date, startDate) ||
+        endDate instanceof Date && isSameDate(date, endDate) ||
+        false;
 };
 
 const isDateBetweenRange = (date, range) => {
-    const [rangeStartDate, rangeEndDate] = range;
-    return Date.parse(date) > Date.parse(rangeStartDate) &&
-        Date.parse(date) < Date.parse(rangeEndDate);
+    const [startDate, endDate] = range;
+    return Date.parse(date) > Date.parse(startDate) &&
+        Date.parse(date) < Date.parse(endDate);
 };
 
 export {
