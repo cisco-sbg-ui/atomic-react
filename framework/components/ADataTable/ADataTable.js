@@ -107,7 +107,7 @@ const ADataTable = forwardRef(
           maxHeight={maxHeight}>
           <ASimpleTable {...rest} ref={ref} className={className}>
             {headers && (
-              <thead>
+              <thead className="a-data-table__thead">
                 <TableRow>
                   {ExpandableComponent && (
                     <TableHeader className="a-data-table__header a-data-table__header--hidden">
