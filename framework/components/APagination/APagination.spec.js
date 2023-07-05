@@ -65,7 +65,7 @@ context("APagination", () => {
     ).contains("14");
   });
 
-  it("has working pagination with total and resultsPerPage", () => {
+  it("has working pagination with total, resultsPerPage, maxResultsPerPage", () => {
     cy.get(
       "#usage-3 + .playground .a-pagination__page-selection .a-text-input__input"
     ).should("have.value", "1");
@@ -135,9 +135,10 @@ context("APagination", () => {
       "21-25 of 145"
     );
 
+    // maxResultsPerPage is 50
     cy.get(
       "#usage-3 + .playground .a-pagination__results-per-page .a-text-input__input"
-    ).type("{backspace}{backspace}50{enter}");
+    ).type("{backspace}{backspace}53{enter}");
     cy.get(
       "#usage-3 + .playground .a-pagination__page-selection .a-text-input__input"
     ).should("have.value", "1");
