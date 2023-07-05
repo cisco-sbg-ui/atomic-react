@@ -94,6 +94,12 @@ $atomic-default: (
       "color": map-get($grey, "darken-7")
     )
   ),
+  "btn-card": (
+    "body-color": map-get($grey, "darken-4"),
+    "border-color--disabled": map-get($grey, "lighten-2"),
+    "title-color--disabled": map-get($grey, "darken-2"),
+    "body-color--disabled": map-get($grey, "darken-2")
+  ),
   "color": (
     "warning--state-hover": map-get($status-orange, "burnt-2"),
     "error--state-hover": map-get($status-red, "burnt-2")
