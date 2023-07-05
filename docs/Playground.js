@@ -1,4 +1,3 @@
-import algoliasearch from "algoliasearch";
 import debounce from "lodash.debounce";
 import React, {useCallback, useEffect, useMemo, useRef, useState} from "react";
 import {LiveProvider, LiveEditor, LiveError, LivePreview} from "react-live";
@@ -16,7 +15,6 @@ const scope = {
   useMemo,
   useRef,
   useState,
-  algoliasearch,
   debounce,
   mockImport
 };
