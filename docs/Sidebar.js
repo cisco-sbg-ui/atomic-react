@@ -3,7 +3,6 @@ import Link from "next/link";
 
 import {AButton, AIcon, ATree, useATheme} from "../framework";
 
-import Search from "./Search";
 import ThemeSwitcher from "./ThemeSwitcher";
 
 const CustomLink = ({children, href, ...rest}) => {
@@ -22,8 +21,7 @@ const GitHubIcon = (props) => (
     href="https://www.github.com/cisco-sbg-ui/atomic-react"
     target="_blank"
     rel="noopener noreferrer"
-    {...props}
-  >
+    {...props}>
     <AIcon>github</AIcon>
   </AButton>
 );
@@ -113,8 +111,7 @@ const Sidebar = ({menus, currentDoc}) => {
         position: "fixed",
         height: "100%",
         width: 330
-      }}
-    >
+      }}>
       <div className="white--text" style={{display: "flex", padding: "0 15px"}}>
         <h1 style={{flex: "1"}}>
           <AIcon size={60} className="pr-3 vertical-align-center">
@@ -126,9 +123,6 @@ const Sidebar = ({menus, currentDoc}) => {
       </div>
       <div className="white--text d-flex align-center px-3 py-2">
         <ThemeSwitcher />
-      </div>
-      <div className="px-3 pb-3">
-        <Search />
       </div>
       <ATree
         className="white--text"

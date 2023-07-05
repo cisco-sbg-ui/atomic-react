@@ -1,5 +1,3 @@
-import giResponse from "./algolia.gi.fixture.json";
-
 context("AAutocomplete", () => {
   before(() => {
     cy.visitInLightTheme("http://localhost:3000/components/autocomplete");
@@ -18,74 +16,6 @@ context("AAutocomplete", () => {
             cy.wrap($el2).should("have.attr", "id", labelFor);
           });
       });
-  });
-
-  it("shows a no-data message", () => {
-    cy.intercept("POST", "https://nut7b5fgkt*.*.*/**", {
-      headers: {
-        "access-control-allow-origin": window.location.origin,
-        "Access-Control-Allow-Credentials": "true"
-      },
-      body: {
-        hits: [],
-        nbHits: 0,
-        page: 0,
-        nbPages: 1,
-        hitsPerPage: 5,
-        exhaustiveNbHits: true,
-        query: "asdfadsfadsfasdf",
-        params: "query=gi&hitsPerPage=5",
-        processingTimeMS: 1
-      }
-    }).as("algolia");
-
-    cy.get("#usage + .playground .a-autocomplete__input")
-      .eq(0)
-      .type("asdf")
-      .wait("@algolia");
-    cy.get(".a-autocomplete__menu-items").eq(0).should("be.visible");
-    cy.get("#usage + .playground .a-autocomplete__input").eq(0).clear();
-    cy.get(".a-autocomplete__menu-items .a-list-item").eq(0).type("{esc}");
-  });
-
-  it("opens and closes appropriately", () => {
-    cy.intercept("POST", "https://nut7b5fgkt*.*.*/**", {
-      headers: {
-        "access-control-allow-origin": window.location.origin,
-        "Access-Control-Allow-Credentials": "true"
-      },
-      body: giResponse
-    }).as("algolia");
-
-    cy.get(".a-autocomplete__menu-items").should("not.exist");
-    cy.get("#usage + .playground .a-autocomplete__input")
-      .eq(0)
-      .type("gi")
-      .wait("@algolia");
-    cy.get(".a-autocomplete__menu-items").eq(0).should("be.visible");
-    cy.get("#usage + .playground .a-autocomplete__input")
-      .eq(0)
-      .then(($el) => {
-        Cypress.dom.isFocused($el);
-      })
-      .type("{downArrow}");
-    cy.get(".a-autocomplete__menu-items .a-autocomplete__menu-item")
-      .eq(0)
-      .type("{esc}");
-    cy.get(".a-autocomplete__menu-items").should("not.exist");
-
-    cy.get("#usage + .playground .a-autocomplete__input").type("{downArrow}");
-    cy.get(".a-autocomplete__menu-items .a-autocomplete__menu-item")
-      .eq(0)
-      .click();
-    cy.get(".a-autocomplete__menu-items").should("not.exist");
-    cy.get("#usage + .playground .a-autocomplete__input")
-      .clear()
-      .type("gi")
-      .type("{downArrow}");
-    cy.get(".a-autocomplete__menu-items .a-autocomplete__menu-item")
-      .eq(0)
-      .type("{esc}");
   });
 
   it("tabs appropriately", () => {
